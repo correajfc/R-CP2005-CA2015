@@ -1,0 +1,13 @@
+---
+title: "Análisis de los datos ambientales, socioeconomicos y de estructura física por sectores censales urbanos de Santiago de Cali"
+output: html_notebook
+---
+
+ 
+```{r}
+AU_analsis %>% ggplot()+
+  geom_violin(aes(x=emplazamiento,y=diametro_copa/2,color=emplazamiento))
+```
+
+
+

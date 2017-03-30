@@ -1,0 +1,5 @@
+*.Rproj
+*.Rbuildignore
+.Rproj.user
+CA2015/*.xlsx
+CA2015/*.txt
