@@ -11,6 +11,7 @@ library(RColorBrewer)
 library(scales)
 library(viridis)
 library(gridExtra)
+library(sp)
 
 
 
@@ -542,30 +543,67 @@ cp2005su.cali%>%
   group_by(setu_ccnct_18) %>% 
   filter(n()>1) %>% arrange(setu_ccnct_18) %>% 
   filter(cod_consistencia=="no-consistente")%>%
-  select(su_id)->cp2005_elim
-
-is.na(cp2005su.cali$su_id)
-
+  select(su_id)->cp2005_elim #eliminar los duplicados no consistentes
+#verificar si hay NA en los datos
+is.na(cp2005su.cali) %>% View()
+#verificar los sectores no consistentes
 elim_su_cp2005<-as.character(cp2005su.cali$su_id) %in% as.character(cp2005_elim$su_id)  
 cp2005su.cali[elim_su_cp2005,] %>% View()
-is.na(cp2005su.cali[!elim_su_cp2005,]$su_id)
+
+#verificar si hay datos por SU validos sin valores
+cp2005su.cali %>%
+  filter(is.na(personas_edad),
+         is.na(personas_estudio),
+         is.na(personas_etnia),
+         is.na(personas_limitacion),
+         is.na(viviendas_tipo),
+         is.na(viviendas_uso),
+         is.na(viviendas_ocupacion)) ->  cp2005su.cali.all.na
+cp2005su.cali.all.na
+cp2005su.cali %>%
+  filter(is.na(personas_edad) |
+         is.na(personas_estudio) |
+         is.na(personas_etnia) |
+         is.na(personas_limitacion) |
+         is.na(viviendas_tipo) |
+         is.na(viviendas_uso) |
+         is.na(viviendas_ocupacion)) ->  cp2005su.cali.any.na
+
+cp2005su.cali.any.na
+
+#los NA de los datos restantes son SU que no tuvo casos de respuesta positiva,
+#por ejemplo un SU solo comercial, sin personas habitadando. En estos casos es posible reeemplzar por 0 los NA
+cp2005su.cali[is.na(cp2005su.cali)] <-0
+
+
+#is.na(cp2005su.cali[!elim_su_cp2005,])
 cp2005su.cali<-cp2005su.cali[!elim_su_cp2005,]
 # su_eliminados_cod<-cp2005su.cali%>% filter(cod_consistencia =="no-consistente")
 # cp2005su.cali<-cp2005su.cali%>% filter(cod_consistencia !="no-consistente")
 
-
+#se une los datos del CP2005 con los datos de la capa geografica usando el codigo de 18 digitos
 cp2005su.cali_sel<-left_join(su@data,cp2005su.cali,by= c("SETU_CCNCT"="setu_ccnct_18"))
 nrow(cp2005su.cali_sel)
-#su@data<-cp2005su.cali
-cp2005su.cali_sel %>%
-  filter(is.na(personas_edad)) ->  cp2005su.cali_sel.na
 
-su.cp2005.na<-su
-su.cp2005.na@data<-inner_join(su.cp2005.na@data, cp2005su.cali_sel.na,
+#verificamos que no hay datos con algun NA
+cp2005su.cali_sel %>%
+  filter(is.na(personas_edad) |
+           is.na(personas_estudio) |
+           is.na(personas_etnia) |
+           is.na(personas_limitacion) |
+           is.na(viviendas_tipo) |
+           is.na(viviendas_uso) |
+           is.na(viviendas_ocupacion))  ->  cp2005su.cali_sel.na
+
+cp2005su.cali_sel.na
+#se puede ver que existe un SU en la capa geofrafica que no tuvo datos en las consultas del Redatam.
+
+#convertimos los datos preprocesados en un objeto geografico.
+# su.cp2005.na<-su
+# su.cp2005.na@data<-inner_join(su.cp2005.na@data, cp2005su.cali_sel.na,
 su.cp2005<-su
 su.cp2005@data<-cp2005su.cali_sel
 ##################
-plot(su.cp2005.na)
 
 ####################################################
 
@@ -578,12 +616,11 @@ bbox(AU_analsis_spatial) # the extent, 'bounding box' of stations
 bbox(su.cp2005)
 
 
-
+#creacion de data frames para plotear los datos en ggplot2
 su.cp2005.f<-fortify(su.cp2005,region = "SETU_CCNCT")
 su.cp2005.f <- merge(su.cp2005.f, su.cp2005@data, by.x = "id", by.y = "SETU_CCNCT")
 
 prmtr_urbn_idesc.f<-fortify(prmtr_urbn_idesc,region = "nombre")
-
 manzanas.f<-fortify(manzanas)
 
 # plot(su)
@@ -608,7 +645,7 @@ p_su.cp2005.personas<- ggplot() +
        subtitle="Santiago de Cali",
        caption="Fuente: DANE, Censo de Población 2005")
 
-#primer los odenamos con base en una de las varibles
+#primer los ordenamos con base en una de la variable de interes
 cp2005su.cali_sel$su_ids <- factor(cp2005su.cali_sel$su_ids, levels = cp2005su.cali_sel$su_ids[order(cp2005su.cali_sel$personas_edad)])
 cp2005su.cali_sel$su_ids %>% levels()
 
@@ -643,8 +680,131 @@ p_cp2005.personas.hist<-p_cp2005+
 
 #viridis(nrow(cp2005su.cali_sel))
 p_cp2005.personas.hist
-
 grid.arrange(p_su.cp2005.personas, p_cp2005.personas.bar, p_cp2005.personas.hist, layout_matrix = rbind(c(1,2),c(1,3)))
+
+
+#
+p_cp2005<-ggplot(data=cp2005su.cali_sel,aes(x=su_ids))
+p_cp2005.personas.comp<-p_cp2005+
+  theme_minimal()+
+  geom_point(aes(y=personas_edad),color="red", stat = "identity",size=0.8,alpha=0.5)+
+  geom_point(aes(y=personas_limitacion),color="blue", stat = "identity",size=0.8,alpha=0.5)+
+  geom_point(aes(y=personas_estudio),color="green", stat = "identity",size=0.8,alpha=0.5)+
+  geom_point(aes(y=personas_etnia),color="orange", stat = "identity",size=0.8,alpha=0.5)+
+  theme(axis.text.x = element_blank())+
+  labs(title="Personas en SU por consulta a variable",
+       subtitle="Santiago de Cali",
+       caption="Fuente: DANE, Censo de Población 2005",
+       x="SU",y="Personas")+
+  geom_point(x=10, y=22000, color="red") + 
+  geom_point(x=10, y=21000, color="blue") + 
+  geom_point(x=10, y=20000, color="green") + 
+  geom_point(x=10, y=19000, color="orange") + 
+  annotate("text", x=20, y=22000, label="edad", color="black") +
+  annotate("text", x=26, y=21000, label="limitación", color="black")+
+  annotate("text", x=24, y=20000, label="estudios", color="black") +
+  annotate("text", x=20, y=19000, label="etnia", color="black")
+
+#podemos usar valer porcentuales para las variables de personas
+total_poblacion<-sum(cp2005su.cali_sel$personas_edad,na.rm = T)
+cp2005su.cali_sel<-cp2005su.cali_sel%>%
+  mutate(porcentaje_superior_postgrado=superior_postgrado/personas_estudio,
+         porcentaje_ningun_estudio=ningun_estudio/personas_estudio,
+         porcentaje_sin_limitacion=sin_limitacion/personas_limitacion,
+         porcentaje_con_alguna_limitacion=con_alguna_limitacion/personas_limitacion,
+         porcentaje_indigenas=indigena/personas_etnia,
+         porcentaje_rom=rom/personas_etnia,
+         porcentaje_raizal_SAIyP=raizal_SAI_Providencia/personas_etnia,
+         porcentaje_palenquero=palenquero/personas_etnia,
+         porcentaje_afro=negro_mulato_afrocolombiano/personas_etnia,
+         porcentaje_ninguna_etnia=ninguno_de_los_anteriores/personas_etnia,
+         porcentaje_personas_su=personas_edad/total_poblacion)
+cp2005su.cali_sel$su_ids %>% levels()
+
+#primer los ordenamos con base en una de la variable de interes
+cp2005su.cali_sel$su_ids <- factor(cp2005su.cali_sel$su_ids, levels = cp2005su.cali_sel$su_ids[order(cp2005su.cali_sel$porcentaje_personas_su)])
+cp2005su.cali_sel$su_ids <- factor(cp2005su.cali_sel$su_ids, levels = cp2005su.cali_sel$su_ids[order(cp2005su.cali_sel$porcentaje_afro)])
+cp2005su.cali_sel$su_ids %>% levels()
+
+p_cp2005.personas.comp<-ggplot(data=cp2005su.cali_sel, aes(x=reorder(su_ids, 
+  #                                                                   porcentaje_superior_postgrado)))+
+ # porcentaje_sin_limitacion)))+
+  # porcentaje_afro)))+
+   porcentaje_ningun_estudio)))+
+#  geom_line(aes(y=porcentaje_personas_su,group=su_ids))+
+  theme_minimal()+
+  #geom_point(aes(y=porcentaje_personas_su),color="black",stat = "",size=0.8)+
+  geom_point(aes(y=porcentaje_superior_postgrado),color="red", stat = "identity",size=0.8,alpha=0.5)+
+  geom_point(aes(y=porcentaje_sin_limitacion),color="blue", stat = "identity",size=0.8,alpha=0.5)+
+  geom_point(aes(y=porcentaje_afro),color="green", stat = "identity",size=0.8,alpha=0.5)+
+  geom_point(aes(y=porcentaje_ningun_estudio),color="orange", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_superior_postgrado,group=1),color="red", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_sin_limitacion,group=1),color="blue", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_afro,group=1),color="green", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_ningun_estudio,group=1),color="orange", stat = "identity",size=0.8,alpha=0.5)+
+  theme(axis.text.x = element_blank())+
+  labs(title="Variables en porcentaje de persona en cada SU",
+       subtitle="Santiago de Cali",
+       caption="Fuente: DANE, Censo de Población 2005",
+       x="SU",y="Porcentaje de personas")+
+  geom_point(x=10, y=0.82, color="red" )+
+  geom_point(x=10, y=0.78, color="blue" )+
+  geom_point(x=10, y=0.74, color="green" )+
+  geom_point(x=10, y=0.7, color="orange" )+
+  annotate("text", x=40, y=0.82, label="Estudios Superiores", color="black") +
+  annotate("text", x=32, y=0.78, label="Sin limitación", color="black")+
+  annotate("text", x=20, y=0.74, label="Afro", color="black") +
+  annotate("text", x=34, y=0.7, label="Ningun estudio", color="black")
+
+
+p_cp2005.personas.comp
+##################
+
+
+
+
+p_cp2005.personas.comp.ciudad<-ggplot(data=cp2005su.cali_sel,aes(x=su_ids))+
+  #  geom_line(aes(y=porcentaje_personas_su,group=su_ids))+
+  theme_minimal()+
+  #geom_point(aes(y=porcentaje_personas_su),color="black",stat = "identity",size=0.8)+
+  geom_line(aes(y=porcentaje_personas_su,group=1),color="black",stat = "identity",size=0.8)+
+  #geom_point(aes(y=porcentaje_superior_postgrado*porcentaje_personas_su),color="red", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_superior_postgrado*porcentaje_personas_su,group=1),color="red", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_sin_limitacion*porcentaje_personas_su,group=1),color="blue", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_afro*porcentaje_personas_su,group=1),color="green", stat = "identity",size=0.8,alpha=0.5)+
+  geom_line(aes(y=porcentaje_ningun_estudio*porcentaje_personas_su,group=1),color="orange", stat = "identity",size=0.8,alpha=0.5)+
+  theme(axis.text.x = element_blank())+
+  labs(title="Variables porcentuales por SU en relacion a la poblacion total",
+       subtitle="Santiago de Cali",
+       caption="Fuente: DANE, Censo de Población 2005",
+       x="SU",y="Porcentaje de personas")
+p_cp2005.personas.comp.ciudad
+
+
+
+p_cp2005.personas.xy
+su.cp2005.long<-su
+cp2005su.cali_sel
+cp2005su.prcentaje.facet<-cp2005su.cali_sel
+p_su.cp2005.all<- ggplot(data=su.cp2005.f,aes(x=long,y=lat,group=group,fill=value))
+ p_su.cp2005.all +
+  geom_polygon(aes(x=long,y=lat,group=group))+
+  theme_minimal()+
+  coord_equal()+
+  scale_fill_viridis(option = "magma")+
+  facet_wrap(~variable, scales = "free_y") 
+# +
+#   labs(title="Personas por SU",
+#        subtitle="Santiago de Cali",
+#        caption="Fuente: DANE, Censo de Población 2005")
+
+#facet_wrap(~variable)
+###################
+# Normalidad y colinialidad
+
+
+
+
 
 ############
 p_su.cp2005.edad_prom<- ggplot() +
