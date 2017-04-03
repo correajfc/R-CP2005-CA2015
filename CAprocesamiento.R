@@ -167,7 +167,7 @@ df_CA<-df_CA %>%
 
 # columnas a incluir en analsis ----
 #colAnalisys<-c("id","idarbol","grupo","nombre_comun","nombre_cienticico","familia","vegetacion","edad","emplazamiento","Norte","Este","Norte0","Este0","altura_arbol","diametro_copa","vitalidad")
-AU_analsis<-df_CA %>% select(id,nombre_cienticico,familia,vegetacion,
+AU_analsis<-df_CA %>% dplyr::select(id,nombre_cienticico,familia,vegetacion,
                              altura_arbol,diametro_copa,edad,vitalidad,emplazamiento,cobertura,
                              Norte,Este,Norte0,Este0) %>% na.omit()
 
@@ -369,23 +369,33 @@ humedales<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisys/shapefil
 su
 summary(su)
 names(su)
+#eliminar campos sin interes
+su@data<-dplyr::select(su@data,SETU_CCDGO,SETU_CCNCT)
 #calcular area del sector urbano su
+
 su$area_su <- area(su)
 
+#data para ggplot
 su.f<-fortify(su,region = "SETU_CCDGO")
 su.f<-su@data%>%
   dplyr::select(SETU_CCDGO,area_su)%>%
   merge(su.f,.,by.x="id",by.y="SETU_CCDGO")
 
+#calcular capa con centroides y etiquetas de cada SU
 ids_su<-su$SETU_CCDGO
 centroids.df<-as.data.frame(coordinates(su))
 names(centroids.df) <- c("long", "lat") 
 su.setu_ccdgo<-data.frame(ids_su,centroids.df)
 
+#graficar Su con etiquetas.
 ggplot(su.f,aes(x=long,y=lat,group=group))+
   geom_polygon(fill="lightgrey",color="white")+coord_equal()+
   theme_void()+
-  with(su.setu_ccdgo, annotate(geom="text", x = long, y=lat, label = ids_su, size = 1.8,color="black")) 
+  with(su.setu_ccdgo, annotate(geom="text", x = long, y=lat, label = ids_su, 
+                               size = 1.5,color="black")) +
+  labs(title="Sectores Urbanos del Censo del 2005 ",
+       subtitle="Los sectores seleccionados est´n parcial o totalmente contenidos en el perímetro urbano 2015",
+       caption="Fuente: Cartografia Censo 2005 - DANE, perímetro urbano - IDESC")
 #+ggfittext::geom_fit_text(data = su.setu_ccdgo, aes(label=ids_su) )
   
 
@@ -404,6 +414,8 @@ espacio_publico_idesc
 summary(espacio_publico_idesc)
 names(espacio_publico_idesc)
 proj4string(espacio_publico_idesc)
+espacio_publico_idesc@data %>% head()
+
 
 espacio_publico_EEC
 summary(espacio_publico_EEC)
@@ -420,7 +432,7 @@ summary(corredores_ambientales)
 names(corredores_ambientales)
 proj4string(corredores_ambientales)
 
-humedales
+humedales@data
 summary(humedales)
 names(humedales)
 proj4string(humedales)
@@ -448,12 +460,74 @@ inside.su <- !is.na(over(AU_analsis_spatial,as(su,"SpatialPolygons")))
 AU_analsis_spatial$setu_ccnct<-over(AU_analsis_spatial,su)$SETU_CCNCT
 names(AU_analsis_spatial)
 AU_analsis_spatial$setu_ccnct
+
 # manznas en sectores urbanos ----
 manzanas$setu_ccnct<-over(manzanas,su)$SETU_CCNCT
+manzanas@data<-left_join(manzanas@data,su@data,by=c("setu_ccnct"="SETU_CCNCT")) %>%
+  dplyr::select(setu_ccnct,SETU_CCDGO,area_su)
 
+id_manzana<-1:nrow(manzanas)
+manzanas$area_manzana<-area(manzanas)
+manzanas$id_manzana<-id_manzana
+summary(manzanas)
+manzanas.f<-fortify(manzanas,region = "id_manzana")
+manzanas.f<-manzanas@data%>%
+  #dplyr::select(id_manzana,area_manzana)%>%
+  merge(manzanas.f,.,by.x="id",by.y="id_manzana")
 #carateristicas fisicas de las manzanas ----
+p_manzanas_area<-ggplot(manzanas.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(aes(fill=area_manzana))+coord_equal()+
+  theme_void()+
+  scale_fill_viridis(direction = -1)
+
+ggplot(manzanas@data,aes(x=area_manzana))+
+  geom_histogram(bins = 80,fill=rev(viridis(80)))
+#excluiremos la manzana de la fuerza aerea Marco Fidel Suarez,
+#no mermite ver la varibildad
+
+#QQ plot manzanas ----
+ggplot(manzanas@data[manzanas$area_manzana<20000,],aes(sample=area_manzana))+
+  stat_qq()
+
+manzanas.atipicas<-manzanas@data[manzanas$area_manzana>80000,]
+nrow(manzanas.atipicas)
+nrow(manzanas)
+
+ggplot(manzanas@data[manzanas$area_manzana<20000,],aes(x=area_manzana))+
+  geom_histogram(bins = 80,fill=rev(viridis(80)))
+
+
+mean(manzanas$area_manzana)
+manzanas.f%>%
+filter(area_manzana<50000)%>%
+  ggplot(aes(x=long,y=lat,group=group))+
+  geom_polygon(data=manzanas.f ,aes(x=long,y=lat,group=group),fill="lightgrey")+
+         geom_polygon(aes(fill=area_manzana))+coord_equal()+
+         theme_void()+
+         scale_fill_viridis(direction = -1)
+
 
 # espacios verdes (EV) publicos (EVP) y manzanas ----
+
+equipamento_EEC %>% head()
+equipamento_EEC$OBJECTID
+names(equipamento_EEC)
+summary(equipamento_EEC)
+
+espacio_publico_EEC$ID_EP
+espacio_publico_EEC%>% head()
+names(espacio_publico_EEC)
+summary(espacio_publico_EEC)
+
+espacio_publico_idesc %>% head()
+names(espacio_publico_idesc)
+summary(espacio_publico_idesc)
+
+
+manzanas$equipamento_EEC<-over(manzanas,equipamento_EEC)$OBJECTID
+manzanas %>% summary()
+
+
 
 # agregrar altura, cantidad y area de copa por SU ----
 
@@ -681,7 +755,7 @@ cpSubset_viviendas <- cp2005_viviendas_su[grep("76001", cp2005_viviendas_su$SETU
 #union personas vivienda
 cpSubset<-full_join(cpSubset_viviendas,cpSubset_personas,by="su_id") %>% 
   rename(SETU_CCNCT=SETU_CCNCT.x) %>%
-  select(-one_of(c("SETU_CCNCT.y")))
+  dplyr::select(-one_of(c("SETU_CCNCT.y")))
   
 
 #buscar duplicados
@@ -743,7 +817,7 @@ cp2005su.cali%>%
   group_by(setu_ccnct_18) %>% 
   filter(n()>1) %>% arrange(setu_ccnct_18) %>% 
   filter(cod_consistencia=="no-consistente")%>%
-  select(su_id)->cp2005_elim #eliminar los duplicados no consistentes
+  dplyr::select(su_id)->cp2005_elim #eliminar los duplicados no consistentes
 #verificar si hay NA en los datos
 is.na(cp2005su.cali) #%>% View()
 #verificar los sectores no consistentes
