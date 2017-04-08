@@ -4,14 +4,14 @@
 
 # librerias ----
 
-x <- c("ggmap", "rgdal", "rgeos", "maptools", "dplyr", "tidyr", "tmap") 
+libs <- c("ggmap", "rgdal", "rgeos", "maptools", "dplyr", "tidyr", "tmap") 
 #install.packages(x) # warning: this may take a number of minutes 
 install.packages("devtools")
 library(devtools)
 install_github("wilkox/ggfittext")
 install_github("wilkox/treemapify")
 
-lapply(x, library, character.only = TRUE) # load the required packages
+lapply(libs, library, character.only = TRUE) # load the required packages
 library(readr)
 library(ggplot2)
 library(RColorBrewer)
@@ -321,7 +321,7 @@ AU_analsis %>%
   geom_point(aes(x=altura_arbol,y=diametro_copa/2,color=vegetacion),alpha=0.1)+
   scale_color_brewer(palette = "Dark2")+
   coord_equal()+
-  coord_flip() +
+  coord_flip() +theme_void()+
   facet_grid( cobertura ~ emplazamiento )
 
 AU_analsis %>% 
@@ -356,14 +356,18 @@ espacio_publico_EEC<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisy
 equipamento_EEC<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisys/shapefiles"),
                                layer = "mc_equipamientos_colectivos_seleccionados_EEC")
 
-corredores_ambientales<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisys/shapefiles"),
-                             layer = "mc_corredores_ambientales")
+# corredores_ambientales<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisys/shapefiles"),
+#                              layer = "mc_corredores_ambientales")
+# 
+# humedales<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisys/shapefiles"),
+#                              layer = "mc_humedales")
 
-humedales<-readOGR(dsn = path.expand("~/Documents/UNIGIS/Tesis/Analisys/shapefiles"),
-                             layer = "mc_humedales")
 
-
-
+espacio_publico_idesc <- gBuffer(espacio_publico_idesc, byid=TRUE, width=0)
+espacio_publico_EEC <- gBuffer(espacio_publico_EEC, byid=TRUE, width=0)
+equipamento_EEC <- gBuffer(equipamento_EEC, byid=TRUE, width=0)
+manzanas<-gBuffer(manzanas, byid=TRUE, width=0)
+su<-gBuffer(su, byid=TRUE, width=0)
 
 # inspeccion shapefiles cargados ----
 su
@@ -394,12 +398,12 @@ ggplot(su.f,aes(x=long,y=lat,group=group))+
   with(su.setu_ccdgo, annotate(geom="text", x = long, y=lat, label = ids_su, 
                                size = 1.5,color="black")) +
   labs(title="Sectores Urbanos del Censo del 2005 ",
-       subtitle="Los sectores seleccionados est´n parcial o totalmente contenidos en el perímetro urbano 2015",
+       subtitle="Los sectores seleccionados están parcial o totalmente contenidos en el perímetro urbano 2015",
        caption="Fuente: Cartografia Censo 2005 - DANE, perímetro urbano - IDESC")
 #+ggfittext::geom_fit_text(data = su.setu_ccdgo, aes(label=ids_su) )
   
 
-
+# inspeccion resumen ----
 manzanas
 summary(manzanas)
 names(manzanas)
@@ -436,7 +440,8 @@ humedales@data
 summary(humedales)
 names(humedales)
 proj4string(humedales)
-# CRS Idesc----
+
+# CRS Idesc ----
 crs_mc_idesc<-proj4string(manzanas)
 crs_mc_idesc
 
@@ -446,121 +451,456 @@ AU_analsis_spatial <- SpatialPointsDataFrame(coords_arboles, AU_analsis)
 proj4string(AU_analsis_spatial) <- crs_mc_idesc
 identical(proj4string(su),proj4string(AU_analsis_spatial))
 
+
+
+
 # operaciones espaciales ----
+# espacio_publico_idesc <- gBuffer(espacio_publico_idesc, byid=TRUE, width=0)
+# espacio_publico_EEC <- gBuffer(espacio_publico_EEC, byid=TRUE, width=0)
+# equipamento_EEC <- gBuffer(equipamento_EEC, byid=TRUE, width=0)
+# manzanas<-gBuffer(manzanas, byid=TRUE, width=0)
+# su<-gBuffer(su, byid=TRUE, width=0)
+
 #sectores censales en el perimetro urbano ----
-su_prmtr<-su[prmtr_urbn_idesc,]
+su<-su[prmtr_urbn_idesc,]
 nrow(su)
-nrow(su_prmtr)
-plot(su_prmtr) #todos los sectores urbanos se encuentran en el perimetro
+#plot(su) #todos los sectores urbanos se encuentran en el perimetro
+
 
 
 #arboles en sectores urbanos ----
 inside.su <- !is.na(over(AU_analsis_spatial,as(su,"SpatialPolygons")))
+inside.su
 #asiganr sector urbano a cada arbol y manzana dentro del sector
 AU_analsis_spatial$setu_ccnct<-over(AU_analsis_spatial,su)$SETU_CCNCT
 names(AU_analsis_spatial)
-AU_analsis_spatial$setu_ccnct
+#eliminamos arboles fuera de los sectores censales
+AU_analsis_spatial<-AU_analsis_spatial[!is.na(AU_analsis_spatial$setu_ccnct),]
+
+
+
 
 # manznas en sectores urbanos ----
-manzanas$setu_ccnct<-over(manzanas,su)$SETU_CCNCT
-manzanas@data<-left_join(manzanas@data,su@data,by=c("setu_ccnct"="SETU_CCNCT")) %>%
-  dplyr::select(setu_ccnct,SETU_CCDGO,area_su)
+#algunas manzanas no estan totalemente contenidas los sectores.
+#para facilitr el calculo las recortmos con la capa de su y se asigna, 
+#pero este calculo resulma muy costozo, entonces seleccionamos solo las manzanas que toca
+#los poligonos de  area verde o espacio público
 
-id_manzana<-1:nrow(manzanas)
-manzanas$area_manzana<-area(manzanas)
-manzanas$id_manzana<-id_manzana
-summary(manzanas)
-manzanas.f<-fortify(manzanas,region = "id_manzana")
-manzanas.f<-manzanas@data%>%
+#manz.temp<-manzanas
+#su.crop.manz.temp<-intersect(su,manz.temp)
+
+#selecionamos las manzanas que se tocan con un SU
+manzanas$setu_ccnct<-over(manzanas,su)$SETU_CCNCT
+manzanas@data<-left_join(manzanas@data,su@data[,1:2],by=c("setu_ccnct"="SETU_CCNCT")) 
+
+manzanas<-manzanas[!is.na(manzanas$setu_ccnct),]
+manzanas@data
+manzanas$id_manzana<-rownames(manzanas@data)
+manzanas[,c("SETU_CCDGO", "id_manzana")]
+
+partimos
+manzanas.su <-intersect(manzanas[,c("SETU_CCDGO", "id_manzana")],su)
+manzanas.su<-gBuffer(manzanas.su, byid=TRUE, width=0)
+
+#crear y asignar un id para las manzanas
+id_manzana<-rownames(manzanas.su@data)
+manzanas.su$area_manzana<-area(manzanas.su)
+manzanas.su$id_manzana<-id_manzana
+manzanas.su$SETU_CCDGO.1!=manzanas.su$SETU_CCDGO.2
+summary(manzanas.su)
+#eliminar los campos que no son necesarios
+manzanas.su<-manzanas.su[,c("id_manzana","SETU_CCDGO.2","area_manzana")]
+names(manzanas.su)[names(manzanas.su)=="SETU_CCDGO.2"] <- "SETU_CCDGO"
+
+summary(manzanas.su)
+#fortify manzanas
+manzanas.su.f<-fortify(manzanas.su,region = "id_manzana")
+manzanas.su.f<-manzanas.su@data%>%
   #dplyr::select(id_manzana,area_manzana)%>%
-  merge(manzanas.f,.,by.x="id",by.y="id_manzana")
+  merge(manzanas.su.f,.,by.x="id",by.y="id_manzana")
 #carateristicas fisicas de las manzanas ----
-p_manzanas_area<-ggplot(manzanas.f,aes(x=long,y=lat,group=group))+
+p_manzanas_area<-ggplot(manzanas.su.f,aes(x=long,y=lat,group=group))+
   geom_polygon(aes(fill=area_manzana))+coord_equal()+
   theme_void()+
   scale_fill_viridis(direction = -1)
+p_manzanas_area
 
-ggplot(manzanas@data,aes(x=area_manzana))+
+ggplot(manzanas.su@data,aes(x=area_manzana))+
   geom_histogram(bins = 80,fill=rev(viridis(80)))
-#excluiremos la manzana de la fuerza aerea Marco Fidel Suarez,
+#para graficar excluiremos la manzana de la fuerza aerea Marco Fidel Suarez,
 #no mermite ver la varibildad
 
-#QQ plot manzanas ----
-ggplot(manzanas@data[manzanas$area_manzana<20000,],aes(sample=area_manzana))+
+#QQ plot manzanas menores que 100000 m2----
+ggplot(manzanas.su@data[manzanas$area_manzana<100000,],aes(sample=area_manzana))+
   stat_qq()
 
-manzanas.atipicas<-manzanas@data[manzanas$area_manzana>80000,]
-nrow(manzanas.atipicas)
-nrow(manzanas)
+# manzanas.atipicas<-manzanas@data[manzanas$area_manzana>80000,]
+# nrow(manzanas.atipicas)
+# nrow(manzanas)
+# manzanas$area_manzana.log10<-log10(manzanas$area_manzana)
+# manzanas$area_manzana.log10.zcore<-base::scale(manzanas$area_manzana.log10) %>% as.vector()
 
-ggplot(manzanas@data[manzanas$area_manzana<20000,],aes(x=area_manzana))+
+ggplot(manzanas.su@data[manzanas.su$area_manzana<100000,],aes(x=area_manzana))+
   geom_histogram(bins = 80,fill=rev(viridis(80)))
 
-
-mean(manzanas$area_manzana)
-manzanas.f%>%
-filter(area_manzana<50000)%>%
+manzanas.su.f%>%
+filter(area_manzana<100000)%>%
   ggplot(aes(x=long,y=lat,group=group))+
-  geom_polygon(data=manzanas.f ,aes(x=long,y=lat,group=group),fill="lightgrey")+
+  geom_polygon(data=manzanas.su.f ,aes(x=long,y=lat,group=group),fill="lightgrey")+
          geom_polygon(aes(fill=area_manzana))+coord_equal()+
          theme_void()+
-         scale_fill_viridis(direction = -1)
+         scale_fill_viridis(direction = -1)+
+  labs(title ="Area de manzanas menores que 100000 m2")
+
+
+
+#usar quantile para que los outliers no dominen la escala de color ----
+# manzanas.f %>% head()
+# qn<-quantile(manzanas.f$area_manzana,seq(0.1, 0.9, 0.1))
+# qn.01<-rescale(c(qn, range(manzanas.f$area_manzana)))
+
+#pintar usando colres por quantil
+manzanas.su.f%>%
+  ggplot(aes(x=long,y=lat,group=group))+
+  #geom_polygon(data=manzanas.f ,aes(x=long,y=lat,group=group),fill="lightgrey")+
+  geom_polygon(aes(fill=cut_number(area_manzana,n = 20)))+coord_equal()+
+  theme_void()+
+  viridis::scale_fill_viridis(discrete = TRUE, direction = -1)+
+  labs(title="Coropleta del tamaño de manzana en Santiago de Cali, Colombia",
+       subtitle="20 grupos con aprox. el mismo número de observaciones",
+       caption="Fuente: IDESC \n eleborado: @correajfc")
+# scale_fill_gradientn (
+#       colours = rev(viridis(256, option = "D")),
+#       values = c(0, seq(qn.01[1], qn.01[9], length.out = 10), 1))
+
+
 
 
 # espacios verdes (EV) publicos (EVP) y manzanas ----
-
+#equipamento ECC ----
 equipamento_EEC %>% head()
-equipamento_EEC$OBJECTID
-names(equipamento_EEC)
-summary(equipamento_EEC)
+equipamento_EEC$CATEGORIA
+equipamento_EEC@data
+equipamento_EEC<-equipamento_EEC[su,]
 
+
+names(equipamento_EEC)[names(equipamento_EEC)=="NOMBRE"] <- "nombre"
+names(equipamento_EEC)[names(equipamento_EEC)=="CATEGORIA"] <- "categoria"
+#eliminar el Colegio Berchmans y Escuela de Carabineros por ser de acceso público
+#equipamento_EEC$nombre[su,]<-factor(as.character(equipamento_EEC$nombre))
+
+equipamento_EEC<-equipamento_EEC[!(equipamento_EEC$nombre %in% c("Colegio Berchmans","Escuela de Carabineros")),]
+equipamento_EEC$id_ap<-1:nrow(equipamento_EEC)
+
+
+
+#area publica (la calle y sus parques)
+
+equipamento_EEC<-equipamento_EEC[,c("id_ap","nombre","categoria")]
+names(equipamento_EEC)
+proj4string(equipamento_EEC)
+summary(equipamento_EEC)
+#equipamento_EEC$area.eq.ecc<-area(equipamento_EEC)
+
+
+
+eq.ecc.f<-fortify( equipamento_EEC,region = "id_ap")
+eq.ecc.f<- merge(eq.ecc.f,equipamento_EEC@data,by.x="id",by.y="id_ap")
+
+ext<-matrix(c(-100,-100,100,100),2)
+zum<-bbox(equipamento_EEC@polygons[[1]])
+zum<-zum+ext
+
+
+ggplot(eq.ecc.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(data=manzanas.f ,aes(x=long,y=lat,group=group),fill="lightgrey")+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.5)+
+         geom_polygon(aes(fill=as.factor(id)),alpha=0.3)+
+        coord_equal()+
+         theme_void() #+  coord_cartesian(xlim = zum[1,],ylim = zum[2,])
+
+
+
+intersect(espacio_publico_idesc,equipamento_EEC)
+intersect(espacio_publico_EEC,equipamento_EEC)
+#equipamento_EEC no se intersecta con ninguno
+
+# espacio publico de la EEC
+espacio_publico_EEC<-espacio_publico_EEC[su,]
 espacio_publico_EEC$ID_EP
 espacio_publico_EEC%>% head()
 names(espacio_publico_EEC)
 summary(espacio_publico_EEC)
+espacio_publico_EEC
+espacio_publico_EEC
 
+names(espacio_publico_EEC)[names(espacio_publico_EEC)=="CATEGORIA"] <- "categoria"
+espacio_publico_EEC$nombre<-paste(espacio_publico_EEC$ID_EP,espacio_publico_EEC$AMBITO,sep = "-")
+espacio_publico_EEC$id_ap<-(nrow(equipamento_EEC)+1):(nrow(equipamento_EEC)+nrow(espacio_publico_EEC))
+espacio_publico_EEC<-espacio_publico_EEC[,c("id_ap","nombre","categoria")]
+
+
+
+ep.ecc.f<-fortify( espacio_publico_EEC,region = "id_ap")
+ep.ecc.f<- merge(ep.ecc.f,espacio_publico_EEC@data,by.x="id",by.y="id_ap")
+
+
+ext<-matrix(c(-100,-100,100,100),2)
+zum<-bbox(espacio_publico_EEC@polygons[[4]])
+zum<-zum+ext
+
+ggplot(eq.ecc.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(data=manzanas.f ,aes(x=long,y=lat,group=group),fill="lightgrey")+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.5)+
+  geom_polygon(fill="blue",alpha=0.3)+
+  geom_polygon(data = ep.ecc.f,aes(x=long,y=lat,group=group),fill="red",alpha=0.3)+
+  coord_equal()+
+  theme_void() #+  coord_cartesian(xlim = zum[1,],ylim = zum[2,])
+
+#espacio publico idesc
+espacio_publico_idesc
+espacio_publico_idesc<-espacio_publico_idesc[su,]
 espacio_publico_idesc %>% head()
 names(espacio_publico_idesc)
 summary(espacio_publico_idesc)
+espacio_publico_idesc
+espacio_publico_idesc$categoria
+espacio_publico_idesc %>% nrow()
+
+espacio_publico_idesc@data[is.na(espacio_publico_idesc$categoria),]
 
 
-manzanas$equipamento_EEC<-over(manzanas,equipamento_EEC)$OBJECTID
-manzanas %>% summary()
+espacio_publico_idesc$id_ap<-rownames(espacio_publico_idesc@data)
+espacio_publico_idesc<-espacio_publico_idesc[,c("id_ap","nombre","categoria")]
+
+
+espacio_publico_idesc
+
+#capa total de espacio ----
+intersect(espacio_publico_idesc,equipamento_EEC)
+inter.epeec.idesc<-intersect(espacio_publico_idesc,espacio_publico_EEC)
+inter.epeec.idesc
+
+names(inter.epeec.idesc)[names(inter.epeec.idesc)=="id_ap.1"] <- "id_ap"
+names(inter.epeec.idesc)[names(inter.epeec.idesc)=="nombre.1"] <- "nombre"
+names(inter.epeec.idesc)[names(inter.epeec.idesc)=="categoria.1"] <- "categoria"
+inter.epeec.idesc<-inter.epeec.idesc[,c("id_ap","nombre","categoria")]
+
+dif.epeec.idesc<-espacio_publico_EEC - espacio_publico_idesc
+dif.epeec.idesc
+
+ep.cali<-union(espacio_publico_idesc,equipamento_EEC)
+ep.cali<-union(ep.cali,dif.epeec.idesc)
+
+names(ep.cali)
+ep.cali[is.na(ep.cali$id_ap),]
+
+
+ep.cali@data[,c("nombre.1","nombre.2")]
+ep.cali@data[,c("categoria.1","categoria.2")]
+ep.cali@data[,c("id_ap.1","id_ap.2")]
+
+ names(ep.cali)[names(ep.cali)=="id_ap.1"] <- "id_ap"
+names(ep.cali)[names(ep.cali)=="nombre.1"] <- "nombre"
+ names(ep.cali)[names(ep.cali)=="categoria.1"] <- "categoria"
+
+
+ep.cali$id_ap<-rownames(ep.cali@data)
+ep.cali<-ep.cali[,c("id_ap","nombre","categoria")]
 
 
 
-# agregrar altura, cantidad y area de copa por SU ----
+# ep.idesc.f<-fortify( espacio_publico_idesc,region = "id_ap")
+# ep.idesc.f<- merge(ep.idesc.f,espacio_publico_idesc@data,by.x="id",by.y="id_ap")
+# 
+# 
+# ext<-matrix(c(-100,-100,100,100),2)
+# zum<-bbox(ep.cali@polygons[[50]])
+# zum<-zum+ext
+# 
+# 
+# ggplot(eq.ecc.f,aes(x=long,y=lat,group=group))+
+#   geom_polygon(data=manzanas.f ,aes(x=long,y=lat,group=group),fill=NA,color="lightgrey",size=0.2)+
+#   geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.5)+
+#   geom_polygon(fill="blue",alpha=0.3)+
+#   geom_polygon(data = ep.ecc.f,aes(x=long,y=lat,group=group),fill="green",alpha=0.3)+
+#   geom_polygon(data = ep.idesc.f,aes(x=long,y=lat,group=group),fill="red",alpha=0.3)+
+#   coord_equal()+
+#   theme_void() #+  coord_cartesian(xlim = zum[1,],ylim = zum[2,])
+
+
+ep.cali.f<-fortify( ep.cali,region = "id_ap")
+ep.cali.f<- merge(ep.cali.f,ep.cali@data,by.x="id",by.y="id_ap")
+
+ext<-matrix(c(-300,-300,300,300),2)
+
+punto<-matrix(rep(c(1057658.9287038001 ,866161.98958216363),2),2,2)
+zum2<-punto+ext
+
+
+ggplot(ep.cali.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(data=manzanas.su.f ,aes(x=long,y=lat,group=group),fill=NA,color="lightgrey",size=0.2)+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.6)+
+  geom_polygon(aes(x=long,y=lat,group=group),fill="tomato",alpha=0.5)+
+  coord_equal()+
+  theme_void() #+coord_fixed(xlim = zum[1,],ylim = zum[2,])
+
+# refinamos la capa el espacio publico
+#clip del espacio publico por sector
+
+ep.cali.su<-intersect(ep.cali,su)
+ep.cali.su$id_ap<-rownames(ep.cali.su@data)
+
+nrow(ep.cali.su)
+summary(ep.cali.su)
+ep.cali.su<-ep.cali.su[,c("id_ap","nombre","categoria","SETU_CCDGO")]
+ep.cali.su$area_ep<-area(ep.cali.su)
+
+#clip de EP por manzanas
+ep.cali.manzanas<-intersect(manzanas.su,ep.cali)
+
+ep.cali.manzanas<-gBuffer(ep.cali.manzanas, byid=TRUE, width=0)
+ep.cali.manzanas$id_ap.m<-rownames(ep.cali.manzanas@data)
+ep.cali.manzanas<-ep.cali.manzanas[,c("SETU_CCDGO","id_manzana","id_ap","id_ap.m","nombre","categoria")]
+ep.cali.manzanas$area_ep.manzana<-area(ep.cali.manzanas)
+summary(ep.cali.manzanas)
+#ver resultado
+ep.cali.manzanas.f<-fortify( ep.cali.manzanas,region = "id_ap.m")
+ep.cali.manzanas.f<- merge(ep.cali.manzanas.f,ep.cali.manzanas@data,by.x="id",by.y="id_ap.m")
+
+ext<-matrix(c(-100,-100,100,100),2)
+nrow(ep.cali)
+epi<-sample(1:nrow(ep.cali),size = 1)
+bbi<-bbox(ep.cali@polygons[[epi]])
+zum<-bbi+ext
+
+ggplot(ep.cali.manzanas.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(data=manzanas.su.f ,aes(x=long,y=lat,group=group),fill=NA,color="lightgrey",size=0.2)+
+  geom_polygon(data=ep.cali.f ,aes(x=long,y=lat,group=group),fill="black",alpha=0.6)+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.5)+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=categoria))+
+  coord_equal()+
+  theme_void()+coord_fixed(xlim = zum[1,],ylim = zum[2,])
+
+manzanas.su
+
+
+# ep.cali.manzanas<-ep.cali.manzanas[,c("id_ap",
+#                                       "nombre",
+#                                       "categoria",
+#                                       "setu_ccnct",
+#                                       "SETU_CCDGO",
+#                                       "id_manzana",
+#                                       "id_ap",
+#                                       "nombre","area_ep.manzana")]
+
+ev.cat<-ep.cali.su$categoria %>% levels()%>% .[c(1,4,6,7,9)]
+ev.cali.su<-ep.cali.su[ep.cali.su$categoria %in% ev.cat,]
+names(ev.cali.su)[names(ev.cali.su)=="area_ep"] <- "area_ev"
+
+
+
+gIsValid(ep.cali.su, reason = T)
+gIsValid(ep.cali.manzanas, reason = T)
+gIsValid(manzanas, reason = T)
+
+
+
+# agregados de manzanas por SU: area calle, area manzanas privadas y publicas ----
+manzanas.stats.su<-manzanas.su@data%>%
+  group_by(SETU_CCDGO) %>%
+  dplyr::summarise(area_manzanas=sum(area_manzana),
+                   area_media_manzana=mean(area_manzana),
+                   num_manzanas=n())
+ep.cali.stats.su<-ep.cali.su@data%>%
+  group_by(SETU_CCDGO) %>%
+  dplyr::summarise(area_ep=sum(area_ep),
+                   area_media_ep=mean(area_ep),
+                   num_ep=n())
+ep.cali.manzanas.stats.su<-ep.cali.manzanas@data%>%
+  group_by(SETU_CCDGO) %>%
+  dplyr::summarise(area_manzanas.ep=sum(area_ep.manzana),
+                   area_media_manzana.ep=mean(area_ep.manzana),
+                   num_manzanas.ep=n())
+
+ev.cali.stats.su<-ev.cali.su@data%>%
+  group_by(SETU_CCDGO) %>%
+  dplyr::summarise(area_ev=sum(area_ev),
+                   area_media_ev=mean(area_ev),
+                   num_ev=n())
+
+#join stats manzanas, areas publicas y espacio verdes con SU ----
+#data frame
+estructura.cali<-full_join(manzanas.stats.su,ep.cali.stats.su, by="SETU_CCDGO") %>%
+  full_join(ev.cali.stats.su, by="SETU_CCDGO") %>%
+  full_join(ep.cali.manzanas.stats.su, by="SETU_CCDGO") %>% 
+  left_join(su@data,by="SETU_CCDGO")
+
+is.na(estructura.cali)
+estructura.cali[is.na(estructura.cali)] <-0
+is.na(estructura.cali)
+
+#calulamos los indicadores con base en las variables de estructura de los SU e indeces de ep y ev
+#area de la calle es todo lo que no es una manzana dentro del SU
+estructura.cali$area_calle<-estructura.cali$area_su-estructura.cali$area_manzanas
+estructura.cali[estructura.cali$area_calle<0,]
+#area publica es el area de la calle más las secciones de manzanas que son espacio publico.
+estructura.cali$area_publica<-estructura.cali$area_calle+estructura.cali$area_manzanas.ep
+estructura.cali$area_privada<-estructura.cali$area_su-estructura.cali$area_publica
+estructura.cali
+
+# agregados del CA por SU: altura, cantidad y area de copa  ----
 
 AU_stats_por_su<-AU_analsis_spatial@data %>%
   group_by(setu_ccnct) %>%
-  dplyr::summarise(area_copa_su=sum(area_copa),
-            altura_media_su=mean(altura_arbol),
-            diametro_medio_copa_su = mean(diametro_copa),
-            cantidad=n())
+  dplyr::summarise(area_copa=sum(area_copa),
+            altura_media=mean(altura_arbol),
+            diametro_medio_copa = mean(diametro_copa),
+            num_arboles=n())
 
-# join stats y datos CA20015 sectores de espacial SU ----
-ca2015su.cali<- left_join(su@data,AU_stats_por_su,by=c("SETU_CCNCT"="setu_ccnct")) %>%
-  dplyr::select(SETU_CCNCT,SETU_CCDGO,area_su:cantidad)
-ca2015su.cali$cobertura_copa_su<-ca2015su.cali$area_copa_su/su$area_su
-ca2015su.cali$arboles_su_area<-ca2015su.cali$area_copa_su/su$area_su
+
+
+analisis.cali<-full_join(estructura.cali,AU_stats_por_su,by=c("SETU_CCNCT"="setu_ccnct"))
+analisis.cali$cobertura_copa.su<-analisis.cali$area_copa/analisis.cali$area_su
+analisis.cali$arboles_area.su<-analisis.cali$num_arboles/analisis.cali$area_su
+analisis.cali$cobertura_copa.ap<-analisis.cali$area_copa/analisis.cali$area_publica
+analisis.cali$arboles_area.ap<-analisis.cali$num_arboles/analisis.cali$area_publica
+
+summary(analisis.cali)
+
+# join stats CA20015 con SU ----
+ca2015su.cali<- analisis.cali%>% dplyr::select(SETU_CCDGO,
+                                             area_copa,
+                                             altura_media,
+                                             diametro_medio_copa,
+                                             num_arboles,cobertura_copa.su,
+                                             arboles_area.su,
+                                             cobertura_copa.ap,
+                                             arboles_area.ap) 
+
+
+
+
 # escalar varibles en [0,1] para los mapas ----
 range01 <- function(x, ...){(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
 
 ca2015su.cali$area_su_01<-range01(ca2015su.cali$area_su)
-ca2015su.cali$cobertura_copa_su_01<-range01(ca2015su.cali$cobertura_copa_su,na.rm = T)
-ca2015su.cali$cantidad_01<-range01(ca2015su.cali$cantidad,na.rm = T)
-ca2015su.cali$altura_media_su_01<-range01(ca2015su.cali$altura_media_su,na.rm = T)
-ca2015su.cali$diametro_medio_copa_su_01<-range01(ca2015su.cali$diametro_medio_copa_su,na.rm = T)
-ca2015su.cali$area_copa_su_01<-range01(ca2015su.cali$area_copa_su,na.rm = T)
-ca2015su.cali$arboles_su_area_01<-range01(ca2015su.cali$arboles_su_area,na.rm = T)
+ca2015su.cali$cobertura_copa_su_01<-range01(ca2015su.cali$cobertura_copa.su,na.rm = T)
+ca2015su.cali$cobertura_copa_ap_01<-range01(ca2015su.cali$cobertura_copa.ap,na.rm = T)
+ca2015su.cali$cantidad_01<-range01(ca2015su.cali$num_arboles,na.rm = T)
+ca2015su.cali$altura_media_su_01<-range01(ca2015su.cali$altura_media,na.rm = T)
+ca2015su.cali$diametro_medio_copa_su_01<-range01(ca2015su.cali$diametro_medio_copa,na.rm = T)
+ca2015su.cali$area_copa_su_01<-range01(ca2015su.cali$area_copa,na.rm = T)
+ca2015su.cali$arboles_su_area_01<-range01(ca2015su.cali$arboles_area.su,na.rm = T)
+ca2015su.cali$arboles_ap_area_01<-range01(ca2015su.cali$arboles_area.ap,na.rm = T)
 
 
 #datos en formato long ----
 ca2015su.cali.long<-ca2015su.cali %>% 
-  dplyr::select(SETU_CCNCT,SETU_CCDGO,area_su_01:arboles_su_area_01)%>%
+  dplyr::select(SETU_CCDGO,cobertura_copa_su_01:arboles_ap_area_01)%>%
   melt(
                       # ID variables - all the variables to keep but not split apart on
-    id.vars=c("SETU_CCNCT", "SETU_CCDGO"),
+    id.vars=c("SETU_CCDGO"),
     variable.name="ca2015_var",
     value.name="ca2015_valor"
     )
@@ -580,7 +920,7 @@ ca2015su.cali.long<-ca2015su.cali %>%
 #graficar distribuciones varibles CA ----
 
 ca2015su.cali.long %>% 
-  filter(ca2015_var=="cobertura_copa_su_01")%>%
+  filter(ca2015_var=="cobertura_copa_ap_01")%>%
   ggplot()+
 #  geom_histogram(aes(x="ca2015_valor"),)
   geom_histogram(aes(x=ca2015_valor),fill=viridis(80),color="white",alpha=0.9,bins = 80)
@@ -721,40 +1061,41 @@ su_id = col_character(), total_viviendas = col_number()))
 
 # consolidar datos CP2005 en un solo data frame ----
 #datos_personas 
-cp2005_personas_su<-CP2005_t_persona_edad %>%
-  full_join(CP2005_t_nivel_estudios,by="su_id") %>% rename(personas_edad=personas,
+
+cp2005.personas<-CP2005_t_persona_edad %>%
+  full_join(CP2005_t_nivel_estudios,by="su_id") %>% dplyr::rename(personas_edad=personas,
                                                            personas_estudio=total_personas) %>%
-  full_join(Cp2005_t_limitacion,by="su_id") %>% rename(con_alguna_limitacion=SI,
+  full_join(Cp2005_t_limitacion,by="su_id") %>% dplyr::rename(con_alguna_limitacion=SI,
                                                        sin_limitacion=NO,
                                                        personas_limitacion=total_personas) %>%
   full_join(CP2005_t_etnia,by="su_id") %>%
-  rename(personas_etnia=total_personas) %>%
+  dplyr::rename(personas_etnia=total_personas) %>%
   mutate(SETU_CCNCT = trimws(su_id))
 #buscar duplicados
-cp2005_personas_su%>%
+cp2005.personas%>%
   group_by(SETU_CCNCT) %>% 
   filter(n()>1) 
 #datos viviendas
-cp2005_viviendas_su<-CP2005_t_tipo_vivienda%>%
-  full_join(CP2005_t_uso_predios,by="su_id") %>% rename(viviendas_tipo=total_viviendas.x,
+cp2005.viviendas<-CP2005_t_tipo_vivienda%>%
+  full_join(CP2005_t_uso_predios,by="su_id") %>% dplyr::rename(viviendas_tipo=total_viviendas.x,
                                                         viviendas_uso=total_viviendas.y) %>%
   full_join(CP2005_t_ocupacion_viviendas, by = "su_id") %>% 
-  rename(viviendas_ocupacion=total_viviendas) %>% 
+  dplyr::rename(viviendas_ocupacion=total_viviendas) %>% 
   mutate(SETU_CCNCT = trimws(su_id))
   
-cp2005_personas_su$SETU_CCNCT %in% as.character(su$SETU_CCNCT)
-cp2005_viviendas_su$SETU_CCNCT %in% as.character(su$SETU_CCNCT)
+cp2005.personas$SETU_CCNCT %in% as.character(su$SETU_CCNCT)
+cp2005.viviendas$SETU_CCNCT %in% as.character(su$SETU_CCNCT)
 
 #los datos CP2005 DANE con codigos de diferentes longitud ---- 
 # remover dos digitos extras que parecen el codigo de comuna, pues coinciden.
 #extraemos los SU de los datos del CP2005 del Redatam que coinciden 
 #con el codigo de depratamento y de ciudad. 76001 es el codigo de cali
-cpSubset_personas <- cp2005_personas_su[grep("76001", cp2005_personas_su$SETU_CCNCT), ]
-cpSubset_viviendas <- cp2005_viviendas_su[grep("76001", cp2005_viviendas_su$SETU_CCNCT), ]
+cpSubset_personas <- cp2005.personas[grep("76001", cp2005.personas$SETU_CCNCT), ]
+cpSubset_viviendas <-cp2005.viviendas[grep("76001", cp2005.viviendas$SETU_CCNCT), ]
 
 #union personas vivienda
 cpSubset<-full_join(cpSubset_viviendas,cpSubset_personas,by="su_id") %>% 
-  rename(SETU_CCNCT=SETU_CCNCT.x) %>%
+  dplyr::rename(SETU_CCNCT=SETU_CCNCT.x) %>%
   dplyr::select(-one_of(c("SETU_CCNCT.y")))
   
 
@@ -771,17 +1112,17 @@ as.character(su$SETU_CCNCT) %>% nchar()
 # con excepciones con el mismo numero de lod dos digitos extras.
 #axaminamos el SETU_CCNCT
 comuna_ids<-cpSubset$SETU_CCNCT %>% substr(., 7, 8)
-su_ids<-cpSubset$SETU_CCNCT %>% substr(., 17, 20)
-comuna_ids_substr<-su_ids%>% substr(., 1, 2)
+setu_ccdgo<-cpSubset$SETU_CCNCT %>% substr(., 17, 20)
+comuna_substr<-setu_ccdgo%>% substr(., 1, 2)
 c1<-cpSubset$SETU_CCNCT %>% substr(., 1, 6)
 c2<-cpSubset$SETU_CCNCT %>% substr(., 9, 20)
 setu_ccnct_18<-paste0(c1,c2)
 setu_ccnct_20<-cpSubset$SETU_CCNCT
-cod_subset<-data.frame(setu_ccnct_20,setu_ccnct_18,comuna_ids,comuna_ids_substr,su_ids)
+cod_subset<-data.frame(setu_ccnct_20,setu_ccnct_18,comuna_ids,comuna_substr,setu_ccdgo)
 cod_subset<-cod_subset %>%
 rowwise()%>%
   mutate(cod_consistencia=
-           if_else(as.character(comuna_ids)==as.character(comuna_ids_substr) | as.character(comuna_ids_substr)=="99",
+           if_else(as.character(comuna_ids)==as.character(comuna_substr) | as.character(comuna_substr)=="99",
          "consistente",
          "no-consistente"))
 
@@ -811,21 +1152,21 @@ nrow(cod_subset)
 nrow(cpSubset)
 as.character(cod_subset$setu_ccnct_20) %in% as.character(cpSubset$su_id)
 #añadimos el los codigos modificados a personas_su 
-cp2005su.cali<-inner_join(cpSubset,cod_subset,by=c("su_id"="setu_ccnct_20"))
+cp2005.cali<-inner_join(cpSubset,cod_subset,by=c("su_id"="setu_ccnct_20"))
 #buscar duplicados
-cp2005su.cali%>%
+cp2005.cali%>%
   group_by(setu_ccnct_18) %>% 
   filter(n()>1) %>% arrange(setu_ccnct_18) %>% 
   filter(cod_consistencia=="no-consistente")%>%
   dplyr::select(su_id)->cp2005_elim #eliminar los duplicados no consistentes
 #verificar si hay NA en los datos
-is.na(cp2005su.cali) #%>% View()
+is.na(cp2005.cali) #%>% View()
 #verificar los sectores no consistentes
-elim_su_cp2005<-as.character(cp2005su.cali$su_id) %in% as.character(cp2005_elim$su_id)  
-cp2005su.cali[elim_su_cp2005,]# %>% View()
+elim_su_cp2005<-as.character(cp2005.cali$su_id) %in% as.character(cp2005_elim$su_id)  
+cp2005.cali[elim_su_cp2005,] %>% View()
 
 #verificar si hay datos por SU validos sin valores
-cp2005su.cali %>%
+cp2005.cali %>%
   filter(is.na(personas_edad),
          is.na(personas_estudio),
          is.na(personas_etnia),
@@ -834,7 +1175,7 @@ cp2005su.cali %>%
          is.na(viviendas_uso),
          is.na(viviendas_ocupacion)) ->  cp2005su.cali.all.na
 cp2005su.cali.all.na
-cp2005su.cali %>%
+cp2005.cali %>%
   filter(is.na(personas_edad) |
          is.na(personas_estudio) |
          is.na(personas_etnia) |
@@ -847,37 +1188,89 @@ cp2005su.cali.any.na
 
 #los NA de los datos restantes son SU que no tuvo casos de respuesta positiva,
 #por ejemplo un SU solo comercial, sin personas habitadando. En estos casos es posible reeemplzar por 0 los NA
-cp2005su.cali[is.na(cp2005su.cali)] <-0
+cp2005.cali[is.na(cp2005.cali)] <-0
 
 
 #is.na(cp2005su.cali[!elim_su_cp2005,])
-cp2005su.cali<-cp2005su.cali[!elim_su_cp2005,]
+cp2005.cali<-cp2005.cali[!elim_su_cp2005,]
 # su_eliminados_cod<-cp2005su.cali%>% filter(cod_consistencia =="no-consistente")
 # cp2005su.cali<-cp2005su.cali%>% filter(cod_consistencia !="no-consistente")
 
 
 
 #calcular las varibles porcetual respectos de la poblacion, y respecto del area.----
-total_poblacion<-sum(cp2005su.calil$personas_edad,na.rm = T)
+total_poblacion<-sum(cp2005.cali$personas_edad,na.rm = T)
 
-#calcular area de sector censal
 
 
 # Transformacion de las variables persona CP2005 a porcentaje de personas ----
-total_poblacion<-sum(cp2005su.calil$personas_edad,na.rm = T)
-cp2005su.cali<-cp2005su.cali%>%
-  mutate(porcentaje_superior_postgrado=superior_postgrado/personas_estudio,
-         porcentaje_ningun_estudio=ningun_estudio/personas_estudio,
-         porcentaje_sin_limitacion=sin_limitacion/personas_limitacion,
-         porcentaje_con_alguna_limitacion=con_alguna_limitacion/personas_limitacion,
-         porcentaje_indigenas=indigena/personas_etnia,
-         porcentaje_rom=rom/personas_etnia,
-         porcentaje_raizal_SAIyP=raizal_SAI_Providencia/personas_etnia,
-         porcentaje_palenquero=palenquero/personas_etnia,
-         porcentaje_afro=negro_mulato_afrocolombiano/personas_etnia,
-         porcentaje_ninguna_etnia=ninguno_de_los_anteriores/personas_etnia,
-         porcentaje_personas_su=personas_edad/total_poblacion)
-cp2005su.cali_sel$su_ids %>% levels()
+
+names(cp2005.cali)
+#son muchas variables. Cuales escoger? 
+# el primer paso es seleccionar las varibles que en la literatura y para el problema son importantes.
+#el segundo es verificar cuanta informacion contienen los datos. 
+summary(cp2005.cali) 
+
+#condiciones y rasgos depoblacion
+cp2005.personas.sel<-cp2005.cali %>%
+  dplyr::select(setu_ccdgo,
+         personas_etnia,negro_mulato_afrocolombiano,#indigena, #rom, SAI ,palenquero tienen muy pocs casos
+         personas_limitacion,con_alguna_limitacion,
+         personas_estudio,ningun_estudio,superior_postgrado,
+         personas_edad,edad_promedio)
+
+cp2005.personas.sel[,2:10]%>%plot()
+
+#calculemos estas variables como porcentajes de la poblacion para tener ua escala similar
+
+cp2005.personas.sel<-cp2005.personas.sel%>%
+  mutate(afro.porcentaje=negro_mulato_afrocolombiano/personas_etnia,
+        # indigena.porcentaje=indigena/personas_etnia,
+         con_alguna_limitacion.porcentaje=con_alguna_limitacion/personas_limitacion,
+         ningun_estudio.porcentaje=ningun_estudio/personas_estudio,
+         superior_postgrado.porcentaje=superior_postgrado/personas_estudio,
+         poblacion.porcentaje=personas_edad/total_poblacion,
+         dominio="personas")
+    
+summary(cp2005.personas.sel)    
+cp2005.personas.sel[,grep("porcentaje",names(cp2005.personas.sel))]%>%plot()
+
+#podemos descartar la variable de poblacion indigena
+
+#aspectos sobre el uso y tipo de los sectores urbanos
+summary(cp2005.cali) 
+
+cp2005.predios.sel<-cp2005.cali %>%
+  dplyr::select(setu_ccdgo,
+                viviendas_tipo,casa,apartamento,tipo_cuarto,
+                viviendas_uso,uso_vivienda,uso_unidad_economica#,
+                #viviendas_ocupacion,desocupadas
+                )
+    
+#calculemos estas variables como porcentajes de la cantidad de predios para tener una escala similar
+cp2005.predios.sel<-cp2005.predios.sel%>%
+  mutate(casa.porcentaje=casa/viviendas_tipo,
+         apartamento.porcentaje=apartamento/viviendas_tipo,
+         cuarto.porcentaje=tipo_cuarto/viviendas_tipo,
+         viviendas.porcentaje=uso_vivienda,
+         unidad_economica.porcentaje=uso_unidad_economica/viviendas_uso,
+         #desocupadas.porcentaje=desocupadas/viviendas_ocupacion
+         dominio="predios"
+         )
+  
+summary(cp2005.predios.sel)
+plot(cp2005.predios.sel[,grep("porcentaje",names(cp2005.predios.sel))])
+#podemos descartar la varible de ocupacion de las viviendas
+
+
+
+
+# Consolidacion total datos analisis ----
+# ahora a consolidar todas las varibles para hacer una seleccion y depuracion
+# de los datos para el analsis
+
+analisis.cali
+
 
 
 # unir los datos del CP2005 con los datos de la capa geografica  ----
@@ -904,12 +1297,6 @@ cp2005su.cali_sel.na
 su.cp2005<-su
 su.cp2005@data<-cp2005su.cali_sel
 
-
-# 
-
-AU_analsis_spatial
-summary(AU_analsis_spatial)
-names(AU_analsis_spatial)
 
 # verificar extension de los datos
 bbox(AU_analsis_spatial) # the extent, 'bounding box' of stations 
@@ -1109,10 +1496,12 @@ p_manzanas<- ggplot() +
 
 p_AU<- ggplot(data = AU_analsis,aes(x=Este,y = Norte )) 
 
-p_AU+ geom_point(aes(size=diametro_copa,color =cobertura, alpha = 1/100))+
+p_AU+ 
+  geom_polygon(data=manzanas.f,aes(x=long,y=lat,group=group), fill= "lightgrey")+
+  geom_point(aes(size=diametro_copa,color =emplazamiento, alpha = 1/100))+
   scale_color_brewer(palette = "Dark2",type = "div") +
   scale_size_area(max_size = 0.001)+
-  coord_equal()
+  coord_equal()+theme_void()
 
 ggplot() +
   geom_polygon(data=su.f,aes(x=long,y=lat,group=group),fill=NA, colour="blue")+
