@@ -9,5 +9,20 @@ AU_analsis %>% ggplot()+
   geom_violin(aes(x=emplazamiento,y=diametro_copa/2,color=emplazamiento))
 ```
 
+índice contenedor
+$$A^{C}_i =\sum_j{s_j} \;  \; \forall  j \in I $$ 
 
+costo de viaje
+$$A^{T}_i =\sum_j{d_{ij}} \;  \; $$ 
+
+costo de viaje normalizado
+$$ \bar{A}^{T}_i =\sum_j{d_{ij}/N}$$ 
+
+Distancia minima
+$$A^{M}_i=min\left | d_{ij} \right | $$ 
+
+
+$$A^{W}= \sum_{\int R_b }{(r_{min}/d_j)}  \;  \; \forall  d_j>0 \; , \; r_{min}<R_b  \; $$
+donde $d_j$ es la distancia de un punto en un sector urbano hasta el acceso del espacio verde $j$, $r_{min}$ es la distancia de acceso recomendada, para nuestro caso usaremos 300m (una distancia razonable pra ir caminando al parque), o calcular diferentes versiones (200m, 500m), y $R_b$ el radio de busqueda de EVs a los que se le calcula el indice, y luego se promedian para obtener el indice. El indice puede tener distintas variaciones en su forma de calculo: usar una muestra de puntos en el poligono del SU o usar los centriodes de todas las manzanas y promediar el indice de acceso o simplemente usar el centriode del SU y calcular el indice a los EV en el radio de busqueda.
+Calcularemos la versieon simple del centriode del SU y el promedio de los indices de cada manzanas privada a los centriodes de los espacios verdes en el radio de busqueda.
 

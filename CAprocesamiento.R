@@ -24,6 +24,9 @@ library(tidyverse)
 library(ggfittext)
 library(treemapify)
 library(raster)
+library(outliers)
+library(MASS)
+
 
 
 # cargar datos CA ---- 
@@ -172,6 +175,8 @@ AU_analsis<-df_CA %>% dplyr::select(id,nombre_cienticico,familia,vegetacion,
                              Norte,Este,Norte0,Este0) %>% na.omit()
 
 summary(AU_analsis)
+
+rm(df_CA)
 
 # calculamos la cobertura de copa ----
 AU_analsis<-AU_analsis %>% rowwise()%>%
@@ -377,7 +382,7 @@ names(su)
 su@data<-dplyr::select(su@data,SETU_CCDGO,SETU_CCNCT)
 #calcular area del sector urbano su
 
-su$area_su <- area(su)
+su$area_su <- raster::area(su)
 
 #data para ggplot
 su.f<-fortify(su,region = "SETU_CCDGO")
@@ -431,15 +436,15 @@ summary(equipamento_EEC)
 names(equipamento_EEC)
 proj4string(equipamento_EEC)
 
-corredores_ambientales
-summary(corredores_ambientales)
-names(corredores_ambientales)
-proj4string(corredores_ambientales)
-
-humedales@data
-summary(humedales)
-names(humedales)
-proj4string(humedales)
+# corredores_ambientales
+# summary(corredores_ambientales)
+# names(corredores_ambientales)
+# proj4string(corredores_ambientales)
+# 
+# humedales@data
+# summary(humedales)
+# names(humedales)
+# proj4string(humedales)
 
 # CRS Idesc ----
 crs_mc_idesc<-proj4string(manzanas)
@@ -498,13 +503,13 @@ manzanas@data
 manzanas$id_manzana<-rownames(manzanas@data)
 manzanas[,c("SETU_CCDGO", "id_manzana")]
 
-partimos
+#partimos
 manzanas.su <-intersect(manzanas[,c("SETU_CCDGO", "id_manzana")],su)
 manzanas.su<-gBuffer(manzanas.su, byid=TRUE, width=0)
 
 #crear y asignar un id para las manzanas
 id_manzana<-rownames(manzanas.su@data)
-manzanas.su$area_manzana<-area(manzanas.su)
+manzanas.su$area_manzana<-raster::area(manzanas.su)
 manzanas.su$id_manzana<-id_manzana
 manzanas.su$SETU_CCDGO.1!=manzanas.su$SETU_CCDGO.2
 summary(manzanas.su)
@@ -600,7 +605,7 @@ equipamento_EEC<-equipamento_EEC[,c("id_ap","nombre","categoria")]
 names(equipamento_EEC)
 proj4string(equipamento_EEC)
 summary(equipamento_EEC)
-#equipamento_EEC$area.eq.ecc<-area(equipamento_EEC)
+#equipamento_EEC$area.eq.ecc<-raster::area(equipamento_EEC)
 
 
 
@@ -708,8 +713,6 @@ names(ep.cali)[names(ep.cali)=="nombre.1"] <- "nombre"
 ep.cali$id_ap<-rownames(ep.cali@data)
 ep.cali<-ep.cali[,c("id_ap","nombre","categoria")]
 
-
-
 # ep.idesc.f<-fortify( espacio_publico_idesc,region = "id_ap")
 # ep.idesc.f<- merge(ep.idesc.f,espacio_publico_idesc@data,by.x="id",by.y="id_ap")
 # 
@@ -754,7 +757,10 @@ ep.cali.su$id_ap<-rownames(ep.cali.su@data)
 nrow(ep.cali.su)
 summary(ep.cali.su)
 ep.cali.su<-ep.cali.su[,c("id_ap","nombre","categoria","SETU_CCDGO")]
-ep.cali.su$area_ep<-area(ep.cali.su)
+ep.cali.su$area_ep<-raster::area(ep.cali.su)
+
+
+
 
 #clip de EP por manzanas
 ep.cali.manzanas<-intersect(manzanas.su,ep.cali)
@@ -762,7 +768,7 @@ ep.cali.manzanas<-intersect(manzanas.su,ep.cali)
 ep.cali.manzanas<-gBuffer(ep.cali.manzanas, byid=TRUE, width=0)
 ep.cali.manzanas$id_ap.m<-rownames(ep.cali.manzanas@data)
 ep.cali.manzanas<-ep.cali.manzanas[,c("SETU_CCDGO","id_manzana","id_ap","id_ap.m","nombre","categoria")]
-ep.cali.manzanas$area_ep.manzana<-area(ep.cali.manzanas)
+ep.cali.manzanas$area_ep.manzana<-raster::area(ep.cali.manzanas)
 summary(ep.cali.manzanas)
 #ver resultado
 ep.cali.manzanas.f<-fortify( ep.cali.manzanas,region = "id_ap.m")
@@ -804,8 +810,75 @@ gIsValid(ep.cali.su, reason = T)
 gIsValid(ep.cali.manzanas, reason = T)
 gIsValid(manzanas, reason = T)
 
+# calculos de indices de acceso a EV ----
+ep.cali$area_ep<-raster::area(ep.cali)
+ep.cali
+
+ev.cali.su
+ev.cali<-ep.cali[ep.cali$categoria %in% ev.cat,]
+ev.cali$categoria
+names(ev.cali)[names(ev.cali)=="area_ep"] <- "area_ev"
+
+centroides.su<-gCentroid(su, byid = T)
+centroides.su$setu_ccgdo<-over(centroides.su,su)$SETU_CCDGO
+centroides.su$setu_ccgdo
+plot(centroides.su)
+# centroides.ep<-gCentroid(ep.cali, byid = T)
+# centroides.ep$setu_ccgdo<-over(centroides.ep,su)$SETU_CCDGO
+# centroides.ep$setu_ccgdo
+# plot(centroides.ep)
+# centroides.ev<-gCentroid(ev.cali, byid = T)
+# plot(centroides.ev,add=T,col="red")
+# centroides.ev$setu_ccgdo<-over(centroides.ev,su)$SETU_CCDGO
+# centroides.ev$setu_ccgdo
+
+m.dist.ctrdsu.ep<-gDistance(ev.cali,centroides.su, byid = T)
+is.1000.ep<-gWithinDistance(ev.cali,centroides.su,1001, byid = T)
+a<-m.dist.ctrdsu.ep*is.1000.ep
+dim(m.dist.ctrdsu.ep)
+dim(a)
+
+ia.mindist<-apply(m.dist.ctrdsu.ep,1,function(x)  min(x[x!=0]))
+ia.costoviaje<-apply(m.dist.ctrdsu.ep,1,sum)
+ia.1000<-apply(a,1,function (x) sum(x))
+
+m.dist.ctrdsu.1000.ep.inv<-1/a
+b<-m.dist.ctrdsu.1000.ep.inv*is.finite(m.dist.ctrdsu.1000.ep.inv)
+b[2,2]
+#Matrix::rowSums(m.dist.ctrdsu.1000.ep.inv*is.finite(m.dist.ctrdsu.1000.ep.inv),na.rm=TRUE)
+ia.1000.inv<-apply(b,1,function (x) sum(x,na.rm = T))
+class(ia.costoviaje)
+summary(ia.costoviaje)
+length(ia.costoviaje)
+summary(ia.1000.inv)
+
+ia.ev<-data.frame(su$SETU_CCDGO,ia.costoviaje)
+ia.ev$ia.costo.n<-ia.ev$ia.costoviaje/dim(m.dist.ctrdsu.ep)[2]
+ia.ev<-bind_cols(ia.ev,data.frame(ia.1000,ia.1000.inv))
+ia.ev$ia.r300<-300*ia.1000.inv
+ia.ev<-ia.ev%>%dplyr::rename(SETU_CCDGO=su.SETU_CCDGO)
+ia.ev$ia.mindist<-ia.mindist
+
+summary(ia.ev)
+
+ggplot(ia.ev[ia.ev$ia.r300<500,],aes(x=ia.r300,fill=cut_interval(ia.r300,40)))+
+  geom_histogram(bins = 40)+scale_fill_viridis(discrete = T)
+
+ia.ev.su<-su
+
+ia.ev.su@data<-left_join(ia.ev.su@data,ia.ev,by=c("SETU_CCDGO"="SETU_CCDGO"))
+
+ia.ev.su.f<-fortify( ia.ev.su,region = "SETU_CCDGO")
+ia.ev.su.f<- merge(ia.ev.su.f,ia.ev.su@data,by.x="id",by.y="SETU_CCDGO")
+
+ggplot(ia.ev.su.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(aes(fill=cut_interval(ia.mindist,40)))+
+  coord_equal() + scale_fill_viridis(discrete = T)+
+  theme_void()
 
 
+# centroides.manzanas<-gCentroid(manzanas.su, byid = T)
+# plot(centroides.ev,col="lightblue")
 # agregados de manzanas por SU: area calle, area manzanas privadas y publicas ----
 manzanas.stats.su<-manzanas.su@data%>%
   group_by(SETU_CCDGO) %>%
@@ -834,16 +907,19 @@ ev.cali.stats.su<-ev.cali.su@data%>%
 estructura.cali<-full_join(manzanas.stats.su,ep.cali.stats.su, by="SETU_CCDGO") %>%
   full_join(ev.cali.stats.su, by="SETU_CCDGO") %>%
   full_join(ep.cali.manzanas.stats.su, by="SETU_CCDGO") %>% 
-  left_join(su@data,by="SETU_CCDGO")
+  full_join(ia.ev, by="SETU_CCDGO") %>% 
+  full_join(su@data,by="SETU_CCDGO")
 
 is.na(estructura.cali)
-estructura.cali[is.na(estructura.cali)] <-0
-is.na(estructura.cali)
+estructura.cali[is.na(estructura.cali)] <-0 # los sectores con NA, sin datos
+summary(estructura.cali)
 
 #calulamos los indicadores con base en las variables de estructura de los SU e indeces de ep y ev
 #area de la calle es todo lo que no es una manzana dentro del SU
 estructura.cali$area_calle<-estructura.cali$area_su-estructura.cali$area_manzanas
 estructura.cali[estructura.cali$area_calle<0,]
+estructura.cali[estructura.cali$area_calle==0,]
+
 #area publica es el area de la calle más las secciones de manzanas que son espacio publico.
 estructura.cali$area_publica<-estructura.cali$area_calle+estructura.cali$area_manzanas.ep
 estructura.cali$area_privada<-estructura.cali$area_su-estructura.cali$area_publica
@@ -859,159 +935,158 @@ AU_stats_por_su<-AU_analsis_spatial@data %>%
             num_arboles=n())
 
 
+AU_stats_por_su %>% summary()
+
 
 analisis.cali<-full_join(estructura.cali,AU_stats_por_su,by=c("SETU_CCNCT"="setu_ccnct"))
+  
 analisis.cali$cobertura_copa.su<-analisis.cali$area_copa/analisis.cali$area_su
 analisis.cali$arboles_area.su<-analisis.cali$num_arboles/analisis.cali$area_su
 analisis.cali$cobertura_copa.ap<-analisis.cali$area_copa/analisis.cali$area_publica
 analisis.cali$arboles_area.ap<-analisis.cali$num_arboles/analisis.cali$area_publica
 
+# drops <- c("SETU_CCNCT")
+# analisis.cali[ , !(names(analisis.cali) %in% drops)]
+
 summary(analisis.cali)
-
-# join stats CA20015 con SU ----
-ca2015su.cali<- analisis.cali%>% dplyr::select(SETU_CCDGO,
-                                             area_copa,
-                                             altura_media,
-                                             diametro_medio_copa,
-                                             num_arboles,cobertura_copa.su,
-                                             arboles_area.su,
-                                             cobertura_copa.ap,
-                                             arboles_area.ap) 
-
-
-
+names(analisis.cali) %>%sort()
 
 # escalar varibles en [0,1] para los mapas ----
 range01 <- function(x, ...){(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
 
-ca2015su.cali$area_su_01<-range01(ca2015su.cali$area_su)
-ca2015su.cali$cobertura_copa_su_01<-range01(ca2015su.cali$cobertura_copa.su,na.rm = T)
-ca2015su.cali$cobertura_copa_ap_01<-range01(ca2015su.cali$cobertura_copa.ap,na.rm = T)
-ca2015su.cali$cantidad_01<-range01(ca2015su.cali$num_arboles,na.rm = T)
-ca2015su.cali$altura_media_su_01<-range01(ca2015su.cali$altura_media,na.rm = T)
-ca2015su.cali$diametro_medio_copa_su_01<-range01(ca2015su.cali$diametro_medio_copa,na.rm = T)
-ca2015su.cali$area_copa_su_01<-range01(ca2015su.cali$area_copa,na.rm = T)
-ca2015su.cali$arboles_su_area_01<-range01(ca2015su.cali$arboles_area.su,na.rm = T)
-ca2015su.cali$arboles_ap_area_01<-range01(ca2015su.cali$arboles_area.ap,na.rm = T)
 
-
-#datos en formato long ----
-ca2015su.cali.long<-ca2015su.cali %>% 
-  dplyr::select(SETU_CCDGO,cobertura_copa_su_01:arboles_ap_area_01)%>%
-  melt(
-                      # ID variables - all the variables to keep but not split apart on
-    id.vars=c("SETU_CCDGO"),
-    variable.name="ca2015_var",
-    value.name="ca2015_valor"
-    )
-
-
-
-# data_long <- melt(olddata_wide,
-#         # ID variables - all the variables to keep but not split apart on
-#     id.vars=c("subject", "sex"),
-#         # The source columns
-#     measure.vars=c("control", "cond1", "cond2" ),
-#         # Name of the destination column that will identify the original
-#         # column that the measurement came from
-#     variable.name="condition",
-#     value.name="measurement"
-# )
-#graficar distribuciones varibles CA ----
-
-ca2015su.cali.long %>% 
-  filter(ca2015_var=="cobertura_copa_ap_01")%>%
-  ggplot()+
-#  geom_histogram(aes(x="ca2015_valor"),)
-  geom_histogram(aes(x=ca2015_valor),fill=viridis(80),color="white",alpha=0.9,bins = 80)
-#  geom_histogram(aes(x=ca2015_valor),fill=viridis(),color="white",alpha=0.9,bins = 80)
-
-
-ca2015su.cali.long %>% 
-#  filter(ca2015_var=="cobertura_copa_su")%>%
-  ggplot()+
-#  geom_histogram(aes(x="ca2015_valor"),)
-  geom_histogram(aes(x=ca2015_valor,fill=..count..),alpha=0.9,bins = 80)+
-  # scale_fill_viridis()+
-  facet_wrap(~ca2015_var,scales = "free")
-  
-
-ca2015su.cali.long %>% 
-  #filter(ca2015_var!="area_su",ca2015_var!="area_su")%>%
-  ggplot()+
-#  geom_histogram(aes(x="ca2015_valor"),)
-#  geom_histogram(aes(x=ca2015_valor,fill=ca2015_var),alpha=0.9,color="white",bins = 80)+
- # scale_fill_viridis(discrete = T)+
-  geom_histogram(aes(x=ca2015_valor),alpha=0.9,color="white",bins = 80)+
-  facet_wrap(~ca2015_var,scales = "free",ncol = 1)
-  
-  
-  color_hist<-cut_interval(ca2015su.cali.long$ca2015_valor,80,labels = FALSE) %>% as.numeric()
-  
-  ca2015su.cali.long %>% bind_cols(data.frame(color_hist)) %>%
-  #filter(ca2015_var!="area_su",ca2015_var!="area_su")%>%
-  ggplot()+
-#  geom_histogram(aes(x="ca2015_valor"),)
-#  geom_histogram(aes(x=ca2015_valor,fill=ca2015_var),alpha=0.9,color="white",bins = 80)+
- # scale_fill_viridis(discrete = T)+
-  geom_histogram(aes(x=ca2015_valor,fill=as.factor(color_hist)), alpha=0.9,bins = 80)+
-  scale_fill_viridis(discrete = T)+
-  theme_minimal()+
-  facet_wrap(~ca2015_var,scales = "free",ncol = 1)
-  
-  #facet_grid(ca2015_var~.,scales = "free")
+# join stats CA20015 con SU ----
+# ca2015su.cali<- analisis.cali%>% dplyr::select(SETU_CCDGO,
+#                                              area_copa,
+#                                              altura_media,
+#                                              diametro_medio_copa,
+#                                              num_arboles,cobertura_copa.su,
+#                                              arboles_area.su,
+#                                              cobertura_copa.ap,
+#                                              arboles_area.ap) 
+# 
 
 
 
 
-# graficar mapas para cada varible CA ----
-su.ca2015<-su
-names(su.ca2015)
-
-
-
-# 2nd convertir a dataframe para usar ggplot  ----
-su.ca2015.f<-fortify(su.ca2015,region = "SETU_CCDGO")
-su.ca2015.f <- merge(su.ca2015.f, ca2015su.cali, by.x = "id", by.y = "SETU_CCDGO")
-
-su.ca2015.f.long<-fortify(su.ca2015,region = "SETU_CCDGO")
-su.ca2015.f.long <- merge(su.ca2015.f.long, ca2015su.cali.long, by.x = "id", by.y = "SETU_CCDGO")
-
-
-
-#graficar cvarobles ambietales del CA2015 ----
-p_su_ca2015.facet<- ggplot() +
-  geom_polygon(data=su.ca2015.f.long,
-               aes(x=long,y=lat,group=group,fill=ca2015_valor))+
-    coord_equal() + scale_fill_viridis()+
-    theme_void()+
-  facet_wrap(~ca2015_var,ncol = 4)
-p_su_ca2015.facet
-
-p_su_area_copa<- ggplot() +
-  geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=area_copa_su))+
-  coord_equal() + scale_fill_viridis()
-
-p_su_diametro_medio<- ggplot() +
-  geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=diametro_medio_copa_su))+
-  coord_equal() + scale_fill_viridis(option="magma")+
-  geom_polygon(data=manzanas.f,aes(x=long,y=lat,group=group),fill="lightgrey",alpha=0.7)
-
-p_su_altura_media<- ggplot() +
-  geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=altura_media_su))+
-  coord_equal() + scale_fill_viridis(option="magma")
-  
-
-p_su_num_indarb<- ggplot() +
-  geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=cantidad_su))+
-  coord_equal() + scale_fill_viridis(option="magma")
-
-# graficas distribucion CA ----
-p_su_hist_cobertura<-ggplot()+geom_histogram(data=AU_analsis_spatial@data,aes(x=area_copa))
+# ca2015su.cali$area_su_01<-range01(ca2015su.cali$area_su)
+# ca2015su.cali$cobertura_copa_su_01<-range01(ca2015su.cali$cobertura_copa.su,na.rm = T)
+# ca2015su.cali$cobertura_copa_ap_01<-range01(ca2015su.cali$cobertura_copa.ap,na.rm = T)
+# ca2015su.cali$cantidad_01<-range01(ca2015su.cali$num_arboles,na.rm = T)
+# ca2015su.cali$altura_media_su_01<-range01(ca2015su.cali$altura_media,na.rm = T)
+# ca2015su.cali$diametro_medio_copa_su_01<-range01(ca2015su.cali$diametro_medio_copa,na.rm = T)
+# ca2015su.cali$area_copa_su_01<-range01(ca2015su.cali$area_copa,na.rm = T)
+# ca2015su.cali$arboles_su_area_01<-range01(ca2015su.cali$arboles_area.su,na.rm = T)
+# ca2015su.cali$arboles_ap_area_01<-range01(ca2015su.cali$arboles_area.ap,na.rm = T)
+# 
+# 
+# #datos CA en formato long ----
+# ca2015su.cali.long<-ca2015su.cali %>% 
+#   dplyr::select(SETU_CCDGO,cobertura_copa_su_01:arboles_ap_area_01)%>%
+#   melt(
+#                       # ID variables - all the variables to keep but not split apart on
+#     id.vars=c("SETU_CCDGO"),
+#     variable.name="ca2015_var",
+#     value.name="ca2015_valor"
+#     )
+# 
+# 
+# 
+# #graficar distribuciones varibles CA ----
+# 
+# ca2015su.cali.long %>% 
+#   filter(ca2015_var=="cobertura_copa_ap_01")%>%
+#   ggplot()+
+# #  geom_histogram(aes(x="ca2015_valor"),)
+#   geom_histogram(aes(x=ca2015_valor),fill=viridis(80),color="white",alpha=0.9,bins = 80)
+# #  geom_histogram(aes(x=ca2015_valor),fill=viridis(),color="white",alpha=0.9,bins = 80)
+# 
+# 
+# ca2015su.cali.long %>% 
+# #  filter(ca2015_var=="cobertura_copa_su")%>%
+#   ggplot()+
+# #  geom_histogram(aes(x="ca2015_valor"),)
+#   geom_histogram(aes(x=ca2015_valor,fill=..count..),alpha=0.9,bins = 80)+
+#   # scale_fill_viridis()+
+#   facet_wrap(~ca2015_var,scales = "free")
+#   
+# 
+# ca2015su.cali.long %>% 
+#   #filter(ca2015_var!="area_su",ca2015_var!="area_su")%>%
+#   ggplot()+
+# #  geom_histogram(aes(x="ca2015_valor"),)
+# #  geom_histogram(aes(x=ca2015_valor,fill=ca2015_var),alpha=0.9,color="white",bins = 80)+
+#  # scale_fill_viridis(discrete = T)+
+#   geom_histogram(aes(x=ca2015_valor),alpha=0.9,color="white",bins = 80)+
+#   facet_wrap(~ca2015_var,scales = "free",ncol = 1)
+#   
+#   
+#   color_hist<-cut_interval(ca2015su.cali.long$ca2015_valor,40,labels = FALSE) %>% as.numeric()
+#   
+#   ca2015su.cali.long %>% bind_cols(data.frame(color_hist)) %>%
+#   #filter(ca2015_var!="area_su",ca2015_var!="area_su")%>%
+#   ggplot()+
+# #  geom_histogram(aes(x="ca2015_valor"),)
+# #  geom_histogram(aes(x=ca2015_valor,fill=ca2015_var),alpha=0.9,color="white",bins = 80)+
+#  # scale_fill_viridis(discrete = T)+
+#   geom_histogram(aes(x=ca2015_valor,fill=as.factor(color_hist)), alpha=0.9,bins = 40)+
+#   scale_fill_viridis(discrete = T)+
+#   theme_minimal()+
+#   facet_wrap(~ca2015_var,scales = "free",ncol = 1)
+#   
+#   #facet_grid(ca2015_var~.,scales = "free")
+# 
+# 
+# 
+# 
+# # graficar mapas para cada varible CA ----
+# su.ca2015<-su
+# names(su.ca2015)
+# 
+# 
+# 
+# # 2nd convertir a dataframe para usar ggplot  ----
+# su.ca2015.f<-fortify(su.ca2015,region = "SETU_CCDGO")
+# su.ca2015.f <- merge(su.ca2015.f, ca2015su.cali, by.x = "id", by.y = "SETU_CCDGO")
+# 
+# su.ca2015.f.long<-fortify(su.ca2015,region = "SETU_CCDGO")
+# su.ca2015.f.long <- merge(su.ca2015.f.long, ca2015su.cali.long, by.x = "id", by.y = "SETU_CCDGO")
+# 
+# 
+# 
+# #graficar cvarobles ambietales del CA2015 ----
+# p_su_ca2015.facet<- ggplot() +
+#   geom_polygon(data=su.ca2015.f.long,
+#                aes(x=long,y=lat,group=group,fill=ca2015_valor))+
+#     coord_equal() + scale_fill_viridis()+
+#     theme_void()+
+#   facet_wrap(~ca2015_var,ncol = 4)+labs(title=)
+# p_su_ca2015.facet
+# 
+# p_su_area_copa<- ggplot() +
+#   geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=area_copa_su))+
+#   coord_equal() + scale_fill_viridis()
+# 
+# p_su_diametro_medio<- ggplot() +
+#   geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=diametro_medio_copa_su))+
+#   coord_equal() + scale_fill_viridis(option="magma")+
+#   geom_polygon(data=manzanas.su.f,aes(x=long,y=lat,group=group),fill="lightgrey",alpha=0.7)
+# 
+# p_su_altura_media<- ggplot() +
+#   geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=altura_media_su))+
+#   coord_equal() + scale_fill_viridis(option="magma")
+#   
+# 
+# p_su_num_indarb<- ggplot() +
+#   geom_polygon(data=su.ca2015.f,aes(x=long,y=lat,group=group,fill=cantidad_su))+
+#   coord_equal() + scale_fill_viridis(option="magma")
+# 
+# # graficas distribucion CA ----
+# p_su_hist_cobertura<-ggplot()+geom_histogram(data=AU_analsis_spatial@data,aes(x=area_copa))
 
 #geom_histogram(aes(color = sex), fill = "white", alpha = 0.6, position="identity")
 
-grid.arrange(p_su_cobertura, p_su_area_copa, p_su_altura_media, p_su_num_indarb, ncol = 2, nrow =2)
+#grid.arrange(p_su_cobertura, p_su_area_copa, p_su_altura_media, p_su_num_indarb, ncol = 2, nrow =2)
 
 
 
@@ -1154,13 +1229,14 @@ as.character(cod_subset$setu_ccnct_20) %in% as.character(cpSubset$su_id)
 #añadimos el los codigos modificados a personas_su 
 cp2005.cali<-inner_join(cpSubset,cod_subset,by=c("su_id"="setu_ccnct_20"))
 #buscar duplicados
+cp2005.cali %>%names()
 cp2005.cali%>%
   group_by(setu_ccnct_18) %>% 
   filter(n()>1) %>% arrange(setu_ccnct_18) %>% 
   filter(cod_consistencia=="no-consistente")%>%
   dplyr::select(su_id)->cp2005_elim #eliminar los duplicados no consistentes
 #verificar si hay NA en los datos
-is.na(cp2005.cali) #%>% View()
+
 #verificar los sectores no consistentes
 elim_su_cp2005<-as.character(cp2005.cali$su_id) %in% as.character(cp2005_elim$su_id)  
 cp2005.cali[elim_su_cp2005,] %>% View()
@@ -1188,11 +1264,14 @@ cp2005su.cali.any.na
 
 #los NA de los datos restantes son SU que no tuvo casos de respuesta positiva,
 #por ejemplo un SU solo comercial, sin personas habitadando. En estos casos es posible reeemplzar por 0 los NA
-cp2005.cali[is.na(cp2005.cali)] <-0
+summary(cp2005.cali)
+#cp2005.cali[is.na(cp2005.cali)] <-0
 
 
 #is.na(cp2005su.cali[!elim_su_cp2005,])
 cp2005.cali<-cp2005.cali[!elim_su_cp2005,]
+summary(cp2005.cali)
+
 # su_eliminados_cod<-cp2005su.cali%>% filter(cod_consistencia =="no-consistente")
 # cp2005su.cali<-cp2005su.cali%>% filter(cod_consistencia !="no-consistente")
 
@@ -1221,7 +1300,7 @@ cp2005.personas.sel<-cp2005.cali %>%
 
 cp2005.personas.sel[,2:10]%>%plot()
 
-#calculemos estas variables como porcentajes de la poblacion para tener ua escala similar
+#calculemos estas variables como porcentajes de la poblacion para tener una escala similar
 
 cp2005.personas.sel<-cp2005.personas.sel%>%
   mutate(afro.porcentaje=negro_mulato_afrocolombiano/personas_etnia,
@@ -1229,15 +1308,18 @@ cp2005.personas.sel<-cp2005.personas.sel%>%
          con_alguna_limitacion.porcentaje=con_alguna_limitacion/personas_limitacion,
          ningun_estudio.porcentaje=ningun_estudio/personas_estudio,
          superior_postgrado.porcentaje=superior_postgrado/personas_estudio,
-         poblacion.porcentaje=personas_edad/total_poblacion,
-         dominio="personas")
+         poblacion.porcentaje=personas_edad/total_poblacion
+         #dominio="personas"
+        )
     
 summary(cp2005.personas.sel)    
 cp2005.personas.sel[,grep("porcentaje",names(cp2005.personas.sel))]%>%plot()
+cp2005.personas.sel[,grep("porcentaje",names(cp2005.personas.sel))]
+
 
 #podemos descartar la variable de poblacion indigena
 
-#aspectos sobre el uso y tipo de los sectores urbanos
+#variables sobre el uso y tipo de los sectores urbanos ----
 summary(cp2005.cali) 
 
 cp2005.predios.sel<-cp2005.cali %>%
@@ -1252,16 +1334,16 @@ cp2005.predios.sel<-cp2005.predios.sel%>%
   mutate(casa.porcentaje=casa/viviendas_tipo,
          apartamento.porcentaje=apartamento/viviendas_tipo,
          cuarto.porcentaje=tipo_cuarto/viviendas_tipo,
-         viviendas.porcentaje=uso_vivienda,
-         unidad_economica.porcentaje=uso_unidad_economica/viviendas_uso,
+         viviendas.porcentaje=uso_vivienda/viviendas_uso,
+         unidad_economica.porcentaje=uso_unidad_economica/viviendas_uso
          #desocupadas.porcentaje=desocupadas/viviendas_ocupacion
-         dominio="predios"
+  #       dominio="predios"
          )
   
 summary(cp2005.predios.sel)
 plot(cp2005.predios.sel[,grep("porcentaje",names(cp2005.predios.sel))])
 #podemos descartar la varible de ocupacion de las viviendas
-
+cp2005.personas.sel
 
 
 
@@ -1269,58 +1351,417 @@ plot(cp2005.predios.sel[,grep("porcentaje",names(cp2005.predios.sel))])
 # ahora a consolidar todas las varibles para hacer una seleccion y depuracion
 # de los datos para el analsis
 
-analisis.cali
+analisis.cali %>% names()
+cp2005.predios.sel
+cp2005.personas.sel
+
+# drop.cols<-c("SETU_CCNCT","dominio.y","dominio.x")
+drop.cols<-c("SETU_CCNCT")
+
+
+analisis.cali.sel<-analisis.cali%>% 
+  full_join(cp2005.predios.sel, by =c("SETU_CCDGO"="setu_ccdgo"))%>%
+  full_join(cp2005.personas.sel,by = c("SETU_CCDGO"="setu_ccdgo")) %>%
+#  full_join(ia.ev,by=c("SETU_CCDGO"="su.SETU_CCDGO"))%>%
+  dplyr::select(-one_of(drop.cols))
+
+# caluclamos indicadores entre las diferentes dimensiones
+analisis.cali.sel %>%names()
+analisis.cali.sel %>% summary()
+analisis.cali.sel<-analisis.cali.sel %>% mutate(arboles_habitante=num_arboles/personas_edad,
+                             area_ev_habitante=area_ev/personas_edad,
+                             densidad_poblacion=personas_edad/area_su,
+                             area_ep.porcentaje=area_ep/area_su,
+                             area_ev.porcentaje=area_ev/area_su,
+                             area_ev.pub.porcentaje=area_ev/area_publica,
+                             area_publica.porcentaje=area_publica/area_su)
+
+analisis.cali.sel %>% summary()
+# que indicadores tienene NA?
+
+nacols <- function(df) {
+  colnames(df)[unlist(lapply(df, function(x) anyNA(x)))]
+}
+
+nacols(analisis.cali.sel)
+analisis.cali.sel %>% summary()
+names(analisis.cali.sel)
+# los NaN, NA e Inf que existen es porque las divisiones por 0 cuando no viven personas o 
+# en estos casos podemos reeemplzar por 0 el valor de los NA pues representa numericamente 
+# la ausencia de personas 
+#o podemos elimianr esos casos del analsis.
+
+analisis.cali.sel.0<-analisis.cali.sel
+analisis.cali.sel.0[is.na(analisis.cali.sel.0)]<-0
+analisis.cali.sel.0[is.infinite(analisis.cali.sel.0$arboles_habitante),"arboles_habitante"]<-0
+analisis.cali.sel.0[is.infinite(analisis.cali.sel.0$area_ev_habitante),"area_ev_habitante"]<-0
+
+
+summary(analisis.cali.sel.0)
+
+#variables selecciondas 
+
+
+#solo sectores con los datos completos
+analisis.cali.sel.completos<-na.omit(analisis.cali.sel)
+#analisis.cali.sel[complete.cases(analisis.cali.sel[,c()]),]
+summary(analisis.cali.sel.completos)
+nrow(analisis.cali.sel.completos)
+names(analisis.cali.sel.completos)
+
+summary(analisis.cali.sel.0)
+nrow(analisis.cali.sel.0)
+names(analisis.cali.sel.0)
+
+#subconjuntos de variables ----
+dependientes<-c("cobertura_copa.su","cobertura_copa.ap",
+                "area_ev","area_ev.porcentaje","area_ev_habitante","area_ev.pub.porcentaje",
+                "ia.costoviaje","ia.costo.n","ia.mindist","ia.1000", "ia.1000.inv" ,"ia.r300")
+cobertura.arborea<-c("cobertura_copa.su","cobertura_copa.ap")
+acceso.ev<-c("area_ev","area_ev.porcentaje","area_ev.pub.porcentaje",
+             "ia.costoviaje","ia.costo.n","ia.mindist","ia.1000", "ia.1000.inv" ,"ia.r300")
+
+#posibles predictores 
+ambientales<-c("altura_media", "diametro_medio_copa",
+               "arboles_area.su","arboles_area.ap","arboles_habitante","num_arboles"
+               )
+poblacion<-c( "densidad_poblacion","edad_promedio",
+              "afro.porcentaje","ningun_estudio.porcentaje", "superior_postgrado.porcentaje",
+              "con_alguna_limitacion.porcentaje")
+predios.uso<-c("unidad_economica.porcentaje","viviendas.porcentaje",
+           "casa.porcentaje","apartamento.porcentaje","cuarto.porcentaje")
+estructurales<-c("area_media_manzana","num_manzanas",
+                 "area_publica","area_publica.porcentaje","area_ev.porcentaje",
+                 "area_ep.porcentaje", "area_calle","area_su")
+
+
+# exclusion de sectores urbanos sin poblacion y sin arboles para la cobertura.
+#los sectores atipicos los definiremos porque contienen principalmente una instalacion 
+#privada o el porcentaje de espacio verde del SU  es mayor que el 60%  (1712) 
+su.exc.atipicos<-c("1709","0304","0703","0701","1317","1802","1710","1712","1928","1917")
+
+analisis.ca.exc<-analisis.cali.sel.0[!(analisis.cali.sel.0$SETU_CCDGO %in% su.exc.atipicos),c("SETU_CCDGO",
+                                        cobertura.arborea,
+                                        ambientales,
+                                        poblacion,
+                                        predios.uso,
+                                        estructurales)]%>% 
+  filter(densidad_poblacion==0 | num_arboles==0 | area_publica.porcentaje>0.65)
+
+plot(analisis.cali.sel.0$area_ev.porcentaje)
+plot(analisis.cali.sel.0$area_ep.porcentaje)
+plot(analisis.cali.sel.0$area_publica.porcentaje)
+
+plot(analisis.cali.sel.0$area_calle/analisis.cali.sel.0$area_su)
+plot(analisis.ca.exc$area_ep.porcentaje)
+plot(analisis.ca.exc$area_ev.porcentaje)
+plot(analisis.ca.exc$area_publica.porcentaje)
+
+analisis.ca.exc %>% summary()
+analisis.ca<-analisis.cali.sel.0[!(analisis.cali.sel.0$SETU_CCDGO %in% su.exc.atipicos),c("SETU_CCDGO",
+                                                                                              cobertura.arborea,
+                                                                                              ambientales,
+                                                                                              poblacion,
+                                                                                              predios.uso,
+                                                                                              estructurales)]%>% 
+  filter(densidad_poblacion!=0 & num_arboles!=0 & area_publica.porcentaje<0.65)
+analisis.ca %>% summary()
+
+analisis.ia<-analisis.cali.sel.0[!(analisis.cali.sel.0$SETU_CCDGO %in% su.exc.atipicos),c("SETU_CCDGO",
+                                                                                          acceso.ev,
+                                                                                          poblacion,
+                                                                                          predios.uso,"area_publica.porcentaje")]%>% 
+  filter(densidad_poblacion!=0,area_publica.porcentaje<0.65)
+
+analisis.ia %>% summary()
+
+
+analisis.ia.long<-analisis.ia%>%
+  melt(
+    # ID variables - all the variables to keep but not split apart on
+    id.vars=c("SETU_CCDGO"),
+    variable.name="variables",
+    value.name="valor"
+  )
+
+analisis.ca.long<-analisis.ca%>%
+  melt(
+    # ID variables - all the variables to keep but not split apart on
+    id.vars=c("SETU_CCDGO"),
+    variable.name="variables",
+    value.name="valor"
+  )
+
+summary(analisis.ca.long)
+
+# #con NAs
+# analisis.cali.sel.long<-analisis.cali.sel[, c("SETU_CCDGO",dependientes,
+#                                               ambientales,
+#                                               poblacion,
+#                                               predios.uso,
+#                                               estructurales
+#                                               )]%>%
+# melt(
+#   # ID variables - all the variables to keep but not split apart on
+#   id.vars=c("SETU_CCDGO"),
+#   variable.name="variables",
+#   value.name="valor"
+# )
+# 
+# #con 0s
+# analisis.cali.sel.0.long<-analisis.cali.sel.0[, c("SETU_CCDGO",dependientes,
+#                                               ambientales,
+#                                               poblacion,
+#                                               predios.uso,
+#                                               estructurales
+# )]%>%
+#   melt(
+#     # ID variables - all the variables to keep but not split apart on
+#     id.vars=c("SETU_CCDGO"),
+#     variable.name="variables",
+#     value.name="valor"
+#   )
+# 
+# #solo observaciones completas para todo el dataset
+# analisis.cali.sel.completos.long<-analisis.cali.sel.completos[, c("SETU_CCDGO",dependientes,
+#                                                                   ambientales,
+#                                                                   poblacion,
+#                                                                   predios.uso,
+#                                                                   estructurales)]%>%
+#   melt(
+#     # ID variables - all the variables to keep but not split apart on
+#     id.vars=c("SETU_CCDGO"),
+#     variable.name="variables",
+#     value.name="valor"
+#   )
 
 
 
-# unir los datos del CP2005 con los datos de la capa geografica  ----
-# usando el codigo de 18 digitos
-cp2005su.cali_sel<-left_join(su@data,cp2005su.cali,by= c("SETU_CCNCT"="setu_ccnct_18"))
-nrow(cp2005su.cali_sel)
-
-#verificamos que no hay datos con algun NA
-cp2005su.cali_sel %>%
-  filter(is.na(personas_edad) |
-           is.na(personas_estudio) |
-           is.na(personas_etnia) |
-           is.na(personas_limitacion) |
-           is.na(viviendas_tipo) |
-           is.na(viviendas_uso) |
-           is.na(viviendas_ocupacion))  ->  cp2005su.cali_sel.na
-
-cp2005su.cali_sel.na
-#se puede ver que existe un SU en la capa geofrafica que no tuvo datos en las consultas del Redatam.
-
-#convertimos los datos preprocesados en un objeto geografico.
-# su.cp2005.na<-su
-# su.cp2005.na@data<-inner_join(su.cp2005.na@data, cp2005su.cali_sel.na,
-su.cp2005<-su
-su.cp2005@data<-cp2005su.cali_sel
+# ver distribucion de los datos ----
 
 
-# verificar extension de los datos
-bbox(AU_analsis_spatial) # the extent, 'bounding box' of stations 
-bbox(su.cp2005)
+#graficar histogramas, cajas y QQplot
+analisis.ca.long %>%
+#analisis.ca.long[analisis.ca.long$variables %in% c(cobertura.arborea,estructurales),] %>%
+# analisis.cali.sel.long[analisis.cali.sel.long$variables %in% predios.uso,] %>%
+  ggplot()+
+#  geom_histogram(aes(x=valor,fill=cut_interval(valor,20)) ,bins = 40)+
+  geom_histogram(aes(x=valor),bins = 20)+
+#    scale_fill_viridis(discrete = T)+
+  facet_wrap(~variables, scales = "free",ncol = 4)
+
+qqnorm_data <- function(x){
+  Q <- as.data.frame(qqnorm(x, plot = FALSE))
+  names(Q) <- c("xq", substitute(x))
+  Q
+}
+
+analisis.ca.long.qq <- analisis.ca.long %>%
+  group_by(variables) %>%
+  do(with(., qqnorm_data(valor)))
+
+ggplot(data = analisis.ca.long.qq, aes(x = xq, y = valor)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Teórico") +
+  ylab("Muestra") +
+  facet_wrap(~variables,scales = "free")
+
+#La pregunta importante aqui es si debemos elimianar los outlier o 
+#  usar otro modelo distinto para ajutar los valores o un metodo robusto
+# que reduzca el efecto de los outliers.
 
 
-# creacion de data frames para plotear los datos en ggplot2 ----
-su.cp2005.f<-fortify(su.cp2005,region = "SETU_CCNCT")
-su.cp2005.f <- merge(su.cp2005.f, su.cp2005@data, by.x = "id", by.y = "SETU_CCNCT")
-prmtr_urbn_idesc.f<-fortify(prmtr_urbn_idesc,region = "nombre")
-manzanas.f<-fortify(manzanas)
+analisis.ca.long %>%
+#analisis.cali.sel.long[analisis.cali.sel.long$variables %in% predios.uso,] %>%
+  inner_join(su.f,.,by=c("id"="SETU_CCDGO")) %>%  
+  ggplot()+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=cut_number(valor,30)))+
+  scale_fill_viridis(discrete = T)+
+  coord_equal()+
+  theme_void()+
+  facet_wrap(~variables)
 
-# plot(su)
-# plot(prmtr_urbn_idesc)
-# plot(manzanas)
 
-# p_perimetro<-ggplot()+
-#   geom_polygon(data=prmtr_urbn_idesc.f,aes(x=long,y=lat,group=group), fill=NA, colour="red")+
-#   coord_equal()
-# p_perimetro
 
-# Exploración de variables del CP2005 ----
-#los sectores sin datos sobre personas son el Club Campestre, Cosmocentro,
-# La Plaza de Toros-Complejo Deportivo Del Coliseo el Pueblo, y la !4 de Calima 
+analisis.ca.long[analisis.ca.long$variables %in% cobertura.arborea,] %>%
+  inner_join(su.f,.,by=c("id"="SETU_CCDGO")) %>% 
+  ggplot()+
+  geom_polygon(data=su.f,aes(x=long,y=lat,group=group),fill="lightgrey")+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=cut_interval(valor,20)))+
+  scale_fill_viridis(discrete = T)+
+  coord_equal()+
+  theme_void()+
+  facet_wrap(~variables)
+  # labs(title="Porcentaje de viviendas tipo cuarto por SU",
+  #      subtitle= "",
+  #      caption="Fuente: DANE \n eleborado: @correajfc")
+  # 
+
+
+# correlaciones entre variables ----
+# Get lower triangle of the correlation matrix
+get_lower_tri<-function(cormat){
+  cormat[upper.tri(cormat)] <- NA
+  return(cormat)
+}
+# Get upper triangle of the correlation matrix
+get_upper_tri <- function(cormat){
+  cormat[lower.tri(cormat)]<- NA
+  return(cormat)
+}
+reorder_cormat <- function(cormat){
+  # Use correlation between variables as distance
+  dd <- as.dist((1-cormat)/2)
+  hc <- hclust(dd)
+  cormat <-cormat[hc$order, hc$order]
+}
+
+
+cormat.ca.strct.pearson <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                   estructurales)],
+                                     use = "pairwise.complete.obs"),2)
+head(cormat.ca.strct.pearson)
+# Reorder the correlation matrix
+cormat.ca.strct.pearson <- reorder_cormat(cormat.ca.strct.pearson)
+utri.ca.strct.pearson <- get_upper_tri(cormat.ca.strct.pearson)
+# Melt the correlation matrix
+melted_utri.ca.strct.pearson <- melt(utri.ca.strct.pearson, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.strct.pearson)
+
+
+ggplot(data = melted_utri.ca.strct.pearson, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var2, Var1, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson\nCorrelation") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()
+
+
+
+cormat.ca.strct.spearman <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                     estructurales)],
+                                      use = "pairwise.complete.obs",
+                             method = "spearman"),2)
+head(cormat.ca.strct.spearman)
+# Reorder the correlation matrix
+#cormat <- reorder_cormat(cormat)
+utri.ca.strct.spearman <- get_upper_tri(cormat.ca.strct.spearman)
+# Melt the correlation matrix
+melted_utri.ca.strct.spearman <- melt(utri.ca.strct.spearman, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.strct.spearman)
+
+
+ggplot(data = melted_utri.ca.strct.spearman, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var2, Var1, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman\nCorrelation") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()
+
+melted_utri.ca.strct.pearson[(melted_utri.ca.strct.pearson$value>0.49 | melted_utri.ca.strct.pearson$value< -0.49) &
+                               melted_utri.ca.strct.pearson$Var1!=melted_utri.ca.strct.pearson$Var2 ,] %>% arrange(value)
+melted_utri.ca.strct.spearman[(melted_utri.ca.strct.spearman$value>0.49 | melted_utri.ca.strct.spearman$value< -0.49 )&
+                                melted_utri.ca.strct.spearman$Var1!=melted_utri.ca.strct.spearman$Var2,] 
+
+
+#seleccion de varibles estructurales
+
+#el area media de manzana es el que mejor 
+
+
+cormat.all.spearman <- round(cor(analisis.cali.sel.0[,2:ncol(analisis.cali.sel.0)],use = "pairwise.complete.obs",
+                                 method = "spearman"),2)
+head(cormat.all.spearman)
+# Reorder the correlation matrix
+cormat.all.spearman <- reorder_cormat(cormat.all.spearman)
+upper_tri.all.spearman <- get_upper_tri(cormat.all.spearman)
+# Melt the correlation matrix
+melted_cormat.all.spearman <- melt(upper_tri.all.spearman, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_cormat.all.spearman)
+
+
+ggplot(data = melted_cormat.all.spearman, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  #geom_text(aes(Var2, Var1, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman\nCorrelation") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()
+
+melted_cormat.pearson[(melted_cormat.pearson$value>0.5 | melted_cormat.pearson$value< -0.5) &
+                        melted_cormat.pearson$Var1!=melted_cormat.pearson$Var2 ,] %>% arrange(value)
+melted_cormat.spearman[(melted_cormat.spearman$value>0.49 | melted_cormat.spearman$value< -0.49 )&
+                         melted_cormat.spearman$Var1!=melted_cormat.spearman$Var2,]
+melted_cormat.all.spearman[(melted_cormat.all.spearman$value>0.59 | melted_cormat.all.spearman$value< -0.59 )&
+                             melted_cormat.all.spearman$Var1!=melted_cormat.all.spearman$Var2,]
+
+# podemos hacer una selccion de las variables a incluir/descartar en el modelo
+# con base en los coeficientes calculados.
+
+
+#normaizacion y deteccion de outlier ----
+
+# outliers de las variable a predecir 
+
+analisis.ca %>% summary()
+analisis.ca[analisis.ca$area_publica.porcentaje>0.6,]$area_publica.porcentaje
+#outliers::outlier(analisis.ca$cobertura_copa.ap[analisis.ca$cobertura_copa.ap<0.9])
+cc.ap<-analisis.ca$cobertura_copa.ap
+hist( log10(cc.ap[cc.ap<1]))
+shapiro.test(log10(cc.ap[cc.ap<1])) 
+
+
+
+analisis.ca %>%
+#Box Plot 
+analisis.ca.long[analisis.ca.long$variables %in% cobertura.arborea,]%>%
+ggplot()+
+  geom_boxplot(aes(x=variables,y=valor,fill=variables))
+
+analisis.cali.sel.long[analisis.cali.sel.long$variables %in% c("area_ev","area_media_ev","area_copa"),] %>%
+  ggplot()+
+  geom_boxplot(aes(x=variables,y=valor,fill=variables))
+
+analisis.cali.sel.long[analisis.cali.sel.long$variables %in% c("cobertura_copa.su","cobertura_copa.ap"),] %>%
+  ggplot()+
+  geom_boxplot(aes(x=variables,y=valor,fill=variables))
+
+analisis.cali.sel.long[analisis.cali.sel.long$variables %in% c("num_ev","altura_media", "diametro_medio_copa"),] %>%
+  ggplot()+
+  geom_boxplot(aes(x=variables,y=valor,fill=variables))
+
+analisis.cali.sel.long[analisis.cali.sel.long$variables %in% c("arboles_area.su","arboles_area.ap"),] %>%
+  ggplot()+
+  geom_boxplot(aes(x=variables,y=valor,fill=variables))
+
+analisis.cali.sel.long[analisis.cali.sel.long$variables =="arboles_habitante",] %>%
+  ggplot()+
+  geom_boxplot(aes(x=variables,y=valor,fill=variables))
+
+
+
+
+
+
+
 
 ## Graficas  de cantidad de personas por SU ----
 p_su.cp2005<- ggplot(data=su.cp2005.f,aes(x=long,y=lat,group=group))
@@ -1525,79 +1966,6 @@ p_AU+ geom_point(aes(size=diametro_copa,color =emplazamiento))+
 
 
 
-# anexar codigo del Sector censal urbanos (SU) en formato texto
-
-#cargar datos censales por SU del CP2005
-
-# barriosShp<-readShapePoly("GIS/capas/barrios.shp")
-# barriosCentriodes<-readShapePoints("GIS/capas/centriodesBarrios.shp")
-# summary(barriosShp)
-# str(barriosShp)
-# plot(barriosShp)
-# identificacionBarrios<-as.data.frame(barriosShp[,c("id_barrio","barrio","comuna","estra_moda","area","sbarrios_i","sbarrios_f")])
-# identificacionBarrios$sbarrios_i<-as.numeric(as.character(identificacionBarrios$sbarrios_i))
-# 
-# arboles_analisis$cod_barrio<-identificacionBarrios$id_barrio[match(arboles_analisis$idBarrio, identificacionBarrios$sbarrios_i)]
-# arboles_analisis$nombre_barrio<-identificacionBarrios$barrio[match(arboles_analisis$idBarrio, identificacionBarrios$sbarrios_i)]
-# 
-# #agregar datos por barrio
-# barrio_area_total_copa<-aggregate(arboles_analisis$area_copa,by=list(cod_barrio=arboles_analisis$cod_barrio),sum)
-# colnames(barrio_area_total_copa)[2]<-"area_total_copa"
-# barrio_area_media_copa<-aggregate(arboles_analisis$area_copa,by=list(cod_barrio=arboles_analisis$cod_barrio),mean)
-# colnames(barrio_area_media_copa)[2]<-"area_media_copa"
-# barrio_altura_media_arboles<-aggregate(arboles_analisis$altura_arbol,by=list(cod_barrio=arboles_analisis$cod_barrio),mean)
-# colnames(barrio_altura_media_arboles)[2]<-"altura_media_arbol"
-# barrio_total_arboles<-aggregate(arboles_analisis$id,by=list(cod_barrio=arboles_analisis$cod_barrio),length)
-# colnames(barrio_total_arboles)[2]<-"total_arboles"
-# 
-# #agregar por especie 
-# especie_area_total_copa<-aggregate(arboles_analisis$area_copa,by=list(especie=arboles_analisis$nombre_cienticico),sum)
-# colnames(especie_area_total_copa)[2]<-"area_total_copa"
-# especie_area_media_copa<-aggregate(arboles_analisis$area_copa,by=list(especie=arboles_analisis$nombre_cienticico),mean)
-# colnames(especie_area_media_copa)[2]<-"area_media_copa"
-# especie_diametro_medio_copa<-aggregate(arboles_analisis$diametro_copa,by=list(especie=arboles_analisis$nombre_cienticico),mean)
-# colnames(especie_diametro_medio_copa)[2]<-"diametro_medio_copa"
-# especie_altura_media<-aggregate(arboles_analisis$altura_arbol,by=list(especie=arboles_analisis$nombre_cienticico),mean)
-# colnames(especie_altura_media)[2]<-"altura_media"
-# especie_total_arboles<-aggregate(arboles_analisis$id,by=list(especie=arboles_analisis$nombre_cienticico),length)
-# colnames(especie_total_arboles)[2]<-"total_arboles"
-# 
-# 
-# #agregar datos por barrio por especie
-# barrio_especie_area_total_copa<-aggregate(arboles_analisis$area_copa,by=list(cod_barrio=arboles_analisis$cod_barrio,especie=arboles_analisis$nombre_cienticico),sum)
-# colnames(barrio_especie_area_total_copa)[3]<-"area_total_copa"
-# barrio_especie_area_media_copa<-aggregate(arboles_analisis$area_copa,by=list(cod_barrio=arboles_analisis$cod_barrio,especie=arboles_analisis$nombre_cienticico),mean)
-# colnames(barrio_especie_area_media_copa)[3]<-"area_media_copa"
-# barrio_especie_altura_media<-aggregate(arboles_analisis$altura_arbol,by=list(cod_barrio=arboles_analisis$cod_barrio,especie=arboles_analisis$nombre_cienticico),mean)
-# colnames(barrio_especie_altura_media)[3]<-"altura_media"
-# barrio_especie_total_arboles<-aggregate(arboles_analisis$id,by=list(cod_barrio=arboles_analisis$cod_barrio,especie=arboles_analisis$nombre_cienticico),length)
-# colnames(barrio_especie_total_arboles)[3]<-"total_arboles"
-# #consilidar resultados
-# #reorganizar los niveles del estrato moda
-# identificacionBarrios$estra_moda<-factor(identificacionBarrios$estra_moda,levels = c("1","2","3","4","5","6","10"))
-# #barrio
-# stats_barrio<-merge(barrio_altura_media_arboles,barrio_area_media_copa,by="cod_barrio")
-# stats_barrio<-merge(stats_barrio,barrio_area_total_copa,by="cod_barrio")
-# stats_barrio<-merge(stats_barrio,barrio_total_arboles,by="cod_barrio")
-# barrio_info_stats<-merge(identificacionBarrios,stats_barrio,by.x="id_barrio", by.y="cod_barrio")
-# #especie
-# stats_especie<-merge(especie_altura_media,especie_area_media_copa,by="especie")
-# stats_especie<-merge(stats_especie,especie_area_total_copa,by="especie")
-# stats_especie<-merge(stats_especie,especie_total_arboles,by="especie")
-# stats_especie<-merge(stats_especie,especie_diametro_medio_copa,by="especie")
-# 
-# #calcular porcentaje de cobertura de copa
-# stats_especie$cobertura_copa<-stats_especie$area_total_copa/sum(barrio_info_stats$area)
-# #barrio_especie
-# stats_barrio_especie<-merge(barrio_especie_altura_media,barrio_especie_area_media_copa,by=c("cod_barrio","especie"))
-# stats_barrio_especie<-merge(stats_barrio_especie,barrio_especie_area_total_copa,by=c("cod_barrio","especie"))
-# stats_barrio_especie<-merge(stats_barrio_especie,barrio_especie_total_arboles,by=c("cod_barrio","especie"))
-# 
-# #calcular porcentaje de cobertura de copa por barrio
-# barrio_info_stats$area<- as.numeric(as.character(barrio_info_stats$area))
-# barrio_info_stats$estra_moda<-factor(barrio_info_stats$estra_moda,levels = c("1","2","3","4","5","6","10"))
-# #Aplicar analisis 1
-# #Exploracion de datos
 # qplot(y=altura_media_arbol,x=area_media_copa,data=barrio_info_stats ,asp = 1, colour=estra_moda)
 # qplot(y=altura_media_arbol,x=area_total_copa,data=barrio_info_stats , colour=estra_moda, size=area_media_copa)
 # qplot(x=altura_media_arbol,y=cobertura_copa,data=barrio_info_stats , colour=estra_moda, size=area_media_copa)
