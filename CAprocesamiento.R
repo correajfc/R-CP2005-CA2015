@@ -1386,6 +1386,11 @@ nacols <- function(df) {
 nacols(analisis.cali.sel)
 analisis.cali.sel %>% summary()
 names(analisis.cali.sel)
+
+write.csv(x = analisis.cali.sel,file = "outputData/analisis_datos_su.csv",fileEncoding = "UTF-8",col.names = T)
+write.csv(x = AU_analsis,file = "outputData/AU_analisis.csv",fileEncoding = "UTF-8",col.names = T)
+write.csv(x = ,file = "outputData/analisis_datos_su.csv",fileEncoding = "UTF-8",col.names = T)
+
 # los NaN, NA e Inf que existen es porque las divisiones por 0 cuando no viven personas o 
 # en estos casos podemos reeemplzar por 0 el valor de los NA pues representa numericamente 
 # la ausencia de personas 
@@ -1458,6 +1463,8 @@ plot(analisis.ca.exc$area_ev.porcentaje)
 plot(analisis.ca.exc$area_publica.porcentaje)
 
 analisis.ca.exc %>% summary()
+
+#generacion de data.frame CA u IA ----
 analisis.ca<-analisis.cali.sel.0[!(analisis.cali.sel.0$SETU_CCDGO %in% su.exc.atipicos),c("SETU_CCDGO",
                                                                                               cobertura.arborea,
                                                                                               ambientales,
@@ -1589,7 +1596,7 @@ analisis.ca.long[analisis.ca.long$variables %in% cobertura.arborea,] %>%
   ggplot()+
   geom_polygon(data=su.f,aes(x=long,y=lat,group=group),fill="lightgrey")+
   geom_polygon(aes(x=long,y=lat,group=group,fill=cut_interval(valor,20)))+
-  scale_fill_viridis(discrete = T)+
+  scale_fill_viridis(discrete = T,option = "plasma")+
   coord_equal()+
   theme_void()+
   facet_wrap(~variables)
@@ -1617,7 +1624,7 @@ reorder_cormat <- function(cormat){
   cormat <-cormat[hc$order, hc$order]
 }
 
-
+# Correlacion Cobertura Arborea y estructura SU ----
 cormat.ca.strct.pearson <- round(cor(analisis.ca[,c(cobertura.arborea,
                                                    estructurales)],
                                      use = "pairwise.complete.obs"),2)
@@ -1633,15 +1640,18 @@ head(melted_utri.ca.strct.pearson)
 
 ggplot(data = melted_utri.ca.strct.pearson, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
-  geom_text(aes(Var2, Var1, label = value), color = "black", size = 2.2) +
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
   #scale_fill_viridis(option = "magma")+
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
-                       name="Pearson\nCorrelation") +
+                       name="Pearson") +
   theme_minimal()+ 
   theme(axis.text.x = element_text(angle = 90, vjust = 1, 
-                                   size = 8, hjust = 1))+
-  coord_fixed()
+                                   size = 8, hjust = 1),axis.title = element_blank())+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables de la estructura de los SU",
+                     subtitle="Matriz de coeficientes de Pearson",
+                     caption="Fuente:CA2015, IDESC\nCálculos propios")
 
 
 
@@ -1661,28 +1671,342 @@ head(melted_utri.ca.strct.spearman)
 
 ggplot(data = melted_utri.ca.strct.spearman, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
-  geom_text(aes(Var2, Var1, label = value), color = "black", size = 2.2) +
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
   #scale_fill_viridis(option = "magma")+
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
-                       name="Spearman\nCorrelation") +
+                       name="Spearman") +
   theme_minimal()+ 
   theme(axis.text.x = element_text(angle = 90, vjust = 1, 
                                    size = 8, hjust = 1))+
-  coord_fixed()
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables de la estructura de los SU",
+       subtitle="Matriz de coeficientes de Spearman",
+       caption="Fuente:CA2015, IDESC\nCálculos propios",x=NULL,y=NULL)
+
 
 melted_utri.ca.strct.pearson[(melted_utri.ca.strct.pearson$value>0.49 | melted_utri.ca.strct.pearson$value< -0.49) &
                                melted_utri.ca.strct.pearson$Var1!=melted_utri.ca.strct.pearson$Var2 ,] %>% arrange(value)
 melted_utri.ca.strct.spearman[(melted_utri.ca.strct.spearman$value>0.49 | melted_utri.ca.strct.spearman$value< -0.49 )&
                                 melted_utri.ca.strct.spearman$Var1!=melted_utri.ca.strct.spearman$Var2,] 
 
-
+estructurales
+estructurales.sel<-c("area_media_manzana","area_ev.porcentaje")
 #seleccion de varibles estructurales
-
 #el area media de manzana es el que mejor 
 
 
-cormat.all.spearman <- round(cor(analisis.cali.sel.0[,2:ncol(analisis.cali.sel.0)],use = "pairwise.complete.obs",
+# Correlacion Cobertura Arborea y uso de predios SU ----
+cormat.ca.predios.pearson <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                    predios.uso)],
+                                     use = "pairwise.complete.obs"),2)
+head(cormat.ca.predios.pearson)
+# Reorder the correlation matrix
+cormat.ca.predios.pearson <- reorder_cormat(cormat.ca.predios.pearson)
+utri.ca.predios.pearson <- get_upper_tri(cormat.ca.predios.pearson)
+# Melt the correlation matrix
+melted_utri.ca.predios.pearson <- melt(utri.ca.predios.pearson, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.predios.pearson)
+
+
+ggplot(data = melted_utri.ca.predios.pearson, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson")  +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables de uso de predios de los SU",
+       subtitle="Matriz de coeficientes de Pearson",
+       caption="Fuente:CA2015, DANE\nCálculos propios",x=NULL,y=NULL)
+
+
+
+
+cormat.ca.predios.spearman <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                      predios.uso)],
+                                      use = "pairwise.complete.obs",
+                                      method = "spearman"),2)
+head(cormat.ca.predios.spearman)
+# Reorder the correlation matrix
+#cormat <- reorder_cormat(cormat)
+utri.ca.predios.spearman <- get_upper_tri(cormat.ca.predios.spearman)
+# Melt the correlation matrix
+melted_utri.ca.predios.spearman <- melt(utri.ca.predios.spearman, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.predios.spearman)
+
+
+ggplot(data = melted_utri.ca.predios.spearman, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white",  
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables de uso de predios de los SU",
+       subtitle="Matriz de coeficientes de Spearman",
+       caption="Fuente:CA2015, DANE\nCálculos propios",x=NULL,y=NULL)
+
+melted_ltri.ca.predios.pearson[(melted_ltri.ca.predios.pearson$value>0.49 | melted_ltri.ca.predios.pearson$value< -0.49) &
+                                 melted_ltri.ca.predios.pearson$Var1!=melted_ltri.ca.predios.pearson$Var2 ,] %>% arrange(value)
+melted_utri.ca.predios.spearman[(melted_utri.ca.predios.spearman$value>0.49 | melted_utri.ca.predios.spearman$value< -0.49 )&
+                                  melted_utri.ca.predios.spearman$Var1!=melted_utri.ca.predios.spearman$Var2,] 
+
+#para los tipo de uso de los predios las variables elegidas son
+#
+predios.uso
+predios.uso.sel<-c("apartamento.porcentaje","cuarto.porcentaje")
+
+
+# Correlacion Cobertura Arborea y poblacion SU ----
+cormat.ca.poblacion.pearson <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                      poblacion)],
+                                       use = "pairwise.complete.obs"),2)
+head(cormat.ca.poblacion.pearson)
+# Reorder the correlation matrix
+cormat.ca.poblacion.pearson <- reorder_cormat(cormat.ca.poblacion.pearson)
+utri.ca.poblacion.pearson <- get_upper_tri(cormat.ca.poblacion.pearson)
+# Melt the correlation matrix
+melted_utri.ca.poblacion.pearson <- melt(utri.ca.poblacion.pearson, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.poblacion.pearson)
+
+
+ggplot(data = melted_utri.ca.poblacion.pearson, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white",  
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables de población de los SU",
+       subtitle="Matriz de coeficientes de Pearson",
+       caption="Fuente:CA2015, DANE\nCálculos propios",x=NULL,y=NULL)
+
+
+
+cormat.ca.poblacion.spearman <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                       poblacion)],
+                                        use = "pairwise.complete.obs",
+                                        method = "spearman"),2)
+head(cormat.ca.poblacion.spearman)
+# Reorder the correlation matrix
+#cormat <- reorder_cormat(cormat)
+utri.ca.poblacion.spearman <- get_upper_tri(cormat.ca.poblacion.spearman)
+# Melt the correlation matrix
+melted_utri.ca.poblacion.spearman <- melt(utri.ca.poblacion.spearman, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.poblacion.spearman)
+
+
+ggplot(data = melted_utri.ca.poblacion.spearman, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables de población de los SU",
+       subtitle="Matriz de coeficientes de Spearman",
+       caption="Fuente:CA2015, DANE\nCálculos propios",x=NULL,y=NULL)
+
+melted_utri.ca.poblacion.pearson[(melted_utri.ca.poblacion.pearson$value>0.49 | melted_utri.ca.poblacion.pearson$value< -0.49) &
+                                  melted_utri.ca.poblacion.pearson$Var1!=melted_utri.ca.poblacion.pearson$Var2 ,] %>% arrange(value)
+melted_utri.ca.poblacion.spearman[(melted_utri.ca.poblacion.spearman$value>0.49 | melted_utri.ca.poblacion.spearman$value< -0.49 )&
+                                    melted_utri.ca.poblacion.spearman$Var1!=melted_utri.ca.poblacion.spearman$Var2,] 
+
+#para los tipo de uso de los poblacion las variables elegidas son
+#
+poblacion
+poblacion.sel<-c("superior_postgrado.porcentaje","afro.porcentaje")
+
+
+
+# Correlacion Cobertura Arborea y variables ambientales SU ----
+
+cormat.ca.ambientales.pearson <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                        ambientales)],
+                                         use = "pairwise.complete.obs"),2)
+head(cormat.ca.ambientales.pearson)
+# Reorder the correlation matrix
+cormat.ca.ambientales.pearson <- reorder_cormat(cormat.ca.ambientales.pearson)
+utri.ca.ambientales.pearson <- get_upper_tri(cormat.ca.ambientales.pearson)
+# Melt the correlation matrix
+melted_utri.ca.ambientales.pearson <- melt(utri.ca.ambientales.pearson, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.ambientales.pearson)
+
+
+ggplot(data = melted_utri.ca.ambientales.pearson, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables ambientales de los SU",
+       subtitle="Matriz de coeficientes de Pearson",
+       caption="Fuente:CA2015\nCálculos propios",x=NULL,y=NULL)
+
+
+
+cormat.ca.ambientales.spearman <- round(cor(analisis.ca[,c(cobertura.arborea,
+                                                         ambientales)],
+                                          use = "pairwise.complete.obs",
+                                          method = "spearman"),2)
+head(cormat.ca.ambientales.spearman)
+# Reorder the correlation matrix
+#cormat <- reorder_cormat(cormat)
+utri.ca.ambientales.spearman <- get_upper_tri(cormat.ca.ambientales.spearman)
+# Melt the correlation matrix
+melted_utri.ca.ambientales.spearman <- melt(utri.ca.ambientales.spearman, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_utri.ca.ambientales.spearman)
+
+
+ggplot(data = melted_utri.ca.ambientales.spearman, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "firebrick2", high = "steelblue3", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Cobertura arbórea y variables ambientales de los SU",
+       subtitle="Matriz de coeficientes de Spearman",
+       caption="Fuente:CA2015\nCálculos propios",x=NULL,y=NULL)
+
+melted_utri.ca.ambientales.pearson[(melted_utri.ca.ambientales.pearson$value>0.49 | melted_utri.ca.ambientales.pearson$value< -0.49) &
+                                     melted_utri.ca.ambientales.pearson$Var1!=melted_utri.ca.ambientales.pearson$Var2 ,] %>% arrange(value)
+melted_utri.ca.ambientales.spearman[(melted_utri.ca.ambientales.spearman$value>0.49 | melted_utri.ca.ambientales.spearman$value< -0.49 )&
+                                      melted_utri.ca.ambientales.spearman$Var1!=melted_utri.ca.ambientales.spearman$Var2,] %>% arrange(value)
+
+#para los tipo de uso de los ambientales las variables elegidas son
+#
+ambientales
+ambientales.sel<-c("diametro_medio_copa","arboles_area.ap")
+
+predictores.ca<-c(ambientales.sel,poblacion.sel,estructurales.sel,predios.uso.sel)
+predictores.ca
+
+#corelacion entre los predictores.ca ----
+cormat.prdca.pearson <- round(cor(analisis.ca[,c(predictores.ca)],
+                                 use = "pairwise.complete.obs"),2)
+head(cormat.prdca.pearson)
+# Reorder the correlation matrix
+cormat.prdca.pearson <- reorder_cormat(cormat.prdca.pearson)
+upper_tri.prdca.pearson <- get_upper_tri(cormat.prdca.pearson)
+# Melt the correlation matrix
+melted_cormat.prdca.pearson <- melt(upper_tri.prdca.pearson, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_cormat.prdca.pearson)
+
+
+ggplot(data = melted_cormat.prdca.pearson, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Correlación entre posibles predictores de coberturata arbórea",
+       subtitle="Matriz de coeficientes de Pearson",
+       caption="Fuente:CA2015,DANE e IDESC\nCálculos propios",x=NULL,y=NULL)
+
+cormat.prdca.spearman <- round(cor(analisis.ca[,c(predictores.ca)],
+                                 use = "pairwise.complete.obs",
+                                 method = "spearman"),2)
+head(cormat.prdca.spearman)
+# Reorder the correlation matrix
+cormat.prdca.spearman <- reorder_cormat(cormat.prdca.spearman)
+upper_tri.prdca.spearman <- get_upper_tri(cormat.prdca.spearman)
+# Melt the correlation matrix
+melted_cormat.prdca.spearman <- melt(upper_tri.prdca.spearman, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_cormat.prdca.spearman)
+
+
+ggplot(data = melted_cormat.prdca.spearman, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Spearman") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Correlación entre posibles predictores de coberturata arbórea",
+       subtitle="Matriz de coeficientes de Spearman",
+       caption="Fuente:CA2015,DANE e IDESC\nCálculos propios",x=NULL,y=NULL)
+
+
+melted_cormat.prdca.pearson[(melted_cormat.prdca.pearson$value>0.49 | melted_cormat.prdca.pearson$value< -0.49 )&
+                              melted_cormat.prdca.pearson$Var1!=melted_cormat.prdca.pearson$Var2,]%>% arrange(value)
+melted_cormat.prdca.spearman[(melted_cormat.prdca.spearman$value>0.5 | melted_cormat.prdca.spearman$value< -0.5 )&
+                               melted_cormat.prdca.spearman$Var1!=melted_cormat.prdca.spearman$Var2,]%>% arrange(value)
+
+
+#corelacion entre los predictores.ca y la cobertura arborea ----
+cormat.all.pearson <- round(cor(analisis.ca[,c(cobertura.arborea,predictores.ca)],
+                                use = "pairwise.complete.obs"),2)
+head(cormat.all.pearson)
+# Reorder the correlation matrix
+cormat.all.pearson <- reorder_cormat(cormat.all.pearson)
+upper_tri.all.pearson <- get_upper_tri(cormat.all.pearson)
+# Melt the correlation matrix
+melted_cormat.all.pearson <- melt(upper_tri.all.pearson, na.rm = TRUE)
+#melted_cormat <- melt(cormat)
+head(melted_cormat.all.pearson)
+
+
+ggplot(data = melted_cormat.all.pearson, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
+  #scale_fill_viridis(option = "magma")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson") +
+  theme_minimal()+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 1, 
+                                   size = 8, hjust = 1))+
+  coord_fixed()+
+  labs(title="Correlación entre posibles predictores de coberturata arbórea",
+       subtitle="Matriz de coeficientes de Pearson",
+       caption="Fuente:CA2015,DANE e IDESC\nCálculos propios",x=NULL,y=NULL)
+
+cormat.all.spearman <- round(cor(analisis.ca[,c(cobertura.arborea, predictores.ca)],
+                                 use = "pairwise.complete.obs",
                                  method = "spearman"),2)
 head(cormat.all.spearman)
 # Reorder the correlation matrix
@@ -1696,51 +2020,307 @@ head(melted_cormat.all.spearman)
 
 ggplot(data = melted_cormat.all.spearman, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
-  #geom_text(aes(Var2, Var1, label = value), color = "black", size = 2.2) +
+  geom_text(aes(Var1, Var2, label = value), color = "black", size = 2.2) +
   #scale_fill_viridis(option = "magma")+
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
-                       name="Spearman\nCorrelation") +
+                       name="Spearman") +
   theme_minimal()+ 
   theme(axis.text.x = element_text(angle = 90, vjust = 1, 
                                    size = 8, hjust = 1))+
-  coord_fixed()
+  coord_fixed()+
+  labs(title="Correlación entre posibles predictores de coberturata arbórea",
+       subtitle="Matriz de coeficientes de Spearman",
+       caption="Fuente:CA2015,DANE e IDESC\nCálculos propios",x=NULL,y=NULL)
 
-melted_cormat.pearson[(melted_cormat.pearson$value>0.5 | melted_cormat.pearson$value< -0.5) &
-                        melted_cormat.pearson$Var1!=melted_cormat.pearson$Var2 ,] %>% arrange(value)
-melted_cormat.spearman[(melted_cormat.spearman$value>0.49 | melted_cormat.spearman$value< -0.49 )&
-                         melted_cormat.spearman$Var1!=melted_cormat.spearman$Var2,]
-melted_cormat.all.spearman[(melted_cormat.all.spearman$value>0.59 | melted_cormat.all.spearman$value< -0.59 )&
-                             melted_cormat.all.spearman$Var1!=melted_cormat.all.spearman$Var2,]
 
+melted_cormat.all.pearson %>% arrange(Var1,value)
+melted_cormat.all.spearman
 # podemos hacer una selccion de las variables a incluir/descartar en el modelo
 # con base en los coeficientes calculados.
+#podemos hacer algunas conjeturas que nos permitan formular modelos a aprobar.
+# el porcentaje afro y las personas con estudios superiores presenta un fuerte relacion inversamente proporcional
+# podemos usar este par de varibles establecer modelos por dominio y compararlos
+# o modelos que mezclan carateristicas o simplemente las varibles mejor rankeadas en teminos de correlacion.
+#busco privilejiar las combinaciones razonadas para compararalas con las mejor ajustdas.
+
+# Modelos OLS ----
+
+library(ggfortify)
+predictores.ca
+cobertura.arborea
+analisis.ca %>%summary()
+#analisis.ca.long %>%
+ analisis.ca.long[analisis.ca.long$variables %in% c("cobertura_copa.ap",predictores.ca,"ningun_estudio.porcentaje"),] %>%
+  # analisis.cali.sel.long[analisis.cali.sel.long$variables %in% predios.uso,] %>%
+  ggplot()+
+  #  geom_histogram(aes(x=valor,fill=cut_interval(valor,20)) ,bins = 40)+
+  geom_histogram(aes(x=valor),bins = 20)+
+  #    scale_fill_viridis(discrete = T)+
+  facet_wrap(~variables, scales = "free",ncol = 4)
+
+#algunas nomalizaciones 
+ # log.var<-c("cobertura_copa.ap","area_media_manzana","area_ev.porcentaje")
+ log.var<-c("cobertura_copa.ap",predictores.ca)
+ log.var.nom<-lapply(log.var,paste0,".log")
+ analisis.ca<-analisis.ca[,log.var]%>%
+   mutate_each(funs(log(.+1))) %>%
+   setNames(nm = as.character(log.var.nom)) %>% 
+   bind_cols(analisis.ca,.)
+ summary(analisis.ca)
+ 
+ zscore.var<-names(analisis.ca%>%dplyr::select(-SETU_CCDGO))
+ zscore.var.nom<-sapply(zscore.var,paste0,".z")
+ analisis.ca<-analisis.ca[,zscore.var]%>%
+   mutate_each(funs(base::scale(.) %>% as.vector)) %>%
+   setNames(nm = zscore.var.nom) %>% 
+   bind_cols(analisis.ca,.)
+ summary(analisis.ca)
+ 
+ analisis.ca.long<-analisis.ca%>%
+   melt(
+     # ID variables - all the variables to keep but not split apart on
+     id.vars=c("SETU_CCDGO"),
+     variable.name="variables",
+     value.name="valor"
+   )
+ 
+ as.factor(as.character(log.var.nom))
+ analisis.ca.long[analisis.ca.long$variables %in% c(as.character(zscore.var.nom)),] %>%
+   # analisis.cali.sel.long[analisis.cali.sel.long$variables %in% predios.uso,] %>%
+   ggplot()+
+   #  geom_histogram(aes(x=valor,fill=cut_interval(valor,20)) ,bins = 40)+
+   geom_histogram(aes(x=valor),bins = 20)+
+   #    scale_fill_viridis(discrete = T)+
+   facet_wrap(~variables, scales = "free",ncol = 4) 
+
+#modelos variables ambientales  ----
+mod.amb.lm<-lm(formula = cobertura_copa.ap~arboles_area.ap+diametro_medio_copa,
+             analisis.ca)
+mod.log.amb.lm<-lm(formula = cobertura_copa.ap.log~arboles_area.ap.log.z+diametro_medio_copa.log,
+               analisis.ca)
+mod.log.std.amb.lm<-lm(formula = cobertura_copa.ap.log.z~arboles_area.ap.log.z+diametro_medio_copa.z,
+               analisis.ca)
+mod.std.amb.lm<-lm(formula = cobertura_copa.ap.z~arboles_area.ap.z+diametro_medio_copa.z,
+                       analisis.ca)
+#mod.amb.lm$residuals%>%shapiro.test()
+modelo<-mod.log.amb.lm
+modelo<-mod.log.std.amb.lm
+modelo<-mod.std.amb.lm
+modelo<-mod.amb.lm
+#modelo<-mod.log.std.amb.lm.out
+summary(modelo)
+autoplot(modelo,which = 1:6,alpha = 0.6,label.size = 3,label.n = 5)
+AIC(modelo)
+
+data.frame(analisis.ca$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  ggplot()+
+  geom_histogram(aes(x=residuals,fill=cut_interval(residuals,20)))+
+  scale_fill_viridis(discrete = T)
 
 
-#normaizacion y deteccion de outlier ----
+data.frame(analisis.ca$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  left_join(su.f,.,by=c("id"="SETU_CCDGO"))%>%
+  ggplot()+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=residuals))+
+  scale_fill_viridis()+coord_fixed()+theme_void()
 
-# outliers de las variable a predecir 
-
-analisis.ca %>% summary()
-analisis.ca[analisis.ca$area_publica.porcentaje>0.6,]$area_publica.porcentaje
-#outliers::outlier(analisis.ca$cobertura_copa.ap[analisis.ca$cobertura_copa.ap<0.9])
-cc.ap<-analisis.ca$cobertura_copa.ap
-hist( log10(cc.ap[cc.ap<1]))
-shapiro.test(log10(cc.ap[cc.ap<1])) 
+amb.out<-c(241,47,280,308)
+analisis.ca.out<-analisis.ca[-amb.out,]
 
 
+mod.log.std.amb.lm.out<-lm(formula = cobertura_copa.ap.log.z~arboles_area.ap.log.z+diametro_medio_copa.z,
+                           analisis.ca.out)
 
-analisis.ca %>%
+modelo<-mod.log.std.amb.lm.out
+summary(modelo)
+autoplot(modelo,which = 1:6)
+AIC(modelo)
+
+data.frame(analisis.ca.out$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.out.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  ggplot()+
+  geom_histogram(aes(x=residuals,fill=cut_interval(residuals,20)))+
+  scale_fill_viridis(discrete = T)
+
+
+
+data.frame(analisis.ca.out$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.out.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  left_join(su.f,.,by=c("id"="SETU_CCDGO"))%>%
+  ggplot()+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=residuals))+
+  scale_fill_viridis()+coord_fixed()+theme_void()
+
+  
+#modelos variables poblacion  ----
+melted_utri.ca.poblacion.spearman %>%
+  filter(Var1!=Var2 & (value>0.5 | value< -0.5))%>%
+  arrange(value)
+
+mod.pob.lm<-lm(formula = cobertura_copa.ap~afro.porcentaje+ningun_estudio.porcentaje+con_alguna_limitacion.porcentaje,
+               analisis.ca)
+
+mod.log.pob.lm<-lm(formula = cobertura_copa.ap.log~afro.porcentaje.z+con_alguna_limitacion.porcentaje.z,
+               analisis.ca)
+
+mod.std.pob.lm<-lm(formula = cobertura_copa.ap.z~afro.porcentaje.z+ningun_estudio.porcentaje.z+con_alguna_limitacion.porcentaje.z,
+               analisis.ca)
+
+mod.log.std.pob.lm<-lm(formula = cobertura_copa.ap.log.z~afro.porcentaje.log.z+ningun_estudio.porcentaje.z,
+                   analisis.ca)
+
+mod.log.std.sup.lm<-lm(formula = cobertura_copa.ap.log.z~superior_postgrado.porcentaje.log.z,
+                   analisis.ca)
+
+mod.log.std.afro.lm<-lm(formula = cobertura_copa.ap.log.z~afro.porcentaje.log.z,
+                       analisis.ca)
+
+modelo<-mod.pob.lm
+modelo<-mod.log.pob.lm
+modelo<-mod.std.pob.lm
+modelo<-mod.log.std.pob.lm
+modelo<-mod.log.std.afro.lm
+summary(modelo)
+autoplot(modelo,which = 1:6)
+AIC(modelo)
+
+data.frame(analisis.ca$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  ggplot()+
+  geom_histogram(aes(x=residuals,fill=cut_interval(residuals,20)))+
+  scale_fill_viridis(discrete = T)
+
+
+data.frame(analisis.ca$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  left_join(su.f,.,by=c("id"="SETU_CCDGO"))%>%
+  ggplot()+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=residuals))+
+  scale_fill_viridis()+coord_fixed()+theme_void()
+
+
+#modelos predios -----
+melted_utri.ca.predios.spearman %>%
+  filter(Var1!=Var2 & (value>0.4 | value< -0.4))%>%
+  arrange(value)
+
+mod.predios.lm<-lm(formula = cobertura_copa.ap~apartamento.porcentaje+cuarto.porcentaje,
+                analisis.ca)
+
+summary(mod.predios.lm)
+autoplot(mod.predios.lm,which = 1:6)
+
+mod.predios.lm$residuals%>%shapiro.test()
+data.frame(analisis.ca$SETU_CCDGO,mod.predios.lm$residuals)%>%
+  ggplot()+geom_histogram(aes(x=mod.predios.lm.residuals))
+AIC(mod.predios.lm)
+
+#modelos estructura SU ----
+
+melted_utri.ca.strct.spearman %>%
+  filter(Var1!=Var2,Var1=="cobertura_copa.ap" |Var2=="cobertura_copa.ap" )%>%
+  arrange(value)
+mod.strct.lm<-lm(formula = cobertura_copa.ap~area_media_manzana+area_ev.porcentaje,
+                   analisis.ca)
+mod.log.strct.lm<-lm(formula = cobertura_copa.ap.log~area_media_manzana.log+area_ev.porcentaje.log,
+                 analisis.ca)
+
+mod.log.std.strct.lm<-lm(formula = cobertura_copa.ap.log.z~area_media_manzana.log.z+area_ev.porcentaje.log.z,
+                     analisis.ca)
+
+
+modelo<-mod.strct.lm
+modelo<-mod.log.strct.lm
+modelo<-mod.log.std.strct.lm
+
+summary(modelo)
+autoplot(modelo,which = 1:6)
+AIC(modelo)
+
+data.frame(analisis.ca$SETU_CCDGO,modelo$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+  dplyr::rename(residuals=modelo.residuals)%>%
+  ggplot()+
+  geom_histogram(aes(x=residuals,fill=cut_interval(residuals,20)))+
+  scale_fill_viridis(discrete = T)
+
+
+data.frame(analisis.ca$SETU_CCDGO,mod.amb.lm$residuals)%>%
+  dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+  dplyr::rename(residuals=mod.amb.lm.residuals)%>%
+  left_join(su.f,.,by=c("id"="SETU_CCDGO"))%>%
+  ggplot()+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=residuals))+
+  scale_fill_viridis()+coord_fixed()+theme_void()
+
+# modelos con terminos por dominio ----
+  melted_cormat.all.spearman%>%
+  filter(Var1!=Var2,Var1=="cobertura_copa.ap" |Var2=="cobertura_copa.ap" )%>%
+  arrange(value)
+  
+  mod.mix.lm<-lm(formula = cobertura_copa.ap~superior_postgrado.porcentaje.z+area_media_manzana.log.z,
+                 analisis.ca)
+  
+  mod.log.std.mix.lm<-lm(formula = cobertura_copa.ap.log.z~superior_postgrado.porcentaje.log.z+afro.porcentaje.log.z+apartamento.porcentaje.log.z+area_ev.porcentaje.log.z,
+                   analisis.ca)
+  
+  mod.mix.lm<-lm(formula = cobertura_copa.ap~afro.porcentaje+apartamento.porcentaje+area_ev.porcentaje,
+                 analisis.ca)
+  
+  mod.mix.lm<-lm(formula = cobertura_copa.ap~afro.porcentaje+apartamento.porcentaje+num_manzanas,
+                 analisis.ca)
+  
+  modelo<-mod.log.std.mix.lm
+  modelo<-mod.mix.lm
+  summary(modelo)
+  autoplot(modelo,which = 1:6)
+  AIC(modelo)
+  
+  data.frame(analisis.ca$SETU_CCDGO,modelo$residuals)%>%
+    dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+    dplyr::rename(residuals=modelo.residuals)%>%
+    ggplot()+
+    geom_histogram(aes(x=residuals,fill=cut_interval(residuals,20)))+
+    scale_fill_viridis(discrete = T)
+  
+  
+  data.frame(analisis.ca$SETU_CCDGO,mod.amb.lm$residuals)%>%
+    dplyr::rename(SETU_CCDGO=analisis.ca.SETU_CCDGO)%>%
+    dplyr::rename(residuals=mod.amb.lm.residuals)%>%
+    left_join(su.f,.,by=c("id"="SETU_CCDGO"))%>%
+    ggplot()+
+    geom_polygon(aes(x=long,y=lat,group=group,fill=residuals))+
+    scale_fill_viridis()+coord_fixed()+theme_void()  
+  
+  #normaizacion y deteccion de outlier ----
+#algunos sectore aparecen frecuentemente como valores poco ajustados
+  
+# outliers de con base en el los OLS
+  
+
+
+
+
+#analisis.ca %>%
 #Box Plot 
-analisis.ca.long[analisis.ca.long$variables %in% cobertura.arborea,]%>%
+analisis.ca.long[analisis.ca.long$variables %in% predictores.ca,]%>%
 ggplot()+
   geom_boxplot(aes(x=variables,y=valor,fill=variables))
 
-analisis.cali.sel.long[analisis.cali.sel.long$variables %in% c("area_ev","area_media_ev","area_copa"),] %>%
+analisis.ca.long[analisis.ca.long$variables %in% c("area_media_ev","area_copa"),] %>%
   ggplot()+
   geom_boxplot(aes(x=variables,y=valor,fill=variables))
 
-analisis.cali.sel.long[analisis.cali.sel.long$variables %in% c("cobertura_copa.su","cobertura_copa.ap"),] %>%
+analisis.ca.long[analisis.cali.sel.long$variables %in% c("cobertura_copa.su","cobertura_copa.ap"),] %>%
   ggplot()+
   geom_boxplot(aes(x=variables,y=valor,fill=variables))
 
