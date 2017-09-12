@@ -31,7 +31,7 @@ library(MASS)
 
 # cargar datos CA ---- 
 #eliminar espacios
-df_CA <- read.csv("~/Documents/UNIGIS/Tesis/Analisys/CA2015/CAutf8.csv", sep=";")
+df_CA <- read.csv("./CA2015/CAutf8.csv", sep=";")
 df_CA <- as.data.frame(lapply(df_CA,function(x) if(is.character(x)|is.factor(x)) trimws(x) else x))
 
 ## inspeción  de los diferentes niveles(varibles ordinales y nominales) y varobles continuas ----
@@ -301,7 +301,7 @@ p_altura + geom_histogram(aes(fill = vegetacion),
 # criterios de seleccion individuos CA ----
 #independiente de su vitaidad actual, podemos pensar que hace 10 años 
 #no estaban ni enfermos ni secos, ni muertos, asi que los usaremos todos.
-#selvitalidad<-c("Regular","Sano")
+
 #Se excluyen las plantas arbustivas y los arbustos, pues interesa individuos de mayor talla
 #que 2 metros que provean sombra y sean un beneficio en andes, donde se ubica la mayor cantidad
 #de individuos
@@ -460,11 +460,7 @@ identical(proj4string(su),proj4string(AU_analsis_spatial))
 
 
 # operaciones espaciales ----
-# espacio_publico_idesc <- gBuffer(espacio_publico_idesc, byid=TRUE, width=0)
-# espacio_publico_EEC <- gBuffer(espacio_publico_EEC, byid=TRUE, width=0)
-# equipamento_EEC <- gBuffer(equipamento_EEC, byid=TRUE, width=0)
-# manzanas<-gBuffer(manzanas, byid=TRUE, width=0)
-# su<-gBuffer(su, byid=TRUE, width=0)
+
 
 #sectores censales en el perimetro urbano ----
 su<-su[prmtr_urbn_idesc,]
@@ -735,18 +731,35 @@ ep.cali<-ep.cali[,c("id_ap","nombre","categoria")]
 ep.cali.f<-fortify( ep.cali,region = "id_ap")
 ep.cali.f<- merge(ep.cali.f,ep.cali@data,by.x="id",by.y="id_ap")
 
-ext<-matrix(c(-300,-300,300,300),2)
+# ext<-matrix(c(-300,-300,300,300),2)
+# 
+# punto<-matrix(rep(c(1057658.9287038001 ,866161.98958216363),2),2,2)
+# zum2<-punto+ext
 
-punto<-matrix(rep(c(1057658.9287038001 ,866161.98958216363),2),2,2)
-zum2<-punto+ext
-
-
+ep.cali.f$categoria %>%unique()
 ggplot(ep.cali.f,aes(x=long,y=lat,group=group))+
   geom_polygon(data=manzanas.su.f ,aes(x=long,y=lat,group=group),fill=NA,color="lightgrey",size=0.2)+
   geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.6)+
   geom_polygon(aes(x=long,y=lat,group=group),fill="tomato",alpha=0.5)+
   coord_equal()+
   theme_void() #+coord_fixed(xlim = zum[1,],ylim = zum[2,])
+
+
+ep.cali.f$categoria %>%unique()
+ggplot(ep.cali.f,aes(x=long,y=lat,group=group))+
+  geom_polygon(data=manzanas.su.f ,aes(x=long,y=lat,group=group),fill=NA,color="lightgrey",size=0.2)+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.6)+
+  geom_polygon(aes(x=long,y=lat,group=group,fill=categoria),alpha=0.5)+
+  coord_equal()+
+  theme_void() #+coord_fixed(xlim = zum[1,],ylim = zum[2,])
+
+ggplot(ep.cali.f,aes(x=long,y=lat,group=group))+
+  #geom_polygon(data=manzanas.su.f ,aes(x=long,y=lat,group=group),fill=NA,color="lightgrey",size=0.2)+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),fill=NA, color="lightsteelblue",size=0.1)+
+  geom_polygon(aes(x=long,y=lat,group=group),fill="red",alpha=0.5)+
+  coord_equal()+
+  theme_void()+
+  facet_wrap(~categoria)#+coord_fixed(xlim = zum[1,],ylim = zum[2,])
 
 # refinamos la capa el espacio publico
 #clip del espacio publico por sector
@@ -951,8 +964,7 @@ analisis.cali$arboles_area.ap<-analisis.cali$num_arboles/analisis.cali$area_publ
 summary(analisis.cali)
 names(analisis.cali) %>%sort()
 
-# escalar varibles en [0,1] para los mapas ----
-range01 <- function(x, ...){(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
+
 
 
 # join stats CA20015 con SU ----

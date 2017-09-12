@@ -1,16 +1,18 @@
 ---
 title: "Análisis de los datos ambientales, socioeconomicos y de estructura física por sectores censales urbanos de Santiago de Cali"
+author: "Juan Fernando Correa Caicedo"
 output: html_notebook
 ---
 
- 
-```{r}
-AU_analsis %>% ggplot()+
-  geom_violin(aes(x=emplazamiento,y=diametro_copa/2,color=emplazamiento))
-```
+
+
+
+
 
 índice contenedor
 $$A^{C}_i =\sum_j{s_j} \;  \; \forall  j \in I $$ 
+índice contenedor relativo
+$$A^{C}_i =\sum_j{\frac{s_j}{a_i}} \;  \; \forall  j \in I $$  
 
 costo de viaje
 $$A^{T}_i =\sum_j{d_{ij}} \;  \; $$ 
