@@ -1,0 +1,386 @@
+# Procesamiento y análisis de datos {#anayproc}
+
+El procesamiento de los datos se realizó  principalmente en @R-base. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados.
+
+## Capas de información geográfica
+
+Para usar la información geográfica de la cartografía censal y la información del IDESC es necesario establecer un sistema de coordenadas común, en unidades métricas, que facilite integrar la información y produzca resultados consistentes. El sistema de coordenadas proyectadas que vamos a usar es @noauthor_magna-sirgas-cali_nodate. Para cargar y manipular los datos espaciales hacemos uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
+
+El siguiente mapa muestra los sectores urbanos con sus respectivos códigos de identificación descritos en la documentación que acompaña la cartografía.
+
+
+```{r mapa-su,fig.width=6, fig.asp=1.41, fig.cap="Sectores Urbanos del Censo del 2005. Los sectores seleccionados están parcial o totalmente contenidos en el perímetro urbano 2015"}
+
+ggplot()+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),
+               fill="lightgrey",color="white")+
+  coord_equal()+
+   with(su.setu_ccdgo, annotate(geom="text", x = long, y=lat, label = ids_su, 
+                                size = 1.8,
+                                color="black"))+
+  theme_void()
+
+```
+
+La capa de manzanas es necesaria para refinar las capas de espacio verde y poder calcular el área de calle , área privada y otras métricas sobre la estructura de cada sector sector censal y que servirán como criterios para la selección de sectores urbanos a incluir en los análisis de regresión.
+
+```{r mapa-manzana, fig.width=6, fig.asp=0.8, fig.cap="Coropleta del tamaño de manzana.Se usaron 10 grupos con aprox. el mismo número de observaciones"}
+#pintar usando colores por quantil
+manzanas.su.f%>%
+  ggplot(aes(x=long,y=lat,group=group))+
+  geom_polygon(aes(fill=cut_number(area_manzana,n = 10)))+
+  coord_equal()+
+  theme_void()+
+  viridis::scale_fill_viridis(discrete = TRUE, direction = -1)
+```
+
+Las capas de equipamiento de la EEC y espacio público se consolidan en una sola capa conservando la mayor cantidad de información sobre la clasificación de los tipos de espacios disponibles. El resultado puede ver verse de forma total (ver figuara \@ref(fig:mapa-ev)) o por tipo de espacio (figuras \@ref(fig:mapa-ev-facet) y \@ref(fig:mapa-ev-color)).
+
+```{r mapa-ev, fig.width=6, fig.asp=0.8, fig.cap="Espacio verdes consolidados y sectores urbanos"}
+# espacios publicos (verdes)
+base_plot.manzanas2 +
+  geom_path(data = su.f,aes(x=long,y=lat,group=group),
+            color="lightskyblue",
+            size=0.5)+
+  geom_polygon(data = ep.cali.f ,
+               aes(x=long,y=lat,group=group),
+               fill="deeppink",
+               alpha=0.7)+
+                                
+  theme_void()
+```
+
+
+```{r mapa-ev-color, fig.width=6, fig.asp=0.8, fig.cap="Espacio verde por categoría y manzanas"}
+base_plot.manzanas2 + 
+  geom_polygon(data = ep.cali.f ,
+               aes(x=long,y=lat,group=group,
+               fill=tolower(categoria)),
+               alpha=1)+
+  
+  theme_void()+
+  scale_fill_manual(name = "Tipo EV",values = palKata[c(9,8,7,6,1,5,4,10,2,3)])
+```
+
+
+```{r mapa-ev-facet, fig.width=7, fig.asp=1.5, fig.cap="Small Multiple del espacio verde por categoría"}
+# facets por tipo de espacio 
+  ggplot()+
+  geom_polygon(data = su.f,aes(x=long,y=lat,group=group),
+            fill="grey80",
+            color ="white",
+            size=0.1
+            )+
+  geom_polygon(data = ep.cali.f ,
+               aes(x=long,y=lat,group=group),
+               fill="deeppink",
+               alpha=1)+
+    coord_equal()+
+  theme_void()+
+  facet_wrap(~categoria, ncol = 3)+
+  theme(strip.text.x = element_text(size = 8))
+```
+
+Con estos datos consolidados se calculan las áreas de los espacios verdes al interior de cada sector censal, para calcular los índices de acceso tipo contenedor (ecuación \@ref(eq:contenedor)) interceptando los espacio verdes con los sectores urbanos. También se obtuvo una versión del índice contenedor como en porcentaje del área del SU. El cálculo de los índices de costo de viajes (ecuación \@ref(eq:costoviaje)) y costo de viaje normalizado (ecuación \@ref(eq:ncosto)) se obtiene creado una matriz de distancia entre los centroides de los sectores censales y cada uno de los espacios verdes. De esta matriz de distancia también se obtiene el índice de distancia mínima (ecuación \@ref(eq:mindist)). Los mapas de estos índices de acceso se muestran en las figuras \@ref(fig:mapas-ia-distancia)
+
+```{r mapas-ia-distancia,fig.width=7, fig.asp=0.8, fig.cap="Small Multiple de los indices de acceso a EV basados en distancia en escala continua"}
+
+pl_acceso_dist<-plots_map_su_df(metricas.acceso.df,metricas.acceso[c(1,2,7)])
+grid.arrange(grobs =pl_acceso_dist, nrow =1)
+```
+
+```{r mapas-ia-distancia-deciles,fig.width=7, fig.asp=0.8, fig.cap="Small Multiple de los indices de acceso a EV basados en distancia usando deciles"}
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(metricas.acceso.ntl.long, by = c("id"="SETU_CCDGO")) %>%
+  filter(metricas.acceso %in% metricas.acceso[c(1,2,7)]) %>%
+  ggplot()+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
+  coord_equal()+
+  scale_fill_viridis( name = "deciles",
+                      direction = 1, 
+                      discrete = T, 
+                      na.value = "grey50",
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+  facet_wrap(~metricas.acceso, nrow = 1)+
+  tema_lgnd_abajo()
+```
+
+
+Además de los índices basados en distancia y el tipo contenedor se calcularon índices de acceso basados en el área de espacio verde en un radio de 1000 metros. Estos índices muestran un dimensión relacionada no con solo con el acceso sino con la cantidad de espacio disponible en el ese rango. Para hacernos una idea del radio de de búsqueda seleccionada el siguiente mapa muestra los radios de 1000 metros desde el centroide de cada SU a los espacios verdes en ese rango. 
+
+```{r mapa-rango1km, fig.width=7, fig.asp=0.8, fig.cap="Espacio verdes y rango de 1 km desde centriodes de SU"}
+ggplot()+
+  geom_polygon(data = s_1000_df, 
+               aes(x=long,y=lat,group=group),
+               fill = "salmon",
+               alpha = 0.2)+
+  geom_path(data = su.f,aes(x=long,y=lat,group=group),
+            color="grey40",
+            size=0.4)+
+  geom_polygon(data = ep.cali.f ,
+               aes(x=long,y=lat,group=group),
+               fill="royalblue",
+               alpha=0.5)+
+  coord_equal()+
+  theme_void()
+```
+
+
+Los índices de acceso basados en área se resumen en la siguiente gráfica.
+
+```{r mapas-ia-area,  fig.width=7, fig.asp=1, fig.cap="Small Multiple de los indices de acceso a EV basados en área usando escala continua"}
+pl_acceso_dist<-plots_map_su_df(metricas.acceso.df,metricas.acceso[c(8,9,10,11)])
+grid.arrange(grobs =pl_acceso_dist, ncol =2)
+
+```
+
+```{r mapas-ia-area-deciles,fig.width=7, fig.asp=0.8, fig.cap="Small Multiple de los indices de acceso a EV basados en distancia usando deciles"}
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(metricas.acceso.ntl.long, by = c("id"="SETU_CCDGO")) %>%
+  filter(metricas.acceso %in% metricas.acceso[c(8,9,10,11)]) %>%
+  ggplot()+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
+  coord_equal()+
+  scale_fill_viridis( name = "deciles",
+                      direction = 1, 
+                      discrete = T, 
+                      na.value = "grey50",
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+  facet_wrap(~metricas.acceso, nrow = 1)+
+  tema_lgnd_abajo()
+```
+
+En la búsqueda de índices de acceso más complejos que reflejen el acceso en distancia como y la cantidad de área disponible desde cada sector urbano se construyeron índices similares a el índice de distancia de a pie (ecuación \@ref(eq:walkdist) se basan en la razón entre el área a la que se accede y la distancia a la que se encuentra del centroide del sector. Dos nuevos índices se proponen en este trabajo: ia.areas.dist como la suma de las áreas en el rango de 1 km desde el centroide del SU dividido la suma de las distancia a esos EV; ia.A.D, que es la suma de las razones entre el área del espacio verde j dividido entre la distancia d_ij desde el centroide del SU i al EV j. La siguiente gráfica muestra las métricas propuestas.
+
+```{r mapas-ia-area-dist,fig.width=7, fig.asp=0.8, fig.cap="Small Multiple de los indices de acceso a EV basados en área y distancia usando escala continua"}
+pl_acceso_mix<-plots_map_su_df(metricas.acceso.df,metricas.acceso[c(13:14)])
+grid.arrange(grobs =pl_acceso_mix, ncol =2)
+
+```
+
+```{r mapas-ia-area-dist-deciles,fig.width=7, fig.asp=0.8, fig.cap="Small Multiple de los indices de acceso a EV basados en distancia usando deciles"}
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(metricas.acceso.ntl.long, by = c("id"="SETU_CCDGO")) %>%
+  filter(metricas.acceso %in% metricas.acceso[c(13,14)]) %>%
+  ggplot()+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
+  coord_equal()+
+  scale_fill_viridis( name = "deciles",
+                      direction = 1, 
+                      discrete = T, 
+                      na.value = "grey50",
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+  facet_wrap(~metricas.acceso, nrow = 1)+
+  tema_lgnd_abajo()
+```
+
+Finalmente se muestras el código en R que calcula los índices presentados, y el resumen de los índices calculados. 
+
+```{r code-indices-acceso, eval= FALSE, echo=TRUE}
+# matriz distancia entre centriodes y espacios
+m.dist.ctrdsu.ep<-gDistance(ep.cali,centroides.su, byid = T) 
+#cuando el punto esta dentro del poligono el valor que rertorna es 0
+# por ese motivo le pondremos 10 a valores = 0 o entre 0 y 10 para 
+# evitar problemas al invertir la matriz y mejorar la conistencia del indices
+# con valores inversos a la distancia
+m.dist.ctrdsu.ep[m.dist.ctrdsu.ep < 10]<- 10
+# matriz consicion de estar a 1000 del centriodo
+is.1000.ep<-gWithinDistance(ep.cali,centroides.su,1001, byid = T)
+# cantidad de espacio verdes en radio de 1000 m de los centriodes del sector urbano
+num.ep.1000<-apply(is.1000.ep,1,function(x)  sum(x,na.rm =T))
+#distancias de Espacio publicos a 1000 del centriode de SU
+a<-m.dist.ctrdsu.ep*is.1000.ep
+
+# distancia minima distinta de 0
+ia.mindist<-apply(m.dist.ctrdsu.ep,1,function(x)  min(x[x!=0]))
+index.min<-apply(m.dist.ctrdsu.ep,1,function(x)  which.min(x[x!=0]))
+ia.area.mindist<-ep.cali$area_ep[index.min]/ia.mindist
+# suma de las distancias a cada EP por centriode 
+ia.costoviaje<-apply(m.dist.ctrdsu.ep,1,sum)
+# suma de las distancias a cada EP ubicado a menos de 1000 m del centriode
+ia.1000<-apply(a,1,function (x) sum(x))
+ia.1000[ia.1000==0]<-NA
+ia.1000.n<-ia.1000/num.ep.1000
+# indice de la suma de las areas en el rango de un 1 km del sector censal
+ia.areas.1000<-is.1000.ep %*% ep.cali$area_ep %>% as.vector()
+# indice de area disponible en el radio de 1km como porcentaje del area total 
+# disponible 
+
+ia.areas.1000.porcentaje<-ia.areas.1000/sum(ep.cali$area_ep)
+
+# matriz de distancias inversas de centriode su a espacios verdes  
+m.dist.ctrdsu.1000.ep.inv<-1/a
+b<-m.dist.ctrdsu.1000.ep.inv*is.finite(m.dist.ctrdsu.1000.ep.inv) # eliminar infinitos
+# suma de inverso de las distancias a cada EP ubicado a menos de 1000 m del centriode
+ia.1000.inv<-apply(b,1,function (x) sum(x,na.rm = T))
+ia.1000.inv[ia.1000.inv==0]<-NA
+#razon entre Area del EP y distancia al centriode
+A.D<-t(t(b)*ep.cali$area_ep)
+
+# sumatoria de la razon entre Area del EP y distancias de ese EP al centriode
+ia.A.D<-apply(A.D,1,function (x) sum(x,na.rm = T))
+class(ia.costoviaje)
+summary(ia.costoviaje)
+length(ia.costoviaje)
+summary(ia.1000.inv)
+length(ia.A.D)
+summary(ia.A.D)
+
+# consolidadcionde indices calculados
+ia.ev<-data.frame(su$SETU_CCDGO,ia.costoviaje)
+ia.ev$ia.costo.n<-ia.ev$ia.costoviaje/dim(m.dist.ctrdsu.ep)[2]
+ia.ev<-bind_cols(ia.ev,data.frame(ia.1000,
+                                  ia.1000.inv,
+                                  ia.1000.n,
+                                  ia.areas.1000,
+                                  ia.areas.1000.porcentaje
+                                  ))
+ia.ev$ia.r300<-300*ia.1000.inv
+ia.ev<-ia.ev%>%dplyr::rename(SETU_CCDGO=su.SETU_CCDGO)
+ia.ev$ia.mindist<-ia.mindist
+ia.ev$ia.area.mindist<-ia.area.mindist
+ia.ev$ia.A.D<-ia.A.D
+smry.area<-summary(ep.cali$area_ep)
+ia.ev$ia.r300.Amedia<- 300/smry.area[4]*ia.ev$ia.A.D
+ia.ev$ia.r300.Amediana<- 300/smry.area[3]*ia.ev$ia.A.D
+ia.ev$ia.areas.dist<-ia.areas.1000/ia.1000
+
+
+```
+
+```{r resumen-ia}
+summary(ia.ev)
+```
+
+## Datos del censo arbóreo 2015
+
+En las siguientes se muestran los agregados de los datos por cada una de las variables categóricas en conjunto con los valores de altura, diámetro de la copa y ubicación.
+
+
+```{r au-veg, fig.width=7, fig.asp=1, fig.cap="Carateristicas por tipo de vegetacion"}
+#carateristicas por tipo de vegetacion
+AU_analsis %>% 
+  ggplot()+
+  geom_point(aes(y=altura_arbol,x=diametro_copa),alpha=0.1, color ="forestgreen" )+
+  coord_equal()+
+  theme_bw()+
+  facet_wrap( ~ vegetacion, nrow = 2 )
+```
+
+```{r au-emplaz-veg, fig.width=7, fig.asp=1.2, fig.cap="Carateristicas por tipo de vegetacion y emplazamiento"}
+AU_analsis %>% 
+  #filter(vegetacion %in% c("Arbol","Bambu","Palma")) %>%
+  ggplot()+
+  geom_point(aes(y=altura_arbol,x=diametro_copa,color=vegetacion),alpha=0.1)+
+  scale_color_brewer(palette = "Dark2")+
+  coord_equal()+
+  facet_wrap(~emplazamiento , ncol = 4 ,labeller = label_wrap_gen())+
+  guides(colour = guide_legend(override.aes = list(alpha=1)))+
+  tema_lgnd_up()
+```
+
+```{r au-diametro-emp, fig.width=7, fig.asp=0.8, fig.cap="Varibilidad del diámetro de copa por emplazamiento"}
+AU_analsis %>% 
+ggplot( aes(x=emplazamiento,y=diametro_copa))+
+  geom_jitter(position = position_jitter(0.3),alpha=0.1, color = "forestgreen")+ 
+  stat_summary(fun.y = mean, geom = "point", shape = 18, size = 3, color = "tomato")+
+  coord_flip()+
+  tema_lgnd_up()
+
+```
+
+```{r au-altura-emp, fig.width=7, fig.asp=0.8, fig.cap="Varibilidad de la altura de los arboles por emplazamiento"}
+AU_analsis %>% 
+  ggplot( aes(x=emplazamiento,y=altura_arbol))+
+  geom_jitter(position = position_jitter(0.3),alpha=0.1, color = "forestgreen")+ 
+  stat_summary(fun.y = mean, geom = "point", shape = 18, size = 3, color = "tomato")+
+  coord_flip()+
+  tema_lgnd_up()
+
+```
+
+```{r au-geo-emp, fig.width=7, fig.asp=1, fig.cap="Small multiples de los individuos arboreos por emplazamiento"}
+# puntos por e,mplazamiento
+base_plot.manzanas + geom_point(data = AU_analsis,
+                                aes(x = Este, y = Norte),
+                                size=0.01,
+                                color="forestgreen",
+                                alpha=0.1)+
+  theme_void()+
+  facet_wrap(~emplazamiento , ncol = 5 ,labeller = label_wrap_gen())
+
+  ggsave("./images/mapa-arboles-facet-emplazamiento.png",
+       scale = 1, width = 11, height = 8,
+       dpi = 300)
+```
+
+Antes de agregar (enmascarar) los datos usando los sectores cesales podemo usar hexagonos de 250 metros, que cobren de forma uniform el territorio y aprecia el fecto de la agregacion, asi como identificar la densidad de copa en la ciudad.
+
+```{r au-geo-hex, fig.width=7, fig.asp=0.8, fig.cap="Suma de cobertura por hexagonos"}
+# suma de cobertura por hex
+p.hex.copa  <-base_plot.manzanas+ stat_summary_hex(data = AU_analsis,
+                                 aes(x = Este, y = Norte, z = area_copa),
+                               binwidth = c(250, 250),
+                               fun = sum 
+                               )+
+    geom_path(data = su.f,
+                 aes(x = long, y = lat, group = group),
+              color ="grey50",
+              size=0.2)+
+    coord_equal()+
+    scale_fill_viridis(name="área \n copa",direction = 1)+
+    theme_void()
+ p.hex.copa   
+```
+
+Ahora que hemos explorado los datos encrudo, veamos las agregaciones a nivel de sectores censales de el area de copa y del numero de arboles.
+```{r au-su-acopa, fig.width=7, fig.asp=0.8, fig.cap="Area de copa por sector censal"}
+p.su.copa<-su.f %>% dplyr::select(-area_su)  %>%
+  left_join(analisis.cali.df,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = area_copa))+
+  coord_equal()+
+  theme_void()+
+  scale_fill_viridis(name = "área \n copa", direction = 1 )
+p.su.copa
+```
+
+
+```{r au-su-numarb, fig.width=7, fig.asp=0.8, fig.cap="Cantidad de atboles por sector censal"}
+p.su.arboles<-su.f %>% dplyr::select(-area_su)  %>%
+  left_join(analisis.cali.df,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = num_arboles))+
+  coord_equal()+
+  theme_void()+
+  scale_fill_viridis(name = "num \narboles ", direction = 1 )
+```
+
+```{r}
+grid.arrange(p.hex.copa,p.su.copa, ncol = 2, top = "Agregación de area de copa por hexagonos y SU")
+
+
+```
+
+```{r}
+grid.arrange(p.hex.arboles,p.su.arboles, ncol = 2, top = "Agregación de número de árboles por hexagonos y SU")
+```
+
+
+## Datos del censo de población
+
+
+## Análisis estadísticos
+
+
+## Análisis geoestadísticos
+

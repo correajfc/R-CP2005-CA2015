@@ -1,0 +1,33 @@
+--- 
+title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia. "
+author: "Juan Fernando Correa Caicedo"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [tesis.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: correajfc/unigis-tesis
+description: "Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.)."
+---
+```{r setup-chunks}
+knitr::opts_chunk$set(echo = FALSE,tidy = T, out.width = '100%')
+```
+
+Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.).
+
+# Presentación {-}
+
+Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.).
+
+# Agradecimientos {-}
+
+Dar las gracias ...
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

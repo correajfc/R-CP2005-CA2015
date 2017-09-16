@@ -1,0 +1,117 @@
+# Introdución {#intro}
+
+En las agendas municipales, a nivel mundial, ha crecido la importancia de las 
+relaciones y patrones de distribución de los beneficios de áreas verdes en 
+comparación con la distribución espacial de variables sociales y económicas como
+el ingreso, acceso al trabajo, la etnicidad o el género, con miras a reducir las
+desigualdades entre los ciudadanos en el acceso y disfrute de los servicios 
+ambientales. La definición y valoración de estos beneficios hace uso de medidas 
+como la abundancia, la cobertura de las copas de los árboles, índices de 
+vegetación,  diferentes distancias a las zonas verdes dentro de un marco 
+alineado con conceptos como la justicia ambiental, equidad y la sostenibilidad. 
+Estos indicadores son calculados con datos de censos de población, encuesta de 
+calidad de vida, censos arbóreos, imágenes satelitales, cartografías y bases de 
+datos de entidades oficiales y académicas. Los beneficios tienen cargas y costos
+de mantenimiento para la administración y gestión de los recursos y servicios 
+ambientales, lo que exige que se identifique las zonas, condiciones de los 
+recursos y de la población para la ejecución de acciones eficaces y eficientes 
+por parte de los gobiernos y autoridades ambientales.
+
+Este proyecto hará uso del censo arbóreo urbano realizado en Santiago de Cali 
+(Colombia) entre el año 2014 y 2015, de datos del censo de población de 2005 y 
+los datos de clasificaciones de usos del suelo por actividades y estratos 
+socioeconómico de los predios de la zona urbana del municipio. El propósito es 
+motivar el desarrollo de políticas, proyectos e instrumentos que potencien al 
+árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad 
+de vida de los ciudadanos. Para ello se plantea identificar si existen patrones 
+espaciales estadísticamente significativos que muestre una relación negativa 
+entre las coberturas de copa, el acceso a espacios verdes y zonas con población 
+en condiciones socioeconómicas de vulnerabilidad. El proyecto hace uso de los 
+aportes de tipo metodológico y estadístico de la literatura especializada sobre 
+modelos de regresión lineal y  modelos de regresión espacial. Estos métodos son 
+enriquecidos con la exploración visual de los datos.
+
+## Problema de investigación
+
+La distribución espacial equitativa de los beneficios que proveen el arbolado 
+urbano y las zonas verdes de espacio público, que constituyen un bien común, 
+financiado y de responsabilidad de las administraciones municipales^[Así está 
+expresado en las las leyes ambientales que dan forma al  Sistema Nacional 
+Ambiental, SINA, (LEY 99 DE 1993) y reglamentan los planes de desarrollo y de 
+ordenamiento territorial (LEY 388 DE 1997), así como la creación de organismos 
+en la estructura municipal (Acuerdo 01 de 1996).], es un componente 
+cuantificable por medio métodos estadístico y técnicas de análisis espacial con 
+miras a construir evidencia sobre el disfrute y acceso a los beneficios 
+ambientales en espacios urbanos y su relación con las condiciones de vida de la 
+población que habita ese territorio.
+
+Este trabajo pretende enfocarse en describir los patrones espaciales y 
+establecer la correlación entre métricas para representar los beneficios del 
+arbolado urbano(AU) y los espacios verdes (EV) con las variables sociales y 
+económicas de la población. El valor explicativo de la posición en el plano 
+geográfico sobre las métricas ambientales y socioeconómicas permite seleccionar 
+los modelos de regresión apropiados para cuantificar el grado de correlación que
+existe [@fotheringham_geographically_1998]. El problema comprende la exploración
+de las variables sociales y ambientales, el cálculo de indicadores, 
+identificación de los valores de referencia para la interpretación de las 
+cifras, la cuantificación de la correlación, identificar las zonas con 
+acumulación de desigualdades y la presentación visual de la información 
+consolidada para la discusión.
+
+Algunas de las preguntas a las que se enfrenta esta investigación son: ¿a parte 
+de la cobertura de las copas qué otras variables biofísicas, por ejemplo la 
+edad, la especie(frutales), o la diversidad de especies arbóreas, que expresan 
+beneficios, pueden incluirse en el análisis de correlación? ¿Cuáles son las 
+zonas que muestran mayores correlaciones negativas entre las variables sociales 
+y la cobertura de copas o el acceso a zonas verdes? ¿Es igual tener acceso a un 
+parque pequeño que a uno grande? ¿ Existen aspectos de tipo urbanístico y de la 
+estructura de los barrios que condicionan el desarrollo del arbolado? ¿Están 
+estos factores de estructura y uso relacionados con las condiciones de la 
+población? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos?
+
+## Hipótesis
+
+Las zonas urbanas con más desventajas sociales y económicas tienen menos acceso 
+a espacios verdes y a los beneficios del arbolado urbano.
+
+## Objetivos 
+
+### Objetivo general Identificar y analizar espacialmente 
+inequidades socioeconómicas en relación a los espacios verdes y el arbolado en 
+la zona urbana de Cali.
+
+### Objetivos específicos - Generar métricas de cobertura de espacios verdes y 
+arbolado urbano. - Identificar y caracterizar las variables sociales y 
+económicas para ser relacionadas con acceso a espacios verdes y cobertura. - 
+Evaluar las relaciones entre los diferentes indicadores ambientales, sociales y 
+económicos.
+
+## Justificación
+
+La inclusión de los componentes ambientales en el ámbito de la planificación 
+urbana en los planes de ordenamiento territorial que exige la legislación 
+colombiana^[LEY 388 DE 1997] necesita de la creación de medidas y la elaboración
+de análisis sobre su relación con las condiciones de vida de la población. Las 
+herramientas para establecer políticas públicas y el seguimiento a las acciones 
+realizadas por las administraciones municipales deben estar asociadas a 
+características medibles y objetivas para su implementación. Se espera que los 
+objetivos y proyectos estén sustentados en estudios científicos que identifiquen
+brechas y oportunidades para la intervención y mejoramiento de los servicios 
+ambientales de los cuales es responsable el gobierno local. En esta medida este 
+estudio contribuye a la identificación de relaciones de inequidad en la 
+distribución de los beneficios que provee el arbolado urbano a través del 
+análisis espacial de la cobertura arbórea, el acceso a zonas verdes y la 
+distribución de las variables sociales y económicas de la población. El estudio 
+promete ser un punto de partida para la identificación de zonas de intervención 
+del arbolado con el fin de cerrar brechas relacionadas con el desarrollo 
+sostenible y la justicia ambiental.
+
+Ante la oportunidad que brinda contar con los datos del censo arbóreo de 
+Santiago de Cali, se abre la posibilidad de hacer análisis de estos beneficios 
+ambientales para la población usando datos con alta resolución espacial que 
+permiten hacer inferencia estadística a escalas apropiadas para la intervención 
+y aprovechamiento de los recursos naturales de la ciudad, y que explotan el 
+potencial que ofrece la información censal y los conjuntos de datos espaciales 
+de los que dispone la administración municipal [@schwarz_trees_2015]. Los 
+resultados de esta investigación buscan aportar al debate académico y enriquecer
+el proceso de la toma de decisiones y la planificación de la ciudad.

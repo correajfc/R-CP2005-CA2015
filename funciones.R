@@ -30,6 +30,18 @@ tema_lgnd_abajo<-function (...){
   
 }
 
+tema_lgnd_derecha<-function (...){
+  theme_void() +
+    theme(
+      legend.text=element_text(size=6),
+      legend.position = "right",
+      legend.key.height = unit(2,"mm"),
+      legend.direction = "horizontal",
+      ... 
+    )
+  
+}
+
 
 expandBbox<-function(bb,perc.x,perc.y){
   dx <- (bb[1,2]-bb[1,1])*perc.x 
@@ -258,7 +270,8 @@ crear_lm_from_df<-function(df){
   dependiente<-var_names[1]
   independientes<-var_names[-c(1,length(var_names))]
   form<-as.formula(paste(dependiente, paste(independientes, collapse=" + "), sep=" ~ "))
-  lm(formula = form, data = df )
+  lm_df<-lm(formula = form, data = df )
+  lm_df
 
 
 }

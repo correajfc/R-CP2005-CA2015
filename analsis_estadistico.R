@@ -299,7 +299,7 @@ regresion.arboles %>% select(one_of(dependientes.arboles)) %>%
   facet_wrap(~dependientes.arboles, scales = "free", ncol = 1)
 
 
-#seleccion de varibles dependientes a usar
+#seleccion de varibles dependientes a usar area copa ----
 # evitaremaos usar variables altamente correlacionadas entre ellas
 # buscado mantener los supuesto de una regresion lineal
 # entre ellas priviliegiando las mejor relacionadas con base en las matriesde correlacion
@@ -350,13 +350,14 @@ indep.poblacion.area_copa<-c("superior_postgrado",
 
 
 
-# modelar la cobertura de copa
+# modelar la cobertura de copa ----
 # modelo area de copa
 library(ggfortify)
 library(car)
 library(gvlma)
 library(broom)
 library(purrr)
+library(olsrr)
 dependiente <- "area_copa"
 independientes  <- indep.poblacion.area_copa
 f.area_copa.sel<-as.formula(paste(dependiente, paste(independientes, collapse=" + "), sep=" ~ "))
@@ -384,54 +385,21 @@ summary(gvmodel)
 
 pintar_mapa_su_lm(regresion.arboles,lm.area_copa.sel,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.area_copa.sel,num_tiles = 5)
-
-
-#variaciones del modelo para obtener un ajuste mmejor
-regresion.arboles$log.area_copa<-log(regresion.arboles$area_copa)
-dependiente <- "log.area_copa"
-independientes  <- indep.poblacion.area_copa
-f.log.area_copa.sel<-as.formula(paste(dependiente, paste(independientes, collapse=" + "), sep=" ~ "))
-
-lm.log.area_copa.sel<-lm(formula = f.log.area_copa.sel, data = regresion.arboles )
-summary(lm.log.area_copa.sel)
-#test de ajuste
-mean(lm.log.area_copa.sel$residuals) # media de los residuos cercana a 0 (si)
-# Homocedasticidad de los residuos o varianza igual
-autoplot(lm.log.area_copa.sel, which = 1:4)
-ggnostic(lm.log.area_copa.sel)
-# aun un amuento de la varianza. hagamos un test para verificar este aumento
-lmtest::bptest(lm.log.area_copa.sel) # la varianza de los residuos no es constante 
-shapiro.test(lm.log.area_copa.sel$residuals) # los residuos si exhiben una distribucion normal
-ggplot() + geom_density(aes(residuals(lm.log.area_copa.sel))) 
-
-gvmodel <- gvlma(lm.log.area_copa.sel) 
-summary(gvmodel)
-
-pintar_mapa_su_lm(regresion.arboles,lm.log.area_copa.sel,nrow =1)
-pintar_mapa_su_lm_ntl(regresion.arboles,lm.log.area_copa.sel,num_tiles = 10)
-# sqrt model
-regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
-dependiente <- "sqrt.area_copa"
-independientes  <- indep.poblacion.area_copa
-f.sqrt.area_copa.sel<-as.formula(paste(dependiente, paste(independientes, collapse=" + "), sep=" ~ "))
-
-lm.sqrt.area_copa.sel<-lm(formula = f.sqrt.area_copa.sel, data = regresion.arboles )
-summary(lm.sqrt.area_copa.sel)
-#test de ajuste
-mean(lm.sqrt.area_copa.sel$residuals) # media de los residuos cercana a 0 (si)
-# Homocedasticidad de los residuos o varianza igual
-autoplot(lm.sqrt.area_copa.sel, which = 1:4)
-ggnostic(lm.sqrt.area_copa.sel)
-# aun un amuento de la varianza. hagamos un test para verificar este aumento
-lmtest::bptest(lm.sqrt.area_copa.sel) # la varianza de los residuos no es constante 
-shapiro.test(lm.sqrt.area_copa.sel$residuals) # los residuos si exhiben una distribucion normal
-ggplot() + geom_density(aes(residuals(lm.sqrt.area_copa.sel))) 
-
-
-gvmodel <- gvlma(lm.sqrt.area_copa.sel) 
-summary(gvmodel)
-pintar_mapa_su_lm(regresion.arboles,lm.sqrt.area_copa.sel,nrow =1)
-pintar_mapa_su_lm_ntl(regresion.arboles,lm.sqrt.area_copa.sel,num_tiles = 10)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.area_copa.sel)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
+# combinaciones de las varibles del modelo
+best_models<-ols_best_subset(lm.area_copa.sel)
+best_models
+plot(best_models)
 
 # Max nomalization model
 dependiente <- "area_copa"
@@ -457,18 +425,147 @@ gvmodel <- gvlma(lm.mn.area_copa.sel)
 summary(gvmodel)
 pintar_mapa_su_lm(regresion.arboles.mn,lm.mn.area_copa.sel,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles.mn,lm.mn.area_copa.sel,num_tiles = 10)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.mn.area_copa.sel)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
+best_models<-ols_best_subset(lm(formula = formula(lm.mn.area_copa.sel),data=lm.mn.area_copa.sel$model))
+best_models
+plot(best_models)
 
+#variaciones del modelo para obtener un ajuste mmejor
+regresion.arboles$log.area_copa<-log(regresion.arboles$area_copa)
+dependiente <- "log.area_copa"
+independientes  <- indep.poblacion.area_copa
 
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.log.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
+modelo<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.log.area_copa.sel)
+#test de ajuste
+mean(lm.mxn.log.area_copa.sel$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+autoplot(lm.mxn.log.area_copa.sel, which = 1:4)
+ggnostic(lm.mxn.log.area_copa.sel)
+# aun un amuento de la varianza. hagamos un test para verificar este aumento
+lmtest::bptest(lm.mxn.log.area_copa.sel) # la varianza de los residuos no es constante 
+shapiro.test(lm.mxn.log.area_copa.sel$residuals) # los residuos no exhiben una distribucion normal
+ggplot() + geom_density(aes(residuals(lm.mxn.log.area_copa.sel))) 
+
+gvmodel <- gvlma(lm.mxn.log.area_copa.sel) 
+summary(gvmodel)
+
+pintar_mapa_su_lm(regresion.arboles,lm.mxn.log.area_copa.sel,nrow =1)
+pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.log.area_copa.sel,num_tiles = 5)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.mxn.log.area_copa.sel)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
+
+# combinaciones de las varibles del modelo
+
+best_models<-ols_best_subset(lm(formula = formula(lm.mxn.log.area_copa.sel),data=lm.mxn.log.area_copa.sel$model))
+best_models
+plot(best_models)
+
+# sqrt model
+regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
+dependiente <- "sqrt.area_copa"
+independientes  <- indep.poblacion.area_copa
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.sqrt.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.sqrt.area_copa.sel)
+#test de ajuste
+mean(lm.mxn.sqrt.area_copa.sel$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+autoplot(lm.mxn.sqrt.area_copa.sel, which = 1:4)
+ggnostic(lm.mxn.sqrt.area_copa.sel)
+# aun un amuento de la varianza. hagamos un test para verificar este aumento
+lmtest::bptest(lm.mxn.sqrt.area_copa.sel) # la varianza de los residuos no es constante 
+shapiro.test(lm.mxn.sqrt.area_copa.sel$residuals) # los residuos no exhiben una distribucion normal
+ggplot() + geom_density(aes(residuals(lm.mxn.sqrt.area_copa.sel))) 
+
+gvmodel <- gvlma(lm.mxn.sqrt.area_copa.sel) 
+summary(gvmodel)
+
+pintar_mapa_su_lm(regresion.arboles,lm.mxn.sqrt.area_copa.sel,nrow =1)
+pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.sqrt.area_copa.sel,num_tiles = 5)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.mxn.sqrt.area_copa.sel)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
+# combinaciones de las varibles del modelo
+
+best_models<-ols_best_subset(lm(formula = formula(lm.mxn.sqrt.area_copa.sel),
+                                data=lm.mxn.sqrt.area_copa.sel$model))
+best_models
+plot(best_models)
+
+# mejor modelos de poblacion ----
+regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
+dependiente <- "sqrt.area_copa"
+independientes  <- c("superior_postgrado","densidad_poblacion.inv")
+
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.best.area_copa<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.best.area_copa)
+#test de ajuste
+mean(lm.best.area_copa$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+autoplot(lm.best.area_copa, which = 1:4)
+ggnostic(lm.best.area_copa)
+# aun un amuento de la varianza. hagamos un test para verificar este aumento
+lmtest::bptest(lm.best.area_copa) # la varianza de los residuos no es constante 
+shapiro.test(lm.best.area_copa$residuals) # los residuos no exhiben una distribucion normal
+ggplot() + geom_density(aes(residuals(lm.best.area_copa))) 
 # 
+# gvmodel <- gvlma(lm.best.area_copa) 
+# summary(gvmodel)
+
+pintar_mapa_su_lm(regresion.arboles,lm.best.area_copa,nrow =1)
+pintar_mapa_su_lm_ntl(regresion.arboles,lm.best.area_copa,num_tiles = 6)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.best.area_copa)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
 
-library(olsrr)
 
-ols_best_subset(lm.area_copa.sel)
-plot(ols_all_subset(lm.area_copa.sel))
 
-ols_best_subset(lm.log.area_copa.sel)
-plot(ols_best_subset(lm.log.area_copa.sel))
 
 
 
