@@ -189,7 +189,17 @@ plots_map_su_df<-function(df,col_names){
       coord_equal()+
       scale_fill_viridis(
         direction = 1, 
-        na.value = "grey50"
+        na.value = "grey50",
+        guide = guide_colorbar(
+          direction = "horizontal",
+          barheight = unit(2, units = "mm"),
+          barwidth = unit(40, units = "mm"),
+          draw.ulim = F,
+          title.position = 'top',
+          # some shifting around
+          title.hjust = 0.5,
+          label.hjust = 0.5
+        )
       )+
       theme_void()+
       tema_lgnd_abajo()})

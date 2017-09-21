@@ -11,27 +11,27 @@ nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
 par(mai=c(0,0,0,0))
 #plot(su)
 plot(nb.su, coordinates(su), col='grey50', pch=19, cex=0.1)
-dev.off()
+# dev.off()
 su.arboles<-su[su$SETU_CCDGO %in% regresion.arboles$SETU_CCDGO ,]
 lnb.su<-poly2nb(su.arboles)
 W_cont<-nb2listw(lnb.su, style="W", zero.policy=T)
 par(mai=c(0,0,0,0))
 plot(su.arboles, border="grey80")
 plot(lnb.su, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add=TRUE)
-dev.off()
+# dev.off()
 par(mar=rep(0,4))
 plot(W_cont,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray")
-dev.off()
+# dev.off()
 
 lnb.su<-poly2nb(su.arboles, queen = T)
 W_queen<-nb2listw(lnb.su, style="W", zero.policy=T)
 par(mai=c(0,0,0,0))
 plot(su.arboles, border="grey80")
 plot(W_queen, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add=TRUE)
-dev.off()
+# dev.off()
 par(mar=rep(0,4))
 plot(W_queen,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray")
-dev.off()
+# dev.off()
 
 W_cont_mat<-listw2mat(W_cont)
 mat.melted <- melt(W_cont_mat)
@@ -58,7 +58,7 @@ moran.test(regresion.arboles$area_copa, listw=W_cont)
 # existe autocorrelacion espacial en la varoble a area_copa
 geary.test(regresion.arboles$area_copa, listw=W_cont)
 # Moran plot
-dev.off()
+# dev.off()
 moran.plot(regresion.arboles$area_copa, 
            listw=W_cont, 
            # xlim=c(0,100),ylim=c(0,100), 
@@ -180,7 +180,7 @@ W_dist.inv<-mat2listw(W_dist.inv_mat, style = "W")
 
 par(mar=rep(0,4))
 plot(W_dist.inv,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray")
-dev.off()
+# dev.off()
 
 # matriz distancias inversas en el rango de 1000 metros desde el centriode 
 W_dist1000<-dnearneigh(coords,0,1001,longlat = FALSE)
@@ -197,7 +197,7 @@ ggplot(mat.melted, aes(x = Var1, y = Var2, fill = value)) +
 
 par(mar=rep(0,4))
 plot(W_dist1000,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray")
-dev.off()
+# dev.off()
 
 
 W_dist1000.inv_mat<-1/W_dist1000_mat
@@ -217,7 +217,7 @@ ggplot(mat.melted, aes(x = Var1, y = Var2, fill = value)) +
 W_dist1000.inv<-mat2listw(W_dist1000.inv_mat, style = "W")
 par(mar=rep(0,4))
 plot(W_dist1000.inv,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray")
-dev.off()
+# dev.off()
 
 # usando otras matrices
 #examinemos la SAC (Spatial Autocorrealation) de las variables del mejor LM

@@ -99,7 +99,8 @@ Table: (#tab:vars-poblacion) Variables sobre la población
 |-----:|---------------------------:|
 |Pertenencia Étnica|[personas]{indígenas, ROM, gitanos, raizales del Archipiélago de San Andrés, Providencia y Santa Catalina, palenqueros de San Basilio, afrocolombianos}
 |Con alguna limitación|[personas]{sí,no}
-|Superior y postgrado|[personas] |
+|Con estudios superior o postgrado|[personas] |
+|Ningún estudio|[personas] |
 
 ```{r su-periurbano, out.width='100%',echo=FALSE, fig.cap="División en barrios y sectores urbanos de Santiago de Cali"}
 knitr::include_graphics("images/sectoresurbanos_perimetro_idesc.png")

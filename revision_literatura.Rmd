@@ -155,7 +155,7 @@ A^{T}_i =\sum_j{d_{ij}} \;
 (\#eq:ncosto)
 \end{equation}
 
-*distancia mínimaminima*
+*distancia mínima*
 \begin{equation}
 A^{M}_i=min\left | d_{ij} \right | 
 (\#eq:mindist)

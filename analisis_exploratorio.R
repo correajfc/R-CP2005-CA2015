@@ -797,6 +797,9 @@ su.f %>% dplyr::select(-area_su)  %>%
   facet_wrap(~metricas.poblacion, nrow = 1)+
   tema_lgnd_abajo()
 
+pl_poblacion<-plots_map_su_df(analisis.cali.df,metricas.poblacion[c(2,3,4,6,7)])
+grid.arrange(grobs =pl_poblacion, nrow =2)
+
 # histogramas datos poblacion  
 analisis.cali.df %>% select(one_of(metricas.poblacion)) %>%
   gather( key = metricas.poblacion,

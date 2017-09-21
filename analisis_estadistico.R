@@ -92,9 +92,10 @@ analisis.cali.df %>% select(one_of(var.criterios)) %>%
    select(SETU_CCDGO) -> sin_arboles_censado
  
  
- su.exc.apriori<-c("0204",
-                   "1709",
+ su.exc.apriori<-c("0204","1736",# sector con alto porcentaje no urbanizado
+                   "1709",# maroria del area por fuera del perimetro urbano
                    "1317")# laguna del pandaje
+ 
  su.exc.criterios<- bind_rows(sin_personas,
                               sin_viviendas,
                               ep_60,
@@ -152,7 +153,7 @@ summary(regresion.arboles)
 
 
 #subconjuntos de variables ----
-dependientes.arboles<-metricas.ca[c(1,5,6)]
+dependientes.arboles<-metricas.ca[c(1,6)]
 
 # small multiple datos arboles -----
 regresion.arboles %>% select(one_of(dependientes.arboles)) %>%
