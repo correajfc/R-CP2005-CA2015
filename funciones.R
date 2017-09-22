@@ -79,7 +79,7 @@ lm_with_cor <- function(data, mapping, ... ,method_cor = "pearson", method_smoot
       ),
       mapping = ggplot2::aes(x = x, y = y, label = lab),
       hjust = 0, vjust = 1,
-      size = 4, fontface = "bold",
+      size = 3, fontface = "bold",
       inherit.aes = FALSE # do not inherit anything from the ...
     )
   p
@@ -160,7 +160,12 @@ pintar_corrmatrix_XY<- function(data, x , y , ... ,method_cor = "pearson" ){
                          name=method_cor) +
     theme_minimal()+ 
     theme(axis.text.x = element_text(angle = 90, vjust = 1, 
-                                     size = 8, hjust = 1),axis.title = element_blank())+
+                                     size = 8, hjust = 1),axis.title = element_blank(),
+          legend.text=element_text(size=6),
+          legend.position = "bottom",
+          legend.key.height = unit(2,"mm"),
+          legend.direction = "horizontal")+
+   
     coord_fixed()
   p
 }

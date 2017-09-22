@@ -225,6 +225,22 @@ ggpairs(
   diag = list(continuous = wrap("barDiag", colour = "white",fill ="steelblue")),
   upper = list(continuous = wrap("cor", size = 3))
 )
+
+# entre predictoras y version porcentual
+ggduo(regresion.arboles,
+      columnsX =indep.poblacion.abs, 
+      columnsY =indep.poblacion.percent,
+      types = list(continuous = wrap(lm_with_cor))
+)
+
+# entre predictoras y version porcentual no lineal
+ggduo(regresion.arboles,
+      columnsX =indep.poblacion.abs, 
+      columnsY =indep.poblacion.percent,
+      types = list(continuous = wrap(lm_with_cor,
+                                     method_cor = "spearman",
+                                     method_smooth= "loess"))
+)
 # correlaciones entre variables ----
 
 pintar_corrmatrix(regresion.arboles,indep.poblacion)+
@@ -233,15 +249,22 @@ pintar_corrmatrix(regresion.arboles,indep.poblacion)+
 pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
   labs(title="Coeficiente Spearman entre varibles de población")
 
+pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion.abs, y=indep.poblacion.percent)+
+  labs(title="Coeficiente Pearson dependientes y versiones porcentuales")
+
+ pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion.abs, y=indep.poblacion.percent,method_cor = "spearman")+
+  labs(title="Coeficiente Spearman dependientes y versiones porcentuales")
 
 
+
+# entre predictoras y dependientes no lineal
 ggduo(regresion.arboles,
       columnsX =indep.poblacion, 
       columnsY =dependientes.arboles,
       types = list(continuous = wrap(lm_with_cor))
 )
 
-# entre predictoras y dependientes
+# entre predictoras y dependientes no lineal
 ggduo(regresion.arboles,
       columnsX =indep.poblacion, 
       columnsY =dependientes.arboles,
@@ -305,10 +328,29 @@ regresion.arboles %>% select(one_of(dependientes.arboles)) %>%
 # buscado mantener los supuesto de una regresion lineal
 # entre ellas priviliegiando las mejor relacionadas con base en las matriesde correlacion
 
-indep.poblacion.abs.sel<-c("superior_postgrado",
-                           "con_alguna_limitacion",
+indep.poblacion.copa.sel<-c("superior_postgrado", 
                            "densidad_poblacion",
-                           "con_alguna_limitacion.porcentaje","afro.porcentaje")
+                           "con_alguna_limitacion.porcentaje",
+                           "afro.porcentaje")
+
+indep.poblacion.copa.ap.sel<-c("superior_postgrado.porcentaje",
+                               "densidad_poblacion",
+                               "con_alguna_limitacion.porcentaje",
+                               "afro.porcentaje")
+
+
+# histogramas 
+
+regresion.arboles %>% select(one_of(indep.poblacion)) %>%
+  gather( key = indep.poblacion,
+          value = valores,
+          1:length(indep.poblacion)) %>%
+  ggplot()+
+  geom_histogram(aes(x = valores),bins = 30, 
+                 color = "white", fill="steelblue")+
+  facet_wrap(~indep.poblacion, scales = "free", ncol = 3)
+
+
 # relaciones inversas pueden estar relacionadas mejor con el inverso del indicador
 # calulemos algunas las que potencialmente se comportan asi
 # regresion.arboles<-regresion.arboles %>% 
@@ -317,7 +359,7 @@ indep.poblacion.abs.sel<-c("superior_postgrado",
 #   mutate(con_alguna_limitacion.inv =1/(con_alguna_limitacion+1)) %>%# evita valores infinitos
 #   mutate()
 
-inv.var<-c(indep.poblacion.abs.sel)
+inv.var<-c(indep.poblacion)
 inv.var.name<-lapply(inv.var,paste0,".inv") %>% as.character()
 regresion.arboles<-regresion.arboles[,inv.var]%>%
   mutate_all(funs(1/(.+1))) %>% # sumamos uno para evitar los valores infinitos
@@ -348,7 +390,60 @@ indep.poblacion.area_copa<-c("superior_postgrado",
                              "con_alguna_limitacion.porcentaje.inv",
                              "afro.porcentaje.inv")
 
+indep.poblacion.cobertura.ap<-c("superior_postgrado.porcentaje",
+                                "densidad_poblacion.inv",
+                                "con_alguna_limitacion.porcentaje.inv",
+                                "afro.porcentaje.inv")
 
+# tranformacion de varibles 
+regresion.arboles$log.area_copa<-log(regresion.arboles$area_copa)
+regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
+
+# regresion.arboles$log.cobertura_copa.ap<-log(regresion.arboles$cobertura_copa.ap)
+regresion.arboles$sqrt.cobertura_copa.ap<-sqrt(regresion.arboles$cobertura_copa.ap)
+
+dependientes.copa.trnsf<-c("area_copa","log.area_copa","sqrt.area_copa")
+dependientes.copa.ap.trnsf<-c("cobertura_copa.ap","sqrt.cobertura_copa.ap")
+
+# entre predictoras y dependientes
+ggduo(regresion.arboles,
+      columnsX =c("superior_postgrado",indep.poblacion.cobertura.ap), 
+      columnsY =dependientes.copa.trnsf,
+      types = list(continuous = wrap(lm_with_cor))
+)
+
+# entre predictoras y dependientes
+ggduo(regresion.arboles,
+      columnsX =c("superior_postgrado",indep.poblacion.cobertura.ap), 
+      columnsY =dependientes.copa.ap.trnsf,
+      types = list(continuous = wrap(lm_with_cor))
+)
+
+
+# histogramas 
+
+regresion.arboles %>% select(one_of(c("superior_postgrado",indep.poblacion.cobertura.ap))) %>%
+  gather( key = indep.poblacion,
+          value = valores,
+          1:(length(indep.poblacion.cobertura.ap)+1)) %>%
+  ggplot()+
+  geom_histogram(aes(x = valores),bins = 30, 
+                 color = "white", fill="steelblue")+
+  facet_wrap(~indep.poblacion, scales = "free", ncol = 2)
+
+# histogramas 
+
+regresion.arboles %>% select(one_of(c(dependientes.copa.trnsf,dependientes.copa.ap.trnsf))) %>%
+  gather( key = indep.poblacion,
+          value = valores,
+          1:5) %>%
+  ggplot()+
+  geom_histogram(aes(x = valores),bins = 30, 
+                 color = "white", fill="forestgreen")+
+  facet_wrap(~indep.poblacion, scales = "free", nrow = 2)
+
+
+# varibles de las otras dimensiones
 
 
 # modelar la cobertura de copa ----
@@ -359,6 +454,7 @@ library(gvlma)
 library(broom)
 library(purrr)
 library(olsrr)
+
 dependiente <- "area_copa"
 independientes  <- indep.poblacion.area_copa
 f.area_copa.sel<-as.formula(paste(dependiente, paste(independientes, collapse=" + "), sep=" ~ "))
@@ -442,7 +538,7 @@ best_models
 plot(best_models)
 
 #variaciones del modelo para obtener un ajuste mmejor
-regresion.arboles$log.area_copa<-log(regresion.arboles$area_copa)
+
 dependiente <- "log.area_copa"
 independientes  <- indep.poblacion.area_copa
 
@@ -486,7 +582,7 @@ best_models
 plot(best_models)
 
 # sqrt model
-regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
+#regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
 dependiente <- "sqrt.area_copa"
 independientes  <- indep.poblacion.area_copa
 # max normalizado 
@@ -527,8 +623,95 @@ best_models<-ols_best_subset(lm(formula = formula(lm.mxn.sqrt.area_copa.sel),
 best_models
 plot(best_models)
 
-# mejor modelos de poblacion ----
-regresion.arboles$sqrt.area_copa<-sqrt(regresion.arboles$area_copa)
+##### cobertura copa area publica
+
+
+dependiente <- "cobertura_copa.ap"
+independientes  <- indep.poblacion.cobertura.ap
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.cobertura_copa.ap<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.cobertura_copa.ap)
+#test de ajuste
+mean(lm.mxn.cobertura_copa.ap$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+autoplot(lm.mxn.cobertura_copa.ap, which = 1:4)
+ggnostic(lm.mxn.cobertura_copa.ap)
+# aun un amuento de la varianza. hagamos un test para verificar este aumento
+lmtest::bptest(lm.mxn.cobertura_copa.ap) # la varianza de los residuos no es constante 
+shapiro.test(lm.mxn.cobertura_copa.ap$residuals) # los residuos no exhiben una distribucion normal
+ggplot() + geom_density(aes(residuals(lm.mxn.cobertura_copa.ap))) 
+
+gvmodel <- gvlma(lm.mxn.cobertura_copa.ap) 
+summary(gvmodel)
+
+pintar_mapa_su_lm(regresion.arboles,lm.mxn.cobertura_copa.ap,nrow =1)
+pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.cobertura_copa.ap,num_tiles = 5)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.mxn.cobertura_copa.ap)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
+# combinaciones de las varibles del modelo
+
+best_models<-ols_best_subset(lm(formula = formula(lm.mxn.cobertura_copa.ap),
+                                data=lm.mxn.cobertura_copa.ap$model))
+best_models
+plot(best_models)
+
+
+
+dependiente <- "sqrt.cobertura_copa.ap"
+independientes  <- indep.poblacion.cobertura.ap
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.sqrt.cobertura_copa.ap<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.sqrt.cobertura_copa.ap)
+#test de ajuste
+mean(lm.mxn.sqrt.cobertura_copa.ap$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+autoplot(lm.mxn.sqrt.cobertura_copa.ap, which = 1:4)
+ggnostic(lm.mxn.sqrt.cobertura_copa.ap)
+# aun un amuento de la varianza. hagamos un test para verificar este aumento
+lmtest::bptest(lm.mxn.sqrt.cobertura_copa.ap) # la varianza de los residuos no es constante 
+shapiro.test(lm.mxn.sqrt.cobertura_copa.ap$residuals) # los residuos no exhiben una distribucion normal
+ggplot() + geom_density(aes(residuals(lm.mxn.sqrt.cobertura_copa.ap))) 
+
+gvmodel <- gvlma(lm.mxn.sqrt.cobertura_copa.ap) 
+summary(gvmodel)
+
+pintar_mapa_su_lm(regresion.arboles,lm.mxn.sqrt.cobertura_copa.ap,nrow =1)
+pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.sqrt.cobertura_copa.ap,num_tiles = 5)
+# mapas de residuos estandarizados
+lm_augment<-augment(lm.mxn.sqrt.cobertura_copa.ap)
+lm_augment$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(lm_augment,by = c("id"="SETU_CCDGO")) %>%
+  ggplot()+
+  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(.std.resid,n = 5))) +
+  coord_equal()+
+  theme_void()+
+  scale_fill_brewer(palette = "RdBu", drop = FALSE)
+# combinaciones de las varibles del modelo
+
+best_models<-ols_best_subset(lm(formula = formula(lm.mxn.sqrt.cobertura_copa.ap),
+                                data=lm.mxn.sqrt.cobertura_copa.ap$model))
+best_models
+plot(best_models)
+
+
+
+# mejores modelos de poblacion ----
+
 dependiente <- "sqrt.area_copa"
 independientes  <- c("superior_postgrado","densidad_poblacion.inv")
 
@@ -566,7 +749,7 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 
 
-
+#  varibles del los demas dominios
 
 
 

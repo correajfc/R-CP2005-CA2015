@@ -394,7 +394,7 @@ ia.ev$ia.areas.dist<-ia.areas.1000/ia.1000
 
 
 
-## Datos del censo arbóreo 2015
+## Datos del censo arbóreo 2015 {#sec-ca2015}
 
 El censo arbóreo del año 2015 consolidó un inventario de la vegetación de la ciudad compuesto por `r sum(altura_copa_por_cobertura$cantidad)` individuos. Entre las variables que categorizan los individuos censados están el tipo de emplazamiento, tipo de suelo que cubre la vegetación, la edad, la vitalidad, tipo de vegetación y sus caratetiristicas dasometricas p.ej la altura, el diamtro de la copa, altura y diametro del pecho, etc ..., entro otras relacionadas con el estado fitosanitario y daños físicos.
 
@@ -825,9 +825,7 @@ Esta primera inspección a los datos permitió descartar algunas variables a usa
 
 ## Análisis estadísticos
 
-### Cobertura de copa
-
-#### Criterios y selección de sectores censales
+### Criterios y selección de sectores censales
 
 Antes de iniciar un analaisis de regresion es importante establecer ciertos criterios pra inclusion o no de ciertos datos dentro del conjunto de varores para la regresion y calculo de la correlacion. Estos criterios estan ligados 
  creterios de excepcion de sectores urbanos a ser incluidos en el analsis de regresion:
@@ -869,43 +867,9 @@ Antes de iniciar un analaisis de regresion es importante establecer ciertos crit
                    "1317")# laguna del pandaje
 ```
 
-Además de estos criterios se excluyeron los sectores donde está la Laguna el Pondaje, y que cubre una porción muy importante del sector que no ve reflejado en las otras métricas o tener una porción mayor al 60% por fuera del perímetro urbano o no sin urbanización visible. Así los sectores excluidos del análisis se muestran en los mapas \@ref() y \@ref(). 
+Además de estos criterios se excluyeron los sectores donde está la Laguna el Pondaje, que cubre una porción muy importante del sector que no se ve reflejado en las otras métricas, los sectores con una porción mayor al 60% por fuera del perímetro urbano o sin urbanización visible en las imagenes satelitales. Así los sectores excluidos del análisis se muestran en los mapas \@ref(fig:mapa-excluidos) y \@ref(fig:mapa-excluidos-tipo) por criterio usado. 
 
-```{r}
- ggplot()+
-   geom_polygon(data = su.f,
-                aes(x = long ,y = lat, group = group),
-                fill = "grey70")+
-   geom_polygon(data = subset(su.f, id %in% sin_arboles_censado$SETU_CCDGO),
-                aes(x = long ,y = lat, group = group,fill = "sin arboles censados"),
-                alpha = 0.5)+
-   geom_polygon(data = subset(su.f, id %in% sin_personas$SETU_CCDGO),
-                aes(x = long ,y = lat, group = group,fill = "sin personas"),
-                alpha = 0.5)+
-   geom_polygon(data = subset(su.f, id %in% sin_viviendas$SETU_CCDGO),
-                aes(x = long ,y = lat, group = group,fill = "sin viviendas"),
-                alpha = 0.5)+
-   geom_polygon(data = subset(su.f, id %in% ep_60$SETU_CCDGO),
-                aes(x = long ,y = lat, group = group,fill = "Ep > 60%"),
-                alpha = 0.5)+
-   geom_polygon(data = subset(su.f, id %in% privada_85$SETU_CCDGO),
-                aes(x = long ,y = lat, group = group,fill = "Privado > 85%"),
-                alpha = 0.5)+
-   geom_polygon(data = subset(su.f, id %in% calle_80$SETU_CCDGO),
-                aes(x = long ,y = lat, group = group,fill = "Calle > 80%"),
-                alpha = 0.5)+
-   geom_polygon(data = subset(su.f, id %in% su.exc.apriori),
-                aes(x = long ,y = lat, group = group,fill = "Apriori"),
-                alpha = 0.5)+
-   geom_text_repel( data = data.frame(centroides.su) %>% 
-                filter( setu_ccgdo %in% su.exc.criterios$SETU_CCDGO),
-              aes(x = x, y =y, label =setu_ccgdo))+
-   
-   coord_equal()+
-   theme_void()
-```
-
-```{r}
+```{r mapa-excluidos, fig.cap="Mapa de los sectores excluidos"}
 ggplot()+
    geom_polygon(data = su.f,
                 aes(x = long ,y = lat, group = group),
@@ -914,12 +878,300 @@ ggplot()+
                 aes(x = long ,y = lat, group = group,fill = "descartados"),
                 alpha = 0.5)+
    coord_equal()+
+   scale_fill_manual(name ="SU",values = "blue")+
    theme_void()
 ```
 
-#### Correlaciones y distribuciones bivaridas
+```{r mapa-excluidos-tipo, fig.cap="Mapa de los sectores excluidos por criterio usado"}
+ ggplot()+
+   geom_polygon(data = su.f,
+                aes(x = long ,y = lat, group = group),
+                fill = "grey70")+
+   geom_polygon(data = subset(su.f, id %in% sin_arboles_censado$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "sin arboles censados"))+
+   geom_polygon(data = subset(su.f, id %in% sin_personas$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "sin personas"))+
+   geom_polygon(data = subset(su.f, id %in% sin_viviendas$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "sin viviendas"))+
+   geom_polygon(data = subset(su.f, id %in% ep_60$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "Ep > 60%"))+
+   geom_polygon(data = subset(su.f, id %in% privada_85$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "Privado > 85%"))+
+   geom_polygon(data = subset(su.f, id %in% calle_80$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "Calle > 80%"))+
+   geom_polygon(data = subset(su.f, id %in% su.exc.apriori),
+                aes(x = long ,y = lat, group = group,fill = "a priori"))+
+   geom_text_repel( data = data.frame(centroides.su) %>% 
+                filter( setu_ccgdo %in% su.exc.criterios$SETU_CCDGO),
+              aes(x = x, y =y, label =setu_ccgdo))+
+   
+   coord_equal()+
+  scale_fill_manual(name="Criterios",values = brewer.pal(7,"Set1"))+
+   theme_void()
+```
 
-#### Modelos de regresion lineal 
+
+### Modelando la cobertura de copa
+
+Las variables a incluir en los modelos lineales deben cumplir una serie de condiciones para ser elegidas como candidatas:
+
+- *Mostrar una correlación fuerte* (típicamente mayor a 0.6 se considera una asociación fuerte).
+- *Las variables independientes o predictoras no deben estar fuertemente correlacionadas entre ellas*.
+- *Las observaciones deben ser independientes*. En nuestro caso significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pondrá a prueba con los test estadísticos y los graficos de diagnostico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.
+- *Las variables dependientes e independientes deben tener una distribución normal*. Esta condición no suele ser estricta, inclusive algunos textos como @ , afirman que lo importante es que calcular los coeficientes de la regresión obtengamos una distribución normal de los residuos (sin ningún patrón, ruido). De no ser así, es posible que las variables no sean independiente y que exista información significativa en los residuos, por ejemplo, porque existe autocorrelación espacial en la variable dependiente y entonces la regresión lineal no obtiene resultados confiables para los coeficientes.
+
+
+Para hacer más tratable y gradual el proceso de complejizar el modelo iniciaremos el análisis con las variables sobre la población, que son las de mayor interés en un estudio dado su enfoque en la  justicia ambiental, para luego incorporar las variables de los dominios relacionados con el uso de los predios, los tipos de viviendas y la existencia de espacios verdes como parques, bulevares, escenarios deportivos o plazas, que como se vio en la sección \@ref(sec-ca2015) (revisar figura \@ref(fig:au-emplaz-veg))  alojan una cantidad considerable de los individuos arbóreos de la ciudad.
+
+Las variables a modelar son la área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformda por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
+
+```{r mapa-copa-dep, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa"}
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(dep.arboles.ntl.long,by = c("id"="SETU_CCDGO")) %>%
+  filter(dep.arboles %in% dependientes.arboles) %>%
+  ggplot()+
+  geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
+  coord_equal()+
+  scale_fill_viridis( name = "deciles",
+                      direction = 1, 
+                      discrete = T, 
+                      na.value = "grey50",
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+  facet_wrap(~dep.arboles, nrow = 1)+
+  tema_lgnd_abajo()
+
+```
+
+
+
+#### Correlaciones y gráficos de dispersión entre pares
+
+Para asegurarnos de que las variables no están correlacionadas entre si, usaremos los coeficientes de correlación de Pearson, usado para detectar relaciones lineales, usualmente en variables con distribución normal, y el coeficiente de Spearman para detectar relaciones en variables con otras distribuciones o que exhiben relaciones no lineales. Para tener una idea más amplia sobre esa relación que expresan los coeficiente de correlación se incluyen gráficas de dispersión entre las variables independientes, y con las dependientes.
+
+
+En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población en las unidades originales de los datos (número de personas); la matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre tener ningún estudio y tener alguna limitación física (0.88);  pertenecer a una comunidad afrodescendiente y carecer de estudios (0.92) o ser afrodescendiente y tener alguna limitación (0.88). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punta del vista del modelo sólo podrán ser representadas por una de las variables, la que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
+
+
+
+```{r bivar-poblacion-abs, fig.asp=1, fig.cap="Comparación por pares entre predictores de población"}
+ggpairs(
+  regresion.arboles[,indep.poblacion.abs], lower = list(continuous = wrap(lowerFn, method = "lm")),
+  diag = list(continuous = wrap("barDiag", colour = "white",fill ="steelblue")),
+  upper = list(continuous = wrap("cor", size = 4)),
+  title = "Comparación por pares entre predictores de población"
+)+ theme_grey(base_size = 8)
+
+```
+
+Cuando realizamos la misma comparación entre las variables porcentuales (más la densidad poblacional) se observan patrones similares(ver figura \@ref(fig:bivar-poblacion-mod)): existe una alta correlación negativa entre el porcentaje de población afro de un sector y la tenencia de estudios superiores (-0.71), una fuerte asociación positiva entre el porcentaje de personas afro de un sector y el porcentaje de personas que carecen de estudios (0.68). También hay una fuerte relación inversa entre el porcentaje de personas de un sector sin estudios y el porcentaje de ellos que tiene estudios superiores (-0.8). Estas variables evitaremos usarlas como predictores en una misma formulación para no sesgar la estimación con problemas de colinealidad. Existe también una asociación, no tan fuerte pero importante, entre la densidad de población y sectores con mayor porcentaje de personas afro (0.47) y una asociación negativa entre la densidad de población y el porcentaje de personas con estudios superiores (-0.51). Estos resultados hablan de una concentración de condiciones desfavorables para la población, posiblemente acompañado de una segregación racial alta.
+
+```{r bivar-poblacion-mod, fig.asp=1, fig.cap="Comparación por pares entre predictores de población porcentuales"}
+ggpairs(
+  regresion.arboles[,indep.poblacion.percent], lower = list(continuous = wrap(lowerFn, method = "lm")),
+  diag = list(continuous = wrap("barDiag", colour = "white",fill ="steelblue")),
+  upper = list(continuous = wrap("cor", size = 4)),
+  title = "Comparación por pares entre predictores de población porcentuales y la densidad de población"
+)+ theme_grey(base_size = 8)
+
+```
+
+Para completar la inspección de las relaciones entre predictores la figura \@ref(fig:bivar-poblacion-mod-abs) muestra la relación entre las variables provistas en por el censo de población en unidades de personas y las versiones porcentuales que calculamos. El número en el recuadro de cada subgráfica es el coeficiente de correlación de Pearson. Aunque procuraremos incluir cada una de las condiciones evitando redundar al incluir la misma variable en sus dos versiones en un mismo modelo, es interesante que la división entre el número de personas totales del sector atenúa la correlación entre la variable observada y su contraparte porcentual.
+
+```{r bivar-poblacion-mod-abs, fig.asp=1, fig.cap="Comparación por pares entre predictores de población porcentuales y predictores en unidades de personas"}
+# entre predictoras y version porcentual
+ggduo(regresion.arboles,
+      columnsX =indep.poblacion.abs, 
+      columnsY =indep.poblacion.percent,
+      types = list(continuous = wrap(lm_with_cor)),
+  title = "Comparación por pares entre predictores en unidades de personas y porcentuales"
+)+ theme_grey(base_size = 8)
+
+```
+
+
+Ya que hemos explorado visualmente la dispersión entre los datos crudos, podemos usar forma resumida, usando gráficos de azulejos o de matriz para consultar la intensidad de estas relaciones, no solo las lineales que revela el coeficiente de Pearson, sino usando el coeficiente de Spearman. La figura \@ref() sintetiza las relaciones lineales entre las variables dependientes, mientras que la figura \@ref() lo hace para las no lineales. 
+
+```{r tile-poblacion-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre varibles de población"} 
+pintar_corrmatrix(regresion.arboles,indep.poblacion)+
+  labs(title="Coeficiente Pearson entre varibles de población")
+
+
+```
+
+```{r tile-poblacion-spearman, fig.asp=1,fig.cap="Coeficiente Spearman entre varibles de población"}
+pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
+  labs(title="Coeficiente Spearman entre varibles de población")
+
+```
+
+Para seleccionar las variables que mejor predicen la cobertura de copa aplicamos un procedimiento análogo al realizado con las variables dependientes entre sí. Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, seleccionamos las variables a usar en el modelo lineal. 
+
+Así pues, para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") ` `` y para la cobertura de copa en área pública (`cobertura_copa.ap`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ") ` `` 
+
+```{r tile-copa-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre coberturas de copa y variables de población"}
+pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles)+
+  labs(title="Pearson entre cobertura de copa y variables de población")
+
+```
+
+
+```{r tile-copa-poblacion-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre coberturas de copa y variables de población"}
+pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, method_cor = "spearman")+
+  labs(title="Spearman entre cobertura de copa y variables de población")
+```
+
+
+Se recomienda especificar correctamente los modelos lineales cuando existen relaciones con correlaciones negativas, pues es posible que sea mejor usar el inverso de la variable. Para probar si al hacerlo dichas variables tienen incrementos en los coeficientes de correlación respecto de las variables dependientes. Como se observa en las figuras \@ref(fig:duolin-poblacion-copa) y \@ref(fig:duonolin-poblacioninv-copa) las mejoras son solo en la varible de `afro.porcentaje.inv` en el segundo dígito decimal. 
+
+
+
+
+```{r duolin-poblacion-copa,cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la cobertura de copa (regresión lineal + coeficiente de Pearson)"}
+# entre predictoras y dependientes no lineal
+ggduo(regresion.arboles,
+      columnsX =c("superior_postgrado",indep.poblacion.copa.ap.sel),
+      columnsY =dependientes.arboles,
+      types = list(continuous = wrap(lm_with_cor)),
+      # types = list(continuous = wrap(lm_with_cor,
+      #                                method_cor = "spearman",
+      #                                method_smooth= "loess")),
+      title = "Predictores de población vs. cobertura de copa (regresión lineal + Pearson)"
+)+ theme_grey(base_size = 8)
+
+
+```
+
+```{r duonolin-poblacioninv-copa, cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población (usando el inverso de la variable con correlaciones negativas: $f(x)=\\frac{1}{x+1}$) y las variables dependientes de la cobertura de copa ( regresión lineal  + coeficiente de Pearson)"}
+# entre predictoras y dependientes no lineal
+ggduo(regresion.arboles,
+      columnsX =c("superior_postgrado",indep.poblacion.cobertura.ap), 
+      columnsY =dependientes.arboles,
+      types = list(continuous = wrap(lm_with_cor)),
+      # types = list(continuous = wrap(lm_with_cor,
+      #                                method_cor = "spearman",
+      #                                method_smooth= "loess")),
+title = "Predictores de población (invertido) vs. cobertura de copa (regresión lineal + Pearson)"
+)+ theme_grey(base_size = 8)
+```
+
+
+#### Modelos de regresión lineal 
+
+Antes ajustar los modelos suele ser común en los modelos de regresión ajustar la distribución de las variables dependientes (y a veces las independientes) por motivos teóricos usando transformaciones logarítmicas o de raíz cuadra para eliminar no linealidades entre las variables dependientes y las independientes, y reducir posibles fenómenos de heterocedasticidad debido a estas no-linealidades. Siguiendo el ejemplo, ajustaremos 5 modelos: uno por cada variable dependiente en sus tres versiones, sin transforma, con una tranformacion logaritmica (exepto para la cobertura_copa.ap pues por tener valores ya entre [0,1] produce valores negativos) y otra de la raiz cuadra. 
+
+Los histogramas de las variables dependientes tranformadas se muestran en la figura \@ref(fig:hist-copa-trnsf). 
+```{r hist-copa-trnsf, fig.asp=1.5,fig.cap="Histogramas de las variables de cobertura de copa transformadas"}
+# histogramas 
+
+regresion.arboles %>% select(one_of(c(dependientes.copa.trnsf,dependientes.copa.ap.trnsf))) %>%
+  gather( key = indep.poblacion,
+          value = valores,
+          1:5) %>%
+  ggplot()+
+  geom_histogram(aes(x = valores),bins = 30, 
+                 color = "white", fill="forestgreen")+
+  facet_wrap(~indep.poblacion, scales = "free", ncol = 1)
+
+```
+
+Las mejoras sobre el modelo de regresión que puedan hacer estas transformaciones pueden apreciarse en los gráficos de dispersión de las variables independientes transformadas vs. las dependientes o/y en los coeficientes de correlación de Pearson. Como se observa en las figuras \@ref(fig:duolin-poblacion-copa-trnsf) y \@ref(fig:duolin-poblacion-cob-trnsf) hay leves mejoras al aplicar las transformaciones.   
+
+```{r duolin-poblacion-copa-trnsf,cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la área de copa transformdas (regresión lineal + coeficiente de Pearson)"}
+# entre predictoras y dependientes no lineal
+ggduo(regresion.arboles,
+      columnsX =indep.poblacion.area_copa, 
+      columnsY =dependientes.copa.trnsf,
+      types = list(continuous = wrap(lm_with_cor)),
+      title = "Predictores de población vs. área de copa transformda (regresión lineal + Pearson)"
+)+ theme_grey(base_size = 8)
+
+
+```
+
+
+```{r duolin-poblacion-cob-trnsf,cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la cobertura de copa transformdas (regresión lineal + coeficiente de Pearson)"}
+# entre predictoras y dependientes no lineal
+ggduo(regresion.arboles,
+      columnsX =indep.poblacion.copa.ap.sel, 
+      columnsY =dependientes.copa.ap.trnsf,
+      types = list(continuous = wrap(lm_with_cor)),
+      title = "Predictores de población vs. cobertura de copa transformda (regresión lineal + Pearson)"
+)+ theme_grey(base_size = 8)
+
+
+```
+
+También es sabido que dividir o multiplicar por alguna constante no tiene ningún efecto en la calidad de la estimación , pero sí sobre los coeficientes de la regresión. Esto suele ser sensible a la hora de interpretar los cambios marginales de cada una de las variables independientes y su efecto sobre la variable dependiente. Sin embargo, lo que interesa para este estudio no es la interpretación de esos cambio sino la importancia relativa de cada variable y comparar los cambios de los coeficientes de regresión para el ajuste de cada modelo y/o las mejoras que pueda operar un modelos autorregresivo en caso de encontrase autocorrelación en los residuos de la regresión lineal. Por esta razón, normalizar los valores puede ser una ventaja pues mantiene los coeficiente mejor acotados. La normalización se aplica posterior a las transformaciones propuestas y se realiza dividiendo por el máximo valor de los datos de cada variable para mantener valores en el intervalo [0,1], dado que los valores son todos iguales o mayores que 0.
+
+
+El siguiente código en **R** crea las 5 regresiones lineales propuestas.
+```{r code-lm-area_copa, echo=T}
+
+# area de copa
+dependiente <- "area_copa"
+independientes  <- indep.poblacion.area_copa
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mn.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mn.area_copa.sel)
+
+
+```
+
+
+```{r code-lm-log.area_copa,echo=T}
+
+
+dependiente <- "log.area_copa"
+independientes  <- indep.poblacion.area_copa
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.log.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
+modelo<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.log.area_copa.sel)
+```
+
+
+
+```{r code-lm-sqrt.area_copa,echo=T}
+
+dependiente <- "sqrt.area_copa"
+independientes  <- indep.poblacion.area_copa
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.sqrt.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.sqrt.area_copa.sel)
+```
+
+
+```{r code-lm-cobertura_copa.ap,echo=T}
+
+
+dependiente <- "cobertura_copa.ap"
+independientes  <- indep.poblacion.cobertura.ap
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.cobertura_copa.ap<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.cobertura_copa.ap)
+
+```
+
+
+```{r code-lm-sqrt.cobertura_copa.ap,echo=T}
+
+
+dependiente <- "sqrt.cobertura_copa.ap"
+independientes  <- indep.poblacion.cobertura.ap
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mxn.sqrt.cobertura_copa.ap<-crear_lm_from_df(regresion.arboles.mn)
+summary(lm.mxn.sqrt.cobertura_copa.ap)
+```
+
 
 ### Acceso a espacios verdes
 
