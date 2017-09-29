@@ -290,3 +290,330 @@ crear_lm_from_df<-function(df){
 
 
 }
+
+localmoran_quad<-function(val,lagval,pval,sgnf){
+  quad_sig<-NA
+  
+  if( is.finite(pval)){
+  if(val >= 0 & 
+     (lagval >= 0) & 
+     (pval <= sgnf))
+    quad_sig<-"high-high"
+  if(val <= 0 & 
+     (lagval <= 0) & 
+     (pval <= sgnf))
+    quad_sig<-"low-low"
+  if(val >= 0 & 
+     (lagval <= 0) & 
+     (pval <= sgnf))
+    quad_sig<-"high-low"
+  if(val <= 0 & 
+     (lagval >= 0) & 
+     (pval <= sgnf))
+    quad_sig<-"low-high"
+  if(pval > sgnf)
+    quad_sig<-"not signif."  
+  }
+  quad_sig  
+}
+
+
+plots_map_LISA_df<-function(df,col_names){ 
+
+  l_col_names<-as.list(col_names)
+  su_df<-su.f %>% dplyr::select(-area_su)  %>%
+    left_join(df, by = c("id"="SETU_CCDGO"))
+  lapply(l_col_names,function (i){
+    ggplot(su_df)+
+      geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = i))+
+      coord_equal()+
+      scale_fill_gradient2(
+        guide = guide_colorbar(
+          direction = "horizontal",
+          barheight = unit(2, units = "mm"),
+          barwidth = unit(40, units = "mm"),
+          draw.ulim = F,
+          title.position = 'top',
+          # some shifting around
+          title.hjust = 0.5,
+          label.hjust = 0.5
+        )
+      )+
+      theme_void()+
+      tema_lgnd_abajo()})
+
+}
+
+pintar_mapa_su_lm2<-function(data,lm, ...){
+  require(broom)
+  #tdy<-tidy(lm)
+  aum<-augment(lm)
+  #gln<-glance(lm)
+  aum$SETU_CCDGO<-data$SETU_CCDGO
+  var_dep<-names(lm$model)[1]
+  
+  su_df<-su.f %>% dplyr::select(-area_su)  %>%
+    left_join(aum, by = c("id"="SETU_CCDGO"))
+  
+  p_vardep<-ggplot(su_df)+
+    geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = var_dep))+
+    coord_equal()+
+    scale_fill_viridis(
+      direction = 1, 
+      na.value = "grey50",
+      guide = guide_colorbar(
+        direction = "horizontal",
+        barheight = unit(2, units = "mm"),
+        barwidth = unit(40, units = "mm"),
+        draw.ulim = F,
+        title.position = 'top',
+        # some shifting around
+        title.hjust = 0.5,
+        label.hjust = 0.5
+      )
+    )+
+    theme_void()+
+    tema_lgnd_abajo()
+  
+  p_fit<-ggplot(su_df)+
+    geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = ".fitted"))+
+    coord_equal()+
+    scale_fill_viridis(
+      direction = 1, 
+      na.value = "grey50",
+      guide = guide_colorbar(
+        direction = "horizontal",
+        barheight = unit(2, units = "mm"),
+        barwidth = unit(40, units = "mm"),
+        draw.ulim = F,
+        title.position = 'top',
+        # some shifting around
+        title.hjust = 0.5,
+        label.hjust = 0.5
+      )
+    )+
+    theme_void()+
+    tema_lgnd_abajo()
+  
+  p_res<-ggplot(su_df)+
+    geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = ".resid"))+
+    coord_equal()+
+    scale_fill_gradient2(
+      guide = guide_colorbar(
+        direction = "horizontal",
+        barheight = unit(2, units = "mm"),
+        barwidth = unit(40, units = "mm"),
+        draw.ulim = F,
+        title.position = 'top',
+        # some shifting around
+        title.hjust = 0.5,
+        label.hjust = 0.5
+      )
+    )+
+    theme_void()+
+    tema_lgnd_abajo()
+  
+  title1<-grid::textGrob(format(as.formula(lm)) %>% str_c(collapse = "\n"))
+  grid.arrange(p_vardep,p_fit,p_res, top = title1 ,... = ...)
+  
+  
+}
+
+
+pintar_mapa_su_LISA_lmres<-function(data,lm,W,wname="W" ,...){
+  require(spdep)
+  
+  localmoranmatrix<-localmoran(lm$residuals, listw=W, zero.policy = TRUE)
+  lmoran.df<-as_data_frame(localmoranmatrix)
+  lmoran.df$SETU_CCDGO<-data$SETU_CCDGO
+  #lmoran.df$Z.Ii <-lmoran.df$Z.Ii %>% as.vector()
+  # escalar z valor
+  lmoran.df$s_resid <- scale(lm$residuals)  %>% as.vector()
+  
+  # varible retardada
+  lmoran.df$lag_s_resid <- lag.listw(W, lmoran.df$s_resid, zero.policy = TRUE)
+  
+  
+  lmoran.df$p<-lmoran.df$`Pr(z > 0)`%>% as.vector()
+  lmoran.df$Z.Ii<-lmoran.df$Z.Ii%>% as.vector()
+  # summary of variables
+  #summary(su.arboles@data)
+  
+  # crear etiqueta de observaciones foco de la autocorrelacion
+  lmoran.df<-lmoran.df %>% rowwise() %>%
+    mutate(quad_sig_05=localmoran_quad(s_resid,lag_s_resid, p,0.05)) 
+  coloresLisa<-brewer.pal(5, "RdBu")
+  quad_moran = c("high-high","high-low" ,"not signif.", "low-high","low-low")
+  labels = c("H-H","H-L" ,"not signif.", "L-H","L-L")
+  
+  # volverlas un factor ordenado para que coincida con los colores
+  lmoran.df$quad_sig_05<-factor(lmoran.df$quad_sig_05, levels =quad_moran)
+  
+  su_df<-su.f %>% dplyr::select(-area_su)  %>%
+    left_join(lmoran.df, by = c("id"="SETU_CCDGO"))
+  
+  mapa_cluster<-su_df %>% 
+    ggplot(aes(long, lat, group = group, fill = quad_sig_05)) + 
+    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+    geom_polygon(color = "grey90", size = .05)  + 
+    coord_equal() + 
+    theme_void() + 
+    scale_fill_manual(values = coloresLisa, drop =FALSE,
+                      labels = labels,
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+    tema_lgnd_abajo()
+  
+  # grafica discreta del p-value  
+  signf_levels<-c(Inf,0.05,0.01,0.001,0.0001,0)
+  signf_levels_label<-c("0001",".001",".01",".05","not signif.")
+  
+  mapa_p<-su_df %>% 
+    ggplot() + 
+    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+    geom_polygon(aes(long, lat, group = group, fill = cut(p,breaks =signf_levels)),
+                 color = "white", size = .05)  + 
+    coord_equal() + 
+    theme_void()+ 
+    scale_fill_brewer(name ="P-val",palette = "Greens", drop=FALSE, direction = -1,
+                      labels = signf_levels_label,
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+    tema_lgnd_abajo()
+  
+  #tdy<-tidy(lm)
+  
+  mapa_ZI<-ggplot(su_df)+
+    geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = "Z.Ii"))+
+    coord_equal()+
+    scale_fill_gradient2(
+      guide = guide_colorbar(
+        direction = "horizontal",
+        barheight = unit(2, units = "mm"),
+        barwidth = unit(40, units = "mm"),
+        draw.ulim = F,
+        title.position = 'top',
+        # some shifting around
+        title.hjust = 0.5,
+        label.hjust = 0.5
+      )
+    )+
+    theme_void()+
+    tema_lgnd_abajo()
+  
+  
+  title1<-grid::textGrob(paste0("Mapas LISA"," - ",wname,"\n Residuos: ",format(as.formula(lm)) %>% str_c(collapse = "\n")))
+  grid.arrange(mapa_ZI,mapa_p,mapa_cluster, top = title1 ,... = ...)
+  
+  
+}
+
+
+pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
+  require(spdep)
+  
+  localmoranmatrix<-localmoran(data[,varname], listw=W, zero.policy = TRUE)
+  lmoran.df<-as_data_frame(localmoranmatrix)
+  lmoran.df$SETU_CCDGO<-data$SETU_CCDGO
+  #lmoran.df$Z.Ii <-lmoran.df$Z.Ii %>% as.vector()
+  # escalar z valor
+  lmoran.df$s_var <- scale(data[,varname])  %>% as.vector()
+  
+  # varible retardada
+  lmoran.df$lag_s_var <- lag.listw(W, lmoran.df$s_var , zero.policy = TRUE)
+  
+  
+  lmoran.df$p<-lmoran.df$`Pr(z > 0)`%>% as.vector()
+  lmoran.df$Z.Ii<-lmoran.df$Z.Ii%>% as.vector()
+  # summary of variables
+  summary(su.arboles@data)
+  
+  # crear etiqueta de observaciones foco de la autocorrelacion
+  lmoran.df<-lmoran.df %>% rowwise() %>%
+    mutate(quad_sig_05=localmoran_quad(s_var,lag_s_var, p , 0.05)) 
+  coloresLisa<-brewer.pal(5, "RdBu")
+  quad_moran = c("high-high","high-low" ,"not signif.", "low-high","low-low")
+  labels = c("h-h","h-l" ,"not signif.", "l-h","l-l")
+  
+  # volverlas un factor ordenado para que coincida con los colores
+  lmoran.df$quad_sig_05<-factor(lmoran.df$quad_sig_05, levels =quad_moran)
+  
+  su_df<-su.f %>% dplyr::select(-area_su)  %>%
+    left_join(lmoran.df, by = c("id"="SETU_CCDGO"))
+  
+  mapa_cluster<-su_df %>% 
+    ggplot(aes(long, lat, group = group, fill = quad_sig_05)) + 
+    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+    geom_polygon(color = "grey90", size = .05)  + 
+    coord_equal() + 
+    theme_void() + 
+    scale_fill_manual(values = coloresLisa, drop =FALSE,
+                      labels = labels,
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+    tema_lgnd_abajo()
+  
+  # grafica discreta del p-value  
+  signf_levels<-c(Inf,0.05,0.01,0.001,0.0001,0)
+  signf_levels_label<-c("0001",".001",".01",".05","not signif.")
+  mapa_p<-su_df %>% 
+    ggplot() + 
+    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+    geom_polygon(aes(long, lat, group = group, fill = cut(p,breaks =signf_levels)),
+                 color = "grey90", size = .05)  + 
+    coord_equal() + 
+    theme_void()+ 
+    scale_fill_brewer(name ="P-val",palette = "Greens", drop=FALSE, direction = -1,
+                      labels = signf_levels_label,
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+    tema_lgnd_abajo()
+  
+  #tdy<-tidy(lm)
+  
+  mapa_ZI<-ggplot(su_df)+
+    geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = "Z.Ii"),
+                 color = "grey90", size = .05)+
+    coord_equal()+
+    scale_fill_gradient2(low = "firebrick1",mid ="white" ,high = "royalblue",
+      guide = guide_colorbar(
+        direction = "horizontal",
+        barheight = unit(2, units = "mm"),
+        barwidth = unit(40, units = "mm"),
+        draw.ulim = F,
+        title.position = 'top',
+        # some shifting around
+        title.hjust = 0.5,
+        label.hjust = 0.5
+      )
+    )+
+    theme_void()+
+    tema_lgnd_abajo()
+  
+  
+  title1<-grid::textGrob(paste0("Mapas LISA - ",varname," - ",wname))
+  grid.arrange(mapa_ZI,mapa_p,mapa_cluster, top = title1, ... = ...)
+  
+  
+}
+
+
+tema_lgnd_derecha2<-function (...){
+  theme_void() +
+    theme(
+      legend.text=element_text(size=6),
+      legend.position = "right",
+      legend.key.height = unit(2,"mm"),
+      legend.direction = "horizontal",
+      ... 
+    )
+  
+}

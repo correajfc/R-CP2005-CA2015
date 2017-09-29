@@ -15,15 +15,14 @@ description: "Tesis para obtar al el título de master en Geographical Informati
 knitr::opts_chunk$set(echo = FALSE,tidy = T, out.width = '100%',cache = TRUE, fig.width = 6)
 ```
 
-Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.).
 
 # Presentación {-}
-
+Borrador del texto. 
 Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.).
 
 # Agradecimientos {-}
 
-Dar las gracias ...
+Dar las gracias siempre ...
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

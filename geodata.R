@@ -190,12 +190,12 @@ manzanas.su.f%>%
 #pintar usando colores por quantil
 manzanas.su.f%>%
   ggplot(aes(x=long,y=lat,group=group))+
-  geom_polygon(aes(fill=cut_number(area_manzana,n = 10)))+
+  geom_polygon(aes(fill=cut_number(area_manzana,n = 7)))+
   coord_equal()+
   theme_void()+
   viridis::scale_fill_viridis(discrete = TRUE, direction = -1)+
   labs(title="Coropleta del tamaño de manzana en Santiago de Cali, Colombia",
-       subtitle="20 grupos con aprox. el mismo número de observaciones",
+       subtitle="7 grupos con aprox. el mismo número de observaciones",
        caption="Fuente: IDESC \n")
 
 # #pintar manzanas por sector

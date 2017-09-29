@@ -959,9 +959,9 @@ En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las 
 
 ```{r bivar-poblacion-abs, fig.asp=1, fig.cap="Comparación por pares entre predictores de población"}
 ggpairs(
-  regresion.arboles[,indep.poblacion.abs], lower = list(continuous = wrap(lowerFn, method = "lm")),
-  diag = list(continuous = wrap("barDiag", colour = "white",fill ="steelblue")),
-  upper = list(continuous = wrap("cor", size = 4)),
+  regresion.arboles[,indep.poblacion.abs], lower = list(continuous = wrap_fn_with_params(lowerFn, method = "lm")),
+  diag = list(continuous = GGally:: wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
+  upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
   title = "Comparación por pares entre predictores de población"
 )+ theme_grey(base_size = 8)
 
@@ -971,9 +971,9 @@ Cuando realizamos la misma comparación entre las variables porcentuales (más l
 
 ```{r bivar-poblacion-mod, fig.asp=1, fig.cap="Comparación por pares entre predictores de población porcentuales"}
 ggpairs(
-  regresion.arboles[,indep.poblacion.percent], lower = list(continuous = wrap(lowerFn, method = "lm")),
-  diag = list(continuous = wrap("barDiag", colour = "white",fill ="steelblue")),
-  upper = list(continuous = wrap("cor", size = 4)),
+  regresion.arboles[,indep.poblacion.percent], lower = list(continuous = wrap_fn_with_params(lowerFn, method = "lm")),
+  diag = list(continuous = wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
+  upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
   title = "Comparación por pares entre predictores de población porcentuales y la densidad de población"
 )+ theme_grey(base_size = 8)
 
@@ -986,7 +986,7 @@ Para completar la inspección de las relaciones entre predictores la figura \@re
 ggduo(regresion.arboles,
       columnsX =indep.poblacion.abs, 
       columnsY =indep.poblacion.percent,
-      types = list(continuous = wrap(lm_with_cor)),
+      types = list(continuous = wrap_fn_with_params(lm_with_cor)),
   title = "Comparación por pares entre predictores en unidades de personas y porcentuales"
 )+ theme_grey(base_size = 8)
 
@@ -1025,18 +1025,18 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles
 ```
 
 
-Se recomienda especificar correctamente los modelos lineales cuando existen relaciones con correlaciones negativas, pues es posible que sea mejor usar el inverso de la variable. Para probar si al hacerlo dichas variables tienen incrementos en los coeficientes de correlación respecto de las variables dependientes. Como se observa en las figuras \@ref(fig:duolin-poblacion-copa) y \@ref(fig:duonolin-poblacioninv-copa) las mejoras son solo en la varible de `afro.porcentaje.inv` en el segundo dígito decimal. 
+Se recomienda especificar correctamente los modelos lineales cuando existen relaciones con correlaciones negativas, pues es posible que sea mejor usar el inverso de la variable. Para probar si al hacerlo dichas variables tienen incrementos en los coeficientes de correlación respecto de las variables dependientes. Como se observa en las figuras \@ref(fig:duolin-poblacion-copa) y \@ref(fig:duonolin-poblacioninv-copa) las mejoras son solo en la varible de `afro.porcentaje.inv` en el segundo dígito decimal. Como son tan pequeñas las diferencias opto por no usar las variables transformdas por la funcion inversa pues esto reduce el intervalo en que varian, reduciendo asi su poder explicativo. 
 
 
 
 
-```{r duolin-poblacion-copa,cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la cobertura de copa (regresión lineal + coeficiente de Pearson)"}
+```{r duolin-poblacion-copa,cache=TRUE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la cobertura de copa (regresión lineal + coeficiente de Pearson)"}
 # entre predictoras y dependientes no lineal
 ggduo(regresion.arboles,
       columnsX =c("superior_postgrado",indep.poblacion.copa.ap.sel),
       columnsY =dependientes.arboles,
-      types = list(continuous = wrap(lm_with_cor)),
-      # types = list(continuous = wrap(lm_with_cor,
+      types = list(continuous = wrap_fn_with_params(lm_with_cor)),
+      # types = list(continuous = wrap_fn_with_params(lm_with_cor,
       #                                method_cor = "spearman",
       #                                method_smooth= "loess")),
       title = "Predictores de población vs. cobertura de copa (regresión lineal + Pearson)"
@@ -1045,13 +1045,13 @@ ggduo(regresion.arboles,
 
 ```
 
-```{r duonolin-poblacioninv-copa, cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población (usando el inverso de la variable con correlaciones negativas: $f(x)=\\frac{1}{x+1}$) y las variables dependientes de la cobertura de copa ( regresión lineal  + coeficiente de Pearson)"}
+```{r duonolin-poblacioninv-copa, cache=TRUE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población (usando el inverso de la variable con correlaciones negativas: $f(x)=\\frac{1}{x+1}$) y las variables dependientes de la cobertura de copa ( regresión lineal  + coeficiente de Pearson)"}
 # entre predictoras y dependientes no lineal
 ggduo(regresion.arboles,
       columnsX =c("superior_postgrado",indep.poblacion.cobertura.ap), 
       columnsY =dependientes.arboles,
-      types = list(continuous = wrap(lm_with_cor)),
-      # types = list(continuous = wrap(lm_with_cor,
+      types = list(continuous = wrap_fn_with_params(lm_with_cor)),
+      # types = list(continuous = wrap_fn_with_params(lm_with_cor,
       #                                method_cor = "spearman",
       #                                method_smooth= "loess")),
 title = "Predictores de población (invertido) vs. cobertura de copa (regresión lineal + Pearson)"
@@ -1078,14 +1078,14 @@ regresion.arboles %>% select(one_of(c(dependientes.copa.trnsf,dependientes.copa.
 
 ```
 
-Las mejoras sobre el modelo de regresión que puedan hacer estas transformaciones pueden apreciarse en los gráficos de dispersión de las variables independientes transformadas vs. las dependientes o/y en los coeficientes de correlación de Pearson. Como se observa en las figuras \@ref(fig:duolin-poblacion-copa-trnsf) y \@ref(fig:duolin-poblacion-cob-trnsf) hay leves mejoras al aplicar las transformaciones.   
+Las mejoras sobre el modelo de regresión que puedan hacer estas transformaciones pueden apreciarse en los gráficos de dispersión de las variables independientes transformadas vs. las dependientes o/y en los coeficientes de correlación de Pearson. Como se observa en las figuras \@ref(fig:duolin-poblacion-copa-trnsf) y \@ref(fig:duolin-poblacion-cob-trnsf) hay leves mejoras al aplicar las transformaciones.    
 
-```{r duolin-poblacion-copa-trnsf,cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la área de copa transformdas (regresión lineal + coeficiente de Pearson)"}
+```{r duolin-poblacion-copa-trnsf,cache=TRUE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la área de copa transformdas (regresión lineal + coeficiente de Pearson)"}
 # entre predictoras y dependientes no lineal
 ggduo(regresion.arboles,
-      columnsX =indep.poblacion.area_copa, 
+      columnsX =indep.poblacion.copa.sel, 
       columnsY =dependientes.copa.trnsf,
-      types = list(continuous = wrap(lm_with_cor)),
+      types = list(continuous = wrap_fn_with_params(lm_with_cor)),
       title = "Predictores de población vs. área de copa transformda (regresión lineal + Pearson)"
 )+ theme_grey(base_size = 8)
 
@@ -1093,12 +1093,12 @@ ggduo(regresion.arboles,
 ```
 
 
-```{r duolin-poblacion-cob-trnsf,cache=FALSE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la cobertura de copa transformdas (regresión lineal + coeficiente de Pearson)"}
+```{r duolin-poblacion-cob-trnsf,cache=TRUE,fig.asp=0.62,fig.cap="Gráficas de dispersión entre predictores de población y variables dependientes de la cobertura de copa transformdas (regresión lineal + coeficiente de Pearson)"}
 # entre predictoras y dependientes no lineal
 ggduo(regresion.arboles,
       columnsX =indep.poblacion.copa.ap.sel, 
       columnsY =dependientes.copa.ap.trnsf,
-      types = list(continuous = wrap(lm_with_cor)),
+      types = list(continuous = wrap_fn_with_params(lm_with_cor)),
       title = "Predictores de población vs. cobertura de copa transformda (regresión lineal + Pearson)"
 )+ theme_grey(base_size = 8)
 
@@ -1108,79 +1108,766 @@ ggduo(regresion.arboles,
 También es sabido que dividir o multiplicar por alguna constante no tiene ningún efecto en la calidad de la estimación , pero sí sobre los coeficientes de la regresión. Esto suele ser sensible a la hora de interpretar los cambios marginales de cada una de las variables independientes y su efecto sobre la variable dependiente. Sin embargo, lo que interesa para este estudio no es la interpretación de esos cambio sino la importancia relativa de cada variable y comparar los cambios de los coeficientes de regresión para el ajuste de cada modelo y/o las mejoras que pueda operar un modelos autorregresivo en caso de encontrase autocorrelación en los residuos de la regresión lineal. Por esta razón, normalizar los valores puede ser una ventaja pues mantiene los coeficiente mejor acotados. La normalización se aplica posterior a las transformaciones propuestas y se realiza dividiendo por el máximo valor de los datos de cada variable para mantener valores en el intervalo [0,1], dado que los valores son todos iguales o mayores que 0.
 
 
-El siguiente código en **R** crea las 5 regresiones lineales propuestas.
-```{r code-lm-area_copa, echo=T}
+El siguiente código en **R** crea las 5 regresiones lineales propuestas y se resumen en la la tablas \@ref(tab:comp-lmcopa) y \@ref(tab:comp-lmcopaap)
 
-# area de copa
+```{r code-lm-area_copa, echo=TRUE,eval=TRUE}
+
 dependiente <- "area_copa"
-independientes  <- indep.poblacion.area_copa
+independientes  <- indep.poblacion.copa.sel
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
 lm.mn.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
-summary(lm.mn.area_copa.sel)
-
+sm<-summary(lm.mn.area_copa.sel)
+sm
 
 ```
 
 
-```{r code-lm-log.area_copa,echo=T}
+```{r code-lm-log.area_copa,echo=TRUE,eval=TRUE}
 
 
 dependiente <- "log.area_copa"
-independientes  <- indep.poblacion.area_copa
+independientes  <- indep.poblacion.copa.sel
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
 lm.mxn.log.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
 modelo<-crear_lm_from_df(regresion.arboles.mn)
-summary(lm.mxn.log.area_copa.sel)
+sm<-summary(lm.mxn.log.area_copa.sel)
+sm
+
 ```
 
 
 
-```{r code-lm-sqrt.area_copa,echo=T}
+```{r code-lm-sqrt.area_copa,echo=TRUE,eval=TRUE}
 
 dependiente <- "sqrt.area_copa"
-independientes  <- indep.poblacion.area_copa
+independientes  <- indep.poblacion.copa.sel
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
 lm.mxn.sqrt.area_copa.sel<-crear_lm_from_df(regresion.arboles.mn)
 summary(lm.mxn.sqrt.area_copa.sel)
+
+```
+
+Table: (\#tab:comp-lmcopa)Modelos área copa preliminares
+
+|  | modelos|
+|:----------|------------:|
+
+`r sjt.lm(lm.mn.area_copa.sel, lm.mxn.log.area_copa.sel,lm.mxn.sqrt.area_copa.sel,       depvar.labels = c("Area Copa (AC)", "Log(AC)","Sqrt(AC))"),separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, no.output=TRUE)$knitr`
+
+
+```{r tabla-mse-lmcopa}
+modelos<-c("Area Copa (AC)", "Log(AC)","Sqrt(AC))")
+sm1<-summary(lm.mn.area_copa.sel)
+sm2<-summary(lm.mxn.log.area_copa.sel)
+sm3<-summary(lm.mxn.sqrt.area_copa.sel)
+mse<-c(mean(sm1$residuals^2),mean(sm2$residuals^2),mean(sm3$residuals^2))
+tablamse<-data.frame(modelos,mse)
+knitr::kable(tablamse,
+             col.names =c("Modelo","MSE"),
+             caption = "Comparación MSE para modelos de área de copa")
 ```
 
 
-```{r code-lm-cobertura_copa.ap,echo=T}
+
+```{r code-lm-cobertura_copa.ap,echo=TRUE}
 
 
 dependiente <- "cobertura_copa.ap"
-independientes  <- indep.poblacion.cobertura.ap
+independientes  <- indep.poblacion.copa.ap.sel
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
 lm.mxn.cobertura_copa.ap<-crear_lm_from_df(regresion.arboles.mn)
-summary(lm.mxn.cobertura_copa.ap)
+sm<-summary(lm.mxn.cobertura_copa.ap)
+sm
+#MSE
+mean(sm$residuals^2)
 
 ```
 
 
-```{r code-lm-sqrt.cobertura_copa.ap,echo=T}
+```{r code-lm-sqrt.cobertura_copa.ap,echo=TRUE}
 
 
 dependiente <- "sqrt.cobertura_copa.ap"
-independientes  <- indep.poblacion.cobertura.ap
+independientes  <- indep.poblacion.copa.ap.sel
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
 lm.mxn.sqrt.cobertura_copa.ap<-crear_lm_from_df(regresion.arboles.mn)
-summary(lm.mxn.sqrt.cobertura_copa.ap)
+sm<-summary(lm.mxn.sqrt.cobertura_copa.ap)
+sm
+#MSE
+mean(sm$residuals^2)
+
 ```
 
 
+Table: (\#tab:comp-lmcopaap)Modelos cobertura de copa preliminares
+
+|  | modelos|
+|:----------|------------:|
+
+`r sjt.lm(lm.mxn.cobertura_copa.ap, lm.mxn.sqrt.cobertura_copa.ap,depvar.labels = c("Cobertura Copa % (CC)","Sqrt(CC))"), separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, no.output=TRUE)$knitr`
+
+```{r tabla-mse-lmcopaap}
+modelos<-c("Cobertura Copa % (CC)","Sqrt(CC))")
+sm1<-summary(lm.mxn.cobertura_copa.ap)
+sm2<-summary(lm.mxn.sqrt.cobertura_copa.ap)
+mse<-c(mean(sm1$residuals^2),mean(sm2$residuals^2))
+tablamse<-data.frame(modelos,mse)
+knitr::kable(tablamse,
+             col.names =c("Modelo","MSE"),
+             caption = "Comparación MSE para modelos de porcentaje de cobertura de copa")
+```
+
+De los 3 formulaciones de usadas para modelar el área de copa la que mejor ajuste obtuvo fue el que transforma la variable dependiente usando la raíz cuadrada (`sqrt.area_copa`). Este modelo explica el 60% de la variabilidad en los datos (Adjusted R-squared:  0.604) y considera las variables `superior_postgrado` y `densidad_poblacion` como muy significativas, con ambos coeficientes obteniendo valores consistentes con el signo de las correlaciones calculadas previamente en análisis bivariado de la figura \@ref(fig:duolin-poblacion-copa-trnsf).
+
+Para el porcentaje de cobertura copa en el área pública, el mejor ajuste se obtuvo con la variable transformada por la función raíz cuadrada (`sqrt.cobertura_copa.ap`). Este modelo considera que las variables `superior_postgrado.porcentaje` y `densidad_poblacion` como muy significativas, y explica  casi el 50% de la variabilidad (Adjusted R-squared:  0.4858). Sin embargo el coeficiente de la densidad de población obtiene un valor positivo, contrario al signo de la correlación obtenida en el análisis bivariado de la figura \@ref(fig:duolin-poblacion-cob-trnsf).
+
+Reduzcamos ambos modelos eliminando las variables no significativas y aplicando test para verificar que las condiciones de un buen ajuste (no hay sesgos en el estimador o una mala especificación del modelo) de un modelo lineal se cumplen:
+
+- La media de los residuos es 0 o muy cercana.
+- La distribución de los residuos es normal.
+- Los residuos muestran homocedasticidad (la varianza es constante)
+
+Para verificar la normalidad de los residuos usaremos el test de Shapiro–Wilk [@shapiro1965analysis] y para la verificar si existe homocedasticidad el test de Breusch–Pagan [@breusch1979simple]. Además se acompaña de gráficas de diagnóstico de los resultados de cada modelo.
+
+Para el mejor modelos del área de copa el siguiente codigo realiza el trabajo generar las gráficas diagnósticas y los tests de normalidad y homocedasticidad.
+
+```{r code-best-lm-areacopa, eval=TRUE, echo=TRUE,results='hide' }
+dependiente <- "sqrt.area_copa"
+independientes  <- c("superior_postgrado","densidad_poblacion")
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.best.area_copa<-lm(sqrt.area_copa.mxn~superior_postgrado.mxn+densidad_poblacion.mxn,data = regresion.arboles.mn)
+sm<-summary(lm.best.area_copa)
+sm
+#MSE
+mean(sm$residuals^2)
+#test de ajuste
+mean(lm.best.area_copa$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+lmtest::bptest(lm.best.area_copa) # la varianza de los residuos no es constante 
+# Normalidad de los residuos
+shapiro.test(lm.best.area_copa$residuals) # los residuos no exhiben una distribucion normal
+
+```
+
+Table: (\#tab:lmcopa-best)Resumen de OLS -`r format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n")`
+
+|  | modelo|
+|:----------|:------------:|
+
+`r sjt.lm(lm.best.area_copa,depvar.labels = c("Sqrt(AC)"), separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, show.se=TRUE,no.output=TRUE)$knitr`
+
+```{r diagn-best-lm-areacopa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal del área de copa"}
+graf<-autoplot(lm.best.area_copa)
+title1=grid::textGrob(format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
+grid.arrange( grobs =graf@plots, top=title1)
+# +
+#   theme(title = element_text(size = 0.5))
+
+```
+
+Los resultados de los tests (tablas \@ref(tab:fitlm-copa) y \@ref(tab:testlm-copa)) rechazan que los residuos sean normales y que la varianza sea constante, por lo cual, es posibles que los estimadores sean ineficientes y que existan efecto no considerados en el modelo. Las gráficas diagnosticas (figura \@ref(fig:diagn-best-lm-areacopa)) muestran que existe heterocedasticidad en los residuos, pues se observa como la linea de tendencia se aleja de la horizontal y la dispesion de los residuos aumenta con el valor ajustado. Para probar si es posible tener un modelo mejor especificado se introduce en la sección \@ref(geostat) análisis geoestadisticos basados en la autocorrelación espacial. 
+
+Table: (\#tab:fitlm-copa)**MSE y Media(residuos)** - `r format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n")`
+
+| Modelo          | MSE| Media(residuos)|
+|:----------|:------------:|:------------:|
+| `lm.best.area_copa`  | `r mean(summary(lm.best.area_copa)$residuals^2)` | `r mean(lm.best.area_copa$residuals)` | 
+
+
+```{r testlm-copa, warning=FALSE}
+# Homocedasticidad de los residuos o varianza igual
+bpt<-lmtest::bptest(lm.best.area_copa) # la varianza de los residuos no es constante 
+# Normalidad de los residuos
+swt<-shapiro.test(lm.best.area_copa$residuals) # los residuos no exhiben una distribucion normal
+bpt.df<-tidy(bpt)
+swt.df<-tidy(swt)
+tabla.tmp<-bind_rows(swt.df,bpt.df)
+kable(tabla.tmp, caption = paste0("**Test de normalidad y homocedasticidad** - ", format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n")))
+```
+
+
+
+El mismo procedimiento lo aplicamos para el mejor modelo de cobertura de copa. El siguiente código construye el modelo y realiza los test descritos anteriormente.  
+
+
+```{r code-best-lm-copaap, eval=TRUE, echo=TRUE, results='hide' }
+dependiente <- "sqrt.cobertura_copa.ap"
+independientes  <- c("superior_postgrado.porcentaje","densidad_poblacion")
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.best.cobertura.ap<-lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+densidad_poblacion.mxn,data = regresion.arboles.mn)
+sm<-summary(lm.best.cobertura.ap)
+sm
+#test de ajuste
+mean(lm.best.cobertura.ap$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+lmtest::bptest(lm.best.cobertura.ap) # la varianza de los residuos no es constante 
+# Normalidad de los residuos
+shapiro.test(lm.best.cobertura.ap$residuals) # los residuos no exhiben una distribucion normal
+
+```
+
+Table: (\#tab:lmcopaap-best)Resumen de OLS -`r format(as.formula(lm.best.cobertura.ap)) %>% str_c(collapse = "")`
+
+|  | modelo|
+|:----------|:------------:|
+
+`r sjt.lm(lm.best.cobertura.ap,depvar.labels = c("Sqrt(AC)"), separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, show.se=TRUE,no.output=TRUE)$knitr`
+
+
+```{r diagn-best-lm-copaap, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal del porcentaje de cobertura de copa"}
+
+graf<-autoplot(lm.best.cobertura.ap, which = 1:4)
+title1=grid::textGrob(format(as.formula(lm.best.cobertura.ap)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
+grid.arrange( grobs =graf@plots, top=title1)
+```
+
+Table: (\#tab:fitlm-copa)**MSE y Media(residuos)** - `r format(as.formula(lm.best.cobertura.ap)) %>% str_c(collapse = "")`
+
+| Modelo          | MSE| Media(residuos)|
+|:----------|:------------:|:------------:|
+| `lm.best.cobertura.ap`  | `r mean(summary(lm.best.cobertura.ap)$residuals^2)` | `r mean(lm.best.cobertura.ap$residuals)` | 
+
+
+```{r testlm-copaap, warning=FALSE}
+# Homocedasticidad de los residuos o varianza igual
+bpt<-lmtest::bptest(lm.best.cobertura.ap) # la varianza de los residuos no es constante 
+# Normalidad de los residuos
+swt<-shapiro.test(lm.best.cobertura.ap$residuals) # los residuos no exhiben una distribucion normal
+bpt.df<-tidy(bpt)
+swt.df<-tidy(swt)
+tabla.tmp<-bind_rows(swt.df,bpt.df)
+kable(tabla.tmp, caption = paste0("**Test de normalidad y homocedasticidad** - ", format(as.formula(lm.best.cobertura.ap)) %>% str_c(collapse = "")))
+```
+
+Al igual que para el área de copa los resultados de los tests rechazan que los residuos sean normales y que la varianza sea constante (tabla \@ref(tab:testlm-copaap)), sin embargo, no es tan notorio el aumento de la varianza con el aumento de los valores ajustados; la curva de tendencia de los residuos vs. los valores ajustados sugiere una no linealidad no absorbida por el modelo (figura \@ref(fig:diagn-best-lm-copaap)). Igualmente veremos si la introducción de elementos de la teoría geoestadística permite mejorar la especificación del modelo.
+
+Los resultados de la regresión de los modelos con varibles de población se resumen en la tabla \@ref(tab:comp-lmcopaap) y al igual que los test de normalidad \@ref(tab:testsw-poblacion), homocedasticidad \@ref(tab:testbp-poblacion) y métricas sobre los residuos \@ref(tab:mse-lm-best-poblacion). 
+
+Table: (\#tab:comp-lmcopaap)OLS con variables de población para el área (AC) y el porcentaje decobertura de copa (CC%)
+
+|  | modelos|
+|:----------|:------------:|
+
+`r sjt.lm(lm.best.area_copa, lm.best.cobertura.ap,depvar.labels = c("Sqrt(AC)", "Sqrt(CC%))"), separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, show.se=TRUE, no.output=TRUE)$knitr`
+
+
+```{r mse-lm-best-poblacion}
+modelos<-c("Sqrt(AC)", "Sqrt(CC%))")
+sm1<-summary(lm.best.area_copa)
+sm2<-summary(lm.best.cobertura.ap)
+mse<-c(mean(sm1$residuals^2),mean(sm2$residuals^2))
+media<-c(mean(lm.best.area_copa$residuals),mean(lm.best.cobertura.ap$residuals))
+tablamse<-data.frame(modelos,mse,media)
+knitr::kable(tablamse,
+             col.names =c("Modelo","MSE","Media(residuos)"),
+             caption = "Comparación MSE para los modelos seleccionados de cobertura y área de copa")
+```
+
+```{r testsw-poblacion, warning=FALSE}
+modelos<-c("Sqrt(AC)", "Sqrt(CC%))")
+# Normalidad de los residuos
+swt1<-shapiro.test(lm.best.area_copa$residuals)
+swt2<-shapiro.test(lm.best.cobertura.ap$residuals)
+
+swt.df<-bind_rows(tidy(swt1),tidy(swt2))
+tabla.tmp<-bind_cols(modelo=modelos,swt.df)  
+
+kable(tabla.tmp, caption = "**Test de normalidad**")
+
+```
+```{r testbp-poblacion, warning=FALSE}
+modelos<-c("Sqrt(AC)", "Sqrt(CC%))")
+# Homocedasticidad de los residuos o varianza igual
+bpt1<-lmtest::bptest(lm.best.area_copa) 
+bpt2<-lmtest::bptest(lm.best.cobertura.ap)
+
+
+bpt.df<-bind_rows(tidy(bpt1),tidy(bpt2))
+tabla.tmp<-bind_cols(modelo=modelos,bpt.df)  
+
+kable(tabla.tmp, caption = "**Test de homocedasticidad**")
+```
+
+
+
+
+#### Introducción de dimensiones no poblacionales al modelo lineal
+
+Para la inclusión de otras variables agregadas por sector urbano aplicamos el procedimiento realizado para la selección de las variables de población usando como criterio la inclusión de variables con coeficientes de correlación que muestren una asociación fuerte con las variables de cobertura de copa. Las figuras \@ref(fig:tile-prediosev-pearson) y \@ref(fig:tile-prediosev-spearman) se ven los coeficientes de Pearson y Spearman, respectivamente, entre las variables sobre el uso los predios, tipo de viviendas y área (y porcentaje) de espacios verdes en cada sector urbano. Como se observa, existe una fuerte (perfecta) asociación negativa entre el porcentaje de casas y apartamentos, lo que obliga a solo escoger una de las dos en caso de haber una fuerte relación entre alguna de ellas con las variables de cobertura de copa. También hay una fuerte asociación positiva entre el área de espacios verdes y el porcentaje de área de espacio verdes en un sector urbano. Como mencionamos antes solo incluiremos una de las dos en caso de que ambas resulten fuertemente asociadas con las variables dependientes.  
+
+```{r tile-prediosev-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios y espacios verdes en los sectores urbanos"}
+pintar_corrmatrix(regresion.arboles,indep.predios)+
+  labs(title="Pearson entre características de predios y EV")
+```
+
+```{r tile-prediosev-spearman, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios y espacios verdes en los sectores urbanos"}
+pintar_corrmatrix(regresion.arboles,indep.predios, method_cor = "spearman")+
+  labs(title="Spearman entre entre características de predios y EV")
+```
+
+Las figuras \@ref(fig:tile-copa-prediosev-pearson) y \@ref(fig:tile-copa-prediosev-spearman) muestran la correlación entre las potenciales nuevas variables a incluir en el modelo y las variables dependientes de cobertura y área de copa. Para el área de copa se seleccionan el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
+
+```{r tile-copa-prediosev-pearson, fig.asp=0.65, fig.cap= "Coeficiente Pearson entre coberturas de copa y variables de predios y EV"}
+pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles)+
+  labs(title="Coeficiente Pearson entre cobertura de copa y uso de los predios")
+```
+
+
+```{r tile-copa-prediosev-spearman, fig.asp=0.65,fig.cap="Coeficiente Pearson entre coberturas de copa y variables de predios y EV"}
+pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles, method_cor = "spearman")+
+  labs(title="Coeficiente Spearman entre  cobertura de copa y uso de los predios")
+```
+
+La nueva formulación del modelo de área de copa obtiene los siguientes resultados:
+
+```{r code-mode-best-lm-areacopa, eval=TRUE, echo=TRUE,results='hide' }
+
+# introducimos las varibles nuevas
+dependiente <- "sqrt.area_copa"
+independientes  <- c("superior_postgrado","densidad_poblacion",indep.predios.copa.sel)
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mod.area_copa<-lm(sqrt.area_copa.mxn~superior_postgrado.mxn+
+                        densidad_poblacion.mxn+
+                        cuarto.porcentaje.mxn+
+                        area_ep.mxn,
+                      data = regresion.arboles.mn)
+sm<-summary(lm.mod.area_copa)
+sm
+#MSE
+mean(sm$residuals^2)
+
+#test de ajuste
+mean(lm.mod.area_copa$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+lmtest::bptest(lm.mod.area_copa) # la varianza de los residuos no es constante 
+# test normalidad de los residuos
+shapiro.test(lm.mod.area_copa$residuals) # los residuos no exhiben una distribucion normal
+
+#Comparacion AIC
+AIC(lm.mod.area_copa)
+AIC(lm.best.area_copa)
+
+```
+
+
+Table: (\#tab:comp-lmcopa-pob-mod)Comparación OLS para el área (AC) población y otras dimensiones
+
+|  | modelos|
+|:----------|:------------:|
+
+`r sjt.lm(lm.best.area_copa, lm.mod.area_copa,depvar.labels = c("Sqrt(AC)~pob", "Sqrt(AC)~pob+otras"), separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, show.se=TRUE, no.output=TRUE)$knitr`
+
+Las variables introducidas tienen todas p-value significativos, y a pesar de la inclusión de más términos al modelo existe una mejora en el Criterio de Información de Akaike (baja de `r AIC(lm.best.area_copa)` a `r AIC(lm.mod.area_copa)`). Los resultados de los test evidencian que aunque hay mejoras en Adjusted R-squared ( de 0.6032 a 0.678) y en MSE (de 0.0121 a 0.0098) sigue existiendo no normalidad en los residuos y heterocedasticidad, como se observa también en las gráficas diagnosticas de la regresión \@ref(fig:diagn-mod-best-lm-copa).
+
+```{r mse-lm-mod-poblacion}
+modelos<-c("Sqrt(AC)~pob", "Sqrt(AC)~pob+otras")
+sm1<-summary(lm.best.area_copa)
+sm2<-summary(lm.mod.area_copa)
+mse<-c(mean(sm1$residuals^2),mean(sm2$residuals^2))
+media<-c(mean(lm.best.area_copa$residuals),mean(lm.mod.area_copa$residuals))
+tablamse<-data.frame(modelos,mse,media)
+knitr::kable(tablamse,
+             col.names =c("Modelo","MSE","Media(residuos)"),
+             caption = "MSE y Media(residuos) para los modelos de área de copa más otras dimensiones no poblacionales")
+```
+
+```{r testsw-poblacion-mod, warning=FALSE}
+modelos<-c("Sqrt(AC)~pob", "Sqrt(AC)~pob+otras")
+# Normalidad de los residuos
+swt1<-shapiro.test(lm.best.area_copa$residuals)
+swt2<-shapiro.test(lm.mod.area_copa$residuals)
+
+swt.df<-bind_rows(tidy(swt1),tidy(swt2))
+tabla.tmp<-bind_cols(modelo=modelos,swt.df)  
+
+kable(tabla.tmp, caption = "**Test de normalidad**")
+
+```
+```{r testbp-poblacion-mod, warning=FALSE}
+modelos<-c("Sqrt(AC)~pob", "Sqrt(AC)~pob+otras")
+# Homocedasticidad de los residuos o varianza igual
+bpt1<-lmtest::bptest(lm.best.area_copa) 
+bpt2<-lmtest::bptest(lm.mod.area_copa)
+
+
+bpt.df<-bind_rows(tidy(bpt1),tidy(bpt2))
+tabla.tmp<-bind_cols(modelo=modelos,bpt.df)  
+
+kable(tabla.tmp, caption = "**Test de homocedasticidad**")
+```
+
+
+```{r diagn-mod-best-lm-copa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de área de copa con los nuevos términos"}
+
+graf<-autoplot(lm.mod.area_copa, which = 1:4)
+title1=grid::textGrob(format(as.formula(lm.mod.area_copa)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
+grid.arrange( grobs =graf@plots, top=title1)
+
+```
+
+
+Para el caso del porcentaje de cobertura de copa los resultados obtenidos con la introduccion de las nuevas varibles son los siguientes:
+
+```{r code-mode-best-lm-copaap, eval=TRUE, echo=TRUE,results="hide"}
+# coberbtura AP
+dependiente <- "sqrt.cobertura_copa.ap"
+independientes  <- c("superior_postgrado.porcentaje","densidad_poblacion",indep.predios.copa.ap.sel)
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+lm.mod.cobertura.ap<-lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
+                          densidad_poblacion.mxn+
+                          apartamento.porcentaje.mxn+
+                          cuarto.porcentaje.mxn+
+                          area_ep.porcentaje.mxn,
+                        data = regresion.arboles.mn)
+sm<-summary(lm.mod.cobertura.ap)
+sm
+#MSE
+mean(sm$residuals^2)
+#test de ajuste
+mean(lm.mod.cobertura.ap$residuals) # media de los residuos cercana a 0 (si)
+# Homocedasticidad de los residuos o varianza igual
+lmtest::bptest(lm.mod.cobertura.ap) # la varianza de los residuos no es constante 
+# test normalidad de los residuos
+shapiro.test(lm.mod.cobertura.ap$residuals) # los residuos no exhiben una distribucion normal
+#Comparacion AIC
+AIC(lm.mod.cobertura.ap)
+AIC(lm.best.cobertura.ap)
+
+```
+
+Table: (\#tab:comp-lmcopaap-pob-mod)Comparación OLS para el porcenataje de cobertura de copa (CC%) con variables de población y otras dimensiones
+
+|  | modelos|
+|:----------|:------------:|
+
+`r sjt.lm(lm.best.cobertura.ap, lm.mod.cobertura.ap,depvar.labels = c("Sqrt(CC%)~pob", "Sqrt(CC%)~pob+otras"), separate.ci.col = FALSE, p.numeric = FALSE, show.fstat =TRUE,show.aic = TRUE, show.se=TRUE, no.output=TRUE)$knitr`
+
+Las variables introducidas tienen todas p-value no significativos. La inclusión de más términos al modelo empeoran el Criterio de Información de Akaike (sube de `r AIC(lm.best.cobertura.ap)` a `r AIC(lm.mod.cobertura.ap)`). Los resultados de los test no dan evidencian de mejoras en Adjusted R-squared ( de 0.4883 a 0.489 ) y en MSE (de 0.01279 a 0.01266). Sigue existiendo no normalidad en los residuos y heterocedasticidad, como se observa en las gráficas diagnosticas de la regresión \@ref(fig:diagn-mod-best-lm-copaap).
+
+```{r mse-lm-copaap-mod-pob}
+modelos<-c("Sqrt(CC%)~pob", "Sqrt(CC%)~pob+otras")
+sm1<-summary(lm.best.cobertura.ap)
+sm2<-summary(lm.mod.cobertura.ap)
+mse<-c(mean(sm1$residuals^2),mean(sm2$residuals^2))
+media<-c(mean(lm.best.cobertura.ap$residuals),mean(lm.mod.cobertura.ap$residuals))
+tablamse<-data.frame(modelos,mse,media)
+knitr::kable(tablamse,
+             col.names =c("Modelo","MSE","Media(residuos)"),
+             caption = "MSE y Media(residuos) para los modelos de cobertura de copa más otras dimensiones no poblacionales")
+```
+
+```{r testsw-copaap-pob-mod, warning=FALSE}
+modelos<-c("Sqrt(CC%)~pob", "Sqrt(CC%)~pob+otras")
+# Normalidad de los residuos
+swt1<-shapiro.test(lm.best.cobertura.ap$residuals)
+swt2<-shapiro.test(lm.mod.cobertura.ap$residuals)
+
+swt.df<-bind_rows(tidy(swt1),tidy(swt2))
+tabla.tmp<-bind_cols(modelo=modelos,swt.df)  
+
+kable(tabla.tmp, caption = "**Test de normalidad**")
+
+```
+```{r testbp-copaap-pob-mod, warning=FALSE}
+modelos<-c("Sqrt(CC%)~pob", "Sqrt(CC%)~pob+otras")
+# Homocedasticidad de los residuos o varianza igual
+bpt1<-lmtest::bptest(lm.best.cobertura.ap) 
+bpt2<-lmtest::bptest(lm.mod.cobertura.ap)
+
+
+bpt.df<-bind_rows(tidy(bpt1),tidy(bpt2))
+tabla.tmp<-bind_cols(modelo=modelos,bpt.df)  
+
+kable(tabla.tmp, caption = "**Test de homocedasticidad**")
+```
+
+```{r diagn-mod-best-lm-copaap, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de cobertura de copa con los nuevos términos"}
+
+graf<-autoplot(lm.mod.cobertura.ap, which = 1:4)
+title1=grid::textGrob(format(as.formula(lm.mod.cobertura.ap)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
+grid.arrange( grobs =graf@plots, top=title1)
+```
+
+Como incluimos muchas variables nuevas veamos cuales son los modelos que presentan mejoras usando diferentes combinaciones de las variables seleccionadas con base en el Criterio de Información de Akaike, el MSE y el  Adjusted R-squared. Para ello usamos la función `ols_best_subset` de la librería `olsrr` que escoge los mejores 5 modelos con base en estos criterios.
+
+```{r code-sel-best-lm-copaap, eval=TRUE, echo=TRUE,results="hide"}
+best_models.copa.ap<-ols_best_subset(lm(sqrt.cobertura_copa.ap.mxn~
+                                  superior_postgrado.porcentaje.mxn+
+                                  densidad_poblacion.mxn+
+                                  area_ep.porcentaje.mxn+
+                                  cuarto.porcentaje.mxn+
+                                  apartamento.porcentaje.mxn,
+                                data = lm.mod.cobertura.ap$model))
+best_models.copa.ap
+#plot(best_models)
+```
+```{r perm-copaap-pred}
+tabla.tmp<-data.frame(id_model=best_models.copa.ap$mindex,
+                      Predictores=best_models.copa.ap$predictors)
+kable(tabla.tmp, caption = "5 mejores permutaciones de variables")
+```
+
+```{r perm-copaap-fit}
+tabla.tmp<-data.frame(id_model=best_models.copa.ap$mindex,
+                       AdjR_Sq=best_models.copa.ap$adjr,
+                       AIC= best_models.copa.ap$aic,
+                      MSEP=best_models.copa.ap$msep)
+kable(tabla.tmp, caption = "Comparación Medidas de Ajuste ")
+```
+
+
+Los resultados de este análsis comparativo dan como mejor modelo al conformado por `` `r best_models.copa.ap$predictors[3] %>%str_split(" ") %>% unlist() %>% str_c(collapse =", ") ` `` (modelo 3). La gráfica \@ref(fig:comp-model-copaap) resume las métricas de ajuste de los 5 mejores modelos. A pesar de las mejoras en el ajuste el coeficiente de la variable `cuarto.porcentaje` tiene un valor *p* que no es significativo, siguen existiendo no normalidad y heterocedasticidad, por lo que no podemos confiar en la eficiencia de los coeficientes de la regresión. Optamos entonces por mantener el modelo de varibles poblacionales para la el porcentaje de cobertura de copa que contiene solo variables de población.  
+
+```{r comp-model-copaap, fig.cap="Comparación entre modelos con las combinaciones de predictores con base en AIC, MSEP y Adjusted R-squared "}
+plot(best_models,main ="Comparacion de los 5 mejores modelos para la cobertura de copa")
+```
+
+Finalmente presento los mapas de las variables dependientes de los 2 modelos seleccionados, comparandolas con el modelo ajustado y los residuos de ajuste, con el finde observar donde se localizan los errores en la predicción. La figura \@ref(fig:mapas-lm-copa) corresponde al ajuste del área de copa y la figura \@ref(fig:mapas-lm-copaap) al porcentaje de la cobertura de copa.
+
+```{r mapas-lm-copa, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para `sqrt.area_copa` normalizada"}
+pintar_mapa_su_lm2(regresion.arboles,lm.mod.area_copa,nrow =1)
+```
+
+```{r mapas-lm-copaap, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para `sqrt.cobertura_copa.ap` normalizada"}
+pintar_mapa_su_lm2(regresion.arboles,lm.best.cobertura.ap,nrow =1)
+```
+
 ### Acceso a espacios verdes
 
-#### Criterios y selección de sectores censales
 
 #### Correlaciones y distribuciones bivaridas
 
 #### Modelos de regresion lineal 
 
 
-## Análisis geoestadísticos
+## Análisis geoestadísticos {#geostat}
 
+Para los analsis geoestadisticos introducimos los modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelo si existe algun tipo de autocorrelacion espacial en los residuos. Exite una variedad de estos modelos que capturan diferentes tipos de efectos: modelo autoregresivo SAR que capturan efectos de la variable dependiente, ecuación \@ref(eq:sar) , sobre las varibles las independientes ( spatial lag o retardo espacial en $X$ SLX, ecuación \@ref(eq:slx), en el error (modelo espacial del errore SEM,ecuación \@ref(eq:sem) o usando una combinacion del modelo de error y autoregresivo (modelo espacial de Durbin SD,ecuación \@ref(eq:sd). Todas estas aproximaciones introducen una matriz de $W_{n\times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influecia a priori en el modelo. Para observar el efecto que tiene esta matriz sobre los resultados del modelo usaremos 2 matrices distintas, y veremos su impacto en la estimación.
+
+Para los análisis espaciales usaremos la libreria `spdep` [@R-spdep]
+
+### Matrices de vecindad
+
+La matriz $W$ representa la topología de vecindad entre los sectores censales. Existen la literatura diferentes tipos de vecindad: rook, bishop y queen son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de los sectores censales, con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W$ defina para vecinos que comparten un lado del polígono (vecindad rook) para todos los sectores de la ciudad de Cali.
+
+```{r w-su-todos, fig.cap="Grafo de vecidad entre todos los SU de la ciudad de Cali"}
+nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
+par(mai=c(0,0,0,0))
+plot(su, border="grey80")
+plot(nb.su, coordinates(su), col='grey50', pch=19, cex=0.1,add=TRUE)
+```
+
+Sin embargo, la regresiones se realizaron sobre un subconjunto de los datos, y por tanto la estructura de esta matriz debe tener esto en cuenta, o mejor, no tener en cuenta la influencia de estos sectores excluidos. Así la matriz de vecindad para los SU usados para la estimación de los coeficientes de las regresiones lineales se ve en la figura \@ref(fig:w-su-reg).
+
+```{r w-su-reg, fig.cap="Grafo de vecidad entre los SU seleccionados para el análisis"}
+
+par(mai=c(0,0,0,0))
+plot(su, border="grey80")
+plot(W_cont, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add=TRUE)
+```
+
+Las matrices de vecindad construidas para el análisis espacial son la queen $W_q$, que considera vecino a todos los sectores que comparten un lado o una esquina con un sector censal; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km ($W_d$). Los grafos que representan las 2 matrices $W$ se muestran en la figura \@ref(fig:ws-su-reg). 
+
+```{r ws-su-reg, fig.asp=1.5 ,out.width='48%' ,fig.cap="Matrices de vecindad del análisis espacial",fig.align="center",fig.show="hold"}
+plot(W_queen,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray", main="Queen")
+title(main = "Queen")
+plot(W_dist1000.inv,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray", main="Distancia inversa a 1km")
+title(main = "Distancia inversa a 1km")
+
+```
+
+La matriz $W_d$ impone un estructura de interacciones que puede relacionar sectores en una zona que no necesariamente comparten ningún lado o esquina pero que están cercanos, mientras que $W_d$ se restringe a condiciones de vecindad sólo entre sectores contiguos. En esa medida puede existir juego para dar interpretación teórica al fenómeno de derrame o influencia que ejercen sobre el ajuste de los modelos. Un ejemplo puede ser que la dependencia espacial de las cobertura de árboles que expresa $W_d$ es una característica en una zona no limitada por las divisiones del territorio con base en los desarrollos urbanísticos (barrios) sino que se ajustan más a fenómenos de dispersión continuos con base en el alcance escogido. Así, la $W_q$ puede interpretarse como una forma de dar relevancia a la continuidad entre barrios y su importancia como unidad de desarrollo urbano en las variaciones de la variable a predecir. 
+
+### Modelado espacial de la cobertura de copa
+
+#### Autocorrelación espacial
+
+Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión usaramos el índice de Moran I. El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Si encontramos una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura en el modelo podremos obtener una estimación más eficientes de los coeficientes, y en consecuencia un mejor entendimiento de la relación entre esas variables. Hay que recordar que en este ejercicio no estamos queriendo entender una población por una muestra, estamos calculando estos coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación. La confianza en esa estimación depende de que los residuos obtenidos sean tenga un valor medio de 0, y que no puedan distinguirse del ruido. La ecuación \@ref(eq:moranI) define matemáticamente el índice:
+
+
+\begin{equation}
+ I=\frac {N}{\sum _{i}\sum _{j}w_{ij}} \frac {\sum _{i}\sum _{j}w_{ij}(X_{i}-{\bar {X}})(X_{j}-{\bar {X}})}{\sum _{i}(X_{i}- \bar{X})^{2}}
+(\#eq:moranI)
+\end{equation}
+
+donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta.
+
+El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (spatial lag: es como dijimos previamente el valor medio de los valores vecinos) de la variable en cuestión en el eje $y$ y la variable en el $x$. El valor **$p$** del test estadístico nos dice qué tan seguros estamos que esa pendiente no es plana, por lo que se espera que sean menores que el valor límite de significancia $\alpha = 0.05$  
+
+> El hecho de que de la Morán I es una suma de productos cruzados individuales es explotado por los "indicadores locales de asociación espacial" (LISA) para evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística para cada I. [@wikilisa]
+
+Examinemos primero la autocorrelación de las varibles dependientes. Los mapas que acompaña el resultado númerico y el grafico de Moran son el valor z-normalizado del LISA, el valor $p$ y la el mapa de clusters. En este ultimo mapa las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (high-high). El área azul es low-low en el mismo esquema propuesto por los cuadrantes en el gráfico de Moran, mientras que las regiones azul pálido son low-high y las áreas rosadas son high-low. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.
+
+```{r code-moran-copa-w, echo=TRUE}
+moran.test(lm.mod.area_copa$model$sqrt.area_copa.mxn, listw=W_queen)
+moran.test(lm.mod.area_copa$model$sqrt.area_copa.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
+
+```
+
+```{r moranplot-copa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$",fig.show="hold",out.width='49%'}
+
+moran.plot(lm.mod.area_copa$model$sqrt.area_copa.mxn, 
+             listw=W_queen, 
+             
+             pch=16, col="grey50",
+             cex=.5, quiet=T, 
+             labels=as.character(regresion.arboles$SETU_CCDGO),
+             xlab="sqrt.area_copa", 
+             ylab="sqrt.area_copa (Spatial Lag)", main="Gráfico de Moran Wq") 
+moran.plot(lm.mod.area_copa$model$sqrt.area_copa.mxn, 
+             listw=W_dist1000.inv, 
+             zero.policy = TRUE,
+             pch=16, col="grey50",
+             cex=.5, quiet=T, 
+             labels=as.character(regresion.arboles$SETU_CCDGO),
+             xlab="sqrt.area_copa", 
+             ylab="sqrt.area_copa (Spatial Lag)", main="Gráfico de Moran Wd") 
+
+```
+
+
+
+La matrix $W_q$ capatura mucho mejor de forma global la autocorrelacieon del area de copa. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copa-wd)) . 
+
+```{r mapas-lisa-copa-wq,fig.asp=0.618}
+
+pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_queen, wname = "W_q",nrow =1)
+
+```
+
+```{r mapas-lisa-copa-wd,fig.asp=0.618}
+
+pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_dist1000.inv, wname = "W_d", nrow =1)
+
+```
+
+Para la variable dependiente porcentaje de cobertura de copa los resulados de la autocorrelacieon son lo siguientes.
+
+
+
+El siguiente código calcula los índices de autocorrelación de los residuos para ambas matrices $W$ del mejor modelo lineal de área de copa (`` `r str_c("sqrt.copa_area.mxn",str_c(names(lm.mod.area_copa$model)[-1],collapse =" + "), sep= " ~ ") ` ``) y construye el gráfico de Moran \@ref(fig:moranplot-rescopa-wq) para $W_q$ y \@ref(fig:moranplot-rescopa-wd) para $W_d$. 
+
+```{r code-moran-rescopa-wq, echo=TRUE}
+moran.test(lm.mod.area_copa$residuals, listw=W_queen)
+```
+
+```{r moranplot-rescopa-wq, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$"}
+
+moran.plot(lm.mod.area_copa$residuals, 
+             listw=W_queen, 
+             
+             pch=16, col="grey50",
+             cex=.5, quiet=T, 
+             labels=as.character(regresion.arboles$SETU_CCDGO),
+             xlab="residuos", 
+             ylab="residuos (Spatial Lag)", main="Gráfico de Moran") 
+
+```
+
+
+```{r code-moran-rescopa-wd, echo=TRUE}
+moran.test(lm.mod.area_copa$residuals, listw=W_dist1000.inv, zero.policy = TRUE)
+```
+
+```{r moranplot-rescopa-wd, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_d$"}
+
+moran.plot(lm.mod.area_copa$residuals, 
+             listw=W_dist1000.inv, 
+             zero.policy = TRUE,
+             pch=16, col="grey50",
+             cex=.5, quiet=T, 
+             labels=as.character(regresion.arboles$SETU_CCDGO),
+             xlab="residuos", 
+             ylab="residuos (Spatial Lag)", main="Gráfico de Moran ") 
+
+```
+
+Para ambos caso el valor de Moran es mayor que 0 y significativo, aunque no es muy alto, si existe una tendencia en los datos y ambas matrices capturan el efecto. El mismo análisis se aplica para el modelos de porcentaje de cobertura de copa (`` `r str_c("sqrt.cobertura_copa.ap.mxn",str_c(names(lm.best.cobertura.ap$model)[-1],collapse =" + "), sep= " ~ ") ` ``). 
+
+
+```{r code-moran-copaap-wq, echo=TRUE}
+moran.test(lm.best.cobertura.ap$residuals, listw=W_queen)
+```
+
+```{r moranplot-copaap-wq, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de cobertura de copa usando $W_{q}$"}
+
+moran.plot(lm.best.cobertura.ap$residuals, 
+             listw=W_queen, 
+             
+             pch=16, col="grey50",
+             cex=.5, quiet=T, 
+             labels=as.character(regresion.arboles$SETU_CCDGO),
+             xlab="residuos", 
+             ylab="residuos (Spatial Lag)", main="Gráfico de Moran") 
+
+```
+
+
+```{r code-moran-copaap-wd, echo=TRUE}
+moran.test(lm.best.cobertura.ap$residuals, listw=W_dist1000.inv, zero.policy = TRUE)
+```
+
+```{r moranplot-copaap-wd, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de cobertura de copa usando $W_d$"}
+
+moran.plot(lm.best.cobertura.ap$residuals, 
+             listw=W_dist1000.inv, 
+             zero.policy = TRUE,
+             pch=16, col="grey50",
+             cex=.5, quiet=T, 
+             labels=as.character(regresion.arboles$SETU_CCDGO),
+             xlab="residuos", 
+             ylab="residuos (Spatial Lag)", main="Gráfico de Moran ") 
+
+```
+
+Esta vez la autocorrelación de los residuos es más fuerte e igualmente significativa. Podemos proceder a realizar un ajuste en ambos modelos introduciendo algún tipo de estructura espacial.
+
+#### Ajuste de modelos espaciales
+
+Mejorar la especificación de los modelos lineales incluyendo términos de retardo espacial en la variable dependiente (SAR \@ref(eq:sar)) se hace para obtener una adecuada estimación de los coeficientes de las otras covariables en el modelo. Si optamos por un modelo de error espacial  (SE \@ref(eq:sem)) implica que no es necesario plantear efectos distintivos de la variable dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas. El modelo SAR, en cambio, incorpora la influencia de variables independientes no medidas, pero también estipula un efecto adicional de valores de atributos vecinos, es decir, la variable dependiente rezagada. 
+Si incluimos el retardo sólo de las variables independientes (SLX \@ref(eq:slx)) esperamos que los cambios en las dimensiones expresadas con las predictores produce un efecto de derrame o influencia en los sectores vecinos. 
+
+¿Qué significa decir que la cantidad de cobertura de copa está relacionada con la de los sectores vecinos?¿Son los procesos de reproducción del arbolado urbano un fenómeno independiente de las intervenciones de sus habitantes y de los urbanizadores?¿Los habitantes que ven árboles en las cuadras o barrios aledaños deciden sembrar árboles en su vecindario?¿Existen similitudes en las condiciones estructurales de los barrios en ciertas zonas de la ciudad que prefieren las personas con mejores condiciones sociales( tener estudios superiores p.e)?¿Qué tipo de pérdidas en la cobertura de copa están motivadas por la densificación de un sector? ¿Cómo afectan los cambios en los tipos de oferta habitacional en un sector la cobertura de copa de los sectores vecinos? (las viviendas tipo cuarto suelen ofrecerse en pensiones y ser más económicas que las casas o apartamentos).
+
+La pregunta a hacerse es cómo saber cuál de los diferentes modelos espaciales es el que mejor representa el fenómeno que estamos modelando y si los datos respaldan nuestras convicciones teóricas. Si el modelo de retraso espacial que especifique es realmente el correcto, entonces ninguna dependencia espacial debe permanecer en los residuos, y podremos elaborar sobre el tipo de procesos que pueden verse representados.
+
+
+Una alternativa metodológica es probar los 3 tipos de modelos con ambas matrices $W_d$ y $W_q$  y comparar sus resultados.
+
+
+
+```{r code-laglm-copa-wq, echo=TRUE}
+sar.mod.sqrt.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
+         data = lm.mod.area_copa$model,
+         listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
+summary(sar.mod.sqrt.area_copa.wq,Nagelkerke=T)
+```
+
+
+```{r code-laglm-copa-wd, echo=TRUE}
+sar.mod.sqrt.area_copa.wd<-lagsarlm(formula = as.formula(lm.mod.area_copa),
+                                       data = lm.mod.area_copa$model,
+                                       listw = W_dist1000.inv, zero.policy = T,tol.solve=1.0e-30)
+summary(sar.mod.sqrt.area_copa.wd,Nagelkerke=T)
+```
+
+
+
+### Modelado espacial de espacios verdes
+
+#### Autocorrelación espacial
+
+#### Ajuste de modelos espaciales
