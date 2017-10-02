@@ -12,7 +12,7 @@ github-repo: correajfc/unigis-tesis
 description: "Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.)."
 ---
 ```{r setup-chunks}
-knitr::opts_chunk$set(echo = FALSE,tidy = T, out.width = '100%',cache = TRUE, fig.width = 6)
+knitr::opts_chunk$set(echo = FALSE,tidy = T, out.width = '100%',cache = TRUE, fig.width = 6, warning = FALSE, message = FALSE)
 ```
 
 

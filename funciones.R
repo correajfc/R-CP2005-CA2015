@@ -344,6 +344,32 @@ plots_map_LISA_df<-function(df,col_names){
 
 }
 
+plots_map_gradient0_df<-function(df,col_names){ 
+  
+  l_col_names<-as.list(col_names)
+  su_df<-su.f %>% dplyr::select(-area_su)  %>%
+    left_join(df, by = c("id"="SETU_CCDGO"))
+  lapply(l_col_names,function (i){
+    ggplot(su_df)+
+      geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = i))+
+      coord_equal()+
+      scale_fill_gradient2(
+        guide = guide_colorbar(
+          direction = "horizontal",
+          barheight = unit(2, units = "mm"),
+          barwidth = unit(40, units = "mm"),
+          draw.ulim = F,
+          title.position = 'top',
+          # some shifting around
+          title.hjust = 0.5,
+          label.hjust = 0.5
+        )
+      )+
+      theme_void()+
+      tema_lgnd_abajo()})
+  
+}
+
 pintar_mapa_su_lm2<-function(data,lm, ...){
   require(broom)
   #tdy<-tidy(lm)
@@ -506,7 +532,7 @@ pintar_mapa_su_LISA_lmres<-function(data,lm,W,wname="W" ,...){
     tema_lgnd_abajo()
   
   
-  title1<-grid::textGrob(paste0("Mapas LISA"," - ",wname,"\n Residuos: ",format(as.formula(lm)) %>% str_c(collapse = "\n")))
+  title1<-grid::textGrob(paste0("Mapas LISA"," - ",wname,"Residuos: \n",format(as.formula(lm)) %>% str_c(collapse = "\n")))
   grid.arrange(mapa_ZI,mapa_p,mapa_cluster, top = title1 ,... = ...)
   
   
@@ -616,4 +642,73 @@ tema_lgnd_derecha2<-function (...){
       ... 
     )
   
+}
+
+
+
+diagPlot<-function(lm){
+  require(ggplot2)
+  model<-augment(lm)
+  p1<-ggplot(model, aes(.fitted, .resid))+geom_point()
+  p1<-p1+stat_smooth(method="loess")+geom_hline(yintercept=0, col="red", linetype="dashed")
+  p1<-p1+xlab("Fitted values")+ylab("Residuals")
+  p1<-p1+ggtitle("Residual vs Fitted Plot")+theme_bw()
+   
+  p2<-  ggplot(model)+stat_qq(aes(sample=.resid))
+  # p2<-p2+geom_abline(aes(qqline(.std.resid)))+xlab("Theoretical Quantiles")+ylab("Standardized Residuals")
+  p2<-p2+ggtitle("Normal Q-Q")+theme_bw()
+  
+  p3<-ggplot(model, aes(.fitted, sqrt(abs(.std.resid))))+geom_point(na.rm=TRUE)
+  p3<-p3+stat_smooth(method="loess", na.rm = TRUE)+xlab("Fitted Value")
+  p3<-p3+ylab(expression(sqrt("|Standardized residuals|")))
+  p3<-p3+ggtitle("Scale-Location")+theme_bw()
+  
+  p4<-ggplot(model, aes(seq_along(.cooksd), .cooksd))+geom_bar(stat="identity", position="identity")
+  p4<-p4+xlab("Obs. Number")+ylab("Cook's distance")
+  p4<-p4+ggtitle("Cook's distance")+theme_bw()
+  
+  p5<-ggplot(model, aes(.hat, .std.resid))+geom_point(aes(size=.cooksd), na.rm=TRUE)
+  p5<-p5+stat_smooth(method="loess", na.rm=TRUE)
+  p5<-p5+xlab("Leverage")+ylab("Standardized Residuals")
+  p5<-p5+ggtitle("Residual vs Leverage Plot")
+  p5<-p5+scale_size_continuous("Cook's Distance", range=c(1,5))
+  p5<-p5+theme_bw()+theme(legend.position="bottom")
+  
+  p6<-ggplot(model, aes(.hat, .cooksd))+geom_point(na.rm=TRUE)+stat_smooth(method="loess", na.rm=TRUE)
+  p6<-p6+xlab("Leverage hii")+ylab("Cook's Distance")
+  p6<-p6+ggtitle("Cook's dist vs Leverage hii/(1-hii)")
+  p6<-p6+geom_abline(slope=seq(0,3,0.5), color="gray", linetype="dashed")
+  p6<-p6+theme_bw()
+  
+  return(list(rvfPlot=p1, qqPlot=p2, sclLocPlot=p3, cdPlot=p4, rvlevPlot=p5, cvlPlot=p6))
+}
+
+myaugment<-function(laglm){
+  
+  df<-data.frame(.fitted=laglm$fitted.values,
+                 .resid=laglm$residuals
+                 )
+  
+  df
+}
+
+
+diagPlotlaglm<-function(laglm){
+  require(ggplot2)
+  model<-myaugment(laglm)
+  p1<-ggplot(model, aes(.fitted, .resid))+geom_point(alpha=0.6)
+  p1<-p1+stat_smooth(method="loess")+geom_hline(yintercept=0, col="red", linetype="dashed")
+  p1<-p1+xlab("Fitted values")+ylab("Residuals")
+  p1<-p1+ggtitle("Residual vs Fitted Plot")+theme_bw()
+  
+  p2<-  ggplot(model)+stat_qq(aes(sample=.resid))
+  # geom_abline(intercept = 0, slope = 1, alpha = 0.5) 
+  p2<-p2+xlab("Theoretical Quantiles")+ylab("Residuals")
+  p2<-p2+ggtitle("Normal Q-Q")+theme_bw()
+  
+  p3<-ggplot(model)+geom_histogram(aes(.resid),color ="white")
+ # p3<-p3+geom_density(aes(.resid))
+  p3<-p3+ggtitle("Histogram .resid")+theme_bw()
+  
+  return(list(p1, p2, p3))
 }

@@ -80,59 +80,20 @@ plot(W_dist1000.inv, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add
              ylab="residuos (Spatial Lag)", main="Gráfico de Moran") 
   
   
-  pintar_mapa_su_LISA_lmres(regresion.arboles,lm.mod.area_copa,W_queen, nrow =1)
+  pintar_mapa_su_LISA_lmres(regresion.arboles,lm.mod.area_copa,W_queen,  wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_lmres(regresion.arboles,lm.mod.area_copa,W_dist1000.inv, wname = "Wd",nrow =1)
   pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_queen, wname = "Wq",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_dist1000.inv, wname = "Wd",nrow =1)
-  # calcular the local moran 
-  localmoranmatrix<-localmoran(lm.mod.area_copa$residuals, listw=W_dist1000.inv,zero.policy = T)
-  lmoran.df<-as_data_frame(localmoranmatrix)
-  lmoran.df$Z.Ii <-lmoran.df$Z.Ii %>% as.vector()
-  lmoran.df$`Pr(z > 0)` <-lmoran.df$`Pr(z > 0)` %>% as.vector()
-  # escalar z valor
-  su.arboles$s_resid <- scale(lm.mod.area_copa$residuals)  %>% as.vector()
+  pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.cobertura_copa.ap",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"afro.porcentaje",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado.porcentaje",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"densidad_poblacion",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"cuarto.porcentaje",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"area_ep.porcentaje",W_queen, wname = "Wd",nrow =1)
   
-  # varible retardada
-  su.arboles$lag_s_resid <- lag.listw(W_dist1000.inv, su.arboles$s_resid, zero.policy = T) %>% as.vector()
   
-  dftemp<-bind_cols(su.arboles@data,lmoran.df)
-  dftemp$p<-dftemp$`Pr(z > 0)`%>% as.vector()
-  dftemp$Z.Ii<-dftemp$Z.Ii%>% as.vector()
-  # summary of variables
-  summary(dftemp)
-
-# crear etiqueta de observaciones foco de la autocorrelacion
-  dftemp<-dftemp %>% rowwise() %>%
-  mutate(quad_sig_05=localmoran_quad(s_resid,lag_s_resid, p,0.05)) 
-  coloresLisa<-brewer.pal(5, "RdBu")
-  labels = c("high-high","high-low" ,"not signif.", "low-high","low-low")
-  
-# volverlas un factor ordenado para que coincida con los colores
-    dftemp$quad_sig_05<-factor(dftemp$quad_sig_05, levels =labels)
-  
-  su.f %>% dplyr::select(-area_su)  %>%
-    left_join(dftemp, by = c("id"="SETU_CCDGO")) %>% 
-    ggplot(aes(long, lat, group = group, fill = quad_sig_05)) + 
-    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-    geom_polygon(color = "grey90", size = .05)  + 
-    coord_equal() + 
-    theme_void() + scale_fill_manual(values = coloresLisa, drop =FALSE)
-  
-# grafica discreta del p-value  
-  signf_levels<-c(Inf,0.05,0.01,0.001,0.0001,0)
-  signf_levels_label<-c("0001",".001",".01",".05","not signif.")
-  su.f %>% dplyr::select(-area_su)  %>%
-    left_join(dftemp, by = c("id"="SETU_CCDGO")) %>% 
-    ggplot() + 
-    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-    geom_polygon(aes(long, lat, group = group, fill = cut(p,breaks =signf_levels)),
-                 color = "white", size = .05)  + 
-    coord_equal() + 
-    theme_void()+ 
-    scale_fill_brewer(palette = "RdPu", drop=FALSE, direction = -1, labels =signf_levels_label)
-  
-  # graficas LISA
-  pl_moran.ac<-plots_map_LISA_df(dftemp,c("s_resid","lag_s_resid","Z.Ii"))
-  grid.arrange(grobs =pl_moran.ac, nrow =1)
+  diagPlts<-diagPlot(lm.mod.area_copa)
+  grid.arrange(grobs=diagPlts, ncol =2)
   
   lm_data<-augment(lm.mod.area_copa)
   lm_data$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
@@ -171,7 +132,10 @@ moran.lm<-lm.morantest(lm.mod.area_copa, W_dist1000.inv, alternative="two.sided"
 print(moran.lm)
 
 # Cual modelo usar ?
-LM.area_copa.wd<-lm.LMtests(lm.mod.area_copa, W_queen, test=c("LMerr","RLMerr","LMlag","RLMlag"))
+LM.area_copa.wq<-lm.LMtests(lm.mod.area_copa, W_queen, test=c("LMerr","RLMerr","LMlag","RLMlag"))
+print(LM.area_copa.wd)
+LM.area_copa.wd<-lm.LMtests(lm.mod.area_copa, W_dist1000.inv, test=c("LMerr","RLMerr","LMlag","RLMlag"),
+                            zero.policy = T)
 print(LM.area_copa.wd)
 
 LM.copa.ap.wd<-lm.LMtests(lm.mod.cobertura.ap2, W_queen,  test=c("LMerr","RLMerr","LMlag","RLMlag"))
@@ -184,52 +148,34 @@ print(LM.copa.ap.wd)
 sar.mod.sqrt.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
          data = lm.mod.area_copa$model,
          listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
-summary(sar.mod.sqrt.area_copa.wq,Nagelkerke=T)
+sar.sm<-summary(sar.mod.sqrt.area_copa.wq,Nagelkerke=T)
 moran.test(sar.mod.sqrt.area_copa.wq$residuals,W_queen,zero.policy = T)
 bptest.sarlm(sar.mod.sqrt.area_copa.wq)
 
-sar.mod.sqrt.area_copa.wd<-lagsarlm(formula = as.formula(lm.mod.area_copa),
-                                       data = lm.mod.area_copa$model,
-                                       listw = W_dist1000.inv, zero.policy = T,tol.solve=1.0e-30)
-summary(sar.mod.sqrt.area_copa.wd,Nagelkerke=T)
-moran.test(sar.mod.sqrt.area_copa.wd$residuals,W_dist1000.inv,zero.policy = T)
-bptest.sarlm(sar.mod.sqrt.area_copa.wd)
 
-# SE
-se.mod.sqrt.area_copa.wq<-errorsarlm(formula = as.formula(lm.mod.area_copa),
+# SEM
+sem.mod.sqrt.area_copa.wq<-errorsarlm(formula = as.formula(lm.mod.area_copa),
                                       data = lm.mod.area_copa$model,
                                       listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
-summary(se.mod.sqrt.area_copa.wq,Nagelkerke=T)
-bptest.sarlm(se.mod.sqrt.area_copa.wq)
-
-se.mod.sqrt.area_copa.wd<-errorsarlm(formula = as.formula(lm.mod.area_copa),
-                                     data = lm.mod.area_copa$model,
-                                     listw = W_dist1000.inv, zero.policy = T,tol.solve=1.0e-30)
-summary(se.mod.sqrt.area_copa.wd,Nagelkerke=T)
-bptest.sarlm(se.mod.sqrt.area_copa.wd)
+summary(sem.mod.sqrt.area_copa.wq,Nagelkerke=T)
+bptest.sarlm(sem.mod.sqrt.area_copa.wq)
 
 
 
 #SLX
-slx.mod.area_copa.wq<-lmSLX(formula = as.formula(lm.mod.area_copa),
+slx.mod.sqrt.area_copa.wq<-lmSLX(formula = as.formula(lm.mod.area_copa),
                            data = lm.mod.area_copa$model,
                            listw = W_queen, zero.policy = T)
 
-summary(slx.mod.area_copa.wq)
-moran.test(slx.mod.area_copa.wq$residuals,W_queen)
-lmtest::bptest(slx.mod.area_copa.wq)
-AIC(slx.mod.area_copa.wq)
+summary(slx.mod.sqrt.area_copa.wq)
+moran.test(slx.mod.sqrt.area_copa.wq$residuals,W_queen)
+lmtest::bptest(slx.mod.sqrt.area_copa.wq)
+AIC(slx.mod.sqrt.area_copa.wq)
 
-
-slx.mod.area_copa.wd<-lmSLX(formula = as.formula(lm.mod.area_copa),
-      data = lm.mod.area_copa$model,
-      listw = W_dist1000.inv, zero.policy = T)
-
-summary(slxmod.area_copa.wd)
-AIC(slxmod.area_copa.wq)
 
 
 #SD
+
 sd.mod.sqrt.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
                                     data = lm.mod.area_copa$model,
                                     listw = W_queen, zero.policy = T,tol.solve=1.0e-30,
@@ -244,35 +190,98 @@ hist(sd.mod.sqrt.area_copa.wq$residuals)
 #nos quedamos con wd
 
 
+diagPltsSlX<-diagPlot(slx.mod.sqrt.area_copa.wq)
+diagPlts[1:3]
+grid.arrange(grobs=diagPlts, ncol =2)
 
-laglm_data<-augment(lm.mod.area_copa)
-laglm_data$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
-laglm_data$lagresid<-lm.mod.area_copa$residuals
+diagPltsSAR<-diagPlotlaglm(sar.mod.sqrt.area_copa.wq)
+diagPltsSEM<-diagPlotlaglm(sem.mod.sqrt.area_copa.wq)
+diagPltsSD<-diagPlotlaglm(sd.mod.sqrt.area_copa.wq)
+diagPltsSLX<-diagPlotlaglm(slx.mod.sqrt.area_copa.wq)
+diagPltsOLS<-diagPlotlaglm(lm.mod.area_copa)
+
+
+diagPlotsAll<-arrangeGrob(grobs = c(diagPltsOLS,diagPltsSLX,diagPltsSD,diagPltsSEM,diagPltsSAR),ncol = 3, nrow = 5)
+grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
+              arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
+              arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
+              arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM"),
+              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
+
+
+
+
+moran.plot(sar.mod.sqrt.area_copa.wq$residuals, 
+           listw=W_queen, 
+           zero.policy = TRUE,
+           pch=16, col="black",
+           cex=.5, quiet=T, 
+           labels=as.character(regresion.arboles$SETU_CCDGO),
+           xlab="residuos sar", 
+           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+
+moran.plot(sem.mod.sqrt.area_copa.wq$residuals, 
+           listw=W_queen, 
+           zero.policy = TRUE,
+           pch=16, col="black",
+           cex=.5, quiet=T, 
+           labels=as.character(regresion.arboles$SETU_CCDGO),
+           xlab="residuos sar", 
+           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+
+moran.plot(slx.mod.sqrt.area_copa.wq$residuals, 
+           listw=W_queen, 
+           zero.policy = TRUE,
+           pch=16, col="black",
+           cex=.5, quiet=T, 
+           labels=as.character(regresion.arboles$SETU_CCDGO),
+           xlab="residuos sar", 
+           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+moran.plot(sd.mod.sqrt.area_copa.wq$residuals, 
+           listw=W_queen, 
+           zero.policy = TRUE,
+           pch=16, col="black",
+           cex=.5, quiet=T, 
+           labels=as.character(regresion.arboles$SETU_CCDGO),
+           xlab="residuos sar", 
+           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+
+
+resmodelos<-regresion.arboles %>% select(SETU_CCDGO) %>% 
+  mutate(SETU_CCDGO = as.character(SETU_CCDGO))%>%
+  mutate(ols.resid=lm.mod.area_copa$residuals) %>%
+  mutate(slx.resid =slx.mod.sqrt.area_copa.wq$residuals)%>%
+  mutate(sar.resid =sar.mod.sqrt.area_copa.wq$residuals)%>%
+  mutate(sem.resid =sem.mod.sqrt.area_copa.wq$residuals)%>%
+  mutate(sd.resid =sd.mod.sqrt.area_copa.wq$residual )
+
+
+
+
+respls<-plots_map_gradient0_df(resmodelos,names(resmodelos)[-1])
+grid.arrange(grobs=respls[c(1,5)],top = "Mapa de residuos de los modelos", nrow =1)
+
+
+resmodelos.long<-resmodelos %>% 
+  gather(key = modelo, value = valores, -SETU_CCDGO) 
+cuantiles<-stats::quantile(resmodelos.long$valores,probs =seq(0,1,0.2)) %>% round(.,digits = 3)
+resmodelos.long %<>%
+  mutate(residuos.qn=cut(valores,breaks = cuantiles)) %>% na.omit()
+
+
 su.f %>% dplyr::select(-area_su)  %>%
-  left_join(laglm_data,by = c("id"="SETU_CCDGO")) %>%
+  left_join(resmodelos.long,by = c("id"="SETU_CCDGO")) %>%
+ filter(!is.na(modelo)) %>%
   ggplot()+
-  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-  geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lagresid,n = 7))) +
+ geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = residuos.qn))+
   coord_equal()+
+  scale_fill_brewer(palette = "RdBu",
+                    guide = guide_legend(direction = "horizontal",
+                                         label.position = "bottom",
+                                         title.position = 'top',
+                                         nrow = 1))+
   theme_void()+
-  scale_fill_brewer(palette = "RdBu")
-
-su.f %>% dplyr::select(-area_su)  %>%
-  left_join(laglm_data,by = c("id"="SETU_CCDGO")) %>%
-  ggplot()+
-  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-  geom_polygon(aes(x= long, y = lat, group = group, fill = lagresid)) +
-  coord_equal()+
-  theme_void()+
-  scale_fill_viridis( option = "magma")
-
-su.f %>% dplyr::select(-area_su)  %>%
-  left_join(laglm_data,by = c("id"="SETU_CCDGO")) %>%
-  ggplot()+
-  geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-  geom_polygon(aes(x= long, y = lat, group = group, fill = abs(lagresid))) +
-  coord_equal()+
-  theme_void()+
-  scale_fill_viridis( option = "magma")
-
+  facet_wrap(~modelo, nrow = 1)+
+  tema_lgnd_abajo()
 
