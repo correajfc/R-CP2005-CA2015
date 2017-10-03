@@ -1912,7 +1912,7 @@ Si incluimos el retardo sólo de las variables independientes (SLX \@ref(eq:slx)
 La pregunta a hacerse es cómo saber cuál de los diferentes modelos espaciales es el que mejor representa el fenómeno que estamos modelando y si los datos respaldan nuestras convicciones teóricas. Si el modelo de retraso espacial que especifique es realmente el correcto, entonces ninguna dependencia espacial debe permanecer en los residuos, y podremos elaborar sobre el tipo de procesos que pueden verse representados.
 
 
-Una alternativa metodológica es probar los 3 tipos de modelos con ambas matrices $W_d$ que resultó capturar mejor la asociacion espacial en ls datos y comparar sus resultados.
+Una alternativa metodológica es probar los 3 tipos de modelos con la matriz $W_d$ que resultó capturar mejor la asociacion espacial en ls datos y comparar sus resultados.
 
 ##### Área de copa 
 
@@ -2067,7 +2067,7 @@ knitr::kable(tablatem, digits = 5,col.names = modelos, caption = "Metricas de aj
 ```
 
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SD o mixto(variables con retardo y autocorrelación) con el mejor AIC. De hecho la estimación de SLX y SD tiene el mismo valor de AIC, pero el modelo SD ha logrado eliminar la autocorrelación espacial global en los residuos, al igual que SAR y SEM (ver figura \@ref(fig:moranplot-resmodel-all-wq)). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnosticar, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El $\rho$ y $\lambda$ de las estimaciones con términos de autoregresivos es significativo, lo que significa que la inclusión de los retardos funciona correctamente, aunque solo en los coeficientes de la variable retardada `cuarto.porcentaje` es significativo, pero esta no es significativa como variable sin retardo, sugiriendo que interesa sobre efecto sobre el área de copa en los sectores vecinos a los focos de mayor concentración de viviendas tipo cuarto, pero no es importante en el resto de sectores. Como era de esperarse el porcentaje de área de espacios verdes es significativo en las variables sin retardo, pero no genera ningún efecto de derrame en la cobertura de copa de los sectores vecinos.
+Al comparar los resultados de las métricas de ajuste se identifica al modelo SD o mixto(variables con retardo y autocorrelación) con el mejor AIC. El modelo SD ha logrado eliminar la autocorrelación espacial global en los residuos, al igual que SAR y SEM (ver figura \@ref(fig:moranplot-resmodel-all-wq)). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El $\rho$ y $\lambda$ de las estimaciones con términos de autoregresivos es significativo, lo que implica que la inclusión de los retardos funciona correctamente, aunque solo en los coeficientes de la variable retardada `cuarto.porcentaje` es significativo, aunque esta no tiene un coeficiente significativo como variable sin retardo, sugiriendo que interesa su efecto sobre el área de copa en los sectores vecinos a los focos de mayor concentración de viviendas tipo cuarto, pero no es importante en el resto de sectores. Como era de esperarse el porcentaje de área de espacios verdes es significativo en las variables sin retardo, pero no genera ningún efecto de derrame en la cobertura de copa de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son existosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos. Los mapas de los residuos espacializados (ver figura \@ref(fig:mapa-resid-copa-modelo-all)) en cuantiles son dificiles de leer, pero vistos en detalle se puede identificar sectores donde se reduce el error de la estimación.
 
 ```{r moranplot-resmodel-all-wq, fig.cap="Gráfico de Moran para los residuos de los modelos espaciales de área de copa usando $W_{q}$", fig.show="hold", out.width="49%"}
 moran.plot(sar.mod.sqrt.area_copa.wq$residuals, 
@@ -2085,8 +2085,8 @@ moran.plot(sem.mod.sqrt.area_copa.wq$residuals,
            pch=16, col="black",
            cex=.5, quiet=T, 
            labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran SEM") 
+           xlab="residuos sem", 
+           ylab="residuos sem (Spatial Lag)", main="Gráfico de Moran SEM") 
 
 moran.plot(slx.mod.sqrt.area_copa.wq$residuals, 
            listw=W_queen, 
@@ -2094,8 +2094,8 @@ moran.plot(slx.mod.sqrt.area_copa.wq$residuals,
            pch=16, col="black",
            cex=.5, quiet=T, 
            labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran SLX") 
+           xlab="residuos slx", 
+           ylab="residuos slx (Spatial Lag)", main="Gráfico de Moran SLX") 
 
 moran.plot(sd.mod.sqrt.area_copa.wq$residuals, 
            listw=W_queen, 
@@ -2103,8 +2103,8 @@ moran.plot(sd.mod.sqrt.area_copa.wq$residuals,
            pch=16, col="black",
            cex=.5, quiet=T, 
            labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran SD") 
+           xlab="residuos sd", 
+           ylab="residuos sd (Spatial Lag)", main="Gráfico de Moran SD") 
 ```
 
 
@@ -2123,14 +2123,11 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
 ```
 
-```{r mapa-resid-copa-modelo-all}
+```{r mapa-resid-copa-modelo-all,  fig.cap="Mapas de residuos del modelo OLS y el mejor modelo con estructura espacial para área de copa"}
 
 resmodelos<-regresion.arboles %>% select(SETU_CCDGO) %>% 
   mutate(SETU_CCDGO = as.character(SETU_CCDGO))%>%
   mutate(ols.resid=lm.mod.area_copa$residuals) %>%
-  mutate(slx.resid =slx.mod.sqrt.area_copa.wq$residuals)%>%
-  mutate(sar.resid =sar.mod.sqrt.area_copa.wq$residuals)%>%
-  mutate(sem.resid =sem.mod.sqrt.area_copa.wq$residuals)%>%
   mutate(sd.resid =sd.mod.sqrt.area_copa.wq$residuals )
 
 resmodelos.long<-resmodelos %>% 
@@ -2159,6 +2156,8 @@ su.f %>% dplyr::select(-area_su)  %>%
 ```
 
 ##### Porcentaje de cobertura de área de copa 
+
+El mismo ejercio se aplica al porcentaje de cobertura de copa.
 
 ```{r code-laglm-copaap-wq, echo=TRUE}
 #SAR
@@ -2311,7 +2310,7 @@ knitr::kable(tablatem, digits = 5,col.names = modelos, caption = "Metricas de aj
 ```
 
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo   
+Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación $\rho$ es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de   `r AIC(lm.best.cobertura.ap)` a `r AIC(sar.cobertura.ap.wq)`). Consistentemente la variable de **estudios superiores** en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura \@ref(fig:moranplot-resmodel-all-copaap-wq)) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa. 
 
 ```{r moranplot-resmodel-all-copaap-wq, fig.cap="Gráfico de Moran para los residuos de los modelos espaciales del porcenatje de área de copa usando $W_{q}$", fig.show="hold", out.width="49%"}
 moran.plot(sar.cobertura.ap.wq$residuals, 
@@ -2329,8 +2328,8 @@ moran.plot(sem.cobertura.ap.wq$residuals,
            pch=16, col="black",
            cex=.5, quiet=T, 
            labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran SEM") 
+           xlab="residuos sem", 
+           ylab="residuos sem (Spatial Lag)", main="Gráfico de Moran SEM") 
 
 moran.plot(slx.cobertura.ap.wq$residuals, 
            listw=W_queen, 
@@ -2338,8 +2337,8 @@ moran.plot(slx.cobertura.ap.wq$residuals,
            pch=16, col="black",
            cex=.5, quiet=T, 
            labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran SLX") 
+           xlab="residuos slx", 
+           ylab="residuos slx (Spatial Lag)", main="Gráfico de Moran SLX") 
 
 moran.plot(sd.cobertura.ap.wq$residuals, 
            listw=W_queen, 
@@ -2347,8 +2346,8 @@ moran.plot(sd.cobertura.ap.wq$residuals,
            pch=16, col="black",
            cex=.5, quiet=T, 
            labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran SD") 
+           xlab="residuos sd", 
+           ylab="residuos sd (Spatial Lag)", main="Gráfico de Moran SD") 
 ```
 
 
@@ -2367,15 +2366,12 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
 ```
 
-```{r mapa-resid-copaap-modelo-all}
+```{r mapa-resid-copaap-modelo-all, fig.cap="Mapas de residuos del modelo OLS y el mejor modelo con estructura espacial para el porcentaje de cobertura de copa"}
 
 resmodelos<-regresion.arboles %>% select(SETU_CCDGO) %>% 
   mutate(SETU_CCDGO = as.character(SETU_CCDGO))%>%
   mutate(ols.resid=lm.best.cobertura.ap$residuals) %>%
-  mutate(slx.resid =slx.cobertura.ap.wq$residuals)%>%
-  mutate(sar.resid =sar.cobertura.ap.wq$residuals)%>%
-  mutate(sem.resid =sem.cobertura.ap.wq$residuals)%>%
-  mutate(sd.resid =sd.cobertura.ap.wq$residuals )
+  mutate(sar.resid =sar.cobertura.ap.wq$residuals)
 
 resmodelos.long<-resmodelos %>% 
   gather(key = modelo, value = valores, -SETU_CCDGO) 

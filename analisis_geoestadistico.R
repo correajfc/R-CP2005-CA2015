@@ -101,28 +101,28 @@ plot(W_dist1000.inv, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add
   pl_lm.ac<-plots_map_su_df(lm_data,c("sqrt.area_copa.mxn","superior_postgrado.mxn",".fitted"))
   grid.arrange(grobs =pl_lm.ac, nrow =1)
   
-  lm_data<-augment(lm.mod.area_copa)
-  lm_data$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
-  lm_data$lmZ.abs <- abs(localmoranmatrix[,"Z.Ii"]) ## Extract z-scores abs
-  lm_data$lmZ <- localmoranmatrix[,"Z.Ii"] ## Extract z-scores
-  su.f %>% dplyr::select(-area_su)  %>%
-    left_join(lm_data,by = c("id"="SETU_CCDGO")) %>%
-    ggplot()+
-    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-    geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lmZ,n = 5))) +
-    coord_equal()+
-    theme_void()+
-    scale_fill_brewer(palette = "RdBu")
-
-  su.f %>% dplyr::select(-area_su)  %>%
-    left_join(lm_data,by = c("id"="SETU_CCDGO")) %>%
-    ggplot()+
-    geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-    geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lmZ.abs,n = 5))) +
-    coord_equal()+
-    theme_void()+
-    scale_fill_brewer(palette = "PuRd")
-  
+  # lm_data<-augment(lm.mod.area_copa)
+  # lm_data$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
+  # lm_data$lmZ.abs <- abs(localmoranmatrix[,"Z.Ii"]) ## Extract z-scores abs
+  # lm_data$lmZ <- localmoranmatrix[,"Z.Ii"] ## Extract z-scores
+  # su.f %>% dplyr::select(-area_su)  %>%
+  #   left_join(lm_data,by = c("id"="SETU_CCDGO")) %>%
+  #   ggplot()+
+  #   geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  #   geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lmZ,n = 5))) +
+  #   coord_equal()+
+  #   theme_void()+
+  #   scale_fill_brewer(palette = "RdBu")
+  # 
+  # su.f %>% dplyr::select(-area_su)  %>%
+  #   left_join(lm_data,by = c("id"="SETU_CCDGO")) %>%
+  #   ggplot()+
+  #   geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
+  #   geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lmZ.abs,n = 5))) +
+  #   coord_equal()+
+  #   theme_void()+
+  #   scale_fill_brewer(palette = "PuRd")
+  # 
      
 
 # test de auto correlacion espacial en los residuos del modelo OLS
