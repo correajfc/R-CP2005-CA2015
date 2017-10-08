@@ -82,7 +82,10 @@ plot(W_dist1000.inv, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add
   
   pintar_mapa_su_LISA_lmres(regresion.arboles,lm.mod.area_copa,W_queen,  wname = "Wq",nrow =1)
   pintar_mapa_su_LISA_lmres(regresion.arboles,lm.mod.area_copa,W_dist1000.inv, wname = "Wd",nrow =1)
+  
+  pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_queen, wname = "Wq",nrow =1)
   pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_queen, wname = "Wq",nrow =1)
+  
   pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.cobertura_copa.ap",W_queen, wname = "Wd",nrow =1)
   pintar_mapa_su_LISA_var(regresion.arboles,"afro.porcentaje",W_queen, wname = "Wd",nrow =1)
   pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado",W_queen, wname = "Wd",nrow =1)
@@ -98,32 +101,9 @@ plot(W_dist1000.inv, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add
   lm_data<-augment(lm.mod.area_copa)
   lm_data$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
   
-  pl_lm.ac<-plots_map_su_df(lm_data,c("sqrt.area_copa.mxn","superior_postgrado.mxn",".fitted"))
+  pl_lm.ac<-plots_map_su_df(lm_data,c("log.area_copa.mxn","superior_postgrado.mxn",".fitted"))
   grid.arrange(grobs =pl_lm.ac, nrow =1)
   
-  # lm_data<-augment(lm.mod.area_copa)
-  # lm_data$SETU_CCDGO<-regresion.arboles$SETU_CCDGO
-  # lm_data$lmZ.abs <- abs(localmoranmatrix[,"Z.Ii"]) ## Extract z-scores abs
-  # lm_data$lmZ <- localmoranmatrix[,"Z.Ii"] ## Extract z-scores
-  # su.f %>% dplyr::select(-area_su)  %>%
-  #   left_join(lm_data,by = c("id"="SETU_CCDGO")) %>%
-  #   ggplot()+
-  #   geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-  #   geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lmZ,n = 5))) +
-  #   coord_equal()+
-  #   theme_void()+
-  #   scale_fill_brewer(palette = "RdBu")
-  # 
-  # su.f %>% dplyr::select(-area_su)  %>%
-  #   left_join(lm_data,by = c("id"="SETU_CCDGO")) %>%
-  #   ggplot()+
-  #   geom_polygon(data =su.f,aes(x= long, y = lat, group = group), fill ="grey60") +
-  #   geom_polygon(aes(x= long, y = lat, group = group, fill = cut_number(lmZ.abs,n = 5))) +
-  #   coord_equal()+
-  #   theme_void()+
-  #   scale_fill_brewer(palette = "PuRd")
-  # 
-     
 
 # test de auto correlacion espacial en los residuos del modelo OLS
 moran.lm<-lm.morantest(lm.mod.area_copa, W_queen, alternative="two.sided",zero.policy = T)
@@ -133,12 +113,12 @@ print(moran.lm)
 
 # Cual modelo usar ?
 LM.area_copa.wq<-lm.LMtests(lm.mod.area_copa, W_queen, test=c("LMerr","RLMerr","LMlag","RLMlag"))
-print(LM.area_copa.wd)
+print(LM.area_copa.wq)
 LM.area_copa.wd<-lm.LMtests(lm.mod.area_copa, W_dist1000.inv, test=c("LMerr","RLMerr","LMlag","RLMlag"),
                             zero.policy = T)
 print(LM.area_copa.wd)
 
-LM.copa.ap.wd<-lm.LMtests(lm.mod.cobertura.ap2, W_queen,  test=c("LMerr","RLMerr","LMlag","RLMlag"))
+LM.copa.ap.wd<-lm.LMtests(lm.best.cobertura.ap, W_queen,  test=c("LMerr","RLMerr","LMlag","RLMlag"))
 print(LM.copa.ap.wd)
 
 

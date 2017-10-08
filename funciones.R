@@ -712,3 +712,167 @@ diagPlotlaglm<-function(laglm){
   
   return(list(p1, p2, p3))
 }
+
+fitstats_laglm<-function(model,W){
+gmt<-moran.test(model$residuals,W,zero.policy = T)
+
+swt<-shapiro.test(model$residuals)
+akaike<-AIC(model)
+
+mediares<-mean(summary(model)$residuals)
+mse<-mean(summary(model)$residuals^2) 
+lglk<-logLik(model)
+
+if(class(model)[1]=="lm"){
+
+adjRsrt<-summary(model)$adj.r.squared
+bpt<-lmtest::bptest(model)
+fitstats<-c(gmt$estimate[1],gmt$p.value,
+       swt$statistic,swt$p.value,
+       bpt$statistic,bpt$p.value,
+       mediares,
+       mse ,
+       adjRsrt,
+       NA,
+       akaike,
+       lglk)
+}else{
+adjRsrt<-summary(model)$NK 
+bpt<-bptest.sarlm(model)
+fitstats<-c(gmt$estimate[1],gmt$p.value,
+       swt$statistic,swt$p.value,
+       bpt$statistic,bpt$p.value,
+       mediares,
+       mse ,
+       NA,
+       adjRsrt,
+       akaike,
+       lglk)
+}
+names(fitstats)<-c("Globla Moran'I",
+                               "GMI p-value",
+                               "Shapiro-Wilk",
+                               "SW p-value",
+                               "Breusch-Pagan",
+                               "BP p-value",
+                               "Media Residuos",
+                               "MSE",
+                               "adj-Rsquare",
+                               "Nagelkerke pseudo-R-squared",
+                               "AIC",
+                               "Log likelihood")
+fitstats
+}
+
+
+fitstats_laglm_df<-function(model,W){
+  gmt<-moran.test(model$residuals,W,zero.policy = T)
+  swt<-shapiro.test(model$residuals)
+  akaike<-AIC(model)
+  mediares<-mean(summary(model)$residuals)
+  mse<-mean(summary(model)$residuals^2) 
+  lglk<-logLik(model)
+  
+  if(class(model)[1]=="lm" | class(model)[1]=="SLX"){
+    
+    adjRsrt<-summary(model)$adj.r.squared
+    bpt<-lmtest::bptest(model)
+    fitstats<-c(gmt$estimate[1],gmt$p.value,
+                swt$statistic,swt$p.value,
+                bpt$statistic,bpt$p.value,
+                mediares,
+                mse ,
+                adjRsrt,
+                NA,
+                akaike,
+                lglk)
+  }else{
+    adjRsrt<-summary(model,Nagelkerke=T)$NK 
+    bpt<-bptest.sarlm(model)
+    fitstats<-c(gmt$estimate[1],gmt$p.value,
+                swt$statistic,swt$p.value,
+                bpt$statistic,bpt$p.value,
+                mediares,
+                mse ,
+                NA,
+                adjRsrt,
+                akaike,
+                lglk)
+  }
+  
+  medidasfit<-c("Globla Moran'I",
+                     "GMI p-value",
+                     "Shapiro-Wilk",
+                     "SW p-value",
+                     "Breusch-Pagan",
+                     "BP p-value",
+                     "Media Residuos",
+                     "MSE",
+                     "adj-Rsquare",
+                     "Nagelkerke pseudo-R-squared",
+                     "AIC",
+                     "Log likelihood")
+  
+  df<-data_frame(medidasfit, fitstats = as.numeric(fitstats))
+  df
+}
+
+fitstats_lm<-function(model){
+
+  swt<-shapiro.test(model$residuals)
+  akaike<-AIC(model)
+  mediares<-mean(summary(model)$residuals)
+  mse<-mean(summary(model)$residuals^2) 
+  lglk<-logLik(model)
+  adjRsrt<-summary(model)$adj.r.squared
+  bpt<-lmtest::bptest(model)
+  fitstats<-c(swt$statistic,swt$p.value,
+                bpt$statistic,bpt$p.value,
+                mediares,
+                mse ,
+                adjRsrt,
+                akaike,
+                lglk)
+  
+  names(fitstats)<-c("Shapiro-Wilk",
+                     "SW p-value",
+                     "Breusch-Pagan",
+                     "BP p-value",
+                     "Media Residuos",
+                     "MSE",
+                     "adj-Rsquare",
+                     "AIC",
+                     "Log likelihood")
+  
+  fitstats
+}
+
+
+fitstats_lm_df<-function(model){
+  swt<-shapiro.test(model$residuals)
+  akaike<-AIC(model)
+  mediares<-mean(summary(model)$residuals)
+  mse<-mean(summary(model)$residuals^2) 
+  lglk<-logLik(model)
+  adjRsrt<-summary(model)$adj.r.squared
+  bpt<-lmtest::bptest(model)
+  fitstats<-c(swt$statistic,swt$p.value,
+              bpt$statistic,bpt$p.value,
+              mediares,
+              mse ,
+              adjRsrt,
+              akaike,
+              lglk)
+  
+  medidasfit<-c("Shapiro-Wilk",
+                     "SW p-value",
+                     "Breusch-Pagan",
+                     "BP p-value",
+                     "Media Residuos",
+                     "MSE",
+                     "adj-Rsquare",
+                     "AIC",
+                     "Log likelihood")
+  df<-data_frame(medidasfit,fitstats = as.numeric(fitstats))
+  df
+}

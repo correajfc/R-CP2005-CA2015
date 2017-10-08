@@ -5,14 +5,15 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: [tesis.bib, packages.bib]
-biblio-style: apalike
+bibliography: [tesisbck.bib, packages.bib]
+biblio-style: apa
 link-citations: yes
 github-repo: correajfc/unigis-tesis
 description: "Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.)."
 ---
-```{r setup-chunks}
-knitr::opts_chunk$set(echo = FALSE,tidy = T, out.width = '100%',cache = TRUE, fig.width = 6, warning = FALSE, message = FALSE)
+
+```{r setup-chunks, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE,tidy = TRUE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 72, dev = 'png')
 ```
 
 
@@ -30,3 +31,4 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+

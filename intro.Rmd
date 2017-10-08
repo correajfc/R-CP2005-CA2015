@@ -76,14 +76,19 @@ a espacios verdes y a los beneficios del arbolado urbano.
 
 ## Objetivos 
 
-### Objetivo general Identificar y analizar espacialmente 
+### Objetivo general 
+
+Identificar y analizar espacialmente 
 inequidades socioeconómicas en relación a los espacios verdes y el arbolado en 
 la zona urbana de Cali.
 
-### Objetivos específicos - Generar métricas de cobertura de espacios verdes y 
-arbolado urbano. - Identificar y caracterizar las variables sociales y 
-económicas para ser relacionadas con acceso a espacios verdes y cobertura. - 
-Evaluar las relaciones entre los diferentes indicadores ambientales, sociales y 
+### Objetivos específicos 
+
+- Generar métricas de cobertura de espacios verdes y 
+arbolado urbano. 
+- Identificar y caracterizar las variables sociales y 
+económicas para ser relacionadas con acceso a espacios verdes y cobertura. 
+- Evaluar las relaciones entre los diferentes indicadores ambientales, sociales y 
 económicos.
 
 ## Justificación

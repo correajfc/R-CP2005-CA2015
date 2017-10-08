@@ -1,4 +1,4 @@
-book_filename: "bookdown-tesis-unigis"
+book_filename: "tesis-unigis"
 language:
   label:
     fig: 'Figura '
@@ -6,13 +6,20 @@ language:
     eq: 'Ecuación '
   ui:
     chapter_name: "Capítulo "
-rmd_files: ["index.Rmd", 
-"abstract.Rmd", 
-"intro.Rmd",
-"revision_literatura.Rmd", 
-"metodologia.Rmd",
-"procesa_analisis.Rmd",
-"discusion.Rmd",
-"conclusiones.Rmd",
-"referencias.Rmd"]
+rmd_files: 
+  html: ["index.Rmd", "abstract.Rmd", "intro.Rmd",
+  "revision_literatura.Rmd",
+  "metodologia.Rmd",
+  "procesa_analisis.Rmd",
+  "discusion.Rmd",
+  "conclusiones.Rmd",
+  "referencias.Rmd"]
+  latex: ["index.Rmd", 
+  "abstract.Rmd", 
+  "intro.Rmd",
+  "revision_literatura.Rmd",
+  "metodologia.Rmd",
+  "procesa_analisis.Rmd",
+  "discusion.Rmd",
+  "referencias.Rmd"]
 delete_merged_file: TRUE

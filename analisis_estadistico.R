@@ -448,12 +448,7 @@ regresion.arboles %>% select(one_of(c(dependientes.copa.trnsf,dependientes.copa.
 
 # modelar la cobertura de copa ----
 # modelo area de copa
-library(ggfortify)
-library(car)
-library(gvlma)
-library(broom)
-library(purrr)
-library(olsrr)
+
 
 dependiente <- "area_copa"
 independientes  <- indep.poblacion.area_copa
@@ -471,11 +466,8 @@ ggnostic(lm.area_copa.sel)
 lmtest::bptest(lm.area_copa.sel) # la varianza de los residuos no es constante 
 shapiro.test(lm.area_copa.sel$residuals) # los residuos no vienende una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.area_copa.sel))) 
-
 car::vif(lm.area_copa.sel)
 
-gvmodel <- gvlma(lm.area_copa.sel) 
-summary(gvmodel)
 
 # mapas del modelo
 # no podemos confiar mucho en los resultados del modelo linael pues los supuestos no se cumplen.
@@ -521,8 +513,6 @@ shapiro.test(lm.mn.area_copa.sel$residuals) # los residuos no exhiben una distri
 ggplot() + geom_density(aes(residuals(lm.mn.area_copa.sel))) 
 
 
-gvmodel <- gvlma(lm.mn.area_copa.sel) 
-summary(gvmodel)
 pintar_mapa_su_lm(regresion.arboles.mn,lm.mn.area_copa.sel,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles.mn,lm.mn.area_copa.sel,num_tiles = 10)
 # mapas de residuos estandarizados
@@ -565,8 +555,7 @@ lmtest::bptest(lm.mxn.log.area_copa.sel) # la varianza de los residuos no es con
 shapiro.test(lm.mxn.log.area_copa.sel$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.mxn.log.area_copa.sel))) 
 
-gvmodel <- gvlma(lm.mxn.log.area_copa.sel) 
-summary(gvmodel)
+
 
 pintar_mapa_su_lm(regresion.arboles,lm.mxn.log.area_copa.sel,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.log.area_copa.sel,num_tiles = 5)
@@ -607,8 +596,6 @@ lmtest::bptest(lm.mxn.sqrt.area_copa.sel) # la varianza de los residuos no es co
 shapiro.test(lm.mxn.sqrt.area_copa.sel$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.mxn.sqrt.area_copa.sel))) 
 
-gvmodel <- gvlma(lm.mxn.sqrt.area_copa.sel) 
-summary(gvmodel)
 
 pintar_mapa_su_lm(regresion.arboles,lm.mxn.sqrt.area_copa.sel,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.sqrt.area_copa.sel,num_tiles = 5)
@@ -650,8 +637,6 @@ lmtest::bptest(lm.mxn.cobertura_copa.ap) # la varianza de los residuos no es con
 shapiro.test(lm.mxn.cobertura_copa.ap$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.mxn.cobertura_copa.ap))) 
 
-gvmodel <- gvlma(lm.mxn.cobertura_copa.ap) 
-summary(gvmodel)
 
 pintar_mapa_su_lm(regresion.arboles,lm.mxn.cobertura_copa.ap,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.cobertura_copa.ap,num_tiles = 5)
@@ -692,8 +677,7 @@ lmtest::bptest(lm.mxn.sqrt.cobertura_copa.ap) # la varianza de los residuos no e
 shapiro.test(lm.mxn.sqrt.cobertura_copa.ap$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.mxn.sqrt.cobertura_copa.ap))) 
 
-gvmodel <- gvlma(lm.mxn.sqrt.cobertura_copa.ap) 
-summary(gvmodel)
+
 
 pintar_mapa_su_lm(regresion.arboles,lm.mxn.sqrt.cobertura_copa.ap,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.mxn.sqrt.cobertura_copa.ap,num_tiles = 5)
@@ -719,26 +703,26 @@ plot(best_models)
 
 # mejores modelos de poblacion ----
 
-dependiente <- "sqrt.area_copa"
+dependiente <- "log.area_copa"
 independientes  <- c("superior_postgrado","densidad_poblacion")
 # max normalizado 
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-lm.best.area_copa<-lm(sqrt.area_copa.mxn~superior_postgrado.mxn+densidad_poblacion.mxn,data = regresion.arboles.mn)
+lm.best.area_copa<-lm(log.area_copa.mxn~superior_postgrado.mxn+densidad_poblacion.mxn,data = regresion.arboles.mn)
 summary(lm.best.area_copa)
 
 #test de ajuste
 mean(lm.best.area_copa$residuals) # media de los residuos cercana a 0 (si)
 # Homocedasticidad de los residuos o varianza igual
+dev.off()
 autoplot(lm.best.area_copa, which = 1:4)
 #ggnostic(lm.best.area_copa)
 # aun un amuento de la varianza. hagamos un test para verificar este aumento
 lmtest::bptest(lm.best.area_copa) # la varianza de los residuos no es constante 
 shapiro.test(lm.best.area_copa$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.best.area_copa))) 
-# 
-# gvmodel <- gvlma(lm.best.area_copa) 
-# summary(gvmodel)
+
+
 
 pintar_mapa_su_lm(regresion.arboles,lm.best.area_copa,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.best.area_copa,num_tiles = 6)
@@ -756,12 +740,13 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 
 # coberbtura AP
-dependiente <- "sqrt.cobertura_copa.ap"
-independientes  <- c("superior_postgrado.porcentaje","densidad_poblacion")
+dependiente <- "cobertura_copa.ap"
+independientes  <- c("superior_postgrado.porcentaje")
 # max normalizado 
-var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+var_names<-c(dependiente,independientes)
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-lm.best.cobertura.ap<-lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+densidad_poblacion.mxn,data = regresion.arboles.mn)
+lm.best.cobertura.ap<-lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn,
+                         data = regresion.arboles.mn)
 summary(lm.best.cobertura.ap)
 
 #test de ajuste
@@ -774,8 +759,7 @@ lmtest::bptest(lm.best.cobertura.ap) # la varianza de los residuos no es constan
 shapiro.test(lm.best.cobertura.ap$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.best.cobertura.ap))) 
 # 
-# gvmodel <- gvlma(lm.best.area_copa) 
-# summary(gvmodel)
+
 
 pintar_mapa_su_lm(regresion.arboles,lm.best.cobertura.ap,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.best.cobertura.ap,num_tiles = 6)
@@ -857,12 +841,12 @@ ggduo(regresion.arboles,
 
 ########### los nuevos modelos
 # introducimos las varibles nuevas y vemos que resultados se obtiene.
-dependiente <- "sqrt.area_copa"
+dependiente <- "log.area_copa"
 independientes  <- c("superior_postgrado","densidad_poblacion",indep.predios.copa.sel)
 # max normalizado 
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-lm.mod.area_copa<-lm(sqrt.area_copa.mxn~superior_postgrado.mxn+
+lm.mod.area_copa<-lm(log.area_copa.mxn~superior_postgrado.mxn+
                         densidad_poblacion.mxn+
                         cuarto.porcentaje.mxn+
                         area_ep.mxn,
@@ -882,8 +866,7 @@ lmtest::bptest(lm.mod.area_copa) # la varianza de los residuos no es constante
 shapiro.test(lm.mod.area_copa$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.mod.area_copa))) 
 # 
-# gvmodel <- gvlma(lm.best.area_copa) 
-# summary(gvmodel)
+
 
 AIC(lm.mod.area_copa)
 AIC(lm.best.area_copa)
@@ -902,7 +885,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(sqrt.area_copa.mxn~superior_postgrado.mxn+
+best_models<-ols_best_subset(lm(log.area_copa.mxn~superior_postgrado.mxn+
                                   densidad_poblacion.mxn+
                                   cuarto.porcentaje.mxn+
                                   area_ep.mxn,
@@ -914,13 +897,12 @@ plot(best_models)
 pintar_mapa_su_lm2(regresion.arboles,lm.mod.area_copa,nrow =1)
 
 # coberbtura AP
-dependiente <- "sqrt.cobertura_copa.ap"
-independientes  <- c("superior_postgrado.porcentaje","densidad_poblacion",indep.predios.copa.ap.sel)
+dependiente <- "cobertura_copa.ap"
+independientes  <- c("superior_postgrado.porcentaje",indep.predios.copa.ap.sel)
 # max normalizado 
-var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+var_names<-c(dependiente,independientes)
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-lm.mod.cobertura.ap<-lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
-                          densidad_poblacion.mxn+
+lm.mod.cobertura.ap<-lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
                           apartamento.porcentaje.mxn+
                           cuarto.porcentaje.mxn+
                           area_ep.porcentaje.mxn,
@@ -938,9 +920,7 @@ autoplot(lm.mod.cobertura.ap, which = 1:4)
 lmtest::bptest(lm.mod.cobertura.ap) # la varianza de los residuos no es constante 
 shapiro.test(lm.mod.cobertura.ap$residuals) # los residuos no exhiben una distribucion normal
 ggplot() + geom_density(aes(residuals(lm.mod.cobertura.ap))) 
-# 
-# gvmodel <- gvlma(lm.best.area_copa) 
-# summary(gvmodel)
+
 
 pintar_mapa_su_lm(regresion.arboles,lm.mod.cobertura.ap,nrow =1)
 pintar_mapa_su_lm_ntl(regresion.arboles,lm.mod.cobertura.ap,num_tiles = 6)
@@ -956,8 +936,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
-                                  densidad_poblacion.mxn+
+best_models<-ols_best_subset(lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
                                   apartamento.porcentaje.mxn+
                                   cuarto.porcentaje.mxn+
                                   area_ep.porcentaje.mxn,
@@ -965,12 +944,12 @@ best_models<-ols_best_subset(lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.po
 best_models
 plot(best_models)
 
-lm.mod.cobertura.ap2<-lm(sqrt.cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
-                          densidad_poblacion.mxn+
-                          cuarto.porcentaje.mxn,
-                        data = regresion.arboles.mn)
-summary(lm.mod.cobertura.ap2)
+# es mejor el modelo solo de poblacion para el porcenatje de cobertura de copa.
+# lm.best.cobertura.ap
+
 ######## acceso a EV #########
+
+
 
 
 
