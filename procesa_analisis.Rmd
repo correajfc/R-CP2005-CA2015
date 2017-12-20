@@ -917,6 +917,47 @@ ggplot()+
    theme_void()
 ```
 
+Para el análisis de las zonas verdes, no se tiene en cuenta el criterio de exclusión de SU sin árboles y se incluye la Laguna del Pondaje. Los mapas de las zonas se ven el la figura \@ref(fig:mapa-excluidos-ev) y \@ref(fig:mapa-excluidos-tipo-ev).
+
+```{r mapa-excluidos-ev, fig.cap="Mapa de los sectores excluidos para el análisis de EV"}
+ggplot()+
+   geom_polygon(data = su.f,
+                aes(x = long ,y = lat, group = group),
+                fill = "grey70")+
+   geom_polygon(data = subset(su.f, id %in% su.exc.EV$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "descartados"),
+                alpha = 0.5)+
+   coord_equal()+
+   theme_void()
+```
+
+```{r mapa-excluidos-tipo-ev, fig.cap="Mapa de los sectores excluidos por criterio usado para el análisis de EV"}
+ ggplot()+
+   geom_polygon(data = su.f,
+                aes(x = long ,y = lat, group = group),
+                fill = "grey70")+
+   geom_polygon(data = subset(su.f, id %in% sin_personas$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "sin personas"),
+                alpha = 0.5)+
+   geom_polygon(data = subset(su.f, id %in% sin_viviendas$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "sin viviendas"),
+                alpha = 0.5)+
+   geom_polygon(data = subset(su.f, id %in% privada_85$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "Privado > 85%"),
+                alpha = 0.5)+
+   geom_polygon(data = subset(su.f, id %in% calle_80$SETU_CCDGO),
+                aes(x = long ,y = lat, group = group,fill = "Calle > 80%"),
+                alpha = 0.5)+
+   geom_polygon(data = subset(su.f, id %in% su.exc.apriori[-4]),
+                aes(x = long ,y = lat, group = group,fill = "Apriori"),
+                alpha = 0.5)+
+   geom_text_repel( data = data.frame(centroides.su) %>% 
+                filter( setu_ccgdo %in% su.exc.criterios$SETU_CCDGO),
+              aes(x = x, y =y, label =setu_ccgdo))+
+   
+   coord_equal()+
+   theme_void()
+```
 
 ### Modelando la cobertura de copa
 
@@ -925,7 +966,7 @@ Las variables a incluir en los modelos lineales deben cumplir una serie de condi
 - *Mostrar una correlación fuerte* (típicamente mayor a 0.6 se considera una asociación fuerte).
 - *Las variables independientes o predictoras no deben estar fuertemente correlacionadas entre ellas*.
 - *Las observaciones deben ser independientes*. En nuestro caso significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pondrá a prueba con los test estadísticos y los graficos de diagnostico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.
-- *Las variables dependientes e independientes deben tener una distribución normal*. Esta condición no suele ser estricta, inclusive algunos textos como @ , afirman que lo importante es que calcular los coeficientes de la regresión obtengamos una distribución normal de los residuos (sin ningún patrón, ruido). De no ser así, es posible que las variables no sean independiente y que exista información significativa en los residuos, por ejemplo, porque existe autocorrelación espacial en la variable dependiente y entonces la regresión lineal no obtiene resultados confiables para los coeficientes.
+- *Las variables dependientes e independientes deben tener una distribución normal*. Esta condición no suele ser estricta, pues lo importante es que al calcular los coeficientes de la regresión obtengamos una distribución normal de los residuos (sin ningún patrón, ruido). De no ser así, es posible que las variables no sean independientes o que exista información significativa en los residuos, por ejemplo, porque existe autocorrelación espacial en la variable dependiente y entonces la regresión lineal no obtiene resultados confiables para los coeficientes.
 
 
 Para hacer más tratable y gradual el proceso de complejizar el modelo iniciaremos el análisis con las variables sobre la población, que son las de mayor interés en un estudio dado su enfoque en la  justicia ambiental, para luego incorporar las variables de los dominios relacionados con el uso de los predios, los tipos de viviendas y la existencia de espacios verdes como parques, bulevares, escenarios deportivos o plazas, que como se vio en la sección \@ref(sec-ca2015) (revisar figura \@ref(fig:au-emplaz-veg))  alojan una cantidad considerable de los individuos arbóreos de la ciudad.
@@ -953,7 +994,7 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 ```
 
-
+ 
 
 #### Correlaciones y gráficos de dispersión entre pares
 
@@ -1419,9 +1460,94 @@ pintar_mapa_su_lm2(regresion.arboles,lm.best.cobertura.ap,nrow =1)
 
 ### Acceso a espacios verdes
 
+```{r mapa-dependienteEV-all, fig.asp= 0.7,fig.cap="Metricas de acceso a espacio verdes"}
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(dep.EV.ntl.long,by = c("id"="SETU_CCDGO")) %>%
+  filter(dep.EV %in% dependientes.EV) %>%
+  ggplot()+
+  geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
+  coord_equal()+
+  scale_fill_viridis( name = "deciles",
+                      direction = 1, 
+                      discrete = T, 
+                      na.value = "grey50",
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+  facet_wrap(~dep.EV, nrow = 1)+
+  tema_lgnd_abajo()
+```
+
+En el caso de los EV contamos con una gran variedad de medidas sobre el acceso en relación con la distancia, el área disponible y diferentes formulaciones para aproximarse al concepto de acceso a un servicio ambiental (Figura \@ref(fig:mapa-dependienteEV-all)). Para acotar el alcance de este trabajo, nos concentramos en dos métricas: el porcentaje de área de espacio verde de un sector censal (`area_ep.porcentaje`), para aproximarse desde la idea de los beneficios principalmente a nivel local, y la razón área disponible distancia (`ia.areas.dist`), que tiende a formar agrupaciones de SU al rededor de las sectore donde se ubican espacios verdes, ya sea por número o por tamaño, que contemplan el fenómeno del acceso o beneficio como un proceso acotado por la distancia escogida de 1 kilómetro como radio de búsqueda; considerándola una distancia caminable para viajar en una ciudad como Cali. (Figura \@ref(fig:mapa-dependienteEV-sel))
+
+```{r mapa-dependienteEV-sel, fig.asp= 0.7,fig.cap="Metricas de acceso a espacio verdes seleccionadas"}
+su.f %>% dplyr::select(-area_su)  %>%
+  left_join(dep.EV.ntl.long,by = c("id"="SETU_CCDGO")) %>%
+  filter(dep.EV %in% dependientes.EV.sel) %>%
+  ggplot()+
+  geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
+  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
+  coord_equal()+
+  scale_fill_viridis( name = "deciles",
+                      direction = 1, 
+                      discrete = T, 
+                      na.value = "grey50",
+                      guide = guide_legend(direction = "horizontal",
+                                           label.position = "bottom",
+                                           title.position = 'top',
+                                           nrow = 1))+
+  facet_wrap(~dep.EV, nrow = 1)+
+  tema_lgnd_abajo()
+```
+
 
 #### Correlaciones y distribuciones bivaridas
 
+Las variables de población y su correlación con los indicadores de acceso seleccionados no sirven para seleccionar una vez más las variables independientes para usar en los modelos de regresión lineal. Las figuras @\ref(fig:tile-ev-poblacion-pearson) y @\ref(fig:tile-ev-poblacion-spearman) resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente. Como se observa, esta relación es muy débil, y en todos las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado muy bajo para incluir alguna de estas variables para que tenga éxito una aproximación lineal o no lineal al predecir o ajustar valores. Sin embargo, y como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, seleccionaremos las variables con mayor correlación: `densidad_poblacion`,`con_alguna_limitacion.porcentaje` mejor relacionadas con el índice de acceso `ia.areas.dist` y `ningun_estudio.porcentaje` para `area_ep.porcentaje`.
+
+```{r tile-ev-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de población"}
+pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel)+
+    labs(title="Pearson entre acceso a EV y variables de población")
+
+```
+
+
+```{r tile-ev-poblacion-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables de población"}
+pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel, method_cor = "spearman")+
+  labs(title="Spearman entre acceso a EV y variables de población")
+```
+
+Resulta interesante ver, al igual que en el modelado de la cobertura de copa, si otras variables no poblacionales explican los resultados de los índices de acceso seleccionados. El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación se muestran en las figuras @\ref(tile-ev-uso-pearson) y \@ref(tile-ev-uso-spearman). De nuevo las correlaciones son bajas, aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: `unidad_economica.porcentaje` y el `cuarto.porcentaje`. 
+
+```{r tile-ev-uso-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de uso de los predios"}
+pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel)+
+  labs(title="Coeficiente Pearson entre dependiente EV e independientes uso de predios")
+
+```
+
+
+```{r tile-ev-uso-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables de uso de los predios"}
+pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel, method_cor = "spearman")+
+  labs(title="Coeficiente Spearman entre dependiente EV e independientes uso de predios")
+
+```
+
+Finalmente se indaga en las variables que describen las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. 
+
+```{r tile-ev-fisica-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU"}
+pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel)+
+  labs(title="Coeficiente Pearson entre dependientes EV e independientes físicas de predios")
+
+```
+
+
+```{r tile-ev-fisica-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU"}
+pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel, method_cor = "spearman")+
+  labs(title="Coeficiente Spearman entre dependientes EV e independientes físicas de predios")
+
+```
 #### Modelos de regresion lineal 
 
 
@@ -1451,7 +1577,7 @@ plot(su, border="grey80")
 plot(W_cont, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add=TRUE)
 ```
 
-Las matrices de vecindad construidas para el análisis espacial son la queen $W_q$, que considera vecino a todos los sectores que comparten un lado o una esquina con un sector censal; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km ($W_d$). Los grafos que representan las 2 matrices $W$ se muestran en la figura \@ref(fig:ws-su-reg). 
+Las matrices de vecindad construidas para el análisis espacial son la *queen* $W_q$, que considera vecino a todos los sectores que comparten un lado o una esquina con un sector censal; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km ($W_d$). El valor de un kilometro es arbitrario, aunque razonable en la escala humana. Los grafos que representan las 2 matrices $W$ se muestran en la figura \@ref(fig:ws-su-reg). 
 
 ```{r ws-su-reg, fig.asp=1.5 ,out.width='48%' ,fig.cap="Matrices de vecindad del análisis espacial",fig.align="center",fig.show="hold"}
 plot(W_queen,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray", main="Queen")
@@ -1467,7 +1593,7 @@ La matriz $W_d$ impone un estructura de interacciones que puede relacionar secto
 
 #### Autocorrelación espacial
 
-Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión usaramos el índice de Moran I. El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Si encontramos una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura en el modelo podremos obtener una estimación más eficientes de los coeficientes, y en consecuencia un mejor entendimiento de la relación entre esas variables. Hay que recordar que en este ejercicio no estamos queriendo entender una población por una muestra, estamos calculando estos coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación. La confianza en esa estimación depende de que los residuos obtenidos sean tenga un valor medio de 0, y que no puedan distinguirse del ruido. La ecuación \@ref(eq:moranI) define matemáticamente el índice:
+Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión usaramos el índice de Moran I. El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Si encontramos una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura en el modelo podremos obtener una estimación más eficiente de los coeficientes, y en consecuencia un mejor entendimiento de la relación entre esas variables. Hay que recordar que en este ejercicio no estamos queriendo entender una población por una muestra, estamos calculando estos coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación. La confianza en esa estimación depende de que los residuos obtenidos sean tenga un valor medio de 0, y que no puedan distinguirse del ruido. La ecuación \@ref(eq:moranI) define matemáticamente el índice:
 
 
 \begin{equation}
@@ -1564,7 +1690,7 @@ moran.plot(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn,
 ```
 
 
-La matrix $W_d$ capatura un poco mejor de forma global la autocorrelación del porcentaje de cobertura de copa con un valor positivo mucho más alto y significativa, produciendo *clusters* de sectores urbanos más grandes.  Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copaap-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)) . No se presentan valores negativos de autocorrelación. 
+Ambos diseños de matriz revelan precencia clara de autocorrelación espacial, pero la matrix $W_d$ captura un legeramente mejor con un valor positivo y significativa, produciendo *clusters* de sectores urbanos más con más sectores urbanos. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copaap-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)) . No se presentan valores negativos de autocorrelación. 
 
 ```{r mapas-lisa-copaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `cobertura_copa.ap`"}
 
@@ -1588,7 +1714,7 @@ lm.morantest(lm.mod.area_copa, W_queen, alternative="two.sided",zero.policy = T)
 lm.morantest(lm.mod.area_copa, W_dist1000.inv, alternative="two.sided",zero.policy = T)
 ```
 
-```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q} y $W_{d}",fig.show="hold",out.width='49%'}
+```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $$W_{d}$ ",fig.show="hold",out.width='49%'}
 
 moran.plot(lm.mod.area_copa$residuals, 
              listw=W_queen, 
@@ -1610,7 +1736,7 @@ moran.plot(lm.mod.area_copa$residuals,
 
 ```
 
-Para ambos casos el valor de Moran Global es mayor que 0 y significativo, aunque no es muy alto, si existe una tendencia en los datos y ambas matrices capturan el efecto. En las figuras \@ref(fig:mapas-lisa-rescopa-wq) y \@ref(fig:mapas-lisa-rescopa-wd) observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que podría deberse a que las variables independientes presentan un patron espacial similar, y que por consiguiente, al introducir estos retardos al modelo van a ayudar a absorver esa diferencias para mejorar la estimación. 
+Para ambos casos el valor de Moran Global es mayor que 0 y significativo, aunque no es muy alto, si existe una tendencia en los datos y ambas matrices capturan el efecto. $W_d$ lo hace mejor en los residuos, mientras $W_q$ lo hace mejor con la varible dependiente. En las figuras \@ref(fig:mapas-lisa-rescopa-wq) y \@ref(fig:mapas-lisa-rescopa-wd) observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que podría deberse a que las variables independientes presentan un patron espacial similar, y que por consiguiente, al introducir estos retardos al modelo van a ayudar a absorver esa diferencias para mejorar la estimación. 
 
 ```{r mapas-lisa-rescopa-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de los residuos del modelo lineal para del área de copa"}
 
@@ -1656,7 +1782,7 @@ moran.plot(lm.best.cobertura.ap$residuals,
 
 ```
 
-Para ambos matrices el valor de Moran Global es mayor que 0 y significativo, el doble más alto que para el modelo de área de copa; el indicador de porcentual y el residuo del modelo para ajustarlo muestra una autocorrelación espacial en lugares levemente desplazados de los encontrados con el area de copa. En las figuras \@ref(fig:mapas-lisa-rescopaap-wq) y \@ref(fig:mapas-lisa-rescopaap-wd) observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que podría deberse a que las variables independientes presentan un patron espacial similar, y que por consiguiente, al introducir estos retardos al modelo van a ayudar a absorver esa diferencias para mejorar la estimación. 
+Para ambos matrices el valor de Moran Global es mayor que 0 y significativo, casi el doble más alto que para el modelo de área de copa; el indicador porcentual de cobertura y el residuo del modelo para ajustarlo muestra el mismo trocamiento en la idoneidad de las matrices: el efecto es más fuerte con $W_d$ para la variable dependiente y levemente mayor con $W_q$ en los residuos. En las figuras \@ref(fig:mapas-lisa-rescopaap-wq) y \@ref(fig:mapas-lisa-rescopaap-wd) una vez más observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que, como dijimos, se debe a que las variables independientes presentan un patrón espacial similar, y se espera que al introducir estos efectos espaciales al modelo mejora la confiabilidad de la estimación. 
 
 ```{r mapas-lisa-rescopaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de los residuos del modelo lineal para el porcentaje de cobertura copa"}
 
@@ -1671,8 +1797,7 @@ pintar_mapa_su_LISA_lmres(regresion.arboles,lm.best.cobertura.ap,W_dist1000.inv,
 ```
 
 
-
-Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos introduciendo algún tipo de estructura espacial. Posiblemente la matriz $W_d$ sea la candidata, pues parece capturar mejor en los test de autocorrelación global la existencia de grupos formados por fenomenos de dispersión o derrame en la distribución de la copa y de las variables independientes elegidas para modelarlas, pues se reduce la autocorrelación al calcularla para los residuos.
+Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos introduciendo algún tipo de estructura espacial. Posiblemente la matriz $W_q$ sea la candidata para el área de copa si se piensa en un modelo autorregresivo, pues parece capturar mejor en los test de autocorrelación global la existencia de grupos formados por fenomenos de dispersión o derrame en la distribución de la copa. En el caso de usar modelos de error espacial SEM posiblemente la candidata sea $W_d$ por capturar mejor la autocorrelación en los residuos. En busca de simplicar el análsis y concentrarnos entre los modelos usaremos $W_q$ para el área de copa; para el porcentaje de cobertura de copa la matriz que usaremos $W_d$, usando el mismo criterio. 
 
 #### Ajuste de modelos espaciales
 

@@ -532,7 +532,7 @@ pintar_mapa_su_LISA_lmres<-function(data,lm,W,wname="W" ,...){
     tema_lgnd_abajo()
   
   
-  title1<-grid::textGrob(paste0("Mapas LISA"," - ",wname,"Residuos: \n",format(as.formula(lm)) %>% str_c(collapse = "\n")))
+  title1<-grid::textGrob(paste0("Mapas LISA"," - ",wname,"\nResiduos: \n",format(as.formula(lm)) %>% str_c(collapse = "\n")))
   grid.arrange(mapa_ZI,mapa_p,mapa_cluster, top = title1 ,... = ...)
   
   

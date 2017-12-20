@@ -132,6 +132,13 @@ sar.sm<-summary(sar.mod.sqrt.area_copa.wq,Nagelkerke=T)
 moran.test(sar.mod.sqrt.area_copa.wq$residuals,W_queen,zero.policy = T)
 bptest.sarlm(sar.mod.sqrt.area_copa.wq)
 
+sar.mod.sqrt.area_copa.wd<-lagsarlm(formula = as.formula(lm.mod.area_copa),
+                                    data = lm.mod.area_copa$model,
+                                    listw = W_dist1000.inv, zero.policy = T,tol.solve=1.0e-30)
+sar2.sm<-summary(sar.mod.sqrt.area_copa.wd,Nagelkerke=T)
+moran.test(sar.mod.sqrt.area_copa.wd$residuals,W_dist1000.inv,zero.policy = T)
+bptest.sarlm(sar.mod.sqrt.area_copa.wd)
+
 
 # SEM
 sem.mod.sqrt.area_copa.wq<-errorsarlm(formula = as.formula(lm.mod.area_copa),

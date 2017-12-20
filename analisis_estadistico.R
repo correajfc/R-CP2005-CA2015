@@ -947,7 +947,7 @@ plot(best_models)
 # es mejor el modelo solo de poblacion para el porcenatje de cobertura de copa.
 # lm.best.cobertura.ap
 
-######## acceso a EV #########
+
 
 
 

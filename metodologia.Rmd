@@ -21,7 +21,7 @@ knitr::include_graphics("QGIS/mapas/ubicacion_cali_low.png")
 
 Santiago  de Cali presenta dos  zonas topográficas:  el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El area urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.
 
-```{r googlemp, out.width='100%',echo=FALSE, fig.cap="Mapa de Santiago de Cali"}
+```{r googlemp, out.width='100%',echo=FALSE, fig.cap="Mapa de Santiago de Cali,tomada de Google Maps"}
 knitr::include_graphics("images/googlemap.png")
 ```
 
@@ -29,7 +29,7 @@ knitr::include_graphics("images/googlemap.png")
 El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1.500 mm y la temperatura promedio anual es de 24 °C aproximadamente. (CIAT, 2015). La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes. 
 
 
-```{r satelite, out.width='100%',echo=FALSE, fig.cap="Vista satelital de Santiago de Cali"}
+```{r satelite, out.width='100%',echo=FALSE, fig.cap="Vista satelital de Santiago de Cali,tomada de Google Maps"}
 knitr::include_graphics("images/satelite.png")
 ```
 
@@ -41,7 +41,7 @@ La cartografía disponible en la Infraestructura de Datos Espaciales de Santiago
 
 En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
 
-```{r capas-idesc, out.width='100%',echo=FALSE, fig.cap="Vista satelital de Santiago de Cali"}
+```{r capas-idesc, out.width='100%',echo=FALSE, fig.cap="Capas usadas para el procesamiento de los espacios verdes y las carateristicas de las manzanas"}
 knitr::include_graphics("images/capas_idesc_pot2014.png")
 ```
 
