@@ -7,9 +7,9 @@ Antes de iniciar con la discusión de los resultados es importante recordar que 
 
 Aunque el área de copa y el porcentaje de cobertura de copa configuran dos modelos individuales y son indicadores que expresan de diferente forma el nivel de acceso a servicio del arbolado urbano, ambos son visiones complementarias sobre el mismo fenómeno, la interpretación no aísla los modelos, los relaciona.
 
-A pesar de la persistencia de problemas en la estimación como la no normalidad de los residuos y la heterocedasticidad —esto debidos ya no la autocorrelación de la variable dependiente ni a la de los errores sino a posibles no linealidades entre los predictores y la cobertura de copa— las estimaciones mejoran con los modelos con estructura espacial. Inclusive parece que las matrices de vecindad construidas, aunque muy similares entre sí, muestran que la inclusión a priori de una estructura espacial es un mecanismo eficaz para identificar grupos y probar aspectos teóricos de la estructura de la autocorrelación si se profundiza e incluye criterios teóricos o conocimientos del desarrollo histórico de la ciudad en su formalización. Es posible que dichos problemas de la estimación provengan de dimensiones no incluidas en el modelo dado que los modelos SEM también tienen un rendimiento similar al de los mejor rankeados SAR y SD, escogidos como mejores candidatos para la estimación del porcentaje de cobertura de copa y área de copa, respectivamente. En este sentido traemos a colación aspectos como el importante número de árboles en los andes y separadores viales (figura \@ref()), factor que no puede no ser capturado en las métricas construidas, pero que puede explicar el agrupamiento de sectores censales con buena cobertura de copa al rededor de la calle 5ta que se observa en el mapa de clusters del porcentaje de cobertura de copa (ver figura \@ref(fig:lisa-copaap)) o el bajo desarrollo de los individuos en sectores de calles estrechas y con pocas vías principales.
+A pesar de la persistencia de problemas en la estimación como la no normalidad de los residuos y la heterocedasticidad —esto debidos ya no la autocorrelación de la variable dependiente ni a la de los errores sino a posibles no linealidades entre los predictores y la cobertura de copa— las estimaciones mejoran con los modelos con estructura espacial. Inclusive parece que las matrices de vecindad construidas, aunque muy similares entre sí, muestran que la inclusión a priori de una estructura espacial es un mecanismo eficaz para identificar grupos y probar aspectos teóricos de la estructura de la autocorrelación si se profundiza e incluye criterios teóricos o conocimientos del desarrollo histórico de la ciudad en su formalización. Es posible que dichos problemas de la estimación provengan de dimensiones no incluidas en el modelo dado que los modelos SEM también tienen un rendimiento similar al de los mejor rankeados SAR y SD, escogidos como mejores candidatos para la estimación del porcentaje de cobertura de copa y área de copa, respectivamente. En este sentido traemos a colación aspectos como el importante número de árboles en los andes y separadores viales (figura \@ref(fig:au-geo-emp)), factor que no puede no ser capturado en las métricas construidas, pero que puede explicar el agrupamiento de sectores censales con buena cobertura de copa al rededor de la calle 5ta que se observa en el mapa de clusters del porcentaje de cobertura de copa (ver figura \@ref(fig:lisa-copaap)) o el bajo desarrollo de los individuos en sectores de calles estrechas y con pocas vías principales.
 
-Así pues los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sd-copa) y \@ref(tab:coef-rho-copa) para el modelo SD y \@ref(tab:coef-sar-copaap) y \@ref(tab:coef-rho-copaap) para el modelo SAR.  En consecuencia con el ajuste de autocorrelación en ambos modelos (SAR y SD) el $\rho$ es significativo y proporcional a las diferencias en el Moran’I Global de cada modelo. Es interesante que en ambos modelos la variable más significativa y de mayor valor en el coeficiente es **estudios superiores**. Cuando se formulan los modelos se excluye el uso de variables como porcentaje de población afro o personas sin estudios por tener una alta correlación negativa con personas con **estudios superiores o postgrado** o con su versión porcentual. Esto implica que los beneficios ambientales son mejores en sectores con población mejor educada (figura \@ref(fig:lisa-superiores)), posiblemente una razón para preferir o habitar espacios con buena arborización o tal vez con andes con suficiente espacio y zonas blandas para arborizar el barrio. En cualquier caso, esto muestra un grado de segregación de los clusters de sectores con mayor arborización(figura \@ref(fig:lisa-superiores)) y la población afro (figura \@ref(fig:lisa-afro)) y sin estudios (figura \@ref(fig:lisa-sinestudio)), ambos altamente correlacionadas, como se aprecia en los mapas de LISA y la matriz de correlación \@ref()
+Así pues los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sd-copa) y \@ref(tab:coef-rho-copa) para el modelo SD y \@ref(tab:coef-sar-copaap) y \@ref(tab:coef-rho-copaap) para el modelo SAR.  En consecuencia con el ajuste de autocorrelación en ambos modelos (SAR y SD) el $\rho$ es significativo y proporcional a las diferencias en el Moran’I Global de cada modelo. Es interesante que en ambos modelos la variable más significativa y de mayor valor en el coeficiente es **estudios superiores**. Cuando se formulan los modelos se excluye el uso de variables como porcentaje de población afro o personas sin estudios por tener una alta correlación negativa con personas con **estudios superiores o postgrado** o con su versión porcentual. Esto implica que los beneficios ambientales son mejores en sectores con población mejor educada (figura \@ref(fig:lisa-superiores)), posiblemente una razón para preferir o habitar espacios con buena arborización o tal vez con andes con suficiente espacio y zonas blandas para arborizar el barrio. En cualquier caso, esto muestra un grado de segregación de los clusters de sectores con mayor arborización(figura \@ref(fig:lisa-superiores)) y la población afro (figura \@ref(fig:lisa-afro)) y sin estudios (figura \@ref(fig:lisa-sinestudio)), ambos altamente correlacionadas, como se aprecia en los mapas de LISA y las matriz de correlación \@ref(fig:tile-poblacion-pearson) y \@ref(fig:tile-poblacion-spearman)
 
 ```{r coef-sd-copa}
 sm.sd.copa<-summary(sd.mod.sqrt.area_copa.wq)
@@ -100,7 +100,7 @@ La densidad de población es una variable que produce resultados inconsistentes:
 #  pintar_mapa_su_LISA_var(regresion.arboles,"afro.porcentaje",W_queen, wname = "Wd",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado",W_queen, wname = "Wd",nrow =1)
    #pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado.porcentaje",W_queen, wname = "Wd",nrow =1)
-   pintar_mapa_su_LISA_var(regresion.arboles,"densidad_poblacion",W_queen, wname = "Wd",nrow =1)
+   pintar_mapa_su_LISA_var(regresion.arboles,"densidad_poblacion",W_queen, wname = "Wq",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"cuarto.porcentaje",W_queen, wname = "Wd",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"area_ep.porcentaje",W_queen, wname = "Wd",nrow =1)
 ```
@@ -114,7 +114,7 @@ En el modelo SD de las variables retardadas ninguna es significativa. El porcent
 #   pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado",W_queen, wname = "Wd",nrow =1)
    #pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado.porcentaje",W_queen, wname = "Wd",nrow =1)
  #  pintar_mapa_su_LISA_var(regresion.arboles,"densidad_poblacion",W_queen, wname = "Wd",nrow =1)
-   pintar_mapa_su_LISA_var(regresion.arboles,"cuarto.porcentaje",W_queen, wname = "Wd",nrow =1)
+   pintar_mapa_su_LISA_var(regresion.arboles,"cuarto.porcentaje",W_queen, wname = "Wq",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"area_ep.porcentaje",W_queen, wname = "Wd",nrow =1)
 ```
 
@@ -127,10 +127,10 @@ En el modelo SD de las variables retardadas ninguna es significativa. El porcent
    #pintar_mapa_su_LISA_var(regresion.arboles,"superior_postgrado.porcentaje",W_queen, wname = "Wd",nrow =1)
   # pintar_mapa_su_LISA_var(regresion.arboles,"densidad_poblacion",W_queen, wname = "Wd",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"cuarto.porcentaje",W_queen, wname = "Wd",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.arboles,"area_ep.porcentaje",W_queen, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.arboles,"area_ep.porcentaje",W_queen, wname = "Wq",nrow =1)
 ```
 
-Puedo afirmar que la hipótesis que se plantea este trabajo se cumple: “Las zonas urbanas con más desventajas sociales y económicas tienen menos acceso a (espacios verdes y) beneficios del arbolado urbano.“ Existe una fuerte asociación entre los patrones espaciales de la cobertura de copa y un estatus social más alto representado por al acceso a educación superior, que en Colombia no es de acceso universal y la oferta educacional está cubierta principalmente por instituciones privadas. Es además fuerte la asociación negativa entre este indicador de estatus social con zonas con prevalencia de población afro y población sin estudios, que además de la alta segregación laboral que exhiben(xxx) está menos beneficiada de los servicios ambientales provisto por el arbolado urbano. 
+Se puede afirmar que la hipótesis que se plantea este trabajo se cumple: “Las zonas urbanas con más desventajas sociales y económicas tienen menos acceso a beneficios del arbolado urbano.“ Existe una fuerte asociación entre los patrones espaciales de la cobertura de copa y un estatus social más alto representado por al acceso a educación superior, que en Colombia no es de acceso universal y la oferta educacional está cubierta principalmente por instituciones privadas. Es además fuerte la asociación negativa entre este indicador de estatus social con zonas con prevalencia de población afro y población sin estudios, que además de la alta segregación laboral que exhiben [@arroyo_mina_afrocolombianos_2016; @mora_brechas_2014; @ceron_indice_2014] está menos beneficiada de los servicios ambientales provisto por el arbolado urbano. 
 
 Este tipo de desigualdades son una responsabilidad de los urbanizadores y de los gobiernos locales. Es de su interés y responsabilidad dialogar para construir y propiciar espacios para la siembra y desarrollo de los individuos arbóreos, pues es fundamental su agencia para reducir brechas sociales, crear una ciudad con espacio e infraestructura natural que sostenga los ecosistemas de los que depende la ciudad y la calidad de vida de sus ciudadanos. Ciudadanos para quienes lo ambiental viene cobrando más importancia como valor social, y que además se convierte en una estrategia para mitigar los cambios que pueda traer consigo el calentamiento global.  
 Este tipo de métodos para establecer condiciones objetivas de la población y las interrelaciones de estas condiciones son relevantes para construir políticas públicas sobre métricas que permitan hacer seguimiento a los impactos de los planes y proyectos sobre el manejo del arbolado urbano y la infraestructura necesaria para transformar el paisaje y la selección de zonas que necesitan de mayor atención.
@@ -138,3 +138,67 @@ Este tipo de métodos para establecer condiciones objetivas de la población y l
 
 
 ## Sobre los espacios verdes
+
+Análogamente a la cobertura arbórea, las métricas de acceso son aspectos complementarios sobre el mismo fenómeno de acceso aún beneficio; una representa un beneficio local, para el que vive en ese sector (`area_ep.porcentaje`) y la otra una forma (`ia.areas.dist`) que involucra un grupos de sectores beneficiarios, y que mide la relación entre el área del espacio verde y  la distancia desde el centroide del sector urbano y sumados: intenta cuantificar la relación costo de traslado por beneficio en área. 
+El modelo de mejor rendimiento en la estimación medido usando el AIC fue el SEM para `area_ep.porcentaje` y SD para `ia.areas.dist`. 
+
+
+```{r coef-sem-areaep}
+sm.sem.areaep<-summary(sem.areas_ep)
+t1<-summary(sem.areas_ep)$Coef
+r1<-round(c(sem.areas_ep$lambda,sm.sem.areaep$LR1$statistic,sm.sem.areaep$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de espacio verde', booktabs = TRUE)
+```
+```{r coef-lambda-areaep}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de espacio verde', booktabs = TRUE)
+```
+
+
+```{r coef-sd-aerasdist}
+sm.sd.areasdist<-summary(sd.areas.dist)
+t1<-summary(sd.areas.dist)$Coef
+r1<-round(c(sm.sd.areasdist$rho,sm.sd.areasdist$LR1$statistic,sm.sd.areasdist$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD del indicador de acceso área-distancia', booktabs = TRUE)
+```
+```{r coef-rho-aerasdist}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD del indicador de acceso área-distancia', booktabs = TRUE)
+```
+
+```{r hist-areaep, fig.cap="Distribucion de lo indicadores de acceso a EV ", fig.show="hold",fig.asp=0.5}
+ggplot(regresion.EV)+
+  geom_histogram(aes(x = area_ep.porcentaje),bins = 30, 
+                 color = "white", fill="darkgreen")
+ggplot(regresion.EV)+
+  geom_point(aes(y = "indicador", x= area_ep.porcentaje), color="darkgreen",alpha=0.3, position ="jitter")+  
+  scale_color_brewer(type = "div")
+```
+
+```{r hist-areasdist, fig.cap="Distribucion de lo indicadores de acceso a EV ", fig.show="hold",fig.asp=0.5}
+ggplot(regresion.EV)+
+  geom_histogram(aes(x = ia.areas.dist),bins = 30, 
+                 color = "white", fill="magenta")  
+ggplot(regresion.EV)+
+  geom_point(aes(y = "indicador", x= ia.areas.dist),color="magenta",alpha=0.3, position ="jitter")+  
+  scale_color_brewer(type = "div")
+
+```
+
+
+```{r lisa-areaep, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
+pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
+pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wq",nrow =1)
+
+```
+
+```{r lisa-areaep, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
+  pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
+pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
+
+
+```

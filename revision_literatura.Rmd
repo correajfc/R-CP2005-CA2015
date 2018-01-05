@@ -272,7 +272,6 @@ Y=X\mathbf{\beta}+\mathbf{\rho}WY+WX\mathbf{\lambda}+e
 (\#eq:sd)
 \end{equation}
 
->Para la escogencia del modelo más apropiado para corregir la estimación del OLS se usa frecuentemente el test de los multiplicadores de Lagrange y tanto para el modelo SAR coomo el SEM. (Mejorar la explicacion de los criterios de ajuste y de seleccion del modelo ara evitar una mal especificacion ....por completar) 
 
 Estudios como [@landry_street_2009; @schwarz_trees_2015; @zhou_social_2013; @shanahan_socio-economic_2014] hacen uso de modelos autorregresivos y de retardo espacial para explicar los errores en el modelo lineal y mejorar el ajuste comparando modelos que relacionan de las variables ambientales(cobertura de copa y acceso a EV) con indicadores socioeconómicos.
 

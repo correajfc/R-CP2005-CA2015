@@ -129,7 +129,8 @@ pintar_corrmatrix<- function(data, variables, ... ,method_cor = "pearson" ){
                          name=method_cor) +
     theme_minimal()+ 
     theme(axis.text.x = element_text(angle = 90, vjust = 1, 
-                                     size = 8, hjust = 1),axis.title = element_blank())+
+                                     size = 8, hjust = 1),axis.title = element_blank(),
+          plot.title = element_text(size=14))+
     coord_fixed()
   p
 }
@@ -164,7 +165,8 @@ pintar_corrmatrix_XY<- function(data, x , y , ... ,method_cor = "pearson" ){
           legend.text=element_text(size=6),
           legend.position = "bottom",
           legend.key.height = unit(2,"mm"),
-          legend.direction = "horizontal")+
+          legend.direction = "horizontal",
+          plot.title = element_text(size=14))+
    
     coord_fixed()
   p

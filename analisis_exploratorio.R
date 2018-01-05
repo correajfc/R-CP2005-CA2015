@@ -810,6 +810,11 @@ analisis.cali.df %>% select(one_of(metricas.poblacion)) %>%
                  color = "white", fill="magenta")+
   facet_wrap(~metricas.poblacion, scales = "free", ncol = 3)
 
+ggplot(analisis.cali.df)+
+  geom_histogram(aes(x = ia.areas.dist),bins = 30, 
+                 color = "white", fill="magenta")+
+  facet_wrap(~metricas.poblacion, scales = "free", ncol = 3)
+
 
 # datos porcentuales relativos al sector urbano
 su.f %>% dplyr::select(-area_su)  %>%

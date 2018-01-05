@@ -87,14 +87,15 @@ plot(W_dist1000.inv.ev, coordinates(su.EV), col='orchid1',pch=19, cex=0.1, add=T
   pintar_mapa_su_LISA_lmres(regresion.EV,lm.area_ep.ptje.sel,W_dist1000.inv.ev, wname = "Wd",nrow =1)
   
   pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_dist1000.inv.ev, wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nrow =1)
+  #pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_dist1000.inv.ev, wname = "Wq",nrow =1)
   
-  pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wd",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wd",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.EV,"cuarto.porcentaje",W_queen.ev, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"cuarto.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
   pintar_mapa_su_LISA_var(regresion.EV,"ningun_estudio.porcentaje",W_queen.ev, wname = "Wd",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.EV,"densidad_poblacion",W_queen.ev, wname = "Wd",nrow =1)
-  pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_queen.ev, wname = "Wd",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"densidad_poblacion",W_queen.ev, wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
   
   
   pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_dist1000.inv.ev, wname = "Wd",nrow =1)
@@ -130,7 +131,7 @@ print(moran.lm)
 # modelos con terminos autorregresivos o de retardo 
 #SAR
 
-  sar.areas.dist<-lagsarlm(formula = as.formula(lm.ia.areas.dist.sel),
+sar.areas.dist<-lagsarlm(formula = as.formula(lm.ia.areas.dist.sel),
          data = lm.ia.areas.dist.sel$model,
          listw = W_queen.ev, zero.policy = T,tol.solve=1.0e-30)
 sar.sm<-summary(sar.areas.dist,Nagelkerke=T)

@@ -450,9 +450,9 @@ plot(best_models)
 
 lm.area_ep.ptje.sel<-lm(area_ep.porcentaje.mxn~cuarto.porcentaje.mxn+
                       # unidad_economica.porcentaje.mxn+
-                      area_media_manzana.mxn+
+                      area_media_manzana.mxn#+
                       # densidad_poblacion.mxn+
-                      ningun_estudio.porcentaje.mxn
+                      #ningun_estudio.porcentaje.mxn
                       ,
                     data = regresion.EV.mn)
 
