@@ -1,5 +1,5 @@
 book_filename: "tesis-unigis"
-output_dir: "tesis-unigis"
+output_dir: "docs"
 repo: https://github.com/correajfc/R-CP2005-CA2015
 language:
   label:
