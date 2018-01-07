@@ -203,13 +203,13 @@ ggplot(regresion.EV)+
 ```
 
 
-```{r lisa-areaep-amm, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
+```{r lisa-areaep-amm, fig.cap="Mapas LISA - Porcentaje de espacios verdes y área media de manzana", fig.show="hold"}
 pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wq",nrow =1)
 
 ```
 
-```{r lisa-areaep-ue-cal, fig.cap="Mapas LISA - Porcentaje de unidades economicas y personas con alguna limitación "}
+```{r lisa-areaep-ue-cal, fig.cap="Mapas LISA - Porcentaje de unidades economicas y personas con alguna limitación ", fig.show="hold"}
   pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 
