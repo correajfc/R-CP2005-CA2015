@@ -31,9 +31,6 @@ library(ggfortify)
 library(olsrr)
 
 
-# library(pander)
-#library(stargazer)
-#library(stargazer)
 #  correr los script en el orden correcto para realizar todos los calculos 
 
 source("funciones.R")

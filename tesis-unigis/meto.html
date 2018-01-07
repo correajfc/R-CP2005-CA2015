@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia.</title>
+  <meta name="description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia." />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  <meta name="github-repo" content="correajfc/unigis-tesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia." />
+  
+  <meta name="twitter:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  
+
+<meta name="author" content="Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)">
+<meta name="author" content="Universidad de Salzburgo">
+
+
+<meta name="date" content="2018-01-07">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="revlit.html">
+<link rel="next" href="anayproc.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Trabajo de Grado UNIGIS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="" data-path="agradecimientos.html"><a href="agradecimientos.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
+<li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introdución</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#problema-de-investigacion"><i class="fa fa-check"></i><b>1.1</b> Problema de investigación</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#hipotesis"><i class="fa fa-check"></i><b>1.2</b> Hipótesis</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.3</b> Objetivos</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#objetivo-general"><i class="fa fa-check"></i><b>1.3.1</b> Objetivo general</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#objetivos-especificos"><i class="fa fa-check"></i><b>1.3.2</b> Objetivos específicos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#justificacion"><i class="fa fa-check"></i><b>1.4</b> Justificación</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="revlit.html"><a href="revlit.html"><i class="fa fa-check"></i><b>2</b> Revisión de la literatura</a><ul>
+<li class="chapter" data-level="2.1" data-path="revlit.html"><a href="revlit.html#las-instituciones-ambientales-en-santiago-de-cali"><i class="fa fa-check"></i><b>2.1</b> Las instituciones ambientales en Santiago de Cali</a></li>
+<li class="chapter" data-level="2.2" data-path="revlit.html"><a href="revlit.html#arboles-y-desarrollo-urbano"><i class="fa fa-check"></i><b>2.2</b> Árboles y desarrollo urbano</a></li>
+<li class="chapter" data-level="2.3" data-path="revlit.html"><a href="revlit.html#servicios-ecosistemicos-y-su-valoracion"><i class="fa fa-check"></i><b>2.3</b> Servicios ecosistémicos y su valoración</a></li>
+<li class="chapter" data-level="2.4" data-path="revlit.html"><a href="revlit.html#la-perspectiva-de-la-justicia-ambiental"><i class="fa fa-check"></i><b>2.4</b> La perspectiva de la justicia ambiental</a></li>
+<li class="chapter" data-level="2.5" data-path="revlit.html"><a href="revlit.html#modelamiento-y-analisis-espacial-de-variables-ambientales-y-sociales"><i class="fa fa-check"></i><b>2.5</b> Modelamiento y análisis espacial de variables ambientales y sociales</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="revlit.html"><a href="revlit.html#enfoque-estadistico"><i class="fa fa-check"></i><b>2.5.1</b> Enfoque estadístico</a></li>
+<li class="chapter" data-level="2.5.2" data-path="revlit.html"><a href="revlit.html#enfoque-geoestadistico"><i class="fa fa-check"></i><b>2.5.2</b> Enfoque geoestadístico</a></li>
+<li class="chapter" data-level="2.5.3" data-path="revlit.html"><a href="revlit.html#otras-tecnicas"><i class="fa fa-check"></i><b>2.5.3</b> Otras técnicas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="meto.html"><a href="meto.html"><i class="fa fa-check"></i><b>3</b> Metodología</a><ul>
+<li class="chapter" data-level="3.1" data-path="meto.html"><a href="meto.html#aproximacion-general"><i class="fa fa-check"></i><b>3.1</b> Aproximación general</a></li>
+<li class="chapter" data-level="3.2" data-path="meto.html"><a href="meto.html#area-de-estudio"><i class="fa fa-check"></i><b>3.2</b> Área de estudio</a></li>
+<li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#datos"><i class="fa fa-check"></i><b>3.3</b> Datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#datos-de-registros-oficiales-del-municipio"><i class="fa fa-check"></i><b>3.3.1</b> Datos de registros oficiales del municipio</a></li>
+<li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#el-censo-arboreo"><i class="fa fa-check"></i><b>3.3.2</b> El censo arbóreo</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#el-censo-de-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> El censo de población</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.4</b> Métodos y técnicas</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anayproc.html"><a href="anayproc.html"><i class="fa fa-check"></i><b>4</b> Procesamiento y análisis de datos</a><ul>
+<li class="chapter" data-level="4.1" data-path="anayproc.html"><a href="anayproc.html#capas-de-informacion-geografica"><i class="fa fa-check"></i><b>4.1</b> Capas de información geográfica</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="anayproc.html"><a href="anayproc.html#indices-de-acceso-a-espacios-verdes"><i class="fa fa-check"></i><b>4.1.1</b> Índices de acceso a espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="anayproc.html"><a href="anayproc.html#sec-ca2015"><i class="fa fa-check"></i><b>4.2</b> Datos del censo arbóreo 2015</a></li>
+<li class="chapter" data-level="4.3" data-path="anayproc.html"><a href="anayproc.html#datos-del-censo-de-poblacion"><i class="fa fa-check"></i><b>4.3</b> Datos del censo de población</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="anayproc.html"><a href="anayproc.html#caracteristica-de-la-poblacion"><i class="fa fa-check"></i><b>4.3.1</b> Característica de la población</a></li>
+<li class="chapter" data-level="4.3.2" data-path="anayproc.html"><a href="anayproc.html#caracteristicas-de-las-viviendas"><i class="fa fa-check"></i><b>4.3.2</b> Características de las viviendas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="anayproc.html"><a href="anayproc.html#analisis-estadisticos"><i class="fa fa-check"></i><b>4.4</b> Análisis estadísticos</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="anayproc.html"><a href="anayproc.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>4.4.1</b> Criterios y selección de sectores censales</a></li>
+<li class="chapter" data-level="4.4.2" data-path="anayproc.html"><a href="anayproc.html#modelando-la-cobertura-de-copa"><i class="fa fa-check"></i><b>4.4.2</b> Modelando la cobertura de copa</a></li>
+<li class="chapter" data-level="4.4.3" data-path="anayproc.html"><a href="anayproc.html#acceso-a-espacios-verdes"><i class="fa fa-check"></i><b>4.4.3</b> Acceso a espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="anayproc.html"><a href="anayproc.html#geostat"><i class="fa fa-check"></i><b>4.5</b> Análisis geoestadísticos</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="anayproc.html"><a href="anayproc.html#matrices-de-vecindad"><i class="fa fa-check"></i><b>4.5.1</b> Matrices de vecindad</a></li>
+<li class="chapter" data-level="4.5.2" data-path="anayproc.html"><a href="anayproc.html#modelado-espacial-de-la-cobertura-de-copa"><i class="fa fa-check"></i><b>4.5.2</b> Modelado espacial de la cobertura de copa</a></li>
+<li class="chapter" data-level="4.5.3" data-path="anayproc.html"><a href="anayproc.html#modelado-espacial-de-espacios-verdes"><i class="fa fa-check"></i><b>4.5.3</b> Modelado espacial de espacios verdes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="discusion.html"><a href="discusion.html"><i class="fa fa-check"></i><b>5</b> Discusión</a><ul>
+<li class="chapter" data-level="5.1" data-path="discusion.html"><a href="discusion.html#sobre-la-cobertura-de-copa"><i class="fa fa-check"></i><b>5.1</b> Sobre la cobertura de copa</a></li>
+<li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia.</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="meto" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Metodología</h1>
+<div id="aproximacion-general" class="section level2">
+<h2><span class="header-section-number">3.1</span> Aproximación general</h2>
+<p>Este trabajo se concentra en indagar en particular sobre la justicia ambiental distributiva por medio de modelos estadísticos, geoestadisticos apoyados por el análisis visual de los patrones espaciales. Para ellos se hará uso de datos del censo arbóreo de 2015<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>, el censo de población del 2005<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> y aspectos estructurales delentre el espacio público y privado de las unidades espaciales de análisis<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a>.</p>
+</div>
+<div id="area-de-estudio" class="section level2">
+<h2><span class="header-section-number">3.2</span> Área de estudio</h2>
+<p>El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano. Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2420114 habitantes segun Cali en Cifras 2015. El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %).(Ver figura <a href="meto.html#fig:ubicacion">3.1</a>).La división administrativa de la zona urbana son comunas y las comunas se componen de barrios.</p>
+<div class="figure"><span id="fig:ubicacion"></span>
+<img src="QGIS/mapas/ubicacion_cali_low.png" alt="Área de estudio" width="100%" />
+<p class="caption">
+Figura 3.1: Área de estudio
+</p>
+</div>
+<p>Santiago de Cali presenta dos zonas topográficas: el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El area urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.</p>
+<div class="figure"><span id="fig:googlemp"></span>
+<img src="images/googlemap.png" alt="Mapa de Santiago de Cali,tomada de Google Maps" width="100%" />
+<p class="caption">
+Figura 3.2: Mapa de Santiago de Cali,tomada de Google Maps
+</p>
+</div>
+<p>El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1.500 mm y la temperatura promedio anual es de 24 °C aproximadamente. (CIAT, 2015). La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes.</p>
+<div class="figure"><span id="fig:satelite"></span>
+<img src="images/satelite.png" alt="Vista satelital de Santiago de Cali,tomada de Google Maps" width="100%" />
+<p class="caption">
+Figura 3.3: Vista satelital de Santiago de Cali,tomada de Google Maps
+</p>
+</div>
+</div>
+<div id="datos" class="section level2">
+<h2><span class="header-section-number">3.3</span> Datos</h2>
+<div id="datos-de-registros-oficiales-del-municipio" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Datos de registros oficiales del municipio</h3>
+<p>La cartografía disponible en la Infraestructura de Datos Espaciales de Santiago de Cali, IDESC <span class="citation">(“Geoportal IDESC” <a href="#ref-geoportal_idesc">2017</a>)</span>, incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema <span class="citation">(“MAGNA-SIRGAS-CALI” <a href="#ref-noauthor_magna-sirgas-cali_nodate">2017</a>)</span>. Además está la base de datos geográfica del Plan de Ordenamiento territorial de Cali 2014, POT2014<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a>. Del POT2014 se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionó la capa de barrios, espacio público, humedales, ríos y corredores ambientales disponibles vía WFS.</p>
+<p>En la figura <a href="meto.html#fig:capas-idesc">3.4</a> se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.</p>
+<div class="figure"><span id="fig:capas-idesc"></span>
+<img src="images/capas_idesc_pot2014.png" alt="Capas usadas para el procesamiento de los espacios verdes y las carateristicas de las manzanas" width="100%" />
+<p class="caption">
+Figura 3.4: Capas usadas para el procesamiento de los espacios verdes y las carateristicas de las manzanas
+</p>
+</div>
+</div>
+<div id="el-censo-arboreo" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> El censo arbóreo</h3>
+<p>En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realización de un censo arbóreo que dejó como resultado una base de datos de aproximadamente 290.000 individuos censados. Los datos dan cuenta de la identificación de especies, sus características dasométricas, de emplazamiento y estado fitosanitario. Estos datos constituyen un insumo fundamental para para la caracterización de los beneficios y cargas que supone el mantenimiento y desarrollo del arbolado urbano. De hecho, su realización ocurre en el marco del proceso de formulación del plan silvicultura urbana o estatuto arbóreo<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> (Acuerdo 0335 de 2013). Las variables biofísicas recolectadas y la georeferenciación de los individuos permite agregar las características del arbolado a diferentes escalas de las unidades administrativas p.e divisiones censales, para identificar y caracterizar su distribución espacial y correlación con variables sociales o/y económicas. Las variables seleccionadas se resumen en la tabla <a href="meto.html#tab:vars-AU">3.1</a> y en la tabla <a href="meto.html#tab:datos-ca2015">3.2</a>.</p>
+<table style="width:50%;">
+<caption><span id="tab:vars-AU">Tabla 3.1: </span> Variables para caracterizar el AU</caption>
+<colgroup>
+<col width="9%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">variable</th>
+<th align="right">{valores}[unidades]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">id_arbol</td>
+<td align="right">número entero único</td>
+</tr>
+<tr class="even">
+<td align="right">diametro copa</td>
+<td align="right">[m<sup>2</sup>]</td>
+</tr>
+<tr class="odd">
+<td align="right">altura arbol</td>
+<td align="right">[m]</td>
+</tr>
+<tr class="even">
+<td align="right">vitalidad</td>
+<td align="right">{Regular, Sano, Seco, Muerto}</td>
+</tr>
+<tr class="odd">
+<td align="right">edad</td>
+<td align="right">{Juvenil, Maduro, Longevo}</td>
+</tr>
+<tr class="even">
+<td align="right">emplazamiento</td>
+<td align="right">{Anden, Bahias de estacionamiento, Bulevares, Corredor Ferreo, Escenario deportivo y/o Cultural, Glorieta, Parque Urbano, Paseos, Plaza, Plazoleta, Ronda de rios, Rondas de canales, Separador Vial}</td>
+</tr>
+<tr class="odd">
+<td align="right">vegetación</td>
+<td align="right">{Arbol, Arbusto, Bambu, Muerto, Palma, Planta arbustiva, Seco}</td>
+</tr>
+<tr class="even">
+<td align="right">Este</td>
+<td align="right">[m] MAGNA - SIRGAS-CALI</td>
+</tr>
+<tr class="odd">
+<td align="right">Norte</td>
+<td align="right">[m] MAGNA - SIRGAS-CALI</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:datos-ca2015">Tabla 3.2: </span>Muestra de los datos del censo arbóreo</caption>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="right">vegetacion</th>
+<th align="right">edad</th>
+<th align="right">emplazamiento</th>
+<th align="right">diametro_copa</th>
+<th align="right">altura_arbol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0199G41070768</td>
+<td align="right">Arbol</td>
+<td align="right">Maduro</td>
+<td align="right">Ronda de rios</td>
+<td align="right">12</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">0199G41070769</td>
+<td align="right">Arbol</td>
+<td align="right">Maduro</td>
+<td align="right">Ronda de rios</td>
+<td align="right">7</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">0199G41070770</td>
+<td align="right">Arbol</td>
+<td align="right">Maduro</td>
+<td align="right">Ronda de rios</td>
+<td align="right">5</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">0199G41070771</td>
+<td align="right">Arbol</td>
+<td align="right">Maduro</td>
+<td align="right">Ronda de rios</td>
+<td align="right">6</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="right">0199G41070772</td>
+<td align="right">Arbol</td>
+<td align="right">Maduro</td>
+<td align="right">Ronda de rios</td>
+<td align="right">9</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="right">0199G41070773</td>
+<td align="right">Arbol</td>
+<td align="right">Maduro</td>
+<td align="right">Ronda de rios</td>
+<td align="right">10</td>
+<td align="right">7</td>
+</tr>
+</tbody>
+</table>
+<p>Los árboles incluidos en el censo arbóreo de 2015 están separados por 10 años de los datos de caracterización socioeconómica y de la características de ocupación de los sectores urbanos. Esta brecha puede cerrarse un poco excluyendo los árboles catalogados como jóvenes. Otro factor que ayuda a matizar la distancia entre los datos de ambos censos es que el AU se desarrolla lento y los tamaños actuales de las copas y las alturas de los árboles, aunque son mayores que en el 2005, hablan del potencial que desarrollaron esas zonas. Dado que esa es la disponibilidad de datos poblacionales hay que asumir estas diferencias. Finalmente, para este trabajo usaremos árboles, palmas y bambú de más de 1.9 m de altura (descartando arbustos y plantas arbustivas) para garantizar que son individuos que proveen sombra a los transeúntes.</p>
+<p>En la siguiente figura <a href="meto.html#fig:capa-ca2015sel">3.5</a> se observa todos los arboles seleccionados para el analsis.</p>
+<div class="figure"><span id="fig:capa-ca2015sel"></span>
+<img src="images/arboles_sombra.png" alt="Árboles seleccionados para el análisis. El tamaño de puntos que representan los arboles es proporcional al area de la copa en unidades del mapa." width="100%" />
+<p class="caption">
+Figura 3.5: Árboles seleccionados para el análisis. El tamaño de puntos que representan los arboles es proporcional al area de la copa en unidades del mapa.
+</p>
+</div>
+</div>
+<div id="el-censo-de-poblacion" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> El censo de población</h3>
+<p>El último censo de población en Colombia se realizó en el año 2005, y los datos se pueden consultar y agregar en las diferentes unidades censales (sector, sección, manzana) usando una sistema de consulta web de censos Redatam<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>. Estos datos sirven para caracterizar la población con base en indicadores y rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas <a href="meto.html#tab:vars-poblacion">3.3</a> y <a href="meto.html#tab:vars-vivienda">3.4</a>.</p>
+<p>El otro componente de los datos es la cartografía censal del DANE <span class="citation">(“Geoportal DANE” <a href="#ref-geoportal_DANE">2017</a>)</span> disponible para las diferentes unidades espaciales de agregación en el sistema de coordenadas WGS84. Para el análisis se tiene en cuenta todos las unidades censales que se interceptan con el perímetro urbano disponible en la IDESC, pues el censo arboreo se limito al este prerímetro.(ver figura <a href="meto.html#fig:su-periurbano">3.6</a>)</p>
+<table style="width:50%;">
+<caption><span id="tab:vars-poblacion">Tabla 3.3: </span> Variables sobre la población</caption>
+<colgroup>
+<col width="9%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">variable</th>
+<th align="right">{valores}[unidades]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Pertenencia Étnica</td>
+<td align="right">[personas]{indígenas, ROM, gitanos, raizales del Archipiélago de San Andrés, Providencia y Santa Catalina, palenqueros de San Basilio, afrocolombianos}</td>
+</tr>
+<tr class="even">
+<td align="right">Con alguna limitación</td>
+<td align="right">[personas]{sí,no}</td>
+</tr>
+<tr class="odd">
+<td align="right">Con estudios superior o postgrado</td>
+<td align="right">[personas]</td>
+</tr>
+<tr class="even">
+<td align="right">Ningún estudio</td>
+<td align="right">[personas]</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:su-periurbano"></span>
+<img src="images/sectoresurbanos_perimetro_idesc.png" alt="División en barrios y sectores urbanos de Santiago de Cali" width="100%" />
+<p class="caption">
+Figura 3.6: División en barrios y sectores urbanos de Santiago de Cali
+</p>
+</div>
+<table style="width:50%;">
+<caption><span id="tab:vars-vivienda">Tabla 3.4: </span> Variables sobre la las viviendas</caption>
+<colgroup>
+<col width="9%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">variable</th>
+<th align="right">{valores}[unidades]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">tipo vivienda</td>
+<td align="right">[viviendas] {Casa,Casa indígena,Apartamento,Tipo cuarto,Otro tipo de vivienda}</td>
+</tr>
+<tr class="even">
+<td align="right">uso vivienda</td>
+<td align="right">[predio]{Uso Vivienda.Uso Unidad Económica,Uso LEA}</td>
+</tr>
+<tr class="odd">
+<td align="right">cantidad predios</td>
+<td align="right">[predios]</td>
+</tr>
+<tr class="even">
+<td align="right">cantidad viviendas</td>
+<td align="right">[viviendas]</td>
+</tr>
+</tbody>
+</table>
+<p>Una de las apuestas del proyecto es incluir aspectos de los procesos de desarrollo urbano a través de la idea de barrio: como unidad de identidad cultural urbana y estructural, de características físicas y habitacionales en las que confluyen las transformaciones que hacen los habitantes y los diseños urbanos e intervenciones arquitectónicas de los planeadores y constructores en la ciudad. Sin embargo, la información socioeconómica disponible está en unidades de la cartografía censal del 2005, que no coincide exactamente con los límites de barrios. Un primer supuesto es que los sectores censales aproximan bien a los barrios, pues las diferencias no tan drmaticas (ver figura <a href="meto.html#fig:su-barrios">3.7</a>). La unidad espacial de análisis sobre la cual se harán todas las agregaciones el sector urbano (SU) de la cartografía censal 2005.</p>
+<div class="figure"><span id="fig:su-barrios"></span>
+<img src="images/barrio_sectorurbano.png" alt="División en barrios y sectores urbanos de Santiago de Cali" width="100%" />
+<p class="caption">
+Figura 3.7: División en barrios y sectores urbanos de Santiago de Cali
+</p>
+</div>
+<p>Los demás conjuntos de datos, cuyos elementos sobrepasen los límites del centro poblado conformado por los SUs seleccionados son preprocesados para excluir los datos y zonas fuera del perímetro conformado por los SUs.</p>
+</div>
+</div>
+<div id="metodos-y-tecnicas" class="section level2">
+<h2><span class="header-section-number">3.4</span> Métodos y técnicas</h2>
+<p>El análisis propuesto se compone de las siguientes actividades:</p>
+<ol style="list-style-type: decimal">
+<li>Preparación de los datos: una tarea común pero crucial para el análisis de datos. La estandarización de las variables categóricas y la identificación de valores atípicos o inconsistentes es una base firme para la estimación de parámetros y obtener soluciones confiables y sensibles de interpretación. Los datos suelen estar usualmente en formatos para la lectura humana o con distinta estructura de las variables de los modelos. La preparación de los datos consume la mayor parte de los esfuerzos de las tareas de procesamiento de los datos. Los datos del censo arbóreo se encuentra en tablas bien conformadas lo que facilita su manipulación. Los datos de consulta del censo de población vienen en tablas independientes para cada unidad espacial seleccionada, con diferentes longitud de variables. A esto se suma el componente espacial, donde hay que prestar particular atención a los sistemas de coordenadas y usar coordenadas planas consistentes con las unidades de espacio.</li>
+<li>Procesamiento y análisis estadístico: cálculo de indicadores de cobertura, acceso y variables socioeconómicas. Cálculo de estadísticos para probar normalidad, normalización de las variables e indicadores, cálculos de coeficientes de correlación Pearson y de Spearman entre todos los pares de variables.</li>
+<li>Inspección visual de los datos: hacer uso de gráficas estadísticas, mapeos y mapas para evaluar y seleccionar los indicadores a usar en un modelo de regresión lineal.</li>
+<li>Evaluar los residuos usando la prueba de correlación espacial de Moran’I usando al menos dos diseños de matriz W. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SLX para comparar su desempeño.</li>
+<li>Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R2 y el criterio de Akaike.</li>
+</ol>
+
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-geoportal_idesc">
+<p>“Geoportal IDESC.” 2017. Accessed February 12. <a href="http://www.cali.gov.co/publicaciones/3560/idesc/" class="uri">http://www.cali.gov.co/publicaciones/3560/idesc/</a>.</p>
+</div>
+<div id="ref-noauthor_magna-sirgas-cali_nodate">
+<p>“MAGNA-SIRGAS-CALI.” 2017. Accessed March 13. <a href="http://www.cali.gov.co/publicaciones/105289/proyecciones_transformaciones_cartograficas_idesc/" class="uri">http://www.cali.gov.co/publicaciones/105289/proyecciones_transformaciones_cartograficas_idesc/</a>.</p>
+</div>
+<div id="ref-geoportal_DANE">
+<p>“Geoportal DANE.” 2017. Accessed February 12. <a href="https://geoportal.dane.gov.co" class="uri">https://geoportal.dane.gov.co</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="9">
+<li id="fn9"><p>Desafortunadamente los datos del censo arbóreo no están disponibles al público general por motivos desconocidos, pues según la legislación Colombiana no existe ningún tipo de impedimento ni restricciones de privicidad sobre estos datos, que fueron recolectados con el auspicio de dineros públicos. Trabajé con una copia a la que tuve acceso por vinculos laborales con la Alcadía de Cali<a href="meto.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>Disponibles en <span class="citation">(“Sistema de Consulta Censo 2005” <a href="#ref-censo_sistema_dane">2017</a>; DANE <a href="#ref-dane_cepal_celade_2005">2005</a>; “Geoportal DANE” <a href="#ref-geoportal_DANE">2017</a>)</span><a href="meto.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>Disponibles en <span class="citation">(“Geoportal IDESC” <a href="#ref-geoportal_idesc">2017</a>; “Plan de Ordenamiento Territorial - POT Año 2014” <a href="#ref-noauthor_plan_nodate">2017</a>)</span><a href="meto.html#fnref11">↩</a></p></li>
+<li id="fn12"><p>Toda la información del POT2014 se encuentra en la web de la Alcaldía y puede descargarse como archivo GDB compatible con ArcGIS 10.4 o consumirse de Geoserver de IDESC como WFS o mapas en formato pdf del acuerdo<a href="meto.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>El proyecto de censo arbóreo se formuló en dos fases; la primera se ejecutó mediante convenio No 095 de 2013 entre la CVC y la Universidad Autónoma de Occidente, y la segunda fase mediante convenio No 049 de 2014 entre las mismas entidades. Los datos no se encuentran publicados y fueron solicitados mediante un derecho de petición.<a href="meto.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>El sistema de consulta es el <span class="citation">(CEPAL <a href="#ref-cepal_redatam_nodate">2017</a>)</span>, que se puede acceder directamente desde <span class="citation">(DANE <a href="#ref-dane_cepal_celade_2005">2005</a>)</span> y en la página web del <a href="http://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/censo-general-2005-1">DANE</a> dónde está organizada la documentación metodológica y otros servicios del censo.<a href="meto.html#fnref14">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="revlit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anayproc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/metodologia.Rmd",
+"text": "Edit"
+},
+"download": ["tesis-unigis.pdf", "tesis-unigis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

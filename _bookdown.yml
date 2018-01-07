@@ -1,4 +1,6 @@
 book_filename: "tesis-unigis"
+output_dir: "tesis-unigis"
+repo: https://github.com/correajfc/R-CP2005-CA2015
 language:
   label:
     fig: 'Figura '
@@ -7,7 +9,9 @@ language:
   ui:
     chapter_name: "Capítulo "
 rmd_files: 
-  html: ["index.Rmd", "abstract.Rmd", "intro.Rmd",
+  html: ["index.Rmd", 
+  "abstract.Rmd", 
+  "intro.Rmd",
   "revision_literatura.Rmd",
   "metodologia.Rmd",
   "procesa_analisis.Rmd",
@@ -21,5 +25,6 @@ rmd_files:
   "metodologia.Rmd",
   "procesa_analisis.Rmd",
   "discusion.Rmd",
+  "conclusiones.Rmd",
   "referencias.Rmd"]
 delete_merged_file: TRUE

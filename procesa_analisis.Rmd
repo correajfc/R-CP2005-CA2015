@@ -67,7 +67,7 @@ ggplot()+
 
 La capa de manzanas es necesaria para refinar las capas de espacio verde y poder calcular el área de calle , área privada y otras métricas sobre la estructura de cada sector sector censal y que servirán como criterios para la selección de sectores urbanos a incluir en los análisis de regresión.
 
-```{r mapa-manzana, fig.width=6, fig.asp=0.8, fig.cap="Coropleta del tamaño de manzana.Se usaron 10 grupos con aprox. el mismo número de observaciones"}
+```{r mapa-manzana, fig.width=6, fig.asp=0.8, fig.cap="Coropleta del tamaño de manzana.Se usaron 10 grupos con aprox. el mismo número de observaciones", cache=TRUE}
 #pintar usando colores por quantil
 manzanas.su.f%>%
   ggplot(aes(x=long,y=lat,group=group))+
@@ -79,7 +79,7 @@ manzanas.su.f%>%
 
 Las capas de equipamiento de la EEC y espacio público se consolidan en una sola capa conservando la mayor cantidad de información sobre la clasificación de los tipos de espacios disponibles. El resultado puede ver verse de forma total (ver figuara \@ref(fig:mapa-ev)) o por tipo de espacio (figuras \@ref(fig:mapa-ev-facet) y \@ref(fig:mapa-ev-color)).
 
-```{r mapa-ev, fig.width=6, fig.asp=0.8, fig.cap="Espacio verdes consolidados y sectores urbanos"}
+```{r mapa-ev, fig.width=6, fig.asp=0.8, fig.cap="Espacio verdes consolidados y sectores urbanos",cache=TRUE}
 # espacios publicos (verdes)
 base_plot.manzanas2 +
   geom_path(data = su.f,aes(x=long,y=lat,group=group),
@@ -94,7 +94,7 @@ base_plot.manzanas2 +
 ```
 
 
-```{r mapa-ev-color, fig.width=6, fig.asp=0.8, fig.cap="Espacio verde por categoría"}
+```{r mapa-ev-color, fig.width=6, fig.asp=0.8, fig.cap="Espacio verde por categoría",cache=TRUE}
 base_plot.manzanas2 + 
   geom_polygon(data = ep.cali.f ,
                aes(x=long,y=lat,group=group,
@@ -106,7 +106,7 @@ base_plot.manzanas2 +
 ```
 
 
-```{r mapa-ev-facet,  fig.asp=1.5, fig.cap="Small Multiple del espacio verde por categoría"}
+```{r mapa-ev-facet,  fig.asp=1.5, fig.cap="Small Multiple del espacio verde por categoría",cache=TRUE}
 # facets por tipo de espacio 
   ggplot()+
   geom_polygon(data = su.f,aes(x=long,y=lat,group=group),
@@ -463,7 +463,7 @@ Para indagar sobre la distribución de estos individuos y no quedarnos con los r
 En primer lugar indagamos sobre las diferencias de diámetro y altura por tipo de vegetación. La figura \@ref(fig:au-veg) muestra claramente las diferencias físicas entre los árboles (desarrollan mayor tamaño y con mayor número de individuos), el bambú y las palmas (más altos que anchos y en menor número) de la ciudad. Los árboles catalogados como secos, hace 10 años estaban vivos y los mantenemos en la selección de individuos. 
 
 
-```{r au-veg,  fig.asp=1, fig.cap="caraterísticas por tipo de vegetacion"}
+```{r au-veg,  fig.asp=1, fig.cap="caraterísticas por tipo de vegetacion",cache=TRUE}
 #caraterísticas por tipo de vegetacion
 AU_analsis %>% 
   ggplot()+
@@ -475,7 +475,7 @@ AU_analsis %>%
 
 Otra característica interesante para buscar condiciones que afectan el desarrollo del arbolado, representado por la altura y el diámetro son el tipo de lugares que conforman el espacio público donde se encuentran el mayor número de ellos. En la figura \@ref(fig:au-emplaz-veg) se observa la desagregación de los individuos por tipo de emplazamiento en gráficas individuales de altura y diámetro, y en color el tipo de vegetación. Es notorio en la figura que los parques urbanos  y escenarios deportivos son los equipamientos que mayor cantidad de individuos y más desarrollos alojan. Caso aparte son los andenes y separadores viales como se ve en la tabla \@ref(tab:ca2015sel-emplazamiento) y el gráfico alojan `r round((92198+28924)*100/nrow(AU_analsis),digits =2)`% de los individuos. Esto puede ser un hecho que incita a incluir elementos estructurales en los modelos que explican desde aspectos estructurales de los barrios la cobertura de copa. Por supuesto las rondas de ríos y canales dada su disponibilidad de agua condicionan el desarrollo de los individuos arbóreos y su cantidad. 
 
-```{r au-emplaz-veg,  fig.asp=1.5, fig.cap="Caraterísticas por tipo de vegetación y emplazamiento"}
+```{r au-emplaz-veg,  fig.asp=1.5, fig.cap="Caraterísticas por tipo de vegetación y emplazamiento",cache=TRUE}
 AU_analsis %>% 
   #filter(vegetacion %in% c("Arbol","Bambu","Palma")) %>%
   ggplot()+
@@ -491,7 +491,7 @@ AU_analsis %>%
 Otra forma de ver los datos de resumen de las tabla \@ref(tab:ca2015sel-emplazamiento) y que completa la visión sobre la distribución de los datos en relación al desarrollo físico de los individuos arbóreos es la distribución de los diámetros (figura \@ref(fig:au-diametro-emp))y las alturas (figura \@ref(fig:au-altura-emp)) en relación con el emplazamiento. En ambas gráficas el punto rojo representa el valor promedio
 
 
-```{r au-diametro-emp,  fig.asp=0.8, fig.cap="Variabilidad del diámetro de copa por emplazamiento"}
+```{r au-diametro-emp,  fig.asp=0.8, fig.cap="Variabilidad del diámetro de copa por emplazamiento",cache=TRUE}
 AU_analsis %>% 
 ggplot( aes(x=emplazamiento,y=diametro_copa))+
   geom_jitter(position = position_jitter(0.3),alpha=0.1, color = "forestgreen")+ 
@@ -502,7 +502,7 @@ ggplot( aes(x=emplazamiento,y=diametro_copa))+
 
 ```
 
-```{r au-altura-emp,  fig.asp=0.8, fig.cap="Variabilidad de la altura de los arboles por emplazamiento"}
+```{r au-altura-emp,  fig.asp=0.8, fig.cap="Variabilidad de la altura de los arboles por emplazamiento",cache=TRUE}
 AU_analsis %>% 
   ggplot( aes(x=emplazamiento,y=altura_arbol))+
   geom_jitter(position = position_jitter(0.3),alpha=0.1, color = "forestgreen")+ 
@@ -515,7 +515,7 @@ AU_analsis %>%
 
 Finalmente en la figura \@ref(fig:au-geo-emp) graficamos los individuos en pequeños mapa por tipo de emplazamiento para observar su distribución geográfica. Es notorio que los árboles están distribuidos en toda la ciudad dada la disponibilidad de andenes aptos para alojarlos. Esto invita a explorar la relación que pueda existir entre el tamaño de los andenes de los barrios y el desarrollo físico de los individuos, ya que las vías con separadores viales y en consecuencia con más espacio para que árboles de mayor tamaño puedan desarrollarse es consistente con el valor medio de la altura y el diámetro sean mayores que el de los andenes. Sin embargo este hecho escapa del alcance de este trabajo y puede ser indagado por otras investigaciones. 
 
-```{r au-geo-emp,  fig.asp=1.5, fig.cap="Small multiples de los individuos arbóreos por emplazamiento"}
+```{r au-geo-emp,  fig.asp=1.5, fig.cap="Small multiples de los individuos arbóreos por emplazamiento",cache=TRUE}
 # puntos por e,mplazamiento
 base_plot.manzanas + geom_point(data = AU_analsis,
                                 aes(x = Este, y = Norte),
@@ -529,7 +529,7 @@ base_plot.manzanas + geom_point(data = AU_analsis,
 
 Antes de agregar (enmascarar) los datos usando los sectores censales es interesante inspeccionar el efecto que tiene usar unidade regulares o de tamaños no uniformes como los sectores urbanos en las coberturas de copa. Para ello podemos usar hexágonos de 250 metros de ancho que cubren completamente el territorio. La figura \@ref(fig:au-geo-hex) se evidencia que existen cinturones y lugares de alta concentración de individuos y en consecuencia de mayor cobertura de copa. 
 
-```{r au-geo-hex,  fig.asp=0.8, fig.cap="Suma de cobertura por hexagonos"}
+```{r au-geo-hex,  fig.asp=0.8, fig.cap="Suma de cobertura por hexagonos",cache=TRUE}
 # suma de cobertura por hex
 p.hex.copa  <-base_plot.manzanas+ stat_summary_hex(data = AU_analsis,
                                  aes(x = Este, y = Norte, z = area_copa),
@@ -1180,7 +1180,7 @@ Al aplicar test para verificar que las condiciones de un buen ajuste (no hay ses
 - La distribución de los residuos es normal.
 - Los residuos muestran homocedasticidad (la varianza es constante)
 
-Para verificar la normalidad de los residuos usaremos el test de Shapiro–Wilk [@shapiro1965analysis] y para la verificar si existe homocedasticidad el test de Breusch–Pagan [@breusch1979simple]. Además se acompaña de gráficas de diagnóstico de los resultados de cada modelo.
+Para verificar la normalidad de los residuos usaremos el test de Shapiro–Wilk [@shapiro1965analysis ] y para la verificar si existe homocedasticidad el test de Breusch–Pagan [@breusch1979simple]. Además se acompaña de gráficas de diagnóstico de los resultados de cada modelo.
 El siguiente código en **R** crea las 5 regresiones lineales propuestas y se resumen en la la tablas \@ref(tab:comp-lmcopa) y \@ref(tab:comp-lmcopaap)
 
 ```{r code-lm-area_copa, echo=TRUE,eval=TRUE}
@@ -1239,7 +1239,7 @@ kable(tabla,caption = "Resúmen ajuste modelos área copa preliminares",digits =
 
 Los modelos del porcenataje de cobertura de copa son lo siguientes:
 
-```{r code-lm-cobertura_copa.ap,echo=TRUE}
+```{r code-lm-cobertura_copa.ap,echo=TRUE, size="small"}
 
 
 dependiente <- "cobertura_copa.ap"
@@ -1254,7 +1254,7 @@ sm
 ```
 
 
-```{r code-lm-sqrt.cobertura_copa.ap,echo=TRUE}
+```{r code-lm-sqrt.cobertura_copa.ap,echo=TRUE, size="small"}
 
 
 dependiente <- "sqrt.cobertura_copa.ap"
@@ -1267,7 +1267,7 @@ sm
 
 ```
 
-Como se observa en la tabla \@ref(tab:comp-lmcopaap) el porcentaje de cobertura copa en el área pública, el mejor ajuste se obtuvo con la variable sin transformación `cobertura_copa.ap`. Este modelo considera que solo la variable `superior_postgrado.porcentaje` como muy significativas, y explica  casi el 46% de la variabilidad (Adjusted R-squared: `r summary(lm.mxn.cobertura_copa.ap)$adj.r.squared.`) con MSE y Akaike menores. El coeficiente de la densidad de población obtiene un valor positivo y poco significativo, contrario al signo de la correlación obtenida en el análisis bivariado de la figura \@ref(fig:duolin-poblacion-cob-trnsf), por lo que es descartado.
+Como se observa en la tabla \@ref(tab:comp-lmcopaap) el porcentaje de cobertura copa en el área pública, el mejor ajuste se obtuvo con la variable sin transformación `cobertura_copa.ap`. Este modelo considera que solo la variable `superior_postgrado.porcentaje` como muy significativas, y explica  casi el 46% de la variabilidad (Adjusted R-squared: `r summary(lm.mxn.cobertura_copa.ap)$adj.r.squared`) con MSE y Akaike menores. El coeficiente de la densidad de población obtiene un valor positivo y poco significativo, contrario al signo de la correlación obtenida en el análisis bivariado de la figura \@ref(fig:duolin-poblacion-cob-trnsf), por lo que es descartado.
 
 ```{r comp-lmcopaap}
 tabla<-fitstats_lm_df(lm.mxn.cobertura_copa.ap) %>% 
@@ -1284,10 +1284,11 @@ Reduzcamos ambos modelos eliminando las variables no significativas. Para el mej
 ```{r code-best-lm-areacopa, eval=TRUE, echo=TRUE }
 dependiente <- "log.area_copa"
 independientes  <- c("superior_postgrado","densidad_poblacion")
-# max normalizado 
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-lm.best.area_copa<-lm(log.area_copa.mxn~superior_postgrado.mxn+densidad_poblacion.mxn,data = regresion.arboles.mn)
+lm.best.area_copa<-lm(log.area_copa.mxn~superior_postgrado.mxn+
+                        densidad_poblacion.mxn,
+                      data = regresion.arboles.mn)
 sm<-summary(lm.best.area_copa)
 sm
 
@@ -1298,21 +1299,22 @@ sm
 ```{r diagn-best-lm-areacopa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal del área de copa"}
 
 graf<-autoplot(lm.best.area_copa)
-title1=grid::textGrob(format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
+title1=grid::textGrob(format(as.formula(lm.best.area_copa)) %>%
+                        str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
 grid.arrange( grobs =graf@plots, top=title1)
 
 
 ```
 
-Los resultados de los tests (tabla \@ref(tab:fitlm-copa-best)) rechazan que los residuos sean normales, pero la varianza pasa el test Breusch-Pagan de homocedasticidad. Es posibles que los estimadores sean ineficientes y que existan efecto no considerados en el modelo dada la no normalidad de los residuos. Las gráficas diagnosticas (figura \@ref(fig:diagn-best-lm-areacopa)) muestran que existe no linealidades en los residuos, pues se observa como la linea de tendencia hace curvas respecto de la horizontal. Para probar si es posible tener un modelo mejor especificado se introduce en la sección \@ref(geostat) análisis geoestadisticos basados en la autocorrelación espacial. 
+Los resultados de los tests (tabla \@ref(tab:fitlm-copa-best)) rechazan que los residuos sean normales, pero la varianza pasa el test Breusch-Pagan de homocedasticidad. Es posibles que los estimadores sean ineficientes y que existan efecto no considerados en el modelo dada la no normalidad de los residuos. Las gráficas diagnosticas (figura \@ref(fig:diagn-best-lm-areacopa)) muestran que existe no linealidades en los residuos, pues se observa como la linea de tendencia hace curvas respecto de la horizontal. Para probar si es posible tener un modelo mejor especificado se introduce en la sección [análisis geoestadisticos](#geostat) basados en la autocorrelación espacial. 
 
 
 ```{r fitlm-copa-best}
 tabla<-fitstats_lm_df(lm.best.area_copa) %>% 
   rename(`Area Copa`=fitstats)
 frml<-as.formula(lm.best.area_copa) %>% as.character()
-titulo<-str_c("Resúmen ajuste OLS:",frml[2],frml[1],frml[3],sep = " ")
-kable(tabla,caption = titulo, digits = 5)
+#titulo<-str_c("Resúmen ajuste OLS:",frml[2],sep = " ")
+kable(tabla,caption = "Resúmen ajuste OLS: log(area copa)", digits = 5)
 
 ```
 
@@ -1326,7 +1328,8 @@ independientes  <- c("superior_postgrado.porcentaje")
 # max normalizado 
 var_names<-c(dependiente,independientes)
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-lm.best.cobertura.ap<-lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn, data = regresion.arboles.mn)
+lm.best.cobertura.ap<-lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn,
+                         data = regresion.arboles.mn)
 sm<-summary(lm.best.cobertura.ap)
 sm
 
@@ -1345,9 +1348,9 @@ grid.arrange( grobs =graf@plots, top=title1)
 ```{r fitlm-copaap-best}
 tabla<-fitstats_lm_df(lm.best.cobertura.ap) %>% 
   rename(`%Cobertura de Copa`=fitstats)
-frml<-as.formula(lm.best.cobertura.ap) %>% as.character()
-titulo<-str_c("Resúmen ajuste OLS:",frml[2],frml[1],frml[3],sep = " ")
-kable(tabla,caption = titulo, digits = 5)
+# frml<-as.formula(lm.best.cobertura.ap) %>% as.character()
+# titulo<-str_c("Resúmen ajuste OLS:",frml[2],sep = " ")
+kable(tabla,caption = "Resúmen ajuste OLS: cobertura copa.ap", digits = 5)
 
 ```
 
@@ -1415,7 +1418,7 @@ kable(tabla,caption = "Comparación OLS para el área de copa (AC) con variables
 
 ```
 
-Las variables introducidas tienen todas p-value significativos, y a pesar de la inclusión de más términos al modelo existe una mejora en el Criterio de Información de Akaike (baja de `r AIC(lm.best.area_copa)` a `r AIC(lm.mod.area_copa)`). Los resultados de los test evidencian que aunque hay mejoras en Adjusted R-squared ( de `r summary(lm.best.area_copa)$adj.r.squared` a `r summary(lm.mod.area_copa)$adj.r.squared`) y en MSE (de `r mean(summary(lm.best.area_copa)$residuals^2)` a `r mean(summary(lm.mod.area_copa)$residuals^2)`) sigue existiendo no normalidad en los residuos y posibles no linealidades, como se observa también en las gráficas diagnosticas de la regresión \@ref(fig:diagn-mod-best-lm-copa).
+Las variables introducidas tienen todas p-value significativos, y a pesar de la inclusión de más términos al modelo existe una mejora en el Criterio de Información de Akaike (baja de $`r AIC(lm.best.area_copa)`$ a $`r AIC(lm.mod.area_copa)`$). Los resultados de los test evidencian que aunque hay mejoras en Adjusted R-squared ( de $`r summary(lm.best.area_copa)$adj.r.squared`$ a $`r summary(lm.mod.area_copa)$adj.r.squared`$) y en MSE (de $`r mean(summary(lm.best.area_copa)$residuals^2)`$ a $`r mean(summary(lm.mod.area_copa)$residuals^2)`$) sigue existiendo no normalidad en los residuos y posibles no linealidades, como se observa también en las gráficas diagnosticas de la regresión \@ref(fig:diagn-mod-best-lm-copa).
 
 
 ```{r diagn-mod-best-lm-copa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de área de copa con los nuevos términos"}
@@ -1452,11 +1455,11 @@ tabla<-fitstats_lm_df(lm.best.cobertura.ap) %>%
   rename(`%CC ~ pob`=fitstats) %>%
    left_join(fitstats_lm_df(lm.mod.cobertura.ap),by= "medidasfit") %>%
   rename(`%CC ~ pob+otras`=fitstats)
-kable(tabla,caption = "Comparación OLS para el porcentaje de cobertura de copa (%CC) con variables de población y con otras dimensiones", digits = 5)
+kable(tabla,caption = "Comparación OLS para el porcentaje de cobertura de copa con variables de población y otras dimensiones", digits = 5)
 
 ```
 
-Las variables introducidas tienen todas p-value no significativos. La inclusión de más términos al modelo empeoran el Criterio de Información de Akaike (sube de `r AIC(lm.best.cobertura.ap)` a `r AIC(lm.mod.cobertura.ap)`). Los resultados de los test no dan evidencian de mejoras importantes en Adjusted R-squared ( de `r summary(lm.best.cobertura.ap)$adj.r.squared` a `r summary(lm.mod.cobertura.ap)$adj.r.squared` ) o en MSE (de `r mean(summary(lm.best.cobertura.ap)$residuals^2)` a `r mean(summary(lm.mod.cobertura.ap)$residuals^2)`). Sigue existiendo no normalidad en los residuos y heterocedasticidad, como se verifica en las gráficas diagnosticas de la regresión \@ref(fig:diagn-mod-best-lm-copaap).
+Las variables introducidas tienen todas p-value no significativos. La inclusión de más términos al modelo empeoran el Criterio de Información de Akaike (sube de $`r AIC(lm.best.cobertura.ap)`$ a $`r AIC(lm.mod.cobertura.ap)`$). Los resultados de los test no dan evidencian de mejoras importantes en Adjusted R-squared ( de $`r summary(lm.best.cobertura.ap)$adj.r.squared`$ a $`r summary(lm.mod.cobertura.ap)$adj.r.squared`$ ) o en MSE (de $`r mean(summary(lm.best.cobertura.ap)$residuals^2)`$ a $`r mean(summary(lm.mod.cobertura.ap)$residuals^2)`$). Sigue existiendo no normalidad en los residuos y heterocedasticidad, como se verifica en las gráficas diagnosticas de la regresión \@ref(fig:diagn-mod-best-lm-copaap).
 
 
 ```{r diagn-mod-best-lm-copaap, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de cobertura de copa con los nuevos términos"}
@@ -1469,11 +1472,11 @@ grid.arrange( grobs =graf@plots, top=title1)
 
 Finalmente presento los mapas de las variables dependientes de los 2 modelos seleccionados, comparandolas con el modelo ajustado y los residuos de ajuste, con el finde observar donde se localizan los errores en la predicción. La figura \@ref(fig:mapas-lm-copa) corresponde al ajuste del área de copa y la figura \@ref(fig:mapas-lm-copaap) al porcentaje de la cobertura de copa.
 
-```{r mapas-lm-copa, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para `log.area_copa` normalizada"}
+```{r mapas-lm-copa, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para log.area copa normalizada"}
 pintar_mapa_su_lm2(regresion.arboles,lm.mod.area_copa,nrow =1)
 ```
 
-```{r mapas-lm-copaap, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para `cobertura_copa.ap` normalizada"}
+```{r mapas-lm-copaap, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para cobertura copa.ap normalizada"}
 pintar_mapa_su_lm2(regresion.arboles,lm.best.cobertura.ap,nrow =1)
 ```
 
@@ -1637,7 +1640,7 @@ title1=grid::textGrob(format(as.formula(lm.area_ep.ptje.sel)) %>% str_c(collapse
 grid.arrange( grobs =graf@plots, top=title1)
 ```
 
-```{r mapas-lm-areaep, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `area_ep.porcentaje` normalizada"}
+```{r mapas-lm-areaep, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `area ep.porcentaje` normalizada"}
 pintar_mapa_su_lm2(regresion.EV,lm.area_ep.ptje.sel,nrow =1)
 ```
 
@@ -1696,7 +1699,8 @@ grid.arrange( grobs =graf@plots, top=title1)
 pintar_mapa_su_lm2(regresion.EV,lm.ia.areas.dist,nrow =1)
 lm.ia.areas.dist.sel<-lm.ia.areas.dist
 ```
-## Análisis geoestadísticos {#geostat}
+
+## Análisis geoestadísticos { #geostat }
 
 Para los analsis geoestadisticos introducimos los modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelo si existe algun tipo de autocorrelacion espacial en los residuos. Exite una variedad de estos modelos que capturan diferentes tipos de efectos: modelo autoregresivo SAR que capturan efectos de la variable dependiente, ecuación \@ref(eq:sar) , sobre las varibles las independientes ( spatial lag o retardo espacial en $X$ SLX, ecuación \@ref(eq:slx), en el error (modelo espacial del errore SEM,ecuación \@ref(eq:sem) o usando una combinacion del modelo de error y autoregresivo (modelo espacial de Durbin SD,ecuación \@ref(eq:sd). Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influecia a priori en el modelo. Para observar el efecto que tiene esta matriz sobre los resultados del modelo usaremos 2 matrices distintas, y veremos su impacto en la estimación.
 
@@ -1790,14 +1794,14 @@ moran.plot(lm.mod.area_copa$model$log.area_copa.mxn,
 
 La matrix $W_q$ capatura mucho mejor de forma global la autocorrelacieon del area de copa. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copa-wd)) . 
 
-```{r mapas-lisa-copa-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `log.area_copa`"}
+```{r mapas-lisa-copa-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `log.area copa`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_queen, wname = "W_q",nrow =1)
 
 ```
 En los estos mapas de LISA de ambas matrices se observan que los sectores en rojo (H-H) y azul (L-L) identifacan los lugares con autocorrelación positiva, formando grupos. No se presentan valores negativos de autocorrelación.   
 
-```{r mapas-lisa-copa-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ de `log.area_copa`"}
+```{r mapas-lisa-copa-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ de `log.area copa`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_dist1000.inv, wname = "W_d", nrow =1)
 
@@ -1837,13 +1841,13 @@ moran.plot(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn,
 
 Ambos diseños de matriz revelan precencia clara de autocorrelación espacial, pero la matrix $W_d$ captura un legeramente mejor con un valor positivo y significativa, produciendo *clusters* de sectores urbanos más con más sectores urbanos. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copaap-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)) . No se presentan valores negativos de autocorrelación. 
 
-```{r mapas-lisa-copaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `cobertura_copa.ap`"}
+```{r mapas-lisa-copaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `cobertura copa.ap`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_queen, wname = "W_q",nrow =1)
 
 ```
 
-```{r mapas-lisa-copaap-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ de `cobertura_copa.ap`"}
+```{r mapas-lisa-copaap-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ de `cobertura copa.ap`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wname = "W_d", nrow =1)
 
@@ -1859,7 +1863,7 @@ lm.morantest(lm.mod.area_copa, W_queen, alternative="two.sided",zero.policy = T)
 lm.morantest(lm.mod.area_copa, W_dist1000.inv, alternative="two.sided",zero.policy = T)
 ```
 
-```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $$W_{d}$ ",fig.show="hold",out.width='49%'}
+```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ ",fig.show="hold",out.width='49%'}
 
 moran.plot(lm.mod.area_copa$residuals, 
              listw=W_queen, 
@@ -1905,7 +1909,7 @@ lm.morantest(lm.best.cobertura.ap, W_queen, alternative="two.sided",zero.policy 
 lm.morantest(lm.best.cobertura.ap, W_dist1000.inv, alternative="two.sided",zero.policy = T)
 ```
 
-```{r moranplot-rescopaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q} y $W_{d}",fig.show="hold",out.width='49%'}
+```{r moranplot-rescopaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q} y $W_{d}$",fig.show="hold",out.width='49%'}
 
 moran.plot(lm.best.cobertura.ap$residuals, 
              listw=W_queen, 
@@ -1946,7 +1950,7 @@ Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos intr
 
 #### Ajuste de modelos espaciales
 
-Mejorar la especificación de los modelos lineales incluyendo términos de retardo espacial en la variable dependiente (SAR \@ref(eq:sar)) se hace para obtener una adecuada estimación de los coeficientes de las otras covariables en el modelo. Si optamos por un modelo de error espacial  (SE \@ref(eq:sem)) implica que no es necesario plantear efectos distintivos de la variable dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas. El modelo SAR, en cambio, incorpora la influencia de variables independientes no medidas, pero también estipula un efecto adicional de valores de atributos vecinos, es decir, la variable dependiente rezagada. 
+Mejorar la especificación de los modelos lineales incluyendo términos de retardo espacial en la variable dependiente (SAR \@ref(eq:sar)) se hace para obtener una adecuada estimación de los coeficientes de las otras covariables en el modelo. Si optamos por un modelo de error espacial  (SEM \@ref(eq:sem)) implica que no es necesario plantear efectos distintivos de la variable dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas. El modelo SAR, en cambio, incorpora la influencia de variables independientes no medidas, pero también estipula un efecto adicional de valores de atributos vecinos, es decir, la variable dependiente rezagada. 
 Si incluimos el retardo sólo de las variables independientes (SLX \@ref(eq:slx)) esperamos que los cambios en las dimensiones expresadas con las predictores produce un efecto de derrame o influencia en los sectores vecinos. 
 
 ¿Qué significa decir que la cantidad de cobertura de copa está relacionada con la de los sectores vecinos?¿Son los procesos de reproducción del arbolado urbano un fenómeno independiente de las intervenciones de sus habitantes y de los urbanizadores?¿Los habitantes que ven árboles en las cuadras o barrios aledaños deciden sembrar árboles en su vecindario?¿Existen similitudes en las condiciones estructurales de los barrios en ciertas zonas de la ciudad que prefieren las personas con mejores condiciones sociales( tener estudios superiores p.e)?¿Qué tipo de pérdidas en la cobertura de copa están motivadas por la densificación de un sector? ¿Cómo afectan los cambios en los tipos de oferta habitacional en un sector la cobertura de copa de los sectores vecinos? (las viviendas tipo cuarto suelen ofrecerse en pensiones y ser más económicas que las casas o apartamentos).
@@ -2126,7 +2130,7 @@ knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos d
 
 
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación $\rho$ es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de   `r AIC(lm.best.cobertura.ap)` a `r AIC(sar.cobertura.ap.wq)`). Consistentemente la variable de **estudios superiores** en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura \@ref(fig:moranplot-resmodel-all-copaap-wq)) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa. 
+Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación $\rho$ es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de   $`r AIC(lm.best.cobertura.ap)`$ a $`r AIC(sar.cobertura.ap.wq)`$). Consistentemente la variable de **estudios superiores** en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura \@ref(fig:moranplot-resmodel-all-copaap-wq)) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa. 
 
 ```{r moranplot-resmodel-all-copaap-wq, fig.cap="Gráfico de Moran para los residuos de los modelos espaciales del porcenatje de área de copa usando $W_{q}$", fig.show="hold", out.width="49%"}
 moran.plot(sar.cobertura.ap.wq$residuals, 

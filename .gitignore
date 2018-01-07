@@ -1,5 +1,9 @@
 *.Rproj
 *.Rbuildignore
 .Rproj.user
+*.RData
 CA2015/*.xlsx
 CA2015/*.txt
+outputData/
+tesis-unigis_cache/
+tesis-unigis_files/

@@ -17,16 +17,15 @@ ambientales, lo que exige que se identifique las zonas, condiciones de los
 recursos y de la población para la ejecución de acciones eficaces y eficientes 
 por parte de los gobiernos y autoridades ambientales.
 
-Este proyecto hará uso del censo arbóreo urbano realizado en Santiago de Cali 
+Este proyecto hace uso del censo arbóreo urbano realizado en Santiago de Cali 
 (Colombia) entre el año 2014 y 2015, de datos del censo de población de 2005 y 
-los datos de clasificaciones de usos del suelo por actividades y estratos 
-socioeconómico de los predios de la zona urbana del municipio. El propósito es 
+los datos de la estructura ecologica del municipio. El propósito es 
 motivar el desarrollo de políticas, proyectos e instrumentos que potencien al 
 árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad 
 de vida de los ciudadanos. Para ello se plantea identificar si existen patrones 
 espaciales estadísticamente significativos que muestre una relación negativa 
 entre las coberturas de copa, el acceso a espacios verdes y zonas con población 
-en condiciones socioeconómicas de vulnerabilidad. El proyecto hace uso de los 
+en condiciones socioeconómicas de vulnerabilidad. El proyecto se apoya en los 
 aportes de tipo metodológico y estadístico de la literatura especializada sobre 
 modelos de regresión lineal y  modelos de regresión espacial. Estos métodos son 
 enriquecidos con la exploración visual de los datos.

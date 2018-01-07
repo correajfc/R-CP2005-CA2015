@@ -105,7 +105,7 @@ La densidad de población es una variable que produce resultados inconsistentes:
 #   pintar_mapa_su_LISA_var(regresion.arboles,"area_ep.porcentaje",W_queen, wname = "Wd",nrow =1)
 ```
 
-En el modelo SD de las variables retardadas ninguna es significativa. El porcentaje de viviendas tipo cuarto no es significativo pues solo aporta como predictor para la zona del centro de la ciudad (ver figura \@ref(fig:lisa-cuarto)) que ya es cubierto por la distribución espacial de la variable sobre los estudios superiores. Es significativo el porcentaje de área de espacio público, con el segundo coeficiente más elevado explicando de forma consiste el gran número de árboles que se encuentran en estos lugares, pero que explica la cobertura en puntos muy específicos de la ciudad (figura \@ref(fig:lisa-areaep)). No existe chance de que tengan un efecto de difusión o derrame pues la creación de estas zonas verdes es algo que ocurre con la urbanización del sector y poco o nada cambia después de su creación.
+En el modelo SD de las variables retardadas ninguna es significativa. El porcentaje de viviendas tipo cuarto no es significativo pues solo aporta como predictor para la zona del centro de la ciudad (ver figura \@ref(fig:lisa-cuarto)) que ya es cubierto por la distribución espacial de la variable sobre los estudios superiores. Es significativo el porcentaje de área de espacio público, con el segundo coeficiente más elevado explicando de forma consiste el gran número de árboles que se encuentran en estos lugares, pero que explica la cobertura en puntos muy específicos de la ciudad (figura \@ref(fig:lisa-areaep-au)). No existe chance de que tengan un efecto de difusión o derrame pues la creación de estas zonas verdes es algo que ocurre con la urbanización del sector y poco o nada cambia después de su creación.
 
 ```{r lisa-cuarto, fig.cap="Mapas LISA - Porcentaje de viviendas tipo cuarto"}
 # pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_queen, wname = "Wq",nrow =1)
@@ -119,7 +119,7 @@ En el modelo SD de las variables retardadas ninguna es significativa. El porcent
 ```
 
 
-```{r lisa-areaep, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
+```{r lisa-areaep-au, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
 # pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_queen, wname = "Wq",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.cobertura_copa.ap",W_queen, wname = "Wd",nrow =1)
 #  pintar_mapa_su_LISA_var(regresion.arboles,"afro.porcentaje",W_queen, wname = "Wd",nrow =1)
@@ -139,8 +139,11 @@ Este tipo de métodos para establecer condiciones objetivas de la población y l
 
 ## Sobre los espacios verdes
 
-Análogamente a la cobertura arbórea, las métricas de acceso son aspectos complementarios sobre el mismo fenómeno de acceso aún beneficio; una representa un beneficio local, para el que vive en ese sector (`area_ep.porcentaje`) y la otra una forma (`ia.areas.dist`) que involucra un grupos de sectores beneficiarios, y que mide la relación entre el área del espacio verde y  la distancia desde el centroide del sector urbano y sumados: intenta cuantificar la relación costo de traslado por beneficio en área. 
+Análogamente a la cobertura arbórea, las métricas de acceso son aspectos complementarios sobre el mismo fenómeno de acceso aún beneficio; una representa un beneficio local, para el que vive en ese sector (`area_ep.porcentaje`) y la otra una forma (`ia.areas.dist`) que involucra un grupos de sectores beneficiarios, y que mide la relación entre el área del espacio verde y  la distancia desde el centroide del sector urbano para luego sumar los valores de los espacios en un rango de distancia: intenta cuantificar la relación de costo de traslado por beneficio en área. 
 El modelo de mejor rendimiento en la estimación medido usando el AIC fue el SEM para `area_ep.porcentaje` y SD para `ia.areas.dist`. 
+Los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sem-areaep) y \@ref(tab:coef-lambda-areaep) para el modelo SEM y  \@ref(tab:coef-sd-aerasdist) y \@ref(tab:coef-rho-aerasdist) para el modelo SD.
+
+
 
 
 ```{r coef-sem-areaep}
@@ -156,6 +159,7 @@ knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje d
 knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de espacio verde', booktabs = TRUE)
 ```
 
+En el SEM todos los coeficientes son significativos y el valor de área media de manzana es la variable más influyente. El coeficiente de autocorrelación en el error es muy significativo, lo que sugiere que si existe información de patrones espaciales en el error pero en variables no modeladas. La importancia que tiene en el modelo el área media de manzana puede interpretarse como una característica estructural de barrio o sector que por tener manzanas más grandes las zonas destinadas para parque o espacio verde son en consecuencia más grandes y el beneficio mayor o/y que algunas manzanas que albergan equipamientos de ciudad, zonas verdes como riveras de ríos o lagunas determinan el alto valor del indicador al ser el promedio sensible a valores extremos. Lo cierto es que desde este punto de vista local no existe evidencia sobre una relación concluyente con ninguna variable poblacional, por lo que no puede decirse que se vulnere a ciertas comunidades o grupos diferenciados, al menos en lo que respect a las pocas variables que proveen los sistemas de consulta del censo del 2005. Pero puede decirse la la distribución de los espacio es muy desigual solo ver en el histograma y el gráfico de dispersión (figura \@ref(fig:hist-areaep)) que muestra que mas de `r regresion.EV %>% select(area_ep.porcentaje) %>% filter(area_ep.porcentaje<0.05) %>% nrow()` de 329 sectores en la ciudad tiene menos del 5% de espacio verde. 
 
 ```{r coef-sd-aerasdist}
 sm.sd.areasdist<-summary(sd.areas.dist)
@@ -170,6 +174,8 @@ knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD del indicador de
 knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD del indicador de acceso área-distancia', booktabs = TRUE)
 ```
 
+
+
 ```{r hist-areaep, fig.cap="Distribucion de lo indicadores de acceso a EV ", fig.show="hold",fig.asp=0.5}
 ggplot(regresion.EV)+
   geom_histogram(aes(x = area_ep.porcentaje),bins = 30, 
@@ -178,6 +184,13 @@ ggplot(regresion.EV)+
   geom_point(aes(y = "indicador", x= area_ep.porcentaje), color="darkgreen",alpha=0.3, position ="jitter")+  
   scale_color_brewer(type = "div")
 ```
+
+El indicador de acceso area-distancia fue mejor ajustado por el modelo SD, que tuvo como coeficientes significativos a `unidad_economica.porcentaje` con un valor bajo pero positivo al igual que `con_alguna_limitacion.porcentaje` que tuvo un valor bajo pero negativo y significativo. La zona que muestra el mapa de LISA el porcentaje de unidades económicas en el sector (figura \@ref(fig:lisa-areaep-ue-cal)) coinciden de nuevo con equipamientos de ciudad como el Boulevar del Río mientras que las concentraciones de personas con limitación altas coinciden con poco espacio verde como bien indica el signo del coeficiente. La variable de área media de manzana retardada `lag.area_media_manzana` es significativa y es la que tiene el valor más alto entre los coeficientes, confirmando el efecto de derrame de los grandes espacio verdes que son parte del equipamiento de ciudad y que producen beneficios en un radio más amplio que el área de sector donde di el disfrute exige que la gente se desplace, justo como lo propone el indicador de acceso. El coeficiente de autocorrelación espacial $\\rho$. es muy alto y significativo, lo que indica que la introducción de autocorrelación espacial en la variable dependiente mejora el ajuste pues es evidente la existencia de grupos de sectores con valores similares. 
+
+A pesar de que se mantienen problemas como no normalidades en los errores, el ajuste de la variable dependiente presenta mejoras en las métricas de error y hace más confiables la estimación de los coeficientes. En cuanto al acceso a espacio verdes que involucran desplazamientos o una cobertura a grupos de sectores urbanos no puede decirse de forma irrefutable que está estrechamente relacionado con desventajas en la población como el estatus o la etnicidad, pero si marca que hay patrones espaciales en la población de limitaciones físicas o de salud que coinciden con niveles pobres de acceso. Al igual que con el indicador de acceso local existe una distribución del índice que muestra gran cantidad de sectores con muy bajos valores y algunos con valores altos cuyos vecinos se ven beneficiados(ver figura \@ref(fig:hist-areasdist)).
+
+La estrategia de construir equipamientos con espacios verdes para mejorar el acceso puede verse optimizada de este tipo de análisis, pues resalta las zonas donde el impacto de estas obras puede llegar a más personas si se ubican correctamente. Marca también la responsabilidad de los urbanizadores y las autoridades para generar proyectos de renovación urbana que integren y den relevancia al acceso a EV de manera razonada. Estos resultados apuntan  a tener en cuenta aspectos de la planeación urbana al nivel del tamaño de las manzanas y la existencia de andenes que permitan alojar parques de mayor tamaño y espacio para que se desarrolle el potencial recreativo de esos espacios, así como las especies arbóreas.
+
 
 ```{r hist-areasdist, fig.cap="Distribucion de lo indicadores de acceso a EV ", fig.show="hold",fig.asp=0.5}
 ggplot(regresion.EV)+
@@ -190,13 +203,13 @@ ggplot(regresion.EV)+
 ```
 
 
-```{r lisa-areaep, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
+```{r lisa-areaep-amm, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
 pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wq",nrow =1)
 
 ```
 
-```{r lisa-areaep, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
+```{r lisa-areaep-ue-cal, fig.cap="Mapas LISA - Porcentaje de espacios verdes"}
   pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 
