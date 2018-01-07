@@ -4,4 +4,4 @@ bookdown::render_book('index.Rmd', 'bookdown::gitbook')
 
 bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
-bookdown::render_book("index.Rmd", "bookdown::word_document2")
+#bookdown::render_book("index.Rmd", "bookdown::word_document2")
