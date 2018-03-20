@@ -1,0 +1,4084 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  20 MAR 2018 18:39
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**pdf-unigis.tex
+(./pdf-unigis.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2017/01/14 v0.5h Insert pages of external PDF documents (AM)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count87
+\calc@Bcount=\count88
+\calc@Adimen=\dimen103
+\calc@Bdimen=\dimen104
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count89
+\calc@Cskip=\skip45
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+\Gread@gobject=\count90
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen105
+\Gin@req@width=\dimen106
+)
+\AM@pagewidth=\dimen107
+\AM@pageheight=\dimen108
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2017/01/14 v0.5h Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box26
+\AM@global@opts=\toks15
+\AM@toc@title=\toks16
+\c@AM@survey=\count91
+\AM@templatesizebox=\box27
+)
+(./pdf-unigis.aux)
+\openout1 = `pdf-unigis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+\AtBeginShipoutBox=\box28
+
+(/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count92
+\scratchdimen=\dimen109
+\scratchbox=\box29
+\nofMPsegments=\count93
+\nofMParguments=\count94
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count95
+\MPscratchDim=\dimen110
+\MPnumerator=\count96
+\makeMPintoPDFobject=\count97
+\everyMPtoPDFconversion=\toks18
+) (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+))
+<./incluir/Portada_2017_jfc.pdf, id=1, 597.51233pt x 845.0471pt>
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+
+<use ./incluir/Portada_2017_jfc.pdf>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf used on input line 6.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+ <use ./incluir/Portada_2017_jfc.pdf>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf used on input line 6.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+
+<./incluir/Portada_2017_jfc.pdf, id=4, page=1, 597.51233pt x 845.0471pt>
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+
+<use ./incluir/Portada_2017_jfc.pdf, page 1>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf, page1 used on input li
+ne 6.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+
+<use ./incluir/Portada_2017_jfc.pdf, page 1>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf, page1 used on input li
+ne 6.
+(pdftex.def)             Requested size: 562.12665pt x 795.00201pt.
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+
+<use ./incluir/Portada_2017_jfc.pdf, page 1>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf, page1 used on input li
+ne 6.
+(pdftex.def)             Requested size: 562.12665pt x 795.00201pt.
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+
+<use ./incluir/Portada_2017_jfc.pdf, page 1>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf, page1 used on input li
+ne 6.
+(pdftex.def)             Requested size: 562.12665pt x 795.00201pt.
+File: ./incluir/Portada_2017_jfc.pdf Graphic file (type pdf)
+
+<use ./incluir/Portada_2017_jfc.pdf, page 1>
+Package pdftex.def Info: ./incluir/Portada_2017_jfc.pdf, page1 used on input li
+ne 6.
+(pdftex.def)             Requested size: 562.12665pt x 795.00201pt.
+ [1
+
+ <./incluir/Portada_2017_jfc.pdf>] <./incluir/Compromiso_ciencia.pdf, id=34, 59
+7.55246pt x 845.07718pt>
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+
+<use ./incluir/Compromiso_ciencia.pdf>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf used on input line 7.
+
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+ <use ./incluir/Compromiso_ciencia.pdf>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf used on input line 7.
+
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+
+<./incluir/Compromiso_ciencia.pdf, id=37, page=1, 597.55246pt x 845.07718pt>
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+
+<use ./incluir/Compromiso_ciencia.pdf, page 1>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf, page1 used on input 
+line 7.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+
+<use ./incluir/Compromiso_ciencia.pdf, page 1>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf, page1 used on input 
+line 7.
+(pdftex.def)             Requested size: 562.1644pt x 795.0303pt.
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+
+<use ./incluir/Compromiso_ciencia.pdf, page 1>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf, page1 used on input 
+line 7.
+(pdftex.def)             Requested size: 562.1644pt x 795.0303pt.
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+
+<use ./incluir/Compromiso_ciencia.pdf, page 1>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf, page1 used on input 
+line 7.
+(pdftex.def)             Requested size: 562.1644pt x 795.0303pt.
+File: ./incluir/Compromiso_ciencia.pdf Graphic file (type pdf)
+
+<use ./incluir/Compromiso_ciencia.pdf, page 1>
+Package pdftex.def Info: ./incluir/Compromiso_ciencia.pdf, page1 used on input 
+line 7.
+(pdftex.def)             Requested size: 562.1644pt x 795.0303pt.
+ [2 <./incluir/Compromiso_ciencia.pdf>] <./docs/tesis-unigis.pdf, id=51, 614.29
+5pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf used on input line 8.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf used on input line 8.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+
+<./docs/tesis-unigis.pdf, id=54, page=2, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 2>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page2 used on input line 8.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 2>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page2 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 2>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page2 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 2>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page2 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 2>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page2 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [3 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=66, page=3, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 3>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page3 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 3>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page3 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 3>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page3 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [4 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=77, page=4, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 4>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page4 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 4>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page4 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 4>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page4 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [5 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=81, page=5, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 5>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page5 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 5>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page5 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 5>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page5 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [6 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=85, page=6, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 6>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page6 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 6>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page6 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 6>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page6 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [7 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=90, page=7, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 7>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page7 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 7>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page7 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 7>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page7 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [8 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=94, page=8, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 8>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page8 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 8>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page8 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 8>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page8 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [9 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=98, page=9, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 9>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page9 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 9>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page9 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 9>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page9 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [10 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=102, page=10, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 10>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page10 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 10>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page10 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 10>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page10 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [11 <./docs/tesis-unigis.pdf{/usr/local/texlive/2017/texmf-var/fonts/map/pdfte
+x/updmap/pdftex.map}>]
+<./docs/tesis-unigis.pdf, id=116, page=11, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 11>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page11 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 11>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page11 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 11>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page11 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [12 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=120, page=12, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 12>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page12 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 12>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page12 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 12>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page12 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [13 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=125, page=13, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 13>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page13 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 13>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page13 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 13>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page13 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [14 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=129, page=14, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 14>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page14 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 14>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page14 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 14>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page14 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [15 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=133, page=15, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 15>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page15 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 15>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page15 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 15>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page15 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [16 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=137, page=16, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 16>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page16 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 16>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page16 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 16>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page16 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [17 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=141, page=17, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 17>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page17 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 17>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page17 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 17>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page17 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [18 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=145, page=18, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 18>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page18 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 18>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page18 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 18>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page18 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [19 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=150, page=19, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 19>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page19 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 19>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page19 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 19>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page19 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [20 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=154, page=20, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 20>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page20 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 20>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page20 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 20>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page20 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [21 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=158, page=21, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 21>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page21 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 21>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page21 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 21>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page21 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [22 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=162, page=22, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 22>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page22 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 22>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page22 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 22>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page22 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [23 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=166, page=23, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 23>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page23 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 23>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page23 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 23>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page23 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [24 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=177, page=24, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 24>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page24 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 24>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page24 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 24>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page24 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [25 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=204, page=25, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 25>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page25 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 25>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page25 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 25>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page25 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [26 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=208, page=26, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 26>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page26 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 26>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page26 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 26>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page26 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [27 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=212, page=27, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 27>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page27 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 27>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page27 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 27>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page27 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [28 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=216, page=28, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 28>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page28 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 28>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page28 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 28>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page28 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [29 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=220, page=29, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 29>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page29 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 29>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page29 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 29>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page29 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [30 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=224, page=30, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 30>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page30 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 30>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page30 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 30>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page30 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [31 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=229, page=31, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 31>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page31 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 31>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page31 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 31>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page31 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [32 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=233, page=32, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 32>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page32 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 32>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page32 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 32>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page32 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [33 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=237, page=33, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 33>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page33 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 33>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page33 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 33>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page33 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [34 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=241, page=34, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 34>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page34 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 34>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page34 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 34>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page34 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [35 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=245, page=35, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 35>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page35 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 35>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page35 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 35>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page35 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [36 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=249, page=36, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 36>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page36 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 36>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page36 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 36>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page36 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [37 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=254, page=37, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 37>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page37 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 37>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page37 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 37>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page37 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [38 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=258, page=38, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 38>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page38 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 38>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page38 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 38>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page38 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [39 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=262, page=39, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 39>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page39 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 39>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page39 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 39>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page39 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [40 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=266, page=40, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 40>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page40 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 40>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page40 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 40>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page40 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [41 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=270, page=41, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 41>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page41 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 41>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page41 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 41>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page41 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [42 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=274, page=42, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 42>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page42 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 42>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page42 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 42>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page42 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [43 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=279, page=43, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 43>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page43 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 43>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page43 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 43>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page43 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [44 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=299, page=44, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 44>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page44 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 44>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page44 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 44>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page44 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [45 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=308, page=45, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 45>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page45 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 45>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page45 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 45>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page45 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [46 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=312, page=46, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 46>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page46 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 46>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page46 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 46>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page46 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [47 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=316, page=47, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 47>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page47 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 47>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page47 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 47>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page47 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [48 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=320, page=48, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 48>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page48 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 48>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page48 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 48>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page48 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [49 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=335, page=49, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 49>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page49 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 49>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page49 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 49>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page49 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [50 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=339, page=50, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 50>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page50 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 50>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page50 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 50>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page50 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [51 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=343, page=51, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 51>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page51 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 51>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page51 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 51>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page51 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [52 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=347, page=52, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 52>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page52 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 52>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page52 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 52>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page52 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [53 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=351, page=53, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 53>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page53 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 53>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page53 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 53>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page53 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [54 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=355, page=54, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 54>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page54 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 54>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page54 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 54>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page54 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [55 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=362, page=55, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 55>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page55 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 55>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page55 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 55>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page55 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [56 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=366, page=56, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 56>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page56 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 56>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page56 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 56>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page56 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [57 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=370, page=57, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 57>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page57 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 57>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page57 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 57>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page57 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [58 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=374, page=58, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 58>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page58 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 58>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page58 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 58>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page58 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [59 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=380, page=59, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 59>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page59 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 59>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page59 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 59>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page59 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [60 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=388, page=60, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 60>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page60 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 60>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page60 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 60>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page60 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [61 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=393, page=61, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 61>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page61 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 61>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page61 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 61>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page61 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [62 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=398, page=62, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 62>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page62 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 62>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page62 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 62>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page62 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [63 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=402, page=63, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 63>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page63 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 63>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page63 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 63>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page63 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [64 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=408, page=64, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 64>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page64 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 64>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page64 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 64>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page64 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [65 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=414, page=65, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 65>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page65 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 65>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page65 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 65>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page65 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [66 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=425, page=66, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 66>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page66 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 66>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page66 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 66>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page66 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [67 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=430, page=67, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 67>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page67 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 67>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page67 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 67>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page67 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [68 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=436, page=68, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 68>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page68 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 68>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page68 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 68>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page68 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [69 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=440, page=69, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 69>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page69 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 69>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page69 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 69>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page69 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [70 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=446, page=70, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 70>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page70 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 70>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page70 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 70>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page70 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [71 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=452, page=71, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 71>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page71 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 71>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page71 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 71>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page71 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [72 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=456, page=72, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 72>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page72 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 72>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page72 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 72>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page72 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [73 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=463, page=73, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 73>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page73 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 73>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page73 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 73>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page73 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [74 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=469, page=74, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 74>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page74 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 74>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page74 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 74>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page74 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [75 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=473, page=75, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 75>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page75 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 75>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page75 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 75>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page75 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [76 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=479, page=76, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 76>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page76 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 76>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page76 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 76>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page76 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [77 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=483, page=77, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 77>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page77 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 77>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page77 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 77>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page77 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [78 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=487, page=78, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 78>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page78 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 78>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page78 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 78>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page78 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [79 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=492, page=79, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 79>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page79 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 79>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page79 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 79>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page79 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [80 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=497, page=80, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 80>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page80 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 80>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page80 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 80>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page80 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [81 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=503, page=81, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 81>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page81 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 81>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page81 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 81>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page81 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [82 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=507, page=82, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 82>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page82 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 82>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page82 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 82>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page82 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [83 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=511, page=83, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 83>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page83 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 83>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page83 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 83>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page83 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [84 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=515, page=84, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 84>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page84 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 84>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page84 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 84>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page84 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [85 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=520, page=85, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 85>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page85 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 85>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page85 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 85>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page85 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [86 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=524, page=86, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 86>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page86 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 86>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page86 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 86>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page86 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [87 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=530, page=87, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 87>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page87 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 87>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page87 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 87>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page87 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [88 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=534, page=88, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 88>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page88 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 88>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page88 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 88>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page88 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [89 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=540, page=89, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 89>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page89 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 89>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page89 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 89>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page89 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [90 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=546, page=90, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 90>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page90 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 90>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page90 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 90>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page90 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [91 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=553, page=91, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 91>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page91 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 91>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page91 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 91>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page91 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [92 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=559, page=92, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 92>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page92 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 92>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page92 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 92>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page92 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [93 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=565, page=93, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 93>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page93 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 93>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page93 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 93>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page93 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [94 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=569, page=94, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 94>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page94 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 94>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page94 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 94>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page94 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [95 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=575, page=95, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 95>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page95 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 95>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page95 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 95>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page95 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [96 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=581, page=96, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 96>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page96 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 96>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page96 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 96>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page96 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [97 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=590, page=97, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 97>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page97 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 97>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page97 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 97>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page97 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [98 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=608, page=98, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 98>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page98 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 98>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page98 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 98>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page98 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [99 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=612, page=99, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 99>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page99 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+ <use ./docs/tesis-unigis.pdf, page 99>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page99 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 99>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page99 used on input line 8.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [100 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=616, page=100, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 100>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page100 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 100>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page100 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 100>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page100 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [101 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=620, page=101, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 101>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page101 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 101>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page101 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 101>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page101 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [102 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=626, page=102, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 102>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page102 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 102>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page102 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 102>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page102 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [103 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=633, page=103, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 103>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page103 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 103>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page103 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 103>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page103 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [104 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=639, page=104, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 104>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page104 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 104>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page104 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 104>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page104 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [105 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=645, page=105, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 105>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page105 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 105>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page105 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 105>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page105 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [106 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=652, page=106, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 106>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page106 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 106>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page106 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 106>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page106 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [107 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=656, page=107, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 107>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page107 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 107>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page107 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 107>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page107 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [108 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=662, page=108, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 108>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page108 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 108>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page108 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 108>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page108 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [109 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=669, page=109, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 109>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page109 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 109>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page109 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 109>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page109 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [110 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=675, page=110, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 110>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page110 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 110>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page110 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 110>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page110 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [111 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=683, page=111, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 111>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page111 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 111>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page111 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 111>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page111 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [112 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=689, page=112, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 112>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page112 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 112>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page112 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 112>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page112 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [113 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=695, page=113, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 113>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page113 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 113>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page113 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 113>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page113 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [114 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=701, page=114, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 114>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page114 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 114>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page114 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 114>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page114 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [115 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=708, page=115, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 115>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page115 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 115>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page115 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 115>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page115 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [116 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=712, page=116, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 116>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page116 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 116>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page116 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 116>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page116 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [117 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=718, page=117, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 117>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page117 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 117>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page117 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 117>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page117 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [118 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=724, page=118, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 118>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page118 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 118>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page118 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 118>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page118 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [119 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=730, page=119, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 119>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page119 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 119>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page119 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 119>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page119 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [120 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=734, page=120, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 120>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page120 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 120>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page120 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 120>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page120 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [121 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=739, page=121, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 121>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page121 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 121>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page121 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 121>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page121 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [122 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=743, page=122, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 122>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page122 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 122>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page122 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 122>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page122 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [123 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=747, page=123, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 123>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page123 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 123>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page123 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 123>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page123 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [124 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=751, page=124, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 124>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page124 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 124>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page124 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 124>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page124 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [125 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=755, page=125, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 125>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page125 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 125>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page125 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 125>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page125 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [126 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=759, page=126, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 126>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page126 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 126>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page126 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 126>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page126 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [127 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=764, page=127, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 127>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page127 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 127>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page127 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 127>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page127 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [128 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=768, page=128, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 128>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page128 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 128>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page128 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 128>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page128 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [129 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=776, page=129, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 129>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page129 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 129>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page129 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 129>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page129 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [130 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=782, page=130, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 130>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page130 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 130>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page130 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 130>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page130 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [131 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=786, page=131, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 131>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page131 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 131>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page131 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 131>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page131 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [132 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=790, page=132, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 132>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page132 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 132>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page132 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 132>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page132 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [133 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=795, page=133, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 133>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page133 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 133>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page133 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 133>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page133 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [134 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=799, page=134, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 134>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page134 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 134>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page134 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 134>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page134 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [135 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=803, page=135, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 135>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page135 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 135>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page135 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 135>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page135 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [136 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=807, page=136, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 136>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page136 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 136>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page136 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 136>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page136 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [137 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=815, page=137, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 137>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page137 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 137>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page137 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 137>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page137 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [138 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=821, page=138, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 138>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page138 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 138>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page138 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 138>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page138 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [139 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=828, page=139, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 139>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page139 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 139>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page139 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 139>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page139 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [140 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=834, page=140, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 140>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page140 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 140>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page140 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 140>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page140 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [141 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=840, page=141, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 141>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page141 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 141>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page141 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 141>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page141 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [142 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=848, page=142, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 142>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page142 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 142>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page142 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 142>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page142 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [143 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=854, page=143, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 143>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page143 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 143>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page143 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 143>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page143 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [144 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=862, page=144, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 144>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page144 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 144>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page144 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 144>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page144 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [145 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=867, page=145, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 145>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page145 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 145>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page145 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 145>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page145 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [146 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=871, page=146, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 146>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page146 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 146>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page146 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 146>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page146 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [147 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=877, page=147, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 147>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page147 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 147>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page147 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 147>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page147 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [148 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=883, page=148, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 148>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page148 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 148>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page148 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 148>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page148 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [149 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=887, page=149, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 149>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page149 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 149>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page149 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 149>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page149 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [150 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=891, page=150, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 150>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page150 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 150>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page150 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 150>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page150 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [151 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=896, page=151, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 151>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page151 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 151>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page151 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 151>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page151 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [152 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=902, page=152, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 152>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page152 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 152>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page152 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 152>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page152 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [153 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=908, page=153, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 153>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page153 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 153>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page153 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 153>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page153 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [154 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=912, page=154, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 154>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page154 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 154>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page154 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 154>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page154 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [155 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=918, page=155, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 155>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page155 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 155>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page155 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 155>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page155 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [156 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=923, page=156, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 156>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page156 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 156>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page156 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 156>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page156 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [157 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=928, page=157, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 157>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page157 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 157>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page157 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 157>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page157 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [158 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=932, page=158, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 158>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page158 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 158>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page158 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 158>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page158 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [159 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=940, page=159, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 159>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page159 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 159>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page159 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 159>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page159 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [160 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=946, page=160, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 160>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page160 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 160>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page160 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 160>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page160 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [161 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=950, page=161, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 161>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page161 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 161>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page161 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 161>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page161 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [162 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=956, page=162, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 162>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page162 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 162>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page162 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 162>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page162 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [163 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=965, page=163, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 163>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page163 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 163>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page163 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 163>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page163 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [164 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=969, page=164, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 164>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page164 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 164>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page164 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 164>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page164 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [165 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=973, page=165, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 165>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page165 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 165>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page165 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 165>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page165 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [166 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=977, page=166, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 166>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page166 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 166>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page166 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 166>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page166 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [167 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=981, page=167, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 167>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page167 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 167>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page167 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 167>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page167 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [168 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=985, page=168, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 168>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page168 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 168>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page168 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 168>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page168 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [169 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=990, page=169, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 169>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page169 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 169>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page169 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 169>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page169 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [170 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=998, page=170, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 170>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page170 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 170>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page170 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 170>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page170 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [171 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1004, page=171, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 171>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page171 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 171>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page171 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 171>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page171 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [172 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1008, page=172, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 172>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page172 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 172>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page172 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 172>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page172 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [173 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1012, page=173, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 173>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page173 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 173>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page173 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 173>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page173 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [174 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1016, page=174, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 174>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page174 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 174>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page174 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 174>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page174 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [175 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1021, page=175, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 175>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page175 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 175>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page175 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 175>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page175 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [176 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1025, page=176, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 176>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page176 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 176>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page176 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 176>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page176 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [177 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1029, page=177, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 177>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page177 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 177>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page177 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 177>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page177 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [178 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1033, page=178, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 178>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page178 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 178>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page178 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 178>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page178 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [179 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1037, page=179, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 179>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page179 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 179>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page179 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 179>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page179 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [180 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1045, page=180, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 180>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page180 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 180>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page180 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 180>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page180 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [181 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1052, page=181, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 181>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page181 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 181>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page181 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 181>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page181 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [182 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1056, page=182, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 182>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page182 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 182>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page182 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 182>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page182 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [183 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1060, page=183, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 183>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page183 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 183>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page183 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 183>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page183 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [184 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1064, page=184, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 184>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page184 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 184>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page184 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 184>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page184 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [185 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1070, page=185, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 185>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page185 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 185>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page185 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 185>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page185 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [186 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1076, page=186, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 186>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page186 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 186>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page186 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 186>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page186 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [187 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1083, page=187, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 187>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page187 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 187>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page187 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 187>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page187 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [188 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1089, page=188, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 188>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page188 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 188>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page188 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 188>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page188 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [189 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1095, page=189, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 189>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page189 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 189>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page189 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 189>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page189 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [190 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1099, page=190, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 190>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page190 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 190>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page190 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 190>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page190 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [191 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1103, page=191, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 191>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page191 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 191>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page191 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 191>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page191 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [192 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1107, page=192, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 192>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page192 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 192>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page192 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 192>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page192 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [193 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1116, page=193, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 193>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page193 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 193>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page193 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 193>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page193 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [194 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1120, page=194, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 194>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page194 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 194>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page194 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 194>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page194 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [195 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1128, page=195, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 195>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page195 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 195>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page195 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 195>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page195 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [196 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1136, page=196, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 196>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page196 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 196>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page196 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 196>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page196 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [197 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1144, page=197, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 197>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page197 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 197>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page197 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 197>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page197 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [198 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1148, page=198, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 198>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page198 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 198>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page198 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 198>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page198 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [199 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1153, page=199, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 199>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page199 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 199>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page199 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 199>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page199 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [200 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1157, page=200, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 200>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page200 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 200>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page200 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 200>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page200 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [201 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1161, page=201, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 201>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page201 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 201>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page201 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 201>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page201 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [202 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1165, page=202, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 202>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page202 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 202>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page202 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 202>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page202 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [203 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1169, page=203, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 203>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page203 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 203>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page203 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 203>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page203 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [204 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1173, page=204, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 204>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page204 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 204>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page204 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 204>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page204 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [205 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1178, page=205, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 205>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page205 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 205>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page205 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 205>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page205 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [206 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1183, page=206, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 206>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page206 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 206>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page206 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 206>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page206 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [207 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1187, page=207, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 207>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page207 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 207>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page207 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 207>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page207 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [208 <./docs/tesis-unigis.pdf>]
+<./docs/tesis-unigis.pdf, id=1191, page=208, 614.295pt x 794.97pt>
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 208>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page208 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 208>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page208 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./docs/tesis-unigis.pdf Graphic file (type pdf)
+
+<use ./docs/tesis-unigis.pdf, page 208>
+Package pdftex.def Info: ./docs/tesis-unigis.pdf, page208 used on input line 8.
+
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [209 <./docs/tesis-unigis.pdf>]
+(./pdf-unigis.aux) ) 
+Here is how much of TeX's memory you used:
+ 3419 strings out of 492995
+ 62067 string characters out of 6132704
+ 116701 words of memory out of 5000000
+ 6946 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 40i,18n,46p,241b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/l
+mex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmmi12.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local
+/texlive/2017/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/20
+17/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2017/texmf-di
+st/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
+lm/lmsy8.pfb>
+Output written on pdf-unigis.pdf (209 pages, 19201863 bytes).
+PDF statistics:
+ 1212 PDF objects out of 1440 (max. 8388607)
+ 566 compressed objects within 6 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 1091 words of extra memory for PDF output out of 10000 (max. 10000000)
+

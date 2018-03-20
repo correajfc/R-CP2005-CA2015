@@ -66,17 +66,18 @@ estos factores de estructura y uso relacionados con las condiciones de vida de l
 población? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?
 
 ## Hipótesis
+
 ### Beneficios del arbolado urbano
 
 #### Hipótesis nula
 
 La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución de beneficios del arbolado urbano (AU) en Santiago de Cali.
 
-### Hipótesis alternas
+#### Hipótesis alternas
 
 La distribución espacial de indicadores socioeconómicos y estructurales son un predictor de la distribución de servicios del arbolado urbano (AU) en Santiago de Cali
 
-### Predicciones
+#### Predicciones
 
 - El patrón espacial de acceso a la educación de la población se correlaciona con el acceso a servicios ambientales del AU. 
 - El patrón espacial de indicadores de discapacidades en la población se correlaciona con el acceso a servicios ambientales del AU. 
@@ -90,11 +91,11 @@ La distribución espacial de indicadores socioeconómicos y estructurales son un
 
 La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución del acceso a espacios verdes (EV) en Santiago de Cali.
 
-### Hipótesis alternas
+#### Hipótesis alternas
 
 La distribución espacial de indicadores socioeconómicos y estructurales son un predictor de la distribución del acceso a espacios verdes (EV) en Santiago de Cali.
 
-### Predicciones
+#### Predicciones
 - El patrón espacial de acceso a la educación de la población se correlaciona con el acceso a EV 
 - El patrón espacial de indicadores de discapacidades en la población se correlaciona con el acceso a EV
 - El patrón espacial de etnicidad se correlaciona con el acceso a EV 

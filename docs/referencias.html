@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</title>
   <meta name="description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
   <meta property="og:type" content="book" />
@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2018-03-19">
+<meta name="date" content="2018-03-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -371,7 +371,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Páez, Antonio, and Darren M. Scott. 2005. “Spatial Statistics for Urban Analysis: A Review of Techniques with Examples.” <em>GeoJournal</em> 61 (1): 53–67. <a href="http://link.springer.com/article/10.1007/s10708-005-0877-5" class="uri">http://link.springer.com/article/10.1007/s10708-005-0877-5</a>.</p>
 </div>
 <div>
-<p>Pebesma, Edzer, and Roger Bivand. 2017. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp" class="uri">https://CRAN.R-project.org/package=sp</a>.</p>
+<p>Pebesma, Edzer, and Roger Bivand. 2018. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp" class="uri">https://CRAN.R-project.org/package=sp</a>.</p>
 </div>
 <div>
 <p>Phelps, Jack B. 2012. “The Association Between Tree Canopy Cover and Socio-Demographics in Lubbock, Texas.” PhD thesis, Texas Tech University. <a href="https://ttu-ir.tdl.org/ttu-ir/handle/2346/47506" class="uri">https://ttu-ir.tdl.org/ttu-ir/handle/2346/47506</a>.</p>
@@ -431,7 +431,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Wolch, Jennifer R., Jason Byrne, and Joshua P. Newell. 2014. “Urban Green Space, Public Health, and Environmental Justice: The Challenge of Making Cities ‘Just Green Enough’.” <em>Landscape and Urban Planning</em> 125: 234–44. <a href="http://www.sciencedirect.com/science/article/pii/S0169204614000310" class="uri">http://www.sciencedirect.com/science/article/pii/S0169204614000310</a>.</p>
 </div>
 <div>
-<p>Xie, Yihui. 2017. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
+<p>Xie, Yihui. 2018. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
 </div>
 <div>
 <p>Zhou, Xiaolu, and Jinki Kim. 2013. “Social Disparities in Tree Canopy and Park Accessibility: A Case Study of Six Cities in Illinois Using GIS and Remote Sensing.” <em>Urban Forestry &amp; Urban Greening</em> 12 (1): 88–97. <a href="http://www.sciencedirect.com/science/article/pii/S1618866713000022" class="uri">http://www.sciencedirect.com/science/article/pii/S1618866713000022</a>.</p>
@@ -476,10 +476,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -503,9 +504,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

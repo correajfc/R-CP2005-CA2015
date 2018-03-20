@@ -34,13 +34,13 @@ Ya que hemos explorado visualmente la dispersión entre los datos crudos, podemo
 
 ```{r tile-poblacion-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de población"} 
 pintar_corrmatrix(regresion.arboles,indep.poblacion)+
-  labs(title="Coeficiente Pearson entre variables de población")
+  labs(title="Coeficiente Pearson \nentre variables de población")
 
 ```
 
 ```{r tile-poblacion-spearman, fig.asp=1,fig.cap="Coeficiente Spearman entre varibles de población"}
 pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
-  labs(title="Coeficiente Spearman entre variables de población")
+  labs(title="Coeficiente Spearman \nentre variables de población")
 
 ```
 
@@ -50,13 +50,13 @@ Así pues, para el área de copa (`area_copa`) los predictores seleccionados son
 
 ```{r tile-copa-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles)+
-  labs(title="Pearson entre cobertura de copa y variables de población")
+  labs(title="Pearson entre cobertura de copa \ny variables de población")
 
 ```
 
 ```{r tile-copa-poblacion-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre cobertura de copa\n y variables de población"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, method_cor = "spearman")+
-  labs(title="Spearman entre cobertura de copa y variables de población")
+  labs(title="Spearman entre cobertura de copa \ny variables de población")
 ```
 
 
@@ -66,25 +66,25 @@ Las figuras \@ref(fig:tile-prediosev-pearson) y \@ref(fig:tile-prediosev-spearma
 
 ```{r tile-prediosev-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
 pintar_corrmatrix(regresion.arboles,indep.predios)+
-  labs(title="Pearson entre características de predios y EV")
+  labs(title="Pearson entre características \nde predios y EV")
 ```
 
 ```{r tile-prediosev-spearman, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
 pintar_corrmatrix(regresion.arboles,indep.predios, method_cor = "spearman")+
-  labs(title="Spearman entre entre características de predios y EV")
+  labs(title="Spearman entre entre características \nde predios y EV")
 ```
 
 Las figuras \@ref(fig:tile-copa-prediosev-pearson) y \@ref(fig:tile-copa-prediosev-spearman) muestran la correlación entre las potenciales nuevas variables a incluir en el modelo y las variables dependientes de cobertura y área de copa. Para el área de copa se seleccionan el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
 
 ```{r tile-copa-prediosev-pearson, fig.asp=0.65, fig.cap= "Coeficiente Pearson entre coberturas de copa\n y variables de predios y EV"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles)+
-  labs(title="Coeficiente Pearson entre cobertura de copa y uso de los predios")
+  labs(title="Coeficiente Pearson entre cobertura de copa \ny uso de los predios")
 ```
 
 
 ```{r tile-copa-prediosev-spearman, fig.asp=0.65,fig.cap="Coeficiente Pearson entre coberturas de copa\n y variables de predios y EV"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles, method_cor = "spearman")+
-  labs(title="Coeficiente Spearman entre  cobertura de copa y uso de los predios")
+  labs(title="Coeficiente Spearman entre  cobertura de copa \ny uso de los predios")
 ```
 
 ### Modelos de regresión lineal 
@@ -98,8 +98,11 @@ independientes  <- c(indep.poblacion.copa.sel,indep.predios.copa.sel)
 # max normalizado 
 var_names<-c(dependiente,names(regresion.arboles[,independientes]))
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-f <- paste(str_c(dependiente,".mxn"), "~", paste(str_c(independientes,".mxn"), collapse=" + "))
-lm.mod.area_copa<-lm(f, data = regresion.arboles.mn)
+f <- paste(str_c(dependiente,".mxn"),
+           "~", paste(str_c(independientes,".mxn"), 
+                      collapse=" + "))
+lm.mod.area_copa<-lm(f, 
+                     data = regresion.arboles.mn)
 sm<-summary(lm.mod.area_copa)
 sm
 
@@ -109,25 +112,31 @@ sm
 ```{r code-lm-cobertura, eval=TRUE, echo=TRUE}
 # coberbtura AP
 dependiente <- "cobertura_copa.ap"
-independientes  <- c(indep.poblacion.copa.ap.sel,indep.predios.copa.ap.sel)
+independientes  <- c(indep.poblacion.copa.ap.sel,
+                     indep.predios.copa.ap.sel)
 # max normalizado 
 var_names<-c(dependiente,independientes)
 regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
-f <- paste(str_c(dependiente,".mxn"), "~", paste(str_c(independientes,".mxn"), collapse=" + "))
-lm.mod.cobertura.ap<-lm(f, data = regresion.arboles.mn)
+f <- paste(str_c(dependiente,".mxn"),
+           "~", paste(str_c(independientes,".mxn"), 
+                      collapse=" + "))
+lm.mod.cobertura.ap<-lm(f, 
+                        data = regresion.arboles.mn)
 sm<-summary(lm.mod.cobertura.ap)
 sm
 
 ```
 
+
 La tabla \@ref(tab:ajuste-lmcopa-pob-predios) resume las métricas de ajuste de ambos modelos
+
 
 ```{r ajuste-lmcopa-pob-predios}
 tabla<-fitstats_lm_df(lm.mod.area_copa) %>% 
   rename(`Log(AC)`=fitstats) %>%
    left_join(fitstats_lm_df(lm.mod.cobertura.ap),by= "medidasfit") %>%
   rename( `%CC`=fitstats)
-kable(tabla,caption = "Resumen métricas de ajuste OLS para el área de copa (AC) y cobertura de copa (%CC) ", digits = 5)
+kable(tabla,caption = "Resumen métricas de ajuste OLS para el área de copa (AC) y cobertura de copa (CC) ", digits = 5)
 
 
 ```
@@ -178,7 +187,7 @@ title(main = "Distancia inversa a 1 Km")
 
 Examinemos primero la autocorrelación de las variables dependientes.
 
-####  Variables dependientes
+####  Autocorrelación variables dependientes
 
 
 ```{r code-moran-copa-w, echo=TRUE}
@@ -272,13 +281,17 @@ pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wn
 ```
 
 
-#### Residuos de los OLS
+#### Autocorrelación residuos de los OLS
 
 El siguiente código calcula los índices de autocorrelación de los residuos del mejor modelo lineal de área de copa  (`` `r str_c("sqrt.copa_area.mxn",str_c(names(lm.mod.area_copa$model)[-1],collapse =" + "), sep= " ~ ") ` ``) para ambas matrices $W$ y construye los gráficos de Moran y mapas LISA \@ref(fig:moranplot-rescopa-w) para $W_q$ y para $W_d$. 
 
 ```{r code-moran-rescopa-wq, echo=TRUE}
-lm.morantest(lm.mod.area_copa, W_queen, alternative="two.sided",zero.policy = T)
-lm.morantest(lm.mod.area_copa, W_dist1000.inv, alternative="two.sided",zero.policy = T)
+lm.morantest(lm.mod.area_copa, 
+             W_queen, alternative="two.sided",
+             zero.policy = T)
+lm.morantest(lm.mod.area_copa, 
+             W_dist1000.inv, 
+             alternative="two.sided",zero.policy = T)
 ```
 
 ```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ ",fig.show="hold",out.width='49%'}
@@ -322,11 +335,16 @@ El mismo análisis se aplica al modelo de porcentaje de cobertura de copa (`` `r
 
 
 ```{r code-moran-rescopaap-wq, echo=TRUE}
-lm.morantest(lm.best.cobertura.ap, W_queen, alternative="two.sided",zero.policy = T)
-lm.morantest(lm.best.cobertura.ap, W_dist1000.inv, alternative="two.sided",zero.policy = T)
+lm.morantest(lm.best.cobertura.ap, 
+             W_queen, alternative="two.sided",
+             zero.policy = T)
+lm.morantest(lm.best.cobertura.ap, 
+             W_dist1000.inv, 
+             alternative="two.sided",
+             zero.policy = T)
 ```
 
-```{r moranplot-rescopaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q} y $W_{d}$",fig.show="hold",out.width='49%'}
+```{r moranplot-rescopaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q}$ y $W_{d}$",fig.show="hold",out.width='49%'}
 
 moran.plot(lm.best.cobertura.ap$residuals, 
              listw=W_queen, 
@@ -367,7 +385,7 @@ Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos intr
 
 
 
-#### Área de copa 
+#### Modelo espacial área de copa 
 
 A continuación se presentan los resultados del modelado de los 4 tipos de modelos geoestadísticos para el área de copa.
 
@@ -377,28 +395,37 @@ A continuación se presentan los resultados del modelado de los 4 tipos de model
 
 sar.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
          data = lm.mod.area_copa$model,
-         listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
-sar.sm<-summary(sar.mod.log.area_copa.wq,Nagelkerke=T)
+         listw = W_queen, 
+         zero.policy = T,
+         tol.solve=1.0e-30)
+sar.sm<-summary(sar.mod.log.area_copa.wq,
+                Nagelkerke=T)
 sar.sm
 
 # SEM
 sem.mod.log.area_copa.wq<-errorsarlm(formula = as.formula(lm.mod.area_copa),
                                       data = lm.mod.area_copa$model,
-                                      listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
+                                      listw = W_queen, 
+                                     zero.policy = T,tol.solve=1.0e-30)
 sem.sm<-summary(sem.mod.log.area_copa.wq,Nagelkerke=T)
 sem.sm
 #SD 
 
 sd.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
          data = lm.mod.area_copa$model,
-         listw = W_queen, zero.policy = T,tol.solve=1.0e-30,type = "mixed")
-sd.sm<-summary(sd.mod.log.area_copa.wq,Nagelkerke=T)
+         listw = W_queen, 
+         zero.policy = T,
+         tol.solve=1.0e-30,
+         type = "mixed")
+sd.sm<-summary(sd.mod.log.area_copa.wq,
+               Nagelkerke=T)
 sd.sm
 
 #SLX
 slx.mod.log.area_copa.wq<-lmSLX(formula = as.formula(lm.mod.area_copa),
                            data = lm.mod.area_copa$model,
-                           listw = W_queen, zero.policy = T)
+                           listw = W_queen, 
+                           zero.policy = T)
 
 slx.sm<-summary(slx.mod.log.area_copa.wq)
 slx.sm
@@ -483,7 +510,7 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
 ```
 
 
-#### Porcentaje de cobertura de área de copa 
+#### Modelo espacial porcentaje de cobertura de área de copa 
 
 El mismo ejercicio se aplica al porcentaje de cobertura de copa.
 
@@ -492,28 +519,36 @@ El mismo ejercicio se aplica al porcentaje de cobertura de copa.
 
 sar.cobertura.ap.wq<-lagsarlm(formula = as.formula(lm.best.cobertura.ap),
          data = lm.best.cobertura.ap$model,
-         listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
+         listw = W_queen, 
+         zero.policy = T,
+         tol.solve=1.0e-30)
 sar.sm<-summary(sar.cobertura.ap.wq,Nagelkerke=T)
 sar.sm
 
 # SEM
 sem.cobertura.ap.wq<-errorsarlm(formula = as.formula(lm.best.cobertura.ap),
                                       data = lm.best.cobertura.ap$model,
-                                      listw = W_queen, zero.policy = T,tol.solve=1.0e-30)
-sem.sm<-summary(sem.cobertura.ap.wq,Nagelkerke=T)
+                                      listw = W_queen,
+                                zero.policy = T,
+                                tol.solve=1.0e-30)
+sem.sm<-summary(sem.cobertura.ap.wq,
+                Nagelkerke=T)
 sem.sm
 #SD 
 
 sd.cobertura.ap.wq<-lagsarlm(formula = as.formula(lm.best.cobertura.ap),
          data = lm.best.cobertura.ap$model,
-         listw = W_queen, zero.policy = T,tol.solve=1.0e-30,type = "mixed")
+         listw = W_queen, zero.policy = T,
+         tol.solve=1.0e-30,
+         type = "mixed")
 sd.sm<-summary(sd.cobertura.ap.wq,Nagelkerke=T)
 sd.sm
 
 #SLX
 slx.cobertura.ap.wq<-lmSLX(formula = as.formula(lm.best.cobertura.ap),
                            data = lm.best.cobertura.ap$model,
-                           listw = W_queen, zero.policy = T)
+                           listw = W_queen, 
+                           zero.policy = T)
 
 slx.sm<-summary(slx.cobertura.ap.wq)
 slx.sm
@@ -648,14 +683,14 @@ Las variables de población y su correlación con los indicadores de acceso sele
 
 ```{r tile-ev-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de población"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel)+
-    labs(title="Pearson entre acceso a EV y variables de población")
+    labs(title="Pearson entre acceso a EV \ny variables de población")
 
 ```
 
 
 ```{r tile-ev-poblacion-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables de población"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel, method_cor = "spearman")+
-  labs(title="Spearman entre acceso a EV y variables de población")
+  labs(title="Spearman entre acceso a EV \ny variables de población")
 ```
 
 Resulta interesante ver, al igual que en el modelado de la cobertura de copa, si otras variables no poblacionales explican los resultados de los índices de acceso seleccionados. El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación se muestran en las figuras \@ref(fig:tile-ev-uso-pearson) y \@ref(fig:tile-ev-uso-spearman). De nuevo las correlaciones son bajas, aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: `unidad_economica.porcentaje` y el `cuarto.porcentaje`. 
@@ -688,21 +723,11 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel, method
 
 ```
 
-A manera de resumen e información de apoyo al proceso de modelación se incluye las distribuciones bivariadas de términos independientes escogidos con el análisis de correlación y los índices de acceso a modelar.
 
-```{r bivar-ev, fig.asp=0.6, fig.cap="Distribución de variables independientes respecto de los índices de acceso a EV"}
-ggduo(regresion.EV ,
-      columnsX =independientes.EV, 
-      columnsY =dependientes.EV.sel,
-      types = list(continuous = wrap(lm_with_cor))
-)+
-  theme(strip.text.x = element_text(size = 4))
-
-```
 
 ### Modelos de regresión lineal EV
 
-Para la los espacios verdes usaremos todos los términos seleccionados con los coeficientes de correlación para luego ver la significancia de las variables en el modelo y elegir el modelo con mejor ajuste usando criterio de información de Akaike (AIC) seleccionando los coeficientes significativos y comparando el AIC de la versión con todas la variables con el modelo simplificado. Para estos índices de acceso no usaremos variantes transformadas de la variable dependiente, sólo se aplica una normalización a los datos.
+Para la los espacios verdes usaremos todos los términos seleccionados con los coeficientes de correlación para luego ver la significancia de las variables en el modelo y elegir el modelo con mejor ajuste usando criterio de información de Akaike (AIC) seleccionando los coeficientes significativos. Para estos índices de acceso no usaremos variantes transformadas de la variable dependiente, sólo se aplica una normalización a los datos.
 
 Para el índice de acceso de porcentaje de área de espacios verdes en un sector urbano el modelo a ajusta el siguiente:
 
@@ -719,9 +744,9 @@ summary(lm.area_ep.ptje)
 
 ```
 
-Los resultados muestran que las variables `cuarto.porcentaje`  `area_media_manzana` son significativas. Con el modelo simplificado obtenemos los siguientes resultados:
+Los resultados muestran que las variables `cuarto.porcentaje`  `area_media_manzana` son significativas.
 
-```{r code-lm-area_ep-sel,echo=TRUE,eval=TRUE}
+```{r code-lm-area_ep-sel,echo=FALSE,eval=TRUE}
 
 dependiente <- "area_ep.porcentaje"
 independientes  <- independientes.EV
@@ -740,16 +765,8 @@ summary(lm.area_ep.ptje.sel)
 ```
 
 
-En la tabla comparativa \@ref(tab:comp-lm-areaep) que resume las medidas de ajuste de ambos modelos se evidencia los residuos presentan heterocedasticidad y no normalidad, lo que lo hace candidato a explorar el modelo ajuste geoestadístico. Existe una mejora lógica en el AIC del modelo simplificado debido a la reducción de términos del modelo. Los gráficos \@ref(fig:diagn-lm-areaep-sel)  muestran los resultados del ajuste en relación con los residuos y \@ref(fig:mapas-lm-areaep) espacialmente. 
+Los gráficos \@ref(fig:diagn-lm-areaep-sel)  muestran los resultados del ajuste en relación con los residuos y \@ref(fig:mapas-lm-areaep) espacialmente. 
 
-```{r comp-lm-areaep}
-tabla<-fitstats_lm_df(lm.area_ep.ptje) %>% 
-  rename(`Todas las variables`=fitstats) %>%
-   left_join(fitstats_lm_df(lm.area_ep.ptje.sel),by= "medidasfit") %>%
-  rename(`Variables seleccionadas`=fitstats)
-kable(tabla,caption = "Comparación OLS del modelos con todas las variables y el modelo simplificado del porcentaje de area de espacio verde", digits = 5)
-
-```
 
 ```{r diagn-lm-areaep-sel, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de area de espacio verde"}
 
@@ -776,7 +793,7 @@ summary(lm.ia.areas.dist)
 
 ```
 
-Solo la densidad de población no es significativa, sin embargo, como se muestra en la tabla \@ref(tab:comp-lm-areasdist) , al eliminarla, empeora levemente el AIC, el MSE y el adj-Rsquare . Consideraremos el modelo sin simplificar para los ajustes geoestadístico. Los gráficos \@ref(fig:diagn-lm-areadist-sel)  muestran los resultados del ajuste del modelo con todas las variables en relación con los residuos y \@ref(fig:mapas-lm-areasdist) espacialmente. 
+Solo la densidad de población no es significativa. Consideraremos el modelo sin simplificar para los ajustes geoestadístico. Los gráficos \@ref(fig:diagn-lm-areadist-sel)  muestran los resultados del ajuste del modelo con todas las variables en relación con los residuos y \@ref(fig:mapas-lm-areasdist) espacialmente. 
 
 ```{r code-lm-areadist-sel,echo=FALSE,eval=TRUE}
 #Ajuste modelo simplificado
@@ -797,14 +814,6 @@ summary(lm.ia.areas.dist.sel)
 ```
 
 
-```{r comp-lm-areasdist}
-tabla<-fitstats_lm_df(lm.ia.areas.dist) %>% 
-  rename(`Todas las variables`=fitstats) %>%
-   left_join(fitstats_lm_df(lm.ia.areas.dist.sel),by= "medidasfit") %>%
-  rename(`Variables seleccionadas`=fitstats)
-kable(tabla,caption = "Comparación OLS de los modelos con todas las variables y el modelo simplificado de índice de acceso `ia.areas.dist`", digits = 5)
-
-```
 
 ```{r diagn-lm-areadist-sel, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de 'ia.areas.dist'"}
 
@@ -816,6 +825,20 @@ grid.arrange( grobs =graf@plots, top=title1)
 ```{r mapas-lm-areasdist, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `ia.areas.dist` normalizada"}
 pintar_mapa_su_lm2(regresion.EV,lm.ia.areas.dist,nrow =1)
 lm.ia.areas.dist.sel<-lm.ia.areas.dist
+```
+
+La tabla \@ref(tab:ajuste-lmEV-pob-predios) resume las métricas de ajuste de ambos modelos de acceso a EV.
+
+
+
+```{r ajuste-lmEV-pob-predios}
+tabla<-fitstats_lm_df(lm.area_ep.ptje.sel) %>% 
+  rename(`%Area EV`=fitstats) %>%
+   left_join(fitstats_lm_df(lm.ia.areas.dist),by= "medidasfit") %>%
+  rename( `Area-Distancia`=fitstats)
+kable(tabla,caption = "Resumen métricas de ajuste OLS Indice contenedor y de acceso área-distancia ", digits = 5)
+
+
 ```
 
 ### Modelado espacial de espacios verdes
@@ -842,16 +865,22 @@ title(main = "Distancia inversa a 1km")
 Comparemos el efecto de cada una de las matrices sobre el indicador `area_ep.porcentaje` 
 
 ```{r code-moran-areaep-ws, echo=TRUE}
-moran.test(regresion.EV$area_ep.porcentaje, listw=W_dist1000.inv.ev,zero.policy = TRUE)
-moran.test(regresion.EV$area_ep.porcentaje, listw=W_queen.ev)
+moran.test(regresion.EV$area_ep.porcentaje, 
+           listw=W_dist1000.inv.ev,
+           zero.policy = TRUE)
+moran.test(regresion.EV$area_ep.porcentaje, 
+           listw=W_queen.ev)
 
 ```
 
 
 
 ```{r code-moran-areadist-w, echo=TRUE}
-moran.test(regresion.EV$ia.areas.dist, listw=W_dist1000.inv.ev,zero.policy = TRUE)
-moran.test(regresion.EV$ia.areas.dist, listw=W_queen.ev)
+moran.test(regresion.EV$ia.areas.dist, 
+           listw=W_dist1000.inv.ev,
+           zero.policy = TRUE)
+moran.test(regresion.EV$ia.areas.dist, 
+           listw=W_queen.ev)
 
 ```
 
@@ -873,8 +902,14 @@ pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nr
 Examinemos ahora los residuos  de cada modelo lineal seleccionado. Aplicamos el test de Moran primero al modelo de  `area_ep.porcentaje` con ambas matrices de vecindad. La figura \@ref(fig:moranplot-resareaep-w) muestra el mismo resultado gráficamente.
 
 ```{r code-moran-resareaep-w, echo=TRUE}
-lm.morantest(lm.area_ep.ptje.sel, W_queen.ev, alternative="two.sided",zero.policy = T)
-lm.morantest(lm.area_ep.ptje.sel, W_dist1000.inv.ev, alternative="two.sided",zero.policy = T)
+lm.morantest(lm.area_ep.ptje.sel, 
+             W_queen.ev, 
+             alternative="two.sided",
+             zero.policy = T)
+lm.morantest(lm.area_ep.ptje.sel, 
+             W_dist1000.inv.ev,
+             alternative="two.sided",
+             zero.policy = T)
 ```
 
 ```{r moranplot-resareaep-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde", fig.show="hold",out.width='49%'}
@@ -902,8 +937,14 @@ moran.plot(lm.area_ep.ptje.sel$residuals,
 Al igual que con la variable dependiente, $W_q$ captura con mayor intensidad autocorrelación en los residuos. Los resultados de aplicar el test a `ia.areas.dist` confirman que la matriz de vecindad que usaremos para el ajuste es $W_q$.
 
 ```{r code-moran-resareasdist-w, echo=TRUE}
-lm.morantest(lm.ia.areas.dist.sel, W_queen.ev, alternative="two.sided",zero.policy = T)
-lm.morantest(lm.ia.areas.dist.sel, W_dist1000.inv.ev, alternative="two.sided",zero.policy = T)
+lm.morantest(lm.ia.areas.dist.sel, 
+             W_queen.ev, 
+             alternative="two.sided",
+             zero.policy = T)
+lm.morantest(lm.ia.areas.dist.sel, 
+             W_dist1000.inv.ev, 
+             alternative="two.sided",
+             zero.policy = T)
 ```
 
 ```{r moranplot-resareasdist-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`", fig.show="hold",out.width='49%'}
@@ -948,7 +989,9 @@ Probamos los 4 tipos de modelos con la matriz $W_q$ que resultó capturar mejor 
 
 sar.areas_ep<-lagsarlm(formula = as.formula(lm.area_ep.ptje.sel),
                                     data = lm.area_ep.ptje.sel$model,
-                                    listw = W_queen.ev, zero.policy = T,tol.solve=1.0e-30)
+                                    listw = W_queen.ev, 
+                       zero.policy = T,
+                       tol.solve=1.0e-30)
 
 sar.sm<-summary(sar.areas_ep,Nagelkerke=T)
 sar.sm
@@ -956,22 +999,28 @@ sar.sm
 # SEM
 sem.areas_ep<-errorsarlm(formula = as.formula(lm.area_ep.ptje.sel),
                            data = lm.area_ep.ptje.sel$model,
-                           listw = W_queen.ev, zero.policy = T,tol.solve=1.0e-30)
-sem.sm<-summary(sem.areas_ep,Nagelkerke=T)
+                           listw = W_queen.ev, zero.policy = T,
+                         tol.solve=1.0e-30)
+sem.sm<-summary(sem.areas_ep,
+                Nagelkerke=T)
 sem.sm
 #SD 
 
 sd.areas_ep<-lagsarlm(formula = as.formula(lm.area_ep.ptje.sel),
                         data = lm.area_ep.ptje.sel$model,
-                        listw = W_queen.ev, zero.policy = T,tol.solve=1.0e-30,
+                        listw = W_queen.ev, 
+                      zero.policy = T,
+                      tol.solve=1.0e-30,
                         type = "mixed")
-sd.sm<-summary(sd.areas_ep,Nagelkerke=T)
+sd.sm<-summary(sd.areas_ep,
+               Nagelkerke=T)
 sd.sm
 
 #SLX
 slx.areas_ep<-lmSLX(formula = as.formula(lm.area_ep.ptje.sel),
                       data = lm.area_ep.ptje.sel$model,
-                      listw = W_queen.ev, zero.policy = T)
+                      listw = W_queen.ev, 
+                    zero.policy = T)
 
 slx.sm<-summary(slx.areas_ep)
 slx.sm

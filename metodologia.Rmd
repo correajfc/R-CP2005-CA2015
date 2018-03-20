@@ -126,8 +126,8 @@ El análisis propuesto se compone de las siguientes actividades:
 
 
 
-```{r diagrama-met}
-
+```{r flujograma, out.width='100%',echo=FALSE, fig.cap="Diagrama de flujo de la metodología"}
+knitr::include_graphics("images/flujograma.png")
 ```
 
 ### Procesamiento de datos 
