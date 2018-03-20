@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</title>
+  <meta name="description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  <meta name="github-repo" content="correajfc/unigis-tesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
+  
+  <meta name="twitter:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  
+
+<meta name="author" content="Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)">
+<meta name="author" content="Universidad de Salzburgo">
+
+
+<meta name="date" content="2018-03-19">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="meto.html">
+<link rel="next" href="discusion.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Trabajo de Grado UNIGIS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="" data-path="agradecimientos.html"><a href="agradecimientos.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
+<li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#objetivo-general"><i class="fa fa-check"></i><b>1.2.1</b> Objetivo general</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#objetivos-especificos"><i class="fa fa-check"></i><b>1.2.2</b> Objetivos específicos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#preguntas-de-investigacion"><i class="fa fa-check"></i><b>1.3</b> Preguntas de investigación</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#hipotesis"><i class="fa fa-check"></i><b>1.4</b> Hipótesis</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#beneficios-del-arbolado-urbano"><i class="fa fa-check"></i><b>1.4.1</b> Beneficios del arbolado urbano</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#hipotesis-alternas"><i class="fa fa-check"></i><b>1.4.2</b> Hipótesis alternas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#predicciones"><i class="fa fa-check"></i><b>1.4.3</b> Predicciones</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#acceso-a-espacios-verdes"><i class="fa fa-check"></i><b>1.4.4</b> Acceso a espacios verdes</a></li>
+<li class="chapter" data-level="1.4.5" data-path="intro.html"><a href="intro.html#hipotesis-alternas-1"><i class="fa fa-check"></i><b>1.4.5</b> Hipótesis alternas</a></li>
+<li class="chapter" data-level="1.4.6" data-path="intro.html"><a href="intro.html#predicciones-1"><i class="fa fa-check"></i><b>1.4.6</b> Predicciones</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#justificacion"><i class="fa fa-check"></i><b>1.5</b> Justificación</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#alcance"><i class="fa fa-check"></i><b>1.6</b> Alcance</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="revlit.html"><a href="revlit.html"><i class="fa fa-check"></i><b>2</b> Revisión de la literatura</a><ul>
+<li class="chapter" data-level="2.1" data-path="revlit.html"><a href="revlit.html#servicios-ecosistemicos-y-su-valoracion"><i class="fa fa-check"></i><b>2.1</b> Servicios ecosistémicos y su valoración</a></li>
+<li class="chapter" data-level="2.2" data-path="revlit.html"><a href="revlit.html#la-perspectiva-de-la-justicia-ambiental"><i class="fa fa-check"></i><b>2.2</b> La perspectiva de la justicia ambiental</a></li>
+<li class="chapter" data-level="2.3" data-path="revlit.html"><a href="revlit.html#modelamiento-y-analisis-espacial-de-variables-ambientales-y-sociales"><i class="fa fa-check"></i><b>2.3</b> Modelamiento y análisis espacial de variables ambientales y sociales</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="revlit.html"><a href="revlit.html#enfoque-estadistico"><i class="fa fa-check"></i><b>2.3.1</b> Enfoque estadístico</a></li>
+<li class="chapter" data-level="2.3.2" data-path="revlit.html"><a href="revlit.html#enfoque-geoestadistico"><i class="fa fa-check"></i><b>2.3.2</b> Enfoque geoestadístico</a></li>
+<li class="chapter" data-level="2.3.3" data-path="revlit.html"><a href="revlit.html#otras-tecnicas"><i class="fa fa-check"></i><b>2.3.3</b> Otras técnicas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="meto.html"><a href="meto.html"><i class="fa fa-check"></i><b>3</b> Metodología</a><ul>
+<li class="chapter" data-level="3.1" data-path="meto.html"><a href="meto.html#area-de-estudio"><i class="fa fa-check"></i><b>3.1</b> Área de estudio</a></li>
+<li class="chapter" data-level="3.2" data-path="meto.html"><a href="meto.html#datos"><i class="fa fa-check"></i><b>3.2</b> Datos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="meto.html"><a href="meto.html#datos-de-registros-oficiales-del-municipio"><i class="fa fa-check"></i><b>3.2.1</b> Datos de registros oficiales del municipio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="meto.html"><a href="meto.html#el-censo-arboreo"><i class="fa fa-check"></i><b>3.2.2</b> El censo arbóreo</a></li>
+<li class="chapter" data-level="3.2.3" data-path="meto.html"><a href="meto.html#el-censo-de-poblacion"><i class="fa fa-check"></i><b>3.2.3</b> El censo de población</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
+<li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
+<li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-y-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes y regresiones lineales</a></li>
+<li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Resultados</a><ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#modelando-la-cobertura-de-copa"><i class="fa fa-check"></i><b>4.1</b> Modelando la cobertura de copa</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#correlaciones-y-graficos-de-dispersion-bivariados"><i class="fa fa-check"></i><b>4.1.1</b> Correlaciones y gráficos de dispersión bivariados</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#modelos-de-regresion-lineal"><i class="fa fa-check"></i><b>4.1.2</b> Modelos de regresión lineal</a></li>
+<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#modelado-espacial-au"><i class="fa fa-check"></i><b>4.1.3</b> Modelado espacial AU</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#acceso-a-espacios-verdes-1"><i class="fa fa-check"></i><b>4.2</b> Acceso a espacios verdes</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#correlaciones-y-distribuciones-bivariadas"><i class="fa fa-check"></i><b>4.2.1</b> Correlaciones y distribuciones bivariadas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results.html"><a href="results.html#modelos-de-regresion-lineal-ev"><i class="fa fa-check"></i><b>4.2.2</b> Modelos de regresión lineal EV</a></li>
+<li class="chapter" data-level="4.2.3" data-path="results.html"><a href="results.html#modelado-espacial-de-espacios-verdes"><i class="fa fa-check"></i><b>4.2.3</b> Modelado espacial de espacios verdes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="discusion.html"><a href="discusion.html"><i class="fa fa-check"></i><b>5</b> Discusión</a><ul>
+<li class="chapter" data-level="5.1" data-path="discusion.html"><a href="discusion.html#sobre-la-cobertura-de-copa"><i class="fa fa-check"></i><b>5.1</b> Sobre la cobertura de copa</a></li>
+<li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="results" class="section level1">
+<h1><span class="header-section-number">Capítulo 4</span> Resultados</h1>
+<div id="modelando-la-cobertura-de-copa" class="section level2">
+<h2><span class="header-section-number">4.1</span> Modelando la cobertura de copa</h2>
+<div id="correlaciones-y-graficos-de-dispersion-bivariados" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Correlaciones y gráficos de dispersión bivariados</h3>
+<p>En la figura <a href="results.html#fig:bivar-poblacion-abs">4.1</a> se explora las relaciones entre las variables de población en las unidades originales de los datos (número de personas); la matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre tener ningún estudio y tener alguna limitación física (0.88); pertenecer a una comunidad afrodescendiente y carecer de estudios (0.92) o ser afrodescendiente y tener alguna limitación (0.88). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punta del vista del modelo sólo podrán ser representadas por una de las variables, la que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.</p>
+<div class="figure"><span id="fig:bivar-poblacion-abs"></span>
+<img src="tesis-unigis_files/figure-html/bivar-poblacion-abs-1.png" alt="Comparación por pares entre predictores de población" width="100%" />
+<p class="caption">
+Figura 4.1: Comparación por pares entre predictores de población
+</p>
+</div>
+<p>Cuando realizamos la misma comparación entre las variables porcentuales (más la densidad poblacional) se observan patrones similares(ver figura <a href="results.html#fig:bivar-poblacion-mod">4.2</a>): existe una alta correlación negativa entre el porcentaje de población afro de un sector y la tenencia de estudios superiores (-0.71), una fuerte asociación positiva entre el porcentaje de personas afro de un sector y el porcentaje de personas que carecen de estudios (0.68). También hay una fuerte relación inversa entre el porcentaje de personas de un sector sin estudios y el porcentaje de ellos que tiene estudios superiores (-0.8). Estas variables evitaremos usarlas como predictores en una misma formulación para no sesgar la estimación con problemas de colinealidad. Existe también una asociación, no tan fuerte pero importante, entre la densidad de población y sectores con mayor porcentaje de personas afro (0.47) y una asociación negativa entre la densidad de población y el porcentaje de personas con estudios superiores (-0.51). Estos resultados hablan de una concentración de condiciones desfavorables para la población, posiblemente acompañado de una segregación racial alta.</p>
+<div class="figure"><span id="fig:bivar-poblacion-mod"></span>
+<img src="tesis-unigis_files/figure-html/bivar-poblacion-mod-1.png" alt="Comparación por pares entre predictores de población porcentuales" width="100%" />
+<p class="caption">
+Figura 4.2: Comparación por pares entre predictores de población porcentuales
+</p>
+</div>
+<p>Ya que hemos explorado visualmente la dispersión entre los datos crudos, podemos usar una forma resumida, como los gráficos de azulejos o de matriz para consultar la intensidad de estas relaciones (figura <a href="results.html#fig:tile-poblacion-pearson">4.3</a> sintetiza las relaciones lineales entre las variables dependientes, mientras que la figura <a href="results.html#fig:tile-poblacion-pearson">4.3</a> lo hace para las no lineales)</p>
+<div class="figure"><span id="fig:tile-poblacion-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-poblacion-pearson-1.png" alt="Coeficiente Pearson entre variables de población" width="100%" />
+<p class="caption">
+Figura 4.3: Coeficiente Pearson entre variables de población
+</p>
+</div>
+<div class="figure"><span id="fig:tile-poblacion-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-poblacion-spearman-1.png" alt="Coeficiente Spearman entre varibles de población" width="100%" />
+<p class="caption">
+Figura 4.4: Coeficiente Spearman entre varibles de población
+</p>
+</div>
+<p>Para seleccionar las variables que mejor predicen la cobertura de copa aplicamos un procedimiento análogo al realizado con las variables dependientes entre sí. Con base en los coeficientes de correlación de Pearson (figura <a href="results.html#fig:tile-copa-poblacion-pearson">4.5</a>) y Spearman (figura <a href="results.html#fig:tile-copa-poblacion-spearman">4.6</a>) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, seleccionamos las variables a usar en el modelo lineal.</p>
+<p>Así pues, para el área de copa (<code>area_copa</code>) los predictores seleccionados son<code>superior_postgrado, densidad_poblacion, con_alguna_limitacion.porcentaje, afro.porcentaje</code> y para la cobertura de copa en área pública (<code>cobertura_copa.ap</code>) los predictores seleccionados son<code>superior_postgrado.porcentaje, densidad_poblacion, con_alguna_limitacion.porcentaje, afro.porcentaje</code></p>
+<div class="figure"><span id="fig:tile-copa-poblacion-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-copa-poblacion-pearson-1.png" alt="Coeficiente Pearson entre cobertura de copa
+ y variables de población" width="100%" />
+<p class="caption">
+Figura 4.5: Coeficiente Pearson entre cobertura de copa y variables de población
+</p>
+</div>
+<div class="figure"><span id="fig:tile-copa-poblacion-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-copa-poblacion-spearman-1.png" alt="Coeficiente Spearman entre cobertura de copa
+ y variables de población" width="100%" />
+<p class="caption">
+Figura 4.6: Coeficiente Spearman entre cobertura de copa y variables de población
+</p>
+</div>
+<p>Para la selección de variables sobre uso de los predios, los tipos de vivienda, áreas de espacio público y manzanas agregadas por sector urbano aplicamos el mismo proceso realizado para la selección de las variables de población usando como criterio la inclusión de variables con coeficientes de correlación que muestran una asociación fuerte con las variables de cobertura y área de copa.</p>
+<p>Las figuras <a href="results.html#fig:tile-prediosev-pearson">4.7</a> y <a href="results.html#fig:tile-prediosev-spearman">4.8</a> se ven los coeficientes de Pearson y Spearman, respectivamente, entre las variables sobre el uso los predios, tipo de viviendas y área (y porcentaje) de espacios verdes en cada sector urbano. Como se observa, existe una fuerte (perfecta) asociación negativa entre el porcentaje de casas y apartamentos, lo que obliga a solo escoger una de las dos en caso de haber una fuerte relación entre alguna de ellas con las variables de cobertura de copa. También hay una fuerte asociación positiva entre el área de espacios verdes y el porcentaje de área de espacio verdes en un sector urbano. Como mencionamos antes solo incluiremos una de las dos en caso de que ambas resulten fuertemente asociadas con las variables dependientes.</p>
+<div class="figure"><span id="fig:tile-prediosev-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-prediosev-pearson-1.png" alt="Coeficiente Pearson entre variables de uso de los predios
+ y espacios verdes en los sectores urbanos" width="100%" />
+<p class="caption">
+Figura 4.7: Coeficiente Pearson entre variables de uso de los predios y espacios verdes en los sectores urbanos
+</p>
+</div>
+<div class="figure"><span id="fig:tile-prediosev-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-prediosev-spearman-1.png" alt="Coeficiente Pearson entre variables de uso de los predios
+ y espacios verdes en los sectores urbanos" width="100%" />
+<p class="caption">
+Figura 4.8: Coeficiente Pearson entre variables de uso de los predios y espacios verdes en los sectores urbanos
+</p>
+</div>
+<p>Las figuras <a href="results.html#fig:tile-copa-prediosev-pearson">4.9</a> y <a href="results.html#fig:tile-copa-prediosev-spearman">4.10</a> muestran la correlación entre las potenciales nuevas variables a incluir en el modelo y las variables dependientes de cobertura y área de copa. Para el área de copa se seleccionan el área de espacios verdes (<code>area_ep</code>) y el porcentaje de viviendas tipo cuarto (<code>cuarto.porcentaje</code>). Para el modelo de porcentaje de cobertura de se seleccionan <code>apartamento.porcentaje</code>, <code>cuarto.porcentaje</code> y <code>area_ep.porcentaje</code>.</p>
+<div class="figure"><span id="fig:tile-copa-prediosev-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-copa-prediosev-pearson-1.png" alt="Coeficiente Pearson entre coberturas de copa
+ y variables de predios y EV" width="100%" />
+<p class="caption">
+Figura 4.9: Coeficiente Pearson entre coberturas de copa y variables de predios y EV
+</p>
+</div>
+<div class="figure"><span id="fig:tile-copa-prediosev-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-copa-prediosev-spearman-1.png" alt="Coeficiente Pearson entre coberturas de copa
+ y variables de predios y EV" width="100%" />
+<p class="caption">
+Figura 4.10: Coeficiente Pearson entre coberturas de copa y variables de predios y EV
+</p>
+</div>
+</div>
+<div id="modelos-de-regresion-lineal" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Modelos de regresión lineal</h3>
+<p>Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso de el área de copa y la variable sin transformar en el caso de la cobertura de copa. A continuación se presentan los resultados de los modelos de regresión</p>
+<div id="area-de-copa" class="section level4">
+<h4><span class="header-section-number">4.1.2.1</span> Área de copa</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dependiente &lt;-<span class="st"> &quot;log.area_copa&quot;</span>
+independientes &lt;-<span class="st"> </span><span class="kw">c</span>(indep.poblacion.copa.sel, indep.predios.copa.sel)
+<span class="co"># max normalizado</span>
+var_names &lt;-<span class="st"> </span><span class="kw">c</span>(dependiente, <span class="kw">names</span>(regresion.arboles[, independientes]))
+regresion.arboles.mn &lt;-<span class="st"> </span><span class="kw">max_nomalization</span>(regresion.arboles, var_names)
+f &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">str_c</span>(dependiente, <span class="st">&quot;.mxn&quot;</span>), <span class="st">&quot;~&quot;</span>, <span class="kw">paste</span>(<span class="kw">str_c</span>(independientes, <span class="st">&quot;.mxn&quot;</span>), 
+    <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))
+lm.mod.area_copa &lt;-<span class="st"> </span><span class="kw">lm</span>(f, <span class="dt">data =</span> regresion.arboles.mn)
+sm &lt;-<span class="st"> </span><span class="kw">summary</span>(lm.mod.area_copa)
+sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = f, data = regresion.arboles.mn)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.214196 -0.031198  0.002999  0.040367  0.130671 
+## 
+## Coefficients:
+##                                      Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                           0.78779    0.01265  62.256  &lt; 2e-16
+## superior_postgrado.mxn                0.31226    0.02400  13.013  &lt; 2e-16
+## densidad_poblacion.mxn               -0.14646    0.02011  -7.283 2.60e-12
+## con_alguna_limitacion.porcentaje.mxn -0.02011    0.02474  -0.813    0.417
+## afro.porcentaje.mxn                   0.01004    0.02087   0.481    0.631
+## cuarto.porcentaje.mxn                -0.14492    0.03048  -4.754 3.03e-06
+## area_ep.mxn                           0.11908    0.02763   4.310 2.18e-05
+##                                         
+## (Intercept)                          ***
+## superior_postgrado.mxn               ***
+## densidad_poblacion.mxn               ***
+## con_alguna_limitacion.porcentaje.mxn    
+## afro.porcentaje.mxn                     
+## cuarto.porcentaje.mxn                ***
+## area_ep.mxn                          ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.05934 on 317 degrees of freedom
+## Multiple R-squared:  0.6121, Adjusted R-squared:  0.6048 
+## F-statistic: 83.38 on 6 and 317 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="cobertura-de-copa" class="section level4">
+<h4><span class="header-section-number">4.1.2.2</span> Cobertura de copa</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># coberbtura AP</span>
+dependiente &lt;-<span class="st"> &quot;cobertura_copa.ap&quot;</span>
+independientes &lt;-<span class="st"> </span><span class="kw">c</span>(indep.poblacion.copa.ap.sel, indep.predios.copa.ap.sel)
+<span class="co"># max normalizado</span>
+var_names &lt;-<span class="st"> </span><span class="kw">c</span>(dependiente, independientes)
+regresion.arboles.mn &lt;-<span class="st"> </span><span class="kw">max_nomalization</span>(regresion.arboles, var_names)
+f &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">str_c</span>(dependiente, <span class="st">&quot;.mxn&quot;</span>), <span class="st">&quot;~&quot;</span>, <span class="kw">paste</span>(<span class="kw">str_c</span>(independientes, <span class="st">&quot;.mxn&quot;</span>), 
+    <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))
+lm.mod.cobertura.ap &lt;-<span class="st"> </span><span class="kw">lm</span>(f, <span class="dt">data =</span> regresion.arboles.mn)
+sm &lt;-<span class="st"> </span><span class="kw">summary</span>(lm.mod.cobertura.ap)
+sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = f, data = regresion.arboles.mn)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.27874 -0.05872 -0.01222  0.03964  0.64364 
+## 
+## Coefficients:
+##                                      Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                           0.03438    0.03989   0.862    0.389
+## superior_postgrado.porcentaje.mxn     0.38210    0.04227   9.040   &lt;2e-16
+## densidad_poblacion.mxn                0.05573    0.03750   1.486    0.138
+## con_alguna_limitacion.porcentaje.mxn  0.05848    0.04470   1.308    0.192
+## afro.porcentaje.mxn                  -0.02170    0.04410  -0.492    0.623
+## apartamento.porcentaje.mxn           -0.04561    0.03547  -1.286    0.199
+## cuarto.porcentaje.mxn                -0.06197    0.06163  -1.005    0.315
+## area_ep.porcentaje.mxn                0.03971    0.03796   1.046    0.296
+##                                         
+## (Intercept)                             
+## superior_postgrado.porcentaje.mxn    ***
+## densidad_poblacion.mxn                  
+## con_alguna_limitacion.porcentaje.mxn    
+## afro.porcentaje.mxn                     
+## apartamento.porcentaje.mxn              
+## cuarto.porcentaje.mxn                   
+## area_ep.porcentaje.mxn                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1048 on 316 degrees of freedom
+## Multiple R-squared:  0.471,  Adjusted R-squared:  0.4593 
+## F-statistic:  40.2 on 7 and 316 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>La tabla <a href="results.html#tab:ajuste-lmcopa-pob-predios">4.1</a> resume las métricas de ajuste de ambos modelos</p>
+<table>
+<caption><span id="tab:ajuste-lmcopa-pob-predios">Tabla 4.1: </span>Resumen métricas de ajuste OLS para el área de copa (AC) y cobertura de copa (%CC)</caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">Log(AC)</th>
+<th align="right">%CC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.98196</td>
+<td align="right">0.90416</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00043</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">21.62587</td>
+<td align="right">19.67633</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.00142</td>
+<td align="right">0.00631</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.00345</td>
+<td align="right">0.01071</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.60479</td>
+<td align="right">0.45931</td>
+</tr>
+<tr class="even">
+<td align="left">AIC</td>
+<td align="right">-901.82032</td>
+<td align="right">-532.26095</td>
+</tr>
+<tr class="odd">
+<td align="left">Log likelihood</td>
+<td align="right">458.91016</td>
+<td align="right">275.13047</td>
+</tr>
+</tbody>
+</table>
+<p>Ignoraremos las variables no significativas de los modelos lineales, para los siguientes pasos de la metodología.</p>
+<p>Existe no normalidad en los residuos y posibles no linealidades, como se observa en las gráficas diagnósticas de la regresión <a href="results.html#fig:diagn-mod-best-lm-copa">4.11</a>.</p>
+<div class="figure"><span id="fig:diagn-mod-best-lm-copa"></span>
+<img src="tesis-unigis_files/figure-html/diagn-mod-best-lm-copa-1.png" alt="Gráficas diagnósticas para el análisis de regresión lineal de área de copa con los nuevos términos" width="100%" />
+<p class="caption">
+Figura 4.11: Gráficas diagnósticas para el análisis de regresión lineal de área de copa con los nuevos términos
+</p>
+</div>
+<div class="figure"><span id="fig:diagn-mod-best-lm-copaap"></span>
+<img src="tesis-unigis_files/figure-html/diagn-mod-best-lm-copaap-1.png" alt="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de cobertura de copa" width="100%" />
+<p class="caption">
+Figura 4.12: Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de cobertura de copa
+</p>
+</div>
+<p>Finalmente se presentan los mapas de las variables dependientes de los 2 modelos seleccionados, comparándolas con el modelo ajustado y los residuos del ajuste, con el fin de observar donde se localizan los errores en la predicción. La figura <a href="results.html#fig:mapas-lm-copa">4.13</a> corresponde al ajuste del área de copa y la figura <a href="results.html#fig:mapas-lm-copaap">4.14</a> al porcentaje de la cobertura de copa.</p>
+<div class="figure"><span id="fig:mapas-lm-copa"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lm-copa-1.png" alt="Variable dependiente, valor ajustado por el modelo y residuos del OLS para log.area copa normalizada" width="100%" />
+<p class="caption">
+Figura 4.13: Variable dependiente, valor ajustado por el modelo y residuos del OLS para log.area copa normalizada
+</p>
+</div>
+<div class="figure"><span id="fig:mapas-lm-copaap"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lm-copaap-1.png" alt="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para cobertura copa.ap normalizada" width="100%" />
+<p class="caption">
+Figura 4.14: Variable dependiente, valor ajsutado por el modelo y residuos del OLS para cobertura copa.ap normalizada
+</p>
+</div>
+</div>
+</div>
+<div id="modelado-espacial-au" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Modelado espacial AU</h3>
+<p>Las matrices de vecindad construidas para el análisis espacial son la <em>queen</em> <span class="math inline">\(W_q\)</span>, que considera vecino a todos los sectores que comparten un lado o una esquina con un sector censal; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km (<span class="math inline">\(W_d\)</span>). El valor de un kilómetro es arbitrario, aunque razonable en la escala humana. Los grafos que representan las 2 matrices <span class="math inline">\(W\)</span> se muestran en la figura <a href="results.html#fig:ws-su-reg">4.15</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:ws-su-reg"></span>
+<img src="tesis-unigis_files/figure-html/ws-su-reg-1.png" alt="Matrices de vecindad del análisis espacial" width="48%" /><img src="tesis-unigis_files/figure-html/ws-su-reg-2.png" alt="Matrices de vecindad del análisis espacial" width="48%" />
+<p class="caption">
+Figura 4.15: Matrices de vecindad del análisis espacial
+</p>
+</div>
+<p>Examinemos primero la autocorrelación de las variables dependientes.</p>
+<div id="variables-dependientes" class="section level4">
+<h4><span class="header-section-number">4.1.3.1</span> Variables dependientes</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(lm.mod.area_copa<span class="op">$</span>model<span class="op">$</span>log.area_copa.mxn, <span class="dt">listw =</span> W_queen)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  lm.mod.area_copa$model$log.area_copa.mxn  
+## weights: W_queen  
+## 
+## Moran I statistic standard deviate = 10.958, p-value &lt; 2.2e-16
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##       0.374881115      -0.003095975       0.001189781</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(lm.mod.area_copa<span class="op">$</span>model<span class="op">$</span>log.area_copa.mxn, <span class="dt">listw =</span> W_dist1000.inv, 
+    <span class="dt">zero.policy =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  lm.mod.area_copa$model$log.area_copa.mxn  
+## weights: W_dist1000.inv  
+## 
+## Moran I statistic standard deviate = 9.5098, p-value &lt; 2.2e-16
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##      0.2817402626     -0.0031250000      0.0008972897</code></pre>
+<div class="figure"><span id="fig:moranplot-copa-w"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-copa-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-copa-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$" width="49%" />
+<p class="caption">
+Figura 4.16: Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando <span class="math inline">\(W_{q}\)</span>
+</p>
+</div>
+<p>La matriz <span class="math inline">\(W_q\)</span> captura mucho mejor de forma global la autocorrelación del área de copa. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para <span class="math inline">\(W_q\)</span> (figura <a href="results.html#fig:mapas-lisa-copa-wq">4.17</a>) y para <span class="math inline">\(W_d\)</span> (figura <a href="results.html#fig:mapas-lisa-copa-wd">4.18</a>) .</p>
+<div class="figure"><span id="fig:mapas-lisa-copa-wq"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-copa-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de `log.area copa`" width="100%" />
+<p class="caption">
+Figura 4.17: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de <code>log.area copa</code>
+</p>
+</div>
+<p>En los estos mapas de LISA de ambas matrices se observan que los sectores en rojo (H-H) y azul (L-L) identifican los lugares con autocorrelación positiva, formando grupos. No se presentan valores negativos de autocorrelación.</p>
+<div class="figure"><span id="fig:mapas-lisa-copa-wd"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-copa-wd-1.png" alt="Mapas LISA para la matriz $W_d$ de `log.area copa`" width="100%" />
+<p class="caption">
+Figura 4.18: Mapas LISA para la matriz <span class="math inline">\(W_d\)</span> de <code>log.area copa</code>
+</p>
+</div>
+<p>Para la variable dependiente porcentaje de cobertura de copa los resultados del análisis de autocorrelación se presentan a continuación.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(lm.best.cobertura.ap<span class="op">$</span>model<span class="op">$</span>cobertura_copa.ap.mxn, <span class="dt">listw =</span> W_queen)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  lm.best.cobertura.ap$model$cobertura_copa.ap.mxn  
+## weights: W_queen  
+## 
+## Moran I statistic standard deviate = 14.107, p-value &lt; 2.2e-16
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##       0.481041232      -0.003095975       0.001177840</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(lm.best.cobertura.ap<span class="op">$</span>model<span class="op">$</span>cobertura_copa.ap.mxn, <span class="dt">listw =</span> W_dist1000.inv, 
+    <span class="dt">zero.policy =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  lm.best.cobertura.ap$model$cobertura_copa.ap.mxn  
+## weights: W_dist1000.inv  
+## 
+## Moran I statistic standard deviate = 16.957, p-value &lt; 2.2e-16
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##      0.5022505518     -0.0031250000      0.0008881907</code></pre>
+<div class="figure"><span id="fig:moranplot-copaap-w"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-copaap-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentajes cobertura de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-copaap-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentajes cobertura de copa usando $W_{q}$" width="49%" />
+<p class="caption">
+Figura 4.19: Gráfico de Moran para los residuos del modelo lineal para el porcentajes cobertura de copa usando <span class="math inline">\(W_{q}\)</span>
+</p>
+</div>
+<p>Ambos diseños de matriz revelan presencia clara de autocorrelación espacial, pero la matrix <span class="math inline">\(W_d\)</span> la captura ligeramente mejor con un valor positivo y significativa, produciendo <em>clusters</em> de sectores urbanos más con más sectores urbanos. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para <span class="math inline">\(W_q\)</span> (figura <a href="results.html#fig:mapas-lisa-copaap-wq">4.20</a>) y para <span class="math inline">\(W_d\)</span> (figura <a href="results.html#fig:mapas-lisa-copaap-wd">4.21</a>) . No se presentan valores negativos de autocorrelación.</p>
+<div class="figure"><span id="fig:mapas-lisa-copaap-wq"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-copaap-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de `cobertura copa.ap`" width="100%" />
+<p class="caption">
+Figura 4.20: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de <code>cobertura copa.ap</code>
+</p>
+</div>
+<div class="figure"><span id="fig:mapas-lisa-copaap-wd"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-copaap-wd-1.png" alt="Mapas LISA para la matriz $W_d$ de `cobertura copa.ap`" width="100%" />
+<p class="caption">
+Figura 4.21: Mapas LISA para la matriz <span class="math inline">\(W_d\)</span> de <code>cobertura copa.ap</code>
+</p>
+</div>
+</div>
+<div id="residuos-de-los-ols" class="section level4">
+<h4><span class="header-section-number">4.1.3.2</span> Residuos de los OLS</h4>
+<p>El siguiente código calcula los índices de autocorrelación de los residuos del mejor modelo lineal de área de copa (<code>sqrt.copa_area.mxn ~ superior_postgrado.mxn + densidad_poblacion.mxn + con_alguna_limitacion.porcentaje.mxn + afro.porcentaje.mxn + cuarto.porcentaje.mxn + area_ep.mxn</code>) para ambas matrices <span class="math inline">\(W\)</span> y construye los gráficos de Moran y mapas LISA <a href="results.html#fig:moranplot-rescopa-w">4.22</a> para <span class="math inline">\(W_q\)</span> y para <span class="math inline">\(W_d\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.mod.area_copa, W_queen, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = log.area_copa.mxn ~ superior_postgrado.mxn +
+## densidad_poblacion.mxn + cuarto.porcentaje.mxn + area_ep.mxn, data
+## = regresion.arboles.mn)
+## weights: W_queen
+## 
+## Moran I statistic standard deviate = 3.0842, p-value = 0.002041
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##      0.096598455     -0.008456178      0.001160269</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.mod.area_copa, W_dist1000.inv, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = log.area_copa.mxn ~ superior_postgrado.mxn +
+## densidad_poblacion.mxn + cuarto.porcentaje.mxn + area_ep.mxn, data
+## = regresion.arboles.mn)
+## weights: W_dist1000.inv
+## 
+## Moran I statistic standard deviate = 4.1688, p-value = 3.063e-05
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##     0.1157938766    -0.0070709189     0.0008686406</code></pre>
+<div class="figure"><span id="fig:moranplot-rescopa-w"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-rescopa-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ " width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-rescopa-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ " width="49%" />
+<p class="caption">
+Figura 4.22: Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando <span class="math inline">\(W_{q}\)</span> y <span class="math inline">\(W_{d}\)</span>
+</p>
+</div>
+<p>Para ambos casos el valor de Moran Global es mayor que 0 y significativo, aunque no es muy alto, si existe una tendencia en los datos y ambas matrices capturan el efecto. <span class="math inline">\(W_d\)</span> lo hace mejor en los residuos, mientras <span class="math inline">\(W_q\)</span> lo hace mejor con la variable dependiente. En las figuras <a href="results.html#fig:mapas-lisa-rescopa-wq">4.23</a> y <a href="results.html#fig:mapas-lisa-rescopa-wd">4.24</a> observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que podría deberse a que las variables independientes presentan un patrón espacial similar, y que por consiguiente, al introducir estos retardos al modelo van a ayudar a absorber esa diferencias para mejorar la estimación.</p>
+<div class="figure"><span id="fig:mapas-lisa-rescopa-wq"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-rescopa-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de los residuos del modelo lineal para del área de copa" width="100%" />
+<p class="caption">
+Figura 4.23: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de los residuos del modelo lineal para del área de copa
+</p>
+</div>
+<div class="figure"><span id="fig:mapas-lisa-rescopa-wd"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-rescopa-wd-1.png" alt="Mapas LISA para la matriz $W_d$ dede los residuos del modelo lineal para del área de copa" width="100%" />
+<p class="caption">
+Figura 4.24: Mapas LISA para la matriz <span class="math inline">\(W_d\)</span> dede los residuos del modelo lineal para del área de copa
+</p>
+</div>
+<p>El mismo análisis se aplica al modelo de porcentaje de cobertura de copa (<code>cobertura_copa.ap.mxn ~ superior_postgrado.porcentaje.mxn + densidad_poblacion.mxn</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.best.cobertura.ap, W_queen, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = cobertura_copa.ap.mxn ~
+## superior_postgrado.porcentaje.mxn, data = regresion.arboles.mn)
+## weights: W_queen
+## 
+## Moran I statistic standard deviate = 5.8191, p-value = 5.915e-09
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##      0.194361167     -0.005463538      0.001179183</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.best.cobertura.ap, W_dist1000.inv, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, 
+    <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = cobertura_copa.ap.mxn ~
+## superior_postgrado.porcentaje.mxn, data = regresion.arboles.mn)
+## weights: W_dist1000.inv
+## 
+## Moran I statistic standard deviate = 6.5028, p-value = 7.885e-11
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##     0.1882096881    -0.0053153442     0.0008856801</code></pre>
+<div class="figure"><span id="fig:moranplot-rescopaap-w"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-rescopaap-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q} y $W_{d}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-rescopaap-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q} y $W_{d}$" width="49%" />
+<p class="caption">
+Figura 4.25: Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q} y <span class="math inline">\(W_{d}\)</span>
+</p>
+</div>
+<p>Para ambas matrices el valor de Moran Global es mayor que 0 y significativo, casi el doble más alto que para el modelo de área de copa; el indicador porcentual de cobertura y el residuo del modelo para ajustarlo muestra el mismo comprtamiento en la sensibilidad de las matrices: el efecto es más fuerte con <span class="math inline">\(W_d\)</span> para la variable dependiente y levemente mayor con <span class="math inline">\(W_q\)</span> en los residuos. En las figuras <a href="results.html#fig:mapas-lisa-rescopaap-wq">4.26</a> y <a href="results.html#fig:mapas-lisa-rescopaap-wd">4.27</a> una vez más observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que, como dijimos, se debe a que las variables independientes presentan un patrón espacial similar, y se espera que al introducir estos efectos espaciales al modelo mejora la confiabilidad de la estimación.</p>
+<div class="figure"><span id="fig:mapas-lisa-rescopaap-wq"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-rescopaap-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de los residuos del modelo lineal para el porcentaje de cobertura copa" width="100%" />
+<p class="caption">
+Figura 4.26: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de los residuos del modelo lineal para el porcentaje de cobertura copa
+</p>
+</div>
+<div class="figure"><span id="fig:mapas-lisa-rescopaap-wd"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-rescopaap-wd-1.png" alt="Mapas LISA para la matriz $W_d$ dede los residuos del modelo lineal para del área de copa" width="100%" />
+<p class="caption">
+Figura 4.27: Mapas LISA para la matriz <span class="math inline">\(W_d\)</span> dede los residuos del modelo lineal para del área de copa
+</p>
+</div>
+<p>Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos introduciendo algún tipo de estructura espacial. Posiblemente la matriz <span class="math inline">\(W_q\)</span> sea la candidata para el área de copa si se piensa en un modelo autorregresivo, pues parece capturar mejor en los test de autocorrelación global la existencia de grupos formados por fenómenos de dispersión o derrame en la distribución de la copa. En el caso de usar modelos de error espacial SEM posiblemente la candidata sea <span class="math inline">\(W_d\)</span> por capturar mejor la autocorrelación en los residuos.</p>
+</div>
+<div id="area-de-copa-1" class="section level4">
+<h4><span class="header-section-number">4.1.3.3</span> Área de copa</h4>
+<p>A continuación se presentan los resultados del modelado de los 4 tipos de modelos geoestadísticos para el área de copa.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SAR</span>
+
+sar.mod.log.area_copa.wq &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.mod.area_copa), 
+    <span class="dt">data =</span> lm.mod.area_copa<span class="op">$</span>model, <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+sar.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sar.mod.log.area_copa.wq, <span class="dt">Nagelkerke =</span> T)
+sar.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.mod.area_copa), data = lm.mod.area_copa$model, 
+##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.2529145 -0.0308535  0.0040657  0.0415388  0.1300425 
+## 
+## Type: lag 
+## Coefficients: (asymptotic standard errors) 
+##                         Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)             0.614070   0.048506 12.6598 &lt; 2.2e-16
+## superior_postgrado.mxn  0.288636   0.022492 12.8327 &lt; 2.2e-16
+## densidad_poblacion.mxn -0.119617   0.017950 -6.6640 2.665e-11
+## cuarto.porcentaje.mxn  -0.116631   0.030027 -3.8842 0.0001027
+## area_ep.mxn             0.118796   0.025882  4.5899 4.435e-06
+## 
+## Rho: 0.20055, LR test value: 11.903, p-value: 0.00056042
+## Asymptotic standard error: 0.058641
+##     z-value: 3.4199, p-value: 0.00062646
+## Wald statistic: 11.696, p-value: 0.00062646
+## 
+## Log likelihood: 464.4993 for lag model
+## ML residual variance (sigma squared): 0.0033034, (sigma: 0.057476)
+## Nagelkerke pseudo-R-squared: 0.62529 
+## Number of observations: 324 
+## Number of parameters estimated: 7 
+## AIC: -915, (AIC for lm: -905.1)
+## LM test for residual autocorrelation
+## test value: 0.18965, p-value: 0.66321</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SEM</span>
+sem.mod.log.area_copa.wq &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.mod.area_copa), 
+    <span class="dt">data =</span> lm.mod.area_copa<span class="op">$</span>model, <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+sem.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sem.mod.log.area_copa.wq, <span class="dt">Nagelkerke =</span> T)
+sem.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## errorsarlm(formula = as.formula(lm.mod.area_copa), data = lm.mod.area_copa$model, 
+##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.244147 -0.027587  0.003208  0.040352  0.125335 
+## 
+## Type: error 
+## Coefficients: (asymptotic standard errors) 
+##                         Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)             0.775902   0.009157 84.7331 &lt; 2.2e-16
+## superior_postgrado.mxn  0.303996   0.022762 13.3556 &lt; 2.2e-16
+## densidad_poblacion.mxn -0.138182   0.018723 -7.3804 1.579e-13
+## cuarto.porcentaje.mxn  -0.132682   0.032233 -4.1163 3.850e-05
+## area_ep.mxn             0.130410   0.028109  4.6395 3.493e-06
+## 
+## Lambda: 0.21687, LR test value: 6.9218, p-value: 0.0085151
+## Asymptotic standard error: 0.080758
+##     z-value: 2.6855, p-value: 0.0072429
+## Wald statistic: 7.2117, p-value: 0.0072429
+## 
+## Log likelihood: 462.0087 for error model
+## ML residual variance (sigma squared): 0.0033501, (sigma: 0.05788)
+## Nagelkerke pseudo-R-squared: 0.61948 
+## Number of observations: 324 
+## Number of parameters estimated: 7 
+## AIC: -910.02, (AIC for lm: -905.1)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SD</span>
+
+sd.mod.log.area_copa.wq &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.mod.area_copa), 
+    <span class="dt">data =</span> lm.mod.area_copa<span class="op">$</span>model, <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>, 
+    <span class="dt">type =</span> <span class="st">&quot;mixed&quot;</span>)
+sd.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sd.mod.log.area_copa.wq, <span class="dt">Nagelkerke =</span> T)
+sd.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.mod.area_copa), data = lm.mod.area_copa$model, 
+##     listw = W_queen, type = &quot;mixed&quot;, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.2295259 -0.0323844  0.0047241  0.0421406  0.1330323 
+## 
+## Type: mixed 
+## Coefficients: (asymptotic standard errors) 
+##                             Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)                 0.636994   0.064814  9.8281 &lt; 2.2e-16
+## superior_postgrado.mxn      0.287135   0.023882 12.0232 &lt; 2.2e-16
+## densidad_poblacion.mxn     -0.095813   0.025330 -3.7826 0.0001552
+## cuarto.porcentaje.mxn      -0.059241   0.041204 -1.4377 0.1505058
+## area_ep.mxn                 0.141098   0.030091  4.6890 2.745e-06
+## lag.superior_postgrado.mxn -0.015543   0.046962 -0.3310 0.7406618
+## lag.densidad_poblacion.mxn -0.049618   0.036582 -1.3563 0.1749910
+## lag.cuarto.porcentaje.mxn  -0.145767   0.065484 -2.2260 0.0260154
+## lag.area_ep.mxn            -0.074189   0.040493 -1.8321 0.0669325
+## 
+## Rho: 0.20067, LR test value: 6.4147, p-value: 0.011318
+## Asymptotic standard error: 0.080724
+##     z-value: 2.4859, p-value: 0.012922
+## Wald statistic: 6.1798, p-value: 0.012922
+## 
+## Log likelihood: 468.5857 for mixed model
+## ML residual variance (sigma squared): 0.0032211, (sigma: 0.056755)
+## Nagelkerke pseudo-R-squared: 0.63462 
+## Number of observations: 324 
+## Number of parameters estimated: 11 
+## AIC: -915.17, (AIC for lm: -910.76)
+## LM test for residual autocorrelation
+## test value: 0.079401, p-value: 0.77811</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SLX</span>
+slx.mod.log.area_copa.wq &lt;-<span class="st"> </span><span class="kw">lmSLX</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.mod.area_copa), <span class="dt">data =</span> lm.mod.area_copa<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T)
+
+slx.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(slx.mod.log.area_copa.wq)
+slx.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x - 1, weights = weights)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.208083 -0.032453  0.003926  0.043776  0.139282 
+## 
+## Coefficients:
+##                             Estimate Std. Error t value Pr(&gt;|t|)    
+## x(Intercept)                 0.79551    0.01364  58.341  &lt; 2e-16 ***
+## xsuperior_postgrado.mxn      0.28719    0.02455  11.699  &lt; 2e-16 ***
+## xdensidad_poblacion.mxn     -0.09948    0.02603  -3.821  0.00016 ***
+## xcuarto.porcentaje.mxn      -0.06373    0.04234  -1.505  0.13326    
+## xarea_ep.mxn                 0.13788    0.03092   4.459 1.14e-05 ***
+## xlag.superior_postgrado.mxn  0.05195    0.03998   1.299  0.19472    
+## xlag.densidad_poblacion.mxn -0.07698    0.03529  -2.181  0.02990 *  
+## xlag.cuarto.porcentaje.mxn  -0.17821    0.06576  -2.710  0.00710 ** 
+## xlag.area_ep.mxn            -0.04655    0.04051  -1.149  0.25139    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.05836 on 315 degrees of freedom
+## Multiple R-squared:  0.9947, Adjusted R-squared:  0.9945 
+## F-statistic:  6543 on 9 and 315 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(slx.mod.log.area_copa.wq)</code></pre></div>
+<pre><code>## [1] -910.7568</code></pre>
+<table>
+<caption><span id="tab:tabla-comp-modelos-copa">Tabla 4.2: </span>Metricas de ajuste para los modelos de área de copa</caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">OLS</th>
+<th align="right">SLX</th>
+<th align="right">SAR</th>
+<th align="right">SEM</th>
+<th align="right">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Globla Moran’I</td>
+<td align="right">0.09660</td>
+<td align="right">0.10143</td>
+<td align="right">-0.01056</td>
+<td align="right">-0.01056</td>
+<td align="right">-0.00157</td>
+</tr>
+<tr class="even">
+<td align="left">GMI p-value</td>
+<td align="right">0.00192</td>
+<td align="right">0.00122</td>
+<td align="right">0.58578</td>
+<td align="right">0.58575</td>
+<td align="right">0.48239</td>
+</tr>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.97939</td>
+<td align="right">0.98495</td>
+<td align="right">0.97959</td>
+<td align="right">0.97638</td>
+<td align="right">0.98307</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00013</td>
+<td align="right">0.00183</td>
+<td align="right">0.00015</td>
+<td align="right">0.00004</td>
+<td align="right">0.00073</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">6.70653</td>
+<td align="right">11.43612</td>
+<td align="right">4.36429</td>
+<td align="right">5.08935</td>
+<td align="right">10.28094</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.15223</td>
+<td align="right">0.17819</td>
+<td align="right">0.35894</td>
+<td align="right">0.27825</td>
+<td align="right">0.24586</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.00345</td>
+<td align="right">0.00331</td>
+<td align="right">0.00330</td>
+<td align="right">0.00335</td>
+<td align="right">0.00322</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.60639</td>
+<td align="right">0.99453</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Nagelkerke pseudo-R-squared</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">0.62529</td>
+<td align="right">0.61948</td>
+<td align="right">0.63462</td>
+</tr>
+<tr class="odd">
+<td align="left">AIC</td>
+<td align="right">-905.09560</td>
+<td align="right">-910.75682</td>
+<td align="right">-914.99865</td>
+<td align="right">-910.01741</td>
+<td align="right">-915.17149</td>
+</tr>
+<tr class="even">
+<td align="left">Log likelihood</td>
+<td align="right">458.54780</td>
+<td align="right">465.37841</td>
+<td align="right">464.49933</td>
+<td align="right">462.00870</td>
+<td align="right">468.58574</td>
+</tr>
+</tbody>
+</table>
+<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SD o mixto(variables con retardo y autocorrelación) con el mejor AIC. El modelo SD ha logrado eliminar la autocorrelación espacial global en los residuos, al igual que SAR y SEM (ver figura <a href="results.html#fig:moranplot-resmodel-all-wq">4.28</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\rho\)</span> y <span class="math inline">\(\lambda\)</span> de las estimaciones con términos de autorregresivos es significativo, lo que implica que la inclusión de los retardos funciona correctamente, aunque solo en los coeficientes de la variable retardada <code>cuarto.porcentaje</code> es significativo, aunque esta no tiene un coeficiente significativo como variable sin retardo, sugiriendo que interesa su efecto sobre el área de copa en los sectores vecinos a los focos de mayor concentración de viviendas tipo cuarto, pero no es importante en el resto de sectores. Como era de esperarse el porcentaje de área de espacios verdes es significativo en las variables sin retardo, pero no genera ningún efecto de derrame en la cobertura de copa de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
+<div class="figure"><span id="fig:moranplot-resmodel-all-wq"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-wq-1.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de área de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-wq-2.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de área de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-wq-3.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de área de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-wq-4.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de área de copa usando $W_{q}$" width="49%" />
+<p class="caption">
+Figura 4.28: Gráfico de Moran para los residuos de los modelos espaciales de área de copa usando <span class="math inline">\(W_{q}\)</span>
+</p>
+</div>
+<div class="figure"><span id="fig:diag-model-espaciales"></span>
+<img src="tesis-unigis_files/figure-html/diag-model-espaciales-1.png" alt="Diagnóstico comparativo entre modelos" width="100%" />
+<p class="caption">
+Figura 4.29: Diagnóstico comparativo entre modelos
+</p>
+</div>
+</div>
+<div id="porcentaje-de-cobertura-de-area-de-copa" class="section level4">
+<h4><span class="header-section-number">4.1.3.4</span> Porcentaje de cobertura de área de copa</h4>
+<p>El mismo ejercicio se aplica al porcentaje de cobertura de copa.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SAR</span>
+
+sar.cobertura.ap.wq &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.best.cobertura.ap), 
+    <span class="dt">data =</span> lm.best.cobertura.ap<span class="op">$</span>model, <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+sar.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sar.cobertura.ap.wq, <span class="dt">Nagelkerke =</span> T)
+sar.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.best.cobertura.ap), data = lm.best.cobertura.ap$model, 
+##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.270499 -0.049562 -0.010666  0.035328  0.624252 
+## 
+## Type: lag 
+## Coefficients: (asymptotic standard errors) 
+##                                   Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)                       0.030066   0.010654  2.8220  0.004773
+## superior_postgrado.porcentaje.mxn 0.246343   0.027300  9.0234 &lt; 2.2e-16
+## 
+## Rho: 0.37521, LR test value: 28.579, p-value: 8.9958e-08
+## Asymptotic standard error: 0.064408
+##     z-value: 5.8255, p-value: 5.6938e-09
+## Wald statistic: 33.937, p-value: 5.6938e-09
+## 
+## Log likelihood: 285.1216 for lag model
+## ML residual variance (sigma squared): 0.0097906, (sigma: 0.098947)
+## Nagelkerke pseudo-R-squared: 0.50267 
+## Number of observations: 324 
+## Number of parameters estimated: 4 
+## AIC: -562.24, (AIC for lm: -535.66)
+## LM test for residual autocorrelation
+## test value: 0.19089, p-value: 0.66218</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SEM</span>
+sem.cobertura.ap.wq &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.best.cobertura.ap), 
+    <span class="dt">data =</span> lm.best.cobertura.ap<span class="op">$</span>model, <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+sem.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sem.cobertura.ap.wq, <span class="dt">Nagelkerke =</span> T)
+sem.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## errorsarlm(formula = as.formula(lm.best.cobertura.ap), data = lm.best.cobertura.ap$model, 
+##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.281664 -0.052052 -0.012380  0.034632  0.625256 
+## 
+## Type: error 
+## Coefficients: (asymptotic standard errors) 
+##                                   Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)                       0.070011   0.013596  5.1495 2.612e-07
+## superior_postgrado.porcentaje.mxn 0.334060   0.028075 11.8989 &lt; 2.2e-16
+## 
+## Lambda: 0.39903, LR test value: 26.77, p-value: 2.2916e-07
+## Asymptotic standard error: 0.071019
+##     z-value: 5.6187, p-value: 1.9242e-08
+## Wald statistic: 31.57, p-value: 1.9242e-08
+## 
+## Log likelihood: 284.2172 for error model
+## ML residual variance (sigma squared): 0.0098055, (sigma: 0.099023)
+## Nagelkerke pseudo-R-squared: 0.49988 
+## Number of observations: 324 
+## Number of parameters estimated: 4 
+## AIC: -560.43, (AIC for lm: -535.66)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SD</span>
+
+sd.cobertura.ap.wq &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.best.cobertura.ap), <span class="dt">data =</span> lm.best.cobertura.ap<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>, <span class="dt">type =</span> <span class="st">&quot;mixed&quot;</span>)
+sd.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sd.cobertura.ap.wq, <span class="dt">Nagelkerke =</span> T)
+sd.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.best.cobertura.ap), data = lm.best.cobertura.ap$model, 
+##     listw = W_queen, type = &quot;mixed&quot;, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.275705 -0.051349 -0.011907  0.033539  0.621785 
+## 
+## Type: mixed 
+## Coefficients: (asymptotic standard errors) 
+##                                        Estimate Std. Error z value
+## (Intercept)                            0.032144   0.010945  2.9370
+## superior_postgrado.porcentaje.mxn      0.278081   0.044417  6.2607
+## lag.superior_postgrado.porcentaje.mxn -0.051197   0.058161 -0.8803
+##                                        Pr(&gt;|z|)
+## (Intercept)                            0.003314
+## superior_postgrado.porcentaje.mxn     3.833e-10
+## lag.superior_postgrado.porcentaje.mxn  0.378714
+## 
+## Rho: 0.40097, LR test value: 27.538, p-value: 1.5403e-07
+## Asymptotic standard error: 0.070765
+##     z-value: 5.6663, p-value: 1.4592e-08
+## Wald statistic: 32.107, p-value: 1.4592e-08
+## 
+## Log likelihood: 285.5239 for mixed model
+## ML residual variance (sigma squared): 0.0097234, (sigma: 0.098607)
+## Nagelkerke pseudo-R-squared: 0.5039 
+## Number of observations: 324 
+## Number of parameters estimated: 5 
+## AIC: -561.05, (AIC for lm: -535.51)
+## LM test for residual autocorrelation
+## test value: 1.633, p-value: 0.20129</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SLX</span>
+slx.cobertura.ap.wq &lt;-<span class="st"> </span><span class="kw">lmSLX</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.best.cobertura.ap), <span class="dt">data =</span> lm.best.cobertura.ap<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen, <span class="dt">zero.policy =</span> T)
+
+slx.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(slx.cobertura.ap.wq)
+slx.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x - 1, weights = weights)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.29497 -0.05404 -0.01494  0.04472  0.66363 
+## 
+## Coefficients:
+##                                        Estimate Std. Error t value
+## x(Intercept)                            0.05912    0.01080   5.472
+## xsuperior_postgrado.porcentaje.mxn      0.29297    0.04733   6.190
+## xlag.superior_postgrado.porcentaje.mxn  0.07542    0.05570   1.354
+##                                        Pr(&gt;|t|)    
+## x(Intercept)                           8.99e-08 ***
+## xsuperior_postgrado.porcentaje.mxn     1.84e-09 ***
+## xlag.superior_postgrado.porcentaje.mxn    0.177    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1051 on 321 degrees of freedom
+## Multiple R-squared:  0.808,  Adjusted R-squared:  0.8062 
+## F-statistic: 450.4 on 3 and 321 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(slx.cobertura.ap.wq)</code></pre></div>
+<pre><code>## [1] -535.5097</code></pre>
+<table>
+<caption><span id="tab:tabla-comp-modelos-copaap">Tabla 4.3: </span>Metricas de ajuste para los modelos de porcentaje de área de copa</caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">OLS</th>
+<th align="right">SLX</th>
+<th align="right">SAR</th>
+<th align="right">SEM</th>
+<th align="right">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Globla Moran’I</td>
+<td align="right">0.19436</td>
+<td align="right">0.19945</td>
+<td align="right">0.00734</td>
+<td align="right">-0.01131</td>
+<td align="right">-0.00863</td>
+</tr>
+<tr class="even">
+<td align="left">GMI p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.37996</td>
+<td align="right">0.59509</td>
+<td align="right">0.56441</td>
+</tr>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.90492</td>
+<td align="right">0.90851</td>
+<td align="right">0.89936</td>
+<td align="right">0.89238</td>
+<td align="right">0.89685</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">16.82734</td>
+<td align="right">16.80794</td>
+<td align="right">16.22458</td>
+<td align="right">15.21537</td>
+<td align="right">17.19946</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.00004</td>
+<td align="right">0.00022</td>
+<td align="right">0.00006</td>
+<td align="right">0.00010</td>
+<td align="right">0.00018</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.01100</td>
+<td align="right">0.01094</td>
+<td align="right">0.00979</td>
+<td align="right">0.00981</td>
+<td align="right">0.00972</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.45512</td>
+<td align="right">0.80624</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Nagelkerke pseudo-R-squared</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">0.50267</td>
+<td align="right">0.49988</td>
+<td align="right">0.50390</td>
+</tr>
+<tr class="odd">
+<td align="left">AIC</td>
+<td align="right">-535.66435</td>
+<td align="right">-535.50972</td>
+<td align="right">-562.24324</td>
+<td align="right">-560.43439</td>
+<td align="right">-561.04776</td>
+</tr>
+<tr class="even">
+<td align="left">Log likelihood</td>
+<td align="right">270.83218</td>
+<td align="right">271.75486</td>
+<td align="right">285.12162</td>
+<td align="right">284.21719</td>
+<td align="right">285.52388</td>
+</tr>
+</tbody>
+</table>
+<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación <span class="math inline">\(\rho\)</span> es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de <span class="math inline">\(-536.6281154\)</span> a <span class="math inline">\(-562.2432413\)</span>). Consistentemente la variable de <strong>estudios superiores</strong> en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura <a href="results.html#fig:moranplot-resmodel-all-copaap-wq">4.30</a>) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa.</p>
+<div class="figure"><span id="fig:moranplot-resmodel-all-copaap-wq"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-copaap-wq-1.png" alt="Gráfico de Moran para los residuos de los modelos espaciales del porcentaje de área de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-copaap-wq-2.png" alt="Gráfico de Moran para los residuos de los modelos espaciales del porcentaje de área de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-copaap-wq-3.png" alt="Gráfico de Moran para los residuos de los modelos espaciales del porcentaje de área de copa usando $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-all-copaap-wq-4.png" alt="Gráfico de Moran para los residuos de los modelos espaciales del porcentaje de área de copa usando $W_{q}$" width="49%" />
+<p class="caption">
+Figura 4.30: Gráfico de Moran para los residuos de los modelos espaciales del porcentaje de área de copa usando <span class="math inline">\(W_{q}\)</span>
+</p>
+</div>
+<div class="figure"><span id="fig:diag-model-espaciales-copaap"></span>
+<img src="tesis-unigis_files/figure-html/diag-model-espaciales-copaap-1.png" alt="Diagnóstico comparativo entre modelos de porcentaje de copa" width="100%" />
+<p class="caption">
+Figura 4.31: Diagnóstico comparativo entre modelos de porcentaje de copa
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="acceso-a-espacios-verdes-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Acceso a espacios verdes</h2>
+<div class="figure"><span id="fig:mapa-dependienteEV-all"></span>
+<img src="tesis-unigis_files/figure-html/mapa-dependienteEV-all-1.png" alt="Metricas de acceso a espacio verdes" width="100%" />
+<p class="caption">
+Figura 4.32: Metricas de acceso a espacio verdes
+</p>
+</div>
+<p>En el caso de los EV contamos con una gran variedad de medidas sobre el acceso en relación con la distancia, el área disponible y diferentes formulaciones para aproximarse al concepto de acceso a un servicio ambiental (Figura <a href="results.html#fig:mapa-dependienteEV-all">4.32</a>). Para acotar el alcance de este trabajo, nos concentramos en dos métricas: el porcentaje de área de espacio verde de un sector censal (<code>area_ep.porcentaje</code>), para aproximarse desde la idea de los beneficios principalmente a nivel local, y la razón área disponible distancia (<code>ia.areas.dist</code>), que tiende a formar agrupaciones de SU al rededor de las sectore donde se ubican espacios verdes, ya sea por número o por tamaño, que contemplan el fenómeno del acceso o beneficio como un proceso acotado por la distancia escogida de 1 kilómetro como radio de búsqueda; considerándola una distancia caminable para viajar en una ciudad como Cali. (Figura <a href="results.html#fig:mapa-dependienteEV-sel">4.33</a>)</p>
+<div class="figure"><span id="fig:mapa-dependienteEV-sel"></span>
+<img src="tesis-unigis_files/figure-html/mapa-dependienteEV-sel-1.png" alt="Metricas de acceso a espacio verdes seleccionadas" width="100%" />
+<p class="caption">
+Figura 4.33: Metricas de acceso a espacio verdes seleccionadas
+</p>
+</div>
+<div id="correlaciones-y-distribuciones-bivariadas" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Correlaciones y distribuciones bivariadas</h3>
+<p>Las variables de población y su correlación con los indicadores de acceso seleccionados nos sirven para seleccionar una vez más las variables independientes para usar en los modelos de regresión lineal. Las figuras <a href="results.html#fig:tile-ev-poblacion-pearson">4.34</a> y <a href="results.html#fig:tile-ev-poblacion-spearman">4.35</a> resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente. Como se observa, esta relación es muy débil, y en todos las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado muy bajo para incluir alguna de estas variables para que tenga éxito una aproximación lineal o no lineal al predecir o ajustar valores. Sin embargo, y como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, seleccionaremos las variables con mayor correlación: <code>densidad_poblacion</code>,<code>con_alguna_limitacion.porcentaje</code> mejor relacionadas con el índice de acceso <code>ia.areas.dist</code> y <code>ningun_estudio.porcentaje</code> para <code>area_ep.porcentaje</code>.</p>
+<div class="figure"><span id="fig:tile-ev-poblacion-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-ev-poblacion-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables de población" width="100%" />
+<p class="caption">
+Figura 4.34: Coeficiente Pearson entre acceso a EV y variables de población
+</p>
+</div>
+<div class="figure"><span id="fig:tile-ev-poblacion-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-ev-poblacion-spearman-1.png" alt="Coeficiente Spearman entre acceso a EV y variables de población" width="100%" />
+<p class="caption">
+Figura 4.35: Coeficiente Spearman entre acceso a EV y variables de población
+</p>
+</div>
+<p>Resulta interesante ver, al igual que en el modelado de la cobertura de copa, si otras variables no poblacionales explican los resultados de los índices de acceso seleccionados. El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación se muestran en las figuras <a href="results.html#fig:tile-ev-uso-pearson">4.36</a> y <a href="results.html#fig:tile-ev-uso-spearman">4.37</a>. De nuevo las correlaciones son bajas, aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: <code>unidad_economica.porcentaje</code> y el <code>cuarto.porcentaje</code>.</p>
+<div class="figure"><span id="fig:tile-ev-uso-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-ev-uso-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables de uso de los predios" width="100%" />
+<p class="caption">
+Figura 4.36: Coeficiente Pearson entre acceso a EV y variables de uso de los predios
+</p>
+</div>
+<div class="figure"><span id="fig:tile-ev-uso-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-ev-uso-spearman-1.png" alt="Coeficiente Spearman entre acceso a EV y variables de uso de los predios" width="100%" />
+<p class="caption">
+Figura 4.37: Coeficiente Spearman entre acceso a EV y variables de uso de los predios
+</p>
+</div>
+<p>El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura <a href="results.html#fig:tile-ev-fisica-pearson">4.38</a> y <a href="results.html#fig:tile-ev-fisica-spearman">4.39</a> muestran que el área media de las manzanas (<code>area_media_manzana</code>) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables exploradas hasta el momento. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que no haremos uso de ellas en la modelación.</p>
+<div class="figure"><span id="fig:tile-ev-fisica-pearson"></span>
+<img src="tesis-unigis_files/figure-html/tile-ev-fisica-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU" width="100%" />
+<p class="caption">
+Figura 4.38: Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU
+</p>
+</div>
+<div class="figure"><span id="fig:tile-ev-fisica-spearman"></span>
+<img src="tesis-unigis_files/figure-html/tile-ev-fisica-spearman-1.png" alt="Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU" width="100%" />
+<p class="caption">
+Figura 4.39: Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU
+</p>
+</div>
+<p>A manera de resumen e información de apoyo al proceso de modelación se incluye las distribuciones bivariadas de términos independientes escogidos con el análisis de correlación y los índices de acceso a modelar.</p>
+<div class="figure"><span id="fig:bivar-ev"></span>
+<img src="tesis-unigis_files/figure-html/bivar-ev-1.png" alt="Distribución de variables independientes respecto de los índices de acceso a EV" width="100%" />
+<p class="caption">
+Figura 4.40: Distribución de variables independientes respecto de los índices de acceso a EV
+</p>
+</div>
+</div>
+<div id="modelos-de-regresion-lineal-ev" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Modelos de regresión lineal EV</h3>
+<p>Para la los espacios verdes usaremos todos los términos seleccionados con los coeficientes de correlación para luego ver la significancia de las variables en el modelo y elegir el modelo con mejor ajuste usando criterio de información de Akaike (AIC) seleccionando los coeficientes significativos y comparando el AIC de la versión con todas la variables con el modelo simplificado. Para estos índices de acceso no usaremos variantes transformadas de la variable dependiente, sólo se aplica una normalización a los datos.</p>
+<p>Para el índice de acceso de porcentaje de área de espacios verdes en un sector urbano el modelo a ajusta el siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dependiente &lt;-<span class="st"> &quot;area_ep.porcentaje&quot;</span>
+independientes &lt;-<span class="st"> </span>independientes.EV
+<span class="co"># max normalizado</span>
+var_names &lt;-<span class="st"> </span><span class="kw">c</span>(dependiente, <span class="kw">names</span>(regresion.EV[, independientes]))
+regresion.EV.mn &lt;-<span class="st"> </span><span class="kw">max_nomalization</span>(regresion.EV, var_names)
+lm.area_ep.ptje &lt;-<span class="st"> </span><span class="kw">crear_lm_from_df</span>(regresion.EV.mn)
+<span class="kw">summary</span>(lm.area_ep.ptje)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = form, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.26917 -0.04344 -0.01571  0.02577  0.69572 
+## 
+## Coefficients:
+##                                       Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                           0.038434   0.016805   2.287  0.02284
+## area_media_manzana.mxn                0.760522   0.070424  10.799  &lt; 2e-16
+## cuarto.porcentaje.mxn                -0.126650   0.048389  -2.617  0.00928
+## unidad_economica.porcentaje.mxn      -0.000400   0.033502  -0.012  0.99048
+## densidad_poblacion.mxn                0.001654   0.026925   0.061  0.95105
+## con_alguna_limitacion.porcentaje.mxn  0.002491   0.032620   0.076  0.93918
+## ningun_estudio.porcentaje.mxn         0.055332   0.043902   1.260  0.20845
+##                                         
+## (Intercept)                          *  
+## area_media_manzana.mxn               ***
+## cuarto.porcentaje.mxn                ** 
+## unidad_economica.porcentaje.mxn         
+## densidad_poblacion.mxn                  
+## con_alguna_limitacion.porcentaje.mxn    
+## ningun_estudio.porcentaje.mxn           
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.07843 on 322 degrees of freedom
+## Multiple R-squared:  0.3062, Adjusted R-squared:  0.2933 
+## F-statistic: 23.69 on 6 and 322 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Los resultados muestran que las variables <code>cuarto.porcentaje</code> <code>area_media_manzana</code> son significativas. Con el modelo simplificado obtenemos los siguientes resultados:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dependiente &lt;-<span class="st"> &quot;area_ep.porcentaje&quot;</span>
+independientes  &lt;-<span class="st"> </span>independientes.EV
+<span class="co"># max normalizado </span>
+var_names&lt;-<span class="kw">c</span>(dependiente,<span class="kw">names</span>(regresion.EV[,independientes]))
+regresion.EV.mn&lt;-<span class="kw">max_nomalization</span>(regresion.EV,var_names)
+lm.area_ep.ptje.sel&lt;-<span class="kw">lm</span>(area_ep.porcentaje.mxn<span class="op">~</span>cuarto.porcentaje.mxn<span class="op">+</span>
+<span class="st">                      </span><span class="co"># unidad_economica.porcentaje.mxn+</span>
+<span class="st">                      </span>area_media_manzana.mxn<span class="co">#+</span>
+                      <span class="co"># densidad_poblacion.mxn+</span>
+                      <span class="co">#ningun_estudio.porcentaje.mxn</span>
+                      ,
+                    <span class="dt">data =</span> regresion.EV.mn)
+<span class="kw">summary</span>(lm.area_ep.ptje.sel)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = area_ep.porcentaje.mxn ~ cuarto.porcentaje.mxn + 
+##     area_media_manzana.mxn, data = regresion.EV.mn)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.26869 -0.04398 -0.01599  0.02522  0.69949 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)             0.049241   0.005703   8.635 2.66e-16 ***
+## cuarto.porcentaje.mxn  -0.093855   0.037643  -2.493   0.0132 *  
+## area_media_manzana.mxn  0.744371   0.065197  11.417  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.07825 on 326 degrees of freedom
+## Multiple R-squared:  0.3008, Adjusted R-squared:  0.2966 
+## F-statistic: 70.14 on 2 and 326 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>En la tabla comparativa <a href="results.html#tab:comp-lm-areaep">4.4</a> que resume las medidas de ajuste de ambos modelos se evidencia los residuos presentan heterocedasticidad y no normalidad, lo que lo hace candidato a explorar el modelo ajuste geoestadístico. Existe una mejora lógica en el AIC del modelo simplificado debido a la reducción de términos del modelo. Los gráficos <a href="results.html#fig:diagn-lm-areaep-sel">4.41</a> muestran los resultados del ajuste en relación con los residuos y <a href="results.html#fig:mapas-lm-areaep">4.42</a> espacialmente.</p>
+<table>
+<caption><span id="tab:comp-lm-areaep">Tabla 4.4: </span>Comparación OLS del modelos con todas las variables y el modelo simplificado del porcentaje de area de espacio verde</caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">Todas las variables</th>
+<th align="right">Variables seleccionadas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.77196</td>
+<td align="right">0.76782</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">23.18480</td>
+<td align="right">12.98572</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.00074</td>
+<td align="right">0.00151</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.00602</td>
+<td align="right">0.00607</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.29328</td>
+<td align="right">0.29656</td>
+</tr>
+<tr class="even">
+<td align="left">AIC</td>
+<td align="right">-732.38377</td>
+<td align="right">-737.84913</td>
+</tr>
+<tr class="odd">
+<td align="left">Log likelihood</td>
+<td align="right">374.19189</td>
+<td align="right">372.92456</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:diagn-lm-areaep-sel"></span>
+<img src="tesis-unigis_files/figure-html/diagn-lm-areaep-sel-1.png" alt="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de area de espacio verde" width="100%" />
+<p class="caption">
+Figura 4.41: Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de area de espacio verde
+</p>
+</div>
+<div class="figure"><span id="fig:mapas-lm-areaep"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lm-areaep-1.png" alt="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `area ep.porcentaje` normalizada" width="100%" />
+<p class="caption">
+Figura 4.42: Variable dependiente, valor ajustado por el modelo y residuos del OLS para <code>area ep.porcentaje</code> normalizada
+</p>
+</div>
+<p>Para el indice de acceso <code>ia.areas.dist</code> el modelo con todos lo terminos es el siguiente:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dependiente &lt;-<span class="st"> &quot;ia.areas.dist&quot;</span>
+independientes &lt;-<span class="st"> </span>independientes.EV
+<span class="co"># max normalizado</span>
+var_names &lt;-<span class="st"> </span><span class="kw">c</span>(dependiente, <span class="kw">names</span>(regresion.EV[, independientes]))
+regresion.EV.mn &lt;-<span class="st"> </span><span class="kw">max_nomalization</span>(regresion.EV, var_names)
+lm.ia.areas.dist &lt;-<span class="st"> </span><span class="kw">crear_lm_from_df</span>(regresion.EV.mn)
+<span class="kw">summary</span>(lm.ia.areas.dist)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = form, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.29640 -0.03455 -0.01586  0.01009  0.82344 
+## 
+## Coefficients:
+##                                      Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                           0.09193    0.02051   4.483 1.03e-05
+## area_media_manzana.mxn                0.43284    0.08594   5.036 7.92e-07
+## cuarto.porcentaje.mxn                -0.16017    0.05905  -2.712 0.007043
+## unidad_economica.porcentaje.mxn       0.11734    0.04089   2.870 0.004376
+## densidad_poblacion.mxn               -0.04921    0.03286  -1.498 0.135208
+## con_alguna_limitacion.porcentaje.mxn -0.13414    0.03981  -3.369 0.000845
+## ningun_estudio.porcentaje.mxn         0.14228    0.05358   2.656 0.008309
+##                                         
+## (Intercept)                          ***
+## area_media_manzana.mxn               ***
+## cuarto.porcentaje.mxn                ** 
+## unidad_economica.porcentaje.mxn      ** 
+## densidad_poblacion.mxn                  
+## con_alguna_limitacion.porcentaje.mxn ***
+## ningun_estudio.porcentaje.mxn        ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.09572 on 322 degrees of freedom
+## Multiple R-squared:  0.2071, Adjusted R-squared:  0.1923 
+## F-statistic: 14.02 on 6 and 322 DF,  p-value: 3.537e-14</code></pre>
+<p>Solo la densidad de población no es significativa, sin embargo, como se muestra en la tabla <a href="results.html#tab:comp-lm-areasdist">4.5</a> , al eliminarla, empeora levemente el AIC, el MSE y el adj-Rsquare . Consideraremos el modelo sin simplificar para los ajustes geoestadístico. Los gráficos <a href="results.html#fig:diagn-lm-areadist-sel">4.43</a> muestran los resultados del ajuste del modelo con todas las variables en relación con los residuos y <a href="results.html#fig:mapas-lm-areasdist">4.44</a> espacialmente.</p>
+<pre><code>## 
+## Call:
+## lm(formula = ia.areas.dist.mxn ~ cuarto.porcentaje.mxn + unidad_economica.porcentaje.mxn + 
+##     area_media_manzana.mxn + ningun_estudio.porcentaje.mxn + 
+##     con_alguna_limitacion.porcentaje.mxn, data = regresion.EV.mn)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.31567 -0.03596 -0.01589  0.00814  0.82468 
+## 
+## Coefficients:
+##                                      Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                           0.08100    0.01920   4.218 3.20e-05
+## cuarto.porcentaje.mxn                -0.14781    0.05859  -2.523 0.012121
+## unidad_economica.porcentaje.mxn       0.13705    0.03879   3.533 0.000470
+## area_media_manzana.mxn                0.45622    0.08468   5.388 1.38e-07
+## ningun_estudio.porcentaje.mxn         0.11603    0.05073   2.287 0.022817
+## con_alguna_limitacion.porcentaje.mxn -0.14140    0.03959  -3.572 0.000409
+##                                         
+## (Intercept)                          ***
+## cuarto.porcentaje.mxn                *  
+## unidad_economica.porcentaje.mxn      ***
+## area_media_manzana.mxn               ***
+## ningun_estudio.porcentaje.mxn        *  
+## con_alguna_limitacion.porcentaje.mxn ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.0959 on 323 degrees of freedom
+## Multiple R-squared:  0.2016, Adjusted R-squared:  0.1892 
+## F-statistic: 16.31 on 5 and 323 DF,  p-value: 2.386e-14</code></pre>
+<table>
+<caption><span id="tab:comp-lm-areasdist">Tabla 4.5: </span>Comparación OLS de los modelos con todas las variables y el modelo simplificado de índice de acceso <code>ia.areas.dist</code></caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">Todas las variables</th>
+<th align="right">Variables seleccionadas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.57372</td>
+<td align="right">0.56228</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">57.30768</td>
+<td align="right">57.77627</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.00897</td>
+<td align="right">0.00903</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.19231</td>
+<td align="right">0.18921</td>
+</tr>
+<tr class="even">
+<td align="left">AIC</td>
+<td align="right">-601.32470</td>
+<td align="right">-601.04097</td>
+</tr>
+<tr class="odd">
+<td align="left">Log likelihood</td>
+<td align="right">308.66235</td>
+<td align="right">307.52049</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:diagn-lm-areadist-sel"></span>
+<img src="tesis-unigis_files/figure-html/diagn-lm-areadist-sel-1.png" alt="Gráficas diagnósticas para el análisis de regresión lineal de 'ia.areas.dist'" width="100%" />
+<p class="caption">
+Figura 4.43: Gráficas diagnósticas para el análisis de regresión lineal de ‘ia.areas.dist’
+</p>
+</div>
+<div class="figure"><span id="fig:mapas-lm-areasdist"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lm-areasdist-1.png" alt="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `ia.areas.dist` normalizada" width="100%" />
+<p class="caption">
+Figura 4.44: Variable dependiente, valor ajustado por el modelo y residuos del OLS para <code>ia.areas.dist</code> normalizada
+</p>
+</div>
+</div>
+<div id="modelado-espacial-de-espacios-verdes" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Modelado espacial de espacios verdes</h3>
+<p>El proceso de ajuste de los modelos geoestadísticos para el análisis de espacios verdes hace uso de los mismos elementos metodológicos usados para la cobertura de copa. Se construyen dos matrices de velocidad usando un kernel de vecindad Queen <span class="math inline">\(W_q\)</span> y otro con base en un radio de búsqueda de 1 kilómetro <span class="math inline">\(W_d\)</span>. El primer paso es evaluar cuál de las matrices captura mejor la autocorrelación de los residuos de los modelos lineales y de las variables dependientes. Seguidamente se compara los diferentes modelos espaciales para seleccionar el de mejor ajuste y finalmente se evalúa la significancia de las variables y el valor de los coeficientes de la regresión y la mejora en el ajuste con relación a los modelos lineales.</p>
+<div id="matrices-de-vecindad-1" class="section level4">
+<h4><span class="header-section-number">4.2.3.1</span> Matrices de vecindad</h4>
+<p>Las dos matrices de vecindad construidas con los SU seleccionados para el análisis de regresión lineal. Las dos matrices resultantes se muestran en la figura <a href="results.html#fig:ws-su-reg-ev">4.45</a></p>
+<div class="figure" style="text-align: center"><span id="fig:ws-su-reg-ev"></span>
+<img src="tesis-unigis_files/figure-html/ws-su-reg-ev-1.png" alt="Matrices de vecindad del análisis espacial de espacios verdes" width="48%" /><img src="tesis-unigis_files/figure-html/ws-su-reg-ev-2.png" alt="Matrices de vecindad del análisis espacial de espacios verdes" width="48%" />
+<p class="caption">
+Figura 4.45: Matrices de vecindad del análisis espacial de espacios verdes
+</p>
+</div>
+</div>
+<div id="autocorrelacion-espacial-1" class="section level4">
+<h4><span class="header-section-number">4.2.3.2</span> Autocorrelación espacial</h4>
+<div id="variables-dependientes-1" class="section level5">
+<h5><span class="header-section-number">4.2.3.2.1</span> Variables dependientes</h5>
+<p>Comparemos el efecto de cada una de las matrices sobre el indicador <code>area_ep.porcentaje</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(regresion.EV<span class="op">$</span>area_ep.porcentaje, <span class="dt">listw =</span> W_dist1000.inv.ev, <span class="dt">zero.policy =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  regresion.EV$area_ep.porcentaje  
+## weights: W_dist1000.inv.ev  
+## 
+## Moran I statistic standard deviate = 2.0602, p-value = 0.01969
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##      0.0537662593     -0.0030769231      0.0007612826</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(regresion.EV<span class="op">$</span>area_ep.porcentaje, <span class="dt">listw =</span> W_queen.ev)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  regresion.EV$area_ep.porcentaje  
+## weights: W_queen.ev  
+## 
+## Moran I statistic standard deviate = 3.3938, p-value = 0.0003447
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##       0.104622145      -0.003048780       0.001006547</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(regresion.EV<span class="op">$</span>ia.areas.dist, <span class="dt">listw =</span> W_dist1000.inv.ev, <span class="dt">zero.policy =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  regresion.EV$ia.areas.dist  
+## weights: W_dist1000.inv.ev  
+## 
+## Moran I statistic standard deviate = 24.511, p-value &lt; 2.2e-16
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##       0.677646493      -0.003076923       0.000771291</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">moran.test</span>(regresion.EV<span class="op">$</span>ia.areas.dist, <span class="dt">listw =</span> W_queen.ev)</code></pre></div>
+<pre><code>## 
+##  Moran I test under randomisation
+## 
+## data:  regresion.EV$ia.areas.dist  
+## weights: W_queen.ev  
+## 
+## Moran I statistic standard deviate = 24.615, p-value &lt; 2.2e-16
+## alternative hypothesis: greater
+## sample estimates:
+## Moran I statistic       Expectation          Variance 
+##       0.782948232      -0.003048780       0.001019626</code></pre>
+<p>La matriz <span class="math inline">\(W_q\)</span> captura con mayor fuerza la autocorrelación espacial de <code>area_ep.porcentaje</code>. Al repetir el test para <code>ai.areas.dist</code> una vez más <span class="math inline">\(W_q\)</span> captura con mayor intensidad la autocorrelación espacial del indicador, que es mucho mayor que en <code>area_ep.porcentaje</code>, posiblemente por representar una característica local del acceso. Hay que anotar aquí que el cálculo del índice <code>ia.areas.dist</code> en su construcción usa una distancia de radio de búsqueda de 1 kilómetro; en su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o clusters alrededor de ciertos sectores urbanos. Resulta pues interesante no sea <span class="math inline">\(W_d\)</span> la que capture mejor el agrupamiento.</p>
+<p>Para indagar sobre los patrones espaciales de los dos indicadores usando <span class="math inline">\(W_q\)</span> se muestran los mapas de LISA en la figura <a href="results.html#fig:mapas-lisa-ev-wq">4.46</a>. Se aprecia que se forman cluster alrededor de tres zonas en el caso del porcentaje de área de espacio verde y dos para el indicador de la relación areas-distancia, coincidentes con el anterior. Ahí se encuentran equipamentos de ciudad como un cementerio de gran tamaño, las universidades, zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje.</p>
+<div class="figure"><span id="fig:mapas-lisa-ev-wq"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-ev-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de ambos indicadores de acceso a EV" width="100%" /><img src="tesis-unigis_files/figure-html/mapas-lisa-ev-wq-2.png" alt="Mapas LISA para la matriz $W_q$ de ambos indicadores de acceso a EV" width="100%" />
+<p class="caption">
+Figura 4.46: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de ambos indicadores de acceso a EV
+</p>
+</div>
+</div>
+<div id="residuos-de-los-ols-1" class="section level5">
+<h5><span class="header-section-number">4.2.3.2.2</span> Residuos de los OLS</h5>
+<p>Examinemos ahora los residuos de cada modelo lineal seleccionado. Aplicamos el test de Moran primero al modelo de <code>area_ep.porcentaje</code> con ambas matrices de vecindad. La figura <a href="results.html#fig:moranplot-resareaep-w">4.47</a> muestra el mismo resultado gráficamente.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.area_ep.ptje.sel, W_queen.ev, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = area_ep.porcentaje.mxn ~ cuarto.porcentaje.mxn
+## + area_media_manzana.mxn, data = regresion.EV.mn)
+## weights: W_queen.ev
+## 
+## Moran I statistic standard deviate = 3.5892, p-value = 0.0003316
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##      0.116355499     -0.005017782      0.001143508</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.area_ep.ptje.sel, W_dist1000.inv.ev, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, 
+    <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = area_ep.porcentaje.mxn ~ cuarto.porcentaje.mxn
+## + area_media_manzana.mxn, data = regresion.EV.mn)
+## weights: W_dist1000.inv.ev
+## 
+## Moran I statistic standard deviate = 1.579, p-value = 0.1143
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##     0.0420095674    -0.0044075679     0.0008641599</code></pre>
+<div class="figure"><span id="fig:moranplot-resareaep-w"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-resareaep-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resareaep-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde" width="49%" />
+<p class="caption">
+Figura 4.47: Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde
+</p>
+</div>
+<p>Al igual que con la variable dependiente, <span class="math inline">\(W_q\)</span> captura con mayor intensidad autocorrelación en los residuos. Los resultados de aplicar el test a <code>ia.areas.dist</code> confirman que la matriz de vecindad que usaremos para el ajuste es <span class="math inline">\(W_q\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.ia.areas.dist.sel, W_queen.ev, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = form, data = df)
+## weights: W_queen.ev
+## 
+## Moran I statistic standard deviate = 17.802, p-value &lt; 2.2e-16
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##      0.585347665     -0.010137536      0.001118915</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm.morantest</span>(lm.ia.areas.dist.sel, W_dist1000.inv.ev, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, 
+    <span class="dt">zero.policy =</span> T)</code></pre></div>
+<pre><code>## 
+##  Global Moran I for regression residuals
+## 
+## data:  
+## model: lm(formula = form, data = df)
+## weights: W_dist1000.inv.ev
+## 
+## Moran I statistic standard deviate = 19.214, p-value &lt; 2.2e-16
+## alternative hypothesis: two.sided
+## sample estimates:
+## Observed Moran I      Expectation         Variance 
+##     0.5464778843    -0.0088593824     0.0008353882</code></pre>
+<div class="figure"><span id="fig:moranplot-resareasdist-w"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-resareasdist-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resareasdist-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`" width="49%" />
+<p class="caption">
+Figura 4.48: Gráfico de Moran para los residuos del modelo lineal para el indicador <code>ia.areas.dist</code>
+</p>
+</div>
+<p>Los mapas de LISA para los residuos de ambos modelos con la matriz <span class="math inline">\(W_q\)</span> se muestran a continuación.</p>
+<div class="figure"><span id="fig:mapas-lisa-resev-wq"></span>
+<img src="tesis-unigis_files/figure-html/mapas-lisa-resev-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de los residuos de los modelos lineales para los indicadores de acceso a EV" width="100%" /><img src="tesis-unigis_files/figure-html/mapas-lisa-resev-wq-2.png" alt="Mapas LISA para la matriz $W_q$ de los residuos de los modelos lineales para los indicadores de acceso a EV" width="100%" />
+<p class="caption">
+Figura 4.49: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de los residuos de los modelos lineales para los indicadores de acceso a EV
+</p>
+</div>
+</div>
+</div>
+<div id="ajuste-de-modelos-espaciales-ev" class="section level4">
+<h4><span class="header-section-number">4.2.3.3</span> Ajuste de modelos espaciales EV</h4>
+<p>Probamos los 4 tipos de modelos con la matriz <span class="math inline">\(W_q\)</span> que resultó capturar mejor la asociación espacial en los datos y comparamos sus resultados.</p>
+<div id="porcentaje-de-espacio-verde" class="section level5">
+<h5><span class="header-section-number">4.2.3.3.1</span> Porcentaje de espacio verde</h5>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SAR</span>
+
+sar.areas_ep &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.area_ep.ptje.sel), <span class="dt">data =</span> lm.area_ep.ptje.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+
+sar.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sar.areas_ep, <span class="dt">Nagelkerke =</span> T)
+sar.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.area_ep.ptje.sel), data = lm.area_ep.ptje.sel$model, 
+##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.273098 -0.040970 -0.014876  0.019167  0.707957 
+## 
+## Type: lag 
+## Coefficients: (asymptotic standard errors) 
+##                          Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)             0.0388741  0.0073986  5.2542 1.486e-07
+## cuarto.porcentaje.mxn  -0.0807630  0.0376324 -2.1461   0.03186
+## area_media_manzana.mxn  0.7335412  0.0654545 11.2069 &lt; 2.2e-16
+## 
+## Rho: 0.15309, LR test value: 4.5439, p-value: 0.033036
+## Asymptotic standard error: 0.072979
+##     z-value: 2.0977, p-value: 0.03593
+## Wald statistic: 4.4004, p-value: 0.03593
+## 
+## Log likelihood: 375.1965 for lag model
+## ML residual variance (sigma squared): 0.0059579, (sigma: 0.077187)
+## Nagelkerke pseudo-R-squared: 0.31043 
+## Number of observations: 329 
+## Number of parameters estimated: 5 
+## AIC: -740.39, (AIC for lm: -737.85)
+## LM test for residual autocorrelation
+## test value: 5.7788, p-value: 0.016221</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SEM</span>
+sem.areas_ep &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.area_ep.ptje.sel), <span class="dt">data =</span> lm.area_ep.ptje.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+sem.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sem.areas_ep, <span class="dt">Nagelkerke =</span> T)
+sem.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## errorsarlm(formula = as.formula(lm.area_ep.ptje.sel), data = lm.area_ep.ptje.sel$model, 
+##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.279173 -0.039125 -0.014652  0.021290  0.708489 
+## 
+## Type: error 
+## Coefficients: (asymptotic standard errors) 
+##                          Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)             0.0491056  0.0069003  7.1165 1.107e-12
+## cuarto.porcentaje.mxn  -0.0979094  0.0415838 -2.3545   0.01855
+## area_media_manzana.mxn  0.7712382  0.0653415 11.8032 &lt; 2.2e-16
+## 
+## Lambda: 0.25902, LR test value: 10.215, p-value: 0.0013934
+## Asymptotic standard error: 0.078665
+##     z-value: 3.2928, p-value: 0.00099206
+## Wald statistic: 10.842, p-value: 0.00099206
+## 
+## Log likelihood: 378.0319 for error model
+## ML residual variance (sigma squared): 0.0058066, (sigma: 0.076201)
+## Nagelkerke pseudo-R-squared: 0.32222 
+## Number of observations: 329 
+## Number of parameters estimated: 5 
+## AIC: -746.06, (AIC for lm: -737.85)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SD</span>
+
+sd.areas_ep &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.area_ep.ptje.sel), <span class="dt">data =</span> lm.area_ep.ptje.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>, <span class="dt">type =</span> <span class="st">&quot;mixed&quot;</span>)
+sd.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sd.areas_ep, <span class="dt">Nagelkerke =</span> T)
+sd.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.area_ep.ptje.sel), data = lm.area_ep.ptje.sel$model, 
+##     listw = W_queen.ev, type = &quot;mixed&quot;, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.281818 -0.041196 -0.015641  0.025087  0.701126 
+## 
+## Type: mixed 
+## Coefficients: (asymptotic standard errors) 
+##                              Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept)                 0.0377326  0.0086946  4.3398 1.426e-05
+## cuarto.porcentaje.mxn      -0.1366936  0.0544000 -2.5128  0.011979
+## area_media_manzana.mxn      0.7929675  0.0665592 11.9137 &lt; 2.2e-16
+## lag.cuarto.porcentaje.mxn   0.0985071  0.0829144  1.1881  0.234811
+## lag.area_media_manzana.mxn -0.3647870  0.1326357 -2.7503  0.005954
+## 
+## Rho: 0.26168, LR test value: 10.614, p-value: 0.0011222
+## Asymptotic standard error: 0.078409
+##     z-value: 3.3374, p-value: 0.0008458
+## Wald statistic: 11.138, p-value: 0.0008458
+## 
+## Log likelihood: 379.4362 for mixed model
+## ML residual variance (sigma squared): 0.0057556, (sigma: 0.075866)
+## Nagelkerke pseudo-R-squared: 0.32798 
+## Number of observations: 329 
+## Number of parameters estimated: 7 
+## AIC: -744.87, (AIC for lm: -736.26)
+## LM test for residual autocorrelation
+## test value: 1.9206, p-value: 0.16579</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SLX</span>
+slx.areas_ep &lt;-<span class="st"> </span><span class="kw">lmSLX</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.area_ep.ptje.sel), <span class="dt">data =</span> lm.area_ep.ptje.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T)
+
+slx.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(slx.areas_ep)
+slx.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x - 1, weights = weights)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.26922 -0.04573 -0.01615  0.02428  0.69203 
+## 
+## Coefficients:
+##                              Estimate Std. Error t value Pr(&gt;|t|)    
+## x(Intercept)                 0.050863   0.007944   6.402 5.37e-10 ***
+## xcuarto.porcentaje.mxn      -0.133837   0.056072  -2.387   0.0176 *  
+## xarea_media_manzana.mxn      0.776764   0.068460  11.346  &lt; 2e-16 ***
+## xlag.cuarto.porcentaje.mxn   0.066635   0.085226   0.782   0.4349    
+## xlag.area_media_manzana.mxn -0.158851   0.124959  -1.271   0.2046    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.0782 on 324 degrees of freedom
+## Multiple R-squared:  0.5316, Adjusted R-squared:  0.5243 
+## F-statistic: 73.53 on 5 and 324 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(slx.areas_ep)</code></pre></div>
+<pre><code>## [1] -736.2582</code></pre>
+<table>
+<caption><span id="tab:tabla-comp-modelos-areaep">Tabla 4.6: </span>Metricas de ajuste para los modelos de porcentaje de área de EV</caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">OLS</th>
+<th align="right">SLX</th>
+<th align="right">SAR</th>
+<th align="right">SEM</th>
+<th align="right">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Globla Moran’I</td>
+<td align="right">0.11636</td>
+<td align="right">0.12094</td>
+<td align="right">0.04015</td>
+<td align="right">-0.00817</td>
+<td align="right">-0.00602</td>
+</tr>
+<tr class="even">
+<td align="left">GMI p-value</td>
+<td align="right">0.00014</td>
+<td align="right">0.00008</td>
+<td align="right">0.09378</td>
+<td align="right">0.56220</td>
+<td align="right">0.53618</td>
+</tr>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.76782</td>
+<td align="right">0.77525</td>
+<td align="right">0.76040</td>
+<td align="right">0.75813</td>
+<td align="right">0.76159</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">12.98572</td>
+<td align="right">14.59961</td>
+<td align="right">13.97239</td>
+<td align="right">11.07822</td>
+<td align="right">13.54161</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.00151</td>
+<td align="right">0.00561</td>
+<td align="right">0.00092</td>
+<td align="right">0.00393</td>
+<td align="right">0.00891</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.00607</td>
+<td align="right">0.00602</td>
+<td align="right">0.00596</td>
+<td align="right">0.00581</td>
+<td align="right">0.00576</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.29656</td>
+<td align="right">0.52434</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Nagelkerke pseudo-R-squared</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">0.31043</td>
+<td align="right">0.32222</td>
+<td align="right">0.32798</td>
+</tr>
+<tr class="odd">
+<td align="left">AIC</td>
+<td align="right">-737.84913</td>
+<td align="right">-736.25817</td>
+<td align="right">-740.39306</td>
+<td align="right">-746.06371</td>
+<td align="right">-744.87233</td>
+</tr>
+<tr class="even">
+<td align="left">Log likelihood</td>
+<td align="right">372.92456</td>
+<td align="right">374.12908</td>
+<td align="right">375.19653</td>
+<td align="right">378.03185</td>
+<td align="right">379.43617</td>
+</tr>
+</tbody>
+</table>
+<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SEM con el mejor AIC. El modelo SEM logra eliminar la autocorrelación espacial global en los residuos, al igual que SD (ver figura <a href="results.html#fig:moranplot-resmodel-areaep-all-wq">4.50</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\lambda\)</span> de las estimaciones con términos autorregresivos es significativo, esto sugiere que no es necesario plantear efectos distintivos de la variables dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas, pero no genera ningún efecto de derrame en el acceso a espacios verdes de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
+<div class="figure"><span id="fig:moranplot-resmodel-areaep-all-wq"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-1.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-2.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-3.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-4.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" />
+<p class="caption">
+Figura 4.50: Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV <span class="math inline">\(W_{q}\)</span>
+</p>
+</div>
+<div class="figure"><span id="fig:diag-model-areaep-espaciales"></span>
+<img src="tesis-unigis_files/figure-html/diag-model-areaep-espaciales-1.png" alt="Diagnóstico comparativo entre modelos" width="100%" />
+<p class="caption">
+Figura 4.51: Diagnóstico comparativo entre modelos
+</p>
+</div>
+</div>
+<div id="indice-de-acceso-area-distancia" class="section level5">
+<h5><span class="header-section-number">4.2.3.3.2</span> Índice de acceso área-distancia</h5>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SAR</span>
+
+sar.areas.dist &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.ia.areas.dist.sel), <span class="dt">data =</span> lm.ia.areas.dist.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+
+sar.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sar.areas.dist, <span class="dt">Nagelkerke =</span> T)
+sar.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.ia.areas.dist.sel), data = lm.ia.areas.dist.sel$model, 
+##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.2780316 -0.0122483 -0.0042047  0.0053984  0.4480937 
+## 
+## Type: lag 
+## Coefficients: (asymptotic standard errors) 
+##                                        Estimate Std. Error z value
+## (Intercept)                           0.0222143  0.0116341  1.9094
+## area_media_manzana.mxn                0.0405084  0.0474367  0.8539
+## cuarto.porcentaje.mxn                -0.0480580  0.0325583 -1.4761
+## unidad_economica.porcentaje.mxn       0.0543726  0.0227267  2.3925
+## densidad_poblacion.mxn               -0.0096962  0.0181819 -0.5333
+## con_alguna_limitacion.porcentaje.mxn -0.0445825  0.0220078 -2.0258
+## ningun_estudio.porcentaje.mxn         0.0419333  0.0295313  1.4200
+##                                      Pr(&gt;|z|)
+## (Intercept)                           0.05621
+## area_media_manzana.mxn                0.39313
+## cuarto.porcentaje.mxn                 0.13993
+## unidad_economica.porcentaje.mxn       0.01674
+## densidad_poblacion.mxn                0.59383
+## con_alguna_limitacion.porcentaje.mxn  0.04279
+## ningun_estudio.porcentaje.mxn         0.15562
+## 
+## Rho: 0.81872, LR test value: 325.38, p-value: &lt; 2.22e-16
+## Asymptotic standard error: 0.032949
+##     z-value: 24.848, p-value: &lt; 2.22e-16
+## Wald statistic: 617.41, p-value: &lt; 2.22e-16
+## 
+## Log likelihood: 471.3541 for lag model
+## ML residual variance (sigma squared): 0.0027833, (sigma: 0.052757)
+## Nagelkerke pseudo-R-squared: 0.70508 
+## Number of observations: 329 
+## Number of parameters estimated: 9 
+## AIC: -924.71, (AIC for lm: -601.32)
+## LM test for residual autocorrelation
+## test value: 90.367, p-value: &lt; 2.22e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SEM</span>
+sem.areas.dist &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.ia.areas.dist.sel), <span class="dt">data =</span> lm.ia.areas.dist.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>)
+sem.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sem.areas.dist, <span class="dt">Nagelkerke =</span> T)
+sem.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## errorsarlm(formula = as.formula(lm.ia.areas.dist.sel), data = lm.ia.areas.dist.sel$model, 
+##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.2739137 -0.0131061 -0.0043052  0.0043362  0.4534217 
+## 
+## Type: error 
+## Coefficients: (asymptotic standard errors) 
+##                                        Estimate Std. Error z value
+## (Intercept)                           0.0715688  0.0256916  2.7857
+## area_media_manzana.mxn               -0.0984051  0.0471448 -2.0873
+## cuarto.porcentaje.mxn                 0.0015127  0.0445226  0.0340
+## unidad_economica.porcentaje.mxn       0.0644496  0.0292204  2.2056
+## densidad_poblacion.mxn               -0.0168968  0.0228046 -0.7409
+## con_alguna_limitacion.porcentaje.mxn -0.0379299  0.0242676 -1.5630
+## ningun_estudio.porcentaje.mxn         0.0181776  0.0426649  0.4261
+##                                      Pr(&gt;|z|)
+## (Intercept)                          0.005342
+## area_media_manzana.mxn               0.036861
+## cuarto.porcentaje.mxn                0.972897
+## unidad_economica.porcentaje.mxn      0.027410
+## densidad_poblacion.mxn               0.458730
+## con_alguna_limitacion.porcentaje.mxn 0.118056
+## ningun_estudio.porcentaje.mxn        0.670068
+## 
+## Lambda: 0.85804, LR test value: 320.82, p-value: &lt; 2.22e-16
+## Asymptotic standard error: 0.029167
+##     z-value: 29.418, p-value: &lt; 2.22e-16
+## Wald statistic: 865.41, p-value: &lt; 2.22e-16
+## 
+## Log likelihood: 469.0722 for error model
+## ML residual variance (sigma squared): 0.0027445, (sigma: 0.052388)
+## Nagelkerke pseudo-R-squared: 0.70096 
+## Number of observations: 329 
+## Number of parameters estimated: 9 
+## AIC: -920.14, (AIC for lm: -601.32)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SD</span>
+
+sd.areas.dist &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.ia.areas.dist.sel), <span class="dt">data =</span> lm.ia.areas.dist.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T, <span class="dt">tol.solve =</span> <span class="fl">1e-30</span>, <span class="dt">type =</span> <span class="st">&quot;mixed&quot;</span>)
+sd.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(sd.areas.dist, <span class="dt">Nagelkerke =</span> T)
+sd.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lagsarlm(formula = as.formula(lm.ia.areas.dist.sel), data = lm.ia.areas.dist.sel$model, 
+##     listw = W_queen.ev, type = &quot;mixed&quot;, zero.policy = T, tol.solve = 1e-30)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.2816309 -0.0138513 -0.0016856  0.0080895  0.4185725 
+## 
+## Type: mixed 
+## Coefficients: (asymptotic standard errors) 
+##                                             Estimate  Std. Error z value
+## (Intercept)                              -0.01783647  0.01770210 -1.0076
+## area_media_manzana.mxn                    0.02936373  0.05041803  0.5824
+## cuarto.porcentaje.mxn                    -0.00306343  0.04350159 -0.0704
+## unidad_economica.porcentaje.mxn           0.06683674  0.02814454  2.3748
+## densidad_poblacion.mxn                   -0.00520232  0.02224585 -0.2339
+## con_alguna_limitacion.porcentaje.mxn     -0.04263328  0.02319303 -1.8382
+## ningun_estudio.porcentaje.mxn             0.03469916  0.04147606  0.8366
+## lag.area_media_manzana.mxn                0.73732180  0.10534926  6.9988
+## lag.cuarto.porcentaje.mxn                -0.08904581  0.06971761 -1.2772
+## lag.unidad_economica.porcentaje.mxn       0.01183435  0.04319296  0.2740
+## lag.densidad_poblacion.mxn                0.02328887  0.03742061  0.6224
+## lag.con_alguna_limitacion.porcentaje.mxn -0.00095268  0.04277167 -0.0223
+## lag.ningun_estudio.porcentaje.mxn         0.08486275  0.06097300  1.3918
+##                                           Pr(&gt;|z|)
+## (Intercept)                                0.31365
+## area_media_manzana.mxn                     0.56029
+## cuarto.porcentaje.mxn                      0.94386
+## unidad_economica.porcentaje.mxn            0.01756
+## densidad_poblacion.mxn                     0.81510
+## con_alguna_limitacion.porcentaje.mxn       0.06603
+## ningun_estudio.porcentaje.mxn              0.40281
+## lag.area_media_manzana.mxn               2.581e-12
+## lag.cuarto.porcentaje.mxn                  0.20152
+## lag.unidad_economica.porcentaje.mxn        0.78409
+## lag.densidad_poblacion.mxn                 0.53371
+## lag.con_alguna_limitacion.porcentaje.mxn   0.98223
+## lag.ningun_estudio.porcentaje.mxn          0.16398
+## 
+## Rho: 0.70879, LR test value: 213.29, p-value: &lt; 2.22e-16
+## Asymptotic standard error: 0.041987
+##     z-value: 16.881, p-value: &lt; 2.22e-16
+## Wald statistic: 284.97, p-value: &lt; 2.22e-16
+## 
+## Log likelihood: 499.677 for mixed model
+## ML residual variance (sigma squared): 0.0024857, (sigma: 0.049857)
+## Nagelkerke pseudo-R-squared: 0.75173 
+## Number of observations: 329 
+## Number of parameters estimated: 15 
+## AIC: -969.35, (AIC for lm: -758.06)
+## LM test for residual autocorrelation
+## test value: 43.015, p-value: 5.4335e-11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># SLX</span>
+slx.areas.dist &lt;-<span class="st"> </span><span class="kw">lmSLX</span>(<span class="dt">formula =</span> <span class="kw">as.formula</span>(lm.ia.areas.dist.sel), <span class="dt">data =</span> lm.ia.areas.dist.sel<span class="op">$</span>model, 
+    <span class="dt">listw =</span> W_queen.ev, <span class="dt">zero.policy =</span> T)
+
+slx.sm &lt;-<span class="st"> </span><span class="kw">summary</span>(slx.areas.dist)
+slx.sm</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x - 1, weights = weights)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.32181 -0.02997 -0.00644  0.01483  0.58277 
+## 
+## Coefficients:
+##                                            Estimate Std. Error t value
+## x(Intercept)                               0.032545   0.026528   1.227
+## xarea_media_manzana.mxn                    0.316823   0.070305   4.506
+## xcuarto.porcentaje.mxn                    -0.049277   0.065171  -0.756
+## xunidad_economica.porcentaje.mxn           0.063792   0.042200   1.512
+## xdensidad_poblacion.mxn                    0.012811   0.033332   0.384
+## xcon_alguna_limitacion.porcentaje.mxn     -0.058996   0.034711  -1.700
+## xningun_estudio.porcentaje.mxn             0.076113   0.062079   1.226
+## xlag.area_media_manzana.mxn                1.508539   0.142559  10.582
+## xlag.cuarto.porcentaje.mxn                -0.261660   0.103093  -2.538
+## xlag.unidad_economica.porcentaje.mxn       0.177661   0.062842   2.827
+## xlag.densidad_poblacion.mxn                0.002892   0.056115   0.052
+## xlag.con_alguna_limitacion.porcentaje.mxn -0.206310   0.063527  -3.248
+## xlag.ningun_estudio.porcentaje.mxn         0.351589   0.090015   3.906
+##                                           Pr(&gt;|t|)    
+## x(Intercept)                              0.220801    
+## xarea_media_manzana.mxn                    9.3e-06 ***
+## xcuarto.porcentaje.mxn                    0.450140    
+## xunidad_economica.porcentaje.mxn          0.131617    
+## xdensidad_poblacion.mxn                   0.700989    
+## xcon_alguna_limitacion.porcentaje.mxn     0.090182 .  
+## xningun_estudio.porcentaje.mxn            0.221088    
+## xlag.area_media_manzana.mxn                &lt; 2e-16 ***
+## xlag.cuarto.porcentaje.mxn                0.011626 *  
+## xlag.unidad_economica.porcentaje.mxn      0.004996 ** 
+## xlag.densidad_poblacion.mxn               0.958926    
+## xlag.con_alguna_limitacion.porcentaje.mxn 0.001289 ** 
+## xlag.ningun_estudio.porcentaje.mxn        0.000115 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.07476 on 316 degrees of freedom
+## Multiple R-squared:  0.6236, Adjusted R-squared:  0.6081 
+## F-statistic: 40.27 on 13 and 316 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(slx.areas.dist)</code></pre></div>
+<pre><code>## [1] -758.0636</code></pre>
+<table>
+<caption><span id="tab:tabla-comp-modelos-areasdist">Tabla 4.7: </span>Metricas de ajuste para los modelos de áreas-distancia de EV</caption>
+<thead>
+<tr class="header">
+<th align="left">medidasfit</th>
+<th align="right">OLS</th>
+<th align="right">SLX</th>
+<th align="right">SAR</th>
+<th align="right">SEM</th>
+<th align="right">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Globla Moran’I</td>
+<td align="right">0.58535</td>
+<td align="right">0.53678</td>
+<td align="right">-0.18235</td>
+<td align="right">-0.17202</td>
+<td align="right">-0.12515</td>
+</tr>
+<tr class="even">
+<td align="left">GMI p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">1.00000</td>
+<td align="right">1.00000</td>
+<td align="right">0.99991</td>
+</tr>
+<tr class="odd">
+<td align="left">Shapiro-Wilk</td>
+<td align="right">0.57372</td>
+<td align="right">0.66730</td>
+<td align="right">0.51412</td>
+<td align="right">0.50303</td>
+<td align="right">0.61029</td>
+</tr>
+<tr class="even">
+<td align="left">SW p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Breusch-Pagan</td>
+<td align="right">57.30768</td>
+<td align="right">63.03543</td>
+<td align="right">20.13534</td>
+<td align="right">6.43731</td>
+<td align="right">81.79722</td>
+</tr>
+<tr class="even">
+<td align="left">BP p-value</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00262</td>
+<td align="right">0.37602</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="odd">
+<td align="left">Media Residuos</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+</tr>
+<tr class="even">
+<td align="left">MSE</td>
+<td align="right">0.00897</td>
+<td align="right">0.00537</td>
+<td align="right">0.00278</td>
+<td align="right">0.00274</td>
+<td align="right">0.00249</td>
+</tr>
+<tr class="odd">
+<td align="left">adj-Rsquare</td>
+<td align="right">0.19231</td>
+<td align="right">0.60810</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Nagelkerke pseudo-R-squared</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">0.70508</td>
+<td align="right">0.70096</td>
+<td align="right">0.75173</td>
+</tr>
+<tr class="odd">
+<td align="left">AIC</td>
+<td align="right">-601.32470</td>
+<td align="right">-758.06361</td>
+<td align="right">-924.70818</td>
+<td align="right">-920.14450</td>
+<td align="right">-969.35400</td>
+</tr>
+<tr class="even">
+<td align="left">Log likelihood</td>
+<td align="right">308.66235</td>
+<td align="right">393.03180</td>
+<td align="right">471.35409</td>
+<td align="right">469.07225</td>
+<td align="right">499.67700</td>
+</tr>
+</tbody>
+</table>
+<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SD con el mejor AIC. El modelo SD logra eliminar la autocorrelación espacial global en los residuos al exhibir un valor de significancia mucho mayor que 0.05, al igual que SEM y SAR (ver figura <a href="results.html#fig:moranplot-resmodel-areasdist-all-wq">4.52</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\rho\)</span> de las estimaciones con términos autorregresivos es significativo, esto sugiere que una parte de los efectos de derrame de las variables significativas (<code>lag.area_media_manzana</code>, <code>unidad_economica.porcentaje</code>) en el acceso a espacios verdes de los sectores vecinos explica bien los grupos que se forman. Es posible que estar cerca de un sector con manzanas grandes y que tal vez sus parque pueden ser más grandes explica la influencia positiva en el acceso p.e. de tener equipamientos de ciudad grandes en algún sector aledaño. En el modelo SD una parte de la mejora en el ajuste puede puede provenir de dimensiones no modeladas. Los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
+<div class="figure"><span id="fig:moranplot-resmodel-areasdist-all-wq"></span>
+<img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-1.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-2.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-3.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-4.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" />
+<p class="caption">
+Figura 4.52: Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia <span class="math inline">\(W_{q}\)</span>
+</p>
+</div>
+<div class="figure"><span id="fig:diag-model-areasdist-espaciales"></span>
+<img src="tesis-unigis_files/figure-html/diag-model-areasdist-espaciales-1.png" alt="Diagnóstico comparativo entre modelos" width="100%" />
+<p class="caption">
+Figura 4.53: Diagnóstico comparativo entre modelos
+</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="meto.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/resultados.Rmd",
+"text": "Edit"
+},
+"download": ["tesis-unigis.pdf", "tesis-unigis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

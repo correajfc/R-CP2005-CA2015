@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</title>
+  <meta name="description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  <meta name="github-repo" content="correajfc/unigis-tesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
+  
+  <meta name="twitter:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  
+
+<meta name="author" content="Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)">
+<meta name="author" content="Universidad de Salzburgo">
+
+
+<meta name="date" content="2018-03-19">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="revlit.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Trabajo de Grado UNIGIS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="chapter" data-level="" data-path="agradecimientos.html"><a href="agradecimientos.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
+<li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="antecedentes.html"><a href="antecedentes.html"><i class="fa fa-check"></i><b>2</b> Antecedentes</a><ul>
+<li class="chapter" data-level="2.1" data-path="antecedentes.html"><a href="antecedentes.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="antecedentes.html"><a href="antecedentes.html#objetivo-general"><i class="fa fa-check"></i><b>2.1.1</b> Objetivo general</a></li>
+<li class="chapter" data-level="2.1.2" data-path="antecedentes.html"><a href="antecedentes.html#objetivos-especificos"><i class="fa fa-check"></i><b>2.1.2</b> Objetivos específicos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="antecedentes.html"><a href="antecedentes.html#preguntas-de-investigacion"><i class="fa fa-check"></i><b>2.2</b> Preguntas de investigación</a></li>
+<li class="chapter" data-level="2.3" data-path="antecedentes.html"><a href="antecedentes.html#hipotesis"><i class="fa fa-check"></i><b>2.3</b> Hipótesis</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="antecedentes.html"><a href="antecedentes.html#beneficios-del-arbolado-urbano"><i class="fa fa-check"></i><b>2.3.1</b> Beneficios del arbolado urbano</a></li>
+<li class="chapter" data-level="2.3.2" data-path="antecedentes.html"><a href="antecedentes.html#hipotesis-alternas"><i class="fa fa-check"></i><b>2.3.2</b> Hipótesis alternas</a></li>
+<li class="chapter" data-level="2.3.3" data-path="antecedentes.html"><a href="antecedentes.html#predicciones"><i class="fa fa-check"></i><b>2.3.3</b> Predicciones</a></li>
+<li class="chapter" data-level="2.3.4" data-path="antecedentes.html"><a href="antecedentes.html#acceso-a-espacios-verdes"><i class="fa fa-check"></i><b>2.3.4</b> Acceso a espacios verdes</a></li>
+<li class="chapter" data-level="2.3.5" data-path="antecedentes.html"><a href="antecedentes.html#hipotesis-alternas-1"><i class="fa fa-check"></i><b>2.3.5</b> Hipótesis alternas</a></li>
+<li class="chapter" data-level="2.3.6" data-path="antecedentes.html"><a href="antecedentes.html#predicciones-1"><i class="fa fa-check"></i><b>2.3.6</b> Predicciones</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="antecedentes.html"><a href="antecedentes.html#justificacion"><i class="fa fa-check"></i><b>2.4</b> Justificación</a></li>
+<li class="chapter" data-level="2.5" data-path="antecedentes.html"><a href="antecedentes.html#alcance"><i class="fa fa-check"></i><b>2.5</b> Alcance</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="revlit.html"><a href="revlit.html"><i class="fa fa-check"></i><b>3</b> Revisión de la literatura</a><ul>
+<li class="chapter" data-level="3.1" data-path="revlit.html"><a href="revlit.html#servicios-ecosistemicos-y-su-valoracion"><i class="fa fa-check"></i><b>3.1</b> Servicios ecosistémicos y su valoración</a></li>
+<li class="chapter" data-level="3.2" data-path="revlit.html"><a href="revlit.html#la-perspectiva-de-la-justicia-ambiental"><i class="fa fa-check"></i><b>3.2</b> La perspectiva de la justicia ambiental</a></li>
+<li class="chapter" data-level="3.3" data-path="revlit.html"><a href="revlit.html#modelamiento-y-analisis-espacial-de-variables-ambientales-y-sociales"><i class="fa fa-check"></i><b>3.3</b> Modelamiento y análisis espacial de variables ambientales y sociales</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="revlit.html"><a href="revlit.html#enfoque-estadistico"><i class="fa fa-check"></i><b>3.3.1</b> Enfoque estadístico</a></li>
+<li class="chapter" data-level="3.3.2" data-path="revlit.html"><a href="revlit.html#enfoque-geoestadistico"><i class="fa fa-check"></i><b>3.3.2</b> Enfoque geoestadístico</a></li>
+<li class="chapter" data-level="3.3.3" data-path="revlit.html"><a href="revlit.html#otras-tecnicas"><i class="fa fa-check"></i><b>3.3.3</b> Otras técnicas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="meto.html"><a href="meto.html"><i class="fa fa-check"></i><b>4</b> Metodología</a><ul>
+<li class="chapter" data-level="4.1" data-path="meto.html"><a href="meto.html#area-de-estudio"><i class="fa fa-check"></i><b>4.1</b> Área de estudio</a></li>
+<li class="chapter" data-level="4.2" data-path="meto.html"><a href="meto.html#datos"><i class="fa fa-check"></i><b>4.2</b> Datos</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="meto.html"><a href="meto.html#datos-de-registros-oficiales-del-municipio"><i class="fa fa-check"></i><b>4.2.1</b> Datos de registros oficiales del municipio</a></li>
+<li class="chapter" data-level="4.2.2" data-path="meto.html"><a href="meto.html#el-censo-arboreo"><i class="fa fa-check"></i><b>4.2.2</b> El censo arbóreo</a></li>
+<li class="chapter" data-level="4.2.3" data-path="meto.html"><a href="meto.html#el-censo-de-poblacion"><i class="fa fa-check"></i><b>4.2.3</b> El censo de población</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>4.3</b> Métodos y técnicas</a></li>
+<li class="chapter" data-level="4.4" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>4.4</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="4.5" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>4.5</b> Cálculo de métricas de acceso a servicios ambientales</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="meto.html"><a href="meto.html#indices-de-acceso-a-espacios-verdes"><i class="fa fa-check"></i><b>4.5.1</b> Índices de acceso a espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>4.6</b> Cálculo de métricas de sobre la población</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="meto.html"><a href="meto.html#caracteristicas-de-la-poblacion"><i class="fa fa-check"></i><b>4.6.1</b> Características de la población</a></li>
+<li class="chapter" data-level="4.6.2" data-path="meto.html"><a href="meto.html#caracteristicas-de-las-viviendas"><i class="fa fa-check"></i><b>4.6.2</b> Características de las viviendas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>4.7</b> Criterios y selección de sectores censales</a></li>
+<li class="chapter" data-level="4.8" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-y-regresiones-lineales"><i class="fa fa-check"></i><b>4.8</b> Selección de variables dependientes y regresiones lineales</a></li>
+<li class="chapter" data-level="4.9" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>4.9</b> Análisis geoestadísticos</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="meto.html"><a href="meto.html#matrices-de-vecindad"><i class="fa fa-check"></i><b>4.9.1</b> Matrices de vecindad</a></li>
+<li class="chapter" data-level="4.9.2" data-path="meto.html"><a href="meto.html#autocorrelacion-espacial"><i class="fa fa-check"></i><b>4.9.2</b> Autocorrelación espacial</a></li>
+<li class="chapter" data-level="4.9.3" data-path="meto.html"><a href="meto.html#ajuste-de-modelos-espaciales"><i class="fa fa-check"></i><b>4.9.3</b> Ajuste de modelos espaciales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Resultados</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#modelando-la-cobertura-de-copa"><i class="fa fa-check"></i><b>5.1</b> Modelando la cobertura de copa</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="results.html"><a href="results.html#correlaciones-y-graficos-de-dispersion-bivariados"><i class="fa fa-check"></i><b>5.1.1</b> Correlaciones y gráficos de dispersión bivariados</a></li>
+<li class="chapter" data-level="5.1.2" data-path="results.html"><a href="results.html#modelos-de-regresion-lineal"><i class="fa fa-check"></i><b>5.1.2</b> Modelos de regresión lineal</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#modelado-espacial-au"><i class="fa fa-check"></i><b>5.2</b> Modelado espacial AU</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="results.html"><a href="results.html#variables-dependientes"><i class="fa fa-check"></i><b>5.2.1</b> Variables dependientes</a></li>
+<li class="chapter" data-level="5.2.2" data-path="results.html"><a href="results.html#residuos-de-los-ols"><i class="fa fa-check"></i><b>5.2.2</b> Residuos de los OLS</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#acceso-a-espacios-verdes-1"><i class="fa fa-check"></i><b>5.3</b> Acceso a espacios verdes</a></li>
+<li class="chapter" data-level="5.4" data-path="results.html"><a href="results.html#modelado-espacial-de-espacios-verdes"><i class="fa fa-check"></i><b>5.4</b> Modelado espacial de espacios verdes</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="results.html"><a href="results.html#matrices-de-vecindad-1"><i class="fa fa-check"></i><b>5.4.1</b> Matrices de vecindad</a></li>
+<li class="chapter" data-level="5.4.2" data-path="results.html"><a href="results.html#autocorrelacion-espacial-1"><i class="fa fa-check"></i><b>5.4.2</b> Autocorrelación espacial</a></li>
+<li class="chapter" data-level="5.4.3" data-path="results.html"><a href="results.html#ajuste-de-modelos-espaciales-ev"><i class="fa fa-check"></i><b>5.4.3</b> Ajuste de modelos espaciales EV</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="discusion.html"><a href="discusion.html"><i class="fa fa-check"></i><b>6</b> Discusión</a><ul>
+<li class="chapter" data-level="6.1" data-path="discusion.html"><a href="discusion.html#sobre-la-cobertura-de-copa"><i class="fa fa-check"></i><b>6.1</b> Sobre la cobertura de copa</a></li>
+<li class="chapter" data-level="6.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>6.2</b> Sobre los espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>7</b> Conclusiones</a></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="antecedentes" class="section level1">
+<h1><span class="header-section-number">Capítulo 2</span> Antecedentes</h1>
+<p>Los árboles son pieza clave de los ecosistemas donde la vida humana ha prosperado. Son hogar y fuente de alimento de muchas especies <span class="citation">(Osorio and Molina <a href="#ref-osorio_vuelo_2009">2009</a>)</span>; forman espacios con condiciones climáticas y funcionales que complejizan el paisaje y las posibles relaciones entre los animales <span class="citation">(Chapman and Onderdonk <a href="#ref-chapman_forests_1998">1998</a>)</span>. Se puede ubicar la década de los 70 el inicio de un pensamiento ambiental que empieza a ser relevante en el discurso económico mundial<span class="citation">(Leff <a href="#ref-leff_pensamiento_2012">2012</a>)</span> y que se consolida con la publicación del Informe Brundtland en 1987. Sin embargo, las preocupaciones sobre la sostenibilidad y conservación de los ecosistemas que sustentan la vida en el planeta son relativamente nuevas en la economía mundial, si la comparamos con la simbiosis entre árboles y humanos que dan origen a la agricultura y lo convierten en un elemento simbólico de gran riqueza en el universo religioso y cultural de la humanidad <span class="citation">(León Calle and others <a href="#ref-leon_calle_arboles_2011">2011</a>)</span>.</p>
+<p>El hombre ha materializado espacios urbanos con dimensiones que retan la imaginación y llevan al límite los sistemas de infraestructura, abastecimiento y gobernabilidad. En la empresa de consolidar antroposferas, las ciudades que construimos han desplazados muchos de los ecosistemas naturales de los territorios que fueron la razón de escoger justamente esos sitios para el asentamiento, trasladándolos más allá de los límites de la ciudad, atenuando su presencia/visibilidad en el mundo de los ciudadanos. Son reemplazados por vías, zonas verdes, áreas industriales, comerciales y residenciales<span class="citation">(Azócar et al. <a href="#ref-azocar_urbanization_2007">2007</a>)</span>.</p>
+<p>Las preocupaciones sobre el crecimiento de la población mundial, su concentración en centros urbanos y las transformaciones que trae consigo el proceso de cambio climático, nos obligan a pensar en cómo maximizar los beneficios que nos brindan las zonas verdes y el bosque urbano como estrategia para mitigar los efectos negativos de estos procesos <span class="citation">(Nesbitt and Meitner <a href="#ref-nesbitt_exploring_2016">2016</a>; Laredo and Mirtha <a href="#ref-laredo_gestion_2011">2011</a>)</span>. A este escenario se suma trabajos como <span class="citation">(Nowak and Greenfield <a href="#ref-nowak_tree_2012">2012</a>)</span> que revelan patrones de decaimiento estadísticamente significativos del arbolado urbano en 17 de 20 ciudades norteamericanas o <span class="citation">(Restrepo et al. <a href="#ref-restrepo_incidence_2015">2015</a>)</span> que reporta la reducción de las condiciones de vitalidad del arbolado del Valle de Aburra en Colombia derivado de la interacción de causas naturales y antrópicas, las cuales afectan directa o indirectamente la fisiología y salud de los árboles en los espacios urbanos. <span class="citation">Nowak and Greenfield (<a href="#ref-nowak_tree_2012">2012</a>)</span> se pregunta si los administradores locales conocen los cambios que presenta las coberturas arbóreas, puesto que esta es una representación simple pero confiable (y ampliamente aceptada) para tasar la extensión de los beneficios derivados de los bosque urbanos, dado que los servicio que proveen los árboles están relacionados con la salud y el funcionamiento de sus hojas.</p>
+<p>El desarrollo urbano de Cali se fue dando en forma de barrios. Cali entra al siglo XX con unos de 25000 habitantes y una 100 hectáreas <span class="citation">(Vásquez <a href="#ref-vasquez_historia_1990">1990</a>)</span>; en 2005 tiene una población 2200000 habitantes según el Censo de Población del 2005 y una área urbana 12.101.326 hectáreas. Durante todo este siglo experimenta un rápido crecimiento demográfico, rápida expansión y crecimiento de la vivienda por las migraciones, causadas en gran medida por los fenómeno de desplazamiento por conflictos en las áreas rurales y el fortalecimiento de la industria y el empleo en las ciudad <span class="citation">(Vásquez <a href="#ref-vasquez_historia_1990">1990</a>)</span>. Este contexto de crecimiento vertiginoso y no planificado, y las transformaciones del paisaje e intervención de los ecosistemas coincide con la necesidades y preocupaciones para garantizar un ambiente saludable en la ciudad de Cali.</p>
+<p>La Organización Mundial de la Salud (OMS) recomienda que una ciudad tenga un árbol por cada tres habitantes, incluyendo espacios públicos y privados. Cali debería tener una población arbórea cercana a los 800.000 árboles, pero de acuerdo con los resultados del censo arbóreo de 2014–2015, se han contabilizado cerca de 290.000 árboles solo en el espacio público. La siembra de 20.000 árboles en la zona urbana, en las comunas que muestran temperaturas por muy por encima de la media (las comunas 3, 4, 5, 8 y 13) propuesta en <span class="citation">(CIAT <a href="#ref-ciat_identificacion_2015">2015</a><a href="#ref-ciat_identificacion_2015">b</a>)</span> contrasta con los 100.000 árboles que tiene como meta en Plan de Desarrollo Municipal 2016-2019; ambas cifras están lejos de impactar el déficit arbóreo de 500.000 individuos; urge la reforestación, <em>“sin embargo, la ubicación de los sitios de siembra ha sido uno de los principales inconvenientes del proyecto, ya que no existen zonas de espacio público adecuadas o disponibles para tal fin.”</em> <span class="citation">(CIAT <a href="#ref-ciat_identificacion_2015">2015</a><a href="#ref-ciat_identificacion_2015">b</a>, 19)</span></p>
+<p>En las agendas municipales, a nivel mundial, ha crecido la importancia de las relaciones y patrones de distribución de los beneficios de áreas verdes en comparación con la distribución espacial de variables sociales y económicas como el ingreso, acceso al trabajo, la etnicidad o el género, con miras a reducir las desigualdades entre los ciudadanos en el acceso y disfrute de los servicios ambientales. La definición y valoración de estos beneficios hace uso de medidas como la abundancia, la cobertura de las copas de los árboles, índices de vegetación, diferentes distancias a las zonas verdes dentro de un marco alineado con conceptos como la justicia ambiental, equidad y la sostenibilidad. Estos indicadores son calculados con datos de censos de población, encuesta de calidad de vida, censos arbóreos, imágenes satelitales, cartografías y bases de datos de entidades oficiales y académicas. Los servicios ambientales tienen cargas y costos de mantenimiento para la administración y gestión de los recursos y servicios ambientales, lo que exige que se identifique las zonas, condiciones de los recursos y de la población para la ejecución de acciones eficaces y eficientes por parte de los gobiernos y autoridades ambientales.</p>
+<p>La distribución espacial equitativa de los beneficios que proveen el arbolado urbano y las zonas verdes de espacio público, que constituyen un bien común, financiado y de responsabilidad de las administraciones municipales<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, es un componente cuantificable por medio métodos estadístico y técnicas de análisis espacial con miras a construir evidencia sobre el disfrute y acceso a los beneficios ambientales en espacios urbanos y su relación con las condiciones de vida de la población que habita ese territorio.</p>
+<div id="objetivos" class="section level2">
+<h2><span class="header-section-number">2.1</span> Objetivos</h2>
+<div id="objetivo-general" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Objetivo general</h3>
+<p>Identificar y analizar espacialmente la existencia de inequidades en el acceso a dos servicios ambientales urbanos: el acceso a espacios verdes y beneficios del arbolado, en relación con variables socioeconómicas de la población y aspectos relacionados con el uso y estructura física de las unidades geográficas censales en la zona urbana de Santiago de Cali, Colombia.</p>
+</div>
+<div id="objetivos-especificos" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Objetivos específicos</h3>
+<ul>
+<li>Generar métricas de acceso a espacios verdes y del nivel de beneficios del arbolado urbano.</li>
+<li>Identificar y caracterizar las variables sociales, económicas y estructurales para ser relacionadas con acceso a espacios verdes y beneficios del arbolado.</li>
+<li>Modelar y evaluar las relaciones entre los diferentes indicadores ambientales, sociales, económicos y estructurales.</li>
+</ul>
+</div>
+</div>
+<div id="preguntas-de-investigacion" class="section level2">
+<h2><span class="header-section-number">2.2</span> Preguntas de investigación</h2>
+<p>Algunas de las preguntas a las que se enfrenta esta investigación son: ¿Cuáles son las zonas que muestran mayores correlaciones negativas entre las variables sociales y la cobertura de copas o el acceso a zonas verdes? ¿Es igual tener acceso a un parque pequeño que a uno grande?¿Es el acceso a servicios del AU y EV una característica local de los sectores geográficos o se extienden esos beneficios a agrupaciones de sectores urbanos vecinos? ¿Existen aspectos de tipo urbanístico y de la estructura de los sectores urbanos que condicionan el desarrollo del arbolado? ¿Están estos factores de estructura y uso relacionados con las condiciones de vida de la población? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?</p>
+</div>
+<div id="hipotesis" class="section level2">
+<h2><span class="header-section-number">2.3</span> Hipótesis</h2>
+<div id="beneficios-del-arbolado-urbano" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Beneficios del arbolado urbano</h3>
+<div id="hipotesis-nula" class="section level4">
+<h4><span class="header-section-number">2.3.1.1</span> Hipótesis nula</h4>
+<p>La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución de beneficios del arbolado urbano (AU) en Santiago de Cali.</p>
+</div>
+</div>
+<div id="hipotesis-alternas" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Hipótesis alternas</h3>
+<p>La distribución espacial de indicadores socioeconómicos y estructurales son un predictor de la distribución de servicios del arbolado urbano (AU) en Santiago de Cali</p>
+</div>
+<div id="predicciones" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Predicciones</h3>
+<ul>
+<li>El patrón espacial de acceso a la educación de la población se correlaciona con el acceso a servicios ambientales del AU.</li>
+<li>El patrón espacial de indicadores de discapacidades en la población se correlaciona con el acceso a servicios ambientales del AU.</li>
+<li>El patrón espacial de etnicidad se correlaciona con el acceso a servicios ambientales del AU.</li>
+<li>El patrón espacial de uso de predios se correlaciona con el acceso a servicios ambientales del AU.</li>
+<li>El patrón espacial de características físicas de los predios se correlaciona con el acceso a servicios ambientales del AU.</li>
+</ul>
+</div>
+<div id="acceso-a-espacios-verdes" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Acceso a espacios verdes</h3>
+<div id="hipotesis-nula-1" class="section level4">
+<h4><span class="header-section-number">2.3.4.1</span> Hipótesis nula</h4>
+<p>La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución del acceso a espacios verdes (EV) en Santiago de Cali.</p>
+</div>
+</div>
+<div id="hipotesis-alternas-1" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Hipótesis alternas</h3>
+<p>La distribución espacial de indicadores socioeconómicos y estructurales son un predictor de la distribución del acceso a espacios verdes (EV) en Santiago de Cali.</p>
+</div>
+<div id="predicciones-1" class="section level3">
+<h3><span class="header-section-number">2.3.6</span> Predicciones</h3>
+<ul>
+<li>El patrón espacial de acceso a la educación de la población se correlaciona con el acceso a EV</li>
+<li>El patrón espacial de indicadores de discapacidades en la población se correlaciona con el acceso a EV</li>
+<li>El patrón espacial de etnicidad se correlaciona con el acceso a EV</li>
+<li>El patrón espacial de uso de predios se correlaciona con el acceso a EV</li>
+<li>El patrón espacial de características físicas de los predios se correlaciona con el acceso a EV.</li>
+</ul>
+</div>
+</div>
+<div id="justificacion" class="section level2">
+<h2><span class="header-section-number">2.4</span> Justificación</h2>
+<p>La inclusión de los componentes ambientales en el ámbito de la planificación urbana en los planes de ordenamiento territorial que exige la legislación colombiana<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> necesita de la creación de medidas y la elaboración de análisis sobre su relación con las condiciones de vida de la población. Las herramientas para establecer políticas públicas y el seguimiento a las acciones realizadas por las administraciones municipales deben estar asociadas a características medibles y objetivas para su implementación. Se espera que los objetivos y proyectos estén sustentados en estudios científicos que identifiquen brechas y oportunidades para la intervención y mejoramiento de los servicios ambientales de los cuales es responsable el gobierno local. En esta medida este estudio contribuye a la identificación de relaciones de inequidad en la distribución de los beneficios que provee el arbolado urbano a través del análisis espacial de la cobertura arbórea, el acceso a zonas verdes y la distribución de las variables sociales y económicas de la población. El estudio promete ser un punto de partida para la identificación de zonas de intervención del arbolado con el fin de cerrar brechas relacionadas con el desarrollo sostenible y la justicia ambiental.</p>
+<p>Contar con los datos del censo arbóreo de Santiago de Cali permite hacer análisis de estos beneficios ambientales para la población usando datos con alta resolución espacial y construir estadísticas a escalas apropiadas para la intervención y aprovechamiento de los recursos naturales de la ciudad explotando el potencial que ofrece la información censal y los conjuntos de datos espaciales de los que dispone la administración municipal <span class="citation">(Schwarz et al. <a href="#ref-schwarz_trees_2015">2015</a>)</span>. Los resultados de esta investigación buscan aportar al debate académico y enriquecer el proceso de la toma de decisiones y la planificación de la ciudad, sentando bases técnicas y resultados concretos que el desarrollo de políticas, proyectos e instrumentos que potencien al árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad de vida de los caleños.</p>
+</div>
+<div id="alcance" class="section level2">
+<h2><span class="header-section-number">2.5</span> Alcance</h2>
+<p>Este trabajo se concentra en describir los patrones espaciales y establecer la correlación entre métricas para representar los beneficios del arbolado urbano(AU) y los espacios verdes (EV) con las variables sociales y económicas de la población e incluye variables de uso de los predios y características que incluyen factores del contexto urbanístico de la ciudad buscando estimar la importancia relativa de las relaciones entre los indicadores ambientales y sociales. El valor explicativo de la posición en el plano geográfico de las métricas ambientales y socioeconómicas permite seleccionar los modelos de regresión apropiados para cuantificar el grado de correlación que existe <span class="citation">(Fotheringham, Charlton, and Brunsdon <a href="#ref-fotheringham_geographically_1998">1998</a>)</span>. El problema comprende la exploración de las variables sociales, económicas, estructurales y ambientales, el cálculo de indicadores, la cuantificación de la correlación, el modelado de la relaciones entre variables y la identificación de las zonas con acumulación de desigualdades.</p>
+<p>El trabajo hace uso del censo arbóreo urbano realizado en Santiago de Cali (Colombia) entre el año 2014 y 2015, de datos del censo de población de 2005 y los datos de la estructura ecológica del municipio. Para ellos se apoya en los aportes de tipo metodológico y estadístico de la literatura especializada sobre modelos de regresión lineal y modelos de regresión espacial. Las unidades de análisis espacial son los sectores censales urbanos (SU) que mantienen una relación geométrica y de escala similar a la de los barrios, unidad básica del crecimiento y desarrollo urbano de la ciudad de Cali.</p>
+
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-osorio_vuelo_2009">
+<p>Osorio, Jacqueline, and Luis Molina. 2009. “A Vuelo de Pájaro Las Ciudades Como Refugio Para Las Aves.” <em>Revista Nodo</em> 4 (7). <a href="http://csifesvr.uan.edu.co/index.php/nodo/article/view/123" class="uri">http://csifesvr.uan.edu.co/index.php/nodo/article/view/123</a>.</p>
+</div>
+<div id="ref-chapman_forests_1998">
+<p>Chapman, Colin A., and Daphne A. Onderdonk. 1998. “Forests Without Primates: Primate/Plant Codependency.” <em>American Journal of Primatology</em> 45 (1): 127–41. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.673.1256&amp;rep=rep1&amp;type=pdf" class="uri">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.673.1256&amp;rep=rep1&amp;type=pdf</a>.</p>
+</div>
+<div id="ref-leff_pensamiento_2012">
+<p>Leff, Enrique. 2012. “Pensamiento Ambiental Latinoamericano: Patrimonio de Un Saber Para La Sustentabilidad.” <em>Environmental Ethics</em> 34 (Supplement): 97–112. <a href="https://www.pdcnet.org/enviroethics/content/enviroethics_2012_0034Supplement_0097_0112" class="uri">https://www.pdcnet.org/enviroethics/content/enviroethics_2012_0034Supplement_0097_0112</a>.</p>
+</div>
+<div id="ref-leon_calle_arboles_2011">
+<p>León Calle, Stephanie, and others. 2011. “Árboles, Simbolismo, Cultura, Memoria E Identidad. Representaciones En El Paisaje Arbóreo de Gualaquiza.” PhD thesis, Universidad Andina Simón Bolívar, Sede Ecuador. <a href="http://repositorio.uasb.edu.ec/handle/10644/2772" class="uri">http://repositorio.uasb.edu.ec/handle/10644/2772</a>.</p>
+</div>
+<div id="ref-azocar_urbanization_2007">
+<p>Azócar, Gerardo, Hugo Romero, Rodrigo Sanhueza, Claudia Vega, Mauricio Aguayo, and Maria Dolores Muñoz. 2007. “Urbanization Patterns and Their Impacts on Social Restructuring of Urban Space in Chilean Mid-Cities: The Case of Los Angeles, Central Chile.” <em>Land Use Policy</em> 24 (1): 199–211. <a href="http://www.sciencedirect.com/science/article/pii/S0264837705000475" class="uri">http://www.sciencedirect.com/science/article/pii/S0264837705000475</a>.</p>
+</div>
+<div id="ref-nesbitt_exploring_2016">
+<p>Nesbitt, Lorien, and Michael J. Meitner. 2016. “Exploring Relationships Between Socioeconomic Background and Urban Greenery in Portland, OR.” <em>Forests</em> 7 (8): 162. doi:<a href="https://doi.org/10.3390/f7080162">10.3390/f7080162</a>.</p>
+</div>
+<div id="ref-laredo_gestion_2011">
+<p>Laredo, DM Rodríguez, and Daisy Mirtha. 2011. “La Gestión Del Verde Urbano Como Un Criterio de Mitigación Y Adaptación Al Cambio Climático.” <em>Revista de La Asociación Argentina de Ecología de Paisajes</em> 2 (2): 123–30. <a href="http://www.revistasbolivianas.org.bo/pdf/rci/v2n2/v2n2a05.pdf" class="uri">http://www.revistasbolivianas.org.bo/pdf/rci/v2n2/v2n2a05.pdf</a>.</p>
+</div>
+<div id="ref-nowak_tree_2012">
+<p>Nowak, David J., and Eric J. Greenfield. 2012. “Tree and Impervious Cover Change in US Cities.” <em>Urban Forestry &amp; Urban Greening</em> 11 (1): 21–30. <a href="http://www.sciencedirect.com/science/article/pii/S1618866711000999" class="uri">http://www.sciencedirect.com/science/article/pii/S1618866711000999</a>.</p>
+</div>
+<div id="ref-restrepo_incidence_2015">
+<p>Restrepo, O., Héctor Iván, H. Moreno, E. Hoyos, Claudia Helena, and others. 2015. “Incidence of Progressive Deterioration of Urban Trees in the Aburrá Valley, Colombia.” <em>Colombia Forestal</em> 18 (2): 225–40. <a href="http://www.scielo.org.co/scielo.php?pid=S0120-07392015000200004&amp;script=sci_arttext&amp;tlng=en" class="uri">http://www.scielo.org.co/scielo.php?pid=S0120-07392015000200004&amp;script=sci_arttext&amp;tlng=en</a>.</p>
+</div>
+<div id="ref-vasquez_historia_1990">
+<p>Vásquez, Édgar. 1990. “Historia Del Desarrollo Económico Y Urbano En Cali”.” <em>Boletín Socioeconómico</em> 20: 1–28.</p>
+</div>
+<div id="ref-ciat_identificacion_2015">
+<p>CIAT. 2015b. “￼Identificación de Zonas Y Formulación de Propuestas Para El Tratamiento de Islas de Calor.”</p>
+</div>
+<div id="ref-schwarz_trees_2015">
+<p>Schwarz, Kirsten, Michail Fragkias, Christopher G. Boone, Weiqi Zhou, Melissa McHale, J. Morgan Grove, Jarlath O’Neil-Dunne, et al. 2015. “Trees Grow on Money: Urban Tree Canopy Cover and Environmental Justice.” <em>PLoS ONE</em> 10 (4). doi:<a href="https://doi.org/10.1371/journal.pone.0122051">10.1371/journal.pone.0122051</a>.</p>
+</div>
+<div id="ref-fotheringham_geographically_1998">
+<p>Fotheringham, A. Stewart, Martin E. Charlton, and Chris Brunsdon. 1998. “Geographically Weighted Regression: A Natural Evolution of the Expansion Method for Spatial Data Analysis.” <em>Environment and Planning A</em> 30 (11): 1905–27. <a href="http://journals.sagepub.com/doi/abs/10.1068/a301905" class="uri">http://journals.sagepub.com/doi/abs/10.1068/a301905</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Así está expresado en las las leyes ambientales que dan forma al Sistema Nacional Ambiental, SINA, (LEY 99 DE 1993) y reglamentan los planes de desarrollo y de ordenamiento territorial (LEY 388 DE 1997), así como la creación de organismos en la estructura municipal (Acuerdo 01 de 1996).<a href="antecedentes.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>LEY 388 DE 1997<a href="antecedentes.html#fnref2">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="revlit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/intro.Rmd",
+"text": "Edit"
+},
+"download": ["tesis-unigis.pdf", "tesis-unigis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

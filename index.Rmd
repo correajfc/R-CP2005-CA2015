@@ -1,5 +1,5 @@
 --- 
-title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia. "
+title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia"
 subtitle: "Juan Fernando Correa Caicedo"
 author: 
 - "Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)"
