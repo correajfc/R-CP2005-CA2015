@@ -1,4 +1,16 @@
-# Introdución {#intro}
+# Introducción {#intro}
+
+## Antecedentes 
+
+Los árboles son pieza clave de los ecosistemas donde la vida humana ha prosperado. Son hogar y fuente de alimento de muchas especies [@osorio_vuelo_2009]; forman espacios con condiciones climáticas y funcionales que complejizan el paisaje y las posibles relaciones entre los animales [@chapman_forests_1998]. Se puede ubicar la década de los 70 el inicio de un pensamiento ambiental que empieza a ser relevante en el discurso económico mundial[@leff_pensamiento_2012] y que se consolida con la publicación del Informe Brundtland en 1987. Sin embargo, las preocupaciones sobre la sostenibilidad y conservación de los ecosistemas que sustentan la vida en el planeta son relativamente nuevas en la economía mundial, si la comparamos con la simbiosis entre árboles y humanos que dan origen a la agricultura y lo convierten en un elemento simbólico de gran riqueza en el universo religioso y cultural de la humanidad [@leon_calle_arboles_2011]. 
+
+El hombre ha materializado espacios urbanos con dimensiones que retan la imaginación y llevan al límite los sistemas de infraestructura, abastecimiento y gobernabilidad. En la empresa de consolidar antroposferas, las ciudades que construimos han desplazados muchos de los ecosistemas naturales de los territorios que fueron la razón de escoger justamente esos sitios para el asentamiento, trasladándolos más allá de los límites de la ciudad, atenuando su presencia/visibilidad en el mundo de los ciudadanos. Son reemplazados por vías, zonas verdes, áreas industriales, comerciales y residenciales[@azocar_urbanization_2007].
+
+Las preocupaciones sobre el crecimiento de la población mundial, su concentración en centros urbanos y las transformaciones que trae consigo el proceso de cambio climático, nos obligan a pensar en cómo maximizar los beneficios que nos brindan las zonas verdes y el bosque urbano como estrategia para mitigar los efectos negativos de estos procesos [@nesbitt_exploring_2016;  @laredo_gestion_2011]. A este escenario se suma trabajos como [@nowak_tree_2012] que revelan patrones de decaimiento estadísticamente significativos del arbolado urbano en 17 de  20 ciudades norteamericanas o [@restrepo_incidence_2015] que reporta la reducción de las condiciones de vitalidad del arbolado del Valle de Aburra en Colombia derivado de la interacción de causas naturales y antrópicas, las cuales afectan directa o indirectamente la fisiología y salud de los árboles en los espacios urbanos. @nowak_tree_2012 se pregunta si los administradores locales conocen los cambios que presenta las coberturas arbóreas, puesto que esta es una representación simple pero confiable (y ampliamente aceptada) para tasar la extensión de los beneficios derivados de los bosque urbanos, dado que los servicio que proveen los árboles están relacionados con la salud y el funcionamiento de sus hojas. 
+
+El desarrollo urbano de Cali se fue dando en forma de barrios. Cali entra al siglo XX con unos de 25000 habitantes y una 100 hectáreas [@vasquez_historia_1990]; en 2005 tiene una población  2200000 habitantes según el Censo de Población del 2005 y una área urbana 12.101.326 hectáreas. Durante todo este siglo experimenta un rápido crecimiento demográfico, rápida expansión y crecimiento de la vivienda por las migraciones, causadas en gran medida por los fenómeno de desplazamiento por conflictos en las áreas rurales y el fortalecimiento de la industria y el empleo en las ciudad [@vasquez_historia_1990]. Este contexto de crecimiento vertiginoso y no planificado, y las transformaciones del paisaje e intervención de los ecosistemas coincide con la necesidades y preocupaciones para garantizar un ambiente saludable en la ciudad de Cali.   
+
+La Organización Mundial de la Salud (OMS) recomienda que una ciudad tenga un árbol por cada tres habitantes, incluyendo espacios públicos y privados. Cali debería tener una población arbórea cercana a los 800.000 árboles, pero de acuerdo con los resultados del censo arbóreo de 2014–2015, se han contabilizado cerca de 290.000 árboles solo en el espacio público. La siembra de 20.000 árboles en la zona urbana, en las comunas que muestran temperaturas por muy por encima de la media (las comunas 3, 4, 5, 8 y 13) propuesta en [@ciat_identificacion_2015] contrasta con los 100.000 árboles que tiene como meta en Plan de Desarrollo Municipal 2016-2019; ambas cifras están lejos de impactar el déficit arbóreo de 500.000 individuos; urge la reforestación, *“sin embargo, la ubicación de los sitios de siembra ha sido uno de los principales inconvenientes del proyecto, ya que no existen zonas de espacio público adecuadas o disponibles para tal fin.”* [@ciat_identificacion_2015, p. 19]
 
 En las agendas municipales, a nivel mundial, ha crecido la importancia de las 
 relaciones y patrones de distribución de los beneficios de áreas verdes en 
@@ -11,26 +23,11 @@ vegetación,  diferentes distancias a las zonas verdes dentro de un marco
 alineado con conceptos como la justicia ambiental, equidad y la sostenibilidad. 
 Estos indicadores son calculados con datos de censos de población, encuesta de 
 calidad de vida, censos arbóreos, imágenes satelitales, cartografías y bases de 
-datos de entidades oficiales y académicas. Los beneficios tienen cargas y costos
+datos de entidades oficiales y académicas. Los servicios ambientales tienen cargas y costos
 de mantenimiento para la administración y gestión de los recursos y servicios 
 ambientales, lo que exige que se identifique las zonas, condiciones de los 
 recursos y de la población para la ejecución de acciones eficaces y eficientes 
 por parte de los gobiernos y autoridades ambientales.
-
-Este proyecto hace uso del censo arbóreo urbano realizado en Santiago de Cali 
-(Colombia) entre el año 2014 y 2015, de datos del censo de población de 2005 y 
-los datos de la estructura ecologica del municipio. El propósito es 
-motivar el desarrollo de políticas, proyectos e instrumentos que potencien al 
-árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad 
-de vida de los ciudadanos. Para ello se plantea identificar si existen patrones 
-espaciales estadísticamente significativos que muestre una relación negativa 
-entre las coberturas de copa, el acceso a espacios verdes y zonas con población 
-en condiciones socioeconómicas de vulnerabilidad. El proyecto se apoya en los 
-aportes de tipo metodológico y estadístico de la literatura especializada sobre 
-modelos de regresión lineal y  modelos de regresión espacial. Estos métodos son 
-enriquecidos con la exploración visual de los datos.
-
-## Problema de investigación
 
 La distribución espacial equitativa de los beneficios que proveen el arbolado 
 urbano y las zonas verdes de espacio público, que constituyen un bien común, 
@@ -44,51 +41,70 @@ miras a construir evidencia sobre el disfrute y acceso a los beneficios
 ambientales en espacios urbanos y su relación con las condiciones de vida de la 
 población que habita ese territorio.
 
-Este trabajo pretende enfocarse en describir los patrones espaciales y 
-establecer la correlación entre métricas para representar los beneficios del 
-arbolado urbano(AU) y los espacios verdes (EV) con las variables sociales y 
-económicas de la población. El valor explicativo de la posición en el plano 
-geográfico sobre las métricas ambientales y socioeconómicas permite seleccionar 
-los modelos de regresión apropiados para cuantificar el grado de correlación que
-existe [@fotheringham_geographically_1998]. El problema comprende la exploración
-de las variables sociales y ambientales, el cálculo de indicadores, 
-identificación de los valores de referencia para la interpretación de las 
-cifras, la cuantificación de la correlación, identificar las zonas con 
-acumulación de desigualdades y la presentación visual de la información 
-consolidada para la discusión.
-
-Algunas de las preguntas a las que se enfrenta esta investigación son: ¿a parte 
-de la cobertura de las copas qué otras variables biofísicas, por ejemplo la 
-edad, la especie(frutales), o la diversidad de especies arbóreas, que expresan 
-beneficios, pueden incluirse en el análisis de correlación? ¿Cuáles son las 
-zonas que muestran mayores correlaciones negativas entre las variables sociales 
-y la cobertura de copas o el acceso a zonas verdes? ¿Es igual tener acceso a un 
-parque pequeño que a uno grande? ¿ Existen aspectos de tipo urbanístico y de la 
-estructura de los barrios que condicionan el desarrollo del arbolado? ¿Están 
-estos factores de estructura y uso relacionados con las condiciones de la 
-población? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos?
-
-## Hipótesis
-
-Las zonas urbanas con más desventajas sociales y económicas tienen menos acceso 
-a espacios verdes y a los beneficios del arbolado urbano.
 
 ## Objetivos 
 
 ### Objetivo general 
 
-Identificar y analizar espacialmente 
-inequidades socioeconómicas en relación a los espacios verdes y el arbolado en 
-la zona urbana de Cali.
+Identificar y analizar espacialmente la existencia de inequidades en el acceso a dos servicios ambientales urbanos: el acceso a espacios verdes y beneficios del arbolado, en relación con variables socioeconómicas de la población y aspectos relacionados con el uso y estructura física de las unidades geográficas censales en la zona urbana de Santiago de Cali, Colombia.
 
 ### Objetivos específicos 
 
-- Generar métricas de cobertura de espacios verdes y 
-arbolado urbano. 
-- Identificar y caracterizar las variables sociales y 
-económicas para ser relacionadas con acceso a espacios verdes y cobertura. 
-- Evaluar las relaciones entre los diferentes indicadores ambientales, sociales y 
-económicos.
+- Generar métricas de acceso a espacios verdes y del nivel de beneficios del arbolado urbano. 
+- Identificar y caracterizar las variables sociales, económicas y estructurales para ser relacionadas con acceso a espacios verdes y beneficios del arbolado. 
+- Modelar y evaluar las relaciones entre los diferentes indicadores ambientales, sociales, económicos y estructurales.
+ 
+
+## Preguntas de investigación
+
+Algunas de las preguntas a las que se enfrenta esta investigación son: ¿Cuáles son las 
+zonas que muestran mayores correlaciones negativas entre las variables sociales 
+y la cobertura de copas o el acceso a zonas verdes? ¿Es igual tener acceso a un 
+parque pequeño que a uno grande?¿Es el acceso a servicios del AU y EV una característica local de los sectores geográficos o se extienden esos beneficios a agrupaciones de sectores urbanos vecinos? ¿Existen aspectos de tipo urbanístico y de la 
+estructura de los sectores urbanos que condicionan el desarrollo del arbolado? ¿Están 
+estos factores de estructura y uso relacionados con las condiciones de vida de la 
+población? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?
+
+## Hipótesis
+
+### Beneficios del arbolado urbano
+
+#### Hipótesis nula
+
+La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución de beneficios del arbolado urbano (AU) en Santiago de Cali.
+
+#### Hipótesis alternas
+
+La distribución espacial de indicadores socioeconómicos y estructurales son un predictor de la distribución de servicios del arbolado urbano (AU) en Santiago de Cali
+
+#### Predicciones
+
+- El patrón espacial de acceso a la educación de la población se correlaciona con el acceso a servicios ambientales del AU. 
+- El patrón espacial de indicadores de discapacidades en la población se correlaciona con el acceso a servicios ambientales del AU. 
+- El patrón espacial de etnicidad se correlaciona con el acceso a servicios ambientales del AU. 
+- El patrón espacial de uso de predios se correlaciona con el acceso a servicios ambientales del AU. 
+- El patrón espacial de características físicas de los predios se correlaciona con el acceso a servicios ambientales del AU. 
+
+### Acceso a espacios verdes
+
+#### Hipótesis nula
+
+La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución del acceso a espacios verdes (EV) en Santiago de Cali.
+
+#### Hipótesis alternas
+
+La distribución espacial de indicadores socioeconómicos y estructurales son un predictor de la distribución del acceso a espacios verdes (EV) en Santiago de Cali.
+
+#### Predicciones
+- El patrón espacial de acceso a la educación de la población se correlaciona con el acceso a EV 
+- El patrón espacial de indicadores de discapacidades en la población se correlaciona con el acceso a EV
+- El patrón espacial de etnicidad se correlaciona con el acceso a EV 
+- El patrón espacial de uso de predios se correlaciona con el acceso a EV 
+- El patrón espacial de características físicas de los predios se correlaciona con el acceso a EV.
+
+
+
+
 
 ## Justificación
 
@@ -110,12 +126,15 @@ promete ser un punto de partida para la identificación de zonas de intervenció
 del arbolado con el fin de cerrar brechas relacionadas con el desarrollo 
 sostenible y la justicia ambiental.
 
-Ante la oportunidad que brinda contar con los datos del censo arbóreo de 
-Santiago de Cali, se abre la posibilidad de hacer análisis de estos beneficios 
-ambientales para la población usando datos con alta resolución espacial que 
-permiten hacer inferencia estadística a escalas apropiadas para la intervención 
-y aprovechamiento de los recursos naturales de la ciudad, y que explotan el 
-potencial que ofrece la información censal y los conjuntos de datos espaciales 
-de los que dispone la administración municipal [@schwarz_trees_2015]. Los 
-resultados de esta investigación buscan aportar al debate académico y enriquecer
-el proceso de la toma de decisiones y la planificación de la ciudad.
+Contar con los datos del censo arbóreo de Santiago de Cali permite hacer análisis de estos beneficios ambientales para la población usando datos con alta resolución espacial y construir estadísticas a escalas apropiadas para la intervención y aprovechamiento de los recursos naturales de la ciudad explotando el potencial que ofrece la información censal y los conjuntos de datos espaciales de los que dispone la administración municipal [@schwarz_trees_2015]. Los resultados de esta investigación buscan aportar al debate académico y enriquecer el proceso de la toma de decisiones y la planificación de la ciudad, sentando bases técnicas y resultados concretos que el desarrollo de políticas, proyectos e instrumentos que potencien al árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad de vida de los caleños.
+
+## Alcance
+
+Este trabajo se concentra en describir los patrones espaciales y establecer la correlación entre métricas para representar los beneficios del arbolado urbano(AU) y los espacios verdes (EV) con las variables sociales y económicas de la población e incluye variables de uso de los predios y características que incluyen factores del contexto urbanístico de la ciudad buscando estimar la importancia relativa de las relaciones entre los indicadores ambientales y sociales. El valor explicativo de la posición en el plano geográfico de las métricas ambientales y socioeconómicas permite seleccionar los modelos de regresión apropiados para cuantificar el grado de correlación que existe [@fotheringham_geographically_1998]. El problema comprende la exploración
+de las variables sociales, económicas, estructurales y ambientales, el cálculo de indicadores, la cuantificación de la correlación, el modelado de la relaciones entre variables y la identificación de las zonas con acumulación de desigualdades.
+
+El trabajo hace uso del censo arbóreo urbano realizado en Santiago de Cali 
+(Colombia) entre el año 2014 y 2015, de datos del censo de población de 2005 y 
+los datos de la estructura ecológica del municipio. Para ellos se apoya en los 
+aportes de tipo metodológico y estadístico de la literatura especializada sobre 
+modelos de regresión lineal y modelos de regresión espacial. Las unidades de análisis espacial son los sectores censales urbanos (SU) que mantienen una relación geométrica y de escala similar a la de los barrios, unidad básica del crecimiento y desarrollo urbano de la ciudad de Cali.

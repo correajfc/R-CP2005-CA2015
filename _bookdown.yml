@@ -14,7 +14,7 @@ rmd_files:
   "intro.Rmd",
   "revision_literatura.Rmd",
   "metodologia.Rmd",
-  "procesa_analisis.Rmd",
+  "resultados.Rmd",
   "discusion.Rmd",
   "conclusiones.Rmd",
   "referencias.Rmd"]
@@ -23,7 +23,7 @@ rmd_files:
   "intro.Rmd",
   "revision_literatura.Rmd",
   "metodologia.Rmd",
-  "procesa_analisis.Rmd",
+  "resultados.Rmd",
   "discusion.Rmd",
   "conclusiones.Rmd",
   "referencias.Rmd"]

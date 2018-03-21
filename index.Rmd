@@ -1,5 +1,5 @@
 --- 
-title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia. "
+title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia"
 subtitle: "Juan Fernando Correa Caicedo"
 author: 
 - "Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)"
@@ -10,7 +10,7 @@ output: bookdown::gitbook
 documentclass: book
 fontsize: 12pt
 linestretch: 1.5
-toc-depth: 1
+toc-depth: 2
 lof: True
 lot: True
 geometry: "left=3cm, right=2.5cm, top=3cm, bottom=2.5cm"
@@ -22,7 +22,10 @@ description: "Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)"
 ---
 
 ```{r setup-chunks, echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE,tidy = TRUE, out.width = '100%', cache = TRUE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 72, dev = 'png')
+
+knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 150, dev = 'png')
+
+
 ```
 
 

@@ -1,23 +1,25 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis projectname="" version="2.8.2-Wien">
+<qgis projectname="" version="2.18.9">
   <title></title>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
   <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
     <customproperties/>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="Perimetro_urbano20170316191033763" name="Perimetro urbano">
+    <layer-tree-layer expanded="1" providerKey="WFS" checked="Qt::Checked" id="Perimetro_urbano20170316191033763" source="http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_urbano&amp;SRSNAME=EPSG:6249" name="Perimetro urbano">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Checked" id="Perimetro_municipal20170316191014278" name="Perimetro municipal">
+    <layer-tree-layer expanded="1" providerKey="WFS" checked="Qt::Checked" id="Perimetro_municipal20170316191014278" source="http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_municipal&amp;SRSNAME=EPSG:6249" name="Perimetro municipal">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="MGN_ADM_MPIO_GRAFICO20170316190830045" name="Valle del Cauca">
+    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="MGN_ADM_MPIO_GRAFICO20170316190830045" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_MPIO_GRAFICO.shp" name="Valle del Cauca">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-group expanded="1" checked="Qt::Unchecked" name="group1">
       <customproperties/>
-      <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="MGN_ADM_DPTO_POLITICO20170316190824217" name="Valle del Cauca">
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="MGN_ADM_DPTO_POLITICO20170316190824217" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_DPTO_POLITICO.shp" name="Valle del Cauca">
         <customproperties/>
       </layer-tree-layer>
-      <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="COLOMBIA20170316190812056" name="Colombia">
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="COLOMBIA20170316190812056" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/COLOMBIA/COLOMBIA.shp" name="Colombia">
         <customproperties/>
       </layer-tree-layer>
     </layer-tree-group>
@@ -45,6 +47,7 @@
         <geographicflag>true</geographicflag>
       </spatialrefsys>
     </destinationsrs>
+    <rendermaptile>0</rendermaptile>
     <layer_coordinate_transform_info>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Perimetro_municipal20170316191014278"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="USER:100000" srcDatumTransform="-1" destDatumTransform="-1" layerid="Perimetro_urbano20170316191033763"/>
@@ -53,7 +56,6 @@
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="COLOMBIA20170316190812056"/>
     </layer_coordinate_transform_info>
   </mapcanvas>
-  <visibility-presets/>
   <layer-tree-canvas>
     <custom-order enabled="0">
       <item>COLOMBIA20170316190812056</item>
@@ -92,15 +94,15 @@
       </legendlayer>
     </legendgroup>
   </legend>
-  <Composer title="colombia_valle_munipio_urbano" visible="0">
-    <Composition gridVisible="1" printResolution="600" paperWidth="279.4" snapGridOffsetX="0" guidesVisible="1" snapGridResolution="10" snapGridOffsetY="0" alignmentSnap="1" snapping="1" snapTolerancePixels="5" numPages="1" paperHeight="215.9" smartGuides="1" printAsRaster="0" generateWorldFile="0">
-      <symbol alpha="1" type="fill" name="">
+  <Composer title="colombia_valle_munipio_urbano" visible="1">
+    <Composition resizeToContentsMarginLeft="0" snapping="1" showPages="1" guidesVisible="1" resizeToContentsMarginTop="0" worldFileMap="" alignmentSnap="1" printResolution="600" paperWidth="279.4" gridVisible="1" snapGridOffsetX="0" smartGuides="1" snapGridOffsetY="0" resizeToContentsMarginRight="0" snapTolerancePixels="5" printAsRaster="0" generateWorldFile="0" paperHeight="215.9" numPages="1" snapGridResolution="10" resizeToContentsMarginBottom="0">
+      <symbol alpha="1" clip_to_extent="1" type="fill" name="">
         <layer pass="0" class="SimpleFill" locked="0">
-          <prop k="border_width_map_unit_scale" v="0,0"/>
+          <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
           <prop k="color" v="255,255,255,255"/>
           <prop k="joinstyle" v="miter"/>
           <prop k="offset" v="0,0"/>
-          <prop k="offset_map_unit_scale" v="0,0"/>
+          <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
           <prop k="offset_unit" v="MM"/>
           <prop k="outline_color" v="0,0,0,255"/>
           <prop k="outline_style" v="no"/>
@@ -109,69 +111,91 @@
           <prop k="style" v="solid"/>
         </layer>
       </symbol>
-      <ComposerLabel valign="32" marginX="1" marginY="1" labelText="Municipio de Santiago de Cali" htmlState="0" halign="1">
-        <LabelFont description="Helvetica,18,-1,5,50,0,0,0,0,0"/>
-        <FontColor red="0" blue="0" green="0"/>
-        <ComposerItem pagey="20" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="137.557" y="20" visibility="1" zValue="13" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="96.2476" outlineWidth="0.3" excludeFromExports="0" uuid="{7b4bba8e-01c1-40cf-ba81-c1e6b7cfd42b}" height="10" itemRotation="0" frame="false" pagex="137.557">
+      <ComposerPicture resizeMode="0" svgBorderWidth="0" pictureRotation="0" pictureWidth="16.6398" svgFillColor="0,0,0,255" svgBorderColor="255,255,255,255" northMode="0" file="/Applications/QGIS.app/Contents/Resources/svg/wind_roses/WindRose_01.svg" northOffset="0" pictureHeight="16.6398" mapId="0" anchorPoint="0">
+        <ComposerItem pagey="173.501" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="227.579" y="173.501" visibility="1" zValue="9" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="19.6681" outlineWidth="0.3" excludeFromExports="0" uuid="{da9d982b-6139-422d-992c-9eb97dd7a220}" height="16.6398" itemRotation="0" frame="false" pagex="227.579">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <dataDefinedSource expr="" field="" active="false" useExpr="true"/>
+          <customproperties/>
+        </ComposerItem>
+      </ComposerPicture>
+      <ComposerLabel valign="32" marginX="1" marginY="1" labelText="Municipio de Santiago de Cali" htmlState="0" halign="1">
+        <LabelFont description="Helvetica,18,-1,5,50,0,0,0,0,0" style=""/>
+        <FontColor red="0" blue="0" green="0"/>
+        <ComposerItem pagey="20" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="137.557" y="20" visibility="1" zValue="7" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="96.2476" outlineWidth="0.3" excludeFromExports="0" uuid="{7b4bba8e-01c1-40cf-ba81-c1e6b7cfd42b}" height="10" itemRotation="0" frame="false" pagex="137.557">
+          <FrameColor alpha="255" red="0" blue="0" green="0"/>
+          <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerLabel>
       <ComposerLabel valign="32" marginX="1" marginY="1" labelText="Valle del Cauca" htmlState="0" halign="1">
-        <LabelFont description="Helvetica,18,-1,5,50,0,0,0,0,0"/>
+        <LabelFont description="Helvetica,18,-1,5,50,0,0,0,0,0" style=""/>
         <FontColor red="0" blue="0" green="0"/>
-        <ComposerItem pagey="117.991" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="27.6831" y="117.991" visibility="1" zValue="8" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="54.1504" outlineWidth="0.3" excludeFromExports="0" uuid="{e2d4cad9-f967-4daa-8542-98f9bf308b8c}" height="10" itemRotation="0" frame="false" pagex="27.6831">
+        <ComposerItem pagey="117.991" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="27.6831" y="117.991" visibility="1" zValue="6" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="54.1504" outlineWidth="0.3" excludeFromExports="0" uuid="{e2d4cad9-f967-4daa-8542-98f9bf308b8c}" height="10" itemRotation="0" frame="false" pagex="27.6831">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerLabel>
-      <ComposerLegend symbolWidth="7" title="Leyenda" boxSpace="2" splitLayer="0" equalColumnWidth="0" map="2" titleAlignment="1" symbolHeight="4" wmsLegendHeight="25" wrapChar="" fontColor="#000000" columnSpace="2" wmsLegendWidth="50" columnCount="1">
+      <ComposerLegend symbolWidth="7" title="Leyenda" rasterBorderWidth="0" titleAlignment="1" map="2" wmsLegendWidth="50" rasterBorderColor="0,0,0,255" wrapChar="" fontColor="#000000" columnCount="1" wmsLegendHeight="25" columnSpace="2" symbolHeight="4" equalColumnWidth="0" resizeToContents="1" splitLayer="0" boxSpace="2" rasterBorder="1">
         <styles>
-          <style marginBottom="2" name="title" font=".Helvetica Neue DeskInterface,16,-1,5,50,0,0,0,0,0"/>
-          <style marginTop="2" name="group" font=".Helvetica Neue DeskInterface,14,-1,5,50,0,0,0,0,0"/>
-          <style marginTop="2" name="subgroup" font=".Helvetica Neue DeskInterface,12,-1,5,50,0,0,0,0,0"/>
-          <style marginTop="2" name="symbol" font=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0"/>
-          <style marginTop="2" marginLeft="2" name="symbolLabel" font=".Helvetica Neue DeskInterface,12,-1,5,50,0,0,0,0,0"/>
+          <style marginBottom="2" name="title">
+            <styleFont description=".Helvetica Neue DeskInterface,16,-1,5,50,0,0,0,0,0" style=""/>
+          </style>
+          <style marginTop="2" name="group">
+            <styleFont description=".Helvetica Neue DeskInterface,14,-1,5,50,0,0,0,0,0" style=""/>
+          </style>
+          <style marginTop="2" name="subgroup">
+            <styleFont description=".Helvetica Neue DeskInterface,12,-1,5,50,0,0,0,0,0" style=""/>
+          </style>
+          <style marginTop="2" name="symbol">
+            <styleFont description=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" style=""/>
+          </style>
+          <style marginTop="2" marginLeft="2" name="symbolLabel">
+            <styleFont description=".Helvetica Neue DeskInterface,12,-1,5,50,0,0,0,0,0" style=""/>
+          </style>
         </styles>
         <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
           <customproperties/>
-          <layer-tree-layer expanded="1" checked="Qt::Checked" id="Perimetro_urbano20170316191033763" name="Perimetro urbano">
+          <layer-tree-layer expanded="1" providerKey="WFS" checked="Qt::Checked" id="Perimetro_urbano20170316191033763" source="http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_urbano&amp;SRSNAME=EPSG:6249" name="Perimetro urbano">
             <customproperties/>
           </layer-tree-layer>
-          <layer-tree-layer expanded="1" checked="Qt::Checked" id="Perimetro_municipal20170316191014278" name="Perimetro municipal">
+          <layer-tree-layer expanded="1" providerKey="WFS" checked="Qt::Checked" id="Perimetro_municipal20170316191014278" source="http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_municipal&amp;SRSNAME=EPSG:6249" name="Perimetro municipal">
             <customproperties/>
           </layer-tree-layer>
-          <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="MGN_ADM_MPIO_GRAFICO20170316190830045" name="Valle del Cauca">
+          <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="MGN_ADM_MPIO_GRAFICO20170316190830045" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_MPIO_GRAFICO.shp" name="Valle del Cauca">
             <customproperties/>
           </layer-tree-layer>
-          <layer-tree-layer expanded="1" checked="Qt::Unchecked" id="COLOMBIA20170316190812056" name="Colombia">
+          <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Unchecked" id="COLOMBIA20170316190812056" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/COLOMBIA/COLOMBIA.shp" name="Colombia">
             <customproperties/>
           </layer-tree-layer>
         </layer-tree-group>
-        <ComposerItem pagey="156.002" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="125" y="156.002" visibility="1" zValue="7" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="50.0969" outlineWidth="0.3" excludeFromExports="0" uuid="{677e1517-5016-468d-8fbb-c7b8d23add4c}" height="34.9984" itemRotation="0" frame="false" pagex="125">
+        <ComposerItem pagey="156.002" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="125" y="156.002" visibility="1" zValue="5" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="50.0969" outlineWidth="0.3" excludeFromExports="0" uuid="{677e1517-5016-468d-8fbb-c7b8d23add4c}" height="34.9984" itemRotation="0" frame="false" pagex="125">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerLegend>
       <ComposerLabel valign="32" marginX="1" marginY="1" labelText="Colombia" htmlState="0" halign="1">
-        <LabelFont description="Helvetica,18,-1,5,50,0,0,0,0,0"/>
+        <LabelFont description="Helvetica,18,-1,5,50,0,0,0,0,0" style=""/>
         <FontColor red="0" blue="0" green="0"/>
         <ComposerItem pagey="20" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="30" y="20" visibility="1" zValue="4" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="37.2522" outlineWidth="0.3" excludeFromExports="0" uuid="{192b8601-afc3-4e8b-a78e-4eb9e091f43c}" height="10" itemRotation="0" frame="false" pagex="30">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerLabel>
-      <ComposerMap mapRotation="0" keepLayerSet="false" id="2" previewMode="Cache" drawCanvasItems="true">
-        <Extent ymin="3.19268683965938482" xmin="-76.7530333520982424" ymax="3.62916164581762857" xmax="-76.41298902637029755"/>
+      <ComposerMap followPreset="false" mapRotation="0" keepLayerSet="false" followPresetName="" id="2" previewMode="Cache" drawCanvasItems="true">
+        <Extent ymin="3.19268683965938482" xmin="-76.7530333520982424" ymax="3.62916164581764233" xmax="-76.41298902637029755"/>
         <LayerSet/>
         <Grid/>
-        <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationFont=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{09c6489a-2942-45b8-bf3b-d0872b625398}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
+        <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{09c6489a-2942-45b8-bf3b-d0872b625398}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" annotationExpression="" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
           <lineStyle>
-            <symbol alpha="1" type="line" name="">
+            <symbol alpha="1" clip_to_extent="1" type="line" name="">
               <layer pass="0" class="SimpleLine" locked="0">
                 <prop k="capstyle" v="square"/>
                 <prop k="customdash" v="5;2"/>
-                <prop k="customdash_map_unit_scale" v="0,0"/>
+                <prop k="customdash_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="customdash_unit" v="MM"/>
                 <prop k="draw_inside_polygon" v="0"/>
                 <prop k="joinstyle" v="bevel"/>
@@ -180,51 +204,54 @@
                 <prop k="line_width" v="0"/>
                 <prop k="line_width_unit" v="MM"/>
                 <prop k="offset" v="0"/>
-                <prop k="offset_map_unit_scale" v="0,0"/>
+                <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="offset_unit" v="MM"/>
                 <prop k="use_custom_dash" v="0"/>
-                <prop k="width_map_unit_scale" v="0,0"/>
+                <prop k="width_map_unit_scale" v="0,0,0,0,0,0"/>
               </layer>
             </symbol>
           </lineStyle>
           <markerStyle>
-            <symbol alpha="1" type="marker" name="">
+            <symbol alpha="1" clip_to_extent="1" type="marker" name="">
               <layer pass="0" class="SimpleMarker" locked="0">
                 <prop k="angle" v="0"/>
                 <prop k="color" v="0,0,0,255"/>
                 <prop k="horizontal_anchor_point" v="1"/>
+                <prop k="joinstyle" v="bevel"/>
                 <prop k="name" v="circle"/>
                 <prop k="offset" v="0,0"/>
-                <prop k="offset_map_unit_scale" v="0,0"/>
+                <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="offset_unit" v="MM"/>
                 <prop k="outline_color" v="0,0,0,255"/>
                 <prop k="outline_style" v="solid"/>
                 <prop k="outline_width" v="0"/>
-                <prop k="outline_width_map_unit_scale" v="0,0"/>
+                <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="outline_width_unit" v="MM"/>
                 <prop k="scale_method" v="area"/>
                 <prop k="size" v="2"/>
-                <prop k="size_map_unit_scale" v="0,0"/>
+                <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="size_unit" v="MM"/>
                 <prop k="vertical_anchor_point" v="1"/>
               </layer>
             </symbol>
           </markerStyle>
+          <annotationFontProperties description=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" style=""/>
         </ComposerMapGrid>
         <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
         <ComposerItem pagey="19" page="1" id="" lastValidViewScaleFactor="3.37314" positionMode="0" positionLock="false" x="125" y="19" visibility="1" zValue="3" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="134" outlineWidth="0.3" excludeFromExports="0" uuid="{e21b4252-cf40-4d24-b1e7-81b0d9566f30}" height="172" itemRotation="0" frame="false" pagex="125">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerMap>
-      <ComposerMap mapRotation="0" keepLayerSet="true" id="1" previewMode="Cache" drawCanvasItems="true">
+      <ComposerMap followPreset="false" mapRotation="0" keepLayerSet="true" followPresetName="" id="1" previewMode="Cache" drawCanvasItems="true">
         <Extent ymin="2.47688836728888173" xmin="-78.24045725548710095" ymax="5.55345107161069684" xmax="-75.0177821145128263"/>
         <LayerSet>
-          <Layer>Perimetro_municipal20170316191014278</Layer>
-          <Layer>MGN_ADM_MPIO_GRAFICO20170316190830045</Layer>
+          <Layer provider="WFS" source="http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_municipal&amp;SRSNAME=EPSG:6249" name="Perimetro municipal">Perimetro_municipal20170316191014278</Layer>
+          <Layer provider="ogr" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_MPIO_GRAFICO.shp" name="Valle del Cauca">MGN_ADM_MPIO_GRAFICO20170316190830045</Layer>
         </LayerSet>
         <LayerStyles>
-          <LayerStyle layerid="MGN_ADM_MPIO_GRAFICO20170316190830045">
+          <LayerStyle provider="ogr" layerid="MGN_ADM_MPIO_GRAFICO20170316190830045" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_MPIO_GRAFICO.shp" name="Valle del Cauca">
             <qgis version="2.8.2-Wien" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" simplifyMaxScale="1" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
               <edittypes>
                 <edittype widgetv2type="TextEdit" name="OBJECTID">
@@ -463,7 +490,7 @@
               <attributeactions/>
             </qgis>
           </LayerStyle>
-          <LayerStyle layerid="Perimetro_municipal20170316191014278">
+          <LayerStyle provider="WFS" layerid="Perimetro_municipal20170316191014278" source="http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_municipal&amp;SRSNAME=EPSG:6249" name="Perimetro municipal">
             <qgis version="2.8.2-Wien" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" simplifyMaxScale="1" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
               <edittypes>
                 <edittype widgetv2type="TextEdit" name="id_munici">
@@ -680,13 +707,13 @@
           </LayerStyle>
         </LayerStyles>
         <Grid/>
-        <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationFont=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{06e878a8-9541-4c1f-a664-e00497674a44}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
+        <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{06e878a8-9541-4c1f-a664-e00497674a44}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" annotationExpression="" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
           <lineStyle>
-            <symbol alpha="1" type="line" name="">
+            <symbol alpha="1" clip_to_extent="1" type="line" name="">
               <layer pass="0" class="SimpleLine" locked="0">
                 <prop k="capstyle" v="square"/>
                 <prop k="customdash" v="5;2"/>
-                <prop k="customdash_map_unit_scale" v="0,0"/>
+                <prop k="customdash_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="customdash_unit" v="MM"/>
                 <prop k="draw_inside_polygon" v="0"/>
                 <prop k="joinstyle" v="bevel"/>
@@ -695,57 +722,60 @@
                 <prop k="line_width" v="0"/>
                 <prop k="line_width_unit" v="MM"/>
                 <prop k="offset" v="0"/>
-                <prop k="offset_map_unit_scale" v="0,0"/>
+                <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="offset_unit" v="MM"/>
                 <prop k="use_custom_dash" v="0"/>
-                <prop k="width_map_unit_scale" v="0,0"/>
+                <prop k="width_map_unit_scale" v="0,0,0,0,0,0"/>
               </layer>
             </symbol>
           </lineStyle>
           <markerStyle>
-            <symbol alpha="1" type="marker" name="">
+            <symbol alpha="1" clip_to_extent="1" type="marker" name="">
               <layer pass="0" class="SimpleMarker" locked="0">
                 <prop k="angle" v="0"/>
                 <prop k="color" v="0,0,0,255"/>
                 <prop k="horizontal_anchor_point" v="1"/>
+                <prop k="joinstyle" v="bevel"/>
                 <prop k="name" v="circle"/>
                 <prop k="offset" v="0,0"/>
-                <prop k="offset_map_unit_scale" v="0,0"/>
+                <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="offset_unit" v="MM"/>
                 <prop k="outline_color" v="0,0,0,255"/>
                 <prop k="outline_style" v="solid"/>
                 <prop k="outline_width" v="0"/>
-                <prop k="outline_width_map_unit_scale" v="0,0"/>
+                <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="outline_width_unit" v="MM"/>
                 <prop k="scale_method" v="area"/>
                 <prop k="size" v="2"/>
-                <prop k="size_map_unit_scale" v="0,0"/>
+                <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="size_unit" v="MM"/>
                 <prop k="vertical_anchor_point" v="1"/>
               </layer>
             </symbol>
           </markerStyle>
+          <annotationFontProperties description=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" style=""/>
         </ComposerMapGrid>
         <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
         <ComposerItem pagey="107.95" page="1" id="" lastValidViewScaleFactor="3.37314" positionMode="0" positionLock="false" x="20.3764" y="107.95" visibility="1" zValue="2" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="89.1178" outlineWidth="0.3" excludeFromExports="0" uuid="{28e2ba4a-4a74-4c9f-9340-34a4415fa0f2}" height="85.0773" itemRotation="0" frame="false" pagex="20.3764">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerMap>
-      <ComposerMap mapRotation="0" keepLayerSet="true" id="0" previewMode="Cache" drawCanvasItems="true">
+      <ComposerMap followPreset="false" mapRotation="0" keepLayerSet="true" followPresetName="" id="0" previewMode="Cache" drawCanvasItems="true">
         <Extent ymin="-4.85583278582783784" xmin="-83.12567220361874831" ymax="13.89154385757496435" xmax="-64.45795789201389425"/>
         <LayerSet>
-          <Layer>MGN_ADM_DPTO_POLITICO20170316190824217</Layer>
-          <Layer>COLOMBIA20170316190812056</Layer>
+          <Layer provider="ogr" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_DPTO_POLITICO.shp" name="Valle del Cauca">MGN_ADM_DPTO_POLITICO20170316190824217</Layer>
+          <Layer provider="ogr" source="/Users/JFC/Documents/UNIGIS/Tesis/76_VALLE_CAUCA/COLOMBIA/COLOMBIA.shp" name="Colombia">COLOMBIA20170316190812056</Layer>
         </LayerSet>
         <Grid/>
-        <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationFont=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{b37ef959-87f5-44b9-9922-73df4da5c623}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
+        <ComposerMapGrid rightAnnotationDirection="0" gridFramePenColor="0,0,0,255" show="0" bottomAnnotationPosition="1" annotationPrecision="3" showAnnotation="0" topFrameDivisions="0" uuid="{b37ef959-87f5-44b9-9922-73df4da5c623}" leftAnnotationDirection="0" topAnnotationPosition="1" rightAnnotationDisplay="0" offsetX="0" offsetY="0" rightFrameDivisions="0" gridStyle="0" annotationFontColor="0,0,0,255" intervalX="0" gridFrameSideFlags="15" intervalY="0" bottomAnnotationDirection="0" leftAnnotationDisplay="0" leftFrameDivisions="0" frameFillColor1="255,255,255,255" annotationExpression="" frameFillColor2="0,0,0,255" crossLength="3" gridFramePenThickness="0.5" bottomAnnotationDisplay="0" unit="0" topAnnotationDisplay="0" leftAnnotationPosition="1" blendMode="0" gridFrameStyle="0" rightAnnotationPosition="1" gridFrameWidth="2" name="Cuadrícula 1" annotationFormat="0" bottomFrameDivisions="0" topAnnotationDirection="0" frameAnnotationDistance="1">
           <lineStyle>
-            <symbol alpha="1" type="line" name="">
+            <symbol alpha="1" clip_to_extent="1" type="line" name="">
               <layer pass="0" class="SimpleLine" locked="0">
                 <prop k="capstyle" v="square"/>
                 <prop k="customdash" v="5;2"/>
-                <prop k="customdash_map_unit_scale" v="0,0"/>
+                <prop k="customdash_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="customdash_unit" v="MM"/>
                 <prop k="draw_inside_polygon" v="0"/>
                 <prop k="joinstyle" v="bevel"/>
@@ -754,51 +784,59 @@
                 <prop k="line_width" v="0"/>
                 <prop k="line_width_unit" v="MM"/>
                 <prop k="offset" v="0"/>
-                <prop k="offset_map_unit_scale" v="0,0"/>
+                <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="offset_unit" v="MM"/>
                 <prop k="use_custom_dash" v="0"/>
-                <prop k="width_map_unit_scale" v="0,0"/>
+                <prop k="width_map_unit_scale" v="0,0,0,0,0,0"/>
               </layer>
             </symbol>
           </lineStyle>
           <markerStyle>
-            <symbol alpha="1" type="marker" name="">
+            <symbol alpha="1" clip_to_extent="1" type="marker" name="">
               <layer pass="0" class="SimpleMarker" locked="0">
                 <prop k="angle" v="0"/>
                 <prop k="color" v="0,0,0,255"/>
                 <prop k="horizontal_anchor_point" v="1"/>
+                <prop k="joinstyle" v="bevel"/>
                 <prop k="name" v="circle"/>
                 <prop k="offset" v="0,0"/>
-                <prop k="offset_map_unit_scale" v="0,0"/>
+                <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="offset_unit" v="MM"/>
                 <prop k="outline_color" v="0,0,0,255"/>
                 <prop k="outline_style" v="solid"/>
                 <prop k="outline_width" v="0"/>
-                <prop k="outline_width_map_unit_scale" v="0,0"/>
+                <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="outline_width_unit" v="MM"/>
                 <prop k="scale_method" v="area"/>
                 <prop k="size" v="2"/>
-                <prop k="size_map_unit_scale" v="0,0"/>
+                <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
                 <prop k="size_unit" v="MM"/>
                 <prop k="vertical_anchor_point" v="1"/>
               </layer>
             </symbol>
           </markerStyle>
+          <annotationFontProperties description=".Helvetica Neue DeskInterface,13,-1,5,50,0,0,0,0,0" style=""/>
         </ComposerMapGrid>
         <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
         <ComposerItem pagey="18.4519" page="1" id="" lastValidViewScaleFactor="3.37314" positionMode="0" positionLock="false" x="20.3764" y="18.4519" visibility="1" zValue="1" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="89.1178" outlineWidth="0.3" excludeFromExports="0" uuid="{9a4050a7-cc78-4901-bc57-f4e8f9c565cf}" height="89.4981" itemRotation="0" frame="false" pagex="20.3764">
           <FrameColor alpha="255" red="0" blue="0" green="0"/>
           <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+          <customproperties/>
         </ComposerItem>
       </ComposerMap>
+      <customproperties>
+        <property key="imageCropMarginBottom" value="0"/>
+        <property key="imageCropMarginLeft" value="0"/>
+        <property key="imageCropMarginRight" value="0"/>
+        <property key="imageCropMarginTop" value="0"/>
+        <property key="imageCropToContents" value="false"/>
+      </customproperties>
     </Composition>
   </Composer>
-  <projectlayers layercount="5">
-    <maplayer minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+  <projectlayers>
+    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>COLOMBIA20170316190812056</id>
       <datasource>../../76_VALLE_CAUCA/COLOMBIA/COLOMBIA.shp</datasource>
-      <title></title>
-      <abstract></abstract>
       <keywordList>
         <value></value>
       </keywordList>
@@ -816,56 +854,56 @@
         </spatialrefsys>
       </srs>
       <provider encoding="UTF-8">ogr</provider>
-      <previewExpression>COALESCE( "OBJECTID", '&lt;NULL>' )</previewExpression>
       <vectorjoins/>
+      <layerDependencies/>
       <expressionfields/>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <edittypes>
         <edittype widgetv2type="TextEdit" name="OBJECTID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CCDGO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_NANO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CNMBR">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CACTO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_NAREA">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CSMBL">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_NANO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="PAIS_PAIS_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="SHAPE_Leng">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="SHAPE_Area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
-      <renderer-v2 symbollevels="0" type="singleSymbol">
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
         <symbols>
-          <symbol alpha="1" type="fill" name="0">
+          <symbol alpha="1" clip_to_extent="1" type="fill" name="0">
             <layer pass="0" class="SimpleFill" locked="0">
-              <prop k="border_width_map_unit_scale" v="0,0"/>
+              <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="color" v="184,184,184,255"/>
               <prop k="joinstyle" v="bevel"/>
               <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
               <prop k="outline_color" v="255,255,255,255"/>
               <prop k="outline_style" v="solid"/>
@@ -876,8 +914,9 @@
           </symbol>
         </symbols>
         <rotation/>
-        <sizescale scalemethod="area"/>
+        <sizescale scalemethod="diameter"/>
       </renderer-v2>
+      <labeling type="simple"/>
       <customproperties>
         <property key="labeling" value="pal"/>
         <property key="labeling/addDirectionSymbol" value="false"/>
@@ -1046,55 +1085,56 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
-      <editforminit/>
-      <featformsuppress>0</featformsuppress>
       <annotationform>.</annotationform>
-      <editorlayout>generatedlayout</editorlayout>
+      <aliases>
+        <alias field="OBJECTID" index="0" name=""/>
+        <alias field="DPTO_CCDGO" index="1" name=""/>
+        <alias field="DPTO_NANO_" index="2" name=""/>
+        <alias field="DPTO_CNMBR" index="3" name=""/>
+        <alias field="DPTO_CACTO" index="4" name=""/>
+        <alias field="DPTO_NAREA" index="5" name=""/>
+        <alias field="DPTO_CSMBL" index="6" name=""/>
+        <alias field="DPTO_NANO" index="7" name=""/>
+        <alias field="PAIS_PAIS_" index="8" name=""/>
+        <alias field="SHAPE_Leng" index="9" name=""/>
+        <alias field="SHAPE_Area" index="10" name=""/>
+      </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
-      <attributeactions/>
-      <edittypes>
-        <edittype widgetv2type="TextEdit" name="OBJECTID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CCDGO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_NANO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CNMBR">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CACTO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_NAREA">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CSMBL">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_NANO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="PAIS_PAIS_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="SHAPE_Leng">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="SHAPE_Area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-      </edittypes>
+      <attributeactions default="0"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <editform>.</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="OBJECTID" expression=""/>
+        <default field="DPTO_CCDGO" expression=""/>
+        <default field="DPTO_NANO_" expression=""/>
+        <default field="DPTO_CNMBR" expression=""/>
+        <default field="DPTO_CACTO" expression=""/>
+        <default field="DPTO_NAREA" expression=""/>
+        <default field="DPTO_CSMBL" expression=""/>
+        <default field="DPTO_NANO" expression=""/>
+        <default field="PAIS_PAIS_" expression=""/>
+        <default field="SHAPE_Leng" expression=""/>
+        <default field="SHAPE_Area" expression=""/>
+      </defaults>
+      <previewExpression>COALESCE( "OBJECTID", '&lt;NULL>' )</previewExpression>
     </maplayer>
-    <maplayer minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>MGN_ADM_DPTO_POLITICO20170316190824217</id>
       <datasource>../../76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_DPTO_POLITICO.shp</datasource>
-      <title></title>
-      <abstract></abstract>
       <keywordList>
         <value></value>
       </keywordList>
@@ -1112,56 +1152,56 @@
         </spatialrefsys>
       </srs>
       <provider encoding="UTF-8">ogr</provider>
-      <previewExpression>COALESCE( "OBJECTID", '&lt;NULL>' )</previewExpression>
       <vectorjoins/>
+      <layerDependencies/>
       <expressionfields/>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <edittypes>
         <edittype widgetv2type="TextEdit" name="OBJECTID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CCDGO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_NANO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CNMBR">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CACTO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_NAREA">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_CSMBL">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_NANO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="PAIS_PAIS_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="SHAPE_Leng">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="SHAPE_Area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
-      <renderer-v2 symbollevels="0" type="singleSymbol">
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
         <symbols>
-          <symbol alpha="1" type="fill" name="0">
+          <symbol alpha="1" clip_to_extent="1" type="fill" name="0">
             <layer pass="0" class="SimpleFill" locked="0">
-              <prop k="border_width_map_unit_scale" v="0,0"/>
+              <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="color" v="104,81,255,255"/>
               <prop k="joinstyle" v="bevel"/>
               <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
               <prop k="outline_color" v="0,0,0,255"/>
               <prop k="outline_style" v="no"/>
@@ -1172,8 +1212,9 @@
           </symbol>
         </symbols>
         <rotation/>
-        <sizescale scalemethod="area"/>
+        <sizescale scalemethod="diameter"/>
       </renderer-v2>
+      <labeling type="simple"/>
       <customproperties>
         <property key="labeling" value="pal"/>
         <property key="labeling/addDirectionSymbol" value="false"/>
@@ -1342,55 +1383,56 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
-      <editforminit/>
-      <featformsuppress>0</featformsuppress>
       <annotationform>.</annotationform>
-      <editorlayout>generatedlayout</editorlayout>
+      <aliases>
+        <alias field="OBJECTID" index="0" name=""/>
+        <alias field="DPTO_CCDGO" index="1" name=""/>
+        <alias field="DPTO_NANO_" index="2" name=""/>
+        <alias field="DPTO_CNMBR" index="3" name=""/>
+        <alias field="DPTO_CACTO" index="4" name=""/>
+        <alias field="DPTO_NAREA" index="5" name=""/>
+        <alias field="DPTO_CSMBL" index="6" name=""/>
+        <alias field="DPTO_NANO" index="7" name=""/>
+        <alias field="PAIS_PAIS_" index="8" name=""/>
+        <alias field="SHAPE_Leng" index="9" name=""/>
+        <alias field="SHAPE_Area" index="10" name=""/>
+      </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
-      <attributeactions/>
-      <edittypes>
-        <edittype widgetv2type="TextEdit" name="OBJECTID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CCDGO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_NANO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CNMBR">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CACTO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_NAREA">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_CSMBL">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_NANO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="PAIS_PAIS_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="SHAPE_Leng">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="SHAPE_Area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-      </edittypes>
+      <attributeactions default="0"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <editform>.</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="OBJECTID" expression=""/>
+        <default field="DPTO_CCDGO" expression=""/>
+        <default field="DPTO_NANO_" expression=""/>
+        <default field="DPTO_CNMBR" expression=""/>
+        <default field="DPTO_CACTO" expression=""/>
+        <default field="DPTO_NAREA" expression=""/>
+        <default field="DPTO_CSMBL" expression=""/>
+        <default field="DPTO_NANO" expression=""/>
+        <default field="PAIS_PAIS_" expression=""/>
+        <default field="SHAPE_Leng" expression=""/>
+        <default field="SHAPE_Area" expression=""/>
+      </defaults>
+      <previewExpression>COALESCE( "OBJECTID", '&lt;NULL>' )</previewExpression>
     </maplayer>
-    <maplayer minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>MGN_ADM_MPIO_GRAFICO20170316190830045</id>
       <datasource>../../76_VALLE_CAUCA/ADMINISTRATIVO/MGN_ADM_MPIO_GRAFICO.shp</datasource>
-      <title></title>
-      <abstract></abstract>
       <keywordList>
         <value></value>
       </keywordList>
@@ -1408,59 +1450,59 @@
         </spatialrefsys>
       </srs>
       <provider encoding="UTF-8">ogr</provider>
-      <previewExpression>COALESCE( "OBJECTID", '&lt;NULL>' )</previewExpression>
       <vectorjoins/>
+      <layerDependencies/>
       <expressionfields/>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <edittypes>
         <edittype widgetv2type="TextEdit" name="OBJECTID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="DPTO_DPTO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_CCDGO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_CNMBR">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_CRSLC">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_NANO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_NAREA">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_CSMBL">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_CCNCT">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="MPIO_NANO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="SHAPE_Leng">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="SHAPE_Area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
-      <renderer-v2 symbollevels="0" type="singleSymbol">
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
         <symbols>
-          <symbol alpha="1" type="fill" name="0">
+          <symbol alpha="1" clip_to_extent="1" type="fill" name="0">
             <layer pass="0" class="SimpleFill" locked="0">
-              <prop k="border_width_map_unit_scale" v="0,0"/>
+              <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="color" v="104,81,255,255"/>
               <prop k="joinstyle" v="bevel"/>
               <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
               <prop k="outline_color" v="255,255,255,255"/>
               <prop k="outline_style" v="solid"/>
@@ -1471,8 +1513,9 @@
           </symbol>
         </symbols>
         <rotation/>
-        <sizescale scalemethod="area"/>
+        <sizescale scalemethod="diameter"/>
       </renderer-v2>
+      <labeling type="simple"/>
       <customproperties>
         <property key="labeling" value="pal"/>
         <property key="labeling/addDirectionSymbol" value="false"/>
@@ -1641,58 +1684,58 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
-      <editforminit/>
-      <featformsuppress>0</featformsuppress>
       <annotationform>.</annotationform>
-      <editorlayout>generatedlayout</editorlayout>
+      <aliases>
+        <alias field="OBJECTID" index="0" name=""/>
+        <alias field="DPTO_DPTO_" index="1" name=""/>
+        <alias field="MPIO_CCDGO" index="2" name=""/>
+        <alias field="MPIO_CNMBR" index="3" name=""/>
+        <alias field="MPIO_CRSLC" index="4" name=""/>
+        <alias field="MPIO_NANO_" index="5" name=""/>
+        <alias field="MPIO_NAREA" index="6" name=""/>
+        <alias field="MPIO_CSMBL" index="7" name=""/>
+        <alias field="MPIO_CCNCT" index="8" name=""/>
+        <alias field="MPIO_NANO" index="9" name=""/>
+        <alias field="SHAPE_Leng" index="10" name=""/>
+        <alias field="SHAPE_Area" index="11" name=""/>
+      </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
-      <attributeactions/>
-      <edittypes>
-        <edittype widgetv2type="TextEdit" name="OBJECTID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="DPTO_DPTO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_CCDGO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_CNMBR">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_CRSLC">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_NANO_">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_NAREA">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_CSMBL">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_CCNCT">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="MPIO_NANO">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="SHAPE_Leng">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="SHAPE_Area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-      </edittypes>
+      <attributeactions default="0"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <editform>.</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath>.</editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="OBJECTID" expression=""/>
+        <default field="DPTO_DPTO_" expression=""/>
+        <default field="MPIO_CCDGO" expression=""/>
+        <default field="MPIO_CNMBR" expression=""/>
+        <default field="MPIO_CRSLC" expression=""/>
+        <default field="MPIO_NANO_" expression=""/>
+        <default field="MPIO_NAREA" expression=""/>
+        <default field="MPIO_CSMBL" expression=""/>
+        <default field="MPIO_CCNCT" expression=""/>
+        <default field="MPIO_NANO" expression=""/>
+        <default field="SHAPE_Leng" expression=""/>
+        <default field="SHAPE_Area" expression=""/>
+      </defaults>
+      <previewExpression>COALESCE( "OBJECTID", '&lt;NULL>' )</previewExpression>
     </maplayer>
-    <maplayer minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>Perimetro_municipal20170316191014278</id>
       <datasource>http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_municipal&amp;SRSNAME=EPSG:6249</datasource>
-      <title></title>
-      <abstract></abstract>
       <keywordList>
         <value></value>
       </keywordList>
@@ -1710,35 +1753,35 @@
         </spatialrefsys>
       </srs>
       <provider encoding="UTF-8">WFS</provider>
-      <previewExpression></previewExpression>
       <vectorjoins/>
+      <layerDependencies/>
       <expressionfields/>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <edittypes>
         <edittype widgetv2type="TextEdit" name="id_munici">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="nombre">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="perimetro">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
-      <renderer-v2 symbollevels="0" type="singleSymbol">
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
         <symbols>
-          <symbol alpha="1" type="fill" name="0">
+          <symbol alpha="1" clip_to_extent="1" type="fill" name="0">
             <layer pass="0" class="SimpleFill" locked="0">
-              <prop k="border_width_map_unit_scale" v="0,0"/>
+              <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="color" v="75,206,227,255"/>
               <prop k="joinstyle" v="bevel"/>
               <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
               <prop k="outline_color" v="0,0,0,255"/>
               <prop k="outline_style" v="no"/>
@@ -1749,8 +1792,9 @@
           </symbol>
         </symbols>
         <rotation/>
-        <sizescale scalemethod="area"/>
+        <sizescale scalemethod="diameter"/>
       </renderer-v2>
+      <labeling type="simple"/>
       <customproperties>
         <property key="labeling" value="pal"/>
         <property key="labeling/addDirectionSymbol" value="false"/>
@@ -1919,34 +1963,42 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
-      <editforminit/>
-      <featformsuppress>0</featformsuppress>
       <annotationform>.</annotationform>
-      <editorlayout>generatedlayout</editorlayout>
+      <aliases>
+        <alias field="id_munici" index="0" name=""/>
+        <alias field="nombre" index="1" name=""/>
+        <alias field="area" index="2" name=""/>
+        <alias field="perimetro" index="3" name=""/>
+      </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
-      <attributeactions/>
-      <edittypes>
-        <edittype widgetv2type="TextEdit" name="id_munici">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="nombre">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="area">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="perimetro">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-      </edittypes>
+      <attributeactions default="0"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <editform>.</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath>.</editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="id_munici" expression=""/>
+        <default field="nombre" expression=""/>
+        <default field="area" expression=""/>
+        <default field="perimetro" expression=""/>
+      </defaults>
+      <previewExpression></previewExpression>
     </maplayer>
-    <maplayer minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+    <maplayer simplifyAlgorithm="0" minimumScale="1" maximumScale="1" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>Perimetro_urbano20170316191033763</id>
       <datasource>http://idesc.cali.gov.co:8081/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=pot_2014:bcs_lim_perimetro_urbano&amp;SRSNAME=EPSG:6249</datasource>
-      <title></title>
-      <abstract></abstract>
       <keywordList>
         <value></value>
       </keywordList>
@@ -1964,29 +2016,29 @@
         </spatialrefsys>
       </srs>
       <provider encoding="UTF-8">WFS</provider>
-      <previewExpression></previewExpression>
       <vectorjoins/>
+      <layerDependencies/>
       <expressionfields/>
       <map-layer-style-manager current="">
         <map-layer-style name=""/>
       </map-layer-style-manager>
       <edittypes>
         <edittype widgetv2type="TextEdit" name="nombre">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="anno">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
-      <renderer-v2 symbollevels="0" type="singleSymbol">
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
         <symbols>
-          <symbol alpha="1" type="fill" name="0">
+          <symbol alpha="1" clip_to_extent="1" type="fill" name="0">
             <layer pass="0" class="SimpleFill" locked="0">
-              <prop k="border_width_map_unit_scale" v="0,0"/>
+              <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="color" v="163,129,114,255"/>
               <prop k="joinstyle" v="bevel"/>
               <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
               <prop k="offset_unit" v="MM"/>
               <prop k="outline_color" v="255,255,255,255"/>
               <prop k="outline_style" v="solid"/>
@@ -1997,8 +2049,9 @@
           </symbol>
         </symbols>
         <rotation/>
-        <sizescale scalemethod="area"/>
+        <sizescale scalemethod="diameter"/>
       </renderer-v2>
+      <labeling type="simple"/>
       <customproperties>
         <property key="labeling" value="pal"/>
         <property key="labeling/addDirectionSymbol" value="false"/>
@@ -2167,25 +2220,41 @@
         <multilineenabled fieldname="" on=""/>
         <selectedonly on=""/>
       </labelattributes>
-      <editform>.</editform>
-      <editforminit/>
-      <featformsuppress>0</featformsuppress>
       <annotationform>.</annotationform>
-      <editorlayout>generatedlayout</editorlayout>
+      <aliases>
+        <alias field="nombre" index="0" name=""/>
+        <alias field="anno" index="1" name=""/>
+      </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
-      <attributeactions/>
-      <edittypes>
-        <edittype widgetv2type="TextEdit" name="nombre">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="anno">
-          <widgetv2config IsMultiline="0" fieldEditable="1" UseHtml="0" labelOnTop="0"/>
-        </edittype>
-      </edittypes>
+      <attributeactions default="0"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <editform>.</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="nombre" expression=""/>
+        <default field="anno" expression=""/>
+      </defaults>
+      <previewExpression></previewExpression>
     </maplayer>
   </projectlayers>
   <properties>
+    <Measurement>
+      <DistanceUnits type="QString">meters</DistanceUnits>
+      <AreaUnits type="QString"></AreaUnits>
+    </Measurement>
     <SpatialRefSys>
       <ProjectCRSProj4String type="QString">+proj=tmerc +lat_0=3.441883333 +lon_0=-76.5205625 +k=1 +x_0=1061900.18 +y_0=872364.63 +a=6379137 +b=6357748.961329674 +units=m +no_defs</ProjectCRSProj4String>
       <ProjectCrs type="QString">USER:100000</ProjectCrs>
@@ -2254,4 +2323,5 @@
       <filterByMap type="bool">false</filterByMap>
     </Legend>
   </properties>
+  <visibility-presets/>
 </qgis>
