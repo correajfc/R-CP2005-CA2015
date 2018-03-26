@@ -82,7 +82,7 @@ En general toda la vegetación aporta beneficios ambientales a los habitantes, e
 Una vez aplicado este filtro contamos con `r nrow(AU_analsis)` individuos.
 
 
-###El censo de población
+### El censo de población
 
 El último censo de población en Colombia se realizó en el año 2005, y los datos se pueden consultar y agregar en las diferentes unidades censales (sector, sección, manzana) usando una sistema de consulta web de censos Redatam^[El sistema de consulta es el [@cepal_redatam_nodate], que se puede acceder directamente desde [@dane_cepal_celade_2005] y en la página web del [DANE](http://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/censo-general-2005-1) dónde está organizada la documentación metodológica y otros servicios del censo.]. Estos datos sirven para caracterizar la población con base en indicadores y rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas \@ref(tab:vars-poblacion) y \@ref(tab:vars-vivienda). 
 
@@ -138,7 +138,7 @@ El código que implementa  los análisis está dividido en archivos para facilit
 
 Para usar la información geográfica de la cartografía censal y la información del IDESC es necesario establecer un sistema de coordenadas común, en unidades métricas, que facilite integrar la información y produzca resultados consistentes. El sistema de coordenadas proyectadas que vamos a usar es @noauthor_magna-sirgas-cali_nodate. Para cargar y manipular los datos espaciales hacemos uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
 
-El código y los datos están disponibles en este repositorio de GitHub.
+El código y los datos están disponibles en [este repositorio de GitHub](https://github.com/correajfc/R-CP2005-CA2015).
 
 ### Cálculo de métricas de acceso a servicios ambientales
 
