@@ -29,7 +29,7 @@ library(ggrepel)
 library(grid)
 library(ggfortify)
 library(olsrr)
-
+#library(kableExtra)
 
 #  correr los script en el orden correcto para realizar todos los calculos 
 

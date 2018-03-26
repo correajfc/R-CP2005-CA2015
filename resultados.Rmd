@@ -91,8 +91,10 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles, 
 
 Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso de el área de copa y la variable sin transformar en el caso de la cobertura de copa. A continuación se presentan los resultados de los modelos de regresión
 
-#### Área de copa
-```{r code-lm-areacopa, eval=TRUE, echo=TRUE}
+La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para la cobertura de copa.
+
+
+```{r code-lm-areacopa, eval=TRUE, echo=FALSE, results='hide'}
 dependiente <- "log.area_copa"
 independientes  <- c(indep.poblacion.copa.sel,indep.predios.copa.sel)
 # max normalizado 
@@ -107,9 +109,18 @@ sm<-summary(lm.mod.area_copa)
 sm
 
 ```
-#### Cobertura de copa
 
-```{r code-lm-cobertura, eval=TRUE, echo=TRUE}
+```{r coef-lm-copa}
+
+t1<-summary(lm.mod.area_copa)$coefficients
+knitr::kable(t1, digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE)
+
+```
+
+La tabla \@ref(tab:coef-lm-cobertura) resume los coeficientes de la regresión para la cobertura de copa.
+
+
+```{r code-lm-cobertura, eval=TRUE, echo=FALSE, results= "hide"}
 # coberbtura AP
 dependiente <- "cobertura_copa.ap"
 independientes  <- c(indep.poblacion.copa.ap.sel,
@@ -124,6 +135,13 @@ lm.mod.cobertura.ap<-lm(f,
                         data = regresion.arboles.mn)
 sm<-summary(lm.mod.cobertura.ap)
 sm
+
+```
+
+```{r coef-lm-cobertura}
+
+t1<-summary(lm.mod.cobertura.ap)$coefficients
+knitr::kable(t1, digits=5, caption = "Coeficientes OLS de cobertura de copa - (CC)" , booktabs = TRUE)
 
 ```
 
@@ -190,9 +208,17 @@ Examinemos primero la autocorrelación de las variables dependientes.
 ####  Autocorrelación variables dependientes
 
 
-```{r code-moran-copa-w, echo=TRUE}
-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_queen)
-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
+```{r moran-copa-wq}
+mt<-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_queen)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Área de copa $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-copa-wd}
+mt<-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Área de copa $W_d$" , booktabs = TRUE)
 
 ```
 
@@ -238,9 +264,18 @@ pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_dist1000.inv, wname 
 
 Para la variable dependiente porcentaje de cobertura de copa los resultados del análisis de autocorrelación se presentan a continuación.
 
-```{r code-moran-copaap-w, echo=TRUE}
-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_queen)
-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
+
+```{r moran-copaap-wq}
+mt<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_queen)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Cobertura de área de copa $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-copaap-wd}
+mt<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Cobertura de área de copa $W_d$" , booktabs = TRUE)
 
 ```
 
@@ -285,14 +320,25 @@ pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wn
 
 El siguiente código calcula los índices de autocorrelación de los residuos del mejor modelo lineal de área de copa  (`` `r str_c("sqrt.copa_area.mxn",str_c(names(lm.mod.area_copa$model)[-1],collapse =" + "), sep= " ~ ") ` ``) para ambas matrices $W$ y construye los gráficos de Moran y mapas LISA \@ref(fig:moranplot-rescopa-w) para $W_q$ y para $W_d$. 
 
-```{r code-moran-rescopa-wq, echo=TRUE}
-lm.morantest(lm.mod.area_copa, 
+
+
+```{r moran-rescopa-wq}
+mt<-lm.morantest(lm.mod.area_copa, 
              W_queen, alternative="two.sided",
              zero.policy = T)
-lm.morantest(lm.mod.area_copa, 
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS área de copa $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-rescopa-wd}
+mt<-lm.morantest(lm.mod.area_copa, 
              W_dist1000.inv, 
              alternative="two.sided",zero.policy = T)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS área de copa $W_d$" , booktabs = TRUE)
+
 ```
+
 
 ```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ ",fig.show="hold",out.width='49%'}
 
@@ -334,14 +380,23 @@ pintar_mapa_su_LISA_lmres(regresion.arboles,lm.best.area_copa,W_dist1000.inv, wn
 El mismo análisis se aplica al modelo de porcentaje de cobertura de copa (`` `r str_c("cobertura_copa.ap.mxn",str_c(names(lm.best.cobertura.ap$model)[-1],collapse =" + "), sep= " ~ ") ` ``). 
 
 
-```{r code-moran-rescopaap-wq, echo=TRUE}
-lm.morantest(lm.best.cobertura.ap, 
+```{r moran-rescopaap-wq}
+mt<-lm.morantest(lm.best.cobertura.ap, 
              W_queen, alternative="two.sided",
              zero.policy = T)
-lm.morantest(lm.best.cobertura.ap, 
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS cobertura de área de copa $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-rescopaap-wd}
+mt<-lm.morantest(lm.best.cobertura.ap, 
              W_dist1000.inv, 
              alternative="two.sided",
              zero.policy = T)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS cobertura de área de copa $W_d$" , booktabs = TRUE)
+
 ```
 
 ```{r moranplot-rescopaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q}$ y $W_{d}$",fig.show="hold",out.width='49%'}
@@ -387,10 +442,11 @@ Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos intr
 
 #### Modelo espacial área de copa 
 
-A continuación se presentan los resultados del modelado de los 4 tipos de modelos geoestadísticos para el área de copa.
+Para simplificar el análisis usaremos $W_q$ ya que las diferencias no son tan grandes entre ambas matrices. A continuación se presentan los resultados del modelado de los 4 tipos de modelos geoestadísticos para el área de copa.
 
 
-```{r code-laglm-copa-wq, echo=TRUE}
+
+```{r code-laglm-copa-wq, echo=FALSE, results="hide"}
 #SAR
 
 sar.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
@@ -433,6 +489,55 @@ AIC(slx.mod.log.area_copa.wq)
 
 ```
 
+
+
+```{r coef-sar-copa}
+sm<-summary(sar.mod.log.area_copa.wq)
+t1<-summary(sar.mod.sqrt.area_copa.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sar-copa}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sem-copa}
+sm<-summary(sem.mod.log.area_copa.wq)
+t1<-summary(sem.mod.sqrt.area_copa.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sem-copa}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sd-copa}
+sm<-summary(sd.mod.log.area_copa.wq)
+t1<-summary(sd.mod.sqrt.area_copa.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sd-copa}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa', booktabs = TRUE)
+```
+
+```{r coef-slx-copa}
+sm<-summary(slx.mod.log.area_copa.wq)
+t1<-summary(slx.mod.sqrt.area_copa.wq)$coefficients
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX de área de copa', booktabs = TRUE)
+```
 
 ```{r tabla-comp-modelos-copa }
 
@@ -514,7 +619,7 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
 
 El mismo ejercicio se aplica al porcentaje de cobertura de copa.
 
-```{r code-laglm-copaap-wq, echo=TRUE}
+```{r code-laglm-copaap-wq, echo=FALSE, results= "hide"}
 #SAR
 
 sar.cobertura.ap.wq<-lagsarlm(formula = as.formula(lm.best.cobertura.ap),
@@ -554,6 +659,55 @@ slx.sm<-summary(slx.cobertura.ap.wq)
 slx.sm
 AIC(slx.cobertura.ap.wq)
 
+```
+
+
+```{r coef-sar-copaap}
+sm<-summary(sar.cobertura.ap.wq)
+t1<-summary(sar.cobertura.ap.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sar-copaap}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sem-copaap}
+sm<-summary(sem.cobertura.ap.wq)
+t1<-summary(sem.cobertura.ap.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sem-copaap}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sd-copaap}
+sm<-summary(sd.cobertura.ap.wq)
+t1<-summary(sd.cobertura.ap.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sd-copaap}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r coef-slx-copaap}
+sm<-summary(slx.cobertura.ap.wq)
+t1<-summary(slx.cobertura.ap.wq)$coefficients
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX de porcentaje de área de copa', booktabs = TRUE)
 ```
 
 ```{r tabla-comp-modelos-copaap  }
@@ -729,10 +883,10 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel, method
 
 Para la los espacios verdes usaremos todos los términos seleccionados con los coeficientes de correlación para luego ver la significancia de las variables en el modelo y elegir el modelo con mejor ajuste usando criterio de información de Akaike (AIC) seleccionando los coeficientes significativos. Para estos índices de acceso no usaremos variantes transformadas de la variable dependiente, sólo se aplica una normalización a los datos.
 
-Para el índice de acceso de porcentaje de área de espacios verdes en un sector urbano el modelo a ajusta el siguiente:
+Para el índice de acceso de porcentaje de área de espacios verdes en un sector urbano el modelo obtiene los coeficientes de la tabla 
 
 
-```{r code-lm-area_ep,echo=TRUE,eval=TRUE}
+```{r code-lm-area_ep,echo=FALSE,eval=TRUE,results= "hide"}
 
 dependiente <- "area_ep.porcentaje"
 independientes  <- independientes.EV
@@ -744,9 +898,16 @@ summary(lm.area_ep.ptje)
 
 ```
 
-Los resultados muestran que las variables `cuarto.porcentaje`  `area_media_manzana` son significativas.
+```{r coef-lm-ptjeAEV}
 
-```{r code-lm-area_ep-sel,echo=FALSE,eval=TRUE}
+t1<-summary(lm.area_ep.ptje)$coefficients
+knitr::kable(t1, digits=5, caption = "Coeficientes OLS de porcentaje de área de espacios verdes " , booktabs = TRUE)
+
+```
+
+La tabla \@ref(tab:coef-lm-ptjeAEV) muestran que las variables `cuarto.porcentaje`  `area_media_manzana` son significativas.
+
+```{r code-lm-area_ep-sel,echo=FALSE,eval=TRUE, results="hide"}
 
 dependiente <- "area_ep.porcentaje"
 independientes  <- independientes.EV
@@ -779,9 +940,9 @@ grid.arrange( grobs =graf@plots, top=title1)
 pintar_mapa_su_lm2(regresion.EV,lm.area_ep.ptje.sel,nrow =1)
 ```
 
-Para el indice de acceso `ia.areas.dist` el modelo con todos lo terminos es el siguiente:
+Para el indice de acceso `ia.areas.dist` el modelo con todos lo terminos es el se resume en la tabla \@ref(tab:coef-lm-areadist)
 
-```{r code-lm-areadist,echo=TRUE,eval=TRUE}
+```{r code-lm-areadist,echo=FALSE,eval=TRUE, results="hide" }
 
 dependiente <- "ia.areas.dist"
 independientes  <- independientes.EV
@@ -793,9 +954,16 @@ summary(lm.ia.areas.dist)
 
 ```
 
+```{r coef-lm-areadist}
+
+t1<-summary(lm.ia.areas.dist)$coefficients
+knitr::kable(t1, digits=5, caption = "Coeficientes OLS de porcentaje de indice de acceso areas-distancia " , booktabs = TRUE)
+
+```
+
 Solo la densidad de población no es significativa. Consideraremos el modelo sin simplificar para los ajustes geoestadístico. Los gráficos \@ref(fig:diagn-lm-areadist-sel)  muestran los resultados del ajuste del modelo con todas las variables en relación con los residuos y \@ref(fig:mapas-lm-areasdist) espacialmente. 
 
-```{r code-lm-areadist-sel,echo=FALSE,eval=TRUE}
+```{r code-lm-areadist-sel,echo=FALSE,eval=TRUE,results="hide"}
 #Ajuste modelo simplificado
 dependiente <- "ia.areas.dist"
 independientes  <- independientes.EV
@@ -862,25 +1030,41 @@ title(main = "Distancia inversa a 1km")
 
 ##### Variables dependientes
 
-Comparemos el efecto de cada una de las matrices sobre el indicador `area_ep.porcentaje` 
+Comparemos el efecto de cada una de las matrices sobre el indicador `area_ep.porcentaje` (Tabla \@ref(tab:moran-areaep-wq) y \@ref(tab:moran-areaep-wd))
 
-```{r code-moran-areaep-ws, echo=TRUE}
-moran.test(regresion.EV$area_ep.porcentaje, 
+```{r moran-areaep-wq}
+mt<-moran.test(regresion.EV$area_ep.porcentaje, 
+           listw=W_queen.ev)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Porcentaje de área de EV $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-areaep-wd}
+mt<-moran.test(regresion.EV$area_ep.porcentaje, 
            listw=W_dist1000.inv.ev,
            zero.policy = TRUE)
-moran.test(regresion.EV$area_ep.porcentaje, 
-           listw=W_queen.ev)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Porcentaje de área de EV $W_d$" , booktabs = TRUE)
 
 ```
 
 
 
-```{r code-moran-areadist-w, echo=TRUE}
-moran.test(regresion.EV$ia.areas.dist, 
+```{r moran-areadist-wd}
+mt<-moran.test(regresion.EV$ia.areas.dist, 
            listw=W_dist1000.inv.ev,
            zero.policy = TRUE)
-moran.test(regresion.EV$ia.areas.dist, 
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Relación áreas distancias $W_d$" , booktabs = TRUE)
+
+```
+
+```{r moran-areadist-wq}
+mt<-moran.test(regresion.EV$ia.areas.dist, 
            listw=W_queen.ev)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Relación áreas distancias $W_q$" , booktabs = TRUE)
 
 ```
 
@@ -901,15 +1085,25 @@ pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nr
 
 Examinemos ahora los residuos  de cada modelo lineal seleccionado. Aplicamos el test de Moran primero al modelo de  `area_ep.porcentaje` con ambas matrices de vecindad. La figura \@ref(fig:moranplot-resareaep-w) muestra el mismo resultado gráficamente.
 
-```{r code-moran-resareaep-w, echo=TRUE}
-lm.morantest(lm.area_ep.ptje.sel, 
+
+```{r moran-resareaep-wq}
+mt<-lm.morantest(lm.area_ep.ptje.sel, 
              W_queen.ev, 
              alternative="two.sided",
              zero.policy = T)
-lm.morantest(lm.area_ep.ptje.sel, 
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS porcentaje de área de EV $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-resareaep-wd}
+mt<-lm.morantest(lm.area_ep.ptje.sel, 
              W_dist1000.inv.ev,
              alternative="two.sided",
              zero.policy = T)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS porcentaje de área de EV $W_D$" , booktabs = TRUE)
+
 ```
 
 ```{r moranplot-resareaep-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde", fig.show="hold",out.width='49%'}
@@ -936,15 +1130,25 @@ moran.plot(lm.area_ep.ptje.sel$residuals,
 
 Al igual que con la variable dependiente, $W_q$ captura con mayor intensidad autocorrelación en los residuos. Los resultados de aplicar el test a `ia.areas.dist` confirman que la matriz de vecindad que usaremos para el ajuste es $W_q$.
 
-```{r code-moran-resareasdist-w, echo=TRUE}
-lm.morantest(lm.ia.areas.dist.sel, 
+
+```{r moran-resareadist-wq}
+mt<-lm.morantest(lm.ia.areas.dist.sel, 
              W_queen.ev, 
              alternative="two.sided",
              zero.policy = T)
-lm.morantest(lm.ia.areas.dist.sel, 
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS relación áreas distancias $W_q$" , booktabs = TRUE)
+
+```
+
+```{r moran-resareadist-wd}
+mt<-lm.morantest(lm.ia.areas.dist.sel, 
              W_dist1000.inv.ev, 
              alternative="two.sided",
              zero.policy = T)
+names(mt$p.value)<-"p-value"
+knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS relación áreas distancias $W_d$" , booktabs = TRUE)
+
 ```
 
 ```{r moranplot-resareasdist-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`", fig.show="hold",out.width='49%'}
@@ -984,7 +1188,7 @@ Probamos los 4 tipos de modelos con la matriz $W_q$ que resultó capturar mejor 
 
 ##### Porcentaje de espacio verde 
 
-```{r code-laglm-areaep-wq, echo=TRUE}
+```{r code-laglm-areaep-wq, echo=FALSE, results="hide"}
 #SAR
 
 sar.areas_ep<-lagsarlm(formula = as.formula(lm.area_ep.ptje.sel),
@@ -1028,6 +1232,53 @@ AIC(slx.areas_ep)
 
 ```
 
+```{r coef-sar-areaep}
+sm<-summary(sar.areas_ep)
+t1<-summary(sar.areas_ep)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR de porcentaje de área de EV', booktabs = TRUE)
+```
+
+```{r cauto-sar-areaep}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de porcentaje de área de EV', booktabs = TRUE)
+```
+
+```{r coef-sem-areaep}
+sm<-summary(sem.areas_ep)
+t1<-summary(sem.areas_ep)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de EV', booktabs = TRUE)
+```
+
+```{r cauto-sem-areaep}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV', booktabs = TRUE)
+```
+
+```{r coef-sd-areaep}
+sm<-summary(sd.areas_ep)
+t1<-summary(sd.areas_ep)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de EV', booktabs = TRUE)
+```
+
+```{r cauto-sd-areaep}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de porcentaje de área de EV', booktabs = TRUE)
+```
+
+```{r coef-slx-areaep}
+sm<-summary(slx.areas_ep)
+t1<-summary(slx.areas_ep)$coefficients
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX de porcentaje de área de EV', booktabs = TRUE)
+```
 
 ```{r tabla-comp-modelos-areaep }
 
@@ -1108,7 +1359,7 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
 
 ##### Índice de acceso área-distancia 
 
-```{r code-laglm-areasdist-wq, echo=TRUE}
+```{r code-laglm-areasdist-wq, echo=FALSE, results="hide"}
 #SAR
 
 sar.areas.dist<-lagsarlm(formula = as.formula(lm.ia.areas.dist.sel),
@@ -1144,6 +1395,53 @@ AIC(slx.areas.dist)
 
 ```
 
+
+```{r coef-sar-areasdist}
+sm<-summary(sar.areas.dist)
+t1<-summary(sar.areas.dist)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR índice de relación área distancia de EV', booktabs = TRUE)
+```
+
+```{r cauto-sar-areasdist}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR índice de relación área distancia de EV', booktabs = TRUE)
+```
+
+```{r coef-sem-areasdist}
+sm<-summary(sem.areas.dist)
+t1<-summary(sem.areas.dist)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM índice de relación área distancia de EV', booktabs = TRUE)
+```
+
+```{r cauto-sem-areasdist}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM índice de relación área distancia de EV', booktabs = TRUE)
+```
+
+```{r coef-sd-areasdist}
+sm<-summary(sd.areas.dist)
+t1<-summary(sd.areas.dist)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD índice de relación área distancia de EV', booktabs = TRUE)
+```
+
+```{r cauto-sd-areasdist}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV', booktabs = TRUE)
+```
+
+```{r coef-slx-areasdist}
+t1<-summary(slx.areas.dist)$coefficients
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX índice de relación área distancia de EV', booktabs = TRUE)
+```
 
 ```{r tabla-comp-modelos-areasdist }
 

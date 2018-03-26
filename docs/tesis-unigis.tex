@@ -33,46 +33,6 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apa}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -129,7 +89,7 @@ Colombia}
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-03-20}
+  \date{2018-03-26}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -386,8 +346,8 @@ urbano}\label{beneficios-del-arbolado-urbano}
 \subsubsection{Hipótesis nula}\label{hipotesis-nula}
 
 La distribución espacial de indicadores socioeconómicos y estructurales
-es uniforme con respecto a la distribución de beneficios del arbolado
-urbano (AU) en Santiago de Cali.
+es uniforme o aleatorea con respecto a la distribución de beneficios del
+arbolado urbano (AU) en Santiago de Cali.
 
 \subsubsection{Hipótesis alternas}\label{hipotesis-alternas}
 
@@ -421,8 +381,8 @@ son un predictor de la distribución de servicios del arbolado urbano
 \subsubsection{Hipótesis nula}\label{hipotesis-nula-1}
 
 La distribución espacial de indicadores socioeconómicos y estructurales
-es uniforme con respecto a la distribución del acceso a espacios verdes
-(EV) en Santiago de Cali.
+es uniforme o aleatorea con respecto a la distribución del acceso a
+espacios verdes (EV) en Santiago de Cali.
 
 \subsubsection{Hipótesis alternas}\label{hipotesis-alternas-1}
 
@@ -2667,115 +2627,52 @@ fueron la transformación logarítmica para el caso de el área de copa y
 la variable sin transformar en el caso de la cobertura de copa. A
 continuación se presentan los resultados de los modelos de regresión
 
-\subsubsection{Área de copa}\label{area-de-copa}
+La tabla \ref{tab:coef-lm-copa} resume los coeficientes de la regresión
+para la cobertura de copa.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dependiente <-}\StringTok{ "log.area_copa"}
-\NormalTok{independientes  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(indep.poblacion.copa.sel,indep.predios.copa.sel)}
-\CommentTok{# max normalizado }
-\NormalTok{var_names<-}\KeywordTok{c}\NormalTok{(dependiente,}\KeywordTok{names}\NormalTok{(regresion.arboles[,independientes]))}
-\NormalTok{regresion.arboles.mn<-}\KeywordTok{max_nomalization}\NormalTok{(regresion.arboles,var_names)}
-\NormalTok{f <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\KeywordTok{str_c}\NormalTok{(dependiente,}\StringTok{".mxn"}\NormalTok{),}
-           \StringTok{"~"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(}\KeywordTok{str_c}\NormalTok{(independientes,}\StringTok{".mxn"}\NormalTok{), }
-                      \DataTypeTok{collapse=}\StringTok{" + "}\NormalTok{))}
-\NormalTok{lm.mod.area_copa<-}\KeywordTok{lm}\NormalTok{(f, }
-                     \DataTypeTok{data =}\NormalTok{ regresion.arboles.mn)}
-\NormalTok{sm<-}\KeywordTok{summary}\NormalTok{(lm.mod.area_copa)}
-\NormalTok{sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = f, data = regresion.arboles.mn)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.214196 -0.031198  0.002999  0.040367  0.130671 
-## 
-## Coefficients:
-##                                      Estimate Std. Error t value Pr(>|t|)
-## (Intercept)                           0.78779    0.01265  62.256  < 2e-16
-## superior_postgrado.mxn                0.31226    0.02400  13.013  < 2e-16
-## densidad_poblacion.mxn               -0.14646    0.02011  -7.283 2.60e-12
-## con_alguna_limitacion.porcentaje.mxn -0.02011    0.02474  -0.813    0.417
-## afro.porcentaje.mxn                   0.01004    0.02087   0.481    0.631
-## cuarto.porcentaje.mxn                -0.14492    0.03048  -4.754 3.03e-06
-## area_ep.mxn                           0.11908    0.02763   4.310 2.18e-05
-##                                         
-## (Intercept)                          ***
-## superior_postgrado.mxn               ***
-## densidad_poblacion.mxn               ***
-## con_alguna_limitacion.porcentaje.mxn    
-## afro.porcentaje.mxn                     
-## cuarto.porcentaje.mxn                ***
-## area_ep.mxn                          ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.05934 on 317 degrees of freedom
-## Multiple R-squared:  0.6121, Adjusted R-squared:  0.6048 
-## F-statistic: 83.38 on 6 and 317 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\caption{\label{tab:coef-lm-copa}Coeficientes OLS de área de copa - Log(AC)}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+(Intercept) & 0.788 & 0.013 & 62.256 & 0.000\\
+superior\_postgrado.mxn & 0.312 & 0.024 & 13.013 & 0.000\\
+densidad\_poblacion.mxn & -0.146 & 0.020 & -7.283 & 0.000\\
+con\_alguna\_limitacion.porcentaje.mxn & -0.020 & 0.025 & -0.813 & 0.417\\
+afro.porcentaje.mxn & 0.010 & 0.021 & 0.481 & 0.631\\
+\addlinespace
+cuarto.porcentaje.mxn & -0.145 & 0.030 & -4.754 & 0.000\\
+area\_ep.mxn & 0.119 & 0.028 & 4.310 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsubsection{Cobertura de copa}\label{cobertura-de-copa}
+La tabla \ref{tab:coef-lm-cobertura} resume los coeficientes de la
+regresión para la cobertura de copa.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# coberbtura AP}
-\NormalTok{dependiente <-}\StringTok{ "cobertura_copa.ap"}
-\NormalTok{independientes  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(indep.poblacion.copa.ap.sel,}
-\NormalTok{                     indep.predios.copa.ap.sel)}
-\CommentTok{# max normalizado }
-\NormalTok{var_names<-}\KeywordTok{c}\NormalTok{(dependiente,independientes)}
-\NormalTok{regresion.arboles.mn<-}\KeywordTok{max_nomalization}\NormalTok{(regresion.arboles,var_names)}
-\NormalTok{f <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\KeywordTok{str_c}\NormalTok{(dependiente,}\StringTok{".mxn"}\NormalTok{),}
-           \StringTok{"~"}\NormalTok{, }\KeywordTok{paste}\NormalTok{(}\KeywordTok{str_c}\NormalTok{(independientes,}\StringTok{".mxn"}\NormalTok{), }
-                      \DataTypeTok{collapse=}\StringTok{" + "}\NormalTok{))}
-\NormalTok{lm.mod.cobertura.ap<-}\KeywordTok{lm}\NormalTok{(f, }
-                        \DataTypeTok{data =}\NormalTok{ regresion.arboles.mn)}
-\NormalTok{sm<-}\KeywordTok{summary}\NormalTok{(lm.mod.cobertura.ap)}
-\NormalTok{sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = f, data = regresion.arboles.mn)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.27874 -0.05872 -0.01222  0.03964  0.64364 
-## 
-## Coefficients:
-##                                      Estimate Std. Error t value Pr(>|t|)
-## (Intercept)                           0.03438    0.03989   0.862    0.389
-## superior_postgrado.porcentaje.mxn     0.38210    0.04227   9.040   <2e-16
-## densidad_poblacion.mxn                0.05573    0.03750   1.486    0.138
-## con_alguna_limitacion.porcentaje.mxn  0.05848    0.04470   1.308    0.192
-## afro.porcentaje.mxn                  -0.02170    0.04410  -0.492    0.623
-## apartamento.porcentaje.mxn           -0.04561    0.03547  -1.286    0.199
-## cuarto.porcentaje.mxn                -0.06197    0.06163  -1.005    0.315
-## area_ep.porcentaje.mxn                0.03971    0.03796   1.046    0.296
-##                                         
-## (Intercept)                             
-## superior_postgrado.porcentaje.mxn    ***
-## densidad_poblacion.mxn                  
-## con_alguna_limitacion.porcentaje.mxn    
-## afro.porcentaje.mxn                     
-## apartamento.porcentaje.mxn              
-## cuarto.porcentaje.mxn                   
-## area_ep.porcentaje.mxn                  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.1048 on 316 degrees of freedom
-## Multiple R-squared:  0.471,  Adjusted R-squared:  0.4593 
-## F-statistic:  40.2 on 7 and 316 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\caption{\label{tab:coef-lm-cobertura}Coeficientes OLS de cobertura de copa - (CC)}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+(Intercept) & 0.03438 & 0.03989 & 0.86174 & 0.38948\\
+superior\_postgrado.porcentaje.mxn & 0.38210 & 0.04227 & 9.03961 & 0.00000\\
+densidad\_poblacion.mxn & 0.05573 & 0.03750 & 1.48613 & 0.13824\\
+con\_alguna\_limitacion.porcentaje.mxn & 0.05848 & 0.04470 & 1.30827 & 0.19173\\
+afro.porcentaje.mxn & -0.02170 & 0.04410 & -0.49201 & 0.62306\\
+\addlinespace
+apartamento.porcentaje.mxn & -0.04561 & 0.03547 & -1.28581 & 0.19945\\
+cuarto.porcentaje.mxn & -0.06197 & 0.06163 & -1.00545 & 0.31545\\
+area\_ep.porcentaje.mxn & 0.03971 & 0.03796 & 1.04619 & 0.29627\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 La tabla \ref{tab:ajuste-lmcopa-pob-predios} resume las métricas de
 ajuste de ambos modelos
@@ -2864,45 +2761,39 @@ Examinemos primero la autocorrelación de las variables dependientes.
 \subsubsection{Autocorrelación variables
 dependientes}\label{autocorrelacion-variables-dependientes}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(lm.mod.area_copa}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{log.area_copa.mxn, }\DataTypeTok{listw=}\NormalTok{W_queen)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  lm.mod.area_copa$model$log.area_copa.mxn  
-## weights: W_queen  
-## 
-## Moran I statistic standard deviate = 10.958, p-value < 2.2e-16
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##       0.374881115      -0.003095975       0.001189781
-\end{verbatim}
+\caption{\label{tab:moran-copa-wq}Test de Moran - Área de copa $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.37488\\
+Expectation & -0.00310\\
+Variance & 0.00119\\
+Moran I statistic standard deviate & 10.95802\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(lm.mod.area_copa}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{log.area_copa.mxn, }\DataTypeTok{listw=}\NormalTok{W_dist1000.inv, }\DataTypeTok{zero.policy =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  lm.mod.area_copa$model$log.area_copa.mxn  
-## weights: W_dist1000.inv  
-## 
-## Moran I statistic standard deviate = 9.5098, p-value < 2.2e-16
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##      0.2817402626     -0.0031250000      0.0008972897
-\end{verbatim}
+\caption{\label{tab:moran-copa-wd}Test de Moran - Área de copa $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.28174\\
+Expectation & -0.00312\\
+Variance & 0.00090\\
+Moran I statistic standard deviate & 9.50984\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-copa-w-1} \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-copa-w-2} \caption{Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$}\label{fig:moranplot-copa-w}
@@ -2930,45 +2821,39 @@ negativos de autocorrelación.
 Para la variable dependiente porcentaje de cobertura de copa los
 resultados del análisis de autocorrelación se presentan a continuación.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(lm.best.cobertura.ap}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{cobertura_copa.ap.mxn, }\DataTypeTok{listw=}\NormalTok{W_queen)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  lm.best.cobertura.ap$model$cobertura_copa.ap.mxn  
-## weights: W_queen  
-## 
-## Moran I statistic standard deviate = 14.107, p-value < 2.2e-16
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##       0.481041234      -0.003095975       0.001177840
-\end{verbatim}
+\caption{\label{tab:moran-copaap-wq}Test de Moran - Cobertura de área de copa $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.48104\\
+Expectation & -0.00310\\
+Variance & 0.00118\\
+Moran I statistic standard deviate & 14.10670\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(lm.best.cobertura.ap}\OperatorTok{$}\NormalTok{model}\OperatorTok{$}\NormalTok{cobertura_copa.ap.mxn, }\DataTypeTok{listw=}\NormalTok{W_dist1000.inv, }\DataTypeTok{zero.policy =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  lm.best.cobertura.ap$model$cobertura_copa.ap.mxn  
-## weights: W_dist1000.inv  
-## 
-## Moran I statistic standard deviate = 16.957, p-value < 2.2e-16
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##      0.5022505537     -0.0031250000      0.0008881907
-\end{verbatim}
+\caption{\label{tab:moran-copaap-wd}Test de Moran - Cobertura de área de copa $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.50225\\
+Expectation & -0.00312\\
+Variance & 0.00089\\
+Moran I statistic standard deviate & 16.95747\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-copaap-w-1} \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-copaap-w-2} \caption{Gráfico de Moran para los residuos del modelo lineal para el porcentajes cobertura de copa usando $W_{q}$}\label{fig:moranplot-copaap-w}
@@ -3000,51 +2885,39 @@ residuos del mejor modelo lineal de área de copa
 para ambas matrices \(W\) y construye los gráficos de Moran y mapas LISA
 \ref{fig:moranplot-rescopa-w} para \(W_q\) y para \(W_d\).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.mod.area_copa, }
-\NormalTok{             W_queen, }\DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = f, data = regresion.arboles.mn)
-## weights: W_queen
-## 
-## Moran I statistic standard deviate = 3.0235, p-value = 0.002499
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##       0.09116750      -0.01123712       0.00114715
-\end{verbatim}
+\caption{\label{tab:moran-rescopa-wq}Test de Moran - Residuos OLS área de copa $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.09117\\
+Expectation & -0.01124\\
+Variance & 0.00115\\
+Moran I statistic standard deviate & 3.02350\\
+ & 0.00250\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.mod.area_copa, }
-\NormalTok{             W_dist1000.inv, }
-             \DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}\DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = f, data = regresion.arboles.mn)
-## weights: W_dist1000.inv
-## 
-## Moran I statistic standard deviate = 4.1797, p-value = 2.919e-05
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##     0.1125770793    -0.0095502478     0.0008537482
-\end{verbatim}
+\caption{\label{tab:moran-rescopa-wd}Test de Moran - Residuos OLS área de copa $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.11258\\
+Expectation & -0.00955\\
+Variance & 0.00085\\
+Moran I statistic standard deviate & 4.17973\\
+p-value & 0.00003\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-rescopa-w-1} \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-rescopa-w-2} \caption{Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ }\label{fig:moranplot-rescopa-w}
@@ -3072,52 +2945,39 @@ van a ayudar a absorber esa diferencias para mejorar la estimación.
 El mismo análisis se aplica al modelo de porcentaje de cobertura de copa
 (\texttt{cobertura\_copa.ap.mxn\ \textasciitilde{}\ superior\_postgrado.porcentaje.mxn}).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.best.cobertura.ap, }
-\NormalTok{             W_queen, }\DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = f, data = regresion.arboles.mn)
-## weights: W_queen
-## 
-## Moran I statistic standard deviate = 5.8191, p-value = 5.915e-09
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##      0.194361169     -0.005463538      0.001179183
-\end{verbatim}
+\caption{\label{tab:moran-rescopaap-wq}Test de Moran - Residuos OLS cobertura de área de copa $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.19436\\
+Expectation & -0.00546\\
+Variance & 0.00118\\
+Moran I statistic standard deviate & 5.81914\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.best.cobertura.ap, }
-\NormalTok{             W_dist1000.inv, }
-             \DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = f, data = regresion.arboles.mn)
-## weights: W_dist1000.inv
-## 
-## Moran I statistic standard deviate = 6.5028, p-value = 7.885e-11
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##     0.1882096889    -0.0053153442     0.0008856801
-\end{verbatim}
+\caption{\label{tab:moran-rescopaap-wd}Test de Moran - Residuos OLS cobertura de área de copa $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.18821\\
+Expectation & -0.00532\\
+Variance & 0.00089\\
+Moran I statistic standard deviate & 6.50277\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-rescopaap-w-1} \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-rescopaap-w-2} \caption{Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q}$ y $W_{d}$}\label{fig:moranplot-rescopaap-w}
@@ -3156,262 +3016,140 @@ capturar mejor la autocorrelación en los residuos.
 \subsubsection{Modelo espacial área de
 copa}\label{modelo-espacial-area-de-copa}
 
-A continuación se presentan los resultados del modelado de los 4 tipos
-de modelos geoestadísticos para el área de copa.
+Para simplificar el análisis usaremos \(W_q\) ya que las diferencias no
+son tan grandes entre ambas matrices. A continuación se presentan los
+resultados del modelado de los 4 tipos de modelos geoestadísticos para
+el área de copa.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SAR}
+\begin{table}
 
-\NormalTok{sar.mod.log.area_copa.wq<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.mod.area_copa),}
-         \DataTypeTok{data =}\NormalTok{ lm.mod.area_copa}\OperatorTok{$}\NormalTok{model,}
-         \DataTypeTok{listw =}\NormalTok{ W_queen, }
-         \DataTypeTok{zero.policy =}\NormalTok{ T,}
-         \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
-\NormalTok{sar.sm<-}\KeywordTok{summary}\NormalTok{(sar.mod.log.area_copa.wq,}
-                \DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sar.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:coef-sar-copa}Coeficientes del modelo SAR de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.614 & 0.052 & 11.890 & 0.000\\
+superior\_postgrado.mxn & 0.295 & 0.024 & 12.378 & 0.000\\
+densidad\_poblacion.mxn & -0.125 & 0.020 & -6.192 & 0.000\\
+con\_alguna\_limitacion.porcentaje.mxn & -0.011 & 0.024 & -0.446 & 0.656\\
+afro.porcentaje.mxn & 0.015 & 0.020 & 0.746 & 0.455\\
+\addlinespace
+cuarto.porcentaje.mxn & -0.114 & 0.030 & -3.749 & 0.000\\
+area\_ep.mxn & 0.113 & 0.027 & 4.202 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.mod.area_copa), data = lm.mod.area_copa$model, 
-##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.248371 -0.030762  0.005022  0.041072  0.134767 
-## 
-## Type: lag 
-## Coefficients: (asymptotic standard errors) 
-##                                       Estimate Std. Error z value
-## (Intercept)                           0.614048   0.051644 11.8901
-## superior_postgrado.mxn                0.294621   0.023802 12.3780
-## densidad_poblacion.mxn               -0.124616   0.020126 -6.1918
-## con_alguna_limitacion.porcentaje.mxn -0.010718   0.024028 -0.4461
-## afro.porcentaje.mxn                   0.015215   0.020383  0.7465
-## cuarto.porcentaje.mxn                -0.113944   0.030393 -3.7490
-## area_ep.mxn                           0.113248   0.026952  4.2019
-##                                       Pr(>|z|)
-## (Intercept)                          < 2.2e-16
-## superior_postgrado.mxn               < 2.2e-16
-## densidad_poblacion.mxn               5.947e-10
-## con_alguna_limitacion.porcentaje.mxn 0.6555402
-## afro.porcentaje.mxn                  0.4553948
-## cuarto.porcentaje.mxn                0.0001775
-## area_ep.mxn                          2.647e-05
-## 
-## Rho: 0.20203, LR test value: 11.788, p-value: 0.00059614
-## Asymptotic standard error: 0.059876
-##     z-value: 3.3742, p-value: 0.00074018
-## Wald statistic: 11.386, p-value: 0.00074018
-## 
-## Log likelihood: 464.8042 for lag model
-## ML residual variance (sigma squared): 0.0032968, (sigma: 0.057418)
-## Nagelkerke pseudo-R-squared: 0.62599 
-## Number of observations: 324 
-## Number of parameters estimated: 9 
-## AIC: -911.61, (AIC for lm: -901.82)
-## LM test for residual autocorrelation
-## test value: 0.5245, p-value: 0.46893
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# SEM}
-\NormalTok{sem.mod.log.area_copa.wq<-}\KeywordTok{errorsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.mod.area_copa),}
-                                      \DataTypeTok{data =}\NormalTok{ lm.mod.area_copa}\OperatorTok{$}\NormalTok{model,}
-                                      \DataTypeTok{listw =}\NormalTok{ W_queen, }
-                                     \DataTypeTok{zero.policy =}\NormalTok{ T,}\DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
-\NormalTok{sem.sm<-}\KeywordTok{summary}\NormalTok{(sem.mod.log.area_copa.wq,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sem.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:cauto-sar-copa}Coeficiente de autocorrelación modelo SAR de área de copa}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.202 & 11.788 & 0.001\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## errorsarlm(formula = as.formula(lm.mod.area_copa), data = lm.mod.area_copa$model, 
-##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##        Min         1Q     Median         3Q        Max 
-## -0.2425228 -0.0282977  0.0045877  0.0403829  0.1265353 
-## 
-## Type: error 
-## Coefficients: (asymptotic standard errors) 
-##                                         Estimate  Std. Error z value
-## (Intercept)                           0.78118860  0.01359311 57.4695
-## superior_postgrado.mxn                0.30293183  0.02426334 12.4852
-## densidad_poblacion.mxn               -0.13519457  0.02119774 -6.3778
-## con_alguna_limitacion.porcentaje.mxn -0.01216501  0.02543709 -0.4782
-## afro.porcentaje.mxn                  -0.00099588  0.02319354 -0.0429
-## cuarto.porcentaje.mxn                -0.13028543  0.03262446 -3.9935
-## area_ep.mxn                           0.13015543  0.02877820  4.5227
-##                                       Pr(>|z|)
-## (Intercept)                          < 2.2e-16
-## superior_postgrado.mxn               < 2.2e-16
-## densidad_poblacion.mxn               1.797e-10
-## con_alguna_limitacion.porcentaje.mxn    0.6325
-## afro.porcentaje.mxn                     0.9658
-## cuarto.porcentaje.mxn                6.511e-05
-## area_ep.mxn                          6.105e-06
-## 
-## Lambda: 0.21436, LR test value: 6.4661, p-value: 0.010995
-## Asymptotic standard error: 0.080871
-##     z-value: 2.6507, p-value: 0.0080327
-## Wald statistic: 7.0262, p-value: 0.0080327
-## 
-## Log likelihood: 462.1432 for error model
-## ML residual variance (sigma squared): 0.0033481, (sigma: 0.057862)
-## Nagelkerke pseudo-R-squared: 0.6198 
-## Number of observations: 324 
-## Number of parameters estimated: 9 
-## AIC: -906.29, (AIC for lm: -901.82)
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SD }
+\caption{\label{tab:coef-sem-copa}Coeficientes del modelo SEM de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.781 & 0.014 & 57.469 & 0.000\\
+superior\_postgrado.mxn & 0.303 & 0.024 & 12.485 & 0.000\\
+densidad\_poblacion.mxn & -0.135 & 0.021 & -6.378 & 0.000\\
+con\_alguna\_limitacion.porcentaje.mxn & -0.012 & 0.025 & -0.478 & 0.632\\
+afro.porcentaje.mxn & -0.001 & 0.023 & -0.043 & 0.966\\
+\addlinespace
+cuarto.porcentaje.mxn & -0.130 & 0.033 & -3.993 & 0.000\\
+area\_ep.mxn & 0.130 & 0.029 & 4.523 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\NormalTok{sd.mod.log.area_copa.wq<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.mod.area_copa),}
-         \DataTypeTok{data =}\NormalTok{ lm.mod.area_copa}\OperatorTok{$}\NormalTok{model,}
-         \DataTypeTok{listw =}\NormalTok{ W_queen, }
-         \DataTypeTok{zero.policy =}\NormalTok{ T,}
-         \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{,}
-         \DataTypeTok{type =} \StringTok{"mixed"}\NormalTok{)}
-\NormalTok{sd.sm<-}\KeywordTok{summary}\NormalTok{(sd.mod.log.area_copa.wq,}
-               \DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sd.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.mod.area_copa), data = lm.mod.area_copa$model, 
-##     listw = W_queen, type = "mixed", zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##        Min         1Q     Median         3Q        Max 
-## -0.2043468 -0.0354340  0.0023694  0.0416533  0.1261893 
-## 
-## Type: mixed 
-## Coefficients: (asymptotic standard errors) 
-##                                            Estimate Std. Error z value
-## (Intercept)                               0.6645922  0.0674240  9.8569
-## superior_postgrado.mxn                    0.2865849  0.0244089 11.7410
-## densidad_poblacion.mxn                   -0.0878170  0.0255961 -3.4309
-## con_alguna_limitacion.porcentaje.mxn      0.0072678  0.0266239  0.2730
-## afro.porcentaje.mxn                      -0.0405391  0.0400062 -1.0133
-## cuarto.porcentaje.mxn                    -0.0617448  0.0415622 -1.4856
-## area_ep.mxn                               0.1338318  0.0300406  4.4550
-## lag.superior_postgrado.mxn                0.0403785  0.0511699  0.7891
-## lag.densidad_poblacion.mxn               -0.1030583  0.0444954 -2.3162
-## lag.con_alguna_limitacion.porcentaje.mxn -0.0597724  0.0462771 -1.2916
-## lag.afro.porcentaje.mxn                   0.1164235  0.0513221  2.2685
-## lag.cuarto.porcentaje.mxn                -0.1232108  0.0675687 -1.8235
-## lag.area_ep.mxn                          -0.1034271  0.0417974 -2.4745
-##                                           Pr(>|z|)
-## (Intercept)                              < 2.2e-16
-## superior_postgrado.mxn                   < 2.2e-16
-## densidad_poblacion.mxn                   0.0006016
-## con_alguna_limitacion.porcentaje.mxn     0.7848675
-## afro.porcentaje.mxn                      0.3109068
-## cuarto.porcentaje.mxn                    0.1373848
-## area_ep.mxn                              8.388e-06
-## lag.superior_postgrado.mxn               0.4300497
-## lag.densidad_poblacion.mxn               0.0205497
-## lag.con_alguna_limitacion.porcentaje.mxn 0.1964890
-## lag.afro.porcentaje.mxn                  0.0232996
-## lag.cuarto.porcentaje.mxn                0.0682293
-## lag.area_ep.mxn                          0.0133428
-## 
-## Rho: 0.17513, LR test value: 4.8204, p-value: 0.028125
-## Asymptotic standard error: 0.081498
-##     z-value: 2.1488, p-value: 0.031647
-## Wald statistic: 4.6175, p-value: 0.031647
-## 
-## Log likelihood: 472.2662 for mixed model
-## ML residual variance (sigma squared): 0.0031546, (sigma: 0.056166)
-## Nagelkerke pseudo-R-squared: 0.64283 
-## Number of observations: 324 
-## Number of parameters estimated: 15 
-## AIC: -914.53, (AIC for lm: -911.71)
-## LM test for residual autocorrelation
-## test value: 1.2688, p-value: 0.26
-\end{verbatim}
+\caption{\label{tab:cauto-sem-copa}Coeficiente de autocorrelación modelo SEM de área de copa}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}lambda\$ & Likelihood ratio & p-value\\
+6.466 & 0.011 & 6.466\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SLX}
-\NormalTok{slx.mod.log.area_copa.wq<-}\KeywordTok{lmSLX}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.mod.area_copa),}
-                           \DataTypeTok{data =}\NormalTok{ lm.mod.area_copa}\OperatorTok{$}\NormalTok{model,}
-                           \DataTypeTok{listw =}\NormalTok{ W_queen, }
-                           \DataTypeTok{zero.policy =}\NormalTok{ T)}
+\begin{table}
 
-\NormalTok{slx.sm<-}\KeywordTok{summary}\NormalTok{(slx.mod.log.area_copa.wq)}
-\NormalTok{slx.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:coef-sd-copa}Coeficientes del modelo SD de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.665 & 0.067 & 9.857 & 0.000\\
+superior\_postgrado.mxn & 0.287 & 0.024 & 11.741 & 0.000\\
+densidad\_poblacion.mxn & -0.088 & 0.026 & -3.431 & 0.001\\
+con\_alguna\_limitacion.porcentaje.mxn & 0.007 & 0.027 & 0.273 & 0.785\\
+afro.porcentaje.mxn & -0.041 & 0.040 & -1.013 & 0.311\\
+\addlinespace
+cuarto.porcentaje.mxn & -0.062 & 0.042 & -1.486 & 0.137\\
+area\_ep.mxn & 0.134 & 0.030 & 4.455 & 0.000\\
+lag.superior\_postgrado.mxn & 0.040 & 0.051 & 0.789 & 0.430\\
+lag.densidad\_poblacion.mxn & -0.103 & 0.044 & -2.316 & 0.021\\
+lag.con\_alguna\_limitacion.porcentaje.mxn & -0.060 & 0.046 & -1.292 & 0.196\\
+\addlinespace
+lag.afro.porcentaje.mxn & 0.116 & 0.051 & 2.268 & 0.023\\
+lag.cuarto.porcentaje.mxn & -0.123 & 0.068 & -1.823 & 0.068\\
+lag.area\_ep.mxn & -0.103 & 0.042 & -2.474 & 0.013\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = y ~ x - 1, weights = weights)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.182288 -0.034947  0.001153  0.042134  0.130952 
-## 
-## Coefficients:
-##                                            Estimate Std. Error t value
-## x(Intercept)                               0.805190   0.019782  40.702
-## xsuperior_postgrado.mxn                    0.287317   0.025135  11.431
-## xdensidad_poblacion.mxn                   -0.090655   0.026359  -3.439
-## xcon_alguna_limitacion.porcentaje.mxn      0.006775   0.027434   0.247
-## xafro.porcentaje.mxn                      -0.039136   0.041216  -0.950
-## xcuarto.porcentaje.mxn                    -0.066535   0.042834  -1.553
-## xarea_ep.mxn                               0.130202   0.030934   4.209
-## xlag.superior_postgrado.mxn                0.103958   0.044022   2.362
-## xlag.densidad_poblacion.mxn               -0.130585   0.043688  -2.989
-## xlag.con_alguna_limitacion.porcentaje.mxn -0.069458   0.047652  -1.458
-## xlag.afro.porcentaje.mxn                   0.124034   0.052871   2.346
-## xlag.cuarto.porcentaje.mxn                -0.146498   0.068425  -2.141
-## xlag.area_ep.mxn                          -0.083521   0.042322  -1.973
-##                                           Pr(>|t|)    
-## x(Intercept)                               < 2e-16 ***
-## xsuperior_postgrado.mxn                    < 2e-16 ***
-## xdensidad_poblacion.mxn                   0.000663 ***
-## xcon_alguna_limitacion.porcentaje.mxn     0.805116    
-## xafro.porcentaje.mxn                      0.343078    
-## xcuarto.porcentaje.mxn                    0.121367    
-## xarea_ep.mxn                              3.36e-05 ***
-## xlag.superior_postgrado.mxn               0.018817 *  
-## xlag.densidad_poblacion.mxn               0.003022 ** 
-## xlag.con_alguna_limitacion.porcentaje.mxn 0.145953    
-## xlag.afro.porcentaje.mxn                  0.019607 *  
-## xlag.cuarto.porcentaje.mxn                0.033051 *  
-## xlag.area_ep.mxn                          0.049328 *  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.05792 on 311 degrees of freedom
-## Multiple R-squared:  0.9948, Adjusted R-squared:  0.9946 
-## F-statistic:  4599 on 13 and 311 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{AIC}\NormalTok{(slx.mod.log.area_copa.wq)}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:cauto-sd-copa}Coeficiente de autocorrelación modelo SD de área de copa}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.175 & 4.82 & 0.028\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## [1] -911.712
-\end{verbatim}
+\begin{table}
+
+\caption{\label{tab:coef-slx-copa}Coeficientes del modelo SLX de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+x(Intercept) & 0.805 & 0.020 & 40.702 & 0.000\\
+xsuperior\_postgrado.mxn & 0.287 & 0.025 & 11.431 & 0.000\\
+xdensidad\_poblacion.mxn & -0.091 & 0.026 & -3.439 & 0.001\\
+xcon\_alguna\_limitacion.porcentaje.mxn & 0.007 & 0.027 & 0.247 & 0.805\\
+xafro.porcentaje.mxn & -0.039 & 0.041 & -0.950 & 0.343\\
+\addlinespace
+xcuarto.porcentaje.mxn & -0.067 & 0.043 & -1.553 & 0.121\\
+xarea\_ep.mxn & 0.130 & 0.031 & 4.209 & 0.000\\
+xlag.superior\_postgrado.mxn & 0.104 & 0.044 & 2.362 & 0.019\\
+xlag.densidad\_poblacion.mxn & -0.131 & 0.044 & -2.989 & 0.003\\
+xlag.con\_alguna\_limitacion.porcentaje.mxn & -0.069 & 0.048 & -1.458 & 0.146\\
+\addlinespace
+xlag.afro.porcentaje.mxn & 0.124 & 0.053 & 2.346 & 0.020\\
+xlag.cuarto.porcentaje.mxn & -0.146 & 0.068 & -2.141 & 0.033\\
+xlag.area\_ep.mxn & -0.084 & 0.042 & -1.973 & 0.049\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{table}
 
@@ -3483,192 +3221,99 @@ copa}\label{modelo-espacial-porcentaje-de-cobertura-de-area-de-copa}
 
 El mismo ejercicio se aplica al porcentaje de cobertura de copa.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SAR}
+\begin{table}
 
-\NormalTok{sar.cobertura.ap.wq<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.best.cobertura.ap),}
-         \DataTypeTok{data =}\NormalTok{ lm.best.cobertura.ap}\OperatorTok{$}\NormalTok{model,}
-         \DataTypeTok{listw =}\NormalTok{ W_queen, }
-         \DataTypeTok{zero.policy =}\NormalTok{ T,}
-         \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
-\NormalTok{sar.sm<-}\KeywordTok{summary}\NormalTok{(sar.cobertura.ap.wq,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sar.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:coef-sar-copaap}Coeficientes del modelo SAR de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.030 & 0.011 & 2.822 & 0.005\\
+superior\_postgrado.porcentaje.mxn & 0.246 & 0.027 & 9.023 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.best.cobertura.ap), data = lm.best.cobertura.ap$model, 
-##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.270499 -0.049562 -0.010666  0.035328  0.624252 
-## 
-## Type: lag 
-## Coefficients: (asymptotic standard errors) 
-##                                   Estimate Std. Error z value  Pr(>|z|)
-## (Intercept)                       0.030066   0.010654  2.8220  0.004773
-## superior_postgrado.porcentaje.mxn 0.246343   0.027300  9.0234 < 2.2e-16
-## 
-## Rho: 0.37521, LR test value: 28.579, p-value: 8.9958e-08
-## Asymptotic standard error: 0.064408
-##     z-value: 5.8255, p-value: 5.6938e-09
-## Wald statistic: 33.937, p-value: 5.6938e-09
-## 
-## Log likelihood: 285.1216 for lag model
-## ML residual variance (sigma squared): 0.0097906, (sigma: 0.098947)
-## Nagelkerke pseudo-R-squared: 0.50267 
-## Number of observations: 324 
-## Number of parameters estimated: 4 
-## AIC: -562.24, (AIC for lm: -535.66)
-## LM test for residual autocorrelation
-## test value: 0.19089, p-value: 0.66218
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# SEM}
-\NormalTok{sem.cobertura.ap.wq<-}\KeywordTok{errorsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.best.cobertura.ap),}
-                                      \DataTypeTok{data =}\NormalTok{ lm.best.cobertura.ap}\OperatorTok{$}\NormalTok{model,}
-                                      \DataTypeTok{listw =}\NormalTok{ W_queen,}
-                                \DataTypeTok{zero.policy =}\NormalTok{ T,}
-                                \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
-\NormalTok{sem.sm<-}\KeywordTok{summary}\NormalTok{(sem.cobertura.ap.wq,}
-                \DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sem.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:cauto-sar-copaap}Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.375 & 28.579 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## errorsarlm(formula = as.formula(lm.best.cobertura.ap), data = lm.best.cobertura.ap$model, 
-##     listw = W_queen, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.281664 -0.052052 -0.012380  0.034632  0.625256 
-## 
-## Type: error 
-## Coefficients: (asymptotic standard errors) 
-##                                   Estimate Std. Error z value  Pr(>|z|)
-## (Intercept)                       0.070011   0.013596  5.1495 2.612e-07
-## superior_postgrado.porcentaje.mxn 0.334060   0.028075 11.8989 < 2.2e-16
-## 
-## Lambda: 0.39903, LR test value: 26.77, p-value: 2.2916e-07
-## Asymptotic standard error: 0.071019
-##     z-value: 5.6187, p-value: 1.9242e-08
-## Wald statistic: 31.57, p-value: 1.9242e-08
-## 
-## Log likelihood: 284.2172 for error model
-## ML residual variance (sigma squared): 0.0098055, (sigma: 0.099023)
-## Nagelkerke pseudo-R-squared: 0.49988 
-## Number of observations: 324 
-## Number of parameters estimated: 4 
-## AIC: -560.43, (AIC for lm: -535.66)
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SD }
+\caption{\label{tab:coef-sem-copaap}Coeficientes del modelo SEM de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.070 & 0.014 & 5.149 & 0\\
+superior\_postgrado.porcentaje.mxn & 0.334 & 0.028 & 11.899 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\NormalTok{sd.cobertura.ap.wq<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.best.cobertura.ap),}
-         \DataTypeTok{data =}\NormalTok{ lm.best.cobertura.ap}\OperatorTok{$}\NormalTok{model,}
-         \DataTypeTok{listw =}\NormalTok{ W_queen, }\DataTypeTok{zero.policy =}\NormalTok{ T,}
-         \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{,}
-         \DataTypeTok{type =} \StringTok{"mixed"}\NormalTok{)}
-\NormalTok{sd.sm<-}\KeywordTok{summary}\NormalTok{(sd.cobertura.ap.wq,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sd.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.best.cobertura.ap), data = lm.best.cobertura.ap$model, 
-##     listw = W_queen, type = "mixed", zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.275705 -0.051349 -0.011907  0.033539  0.621785 
-## 
-## Type: mixed 
-## Coefficients: (asymptotic standard errors) 
-##                                        Estimate Std. Error z value
-## (Intercept)                            0.032144   0.010945  2.9370
-## superior_postgrado.porcentaje.mxn      0.278081   0.044417  6.2607
-## lag.superior_postgrado.porcentaje.mxn -0.051197   0.058161 -0.8803
-##                                        Pr(>|z|)
-## (Intercept)                            0.003314
-## superior_postgrado.porcentaje.mxn     3.833e-10
-## lag.superior_postgrado.porcentaje.mxn  0.378714
-## 
-## Rho: 0.40097, LR test value: 27.538, p-value: 1.5403e-07
-## Asymptotic standard error: 0.070765
-##     z-value: 5.6663, p-value: 1.4592e-08
-## Wald statistic: 32.107, p-value: 1.4592e-08
-## 
-## Log likelihood: 285.5239 for mixed model
-## ML residual variance (sigma squared): 0.0097234, (sigma: 0.098607)
-## Nagelkerke pseudo-R-squared: 0.5039 
-## Number of observations: 324 
-## Number of parameters estimated: 5 
-## AIC: -561.05, (AIC for lm: -535.51)
-## LM test for residual autocorrelation
-## test value: 1.633, p-value: 0.20129
-\end{verbatim}
+\caption{\label{tab:cauto-sem-copaap}Coeficiente de autocorrelación modelo SEM de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}lambda\$ & Likelihood ratio & p-value\\
+26.77 & 0 & 26.77\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SLX}
-\NormalTok{slx.cobertura.ap.wq<-}\KeywordTok{lmSLX}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.best.cobertura.ap),}
-                           \DataTypeTok{data =}\NormalTok{ lm.best.cobertura.ap}\OperatorTok{$}\NormalTok{model,}
-                           \DataTypeTok{listw =}\NormalTok{ W_queen, }
-                           \DataTypeTok{zero.policy =}\NormalTok{ T)}
+\begin{table}
 
-\NormalTok{slx.sm<-}\KeywordTok{summary}\NormalTok{(slx.cobertura.ap.wq)}
-\NormalTok{slx.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:coef-sd-copaap}Coeficientes del modelo SD de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.032 & 0.011 & 2.937 & 0.003\\
+superior\_postgrado.porcentaje.mxn & 0.278 & 0.044 & 6.261 & 0.000\\
+lag.superior\_postgrado.porcentaje.mxn & -0.051 & 0.058 & -0.880 & 0.379\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = y ~ x - 1, weights = weights)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.29497 -0.05404 -0.01494  0.04472  0.66363 
-## 
-## Coefficients:
-##                                        Estimate Std. Error t value
-## x(Intercept)                            0.05912    0.01080   5.472
-## xsuperior_postgrado.porcentaje.mxn      0.29297    0.04733   6.190
-## xlag.superior_postgrado.porcentaje.mxn  0.07542    0.05570   1.354
-##                                        Pr(>|t|)    
-## x(Intercept)                           8.99e-08 ***
-## xsuperior_postgrado.porcentaje.mxn     1.84e-09 ***
-## xlag.superior_postgrado.porcentaje.mxn    0.177    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.1051 on 321 degrees of freedom
-## Multiple R-squared:  0.808,  Adjusted R-squared:  0.8062 
-## F-statistic: 450.4 on 3 and 321 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{AIC}\NormalTok{(slx.cobertura.ap.wq)}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:cauto-sd-copaap}Coeficiente de autocorrelación modelo SD de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.401 & 27.538 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## [1] -535.5097
-\end{verbatim}
+\begin{table}
+
+\caption{\label{tab:coef-slx-copaap}Coeficientes del modelo SLX de porcentaje de área de copa}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+x(Intercept) & 0.059 & 0.011 & 5.472 & 0.000\\
+xsuperior\_postgrado.porcentaje.mxn & 0.293 & 0.047 & 6.190 & 0.000\\
+xlag.superior\_postgrado.porcentaje.mxn & 0.075 & 0.056 & 1.354 & 0.177\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{table}
 
@@ -3834,79 +3479,31 @@ transformadas de la variable dependiente, sólo se aplica una
 normalización a los datos.
 
 Para el índice de acceso de porcentaje de área de espacios verdes en un
-sector urbano el modelo a ajusta el siguiente:
+sector urbano el modelo obtiene los coeficientes de la tabla
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dependiente <-}\StringTok{ "area_ep.porcentaje"}
-\NormalTok{independientes  <-}\StringTok{ }\NormalTok{independientes.EV}
-\CommentTok{# max normalizado }
-\NormalTok{var_names<-}\KeywordTok{c}\NormalTok{(dependiente,}\KeywordTok{names}\NormalTok{(regresion.EV[,independientes]))}
-\NormalTok{regresion.EV.mn<-}\KeywordTok{max_nomalization}\NormalTok{(regresion.EV,var_names)}
-\NormalTok{lm.area_ep.ptje<-}\KeywordTok{crear_lm_from_df}\NormalTok{(regresion.EV.mn)}
-\KeywordTok{summary}\NormalTok{(lm.area_ep.ptje)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = form, data = df)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.26917 -0.04344 -0.01571  0.02577  0.69572 
-## 
-## Coefficients:
-##                                       Estimate Std. Error t value Pr(>|t|)
-## (Intercept)                           0.038434   0.016805   2.287  0.02284
-## area_media_manzana.mxn                0.760522   0.070424  10.799  < 2e-16
-## cuarto.porcentaje.mxn                -0.126650   0.048389  -2.617  0.00928
-## unidad_economica.porcentaje.mxn      -0.000400   0.033502  -0.012  0.99048
-## densidad_poblacion.mxn                0.001654   0.026925   0.061  0.95105
-## con_alguna_limitacion.porcentaje.mxn  0.002491   0.032620   0.076  0.93918
-## ningun_estudio.porcentaje.mxn         0.055332   0.043902   1.260  0.20845
-##                                         
-## (Intercept)                          *  
-## area_media_manzana.mxn               ***
-## cuarto.porcentaje.mxn                ** 
-## unidad_economica.porcentaje.mxn         
-## densidad_poblacion.mxn                  
-## con_alguna_limitacion.porcentaje.mxn    
-## ningun_estudio.porcentaje.mxn           
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.07843 on 322 degrees of freedom
-## Multiple R-squared:  0.3062, Adjusted R-squared:  0.2933 
-## F-statistic: 23.69 on 6 and 322 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\caption{\label{tab:coef-lm-ptjeAEV}Coeficientes OLS de porcentaje de área de espacios verdes }
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+(Intercept) & 0.03843 & 0.01681 & 2.28701 & 0.02284\\
+area\_media\_manzana.mxn & 0.76052 & 0.07042 & 10.79924 & 0.00000\\
+cuarto.porcentaje.mxn & -0.12665 & 0.04839 & -2.61733 & 0.00928\\
+unidad\_economica.porcentaje.mxn & -0.00040 & 0.03350 & -0.01194 & 0.99048\\
+densidad\_poblacion.mxn & 0.00165 & 0.02693 & 0.06144 & 0.95105\\
+\addlinespace
+con\_alguna\_limitacion.porcentaje.mxn & 0.00249 & 0.03262 & 0.07636 & 0.93918\\
+ningun\_estudio.porcentaje.mxn & 0.05533 & 0.04390 & 1.26036 & 0.20845\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-Los resultados muestran que las variables \texttt{cuarto.porcentaje}
-\texttt{area\_media\_manzana} son significativas.
-
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = area_ep.porcentaje.mxn ~ cuarto.porcentaje.mxn + 
-##     area_media_manzana.mxn, data = regresion.EV.mn)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.26869 -0.04398 -0.01599  0.02522  0.69949 
-## 
-## Coefficients:
-##                         Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)             0.049241   0.005703   8.635 2.66e-16 ***
-## cuarto.porcentaje.mxn  -0.093855   0.037643  -2.493   0.0132 *  
-## area_media_manzana.mxn  0.744371   0.065197  11.417  < 2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.07825 on 326 degrees of freedom
-## Multiple R-squared:  0.3008, Adjusted R-squared:  0.2966 
-## F-statistic: 70.14 on 2 and 326 DF,  p-value: < 2.2e-16
-\end{verbatim}
+La tabla \ref{tab:coef-lm-ptjeAEV} muestran que las variables
+\texttt{cuarto.porcentaje} \texttt{area\_media\_manzana} son
+significativas.
 
 Los gráficos \ref{fig:diagn-lm-areaep-sel} muestran los resultados del
 ajuste en relación con los residuos y \ref{fig:mapas-lm-areaep}
@@ -3921,93 +3518,33 @@ espacialmente.
 \end{figure}
 
 Para el indice de acceso \texttt{ia.areas.dist} el modelo con todos lo
-terminos es el siguiente:
+terminos es el se resume en la tabla \ref{tab:coef-lm-areadist}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{dependiente <-}\StringTok{ "ia.areas.dist"}
-\NormalTok{independientes  <-}\StringTok{ }\NormalTok{independientes.EV}
-\CommentTok{# max normalizado }
-\NormalTok{var_names<-}\KeywordTok{c}\NormalTok{(dependiente,}\KeywordTok{names}\NormalTok{(regresion.EV[,independientes]))}
-\NormalTok{regresion.EV.mn<-}\KeywordTok{max_nomalization}\NormalTok{(regresion.EV,var_names)}
-\NormalTok{lm.ia.areas.dist<-}\KeywordTok{crear_lm_from_df}\NormalTok{(regresion.EV.mn)}
-\KeywordTok{summary}\NormalTok{(lm.ia.areas.dist)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = form, data = df)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.29642 -0.03451 -0.01574  0.00990  0.82343 
-## 
-## Coefficients:
-##                                      Estimate Std. Error t value Pr(>|t|)
-## (Intercept)                           0.09203    0.02050   4.489 9.97e-06
-## area_media_manzana.mxn                0.43288    0.08591   5.039 7.82e-07
-## cuarto.porcentaje.mxn                -0.15932    0.05903  -2.699  0.00732
-## unidad_economica.porcentaje.mxn       0.11736    0.04087   2.872  0.00435
-## densidad_poblacion.mxn               -0.04920    0.03285  -1.498  0.13511
-## con_alguna_limitacion.porcentaje.mxn -0.13427    0.03979  -3.374  0.00083
-## ningun_estudio.porcentaje.mxn         0.14126    0.05355   2.638  0.00875
-##                                         
-## (Intercept)                          ***
-## area_media_manzana.mxn               ***
-## cuarto.porcentaje.mxn                ** 
-## unidad_economica.porcentaje.mxn      ** 
-## densidad_poblacion.mxn                  
-## con_alguna_limitacion.porcentaje.mxn ***
-## ningun_estudio.porcentaje.mxn        ** 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.09567 on 322 degrees of freedom
-## Multiple R-squared:  0.2074, Adjusted R-squared:  0.1926 
-## F-statistic: 14.04 on 6 and 322 DF,  p-value: 3.342e-14
-\end{verbatim}
+\caption{\label{tab:coef-lm-areadist}Coeficientes OLS de porcentaje de indice de acceso areas-distancia }
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+(Intercept) & 0.09203 & 0.02050 & 4.48930 & 0.00001\\
+area\_media\_manzana.mxn & 0.43288 & 0.08591 & 5.03894 & 0.00000\\
+cuarto.porcentaje.mxn & -0.15932 & 0.05903 & -2.69903 & 0.00732\\
+unidad\_economica.porcentaje.mxn & 0.11736 & 0.04087 & 2.87178 & 0.00435\\
+densidad\_poblacion.mxn & -0.04920 & 0.03285 & -1.49802 & 0.13511\\
+\addlinespace
+con\_alguna\_limitacion.porcentaje.mxn & -0.13427 & 0.03979 & -3.37435 & 0.00083\\
+ningun\_estudio.porcentaje.mxn & 0.14126 & 0.05355 & 2.63769 & 0.00875\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Solo la densidad de población no es significativa. Consideraremos el
 modelo sin simplificar para los ajustes geoestadístico. Los gráficos
 \ref{fig:diagn-lm-areadist-sel} muestran los resultados del ajuste del
 modelo con todas las variables en relación con los residuos y
 \ref{fig:mapas-lm-areasdist} espacialmente.
-
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = ia.areas.dist.mxn ~ cuarto.porcentaje.mxn + unidad_economica.porcentaje.mxn + 
-##     area_media_manzana.mxn + ningun_estudio.porcentaje.mxn + 
-##     con_alguna_limitacion.porcentaje.mxn, data = regresion.EV.mn)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.31569 -0.03598 -0.01588  0.00771  0.82467 
-## 
-## Coefficients:
-##                                      Estimate Std. Error t value Pr(>|t|)
-## (Intercept)                           0.08111    0.01920   4.225 3.11e-05
-## cuarto.porcentaje.mxn                -0.14696    0.05856  -2.510 0.012578
-## unidad_economica.porcentaje.mxn       0.13706    0.03877   3.535 0.000467
-## area_media_manzana.mxn                0.45626    0.08464   5.391 1.36e-07
-## ningun_estudio.porcentaje.mxn         0.11501    0.05070   2.268 0.023970
-## con_alguna_limitacion.porcentaje.mxn -0.14154    0.03957  -3.577 0.000401
-##                                         
-## (Intercept)                          ***
-## cuarto.porcentaje.mxn                *  
-## unidad_economica.porcentaje.mxn      ***
-## area_media_manzana.mxn               ***
-## ningun_estudio.porcentaje.mxn        *  
-## con_alguna_limitacion.porcentaje.mxn ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.09586 on 323 degrees of freedom
-## Multiple R-squared:  0.2019, Adjusted R-squared:  0.1895 
-## F-statistic: 16.34 on 5 and 323 DF,  p-value: 2.254e-14
-\end{verbatim}
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{tesis-unigis_files/figure-latex/diagn-lm-areadist-sel-1} \caption{Gráficas diagnósticas para el análisis de regresión lineal de 'ia.areas.dist'}\label{fig:diagn-lm-areadist-sel}
@@ -4085,93 +3622,76 @@ espacial}\label{autocorrelacion-espacial-1}
 \paragraph{Variables dependientes}\label{variables-dependientes}
 
 Comparemos el efecto de cada una de las matrices sobre el indicador
-\texttt{area\_ep.porcentaje}
+\texttt{area\_ep.porcentaje} (Tabla \ref{tab:moran-areaep-wq} y
+\ref{tab:moran-areaep-wd})
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(regresion.EV}\OperatorTok{$}\NormalTok{area_ep.porcentaje, }
-           \DataTypeTok{listw=}\NormalTok{W_dist1000.inv.ev,}
-           \DataTypeTok{zero.policy =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  regresion.EV$area_ep.porcentaje  
-## weights: W_dist1000.inv.ev  
-## 
-## Moran I statistic standard deviate = 2.0602, p-value = 0.01969
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##      0.0537662589     -0.0030769231      0.0007612826
-\end{verbatim}
+\caption{\label{tab:moran-areaep-wq}Test de Moran - Porcentaje de área de EV $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.10462\\
+Expectation & -0.00305\\
+Variance & 0.00101\\
+Moran I statistic standard deviate & 3.39376\\
+p-value & 0.00034\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(regresion.EV}\OperatorTok{$}\NormalTok{area_ep.porcentaje, }
-           \DataTypeTok{listw=}\NormalTok{W_queen.ev)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  regresion.EV$area_ep.porcentaje  
-## weights: W_queen.ev  
-## 
-## Moran I statistic standard deviate = 3.3938, p-value = 0.0003447
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##       0.104622145      -0.003048780       0.001006547
-\end{verbatim}
+\caption{\label{tab:moran-areaep-wd}Test de Moran - Porcentaje de área de EV $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.05377\\
+Expectation & -0.00308\\
+Variance & 0.00076\\
+Moran I statistic standard deviate & 2.06018\\
+p-value & 0.01969\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(regresion.EV}\OperatorTok{$}\NormalTok{ia.areas.dist, }
-           \DataTypeTok{listw=}\NormalTok{W_dist1000.inv.ev,}
-           \DataTypeTok{zero.policy =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  regresion.EV$ia.areas.dist  
-## weights: W_dist1000.inv.ev  
-## 
-## Moran I statistic standard deviate = 24.519, p-value < 2.2e-16
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##      0.6777872466     -0.0030769231      0.0007711172
-\end{verbatim}
+\caption{\label{tab:moran-areadist-wd}Test de Moran - Relación áreas distancias $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.67779\\
+Expectation & -0.00308\\
+Variance & 0.00077\\
+Moran I statistic standard deviate & 24.51886\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{moran.test}\NormalTok{(regresion.EV}\OperatorTok{$}\NormalTok{ia.areas.dist, }
-           \DataTypeTok{listw=}\NormalTok{W_queen.ev)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Moran I test under randomisation
-## 
-## data:  regresion.EV$ia.areas.dist  
-## weights: W_queen.ev  
-## 
-## Moran I statistic standard deviate = 24.624, p-value < 2.2e-16
-## alternative hypothesis: greater
-## sample estimates:
-## Moran I statistic       Expectation          Variance 
-##       0.783140286      -0.003048780       0.001019399
-\end{verbatim}
+\caption{\label{tab:moran-areadist-wq}Test de Moran - Relación áreas distancias $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Moran I statistic & 0.78314\\
+Expectation & -0.00305\\
+Variance & 0.00102\\
+Moran I statistic standard deviate & 24.62379\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 La matriz \(W_q\) captura con mayor fuerza la autocorrelación espacial
 de \texttt{area\_ep.porcentaje}. Al repetir el test para
@@ -4206,55 +3726,39 @@ Aplicamos el test de Moran primero al modelo de
 \texttt{area\_ep.porcentaje} con ambas matrices de vecindad. La figura
 \ref{fig:moranplot-resareaep-w} muestra el mismo resultado gráficamente.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.area_ep.ptje.sel, }
-\NormalTok{             W_queen.ev, }
-             \DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = area_ep.porcentaje.mxn ~ cuarto.porcentaje.mxn
-## + area_media_manzana.mxn, data = regresion.EV.mn)
-## weights: W_queen.ev
-## 
-## Moran I statistic standard deviate = 3.5892, p-value = 0.0003316
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##      0.116355498     -0.005017782      0.001143508
-\end{verbatim}
+\caption{\label{tab:moran-resareaep-wq}Test de Moran - Residuos OLS porcentaje de área de EV $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.11636\\
+Expectation & -0.00502\\
+Variance & 0.00114\\
+Moran I statistic standard deviate & 3.58925\\
+p-value & 0.00033\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.area_ep.ptje.sel, }
-\NormalTok{             W_dist1000.inv.ev,}
-             \DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = area_ep.porcentaje.mxn ~ cuarto.porcentaje.mxn
-## + area_media_manzana.mxn, data = regresion.EV.mn)
-## weights: W_dist1000.inv.ev
-## 
-## Moran I statistic standard deviate = 1.579, p-value = 0.1143
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##     0.0420095663    -0.0044075679     0.0008641599
-\end{verbatim}
+\caption{\label{tab:moran-resareaep-wd}Test de Moran - Residuos OLS porcentaje de área de EV $W_D$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.04201\\
+Expectation & -0.00441\\
+Variance & 0.00086\\
+Moran I statistic standard deviate & 1.57900\\
+p-value & 0.11434\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-resareaep-w-1} \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-resareaep-w-2} \caption{Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde}\label{fig:moranplot-resareaep-w}
@@ -4265,53 +3769,39 @@ intensidad autocorrelación en los residuos. Los resultados de aplicar el
 test a \texttt{ia.areas.dist} confirman que la matriz de vecindad que
 usaremos para el ajuste es \(W_q\).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.ia.areas.dist.sel, }
-\NormalTok{             W_queen.ev, }
-             \DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = form, data = df)
-## weights: W_queen.ev
-## 
-## Moran I statistic standard deviate = 17.805, p-value < 2.2e-16
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##      0.585432955     -0.010137536      0.001118915
-\end{verbatim}
+\caption{\label{tab:moran-resareadist-wq}Test de Moran - Residuos OLS relación áreas distancias $W_q$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.58543\\
+Expectation & -0.01014\\
+Variance & 0.00112\\
+Moran I statistic standard deviate & 17.80470\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{lm.morantest}\NormalTok{(lm.ia.areas.dist.sel, }
-\NormalTok{             W_dist1000.inv.ev, }
-             \DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,}
-             \DataTypeTok{zero.policy =}\NormalTok{ T)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-##  Global Moran I for regression residuals
-## 
-## data:  
-## model: lm(formula = form, data = df)
-## weights: W_dist1000.inv.ev
-## 
-## Moran I statistic standard deviate = 19.219, p-value < 2.2e-16
-## alternative hypothesis: two.sided
-## sample estimates:
-## Observed Moran I      Expectation         Variance 
-##     0.5466198707    -0.0088593824     0.0008353882
-\end{verbatim}
+\caption{\label{tab:moran-resareadist-wd}Test de Moran - Residuos OLS relación áreas distancias $W_d$}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+  &  \\
+\midrule
+Observed Moran I & 0.54662\\
+Expectation & -0.00886\\
+Variance & 0.00084\\
+Moran I statistic standard deviate & 19.21869\\
+p-value & 0.00000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-resareasdist-w-1} \includegraphics[width=0.49\linewidth]{tesis-unigis_files/figure-latex/moranplot-resareasdist-w-2} \caption{Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`}\label{fig:moranplot-resareasdist-w}
@@ -4334,192 +3824,105 @@ resultados.
 \paragraph{Porcentaje de espacio
 verde}\label{porcentaje-de-espacio-verde}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SAR}
+\begin{table}
 
-\NormalTok{sar.areas_ep<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.area_ep.ptje.sel),}
-                                    \DataTypeTok{data =}\NormalTok{ lm.area_ep.ptje.sel}\OperatorTok{$}\NormalTok{model,}
-                                    \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }
-                       \DataTypeTok{zero.policy =}\NormalTok{ T,}
-                       \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
+\caption{\label{tab:coef-sar-areaep}Coeficientes del modelo SAR de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.039 & 0.007 & 5.254 & 0.000\\
+cuarto.porcentaje.mxn & -0.081 & 0.038 & -2.146 & 0.032\\
+area\_media\_manzana.mxn & 0.734 & 0.065 & 11.207 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\NormalTok{sar.sm<-}\KeywordTok{summary}\NormalTok{(sar.areas_ep,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sar.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.area_ep.ptje.sel), data = lm.area_ep.ptje.sel$model, 
-##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.273098 -0.040970 -0.014876  0.019167  0.707957 
-## 
-## Type: lag 
-## Coefficients: (asymptotic standard errors) 
-##                          Estimate Std. Error z value  Pr(>|z|)
-## (Intercept)             0.0388741  0.0073986  5.2542 1.486e-07
-## cuarto.porcentaje.mxn  -0.0807630  0.0376324 -2.1461   0.03186
-## area_media_manzana.mxn  0.7335412  0.0654545 11.2069 < 2.2e-16
-## 
-## Rho: 0.15309, LR test value: 4.5439, p-value: 0.033036
-## Asymptotic standard error: 0.072979
-##     z-value: 2.0977, p-value: 0.03593
-## Wald statistic: 4.4004, p-value: 0.03593
-## 
-## Log likelihood: 375.1965 for lag model
-## ML residual variance (sigma squared): 0.0059579, (sigma: 0.077187)
-## Nagelkerke pseudo-R-squared: 0.31043 
-## Number of observations: 329 
-## Number of parameters estimated: 5 
-## AIC: -740.39, (AIC for lm: -737.85)
-## LM test for residual autocorrelation
-## test value: 5.7788, p-value: 0.016221
-\end{verbatim}
+\caption{\label{tab:cauto-sar-areaep}Coeficiente de autocorrelación modelo SAR de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.153 & 4.544 & 0.033\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# SEM}
-\NormalTok{sem.areas_ep<-}\KeywordTok{errorsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.area_ep.ptje.sel),}
-                           \DataTypeTok{data =}\NormalTok{ lm.area_ep.ptje.sel}\OperatorTok{$}\NormalTok{model,}
-                           \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }\DataTypeTok{zero.policy =}\NormalTok{ T,}
-                         \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
-\NormalTok{sem.sm<-}\KeywordTok{summary}\NormalTok{(sem.areas_ep,}
-                \DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sem.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## errorsarlm(formula = as.formula(lm.area_ep.ptje.sel), data = lm.area_ep.ptje.sel$model, 
-##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.279173 -0.039125 -0.014652  0.021290  0.708489 
-## 
-## Type: error 
-## Coefficients: (asymptotic standard errors) 
-##                          Estimate Std. Error z value  Pr(>|z|)
-## (Intercept)             0.0491056  0.0069003  7.1165 1.107e-12
-## cuarto.porcentaje.mxn  -0.0979094  0.0415838 -2.3545   0.01855
-## area_media_manzana.mxn  0.7712382  0.0653415 11.8032 < 2.2e-16
-## 
-## Lambda: 0.25902, LR test value: 10.215, p-value: 0.0013934
-## Asymptotic standard error: 0.078665
-##     z-value: 3.2928, p-value: 0.00099206
-## Wald statistic: 10.842, p-value: 0.00099206
-## 
-## Log likelihood: 378.0319 for error model
-## ML residual variance (sigma squared): 0.0058066, (sigma: 0.076201)
-## Nagelkerke pseudo-R-squared: 0.32222 
-## Number of observations: 329 
-## Number of parameters estimated: 5 
-## AIC: -746.06, (AIC for lm: -737.85)
-\end{verbatim}
+\caption{\label{tab:coef-sem-areaep}Coeficientes del modelo SEM de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.049 & 0.007 & 7.116 & 0.000\\
+cuarto.porcentaje.mxn & -0.098 & 0.042 & -2.355 & 0.019\\
+area\_media\_manzana.mxn & 0.771 & 0.065 & 11.803 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SD }
+\begin{table}
 
-\NormalTok{sd.areas_ep<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.area_ep.ptje.sel),}
-                        \DataTypeTok{data =}\NormalTok{ lm.area_ep.ptje.sel}\OperatorTok{$}\NormalTok{model,}
-                        \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }
-                      \DataTypeTok{zero.policy =}\NormalTok{ T,}
-                      \DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{,}
-                        \DataTypeTok{type =} \StringTok{"mixed"}\NormalTok{)}
-\NormalTok{sd.sm<-}\KeywordTok{summary}\NormalTok{(sd.areas_ep,}
-               \DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sd.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:cauto-sem-areaep}Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}lambda\$ & Likelihood ratio & p-value\\
+10.215 & 0.001 & 10.215\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.area_ep.ptje.sel), data = lm.area_ep.ptje.sel$model, 
-##     listw = W_queen.ev, type = "mixed", zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##       Min        1Q    Median        3Q       Max 
-## -0.281818 -0.041196 -0.015641  0.025087  0.701126 
-## 
-## Type: mixed 
-## Coefficients: (asymptotic standard errors) 
-##                              Estimate Std. Error z value  Pr(>|z|)
-## (Intercept)                 0.0377326  0.0086946  4.3398 1.426e-05
-## cuarto.porcentaje.mxn      -0.1366936  0.0544000 -2.5128  0.011979
-## area_media_manzana.mxn      0.7929675  0.0665592 11.9137 < 2.2e-16
-## lag.cuarto.porcentaje.mxn   0.0985071  0.0829144  1.1881  0.234811
-## lag.area_media_manzana.mxn -0.3647870  0.1326357 -2.7503  0.005954
-## 
-## Rho: 0.26168, LR test value: 10.614, p-value: 0.0011222
-## Asymptotic standard error: 0.078409
-##     z-value: 3.3374, p-value: 0.0008458
-## Wald statistic: 11.138, p-value: 0.0008458
-## 
-## Log likelihood: 379.4362 for mixed model
-## ML residual variance (sigma squared): 0.0057556, (sigma: 0.075866)
-## Nagelkerke pseudo-R-squared: 0.32798 
-## Number of observations: 329 
-## Number of parameters estimated: 7 
-## AIC: -744.87, (AIC for lm: -736.26)
-## LM test for residual autocorrelation
-## test value: 1.9206, p-value: 0.16579
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SLX}
-\NormalTok{slx.areas_ep<-}\KeywordTok{lmSLX}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.area_ep.ptje.sel),}
-                      \DataTypeTok{data =}\NormalTok{ lm.area_ep.ptje.sel}\OperatorTok{$}\NormalTok{model,}
-                      \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }
-                    \DataTypeTok{zero.policy =}\NormalTok{ T)}
+\caption{\label{tab:coef-sd-areaep}Coeficientes del modelo SD de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.038 & 0.009 & 4.340 & 0.000\\
+cuarto.porcentaje.mxn & -0.137 & 0.054 & -2.513 & 0.012\\
+area\_media\_manzana.mxn & 0.793 & 0.067 & 11.914 & 0.000\\
+lag.cuarto.porcentaje.mxn & 0.099 & 0.083 & 1.188 & 0.235\\
+lag.area\_media\_manzana.mxn & -0.365 & 0.133 & -2.750 & 0.006\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\NormalTok{slx.sm<-}\KeywordTok{summary}\NormalTok{(slx.areas_ep)}
-\NormalTok{slx.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = y ~ x - 1, weights = weights)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.26922 -0.04573 -0.01615  0.02428  0.69203 
-## 
-## Coefficients:
-##                              Estimate Std. Error t value Pr(>|t|)    
-## x(Intercept)                 0.050863   0.007944   6.402 5.37e-10 ***
-## xcuarto.porcentaje.mxn      -0.133837   0.056072  -2.387   0.0176 *  
-## xarea_media_manzana.mxn      0.776764   0.068460  11.346  < 2e-16 ***
-## xlag.cuarto.porcentaje.mxn   0.066635   0.085226   0.782   0.4349    
-## xlag.area_media_manzana.mxn -0.158851   0.124959  -1.271   0.2046    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.0782 on 324 degrees of freedom
-## Multiple R-squared:  0.5316, Adjusted R-squared:  0.5243 
-## F-statistic: 73.53 on 5 and 324 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\caption{\label{tab:cauto-sd-areaep}Coeficiente de autocorrelación modelo SD de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.262 & 10.614 & 0.001\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{AIC}\NormalTok{(slx.areas_ep)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## [1] -736.2582
-\end{verbatim}
+\caption{\label{tab:coef-slx-areaep}Coeficientes del modelo SLX de porcentaje de área de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+x(Intercept) & 0.051 & 0.008 & 6.402 & 0.000\\
+xcuarto.porcentaje.mxn & -0.134 & 0.056 & -2.387 & 0.018\\
+xarea\_media\_manzana.mxn & 0.777 & 0.068 & 11.346 & 0.000\\
+xlag.cuarto.porcentaje.mxn & 0.067 & 0.085 & 0.782 & 0.435\\
+xlag.area\_media\_manzana.mxn & -0.159 & 0.125 & -1.271 & 0.205\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{table}
 
@@ -4585,252 +3988,135 @@ presentan en los valores extremos.
 \paragraph{Índice de acceso
 área-distancia}\label{indice-de-acceso-area-distancia}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SAR}
+\begin{table}
 
-\NormalTok{sar.areas.dist<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.ia.areas.dist.sel),}
-         \DataTypeTok{data =}\NormalTok{ lm.ia.areas.dist.sel}\OperatorTok{$}\NormalTok{model,}
-         \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }\DataTypeTok{zero.policy =}\NormalTok{ T,}\DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
+\caption{\label{tab:coef-sar-areasdist}Coeficientes del modelo SAR índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.022 & 0.012 & 1.917 & 0.055\\
+area\_media\_manzana.mxn & 0.040 & 0.047 & 0.851 & 0.395\\
+cuarto.porcentaje.mxn & -0.048 & 0.033 & -1.472 & 0.141\\
+unidad\_economica.porcentaje.mxn & 0.054 & 0.023 & 2.394 & 0.017\\
+densidad\_poblacion.mxn & -0.010 & 0.018 & -0.533 & 0.594\\
+\addlinespace
+con\_alguna\_limitacion.porcentaje.mxn & -0.045 & 0.022 & -2.033 & 0.042\\
+ningun\_estudio.porcentaje.mxn & 0.042 & 0.030 & 1.415 & 0.157\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\NormalTok{sar.sm<-}\KeywordTok{summary}\NormalTok{(sar.areas.dist,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sar.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.ia.areas.dist.sel), data = lm.ia.areas.dist.sel$model, 
-##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##        Min         1Q     Median         3Q        Max 
-## -0.2780579 -0.0122299 -0.0041903  0.0053696  0.4480791 
-## 
-## Type: lag 
-## Coefficients: (asymptotic standard errors) 
-##                                        Estimate Std. Error z value
-## (Intercept)                           0.0222944  0.0116285  1.9172
-## area_media_manzana.mxn                0.0403663  0.0474079  0.8515
-## cuarto.porcentaje.mxn                -0.0478921  0.0325380 -1.4719
-## unidad_economica.porcentaje.mxn       0.0543715  0.0227131  2.3938
-## densidad_poblacion.mxn               -0.0096933  0.0181712 -0.5334
-## con_alguna_limitacion.porcentaje.mxn -0.0447170  0.0219950 -2.0331
-## ningun_estudio.porcentaje.mxn         0.0417468  0.0295132  1.4145
-##                                      Pr(>|z|)
-## (Intercept)                           0.05521
-## area_media_manzana.mxn                0.39451
-## cuarto.porcentaje.mxn                 0.14105
-## unidad_economica.porcentaje.mxn       0.01667
-## densidad_poblacion.mxn                0.59373
-## con_alguna_limitacion.porcentaje.mxn  0.04205
-## ningun_estudio.porcentaje.mxn         0.15721
-## 
-## Rho: 0.81871, LR test value: 325.5, p-value: < 2.22e-16
-## Asymptotic standard error: 0.032947
-##     z-value: 24.85, p-value: < 2.22e-16
-## Wald statistic: 617.5, p-value: < 2.22e-16
-## 
-## Log likelihood: 471.5556 for lag model
-## ML residual variance (sigma squared): 0.0027799, (sigma: 0.052725)
-## Nagelkerke pseudo-R-squared: 0.70529 
-## Number of observations: 329 
-## Number of parameters estimated: 9 
-## AIC: -925.11, (AIC for lm: -601.61)
-## LM test for residual autocorrelation
-## test value: 90.542, p-value: < 2.22e-16
-\end{verbatim}
+\caption{\label{tab:cauto-sar-areasdist}Coeficiente de autocorrelación modelo SAR índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.819 & 325.497 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# SEM}
-\NormalTok{sem.areas.dist<-}\KeywordTok{errorsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.ia.areas.dist.sel),}
-                                      \DataTypeTok{data =}\NormalTok{ lm.ia.areas.dist.sel}\OperatorTok{$}\NormalTok{model,}
-                                      \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }\DataTypeTok{zero.policy =}\NormalTok{ T,}\DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{)}
-\NormalTok{sem.sm<-}\KeywordTok{summary}\NormalTok{(sem.areas.dist,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sem.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## errorsarlm(formula = as.formula(lm.ia.areas.dist.sel), data = lm.ia.areas.dist.sel$model, 
-##     listw = W_queen.ev, zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##        Min         1Q     Median         3Q        Max 
-## -0.2739716 -0.0130918 -0.0043041  0.0044020  0.4534021 
-## 
-## Type: error 
-## Coefficients: (asymptotic standard errors) 
-##                                        Estimate Std. Error z value
-## (Intercept)                           0.0716311  0.0256815  2.7892
-## area_media_manzana.mxn               -0.0985923  0.0471135 -2.0927
-## cuarto.porcentaje.mxn                 0.0016561  0.0444938  0.0372
-## unidad_economica.porcentaje.mxn       0.0644677  0.0292013  2.2077
-## densidad_poblacion.mxn               -0.0168933  0.0227898 -0.7413
-## con_alguna_limitacion.porcentaje.mxn -0.0381619  0.0242516 -1.5736
-## ningun_estudio.porcentaje.mxn         0.0180572  0.0426374  0.4235
-##                                      Pr(>|z|)
-## (Intercept)                          0.005284
-## area_media_manzana.mxn               0.036380
-## cuarto.porcentaje.mxn                0.970310
-## unidad_economica.porcentaje.mxn      0.027266
-## densidad_poblacion.mxn               0.458532
-## con_alguna_limitacion.porcentaje.mxn 0.115584
-## ningun_estudio.porcentaje.mxn        0.671925
-## 
-## Lambda: 0.8581, LR test value: 320.95, p-value: < 2.22e-16
-## Asymptotic standard error: 0.02916
-##     z-value: 29.428, p-value: < 2.22e-16
-## Wald statistic: 865.98, p-value: < 2.22e-16
-## 
-## Log likelihood: 469.2818 for error model
-## ML residual variance (sigma squared): 0.0027409, (sigma: 0.052354)
-## Nagelkerke pseudo-R-squared: 0.70119 
-## Number of observations: 329 
-## Number of parameters estimated: 9 
-## AIC: -920.56, (AIC for lm: -601.61)
-\end{verbatim}
+\caption{\label{tab:coef-sem-areasdist}Coeficientes del modelo SEM índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & 0.072 & 0.026 & 2.789 & 0.005\\
+area\_media\_manzana.mxn & -0.099 & 0.047 & -2.093 & 0.036\\
+cuarto.porcentaje.mxn & 0.002 & 0.044 & 0.037 & 0.970\\
+unidad\_economica.porcentaje.mxn & 0.064 & 0.029 & 2.208 & 0.027\\
+densidad\_poblacion.mxn & -0.017 & 0.023 & -0.741 & 0.459\\
+\addlinespace
+con\_alguna\_limitacion.porcentaje.mxn & -0.038 & 0.024 & -1.574 & 0.116\\
+ningun\_estudio.porcentaje.mxn & 0.018 & 0.043 & 0.424 & 0.672\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SD }
+\begin{table}
 
-\NormalTok{sd.areas.dist<-}\KeywordTok{lagsarlm}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.ia.areas.dist.sel),}
-                                    \DataTypeTok{data =}\NormalTok{ lm.ia.areas.dist.sel}\OperatorTok{$}\NormalTok{model,}
-                                    \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }\DataTypeTok{zero.policy =}\NormalTok{ T,}\DataTypeTok{tol.solve=}\FloatTok{1.0e-30}\NormalTok{,}
-                                    \DataTypeTok{type =} \StringTok{"mixed"}\NormalTok{)}
-\NormalTok{sd.sm<-}\KeywordTok{summary}\NormalTok{(sd.areas.dist,}\DataTypeTok{Nagelkerke=}\NormalTok{T)}
-\NormalTok{sd.sm}
-\end{Highlighting}
-\end{Shaded}
+\caption{\label{tab:cauto-sem-areasdist}Coeficiente de autocorrelación modelo SEM índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}lambda\$ & Likelihood ratio & p-value\\
+320.95 & 0 & 320.95\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lagsarlm(formula = as.formula(lm.ia.areas.dist.sel), data = lm.ia.areas.dist.sel$model, 
-##     listw = W_queen.ev, type = "mixed", zero.policy = T, tol.solve = 1e-30)
-## 
-## Residuals:
-##        Min         1Q     Median         3Q        Max 
-## -0.2816380 -0.0138278 -0.0016630  0.0081623  0.4186494 
-## 
-## Type: mixed 
-## Coefficients: (asymptotic standard errors) 
-##                                             Estimate  Std. Error z value
-## (Intercept)                              -0.01785763  0.01768939 -1.0095
-## area_media_manzana.mxn                    0.02917490  0.05038592  0.5790
-## cuarto.porcentaje.mxn                    -0.00296323  0.04346976 -0.0682
-## unidad_economica.porcentaje.mxn           0.06684156  0.02812408  2.3767
-## densidad_poblacion.mxn                   -0.00518664  0.02222968 -0.2333
-## con_alguna_limitacion.porcentaje.mxn     -0.04284384  0.02317612 -1.8486
-## ningun_estudio.porcentaje.mxn             0.03467732  0.04144553  0.8367
-## lag.area_media_manzana.mxn                0.73768946  0.10528513  7.0066
-## lag.cuarto.porcentaje.mxn                -0.08865463  0.06965991 -1.2727
-## lag.unidad_economica.porcentaje.mxn       0.01171474  0.04316099  0.2714
-## lag.densidad_poblacion.mxn                0.02325558  0.03739340  0.6219
-## lag.con_alguna_limitacion.porcentaje.mxn -0.00053905  0.04274059 -0.0126
-## lag.ningun_estudio.porcentaje.mxn         0.08424458  0.06092012  1.3829
-##                                           Pr(>|z|)
-## (Intercept)                                0.31273
-## area_media_manzana.mxn                     0.56257
-## cuarto.porcentaje.mxn                      0.94565
-## unidad_economica.porcentaje.mxn            0.01747
-## densidad_poblacion.mxn                     0.81551
-## con_alguna_limitacion.porcentaje.mxn       0.06451
-## ningun_estudio.porcentaje.mxn              0.40276
-## lag.area_media_manzana.mxn               2.442e-12
-## lag.cuarto.porcentaje.mxn                  0.20313
-## lag.unidad_economica.porcentaje.mxn        0.78607
-## lag.densidad_poblacion.mxn                 0.53400
-## lag.con_alguna_limitacion.porcentaje.mxn   0.98994
-## lag.ningun_estudio.porcentaje.mxn          0.16670
-## 
-## Rho: 0.7088, LR test value: 213.39, p-value: < 2.22e-16
-## Asymptotic standard error: 0.041984
-##     z-value: 16.883, p-value: < 2.22e-16
-## Wald statistic: 285.02, p-value: < 2.22e-16
-## 
-## Log likelihood: 499.9153 for mixed model
-## ML residual variance (sigma squared): 0.0024821, (sigma: 0.049821)
-## Nagelkerke pseudo-R-squared: 0.75196 
-## Number of observations: 329 
-## Number of parameters estimated: 15 
-## AIC: -969.83, (AIC for lm: -758.44)
-## LM test for residual autocorrelation
-## test value: 43.178, p-value: 4.9987e-11
-\end{verbatim}
+\begin{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#SLX}
-\NormalTok{slx.areas.dist<-}\KeywordTok{lmSLX}\NormalTok{(}\DataTypeTok{formula =} \KeywordTok{as.formula}\NormalTok{(lm.ia.areas.dist.sel),}
-                           \DataTypeTok{data =}\NormalTok{ lm.ia.areas.dist.sel}\OperatorTok{$}\NormalTok{model,}
-                           \DataTypeTok{listw =}\NormalTok{ W_queen.ev, }\DataTypeTok{zero.policy =}\NormalTok{ T)}
+\caption{\label{tab:coef-sd-areasdist}Coeficientes del modelo SD índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & z value & Pr(>|z|)\\
+\midrule
+(Intercept) & -0.018 & 0.018 & -1.010 & 0.313\\
+area\_media\_manzana.mxn & 0.029 & 0.050 & 0.579 & 0.563\\
+cuarto.porcentaje.mxn & -0.003 & 0.043 & -0.068 & 0.946\\
+unidad\_economica.porcentaje.mxn & 0.067 & 0.028 & 2.377 & 0.017\\
+densidad\_poblacion.mxn & -0.005 & 0.022 & -0.233 & 0.816\\
+\addlinespace
+con\_alguna\_limitacion.porcentaje.mxn & -0.043 & 0.023 & -1.849 & 0.065\\
+ningun\_estudio.porcentaje.mxn & 0.035 & 0.041 & 0.837 & 0.403\\
+lag.area\_media\_manzana.mxn & 0.738 & 0.105 & 7.007 & 0.000\\
+lag.cuarto.porcentaje.mxn & -0.089 & 0.070 & -1.273 & 0.203\\
+lag.unidad\_economica.porcentaje.mxn & 0.012 & 0.043 & 0.271 & 0.786\\
+\addlinespace
+lag.densidad\_poblacion.mxn & 0.023 & 0.037 & 0.622 & 0.534\\
+lag.con\_alguna\_limitacion.porcentaje.mxn & -0.001 & 0.043 & -0.013 & 0.990\\
+lag.ningun\_estudio.porcentaje.mxn & 0.084 & 0.061 & 1.383 & 0.167\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\NormalTok{slx.sm<-}\KeywordTok{summary}\NormalTok{(slx.areas.dist)}
-\NormalTok{slx.sm}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## 
-## Call:
-## lm(formula = y ~ x - 1, weights = weights)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.32193 -0.02981 -0.00631  0.01504  0.58292 
-## 
-## Coefficients:
-##                                            Estimate Std. Error t value
-## x(Intercept)                               0.032537   0.026513   1.227
-## xarea_media_manzana.mxn                    0.316684   0.070266   4.507
-## xcuarto.porcentaje.mxn                    -0.049288   0.065134  -0.757
-## xunidad_economica.porcentaje.mxn           0.063757   0.042176   1.512
-## xdensidad_poblacion.mxn                    0.012842   0.033313   0.385
-## xcon_alguna_limitacion.porcentaje.mxn     -0.059156   0.034691  -1.705
-## xningun_estudio.porcentaje.mxn             0.076228   0.062044   1.229
-## xlag.area_media_manzana.mxn                1.509318   0.142478  10.593
-## xlag.cuarto.porcentaje.mxn                -0.259880   0.103035  -2.522
-## xlag.unidad_economica.porcentaje.mxn       0.177529   0.062806   2.827
-## xlag.densidad_poblacion.mxn                0.003132   0.056084   0.056
-## xlag.con_alguna_limitacion.porcentaje.mxn -0.205932   0.063491  -3.243
-## xlag.ningun_estudio.porcentaje.mxn         0.349373   0.089964   3.883
-##                                           Pr(>|t|)    
-## x(Intercept)                              0.220648    
-## xarea_media_manzana.mxn                   9.27e-06 ***
-## xcuarto.porcentaje.mxn                    0.449787    
-## xunidad_economica.porcentaje.mxn          0.131613    
-## xdensidad_poblacion.mxn                   0.700131    
-## xcon_alguna_limitacion.porcentaje.mxn     0.089134 .  
-## xningun_estudio.porcentaje.mxn            0.220131    
-## xlag.area_media_manzana.mxn                < 2e-16 ***
-## xlag.cuarto.porcentaje.mxn                0.012151 *  
-## xlag.unidad_economica.porcentaje.mxn      0.005004 ** 
-## xlag.densidad_poblacion.mxn               0.955503    
-## xlag.con_alguna_limitacion.porcentaje.mxn 0.001307 ** 
-## xlag.ningun_estudio.porcentaje.mxn        0.000125 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.07472 on 316 degrees of freedom
-## Multiple R-squared:  0.6236, Adjusted R-squared:  0.6081 
-## F-statistic: 40.27 on 13 and 316 DF,  p-value: < 2.2e-16
-\end{verbatim}
+\caption{\label{tab:cauto-sd-areasdist}Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
+0.709 & 213.394 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{AIC}\NormalTok{(slx.areas.dist)}
-\end{Highlighting}
-\end{Shaded}
+\begin{table}
 
-\begin{verbatim}
-## [1] -758.4367
-\end{verbatim}
+\caption{\label{tab:coef-slx-areasdist}Coeficientes del modelo SLX índice de relación área distancia de EV}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule
+x(Intercept) & 0.033 & 0.027 & 1.227 & 0.221\\
+xarea\_media\_manzana.mxn & 0.317 & 0.070 & 4.507 & 0.000\\
+xcuarto.porcentaje.mxn & -0.049 & 0.065 & -0.757 & 0.450\\
+xunidad\_economica.porcentaje.mxn & 0.064 & 0.042 & 1.512 & 0.132\\
+xdensidad\_poblacion.mxn & 0.013 & 0.033 & 0.385 & 0.700\\
+\addlinespace
+xcon\_alguna\_limitacion.porcentaje.mxn & -0.059 & 0.035 & -1.705 & 0.089\\
+xningun\_estudio.porcentaje.mxn & 0.076 & 0.062 & 1.229 & 0.220\\
+xlag.area\_media\_manzana.mxn & 1.509 & 0.142 & 10.593 & 0.000\\
+xlag.cuarto.porcentaje.mxn & -0.260 & 0.103 & -2.522 & 0.012\\
+xlag.unidad\_economica.porcentaje.mxn & 0.178 & 0.063 & 2.827 & 0.005\\
+\addlinespace
+xlag.densidad\_poblacion.mxn & 0.003 & 0.056 & 0.056 & 0.956\\
+xlag.con\_alguna\_limitacion.porcentaje.mxn & -0.206 & 0.063 & -3.243 & 0.001\\
+xlag.ningun\_estudio.porcentaje.mxn & 0.349 & 0.090 & 3.883 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{table}
 
@@ -4948,8 +4234,8 @@ copa (figura \ref{fig:mapas-lisa-copaap-wq}) o el bajo desarrollo de los
 individuos en sectores de calles estrechas y con pocas vías principales.
 
 Así pues los coeficientes de los dos modelos ajustados se detallan en la
-tablas \ref{tab:coef-sd-copa} y \ref{tab:coef-rho-copa} para el modelo
-SD y \ref{tab:coef-sar-copaap} y \ref{tab:coef-rho-copaap} para el
+tablas \ref{tab:coef-sd-copa} y \ref{tab:cauto-sd-copa} para el modelo
+SD y \ref{tab:coef-sar-copaap} y \ref{tab:cauto-sar-copaap} para el
 modelo SAR. En consecuencia con el ajuste de autocorrelación en ambos
 modelos (SAR y SD) el \(\rho\) es significativo y proporcional a las
 diferencias en el Moran'I Global de cada modelo. Es interesante que en
@@ -4969,69 +4255,6 @@ segregación de los clusters de sectores con mayor arborización(figura
 ambos altamente correlacionadas, como se aprecia en los mapas de LISA y
 las matriz de correlación \ref{fig:tile-poblacion-pearson} y
 \ref{fig:tile-poblacion-spearman}
-
-\begin{table}
-
-\caption{\label{tab:coef-sd-copa}Coeficientes del modelo SD de área de copa}
-\centering
-\begin{tabular}[t]{lrrrr}
-\toprule
-  & Estimate & Std. Error & z value & Pr(>|z|)\\
-\midrule
-(Intercept) & 0.665 & 0.067 & 9.857 & 0.000\\
-superior\_postgrado.mxn & 0.287 & 0.024 & 11.741 & 0.000\\
-densidad\_poblacion.mxn & -0.088 & 0.026 & -3.431 & 0.001\\
-con\_alguna\_limitacion.porcentaje.mxn & 0.007 & 0.027 & 0.273 & 0.785\\
-afro.porcentaje.mxn & -0.041 & 0.040 & -1.013 & 0.311\\
-\addlinespace
-cuarto.porcentaje.mxn & -0.062 & 0.042 & -1.486 & 0.137\\
-area\_ep.mxn & 0.134 & 0.030 & 4.455 & 0.000\\
-lag.superior\_postgrado.mxn & 0.040 & 0.051 & 0.789 & 0.430\\
-lag.densidad\_poblacion.mxn & -0.103 & 0.044 & -2.316 & 0.021\\
-lag.con\_alguna\_limitacion.porcentaje.mxn & -0.060 & 0.046 & -1.292 & 0.196\\
-\addlinespace
-lag.afro.porcentaje.mxn & 0.116 & 0.051 & 2.268 & 0.023\\
-lag.cuarto.porcentaje.mxn & -0.123 & 0.068 & -1.823 & 0.068\\
-lag.area\_ep.mxn & -0.103 & 0.042 & -2.474 & 0.013\\
-\bottomrule
-\end{tabular}
-\end{table}\begin{table}
-
-\caption{\label{tab:coef-rho-copa}Coeficiente de autocorrelación modelo SD de área de copa}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
-0.175 & 4.82 & 0.028\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}
-
-\caption{\label{tab:coef-sar-copaap}Coeficientes del modelo SAR de porcentaje de área de copa}
-\centering
-\begin{tabular}[t]{lrrrr}
-\toprule
-  & Estimate & Std. Error & z value & Pr(>|z|)\\
-\midrule
-(Intercept) & 0.030 & 0.011 & 2.822 & 0.005\\
-superior\_postgrado.porcentaje.mxn & 0.246 & 0.027 & 9.023 & 0.000\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}
-
-\caption{\label{tab:coef-rho-copaap}Coeficiente de autocorrelación modelo SAR de área de copa}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
-0.375 & 28.579 & 0\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{tesis-unigis_files/figure-latex/lisa-afro-1} \caption{Mapas LISA - Porcentaje población Afro}\label{fig:lisa-afro}
@@ -5121,39 +4344,14 @@ relación de costo de traslado por beneficio en área. El modelo de mejor
 rendimiento en la estimación medido usando el AIC fue el SEM para
 \texttt{area\_ep.porcentaje} y SD para \texttt{ia.areas.dist}. Los
 coeficientes de los dos modelos ajustados se detallan en la tablas
-\ref{tab:coef-sem-areaep} y \ref{tab:coef-lambda-areaep} para el modelo
-SEM y \ref{tab:coef-sd-aerasdist} y \ref{tab:coef-rho-aerasdist} para el
+\ref{tab:coef-sem-areaep} y \ref{tab:cauto-sem-areaep} para el modelo
+SEM y \ref{tab:coef-sd-aerasdist} y \ref{tab:cauto-sd-aerasdist} para el
 modelo SD.
-
-\begin{table}
-
-\caption{\label{tab:coef-sem-areaep}Coeficientes del modelo SEM de porcentaje de área de espacio verde}
-\centering
-\begin{tabular}[t]{lrrrr}
-\toprule
-  & Estimate & Std. Error & z value & Pr(>|z|)\\
-\midrule
-(Intercept) & 0.049 & 0.007 & 7.116 & 0.000\\
-cuarto.porcentaje.mxn & -0.098 & 0.042 & -2.355 & 0.019\\
-area\_media\_manzana.mxn & 0.771 & 0.065 & 11.803 & 0.000\\
-\bottomrule
-\end{tabular}
-\end{table}\begin{table}
-
-\caption{\label{tab:coef-lambda-areaep}Coeficiente de autocorrelación modelo SEM de porcentaje de área de espacio verde}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-\$\textbackslash{}lambda\$ & Likelihood ratio & p-value\\
-0.259 & 10.215 & 0.001\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 En el SEM todos los coeficientes son significativos y el valor de área
 media de manzana es la variable más influyente. El coeficiente de
 autocorrelación en el error es muy significativo, lo que sugiere que si
-existe información de patrones espaciales en el error pero en variables
+existe información de patrones espaciales en el error por en variables
 no modeladas. La importancia que tiene en el modelo el área media de
 manzana puede interpretarse como una característica estructural de
 barrio o sector que por tener manzanas más grandes las zonas destinadas
@@ -5169,43 +4367,6 @@ los sistemas de consulta del censo del 2005. Sin embargo puede afirmarse
 que la distribución de los EV es desigual pues más de 203 de 329
 sectores en la ciudad tiene menos del 5\% de espacio verde de área
 respecto del area total del sector (figura \ref{fig:hist-areasdist}).
-
-\begin{table}
-
-\caption{\label{tab:coef-sd-aerasdist}Coeficientes del modelo SD del indicador de acceso área-distancia}
-\centering
-\begin{tabular}[t]{lrrrr}
-\toprule
-  & Estimate & Std. Error & z value & Pr(>|z|)\\
-\midrule
-(Intercept) & -0.018 & 0.018 & -1.010 & 0.313\\
-area\_media\_manzana.mxn & 0.029 & 0.050 & 0.579 & 0.563\\
-cuarto.porcentaje.mxn & -0.003 & 0.043 & -0.068 & 0.946\\
-unidad\_economica.porcentaje.mxn & 0.067 & 0.028 & 2.377 & 0.017\\
-densidad\_poblacion.mxn & -0.005 & 0.022 & -0.233 & 0.816\\
-\addlinespace
-con\_alguna\_limitacion.porcentaje.mxn & -0.043 & 0.023 & -1.849 & 0.065\\
-ningun\_estudio.porcentaje.mxn & 0.035 & 0.041 & 0.837 & 0.403\\
-lag.area\_media\_manzana.mxn & 0.738 & 0.105 & 7.007 & 0.000\\
-lag.cuarto.porcentaje.mxn & -0.089 & 0.070 & -1.273 & 0.203\\
-lag.unidad\_economica.porcentaje.mxn & 0.012 & 0.043 & 0.271 & 0.786\\
-\addlinespace
-lag.densidad\_poblacion.mxn & 0.023 & 0.037 & 0.622 & 0.534\\
-lag.con\_alguna\_limitacion.porcentaje.mxn & -0.001 & 0.043 & -0.013 & 0.990\\
-lag.ningun\_estudio.porcentaje.mxn & 0.084 & 0.061 & 1.383 & 0.167\\
-\bottomrule
-\end{tabular}
-\end{table}\begin{table}
-
-\caption{\label{tab:coef-rho-aerasdist}Coeficiente de autocorrelación modelo SD del indicador de acceso área-distancia}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-\$\textbackslash{}rho\$ & Likelihood ratio & p-value\\
-0.709 & 213.394 & 0\\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{tesis-unigis_files/figure-latex/hist-areaep-1} \includegraphics[width=1\linewidth]{tesis-unigis_files/figure-latex/hist-areaep-2} \caption{Distribucion de lo indicadores de acceso local a EV }\label{fig:hist-areaep}

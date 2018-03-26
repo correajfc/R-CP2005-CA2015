@@ -10,35 +10,9 @@ Aunque el área de copa y el porcentaje de cobertura de copa configuran dos mode
 
 A pesar de la persistencia de problemas en la estimación como la no normalidad de los residuos y la heterocedasticidad —esto debidos ya no la autocorrelación de la variable dependiente ni a la de los errores sino a posibles no linealidades entre los predictores y la cobertura de copa— las estimaciones mejoran con los modelos con estructura espacial. Inclusive parece que las matrices de vecindad construidas, aunque muy similares entre sí, muestran que la inclusión a priori de una estructura espacial es un mecanismo eficaz para identificar grupos y probar aspectos teóricos de la estructura de la autocorrelación si se profundiza e incluye criterios teóricos o conocimientos del desarrollo histórico de la ciudad en su formalización. Es posible que dichos problemas de la estimación provengan de dimensiones no incluidas en el modelo dado que los modelos SEM también tienen un rendimiento similar al de los mejor rankeados SAR y SD, escogidos como mejores candidatos para la estimación del porcentaje de cobertura de copa y área de copa, respectivamente. En este sentido traemos a colación aspectos como el importante número de árboles en los andes y separadores viales (figura \@ref(fig:au-geo-emp)), factor que no puede no ser capturado en las métricas construidas, pero que puede explicar el agrupamiento de sectores censales con buena cobertura de copa alrededor de la calle 5ta que se observa en el mapa de clusters del porcentaje de cobertura de copa (figura \@ref(fig:mapas-lisa-copaap-wq)) o el bajo desarrollo de los individuos en sectores de calles estrechas y con pocas vías principales.
 
-Así pues los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sd-copa) y \@ref(tab:coef-rho-copa) para el modelo SD y \@ref(tab:coef-sar-copaap) y \@ref(tab:coef-rho-copaap) para el modelo SAR.  En consecuencia con el ajuste de autocorrelación en ambos modelos (SAR y SD) el $\rho$ es significativo y proporcional a las diferencias en el Moran’I Global de cada modelo. Es interesante que en ambos modelos la variable más significativa y de mayor valor en el coeficiente es **estudios superiores**. Cuando se formulan los modelos se excluye el uso de variables como porcentaje de población afro o personas sin estudios por tener una alta correlación negativa con personas con **estudios superiores o postgrado** o con su versión porcentual. Esto implica que los beneficios ambientales son mejores en sectores con población mejor educada (figura \@ref(fig:lisa-superiores)), posiblemente una razón para preferir o habitar espacios con buena arborización o tal vez con andes con suficiente espacio y zonas blandas para arborizar el barrio. En cualquier caso, esto muestra un grado de segregación de los clusters de sectores con mayor arborización(figura \@ref(fig:lisa-superiores)) y la población afro (figura \@ref(fig:lisa-afro)) y sin estudios (figura \@ref(fig:lisa-sinestudio)), ambos altamente correlacionadas, como se aprecia en los mapas de LISA y las matriz de correlación \@ref(fig:tile-poblacion-pearson) y \@ref(fig:tile-poblacion-spearman)
-
-```{r coef-sd-copa}
-sm.sd.copa<-summary(sd.mod.sqrt.area_copa.wq)
-t1<-summary(sd.mod.sqrt.area_copa.wq)$Coef
-r1<-round(c(sm.sd.copa$rho,sm.sd.copa$LR1$statistic,sm.sd.copa$LR1$p.value),digits = 3)
-r1<-unname(r1)
-t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
-          r1)
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa', booktabs = TRUE)
-```
-```{r coef-rho-copa}
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa', booktabs = TRUE)
-```
+Así pues los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sd-copa) y \@ref(tab:cauto-sd-copa) para el modelo SD y \@ref(tab:coef-sar-copaap) y \@ref(tab:cauto-sar-copaap) para el modelo SAR.  En consecuencia con el ajuste de autocorrelación en ambos modelos (SAR y SD) el $\rho$ es significativo y proporcional a las diferencias en el Moran’I Global de cada modelo. Es interesante que en ambos modelos la variable más significativa y de mayor valor en el coeficiente es **estudios superiores**. Cuando se formulan los modelos se excluye el uso de variables como porcentaje de población afro o personas sin estudios por tener una alta correlación negativa con personas con **estudios superiores o postgrado** o con su versión porcentual. Esto implica que los beneficios ambientales son mejores en sectores con población mejor educada (figura \@ref(fig:lisa-superiores)), posiblemente una razón para preferir o habitar espacios con buena arborización o tal vez con andes con suficiente espacio y zonas blandas para arborizar el barrio. En cualquier caso, esto muestra un grado de segregación de los clusters de sectores con mayor arborización(figura \@ref(fig:lisa-superiores)) y la población afro (figura \@ref(fig:lisa-afro)) y sin estudios (figura \@ref(fig:lisa-sinestudio)), ambos altamente correlacionadas, como se aprecia en los mapas de LISA y las matriz de correlación \@ref(fig:tile-poblacion-pearson) y \@ref(fig:tile-poblacion-spearman)
 
 
-```{r coef-sar-copaap}
-sm.sar.copaap<-summary(sar.cobertura.ap.wq)
-t3<-summary(sar.cobertura.ap.wq)$Coef
-r2<-round(c(sm.sar.copaap$rho,sm.sar.copaap$LR1$statistic,sm.sar.copaap$LR1$p.value),digits = 3)
-r2<-unname(r2)
-t4<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
-          r2)
-knitr::kable(t3, digits=3,caption = 'Coeficientes del modelo SAR de porcentaje de área de copa', booktabs = TRUE)
-```
-
-```{r coef-rho-copaap}
-knitr::kable(unname(t4), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de área de copa', booktabs = TRUE)
-```
 
 
 ```{r lisa-afro, fig.cap="Mapas LISA - Porcentaje población Afro"}
@@ -116,38 +90,11 @@ Este tipo de desigualdades son una responsabilidad de los urbanizadores y de los
 
 Análogamente a la cobertura arbórea, las métricas de acceso son aspectos complementarios sobre el mismo fenómeno de acceso aún beneficio; una representa un beneficio local, para el que vive en ese sector (`area_ep.porcentaje`) y la otra una forma (`ia.areas.dist`) que involucra un grupos de sectores beneficiarios, y que mide la relación entre el área del espacio verde y  la distancia desde el centroide del sector urbano para luego sumar los valores de los espacios en un rango de distancia: intenta cuantificar la relación de costo de traslado por beneficio en área. 
 El modelo de mejor rendimiento en la estimación medido usando el AIC fue el SEM para `area_ep.porcentaje` y SD para `ia.areas.dist`. 
-Los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sem-areaep) y \@ref(tab:coef-lambda-areaep) para el modelo SEM y  \@ref(tab:coef-sd-aerasdist) y \@ref(tab:coef-rho-aerasdist) para el modelo SD.
+Los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sem-areaep) y \@ref(tab:cauto-sem-areaep) para el modelo SEM y  \@ref(tab:coef-sd-aerasdist) y \@ref(tab:cauto-sd-aerasdist) para el modelo SD.
 
 
 
-
-```{r coef-sem-areaep}
-sm.sem.areaep<-summary(sem.areas_ep)
-t1<-summary(sem.areas_ep)$Coef
-r1<-round(c(sem.areas_ep$lambda,sm.sem.areaep$LR1$statistic,sm.sem.areaep$LR1$p.value),digits = 3)
-r1<-unname(r1)
-t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
-          r1)
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de espacio verde', booktabs = TRUE)
-```
-```{r coef-lambda-areaep}
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de espacio verde', booktabs = TRUE)
-```
-
-En el SEM todos los coeficientes son significativos y el valor de área media de manzana es la variable más influyente. El coeficiente de autocorrelación en el error es muy significativo, lo que sugiere que si existe información de patrones espaciales en el error pero en variables no modeladas. La importancia que tiene en el modelo el área media de manzana puede interpretarse como una característica estructural de barrio o sector que por tener manzanas más grandes las zonas destinadas para parque o espacio verde son en consecuencia más grandes y el beneficio mayor o/y que algunas manzanas que albergan equipamientos de ciudad, zonas verdes como riberas de ríos o lagunas determinan el alto valor del indicador al ser el promedio sensible a valores extremos. Lo cierto es que desde este punto de vista local no existe evidencia sobre una relación concluyente con ninguna variable poblacional, por lo que no puede decirse que se vulnere a ciertas comunidades o grupos diferenciados, al menos en lo que respecta a las variables que proveen los sistemas de consulta del censo del 2005. Sin embargo puede afirmarse que la distribución de los EV es desigual pues más de `r regresion.EV %>% select(area_ep.porcentaje) %>% filter(area_ep.porcentaje<0.05) %>% nrow()` de 329 sectores en la ciudad tiene menos del 5% de espacio verde de área respecto del area total del sector (figura \@ref(fig:hist-areasdist)). 
-
-```{r coef-sd-aerasdist}
-sm.sd.areasdist<-summary(sd.areas.dist)
-t1<-summary(sd.areas.dist)$Coef
-r1<-round(c(sm.sd.areasdist$rho,sm.sd.areasdist$LR1$statistic,sm.sd.areasdist$LR1$p.value),digits = 3)
-r1<-unname(r1)
-t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
-          r1)
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD del indicador de acceso área-distancia', booktabs = TRUE)
-```
-```{r coef-rho-aerasdist}
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD del indicador de acceso área-distancia', booktabs = TRUE)
-```
+En el SEM todos los coeficientes son significativos y el valor de área media de manzana es la variable más influyente. El coeficiente de autocorrelación en el error es muy significativo, lo que sugiere que si existe información de patrones espaciales en el error por en variables no modeladas. La importancia que tiene en el modelo el área media de manzana puede interpretarse como una característica estructural de barrio o sector que por tener manzanas más grandes las zonas destinadas para parque o espacio verde son en consecuencia más grandes y el beneficio mayor o/y que algunas manzanas que albergan equipamientos de ciudad, zonas verdes como riberas de ríos o lagunas determinan el alto valor del indicador al ser el promedio sensible a valores extremos. Lo cierto es que desde este punto de vista local no existe evidencia sobre una relación concluyente con ninguna variable poblacional, por lo que no puede decirse que se vulnere a ciertas comunidades o grupos diferenciados, al menos en lo que respecta a las variables que proveen los sistemas de consulta del censo del 2005. Sin embargo puede afirmarse que la distribución de los EV es desigual pues más de `r regresion.EV %>% select(area_ep.porcentaje) %>% filter(area_ep.porcentaje<0.05) %>% nrow()` de 329 sectores en la ciudad tiene menos del 5% de espacio verde de área respecto del area total del sector (figura \@ref(fig:hist-areasdist)). 
 
 
 

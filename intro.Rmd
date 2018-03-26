@@ -71,7 +71,7 @@ población? ¿Qué tipo de modelos son los más apropiados para capturar la depe
 
 #### Hipótesis nula
 
-La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución de beneficios del arbolado urbano (AU) en Santiago de Cali.
+La distribución espacial de indicadores socioeconómicos y estructurales es uniforme o aleatorea con respecto a la distribución de beneficios del arbolado urbano (AU) en Santiago de Cali.
 
 #### Hipótesis alternas
 
@@ -89,7 +89,7 @@ La distribución espacial de indicadores socioeconómicos y estructurales son un
 
 #### Hipótesis nula
 
-La distribución espacial de indicadores socioeconómicos y estructurales es uniforme con respecto a la distribución del acceso a espacios verdes (EV) en Santiago de Cali.
+La distribución espacial de indicadores socioeconómicos y estructurales es uniforme o aleatorea con respecto a la distribución del acceso a espacios verdes (EV) en Santiago de Cali.
 
 #### Hipótesis alternas
 
