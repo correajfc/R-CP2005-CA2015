@@ -4,6 +4,7 @@ bookdown::render_book('index.Rmd', 'bookdown::gitbook')
 
 bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 
+
 nbookdown::render_book(c("index.Rmd", 
                       "abstract.Rmd", 
                       "intro.Rmd",

@@ -28,6 +28,9 @@ equipamento_EEC<-readOGR(dsn = path.expand("./shapefiles"),
                          layer = "mc_equipamientos_colectivos_seleccionados_EEC")
 
 
+
+
+
 #verificar y corregir la consistencia geometrica de las capas ----
 
 espacio_publico_idesc <- gBuffer(espacio_publico_idesc, byid=TRUE, width=0)
@@ -82,6 +85,24 @@ prmtr_urbn_idesc
 summary(prmtr_urbn_idesc)
 names(prmtr_urbn_idesc)
 identicalCRS(su,prmtr_urbn_idesc)
+
+library(OpenStreetMap)
+prmtr_urbn_idesc.wgs <- spTransform(prmtr_urbn_idesc,CRS("+proj=longlat"))
+
+prmtr_urbn_idesc.wgs.df <-  fortify(prmtr_urbn_idesc.wgs)
+bbcali <- bbox(prmtr_urbn_idesc.wgs)
+map <- openmap(c(3.505871+0.01,-76.59076-0.01),
+               c(3.331819-0.01,-76.46125+0.01), zoom = NULL,
+               type = c("osm", "stamen-toner", "stamen-terrain","stamen-watercolor", "esri","esri-topo")[6],
+               mergeTiles = TRUE)
+map.latlon <- openproj(map, projection = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+OSMap <- autoplot(map.latlon)
+OSMap+
+  geom_path(data=prmtr_urbn_idesc.wgs.df,  
+            aes(long,lat,group=group), fill="none",color="red") +
+  coord_equal() +
+  ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
+  labs(title ="Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nFuentes: OSM e IDESC\nElaboración Propia")
 
 
 

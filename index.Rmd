@@ -13,29 +13,44 @@ linestretch: 1.5
 toc-depth: 2
 lof: True
 lot: True
+papersize: a4
 geometry: "left=3cm, right=2.5cm, top=3cm, bottom=2.5cm"
 bibliography: [tesisbck.bib, packages.bib]
-biblio-style: apa
+biblio-style: apalike
 link-citations: yes
 github-repo: correajfc/unigis-tesis
-description: "Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)"
+description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)"
 ---
 
 ```{r setup-chunks, echo=FALSE}
 
-knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 150, dev = 'png')
+knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = TRUE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 150, dev = 'png')
 
 
 ```
 
 
-# Presentación {-}
-Borrador del texto. 
-Tesis para obtar al el título de master en Geographical Information Science & Systems (UNIGIS M.Sc.).
 
 # Agradecimientos {-}
 
 A Elizabeth, Augusto, Ana María y Catalina. Este trabajo fue posible gracias a su ayuda y cariño. 
+
+
+# Abreviaciones {-}
+
+```{r abrev}
+data_frame(
+  Term = c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
+           "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
+           "Retardo Espacial en X o *Spatial Lag*","Modelo Espacial del Error o *Spatial Error Model*",
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia"),
+  Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005")) %>%
+  arrange(Abbreviation) %>% # i.e. alphabetical order by Term
+  kable(booktab = T, col.names = c("Término","Abreviación"))
+
+```
+
+
 
 
 ```{r include=FALSE}

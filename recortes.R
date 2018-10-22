@@ -205,14 +205,27 @@ su.f %>% dplyr::select(-area_su)  %>%
 #scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
 
+# 
+# ```{r tab:comp-lmcopa}
+# 
+# stargazer(lm.mn.area_copa.sel, 
+#           lm.mxn.log.area_copa.sel, 
+#           lm.mxn.sqrt.area_copa.sel, 
+#           title="Modelos área copa preliminares", 
+#           align=TRUE,
+#           type = "latex") 
+# 
+# ```
 
-```{r tab:comp-lmcopa}
 
-stargazer(lm.mn.area_copa.sel, 
-          lm.mxn.log.area_copa.sel, 
-          lm.mxn.sqrt.area_copa.sel, 
-          title="Modelos área copa preliminares", 
-          align=TRUE,
-          type = "latex") 
-
-```
+# ```{r au-geo-emp,  fig.asp=1.5, fig.cap="Small multiples de los individuos arbóreos por emplazamiento",cache=TRUE}
+# # puntos por e,mplazamiento
+# base_plot.manzanas + geom_point(data = AU_analsis,
+#                                 aes(x = Este, y = Norte),
+#                                 size=0.01,
+#                                 color="forestgreen",
+#                                 alpha=0.1)+
+#   theme_void()+
+#   facet_wrap(~emplazamiento , ncol = 4 ,labeller = label_wrap_gen())
+# 
+# ```

@@ -19,7 +19,6 @@ rmd_files:
   "conclusiones.Rmd",
   "referencias.Rmd"]
   latex: ["index.Rmd", 
-  "abstract.Rmd", 
   "intro.Rmd",
   "revision_literatura.Rmd",
   "metodologia.Rmd",

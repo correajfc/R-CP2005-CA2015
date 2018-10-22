@@ -6,27 +6,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</title>
-  <meta name="description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
+  <meta name="description" content="Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  <meta property="og:description" content="Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
   <meta name="github-repo" content="correajfc/unigis-tesis" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
   
-  <meta name="twitter:description" content="Tesis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  <meta name="twitter:description" content="Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
   
 
 <meta name="author" content="Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)">
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2018-03-26">
+<meta name="date" content="2018-10-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -67,8 +67,8 @@
 <li><a href="./">Trabajo de Grado UNIGIS</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
-<li class="chapter" data-level="" data-path="agradecimientos.html"><a href="agradecimientos.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
+<li class="chapter" data-level="" data-path="abreviaciones.html"><a href="abreviaciones.html"><i class="fa fa-check"></i>Abreviaciones</a></li>
 <li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
@@ -754,383 +754,869 @@ Figura 4.27: Mapas LISA para la matriz <span class="math inline">\(W_d\)</span> 
 <h4><span class="header-section-number">4.1.3.3</span> Modelo espacial área de copa</h4>
 <p>Para simplificar el análisis usaremos <span class="math inline">\(W_q\)</span> ya que las diferencias no son tan grandes entre ambas matrices. A continuación se presentan los resultados del modelado de los 4 tipos de modelos geoestadísticos para el área de copa.</p>
 <table>
-<caption><span id="tab:coef-sar-copa">Tabla 4.12: </span>Coeficientes del modelo SAR de área de copa</caption>
+<caption>
+<span id="tab:coef-sar-copa">Tabla 4.12: </span>Coeficientes del modelo SAR de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.614</td>
-<td align="right">0.052</td>
-<td align="right">11.890</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.614
+</td>
+<td style="text-align:right;">
+0.052
+</td>
+<td style="text-align:right;">
+11.890
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>superior_postgrado.mxn</td>
-<td align="right">0.295</td>
-<td align="right">0.024</td>
-<td align="right">12.378</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+superior_postgrado.mxn
+</td>
+<td style="text-align:right;">
+0.295
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+12.378
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>densidad_poblacion.mxn</td>
-<td align="right">-0.125</td>
-<td align="right">0.020</td>
-<td align="right">-6.192</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.125
+</td>
+<td style="text-align:right;">
+0.020
+</td>
+<td style="text-align:right;">
+-6.192
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.011</td>
-<td align="right">0.024</td>
-<td align="right">-0.446</td>
-<td align="right">0.656</td>
+<tr>
+<td style="text-align:left;">
+con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.011
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+-0.446
+</td>
+<td style="text-align:right;">
+0.656
+</td>
 </tr>
-<tr class="odd">
-<td>afro.porcentaje.mxn</td>
-<td align="right">0.015</td>
-<td align="right">0.020</td>
-<td align="right">0.746</td>
-<td align="right">0.455</td>
+<tr>
+<td style="text-align:left;">
+afro.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.015
+</td>
+<td style="text-align:right;">
+0.020
+</td>
+<td style="text-align:right;">
+0.746
+</td>
+<td style="text-align:right;">
+0.455
+</td>
 </tr>
-<tr class="even">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.114</td>
-<td align="right">0.030</td>
-<td align="right">-3.749</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.114
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+<td style="text-align:right;">
+-3.749
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>area_ep.mxn</td>
-<td align="right">0.113</td>
-<td align="right">0.027</td>
-<td align="right">4.202</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+area_ep.mxn
+</td>
+<td style="text-align:right;">
+0.113
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+4.202
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sar-copa">Tabla 4.13: </span>Coeficiente de autocorrelación modelo SAR de área de copa</caption>
+<caption>
+<span id="tab:cauto-sar-copa">Tabla 4.13: </span>Coeficiente de autocorrelación modelo SAR de área de copa
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.202</td>
-<td align="left">11.788</td>
-<td align="left">0.001</td>
+<tr>
+<td style="text-align:left;">
+0.202
+</td>
+<td style="text-align:left;">
+11.788
+</td>
+<td style="text-align:left;">
+0.001
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sem-copa">Tabla 4.14: </span>Coeficientes del modelo SEM de área de copa</caption>
+<caption>
+<span id="tab:coef-sem-copa">Tabla 4.14: </span>Coeficientes del modelo SEM de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.781</td>
-<td align="right">0.014</td>
-<td align="right">57.469</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.781
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+57.469
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>superior_postgrado.mxn</td>
-<td align="right">0.303</td>
-<td align="right">0.024</td>
-<td align="right">12.485</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+superior_postgrado.mxn
+</td>
+<td style="text-align:right;">
+0.303
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+12.485
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>densidad_poblacion.mxn</td>
-<td align="right">-0.135</td>
-<td align="right">0.021</td>
-<td align="right">-6.378</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.135
+</td>
+<td style="text-align:right;">
+0.021
+</td>
+<td style="text-align:right;">
+-6.378
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.012</td>
-<td align="right">0.025</td>
-<td align="right">-0.478</td>
-<td align="right">0.632</td>
+<tr>
+<td style="text-align:left;">
+con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.012
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+-0.478
+</td>
+<td style="text-align:right;">
+0.632
+</td>
 </tr>
-<tr class="odd">
-<td>afro.porcentaje.mxn</td>
-<td align="right">-0.001</td>
-<td align="right">0.023</td>
-<td align="right">-0.043</td>
-<td align="right">0.966</td>
+<tr>
+<td style="text-align:left;">
+afro.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.001
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+-0.043
+</td>
+<td style="text-align:right;">
+0.966
+</td>
 </tr>
-<tr class="even">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.130</td>
-<td align="right">0.033</td>
-<td align="right">-3.993</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.130
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+-3.993
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>area_ep.mxn</td>
-<td align="right">0.130</td>
-<td align="right">0.029</td>
-<td align="right">4.523</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+area_ep.mxn
+</td>
+<td style="text-align:right;">
+0.130
+</td>
+<td style="text-align:right;">
+0.029
+</td>
+<td style="text-align:right;">
+4.523
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sem-copa">Tabla 4.15: </span>Coeficiente de autocorrelación modelo SEM de área de copa</caption>
+<caption>
+<span id="tab:cauto-sem-copa">Tabla 4.15: </span>Coeficiente de autocorrelación modelo SEM de área de copa
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\lambda\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">6.466</td>
-<td align="left">0.011</td>
-<td align="left">6.466</td>
+<tr>
+<td style="text-align:left;">
+6.466
+</td>
+<td style="text-align:left;">
+0.011
+</td>
+<td style="text-align:left;">
+6.466
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sd-copa">Tabla 4.16: </span>Coeficientes del modelo SD de área de copa</caption>
+<caption>
+<span id="tab:coef-sd-copa">Tabla 4.16: </span>Coeficientes del modelo SD de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.665</td>
-<td align="right">0.067</td>
-<td align="right">9.857</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.665
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+9.857
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>superior_postgrado.mxn</td>
-<td align="right">0.287</td>
-<td align="right">0.024</td>
-<td align="right">11.741</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+superior_postgrado.mxn
+</td>
+<td style="text-align:right;">
+0.287
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+11.741
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>densidad_poblacion.mxn</td>
-<td align="right">-0.088</td>
-<td align="right">0.026</td>
-<td align="right">-3.431</td>
-<td align="right">0.001</td>
+<tr>
+<td style="text-align:left;">
+densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.088
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+<td style="text-align:right;">
+-3.431
+</td>
+<td style="text-align:right;">
+0.001
+</td>
 </tr>
-<tr class="even">
-<td>con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">0.007</td>
-<td align="right">0.027</td>
-<td align="right">0.273</td>
-<td align="right">0.785</td>
+<tr>
+<td style="text-align:left;">
+con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+0.273
+</td>
+<td style="text-align:right;">
+0.785
+</td>
 </tr>
-<tr class="odd">
-<td>afro.porcentaje.mxn</td>
-<td align="right">-0.041</td>
-<td align="right">0.040</td>
-<td align="right">-1.013</td>
-<td align="right">0.311</td>
+<tr>
+<td style="text-align:left;">
+afro.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.041
+</td>
+<td style="text-align:right;">
+0.040
+</td>
+<td style="text-align:right;">
+-1.013
+</td>
+<td style="text-align:right;">
+0.311
+</td>
 </tr>
-<tr class="even">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.062</td>
-<td align="right">0.042</td>
-<td align="right">-1.486</td>
-<td align="right">0.137</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.062
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+-1.486
+</td>
+<td style="text-align:right;">
+0.137
+</td>
 </tr>
-<tr class="odd">
-<td>area_ep.mxn</td>
-<td align="right">0.134</td>
-<td align="right">0.030</td>
-<td align="right">4.455</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+area_ep.mxn
+</td>
+<td style="text-align:right;">
+0.134
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+<td style="text-align:right;">
+4.455
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>lag.superior_postgrado.mxn</td>
-<td align="right">0.040</td>
-<td align="right">0.051</td>
-<td align="right">0.789</td>
-<td align="right">0.430</td>
+<tr>
+<td style="text-align:left;">
+lag.superior_postgrado.mxn
+</td>
+<td style="text-align:right;">
+0.040
+</td>
+<td style="text-align:right;">
+0.051
+</td>
+<td style="text-align:right;">
+0.789
+</td>
+<td style="text-align:right;">
+0.430
+</td>
 </tr>
-<tr class="odd">
-<td>lag.densidad_poblacion.mxn</td>
-<td align="right">-0.103</td>
-<td align="right">0.044</td>
-<td align="right">-2.316</td>
-<td align="right">0.021</td>
+<tr>
+<td style="text-align:left;">
+lag.densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.103
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+-2.316
+</td>
+<td style="text-align:right;">
+0.021
+</td>
 </tr>
-<tr class="even">
-<td>lag.con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.060</td>
-<td align="right">0.046</td>
-<td align="right">-1.292</td>
-<td align="right">0.196</td>
+<tr>
+<td style="text-align:left;">
+lag.con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.060
+</td>
+<td style="text-align:right;">
+0.046
+</td>
+<td style="text-align:right;">
+-1.292
+</td>
+<td style="text-align:right;">
+0.196
+</td>
 </tr>
-<tr class="odd">
-<td>lag.afro.porcentaje.mxn</td>
-<td align="right">0.116</td>
-<td align="right">0.051</td>
-<td align="right">2.268</td>
-<td align="right">0.023</td>
+<tr>
+<td style="text-align:left;">
+lag.afro.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.116
+</td>
+<td style="text-align:right;">
+0.051
+</td>
+<td style="text-align:right;">
+2.268
+</td>
+<td style="text-align:right;">
+0.023
+</td>
 </tr>
-<tr class="even">
-<td>lag.cuarto.porcentaje.mxn</td>
-<td align="right">-0.123</td>
-<td align="right">0.068</td>
-<td align="right">-1.823</td>
-<td align="right">0.068</td>
+<tr>
+<td style="text-align:left;">
+lag.cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.123
+</td>
+<td style="text-align:right;">
+0.068
+</td>
+<td style="text-align:right;">
+-1.823
+</td>
+<td style="text-align:right;">
+0.068
+</td>
 </tr>
-<tr class="odd">
-<td>lag.area_ep.mxn</td>
-<td align="right">-0.103</td>
-<td align="right">0.042</td>
-<td align="right">-2.474</td>
-<td align="right">0.013</td>
+<tr>
+<td style="text-align:left;">
+lag.area_ep.mxn
+</td>
+<td style="text-align:right;">
+-0.103
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+-2.474
+</td>
+<td style="text-align:right;">
+0.013
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sd-copa">Tabla 4.17: </span>Coeficiente de autocorrelación modelo SD de área de copa</caption>
+<caption>
+<span id="tab:cauto-sd-copa">Tabla 4.17: </span>Coeficiente de autocorrelación modelo SD de área de copa
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.175</td>
-<td align="left">4.82</td>
-<td align="left">0.028</td>
+<tr>
+<td style="text-align:left;">
+0.175
+</td>
+<td style="text-align:left;">
+4.82
+</td>
+<td style="text-align:left;">
+0.028
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-slx-copa">Tabla 4.18: </span>Coeficientes del modelo SLX de área de copa</caption>
+<caption>
+<span id="tab:coef-slx-copa">Tabla 4.18: </span>Coeficientes del modelo SLX de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">t value</th>
-<th align="right">Pr(&gt;|t|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>x(Intercept)</td>
-<td align="right">0.805</td>
-<td align="right">0.020</td>
-<td align="right">40.702</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+x(Intercept)
+</td>
+<td style="text-align:right;">
+0.805
+</td>
+<td style="text-align:right;">
+0.020
+</td>
+<td style="text-align:right;">
+40.702
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>xsuperior_postgrado.mxn</td>
-<td align="right">0.287</td>
-<td align="right">0.025</td>
-<td align="right">11.431</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xsuperior_postgrado.mxn
+</td>
+<td style="text-align:right;">
+0.287
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+11.431
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>xdensidad_poblacion.mxn</td>
-<td align="right">-0.091</td>
-<td align="right">0.026</td>
-<td align="right">-3.439</td>
-<td align="right">0.001</td>
+<tr>
+<td style="text-align:left;">
+xdensidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.091
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+<td style="text-align:right;">
+-3.439
+</td>
+<td style="text-align:right;">
+0.001
+</td>
 </tr>
-<tr class="even">
-<td>xcon_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">0.007</td>
-<td align="right">0.027</td>
-<td align="right">0.247</td>
-<td align="right">0.805</td>
+<tr>
+<td style="text-align:left;">
+xcon_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+0.247
+</td>
+<td style="text-align:right;">
+0.805
+</td>
 </tr>
-<tr class="odd">
-<td>xafro.porcentaje.mxn</td>
-<td align="right">-0.039</td>
-<td align="right">0.041</td>
-<td align="right">-0.950</td>
-<td align="right">0.343</td>
+<tr>
+<td style="text-align:left;">
+xafro.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.039
+</td>
+<td style="text-align:right;">
+0.041
+</td>
+<td style="text-align:right;">
+-0.950
+</td>
+<td style="text-align:right;">
+0.343
+</td>
 </tr>
-<tr class="even">
-<td>xcuarto.porcentaje.mxn</td>
-<td align="right">-0.067</td>
-<td align="right">0.043</td>
-<td align="right">-1.553</td>
-<td align="right">0.121</td>
+<tr>
+<td style="text-align:left;">
+xcuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.067
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+-1.553
+</td>
+<td style="text-align:right;">
+0.121
+</td>
 </tr>
-<tr class="odd">
-<td>xarea_ep.mxn</td>
-<td align="right">0.130</td>
-<td align="right">0.031</td>
-<td align="right">4.209</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xarea_ep.mxn
+</td>
+<td style="text-align:right;">
+0.130
+</td>
+<td style="text-align:right;">
+0.031
+</td>
+<td style="text-align:right;">
+4.209
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>xlag.superior_postgrado.mxn</td>
-<td align="right">0.104</td>
-<td align="right">0.044</td>
-<td align="right">2.362</td>
-<td align="right">0.019</td>
+<tr>
+<td style="text-align:left;">
+xlag.superior_postgrado.mxn
+</td>
+<td style="text-align:right;">
+0.104
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+2.362
+</td>
+<td style="text-align:right;">
+0.019
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.densidad_poblacion.mxn</td>
-<td align="right">-0.131</td>
-<td align="right">0.044</td>
-<td align="right">-2.989</td>
-<td align="right">0.003</td>
+<tr>
+<td style="text-align:left;">
+xlag.densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.131
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+-2.989
+</td>
+<td style="text-align:right;">
+0.003
+</td>
 </tr>
-<tr class="even">
-<td>xlag.con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.069</td>
-<td align="right">0.048</td>
-<td align="right">-1.458</td>
-<td align="right">0.146</td>
+<tr>
+<td style="text-align:left;">
+xlag.con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.069
+</td>
+<td style="text-align:right;">
+0.048
+</td>
+<td style="text-align:right;">
+-1.458
+</td>
+<td style="text-align:right;">
+0.146
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.afro.porcentaje.mxn</td>
-<td align="right">0.124</td>
-<td align="right">0.053</td>
-<td align="right">2.346</td>
-<td align="right">0.020</td>
+<tr>
+<td style="text-align:left;">
+xlag.afro.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.124
+</td>
+<td style="text-align:right;">
+0.053
+</td>
+<td style="text-align:right;">
+2.346
+</td>
+<td style="text-align:right;">
+0.020
+</td>
 </tr>
-<tr class="even">
-<td>xlag.cuarto.porcentaje.mxn</td>
-<td align="right">-0.146</td>
-<td align="right">0.068</td>
-<td align="right">-2.141</td>
-<td align="right">0.033</td>
+<tr>
+<td style="text-align:left;">
+xlag.cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.146
+</td>
+<td style="text-align:right;">
+0.068
+</td>
+<td style="text-align:right;">
+-2.141
+</td>
+<td style="text-align:right;">
+0.033
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.area_ep.mxn</td>
-<td align="right">-0.084</td>
-<td align="right">0.042</td>
-<td align="right">-1.973</td>
-<td align="right">0.049</td>
+<tr>
+<td style="text-align:left;">
+xlag.area_ep.mxn
+</td>
+<td style="text-align:right;">
+-0.084
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+-1.973
+</td>
+<td style="text-align:right;">
+0.049
+</td>
 </tr>
 </tbody>
 </table>
@@ -1263,173 +1749,359 @@ Figura 4.29: Diagnóstico comparativo entre modelos
 <h4><span class="header-section-number">4.1.3.4</span> Modelo espacial porcentaje de cobertura de área de copa</h4>
 <p>El mismo ejercicio se aplica al porcentaje de cobertura de copa.</p>
 <table>
-<caption><span id="tab:coef-sar-copaap">Tabla 4.20: </span>Coeficientes del modelo SAR de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:coef-sar-copaap">Tabla 4.20: </span>Coeficientes del modelo SAR de porcentaje de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.030</td>
-<td align="right">0.011</td>
-<td align="right">2.822</td>
-<td align="right">0.005</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+2.822
+</td>
+<td style="text-align:right;">
+0.005
+</td>
 </tr>
-<tr class="even">
-<td>superior_postgrado.porcentaje.mxn</td>
-<td align="right">0.246</td>
-<td align="right">0.027</td>
-<td align="right">9.023</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+superior_postgrado.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.246
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+9.023
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sar-copaap">Tabla 4.21: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:cauto-sar-copaap">Tabla 4.21: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.375</td>
-<td align="left">28.579</td>
-<td align="left">0</td>
+<tr>
+<td style="text-align:left;">
+0.375
+</td>
+<td style="text-align:left;">
+28.579
+</td>
+<td style="text-align:left;">
+0
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sem-copaap">Tabla 4.22: </span>Coeficientes del modelo SEM de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:coef-sem-copaap">Tabla 4.22: </span>Coeficientes del modelo SEM de porcentaje de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.070</td>
-<td align="right">0.014</td>
-<td align="right">5.149</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+5.149
+</td>
+<td style="text-align:right;">
+0
+</td>
 </tr>
-<tr class="even">
-<td>superior_postgrado.porcentaje.mxn</td>
-<td align="right">0.334</td>
-<td align="right">0.028</td>
-<td align="right">11.899</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:left;">
+superior_postgrado.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.334
+</td>
+<td style="text-align:right;">
+0.028
+</td>
+<td style="text-align:right;">
+11.899
+</td>
+<td style="text-align:right;">
+0
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sem-copaap">Tabla 4.23: </span>Coeficiente de autocorrelación modelo SEM de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:cauto-sem-copaap">Tabla 4.23: </span>Coeficiente de autocorrelación modelo SEM de porcentaje de área de copa
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\lambda\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">26.77</td>
-<td align="left">0</td>
-<td align="left">26.77</td>
+<tr>
+<td style="text-align:left;">
+26.77
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+26.77
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sd-copaap">Tabla 4.24: </span>Coeficientes del modelo SD de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:coef-sd-copaap">Tabla 4.24: </span>Coeficientes del modelo SD de porcentaje de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.032</td>
-<td align="right">0.011</td>
-<td align="right">2.937</td>
-<td align="right">0.003</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.032
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+2.937
+</td>
+<td style="text-align:right;">
+0.003
+</td>
 </tr>
-<tr class="even">
-<td>superior_postgrado.porcentaje.mxn</td>
-<td align="right">0.278</td>
-<td align="right">0.044</td>
-<td align="right">6.261</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+superior_postgrado.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.278
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+6.261
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>lag.superior_postgrado.porcentaje.mxn</td>
-<td align="right">-0.051</td>
-<td align="right">0.058</td>
-<td align="right">-0.880</td>
-<td align="right">0.379</td>
+<tr>
+<td style="text-align:left;">
+lag.superior_postgrado.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.051
+</td>
+<td style="text-align:right;">
+0.058
+</td>
+<td style="text-align:right;">
+-0.880
+</td>
+<td style="text-align:right;">
+0.379
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sd-copaap">Tabla 4.25: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:cauto-sd-copaap">Tabla 4.25: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de copa
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.401</td>
-<td align="left">27.538</td>
-<td align="left">0</td>
+<tr>
+<td style="text-align:left;">
+0.401
+</td>
+<td style="text-align:left;">
+27.538
+</td>
+<td style="text-align:left;">
+0
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-slx-copaap">Tabla 4.26: </span>Coeficientes del modelo SLX de porcentaje de área de copa</caption>
+<caption>
+<span id="tab:coef-slx-copaap">Tabla 4.26: </span>Coeficientes del modelo SLX de porcentaje de área de copa
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">t value</th>
-<th align="right">Pr(&gt;|t|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>x(Intercept)</td>
-<td align="right">0.059</td>
-<td align="right">0.011</td>
-<td align="right">5.472</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+x(Intercept)
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+5.472
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>xsuperior_postgrado.porcentaje.mxn</td>
-<td align="right">0.293</td>
-<td align="right">0.047</td>
-<td align="right">6.190</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xsuperior_postgrado.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.293
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+6.190
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.superior_postgrado.porcentaje.mxn</td>
-<td align="right">0.075</td>
-<td align="right">0.056</td>
-<td align="right">1.354</td>
-<td align="right">0.177</td>
+<tr>
+<td style="text-align:left;">
+xlag.superior_postgrado.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.075
+</td>
+<td style="text-align:right;">
+0.056
+</td>
+<td style="text-align:right;">
+1.354
+</td>
+<td style="text-align:right;">
+0.177
+</td>
 </tr>
 </tbody>
 </table>
@@ -2092,215 +2764,461 @@ Figura 4.48: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> 
 <div id="porcentaje-de-espacio-verde" class="section level5">
 <h5><span class="header-section-number">4.2.3.3.1</span> Porcentaje de espacio verde</h5>
 <table>
-<caption><span id="tab:coef-sar-areaep">Tabla 4.39: </span>Coeficientes del modelo SAR de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:coef-sar-areaep">Tabla 4.39: </span>Coeficientes del modelo SAR de porcentaje de área de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.039</td>
-<td align="right">0.007</td>
-<td align="right">5.254</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.039
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+5.254
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.081</td>
-<td align="right">0.038</td>
-<td align="right">-2.146</td>
-<td align="right">0.032</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.081
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+<td style="text-align:right;">
+-2.146
+</td>
+<td style="text-align:right;">
+0.032
+</td>
 </tr>
-<tr class="odd">
-<td>area_media_manzana.mxn</td>
-<td align="right">0.734</td>
-<td align="right">0.065</td>
-<td align="right">11.207</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.734
+</td>
+<td style="text-align:right;">
+0.065
+</td>
+<td style="text-align:right;">
+11.207
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sar-areaep">Tabla 4.40: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:cauto-sar-areaep">Tabla 4.40: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de EV
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.153</td>
-<td align="left">4.544</td>
-<td align="left">0.033</td>
+<tr>
+<td style="text-align:left;">
+0.153
+</td>
+<td style="text-align:left;">
+4.544
+</td>
+<td style="text-align:left;">
+0.033
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sem-areaep">Tabla 4.41: </span>Coeficientes del modelo SEM de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:coef-sem-areaep">Tabla 4.41: </span>Coeficientes del modelo SEM de porcentaje de área de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.049</td>
-<td align="right">0.007</td>
-<td align="right">7.116</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.049
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+7.116
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.098</td>
-<td align="right">0.042</td>
-<td align="right">-2.355</td>
-<td align="right">0.019</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.098
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+-2.355
+</td>
+<td style="text-align:right;">
+0.019
+</td>
 </tr>
-<tr class="odd">
-<td>area_media_manzana.mxn</td>
-<td align="right">0.771</td>
-<td align="right">0.065</td>
-<td align="right">11.803</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.771
+</td>
+<td style="text-align:right;">
+0.065
+</td>
+<td style="text-align:right;">
+11.803
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sem-areaep">Tabla 4.42: </span>Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:cauto-sem-areaep">Tabla 4.42: </span>Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\lambda\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">10.215</td>
-<td align="left">0.001</td>
-<td align="left">10.215</td>
+<tr>
+<td style="text-align:left;">
+10.215
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+10.215
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sd-areaep">Tabla 4.43: </span>Coeficientes del modelo SD de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:coef-sd-areaep">Tabla 4.43: </span>Coeficientes del modelo SD de porcentaje de área de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.038</td>
-<td align="right">0.009</td>
-<td align="right">4.340</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+<td style="text-align:right;">
+0.009
+</td>
+<td style="text-align:right;">
+4.340
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.137</td>
-<td align="right">0.054</td>
-<td align="right">-2.513</td>
-<td align="right">0.012</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.137
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+<td style="text-align:right;">
+-2.513
+</td>
+<td style="text-align:right;">
+0.012
+</td>
 </tr>
-<tr class="odd">
-<td>area_media_manzana.mxn</td>
-<td align="right">0.793</td>
-<td align="right">0.067</td>
-<td align="right">11.914</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.793
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+11.914
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>lag.cuarto.porcentaje.mxn</td>
-<td align="right">0.099</td>
-<td align="right">0.083</td>
-<td align="right">1.188</td>
-<td align="right">0.235</td>
+<tr>
+<td style="text-align:left;">
+lag.cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.099
+</td>
+<td style="text-align:right;">
+0.083
+</td>
+<td style="text-align:right;">
+1.188
+</td>
+<td style="text-align:right;">
+0.235
+</td>
 </tr>
-<tr class="odd">
-<td>lag.area_media_manzana.mxn</td>
-<td align="right">-0.365</td>
-<td align="right">0.133</td>
-<td align="right">-2.750</td>
-<td align="right">0.006</td>
+<tr>
+<td style="text-align:left;">
+lag.area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+-0.365
+</td>
+<td style="text-align:right;">
+0.133
+</td>
+<td style="text-align:right;">
+-2.750
+</td>
+<td style="text-align:right;">
+0.006
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sd-areaep">Tabla 4.44: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:cauto-sd-areaep">Tabla 4.44: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de EV
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.262</td>
-<td align="left">10.614</td>
-<td align="left">0.001</td>
+<tr>
+<td style="text-align:left;">
+0.262
+</td>
+<td style="text-align:left;">
+10.614
+</td>
+<td style="text-align:left;">
+0.001
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-slx-areaep">Tabla 4.45: </span>Coeficientes del modelo SLX de porcentaje de área de EV</caption>
+<caption>
+<span id="tab:coef-slx-areaep">Tabla 4.45: </span>Coeficientes del modelo SLX de porcentaje de área de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">t value</th>
-<th align="right">Pr(&gt;|t|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>x(Intercept)</td>
-<td align="right">0.051</td>
-<td align="right">0.008</td>
-<td align="right">6.402</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+x(Intercept)
+</td>
+<td style="text-align:right;">
+0.051
+</td>
+<td style="text-align:right;">
+0.008
+</td>
+<td style="text-align:right;">
+6.402
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>xcuarto.porcentaje.mxn</td>
-<td align="right">-0.134</td>
-<td align="right">0.056</td>
-<td align="right">-2.387</td>
-<td align="right">0.018</td>
+<tr>
+<td style="text-align:left;">
+xcuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.134
+</td>
+<td style="text-align:right;">
+0.056
+</td>
+<td style="text-align:right;">
+-2.387
+</td>
+<td style="text-align:right;">
+0.018
+</td>
 </tr>
-<tr class="odd">
-<td>xarea_media_manzana.mxn</td>
-<td align="right">0.777</td>
-<td align="right">0.068</td>
-<td align="right">11.346</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xarea_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.777
+</td>
+<td style="text-align:right;">
+0.068
+</td>
+<td style="text-align:right;">
+11.346
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="even">
-<td>xlag.cuarto.porcentaje.mxn</td>
-<td align="right">0.067</td>
-<td align="right">0.085</td>
-<td align="right">0.782</td>
-<td align="right">0.435</td>
+<tr>
+<td style="text-align:left;">
+xlag.cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+0.085
+</td>
+<td style="text-align:right;">
+0.782
+</td>
+<td style="text-align:right;">
+0.435
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.area_media_manzana.mxn</td>
-<td align="right">-0.159</td>
-<td align="right">0.125</td>
-<td align="right">-1.271</td>
-<td align="right">0.205</td>
+<tr>
+<td style="text-align:left;">
+xlag.area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+-0.159
+</td>
+<td style="text-align:right;">
+0.125
+</td>
+<td style="text-align:right;">
+-1.271
+</td>
+<td style="text-align:right;">
+0.205
+</td>
 </tr>
 </tbody>
 </table>
@@ -2432,383 +3350,869 @@ Figura 4.50: Diagnóstico comparativo entre modelos
 <div id="indice-de-acceso-area-distancia" class="section level5">
 <h5><span class="header-section-number">4.2.3.3.2</span> Índice de acceso área-distancia</h5>
 <table>
-<caption><span id="tab:coef-sar-areasdist">Tabla 4.47: </span>Coeficientes del modelo SAR índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:coef-sar-areasdist">Tabla 4.47: </span>Coeficientes del modelo SAR índice de relación área distancia de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.022</td>
-<td align="right">0.012</td>
-<td align="right">1.917</td>
-<td align="right">0.055</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.022
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+1.917
+</td>
+<td style="text-align:right;">
+0.055
+</td>
 </tr>
-<tr class="even">
-<td>area_media_manzana.mxn</td>
-<td align="right">0.040</td>
-<td align="right">0.047</td>
-<td align="right">0.851</td>
-<td align="right">0.395</td>
+<tr>
+<td style="text-align:left;">
+area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.040
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+0.851
+</td>
+<td style="text-align:right;">
+0.395
+</td>
 </tr>
-<tr class="odd">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.048</td>
-<td align="right">0.033</td>
-<td align="right">-1.472</td>
-<td align="right">0.141</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.048
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+-1.472
+</td>
+<td style="text-align:right;">
+0.141
+</td>
 </tr>
-<tr class="even">
-<td>unidad_economica.porcentaje.mxn</td>
-<td align="right">0.054</td>
-<td align="right">0.023</td>
-<td align="right">2.394</td>
-<td align="right">0.017</td>
+<tr>
+<td style="text-align:left;">
+unidad_economica.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.054
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+2.394
+</td>
+<td style="text-align:right;">
+0.017
+</td>
 </tr>
-<tr class="odd">
-<td>densidad_poblacion.mxn</td>
-<td align="right">-0.010</td>
-<td align="right">0.018</td>
-<td align="right">-0.533</td>
-<td align="right">0.594</td>
+<tr>
+<td style="text-align:left;">
+densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.010
+</td>
+<td style="text-align:right;">
+0.018
+</td>
+<td style="text-align:right;">
+-0.533
+</td>
+<td style="text-align:right;">
+0.594
+</td>
 </tr>
-<tr class="even">
-<td>con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.045</td>
-<td align="right">0.022</td>
-<td align="right">-2.033</td>
-<td align="right">0.042</td>
+<tr>
+<td style="text-align:left;">
+con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.045
+</td>
+<td style="text-align:right;">
+0.022
+</td>
+<td style="text-align:right;">
+-2.033
+</td>
+<td style="text-align:right;">
+0.042
+</td>
 </tr>
-<tr class="odd">
-<td>ningun_estudio.porcentaje.mxn</td>
-<td align="right">0.042</td>
-<td align="right">0.030</td>
-<td align="right">1.415</td>
-<td align="right">0.157</td>
+<tr>
+<td style="text-align:left;">
+ningun_estudio.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+<td style="text-align:right;">
+1.415
+</td>
+<td style="text-align:right;">
+0.157
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sar-areasdist">Tabla 4.48: </span>Coeficiente de autocorrelación modelo SAR índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:cauto-sar-areasdist">Tabla 4.48: </span>Coeficiente de autocorrelación modelo SAR índice de relación área distancia de EV
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.819</td>
-<td align="left">325.497</td>
-<td align="left">0</td>
+<tr>
+<td style="text-align:left;">
+0.819
+</td>
+<td style="text-align:left;">
+325.497
+</td>
+<td style="text-align:left;">
+0
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sem-areasdist">Tabla 4.49: </span>Coeficientes del modelo SEM índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:coef-sem-areasdist">Tabla 4.49: </span>Coeficientes del modelo SEM índice de relación área distancia de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">0.072</td>
-<td align="right">0.026</td>
-<td align="right">2.789</td>
-<td align="right">0.005</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.072
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+<td style="text-align:right;">
+2.789
+</td>
+<td style="text-align:right;">
+0.005
+</td>
 </tr>
-<tr class="even">
-<td>area_media_manzana.mxn</td>
-<td align="right">-0.099</td>
-<td align="right">0.047</td>
-<td align="right">-2.093</td>
-<td align="right">0.036</td>
+<tr>
+<td style="text-align:left;">
+area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+-0.099
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+-2.093
+</td>
+<td style="text-align:right;">
+0.036
+</td>
 </tr>
-<tr class="odd">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">0.002</td>
-<td align="right">0.044</td>
-<td align="right">0.037</td>
-<td align="right">0.970</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+0.037
+</td>
+<td style="text-align:right;">
+0.970
+</td>
 </tr>
-<tr class="even">
-<td>unidad_economica.porcentaje.mxn</td>
-<td align="right">0.064</td>
-<td align="right">0.029</td>
-<td align="right">2.208</td>
-<td align="right">0.027</td>
+<tr>
+<td style="text-align:left;">
+unidad_economica.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.064
+</td>
+<td style="text-align:right;">
+0.029
+</td>
+<td style="text-align:right;">
+2.208
+</td>
+<td style="text-align:right;">
+0.027
+</td>
 </tr>
-<tr class="odd">
-<td>densidad_poblacion.mxn</td>
-<td align="right">-0.017</td>
-<td align="right">0.023</td>
-<td align="right">-0.741</td>
-<td align="right">0.459</td>
+<tr>
+<td style="text-align:left;">
+densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.017
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+-0.741
+</td>
+<td style="text-align:right;">
+0.459
+</td>
 </tr>
-<tr class="even">
-<td>con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.038</td>
-<td align="right">0.024</td>
-<td align="right">-1.574</td>
-<td align="right">0.116</td>
+<tr>
+<td style="text-align:left;">
+con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.038
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+-1.574
+</td>
+<td style="text-align:right;">
+0.116
+</td>
 </tr>
-<tr class="odd">
-<td>ningun_estudio.porcentaje.mxn</td>
-<td align="right">0.018</td>
-<td align="right">0.043</td>
-<td align="right">0.424</td>
-<td align="right">0.672</td>
+<tr>
+<td style="text-align:left;">
+ningun_estudio.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.018
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+0.424
+</td>
+<td style="text-align:right;">
+0.672
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sem-areasdist">Tabla 4.50: </span>Coeficiente de autocorrelación modelo SEM índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:cauto-sem-areasdist">Tabla 4.50: </span>Coeficiente de autocorrelación modelo SEM índice de relación área distancia de EV
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\lambda\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">320.95</td>
-<td align="left">0</td>
-<td align="left">320.95</td>
+<tr>
+<td style="text-align:left;">
+320.95
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+320.95
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-sd-areasdist">Tabla 4.51: </span>Coeficientes del modelo SD índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:coef-sd-areasdist">Tabla 4.51: </span>Coeficientes del modelo SD índice de relación área distancia de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">z value</th>
-<th align="right">Pr(&gt;|z|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+z value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|z|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>(Intercept)</td>
-<td align="right">-0.018</td>
-<td align="right">0.018</td>
-<td align="right">-1.010</td>
-<td align="right">0.313</td>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+-0.018
+</td>
+<td style="text-align:right;">
+0.018
+</td>
+<td style="text-align:right;">
+-1.010
+</td>
+<td style="text-align:right;">
+0.313
+</td>
 </tr>
-<tr class="even">
-<td>area_media_manzana.mxn</td>
-<td align="right">0.029</td>
-<td align="right">0.050</td>
-<td align="right">0.579</td>
-<td align="right">0.563</td>
+<tr>
+<td style="text-align:left;">
+area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.029
+</td>
+<td style="text-align:right;">
+0.050
+</td>
+<td style="text-align:right;">
+0.579
+</td>
+<td style="text-align:right;">
+0.563
+</td>
 </tr>
-<tr class="odd">
-<td>cuarto.porcentaje.mxn</td>
-<td align="right">-0.003</td>
-<td align="right">0.043</td>
-<td align="right">-0.068</td>
-<td align="right">0.946</td>
+<tr>
+<td style="text-align:left;">
+cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.003
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+-0.068
+</td>
+<td style="text-align:right;">
+0.946
+</td>
 </tr>
-<tr class="even">
-<td>unidad_economica.porcentaje.mxn</td>
-<td align="right">0.067</td>
-<td align="right">0.028</td>
-<td align="right">2.377</td>
-<td align="right">0.017</td>
+<tr>
+<td style="text-align:left;">
+unidad_economica.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+0.028
+</td>
+<td style="text-align:right;">
+2.377
+</td>
+<td style="text-align:right;">
+0.017
+</td>
 </tr>
-<tr class="odd">
-<td>densidad_poblacion.mxn</td>
-<td align="right">-0.005</td>
-<td align="right">0.022</td>
-<td align="right">-0.233</td>
-<td align="right">0.816</td>
+<tr>
+<td style="text-align:left;">
+densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+-0.005
+</td>
+<td style="text-align:right;">
+0.022
+</td>
+<td style="text-align:right;">
+-0.233
+</td>
+<td style="text-align:right;">
+0.816
+</td>
 </tr>
-<tr class="even">
-<td>con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.043</td>
-<td align="right">0.023</td>
-<td align="right">-1.849</td>
-<td align="right">0.065</td>
+<tr>
+<td style="text-align:left;">
+con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.043
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+-1.849
+</td>
+<td style="text-align:right;">
+0.065
+</td>
 </tr>
-<tr class="odd">
-<td>ningun_estudio.porcentaje.mxn</td>
-<td align="right">0.035</td>
-<td align="right">0.041</td>
-<td align="right">0.837</td>
-<td align="right">0.403</td>
+<tr>
+<td style="text-align:left;">
+ningun_estudio.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+<td style="text-align:right;">
+0.041
+</td>
+<td style="text-align:right;">
+0.837
+</td>
+<td style="text-align:right;">
+0.403
+</td>
 </tr>
-<tr class="even">
-<td>lag.area_media_manzana.mxn</td>
-<td align="right">0.738</td>
-<td align="right">0.105</td>
-<td align="right">7.007</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+lag.area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.738
+</td>
+<td style="text-align:right;">
+0.105
+</td>
+<td style="text-align:right;">
+7.007
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>lag.cuarto.porcentaje.mxn</td>
-<td align="right">-0.089</td>
-<td align="right">0.070</td>
-<td align="right">-1.273</td>
-<td align="right">0.203</td>
+<tr>
+<td style="text-align:left;">
+lag.cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.089
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+<td style="text-align:right;">
+-1.273
+</td>
+<td style="text-align:right;">
+0.203
+</td>
 </tr>
-<tr class="even">
-<td>lag.unidad_economica.porcentaje.mxn</td>
-<td align="right">0.012</td>
-<td align="right">0.043</td>
-<td align="right">0.271</td>
-<td align="right">0.786</td>
+<tr>
+<td style="text-align:left;">
+lag.unidad_economica.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+0.271
+</td>
+<td style="text-align:right;">
+0.786
+</td>
 </tr>
-<tr class="odd">
-<td>lag.densidad_poblacion.mxn</td>
-<td align="right">0.023</td>
-<td align="right">0.037</td>
-<td align="right">0.622</td>
-<td align="right">0.534</td>
+<tr>
+<td style="text-align:left;">
+lag.densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+0.037
+</td>
+<td style="text-align:right;">
+0.622
+</td>
+<td style="text-align:right;">
+0.534
+</td>
 </tr>
-<tr class="even">
-<td>lag.con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.001</td>
-<td align="right">0.043</td>
-<td align="right">-0.013</td>
-<td align="right">0.990</td>
+<tr>
+<td style="text-align:left;">
+lag.con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.001
+</td>
+<td style="text-align:right;">
+0.043
+</td>
+<td style="text-align:right;">
+-0.013
+</td>
+<td style="text-align:right;">
+0.990
+</td>
 </tr>
-<tr class="odd">
-<td>lag.ningun_estudio.porcentaje.mxn</td>
-<td align="right">0.084</td>
-<td align="right">0.061</td>
-<td align="right">1.383</td>
-<td align="right">0.167</td>
+<tr>
+<td style="text-align:left;">
+lag.ningun_estudio.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.084
+</td>
+<td style="text-align:right;">
+0.061
+</td>
+<td style="text-align:right;">
+1.383
+</td>
+<td style="text-align:right;">
+0.167
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:cauto-sd-areasdist">Tabla 4.52: </span>Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:cauto-sd-areasdist">Tabla 4.52: </span>Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV
+</caption>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\rho\)</span></td>
-<td align="left">Likelihood ratio</td>
-<td align="left">p-value</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\rho\)</span>
+</td>
+<td style="text-align:left;">
+Likelihood ratio
+</td>
+<td style="text-align:left;">
+p-value
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.709</td>
-<td align="left">213.394</td>
-<td align="left">0</td>
+<tr>
+<td style="text-align:left;">
+0.709
+</td>
+<td style="text-align:left;">
+213.394
+</td>
+<td style="text-align:left;">
+0
+</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption><span id="tab:coef-slx-areasdist">Tabla 4.53: </span>Coeficientes del modelo SLX índice de relación área distancia de EV</caption>
+<caption>
+<span id="tab:coef-slx-areasdist">Tabla 4.53: </span>Coeficientes del modelo SLX índice de relación área distancia de EV
+</caption>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Estimate</th>
-<th align="right">Std. Error</th>
-<th align="right">t value</th>
-<th align="right">Pr(&gt;|t|)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>x(Intercept)</td>
-<td align="right">0.033</td>
-<td align="right">0.027</td>
-<td align="right">1.227</td>
-<td align="right">0.221</td>
+<tr>
+<td style="text-align:left;">
+x(Intercept)
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+1.227
+</td>
+<td style="text-align:right;">
+0.221
+</td>
 </tr>
-<tr class="even">
-<td>xarea_media_manzana.mxn</td>
-<td align="right">0.317</td>
-<td align="right">0.070</td>
-<td align="right">4.507</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xarea_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+0.317
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+<td style="text-align:right;">
+4.507
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>xcuarto.porcentaje.mxn</td>
-<td align="right">-0.049</td>
-<td align="right">0.065</td>
-<td align="right">-0.757</td>
-<td align="right">0.450</td>
+<tr>
+<td style="text-align:left;">
+xcuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.049
+</td>
+<td style="text-align:right;">
+0.065
+</td>
+<td style="text-align:right;">
+-0.757
+</td>
+<td style="text-align:right;">
+0.450
+</td>
 </tr>
-<tr class="even">
-<td>xunidad_economica.porcentaje.mxn</td>
-<td align="right">0.064</td>
-<td align="right">0.042</td>
-<td align="right">1.512</td>
-<td align="right">0.132</td>
+<tr>
+<td style="text-align:left;">
+xunidad_economica.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.064
+</td>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+1.512
+</td>
+<td style="text-align:right;">
+0.132
+</td>
 </tr>
-<tr class="odd">
-<td>xdensidad_poblacion.mxn</td>
-<td align="right">0.013</td>
-<td align="right">0.033</td>
-<td align="right">0.385</td>
-<td align="right">0.700</td>
+<tr>
+<td style="text-align:left;">
+xdensidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+0.013
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+0.385
+</td>
+<td style="text-align:right;">
+0.700
+</td>
 </tr>
-<tr class="even">
-<td>xcon_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.059</td>
-<td align="right">0.035</td>
-<td align="right">-1.705</td>
-<td align="right">0.089</td>
+<tr>
+<td style="text-align:left;">
+xcon_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.059
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+<td style="text-align:right;">
+-1.705
+</td>
+<td style="text-align:right;">
+0.089
+</td>
 </tr>
-<tr class="odd">
-<td>xningun_estudio.porcentaje.mxn</td>
-<td align="right">0.076</td>
-<td align="right">0.062</td>
-<td align="right">1.229</td>
-<td align="right">0.220</td>
+<tr>
+<td style="text-align:left;">
+xningun_estudio.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.062
+</td>
+<td style="text-align:right;">
+1.229
+</td>
+<td style="text-align:right;">
+0.220
+</td>
 </tr>
-<tr class="even">
-<td>xlag.area_media_manzana.mxn</td>
-<td align="right">1.509</td>
-<td align="right">0.142</td>
-<td align="right">10.593</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xlag.area_media_manzana.mxn
+</td>
+<td style="text-align:right;">
+1.509
+</td>
+<td style="text-align:right;">
+0.142
+</td>
+<td style="text-align:right;">
+10.593
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.cuarto.porcentaje.mxn</td>
-<td align="right">-0.260</td>
-<td align="right">0.103</td>
-<td align="right">-2.522</td>
-<td align="right">0.012</td>
+<tr>
+<td style="text-align:left;">
+xlag.cuarto.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.260
+</td>
+<td style="text-align:right;">
+0.103
+</td>
+<td style="text-align:right;">
+-2.522
+</td>
+<td style="text-align:right;">
+0.012
+</td>
 </tr>
-<tr class="even">
-<td>xlag.unidad_economica.porcentaje.mxn</td>
-<td align="right">0.178</td>
-<td align="right">0.063</td>
-<td align="right">2.827</td>
-<td align="right">0.005</td>
+<tr>
+<td style="text-align:left;">
+xlag.unidad_economica.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.178
+</td>
+<td style="text-align:right;">
+0.063
+</td>
+<td style="text-align:right;">
+2.827
+</td>
+<td style="text-align:right;">
+0.005
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.densidad_poblacion.mxn</td>
-<td align="right">0.003</td>
-<td align="right">0.056</td>
-<td align="right">0.056</td>
-<td align="right">0.956</td>
+<tr>
+<td style="text-align:left;">
+xlag.densidad_poblacion.mxn
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+<td style="text-align:right;">
+0.056
+</td>
+<td style="text-align:right;">
+0.056
+</td>
+<td style="text-align:right;">
+0.956
+</td>
 </tr>
-<tr class="even">
-<td>xlag.con_alguna_limitacion.porcentaje.mxn</td>
-<td align="right">-0.206</td>
-<td align="right">0.063</td>
-<td align="right">-3.243</td>
-<td align="right">0.001</td>
+<tr>
+<td style="text-align:left;">
+xlag.con_alguna_limitacion.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+-0.206
+</td>
+<td style="text-align:right;">
+0.063
+</td>
+<td style="text-align:right;">
+-3.243
+</td>
+<td style="text-align:right;">
+0.001
+</td>
 </tr>
-<tr class="odd">
-<td>xlag.ningun_estudio.porcentaje.mxn</td>
-<td align="right">0.349</td>
-<td align="right">0.090</td>
-<td align="right">3.883</td>
-<td align="right">0.000</td>
+<tr>
+<td style="text-align:left;">
+xlag.ningun_estudio.porcentaje.mxn
+</td>
+<td style="text-align:right;">
+0.349
+</td>
+<td style="text-align:right;">
+0.090
+</td>
+<td style="text-align:right;">
+3.883
+</td>
+<td style="text-align:right;">
+0.000
+</td>
 </tr>
 </tbody>
 </table>

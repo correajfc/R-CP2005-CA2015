@@ -5,19 +5,28 @@
 ```
 
 
-Este trabajo se concentra en indagar en particular sobre la justicia ambiental distributiva por medio de modelos estadísticos, geoestadísticos apoyados por el análisis visual de los patrones espaciales. El motivo principal para hacer uso de este tipo de aproximación pasa por la identificación de relaciones estadísticamente significativas entre variables sociales, económicas, estructurales y ambientales incluyendo la capacidad de detectar agrupaciones de unidades geográficas con características homogéneas donde intervenir y disminuir las inequidades en el acceso a servicios ambientales. 
-
-Para ello se hará uso de datos del censo arbóreo de 2015^[ Desafortunadamente los datos del censo arbóreo no están disponibles al público general por motivos desconocidos, pues según la legislación Colombiana no existe ningún tipo de impedimento ni restricciones de privacidad sobre estos datos, que fueron recolectados con dineros públicos. Trabajé con una copia a la que tuve acceso por vínculos laborales con la Alcaldía de Cali], el censo de población del 2005^[Disponibles en [@censo_sistema_dane; @dane_cepal_celade_2005; @geoportal_DANE]] y aspectos estructurales del espacio público y privado de las unidades espaciales de análisis^[Disponibles en [@geoportal_idesc; @noauthor_plan_nodate]]. 
 
 ## Área de estudio
 
-El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano. Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2.420.114 habitantes según Cali en Cifras 2015[@escobar2015cali] . El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %).(Ver figura \@ref(fig:ubicacion)).La división administrativa de la zona urbana son comunas y las comunas se componen de barrios. 
- 
+```{r mapa-area,fig.cap="Área de estudio. Perímetro de Santiango de Cali", fig.height=7,out.width="90%"}
 
-```{r ubicacion, out.width='100%',echo=FALSE, fig.cap="Área de estudio"}
-knitr::include_graphics("QGIS/mapas/ubicacion_cali2.png")
+OSMap+
+  geom_path(data=prmtr_urbn_idesc.wgs.df,  
+            aes(long,lat,group=group,color="Perímetro"), fill="none") +
+  coord_equal() +
+  scale_color_manual("Perimetro", values = "red")+
+  theme(legend.position = c(0.9, 0.25))+
+  ggsn::north(prmtr_urbn_idesc.wgs.df, symbol = 5, scale = 0.15, location = "topleft") +
+  ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
+  labs(title ="Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nFuentes: OSM e IDESC\nElaboración Propia")
+
+
+
+
 ```
 
+
+El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano, latitud 3.4372200°, longitud  -76.5225000° en grados decimales del sistema de coordenadas WGS84 (ver figura \@ref(fig:mapa-area)). Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2,420,114 habitantes según Cali en Cifras 2015 [@escobar2015cali] . El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %). La división administrativa de la zona urbana son comunas y las comunas se componen de barrios. 
 
 Santiago  de Cali presenta dos  zonas topográficas:  el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El área urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.
 
@@ -26,11 +35,11 @@ El clima del municipio varía en relación al rango altitudinal que abarca entre
 
 ## Datos
 
+Se hizo uso de datos del Censo Arbóreo de 2015(CA2015) [@ca2015cali], el Censo de Población de 2005 (CP2005) [@censo_sistema_dane; @geoportal_DANE] y aspectos estructurales del espacio público y privado de las unidades espaciales de análisis tomados de la Infraestructura de Datos Espaciales de Santiago de Cali (IDESC) [@geoportal_idesc] y las bases de datos del Plan de Ordenamiento Territorial (POT) del 2014 [@pot2014cali]. 
+
 ### Datos de registros oficiales del municipio
 
-La cartografía disponible en la Infraestructura de Datos Espaciales de Santiago de Cali, IDESC [@geoportal_idesc], incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema [@noauthor_magna-sirgas-cali_nodate]. Además está la base de datos geográfica del Plan de Ordenamiento territorial de Cali 2014, POT2014^[Toda la información del POT2014 se encuentra en la web de la Alcaldía y puede descargarse como archivo GDB compatible con ArcGIS 10.4 o consumirse de Geoserver de IDESC como WFS o mapas en formato pdf del acuerdo]. Del POT2014 se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionó la capa de barrios, espacio público, humedales, ríos y corredores ambientales disponibles vía WFS. La capa de manzanas es necesaria para refinar las capas de espacio verde y poder calcular el área de calle , área privada y otras métricas sobre la estructura de cada sector sector censal y que servirán como criterios para la selección de sectores urbanos a incluir en los análisis de regresión.
-
-En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
+La cartografía disponible en la IDESC [@geoportal_idesc], incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema [@igagMC2005]. Además está la base de datos geográfica del POT [@pot2014cali]. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía WFS. En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
 
 ```{r capas-idesc, out.width='100%',echo=FALSE, fig.cap="Capas usadas para el procesamiento de los espacios verdes y las características de las manzanas"}
 knitr::include_graphics("QGIS/mapas/capas_analisis.png")
@@ -40,12 +49,12 @@ knitr::include_graphics("QGIS/mapas/capas_analisis.png")
 
 ### El censo arbóreo 
 
-En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realización de un censo arbóreo que dejó como resultado una base de datos de aproximadamente 290.000 individuos censados. Los datos dan cuenta de la identificación de especies, sus características dasométricas, de emplazamiento y estado fitosanitario. Estos datos constituyen un insumo fundamental para para la caracterización de los beneficios y cargas que supone el mantenimiento y desarrollo del arbolado urbano. De hecho, su realización ocurre en el marco del proceso de formulación del plan silvicultura urbana o estatuto arbóreo^[ El proyecto de censo arbóreo se formuló en dos fases;  la primera se ejecutó mediante convenio No 095 de 2013 entre la CVC y la Universidad Autónoma de Occidente, y la segunda fase mediante convenio No 049 de 2014 entre las mismas entidades. Los datos no se encuentran publicados y fueron solicitados mediante un derecho de petición.] (Acuerdo 0335 de 2013). Las variables biofísicas recolectadas y la georeferenciación de los individuos permite agregar las características del arbolado a diferentes escalas de las unidades administrativas p.e divisiones censales, para identificar y caracterizar su distribución espacial y correlación con variables sociales o/y económicas. ALgunas de las variables incluidas en el censo se resumen en la tabla \@ref(tab:vars-AU) y en la tabla \@ref(tab:datos-ca2015).
+En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realización del censo arbóreo (CA2015) que dejó como resultado una base de datos de `r total_arboles_censo %>% scales::comma()` individuos censados [@ca2015cali]. Los datos dan cuenta de la identificación de especies, georeferenciación de los individuos, sus características dasométricas, de emplazamiento y estado fitosanitario. Las variables usadas en este estudio se resumen en la tabla \@ref(tab:vars-AU).
 
 Table: (#tab:vars-AU) Variables para caracterizar el AU
 
 | variable | {valores}[unidades]     |
-|-----:|---------------------------:|
+|------------:|-------------------------------:|
 |id_arbol|número entero único|
 |diametro copa|[m^2^]|
 |altura arbol|[m]|
@@ -56,49 +65,32 @@ Table: (#tab:vars-AU) Variables para caracterizar el AU
 |Este|[m] MAGNA - SIRGAS-CALI|
 | Norte | [m] MAGNA - SIRGAS-CALI|
 
-```{r au-geo-emp,  fig.asp=1.5, fig.cap="Small multiples de los individuos arbóreos por emplazamiento",cache=TRUE}
-# puntos por e,mplazamiento
-base_plot.manzanas + geom_point(data = AU_analsis,
-                                aes(x = Este, y = Norte),
-                                size=0.01,
-                                color="forestgreen",
-                                alpha=0.1)+
-  theme_void()+
-  facet_wrap(~emplazamiento , ncol = 4 ,labeller = label_wrap_gen())
 
-```
-
-```{r datos-ca2015}
-knitr::kable(head(AU_analsis[,c("id","vegetacion","edad","emplazamiento","diametro_copa","altura_arbol")]),caption = "Muestra de los datos del censo arbóreo",align = 'r')
-
-```
 
 Existe una diferencia de 10 años entre censo de población de 2005 y el censo arbóreo de la ciudad de Cali. Aunque esto pueda parecer una situación que reduce la legitimidad de los resultados que se hallen en este estudio, autores como @boone2010landscape y @schwarz_trees_2015 reconocen que los paisajes que vemos hoy son legados de patrones de consumo pasados, y que en el caso de la vegetación urbana tratamos con organismos de larga vida que pueden tardar mucho tiempo en establecerse y crecer. En contraste, la estructura social de las ciudades puede cambiar más rápidamente. 
 
-Una apuesta para reducir la brecha es la exclusión de los árboles jóvenes del inventario, que posiblemente no estaban ahí en 2005. Aunque no conocemos las tasa anual de tala de árboles en la ciudad, y dado es posible que una parte importante de los árboles jóvenes haya reemplazado a los que fueron talados, no parece realista mantener el inventario entero. 
+Atendiendo a estos argumentos se excluyó del la base de datos del CA2015 árboles jóvenes del inventario, que no estaban ahí en 2005. Aunque toda la vegetación aporta beneficios ambientales a los habitantes, en este estudio se descartó la vegetación arbustiva y los árboles, palmas y bambú de menos de 1.9 m de altura para circunscribirse a los individuos más desarrollados. 
 
-En general toda la vegetación aporta beneficios ambientales a los habitantes, en este estudio descartamos la vegetación arbustiva y los árboles, palmas y bambú de menos de 1.9 m de altura para circunscribirnos a los individuos más desarrollados. 
-
-Una vez aplicado este filtro contamos con `r nrow(AU_analsis)` individuos.
+Una vez aplicado este filtro contamos con `r nrow(AU_analsis) %>% scales::comma()` individuos.
 
 
 ### El censo de población
 
-El último censo de población en Colombia se realizó en el año 2005, y los datos se pueden consultar y agregar en las diferentes unidades censales (sector, sección, manzana) usando una sistema de consulta web de censos Redatam^[El sistema de consulta es el [@cepal_redatam_nodate], que se puede acceder directamente desde [@dane_cepal_celade_2005] y en la página web del [DANE](http://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/censo-general-2005-1) dónde está organizada la documentación metodológica y otros servicios del censo.]. Estos datos sirven para caracterizar la población con base en indicadores y rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas \@ref(tab:vars-poblacion) y \@ref(tab:vars-vivienda). 
+Los datos del CP2005 están disponibles en las unidades censales (sector, sección, manzana) a través del sistema de un consulta web [@censo_sistema_dane]. Estos datos sirven para caracterizar la población con base en indicadores sobre rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas \@ref(tab:vars-poblacion) y \@ref(tab:vars-vivienda). 
 
-El otro componente de los datos es la cartografía censal del DANE [@geoportal_DANE] disponible para las diferentes unidades espaciales de agregación en el sistema de coordenadas WGS84. Para el análisis se tiene en cuenta todos las unidades censales que se interceptan con el perímetro urbano disponible en la IDESC, pues el censo arbóreo se limitó al este perímetro.(ver figura \@ref(fig:su-periurbano))
+El otro componente de los datos es la cartografía censal del DANE [@geoportal_DANE] disponible para las diferentes unidades espaciales de agregación en el sistema de coordenadas WGS84. Para el análisis se tiene en cuenta todos las unidades censales que se interceptan con el perímetro urbano disponible en la IDESC, pues el censo arbóreo se limitó a este perímetro.(ver figura \@ref(fig:su-periurbano))
 
 
 Table: (#tab:vars-poblacion) Variables sobre la población 
 
-| variable | {valores}[unidades]    |
-|-----:|---------------------------:|
+| variable |  {valores}[unidades]    |
+|----------:|--------------------------------:|
 |Pertenencia Étnica|[personas]{indígenas, ROM, gitanos, raizales del Archipiélago de San Andrés, Providencia y Santa Catalina, palenqueros de San Basilio, afrocolombianos}
 |Con alguna limitación|[personas]{sí,no}
 |Con estudios superior o postgrado|[personas] |
 |Ningún estudio|[personas] |
 
-```{r su-periurbano, out.width='100%',echo=FALSE, fig.cap="División en barrios y sectores urbanos de Santiago de Cali"}
+```{r su-periurbano, out.width='100%',echo=FALSE, fig.cap="Sectores urbanos y périmetro urbano de Santiago de Cali"}
 knitr::include_graphics("images/sectoresurbanos_perimetro_idesc.png")
 ```
 
@@ -111,18 +103,28 @@ Table: (#tab:vars-vivienda) Variables sobre la las viviendas
 |cantidad predios|[predios]|
 |cantidad viviendas|[viviendas]|
 
-Una de las apuestas del proyecto es incluir aspectos de los procesos de desarrollo urbano a través de la idea de barrio: como unidad de identidad cultural urbana y estructural, de características físicas y habitacionales en las que confluyen las transformaciones que hacen los habitantes y los diseños urbanos e intervenciones arquitectónicas de los planeadores y constructores en la ciudad. La unidad espacial de análisis sobre la cual se harán todas las agregaciones es el sector urbano (SU) de la cartografía censal 2005.
+La unidad espacial de análisis sobre la cual se harán todas las agregaciones es el sector urbano (SU) de la cartografía censal 2005.
 
 
 ## Métodos y técnicas
 
-El análisis propuesto se compone de las siguientes actividades:
+Este trabajo se concentró en indagar en particular sobre la justicia ambiental distributiva por medio de modelos estadísticos de regresión y geoestadísticos usados ampliamente en la literatura revisada [@heynen_political_2006;@vasquez_fuentes_vegetacion_2008;@landry_street_2009;@gibbons_mostly_2012;@zhou_social_2013;@shanahan_socio-economic_2014;@lesage_biggest_2014;@schwarz_trees_2015;@PACHECO2013121]. Se busca probar que existe un sesgo en la distribución de un beneficio ambiental (AU y EV) explicado por alguna variable socioeconómica o estructural. Desde la modelación estadística esto se logra encontrando predictores con coeficientes significativos en la regresión lineal. Si exsite un patrón espacial que puede ser includo en la modelación para mejorar la estimación de los coeficiente de la regresión, su inclusión debe mejorar las condiciones de normalidad y homocedasticidad de los residuos de la regresión.   
+
+Para detectar agrupaciones de unidades geográficas con características homogéneas donde intervenir y disminuir las inequidades en el acceso a servicios ambientales se complementan los análisis con el uso de mapas de LISA [@talen_assessing_1998]. 
+
+
+El diagrama de la figura \@ref(fig:flujograma) sintetiza el análisis propuesto, compuesto de las siguientes actividades:
  
-1.  Preparación de los datos: una tarea común pero crucial para el análisis de datos. La estandarización de las variables categóricas y la identificación de valores atípicos o inconsistentes es una base firme para la estimación de parámetros y obtener soluciones confiables y sensibles de interpretación. Los datos suelen estar usualmente en formatos para la lectura humana o con distinta estructura de las variables de los modelos. La preparación de los datos consume la mayor parte de los esfuerzos de las tareas de procesamiento de los datos. Los datos del censo arbóreo se encuentra en tablas bien conformadas lo que facilita su manipulación. Los datos de consulta del censo de población vienen en tablas independientes para cada unidad espacial seleccionada, con diferentes longitud de variables. A esto se suma el componente espacial, donde hay que prestar particular atención a los sistemas de coordenadas y usar coordenadas planas consistentes con las unidades de espacio.
+1.  Preparación de los datos: construcción de tablas, estandarización de las variables categóricas, sistemas de coordenadas y la identificación de valores atípicos o inconsistentes en los datos.
 1.  Procesamiento y análisis estadístico: cálculo de indicadores de cobertura, acceso y variables socioeconómicas. Cálculo de estadísticos para probar normalidad, normalización de las variables e indicadores, cálculos de coeficientes de correlación Pearson y de Spearman entre todos los pares de variables.
-1. Inspección visual de los datos: hacer uso de gráficas estadísticas, mapeos y mapas para evaluar y seleccionar los indicadores a usar en un modelo de regresión lineal. 
-1. Evaluar los residuos usando la prueba de correlación espacial de Moran’I usando al menos dos diseños de matriz W. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SLX para comparar su desempeño. 
+1. Análisis exploratorio: hacer uso de gráficas estadísticas, mapeos y mapas para evaluar y seleccionar los indicadores a usar en un modelo de regresión lineal. 
+1. Seleccionar los mejores predictores con base en coeficientes de correlación.
+1. Seleccionar los SU a incluir con base la coincidencia con las capas de AU y EV.
+1. Construir y evaluar los modelos de regresión lineal.
+1. Contruir matrices de vencidad $W$ para incluir restricciones espaciales al modelo.
+1. Pruebar correlación espacial de Moran’I usando al menos dos diseños de matriz W. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SLX para comparar su desempeño. 
 1. Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R^2^ y el criterio de Akaike.
+1. Graficar mapas de LISA para caraterizar los patrones de agrupación de las varobles del los modelos mejor ajustados.
 
 
 
@@ -132,13 +134,12 @@ knitr::include_graphics("images/flujograma.png")
 
 ### Procesamiento de datos 
 
-El procesamiento de los datos se realizó  principalmente en @R-base. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados.
+El procesamiento de los datos se realizó principalmente en @R-base. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo usó las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
 
-El código que implementa  los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico. Cada script implementa una fase de la metodología y produce resultados intermedios que facilitan seguir y reproducir dichas transformaciones sobre los datos de un dominio del problema. El archivo de `funciones.R` agrupa funciones que encapsulan funcionalidades recurrentes dentro del desarrollo del análisis. El script de `geodata.R` opera sobre los fuentes de datos geográficas necesarias para consolidar los índices de acceso a espacios verdes (EV),  los indicadores y variables de la estructura de física de los sectores censales y unidades geográficas del análisis. El script `arboles,R` consolida la información de cada uno de los individuos del censo arbóreo agregandolos por sector censal. El scrript `censopoblacion.R` consolida los datos del Censo de Población 2005. Los scripts `consolidarDatos.R` y `analisis_exploratorio.R` consolidan una única estructura con todos los datos y produce una serie de gráficas y medidas de correlación, que son base para la identificación de supuestos y selección de las variables independientes para los análisis estadísticos y las regresiones espaciales. Finalmente los script de `analisis_estadistico.R` y `analisis_geoestadistico.R` implementan las regresiones lineales y las regresiones espaciales respectivamente, así como los test y tablas para la verificación de los supuesto matemáticos y la verificación de la calidad de los resultados.  Todos estos están reunidos en un script que carga las librerías necesarias y ejecuta secuencialmente cada de los scripts descritos. 
 
-Para usar la información geográfica de la cartografía censal y la información del IDESC es necesario establecer un sistema de coordenadas común, en unidades métricas, que facilite integrar la información y produzca resultados consistentes. El sistema de coordenadas proyectadas que vamos a usar es @noauthor_magna-sirgas-cali_nodate. Para cargar y manipular los datos espaciales hacemos uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
+El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico. 
 
-El código y los datos están disponibles en [este repositorio de GitHub](https://github.com/correajfc/R-CP2005-CA2015).
+El código y los datos están disponibles en [este repositorio de GitHub https://github.com/correajfc/R-CP2005-CA2015](https://github.com/correajfc/R-CP2005-CA2015).
 
 ### Cálculo de métricas de acceso a servicios ambientales
 

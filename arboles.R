@@ -159,23 +159,25 @@ CAutf8 %>%
 CAutf8<-CAutf8 %>%
   distinct(id,.keep_all=TRUE)
 
+total_arboles_censo <- CAutf8 %>% nrow()
 
-# columnas a incluir en analsis ----
-AU_analsis<-CAutf8 %>% dplyr::select(id,nombre_cienticico,familia,vegetacion,
-                                    altura_arbol,diametro_copa,edad,vitalidad,emplazamiento,cobertura,
-                                    Norte,Este,Norte0,Este0) %>% na.omit()
-
-summary(AU_analsis)
 
 # guardar copia de las modficaciones al original.
 write.csv(x = CAutf8,"./outputData/ca2015.csv",fileEncoding = "UTF-8")
 rm(CAutf8)
 
+# columnas a incluir en analsis ----
+AU_analsis<-CAutf8 %>% dplyr::select(id,nombre_cienticico,familia,vegetacion,
+                                     altura_arbol,diametro_copa,edad,vitalidad,emplazamiento,cobertura,
+                                     Norte,Este,Norte0,Este0) %>% na.omit()
+
+
+
 ## calculamos la cobertura de copa ----
 AU_analsis<-AU_analsis %>% rowwise()%>%
   mutate(area_copa= pi*(diametro_copa/2)^2)
 
-
+summary(AU_analsis)
 
 # inspecionar CA graficamente sin agregaciones ----
 AU_analsis %>% ggplot()+
