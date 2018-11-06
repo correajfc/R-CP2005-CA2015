@@ -43,8 +43,8 @@ data_frame(
   Term = c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
            "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
            "Retardo Espacial en X o *Spatial Lag*","Modelo Espacial del Error o *Spatial Error Model*",
-           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia"),
-  Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005")) %>%
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","lugares Especiales de Alojamiento","*Local indicators of spatial association*"),
+  Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA")) %>%
   arrange(Abbreviation) %>% # i.e. alphabetical order by Term
   kable(booktab = T, col.names = c("Término","Abreviación"))
 

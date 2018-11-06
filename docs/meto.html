@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2018-10-21">
+<meta name="date" content="2018-11-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -106,13 +106,13 @@
 <li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
 <li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
 <li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
-<li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-y-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes y regresiones lineales</a></li>
+<li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
 <li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Resultados</a><ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#modelando-la-cobertura-de-copa"><i class="fa fa-check"></i><b>4.1</b> Modelando la cobertura de copa</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#correlaciones-y-graficos-de-dispersion-bivariados"><i class="fa fa-check"></i><b>4.1.1</b> Correlaciones y gráficos de dispersión bivariados</a></li>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#variables-dependientes"><i class="fa fa-check"></i><b>4.1.1</b> Variables dependientes</a></li>
 <li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#modelos-de-regresion-lineal"><i class="fa fa-check"></i><b>4.1.2</b> Modelos de regresión lineal</a></li>
 <li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#modelado-espacial-au"><i class="fa fa-check"></i><b>4.1.3</b> Modelado espacial AU</a></li>
 </ul></li>
@@ -178,10 +178,10 @@ Figura 3.2: Capas usadas para el procesamiento de los espacios verdes y las cara
 <div id="el-censo-arboreo" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> El censo arbóreo</h3>
 <p>En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realización del censo arbóreo (CA2015) que dejó como resultado una base de datos de 296,467 individuos censados <span class="citation">(Alcaldía de Cali, <a href="#ref-ca2015cali">2015</a>)</span>. Los datos dan cuenta de la identificación de especies, georeferenciación de los individuos, sus características dasométricas, de emplazamiento y estado fitosanitario. Las variables usadas en este estudio se resumen en la tabla <a href="meto.html#tab:vars-AU">3.1</a>.</p>
-<table style="width:65%;">
+<table style="width:79%;">
 <caption><span id="tab:vars-AU">Tabla 3.1: </span> Variables para caracterizar el AU</caption>
 <colgroup>
-<col width="19%" />
+<col width="33%" />
 <col width="45%" />
 </colgroup>
 <thead>
@@ -333,7 +333,7 @@ Figura 3.4: Diagrama de flujo de la metodología
 </div>
 <div id="procesamiento-de-datos" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Procesamiento de datos</h3>
-<p>El procesamiento de los datos se realizó principalmente en <span class="citation">R Core Team (<a href="#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo usó las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="#ref-R-rgeos">2017</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="#ref-R-sp">2018</a>)</span>.</p>
+<p>El procesamiento de los datos se realizó principalmente en <span class="citation">R Core Team (<a href="#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="#ref-R-rgeos">2017</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="#ref-R-sp">2018</a>)</span>.</p>
 <p>El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico.</p>
 <p>El código y los datos están disponibles en <a href="https://github.com/correajfc/R-CP2005-CA2015">este repositorio de GitHub https://github.com/correajfc/R-CP2005-CA2015</a>.</p>
 </div>
@@ -341,8 +341,8 @@ Figura 3.4: Diagrama de flujo de la metodología
 <h3><span class="header-section-number">3.3.2</span> Cálculo de métricas de acceso a servicios ambientales</h3>
 <div id="indicadores-de-beneficios-del-arbolado-urbano" class="section level4">
 <h4><span class="header-section-number">3.3.2.1</span> Indicadores de beneficios del arbolado urbano</h4>
-<p>Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes <span class="citation">(D. J. Nowak et al., <a href="#ref-nowak_sustaining_2010">2010</a>)</span>.</p>
-<p>En este trabajo usaremos dos variantes de la cobertura de copa: el área de copa en metros<sup>2</sup> (<code>area_copa</code>) y la cobertura de copa como porcentaje del área pública total (<code>cobertura_copa.ap</code>), conformada por la vías y calles más el área de espacio públicos) (ver figura <a href="meto.html#fig:mapa-copa-dep">3.5</a>).</p>
+<p>Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales, la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes <span class="citation">(D. J. Nowak et al., <a href="#ref-nowak_sustaining_2010">2010</a>)</span>.</p>
+<p>En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente: el área de copa en metros<sup>2</sup> (<code>area_copa</code>) y la cobertura de copa como porcentaje del área pública total (<code>cobertura_copa.ap</code>), conformada por la vías y calles más el área de espacio públicos) (ver figura <a href="meto.html#fig:mapa-copa-dep">3.5</a>).</p>
 <div class="figure"><span id="fig:mapa-copa-dep"></span>
 <img src="tesis-unigis_files/figure-html/mapa-copa-dep-1.png" alt="Sectores urbanos de las variables dependientes sobre cobertura de copa" width="100%" />
 <p class="caption">
@@ -352,24 +352,25 @@ Figura 3.5: Sectores urbanos de las variables dependientes sobre cobertura de co
 </div>
 <div id="indices-de-acceso-a-espacios-verdes" class="section level4">
 <h4><span class="header-section-number">3.3.2.2</span> Índices de acceso a espacios verdes</h4>
-<p>Para mejorar la lectura de esta sección se incluyen a continuación las ecuaciones que definen los índices de acceso seleccionados con las variantes definidas en este trabajo.</p>
+<p>En este estudio se usaron dos métricas de acceso a espacios verdes. El primero es el índice contenedor porcentual (ecuación <a href="meto.html#eq:n-cont">(3.1)</a>), catalogado como una medida de acceso local a la unidad espacial de análisis, ampliamente usado en la literatutra <span class="citation">(Talen y Anselin, <a href="#ref-talen_assessing_1998">1998</a>)</span>.</p>
 <strong>índice contenedor porcentual</strong> (area_ep.porcentaje)
 <span class="math display" id="eq:n-cont">\[\begin{equation}
 A^{C_p}_i =1/a_i\sum_j{s_j} \;  \; \forall  j \in I
 \tag{3.1}
 \end{equation}\]</span>
 <p>donde <span class="math inline">\(s_j\)</span> es el área de cada espacio verde <span class="math inline">\(j\)</span> que pertenece al conjunto <span class="math inline">\(I\)</span> de EV dentro del sector <span class="math inline">\(i\)</span> y <span class="math inline">\(a_i\)</span> es el área del sector <span class="math inline">\(i\)</span>.</p>
+<p>El segundo índice (ecuación <a href="meto.html#eq:areas-dists">(3.2)</a>) es una propuesta de este estudio basada en el trabajo de <span class="citation">Nesbitt y Meitner (<a href="#ref-nesbitt_exploring_2016">2016</a>)</span> en el que se calcula la distancia euclide a los EV desde el centroide de la unidad de análisis, incorporando recomendaciones en <span class="citation">WHO Regional Office for Europe (<a href="#ref-who2016urban">2016</a>)</span> sobre establacer la relación entre distancia y calidad del acceso usando el área del EV y los índice propuestos por <span class="citation">X. Zhou y Kim (<a href="#ref-zhou_social_2013">2013</a>)</span> de un radio de búsqueda de EVs accesibles, sin importar si este está dentro de la unidad espacial a caraterizar.</p>
+<p>Este índice define el acceso como una relación entre la distancia y la cantidad de espacio disponible en el radio de búsqueda definido desde el centroide del SU. La figura <a href="meto.html#fig:mapa-rango1km">3.6</a> muestra gráficamente como existen EVs que caen la intersección de los radios de búsqueda de multiples sectores urbanos, lo que implica que benefician a varios de ellos a la vez, y es por esa razón que el índice expresa una dimensión del acceso no confinada a la unidad espacial.</p>
 <strong>razón área disponible distancia</strong> (ia.areas.dist)
 <span class="math display" id="eq:areas-dists">\[\begin{equation}
 \bar{A}^{AD}_i= \frac{\sum_{\int R_b }{s_j}}{\sum_{\int R_b }{d_{ij}}}  \;  \; \forall  j \in I_{R_b} \; 
 \tag{3.2}
 \end{equation}\]</span>
 <p>donde <span class="math inline">\(R_b\)</span> es el radio de búsqueda, <span class="math inline">\(s_j\)</span> es el área de cada espacio verde <span class="math inline">\(j\)</span>, <span class="math inline">\(d_{ij}\)</span> es la distancia del centriode del sector <span class="math inline">\(i\)</span> al espacio <span class="math inline">\(j\)</span> que pertenecen al conjunto <span class="math inline">\(I_{R_b}\)</span> de EVs en el radio de búsqueda.</p>
-<p>Este índice muestran un dimensión relacionada no con solo con el acceso sino con la cantidad de espacio disponible en el radio de búsqueda definido desde el centroide del sector censal. Para hacernos una idea del radio de búsqueda seleccionado, el siguiente mapa muestra los radios búsqueda y los espacios verdes.</p>
 <div class="figure"><span id="fig:mapa-rango1km"></span>
-<img src="tesis-unigis_files/figure-html/mapa-rango1km-1.png" alt="Espacio verdes y rango de 1 km desde centriodes de SU" width="100%" />
+<img src="tesis-unigis_files/figure-html/mapa-rango1km-1.png" alt="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU" width="100%" />
 <p class="caption">
-Figura 3.6: Espacio verdes y rango de 1 km desde centriodes de SU
+Figura 3.6: Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU
 </p>
 </div>
 </div>
@@ -378,50 +379,80 @@ Figura 3.6: Espacio verdes y rango de 1 km desde centriodes de SU
 <h3><span class="header-section-number">3.3.3</span> Cálculo de métricas de sobre la población</h3>
 <div id="caracteristicas-de-la-poblacion" class="section level4">
 <h4><span class="header-section-number">3.3.3.1</span> Características de la población</h4>
-<p>La tabla <a href="meto.html#tab:vars-poblacion">3.2</a> resumen las variables consideradas inicialmente en este trabajo, sin embargo, algunas de ellas no contienen suficiente variabilidad o el número de individuos es muy bajo en comparación con el total de la población. En la tabla <a href="meto.html#tab:totales-poblacion">3.4</a> se observa el bajo número de personas que pertenecen al pueblo Rom (gitanos), Palenqueros de San Basilio (departamento de Bolívar) y de Raizales del Archipiélago de San Andrés, Providencia y Santa Catalina (SAI), por lo que son descartados del análisis al igual que la población indígena.</p>
+<p>La tabla <a href="meto.html#tab:vars-poblacion">3.2</a> muestra los valores de la variable de etnicidad. Al hacer los conteos por pertencia a un grupo etnico para toda la ciudad (ver tabla <a href="meto.html#tab:totales-poblacion">3.4</a>), se observa el bajo número de personas que pertenecen al pueblo Rom (gitanos), Palenqueros de San Basilio (departamento de Bolívar) y de Raizales del Archipiélago de San Andrés, Providencia y Santa Catalina (SAI) y a la población indígena, por lo que son descartados del análisis.</p>
 <table>
-<caption><span id="tab:totales-poblacion">Tabla 3.4: </span>Totales de población en la ciudad de Cali</caption>
+<caption>
+<span id="tab:totales-poblacion">Tabla 3.4: </span>Totales de población por grupo étnico en la ciudad de Cali
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Tipo</th>
-<th align="right">Cantidad</th>
+<tr>
+<th style="text-align:left;">
+Tipo
+</th>
+<th style="text-align:right;">
+Cantidad
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Población Total</td>
-<td align="right">2027024</td>
+<tr>
+<td style="text-align:left;">
+Población Total
+</td>
+<td style="text-align:right;">
+2027024
+</td>
 </tr>
-<tr class="even">
-<td align="left">Población afrodescendiente, negros o mulatos</td>
-<td align="right">530990</td>
+<tr>
+<td style="text-align:left;">
+Población afrodescendiente, negros o mulatos
+</td>
+<td style="text-align:right;">
+530990
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Población indígena</td>
-<td align="right">9195</td>
+<tr>
+<td style="text-align:left;">
+Población indígena
+</td>
+<td style="text-align:right;">
+9195
+</td>
 </tr>
-<tr class="even">
-<td align="left">Población Rom</td>
-<td align="right">690</td>
+<tr>
+<td style="text-align:left;">
+Población Rom
+</td>
+<td style="text-align:right;">
+690
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Población Palenqueros</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:left;">
+Población Palenqueros
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">Población raizales de SAI</td>
-<td align="right">851</td>
+<tr>
+<td style="text-align:left;">
+Población raizales de SAI
+</td>
+<td style="text-align:right;">
+851
+</td>
 </tr>
 </tbody>
 </table>
-<p>Las variables del censo de población seleccionadas para el análisis se muestran en la figura <a href="meto.html#fig:mapas-poblacion-deciles">3.7</a></p>
+<p>Las variables del CP2005 seleccionadas para el análisis se muestran en la figura <a href="meto.html#fig:mapas-poblacion-deciles">3.7</a>.</p>
 <div class="figure"><span id="fig:mapas-poblacion-deciles"></span>
 <img src="tesis-unigis_files/figure-html/mapas-poblacion-deciles-1.png" alt="Mapas de las variables de población seleccionadas (en deciles)" width="100%" />
 <p class="caption">
 Figura 3.7: Mapas de las variables de población seleccionadas (en deciles)
 </p>
 </div>
-<p>Además de las variables seleccionadas podemos calcular indicadores como la densidad de población: dado que los árboles compiten por el espacio con los seres humanos es de esperarse que a mayor cantidad de personas haya menos lugar para los árboles. Podemos de nuevo calcular indicadores porcentuales respecto de la población total de cada unidad geográfica para facilitar la comparaciones y acentuar las diferencias entre los diferente sectores (figura <a href="meto.html#fig:mapas-poblacion-mod-deciles">3.8</a>).</p>
+<p>Además de las variables seleccionadas se calculó la densidad de población dado que los árboles compiten por el espacio con los seres humanos y es de esperar que a mayor cantidad de personas haya menos lugar para los árboles. Se calcularon indicadores porcentuales respecto de la población total de cada unidad geográfica para facilitar la comparaciones y acentuar las diferencias entre los SU (figura <a href="meto.html#fig:mapas-poblacion-mod-deciles">3.8</a>).</p>
 <div class="figure"><span id="fig:mapas-poblacion-mod-deciles"></span>
 <img src="tesis-unigis_files/figure-html/mapas-poblacion-mod-deciles-1.png" alt="Mapas de las variables de población seleccionadas como porcentajes (en deciles)" width="100%" />
 <p class="caption">
@@ -431,50 +462,47 @@ Figura 3.8: Mapas de las variables de población seleccionadas como porcentajes 
 </div>
 <div id="caracteristicas-de-las-viviendas" class="section level4">
 <h4><span class="header-section-number">3.3.3.2</span> Características de las viviendas</h4>
-<p>Además de las rasgos étnicos, condiciones de estudio y limitaciones de la población el censo de 2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de unidades especiales de alojamiento L.E.A dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a en EV, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o L.E.A.</p>
-<p>A continuación presentamos el resumen, los mapas por sector urbano (figuras <a href="meto.html#fig:mapas-usopredios-cont">3.9</a>.</p>
+<p>Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o LEA. El uso de LEA tiene una distribución concentrada en pocos SU, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano <a href="meto.html#fig:mapas-usopredios-cont">3.9</a>.</p>
 <div class="figure"><span id="fig:mapas-usopredios-cont"></span>
 <img src="tesis-unigis_files/figure-html/mapas-usopredios-cont-1.png" alt="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)" width="100%" />
 <p class="caption">
 Figura 3.9: Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)
 </p>
 </div>
-<p>El uso de L.E.A tiene una distribución concentrada en uno pocos SU, por lo que podemos descartarla para los análisis de regresión. Existe también cierta complementariedad entre el uso de vivienda y los usos económicos de los predios, porque seguramente, si existe una correlación entre estas variables y la cobertura de copa o el acceso a espacios verdes una de las dos puede bastar para incluir esta dimensión en los modelos de regresión.</p>
 </div>
 </div>
 <div id="criterios-y-seleccion-de-sectores-censales" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Criterios y selección de sectores censales</h3>
-<p>Antes de iniciar un análisis de regresión establecemos los criterios para inclusión o no de ciertos datos dentro del conjunto de valores para la regresión y cálculo de la correlación. Estos criterios se listan a continuación:</p>
+<p>Se establecieron criterios para la <strong>exclusión</strong> de datos para el análisis de regresión que evitan incluir SUs atípicos con valores:</p>
 <ul>
 <li>sectores sin personas</li>
 <li>sectores sin viviendas</li>
-<li>sectores área de espacio público mayor que el 60 % del área del sector</li>
-<li>sectores área de calle mayor que el 80 % del área del sector</li>
+<li>sectores con área de espacio público mayor que el 80 % del área del sector</li>
+<li>sectores con área de calle mayor que el 80 % del área del sector</li>
 <li>sectores área privada mayor que el 90 % del área del sector</li>
+<li>sectores con una porción mayor al 60% por fuera del perímetro urbano</li>
 </ul>
-<p>Además de estos criterios se excluyeron los sectores donde está la Laguna el Pondaje, que cubre una porción muy importante del sector que no se ve reflejado en las otras métricas, los sectores con una porción mayor al 60% por fuera del perímetro urbano o sin urbanización visible en las imágenes satelitales. Así los sectores excluidos del análisis se muestran en los mapas <a href="meto.html#fig:mapa-excluidos">3.10</a>.</p>
+<p>Los sectores excluidos del análisis se muestran en los figura <a href="meto.html#fig:mapa-excluidos">3.10</a>.</p>
 <div class="figure"><span id="fig:mapa-excluidos"></span>
-<img src="tesis-unigis_files/figure-html/mapa-excluidos-1.png" alt="Mapa de los sectores excluidos" width="100%" />
+<img src="tesis-unigis_files/figure-html/mapa-excluidos-1.png" alt="Sectores excluidos" width="100%" />
 <p class="caption">
-Figura 3.10: Mapa de los sectores excluidos
+Figura 3.10: Sectores excluidos
 </p>
 </div>
 </div>
-<div id="seleccion-de-variables-dependientes-y-regresiones-lineales" class="section level3">
-<h3><span class="header-section-number">3.3.5</span> Selección de variables dependientes y regresiones lineales</h3>
-<p>Las variables a incluir en los modelos lineales deben cumplir una serie de condiciones para ser elegidas como candidatas:</p>
+<div id="seleccion-de-variables-dependientes-para-las-regresiones-lineales" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Selección de variables dependientes para las regresiones lineales</h3>
+<p>Las variables incluidas en los modelos lineales deben cumplir una serie de condiciones deseables para ser elegidas como candidatas:</p>
 <ul>
-<li><em>Mostrar una correlación fuerte</em> (típicamente mayor a 0.6 se considera una asociación fuerte).</li>
-<li><em>Las variables independientes o predictoras no deben estar fuertemente correlacionadas entre ellas</em>.</li>
-<li><em>Las observaciones deben ser independientes</em>. En nuestro caso significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pondrá a prueba con los test estadísticos y los graficos de diagnostico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.</li>
-<li><em>Las variables dependientes e independientes deben tener una distribución normal</em>. Esta condición no suele ser estricta, pues lo importante es que al calcular los coeficientes de la regresión obtengamos una distribución normal de los residuos (sin ningún patrón, ruido). De no ser así, es posible que las variables no sean independientes o que exista información significativa en los residuos, por ejemplo, porque existe autocorrelación espacial en la variable dependiente y entonces la regresión lineal no obtiene resultados confiables para los coeficientes.</li>
+<li>Mostrar una correlación fuerte (típicamente mayor a 0.6 se considera una asociación fuerte)</li>
+<li>Las variables independientes o predictoras <strong>no</strong> deben estar fuertemente correlacionadas entre ellas.</li>
+<li>Las observaciones deben ser <strong>independientes</strong><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></li>
 </ul>
-<p>La modelación inicia con el análisis con las variables sobre la población, que son las de mayor interés en un estudio dado su enfoque en la justicia ambiental, para luego incorporar las variables de los dominios relacionados con el uso de los predios, los tipos de viviendas y la existencia de espacios verdes como parques, bulevares, escenarios deportivos o plazas, alojan una cantidad considerable de los individuos arbóreos de la ciudad.</p>
-<p>Para garantizar que las variables no están correlacionadas entre sí, usaremos los coeficientes de correlación de Pearson, usado para detectar relaciones lineales, usualmente en variables con distribución normal, y el coeficiente de Spearman para detectar relaciones en variables con otras distribuciones o que exhiben relaciones no lineales. Para tener una idea más amplia sobre esa relación que expresan los coeficiente de correlación se incluyen gráficas de dispersión entre las variables independientes, y entre dependientes.</p>
-<p>Para seleccionar las variables que mejor predicen la cobertura de copa aplicamos un procedimiento análogo al realizado con las variables dependientes entre sí. Con base en los coeficientes de correlación de Pearson y Spearman entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, seleccionamos las variables a usar en el modelo lineal.</p>
-<p>Antes ajustar los modelos suele ser común en los modelos de regresión ajustar la distribución de las variables dependientes (y a veces las independientes) por motivos teóricos usando transformaciones logarítmicas o de raíz cuadra para eliminar no linealidades entre las variables dependientes y las independientes, y reducir posibles fenómenos de heterocedasticidad debido a estas no-linealidades.</p>
-<p>Dividir o multiplicar por alguna constante no tiene ningún efecto en la calidad de las estimaciones , pero sí sobre los coeficientes de la regresión. Esto suele ser sensible a la hora de interpretar los cambios marginales de cada una de las variables independientes y su efecto sobre la variable dependiente. Sin embargo, lo que interesa para este estudio no es la interpretación de esos cambio sino la importancia relativa de cada variable y comparar los cambios de los coeficientes de regresión para el ajuste de cada modelo y/o las mejoras que pueda operar un modelos autorregresivo en caso de encontrase autocorrelación en los residuos de la regresión lineal. Por esta razón, normalizar los valores puede ser una ventaja pues mantiene los coeficiente mejor acotados. La normalización se aplica posterior a las transformaciones propuestas y se realiza dividiendo por el máximo valor de los datos de cada variable para mantener valores en el intervalo [0,1], dado que los valores son todos iguales o mayores que 0.</p>
-<p>Al aplicar test para verificar que las condiciones de un buen ajuste (no hay sesgos en el estimador o una mala especificación del modelo) de un modelo lineal se cumplen:</p>
+<p>Para garantizar que las variables no están correlacionadas entre sí, se usaron los coeficientes de correlación de Pearson, usado para detectar relaciones lineales y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.</p>
+<p>Para seleccionar las variables que mejor predicen la variable dependiente se tuvo en cuenta las restricciones de colinealidad entre las variables dependientes.</p>
+<p>Para los modelos de regresión se usaron transformaciones logarítmicas o de raíz cuadra para eliminar no linealidades entre las variables dependientes y las independientes, y reducir posibles fenómenos de heterocedasticidad debido a estas no-linealidades.</p>
+<p>Dividir o multiplicar por alguna constante no tiene ningún efecto en la calidad de las estimaciones , pero sí sobre los coeficientes de la regresión. Esto suele ser sensible a la hora de interpretar los cambios marginales de cada una de las variables independientes y su efecto sobre la variable dependiente. Sin embargo, lo que interesa para este estudio no es la interpretación de esos cambio sino la importancia relativa de cada variable y comparar los cambios de los coeficientes de regresión para el ajuste de cada modelo y/o las mejoras que pueda operar un modelos autorregresivo en caso de encontrase autocorrelación en los residuos de la regresión lineal. Por esta razón, normalizar los valores puede ser una ventaja pues mantiene los coeficiente mejor acotados. La normalización se aplicó posterior a las transformaciones propuestas y se realizó dividiendo por el máximo valor de los datos de cada variable para mantener valores en el intervalo [0,1], dado que los valores son todos iguales o mayores que 0.</p>
+<p>Los test aplicados para verificar las condiciones de un buen ajuste (no hay sesgos en el estimador o una mala especificación del modelo) de un modelo lineal son:</p>
 <ul>
 <li>La media de los residuos es 0 o muy cercana.</li>
 <li>La distribución de los residuos es normal.</li>
@@ -484,46 +512,33 @@ Figura 3.10: Mapa de los sectores excluidos
 </div>
 <div id="geostat" class="section level3">
 <h3><span class="header-section-number">3.3.6</span> Análisis geoestadísticos</h3>
-<p>Para los análisis geoestadísticos introducimos los modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelo si existe algún tipo de autocorrelación espacial en los residuos. Existe una variedad de estos modelos que capturan diferentes tipos de efectos: modelo autoregresivo SAR que capturan efectos de la variable dependiente, ecuación <a href="revlit.html#eq:sar">(2.8)</a> , sobre las variables las independientes ( spatial lag o retardo espacial en <span class="math inline">\(X\)</span> SLX, ecuación <a href="revlit.html#eq:slx">(2.10)</a>, en el error (modelo espacial del error SEM, ecuación <a href="revlit.html#eq:sem">(2.9)</a> o usando una combinación del modelo de error y autoregresivo (modelo espacial de Durbin SD,ecuación <a href="revlit.html#eq:sd">(2.11)</a>. Todas estas aproximaciones introducen una matriz de <span class="math inline">\(W_{n \times n}\)</span>, donde <span class="math inline">\(n\)</span> es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz <span class="math inline">\(W\)</span> es una estructura que restringe la influencia a priori en el modelo. Para observar el efecto que tiene esta matriz sobre los resultados del modelo usaremos 2 matrices distintas, y veremos su impacto en la estimación.</p>
-<p>Para los análisis espaciales usaremos la librería <code>spdep</code> <span class="citation">(Bivand, <a href="#ref-R-spdep">2017</a>)</span></p>
+<p>Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de <span class="math inline">\(W_{n \times n}\)</span>, donde <span class="math inline">\(n\)</span> es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz <span class="math inline">\(W\)</span> es una estructura que restringe la influencia a priori en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.</p>
+<p>Para los análisis espaciales se usó la librería <code>spdep</code> <span class="citation">(Bivand, <a href="#ref-R-spdep">2017</a>)</span></p>
 <div id="matrices-de-vecindad" class="section level4">
 <h4><span class="header-section-number">3.3.6.1</span> Matrices de vecindad</h4>
-<p>La matriz <span class="math inline">\(W\)</span> representa la topología de vecindad entre los sectores censales. Existen la literatura diferentes tipos de vecindad: <em>rook</em>, <em>bishop</em> y <em>queen</em> son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de los sectores censales, con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura <a href="meto.html#fig:w-su-todos">3.11</a> se muestra la matriz <span class="math inline">\(W\)</span> defina para vecinos que comparten un lado del polígono (vecindad <em>rook</em>) para todos los sectores de la ciudad de Cali.</p>
+<p>La matriz <span class="math inline">\(W\)</span> representa la topología de vecindad entre las unidades geográficas. Existen la literatura diferentes tipos de vecindad: <em>rook</em>, <em>bishop</em> y <em>queen</em> son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas (<span class="math inline">\(W_d\)</span>), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura <a href="meto.html#fig:w-su-todos">3.11</a> se muestra la matriz <span class="math inline">\(W_q\)</span> defina para vecinos que comparten un lado del polígono (vecindad <em>queen</em>) para todos los sectores de la ciudad de Cali.</p>
 <div class="figure"><span id="fig:w-su-todos"></span>
 <img src="tesis-unigis_files/figure-html/w-su-todos-1.png" alt="Grafo de vecindad entre todos los SU de la ciudad de Cali" width="100%" />
 <p class="caption">
 Figura 3.11: Grafo de vecindad entre todos los SU de la ciudad de Cali
 </p>
 </div>
-<p>Sin embargo, la regresiones se realizan sobre un subconjunto de los datos, y por tanto la estructura de esta matriz debe tener esto en cuenta, o mejor, no tener en cuenta la influencia de estos sectores excluidos. Se calculó cada par de matrices de vecindad propuestas con base en el subconjunto de datos usados en los espacios verdes y para sectores del analsis del arbolado urbanos. Así la matriz de vecindad para los SU usados para la estimación de los coeficientes de las regresiones lineales se ve en la figura <a href="meto.html#fig:w-su-reg">3.12</a>.</p>
-<div class="figure"><span id="fig:w-su-reg"></span>
-<img src="tesis-unigis_files/figure-html/w-su-reg-1.png" alt="Grafo de vecindad entre los SU seleccionados para el análisis del AU" width="100%" />
-<p class="caption">
-Figura 3.12: Grafo de vecindad entre los SU seleccionados para el análisis del AU
-</p>
-</div>
-<p>La matriz <span class="math inline">\(W_d\)</span> impone un estructura de interacciones que puede relacionar sectores en una zona que no necesariamente comparten ningún lado o esquina pero que están cercanos, mientras que <span class="math inline">\(W_q\)</span> se restringe a condiciones de vecindad sólo entre sectores contiguos. En esa medida puede existir juego para dar interpretación teórica al fenómeno de derrame o influencia que ejercen sobre el ajuste de los modelos. Un ejemplo puede ser que la dependencia espacial de las cobertura de árboles que expresa <span class="math inline">\(W_d\)</span> es una característica en una zona no limitada por las divisiones del territorio con base en los desarrollos urbanísticos (barrios) sino que se ajustan más a fenómenos de dispersión continuos con base en el alcance escogido. Así, la <span class="math inline">\(W_q\)</span> puede interpretarse como una forma de dar relevancia a la continuidad entre barrios y su importancia como unidad de desarrollo urbano en las variaciones de la variable a predecir.</p>
+<p>Las regresiones se realizan sobre un subconjunto de los SUs, y por tanto la estructura de esta matriz tuvo esto en cuenta.</p>
 </div>
 <div id="autocorrelacion-espacial" class="section level4">
 <h4><span class="header-section-number">3.3.6.2</span> Autocorrelación espacial</h4>
-<p>Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión usaramos el índice de Moran I. El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Si encontramos una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura en el modelo podremos obtener una estimación más eficiente de los coeficientes, y en consecuencia un mejor entendimiento de la relación entre esas variables. Hay que recordar que en este ejercicio no estamos queriendo entender una población por una muestra, estamos calculando estos coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación. La confianza en esa estimación depende de que los residuos obtenidos sean tenga un valor medio de 0, y que no puedan distinguirse del ruido. La ecuación <a href="meto.html#eq:moranI">(3.3)</a> define matemáticamente el índice:</p>
+<p>Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión se usó el índice de Moran I (ecuación <a href="meto.html#eq:moranI">(3.3)</a>). El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Cuando se encuentra una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura de vecindad al modelo es posible obtener una estimación más eficiente de los coeficientes, y en consecuencia una estimación más confiable de los coeficientes. En este estudio no se hace inferencia de una población por una muestra, se calcularon coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación.</p>
 <span class="math display" id="eq:moranI">\[\begin{equation}
  I=\frac {N}{\sum _{i}\sum _{j}w_{ij}} \frac {\sum _{i}\sum _{j}w_{ij}(X_{i}-{\bar {X}})(X_{j}-{\bar {X}})}{\sum _{i}(X_{i}- \bar{X})^{2}}
 \tag{3.3}
 \end{equation}\]</span>
 <p>donde <span class="math inline">\(N\)</span> es el número de unidades espaciales indexados por <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>; <span class="math inline">\(X\)</span> es la variable de interés; <span class="math inline">\(\bar {X}\)</span> es la media de <span class="math inline">\(X\)</span>; y <span class="math inline">\(w_{ij}\)</span> es un elemento de una matriz de pesos espaciales <span class="math inline">\(W\)</span>. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta.</p>
-<p>El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (spatial lag: es como dijimos previamente el valor medio de los valores vecinos) de la variable en cuestión en el eje <span class="math inline">\(y\)</span> y la variable en el <span class="math inline">\(x\)</span>. El valor <strong><span class="math inline">\(p\)</span></strong> del test estadístico nos dice qué tan seguros estamos que esa pendiente no es plana, por lo que se espera que sean menores que el valor límite de significancia <span class="math inline">\(\alpha = 0.05\)</span></p>
-<blockquote>
-<p>El hecho de que de la Morán I es una suma de productos cruzados individuales es explotado por los “indicadores locales de asociación espacial” (LISA) para evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística para cada I. <span class="citation">(Wikipedia, <a href="#ref-wikilisa">2017</a>)</span></p>
-</blockquote>
-<p>Estos mapas acompaña el resultado numérico y el gráfico de Moran representan el valor z-normalizado del LISA, el valor <span class="math inline">\(p\)</span> y el mapa de clusters. En este último mapa las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (<em>high-high</em>). El área azul es <em>low-low</em> los grupos presentan valores bajos al igual que sus vecinos. Mientras que las regiones azul pálido son <em>low-high</em> y las áreas rosadas son <em>high-low</em> muestran correlación negativa, es decir valores muy diferentes a los de sus vecinos. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.</p>
+<p>El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (<em>spatial lag</em>: es el valor medio de los valores vecinos) de la variable en cuestión en el eje <span class="math inline">\(y\)</span> y la variable en el <span class="math inline">\(x\)</span>. El valor <strong><span class="math inline">\(p\)</span></strong> del test estadístico expresa el grado de certeza de que esa pendiente no es plana, si el valor límite de significancia es menor que<span class="math inline">\(\alpha = 0.05\)</span></p>
 </div>
-<div id="ajuste-de-modelos-espaciales" class="section level4">
-<h4><span class="header-section-number">3.3.6.3</span> Ajuste de modelos espaciales</h4>
-<p>Mejorar la especificación de los modelos lineales incluyendo términos de retardo espacial en la variable dependiente (SAR <a href="revlit.html#eq:sar">(2.8)</a>) se hace para obtener una adecuada estimación de los coeficientes de las otras covariables en el modelo. Si optamos por un modelo de error espacial (SEM <a href="revlit.html#eq:sem">(2.9)</a>) implica que no es necesario plantear efectos distintivos de la variable dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas. El modelo SAR, en cambio, incorpora la influencia de variables independientes no medidas, pero también estipula un efecto adicional de valores de atributos vecinos, es decir, la variable dependiente rezagada. Si incluimos el retardo sólo de las variables independientes (SLX <a href="revlit.html#eq:slx">(2.10)</a>) esperamos que los cambios en las dimensiones expresadas con las predictores produce un efecto de derrame o influencia en los sectores vecinos.</p>
-<p>¿Qué significa decir que la cantidad de cobertura de copa está relacionada con la de los sectores vecinos?¿Son los procesos de reproducción del arbolado urbano un fenómeno independiente de las intervenciones de sus habitantes y de los urbanizadores?¿Los habitantes que ven árboles en las cuadras o barrios aledaños deciden sembrar árboles en su vecindario?¿Existen similitudes en las condiciones estructurales de los barrios en ciertas zonas de la ciudad que prefieren las personas con mejores condiciones sociales( tener estudios superiores p.e)?¿Qué tipo de pérdidas en la cobertura de copa están motivadas por la densificación de un sector? ¿Cómo afectan los cambios en los tipos de oferta habitacional en un sector la cobertura de copa de los sectores vecinos? (las viviendas tipo cuarto suelen ofrecerse en pensiones y ser más económicas que las casas o apartamentos).</p>
-<p>La pregunta a hacerse es cómo saber cuál de los diferentes modelos espaciales es el que mejor representa el fenómeno que estamos modelando y si los datos respaldan nuestras convicciones teóricas. Si el modelo de retraso espacial que especifique es realmente el correcto, entonces ninguna dependencia espacial debe permanecer en los residuos, y podremos elaborar sobre el tipo de procesos que pueden verse representados.</p>
-<p>Una alternativa metodológica es probar los 4 tipos de modelos con la matriz <span class="math inline">\(W\)</span> que resultó capturar mejor la asociación espacial en los datos y comparar sus resultados.</p>
+<div id="indicadores-locales-de-asociacion-espacial-lisa" class="section level4">
+<h4><span class="header-section-number">3.3.6.3</span> Indicadores Locales de Asociación Espacial (LISA)</h4>
+<p>Dado que Morán I es una suma de productos cruzados individuales es explotado para formular los indicadores locales de asociación espacial -LISA. Estos permiten evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística de este indicador <span class="citation">(Anselin, <a href="#ref-anselin1995local">1995</a>)</span>.</p>
+<p>Estos mapas en conjunto con el resultado numérico de los LISA z-normalizado y el <span class="math inline">\(p\)</span>-valor permiten identificar agrupaciones espaciales. Las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (<em>high-high</em>). El área azul (<em>low-low</em>) son los grupos que presentan valores bajos al igual que sus vecinos. Mientras que las regiones azul pálido son <em>low-high</em> y las áreas rosadas son <em>high-low</em> muestran correlación negativa, es decir valores muy diferentes a los de sus vecinos. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.</p>
 
 </div>
 </div>
@@ -603,6 +618,12 @@ Figura 3.12: Grafo de vecindad entre los SU seleccionados para el análisis del 
 <div id="ref-nowak_sustaining_2010">
 <p>Nowak, David J., Stein, Susan M., Randler, Paula B., Greenfield, Eric J., Comas, Sara J., Carr, Mary A., y Alig, Ralph J. (2010). Sustaining America’s urban trees and forests: a Forests on the Edge report. Recuperado de: <a href="http://www.treesearch.fs.fed.us/pubs/35572" class="uri">http://www.treesearch.fs.fed.us/pubs/35572</a></p>
 </div>
+<div id="ref-nesbitt_exploring_2016">
+<p>Nesbitt, Lorien, y Meitner, Michael J. (2016). Exploring Relationships between Socioeconomic Background and Urban Greenery in Portland, OR. <em>Forests</em>, <em>7</em>(8), 162. doi:<a href="https://doi.org/10.3390/f7080162">10.3390/f7080162</a></p>
+</div>
+<div id="ref-who2016urban">
+<p>WHO Regional Office for Europe. (2016). Urban Green Spaces and Health. A Review of Evidence. WHO Regional Office for Europe Copenhagen. Recuperado de: <a href="http://www.euro.who.int/en/health-topics/environment-and-health/urban-health/publications/2016/urban-green-spaces-and-health-a-review-of-evidence-2016" class="uri">http://www.euro.who.int/en/health-topics/environment-and-health/urban-health/publications/2016/urban-green-spaces-and-health-a-review-of-evidence-2016</a></p>
+</div>
 <div id="ref-shapiro1965analysis">
 <p>Shapiro, Samuel Sanford, y Wilk, Martin B. (1965). An analysis of variance test for normality (complete samples). <em>Biometrika</em>, <em>52</em>(3/4), 591-611.</p>
 </div>
@@ -612,9 +633,16 @@ Figura 3.12: Grafo de vecindad entre los SU seleccionados para el análisis del 
 <div id="ref-R-spdep">
 <p>Bivand, Roger. (2017). <em>spdep: Spatial Dependence: Weighting Schemes, Statistics and Models</em>. Recuperado de: <a href="https://CRAN.R-project.org/package=spdep" class="uri">https://CRAN.R-project.org/package=spdep</a></p>
 </div>
-<div id="ref-wikilisa">
-<p>Wikipedia. (2017). Indicadores de asociación espacial — Wikipedia, La enciclopedia libre. Recuperado de: <a href="https://es.wikipedia.org/w/index.php?title=Indicadores_de_asociaci%C3%B3n_espacial&amp;oldid=101248536">https://es.wikipedia.org/w/index.php?title=Indicadores_de_asociaci%C3%B3n_espacial&amp;oldid=101248536</a></p>
+<div id="ref-anselin1995local">
+<p>Anselin, Luc. (1995). Local indicators of spatial association—LISA. <em>Geographical analysis</em>, <em>27</em>(2), 93-115.</p>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente<a href="meto.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores<a href="meto.html#fnref5">↩</a></p></li>
+</ol>
 </div>
             </section>
 

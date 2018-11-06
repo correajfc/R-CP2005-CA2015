@@ -163,7 +163,7 @@ total_arboles_censo <- CAutf8 %>% nrow()
 
 
 # guardar copia de las modficaciones al original.
-write.csv(x = CAutf8,"./outputData/ca2015.csv",fileEncoding = "UTF-8")
+ write.csv(x = CAutf8,"./outputData/ca2015.csv",fileEncoding = "UTF-8")
 rm(CAutf8)
 
 # columnas a incluir en analsis ----

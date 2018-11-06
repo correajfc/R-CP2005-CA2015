@@ -54,7 +54,7 @@ En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realizaci�
 Table: (#tab:vars-AU) Variables para caracterizar el AU
 
 | variable | {valores}[unidades]     |
-|------------:|-------------------------------:|
+|----------------------:|-------------------------------:|
 |id_arbol|número entero único|
 |diametro copa|[m^2^]|
 |altura arbol|[m]|
@@ -134,7 +134,7 @@ knitr::include_graphics("images/flujograma.png")
 
 ### Procesamiento de datos 
 
-El procesamiento de los datos se realizó principalmente en @R-base. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo usó las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
+El procesamiento de los datos se realizó principalmente en @R-base. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
 
 
 El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico. 
@@ -145,9 +145,9 @@ El código y los datos están disponibles en [este repositorio de GitHub https:/
 
 #### Indicadores de beneficios del arbolado urbano
 
-Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010].
+Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales, la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010].
 
-En este trabajo usaremos dos variantes de la cobertura de copa:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
+En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
 
 ```{r mapa-copa-dep, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa"}
 su.f %>% dplyr::select(-area_su)  %>%
@@ -166,13 +166,14 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~dep.arboles, nrow = 1)+
-  tema_lgnd_abajo()
+  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1))+
+  labs(caption = "Fuente:CA2015\nElaboración: propia")
 
 ```
 
 #### Índices de acceso a espacios verdes
 
-Para mejorar la lectura de esta sección se incluyen a continuación las ecuaciones que definen los índices de acceso seleccionados con las variantes definidas en este trabajo.
+En este estudio se usaron dos métricas de acceso a espacios verdes. El primero es el índice contenedor porcentual (ecuación \@ref(eq:n-cont)), catalogado como una medida de acceso local a la unidad espacial de análisis, ampliamente usado en la literatutra [@talen_assessing_1998].
 
 **índice contenedor porcentual** (area_ep.porcentaje)
 \begin{equation}
@@ -182,6 +183,10 @@ A^{C_p}_i =1/a_i\sum_j{s_j} \;  \; \forall  j \in I
 donde $s_j$ es el área de cada espacio verde $j$ que pertenece al conjunto $I$ de EV dentro del sector $i$ y $a_i$ es el área del sector $i$.
 
 
+El segundo índice (ecuación \@ref(eq:areas-dists)) es una propuesta de este estudio basada en el trabajo de @nesbitt_exploring_2016 en el que se calcula la distancia euclide a los EV desde el centroide de la unidad de análisis, incorporando recomendaciones en @who2016urban sobre establacer la relación entre distancia y calidad del acceso usando el área del EV y los índice propuestos por  @zhou_social_2013 de un radio de búsqueda de EVs accesibles, sin importar si este está dentro de la unidad espacial a caraterizar.  
+
+Este índice define el acceso como una relación entre la distancia y la cantidad de espacio disponible en el radio de búsqueda definido desde el centroide del SU. La figura \@ref(fig:mapa-rango1km) muestra gráficamente como existen EVs que caen la intersección de los radios de búsqueda de multiples sectores urbanos, lo que implica que benefician a varios de ellos a la vez, y es por esa razón que el índice expresa una dimensión del acceso no confinada a la unidad espacial. 
+
 **razón área disponible distancia** (ia.areas.dist)
 \begin{equation}
 \bar{A}^{AD}_i= \frac{\sum_{\int R_b }{s_j}}{\sum_{\int R_b }{d_{ij}}}  \;  \; \forall  j \in I_{R_b} \; 
@@ -190,42 +195,44 @@ donde $s_j$ es el área de cada espacio verde $j$ que pertenece al conjunto $I$ 
 
 donde $R_b$ es el radio de búsqueda,  $s_j$ es el área de cada espacio verde $j$, $d_{ij}$ es la distancia del centriode del sector $i$ al espacio $j$  que pertenecen al conjunto $I_{R_b}$ de EVs en el radio de búsqueda. 
 
-Este índice muestran un dimensión relacionada no con solo con el acceso sino con la cantidad de espacio disponible en el radio de búsqueda definido desde el centroide del sector censal. Para hacernos una idea del radio de búsqueda seleccionado, el siguiente mapa muestra los radios búsqueda y los espacios verdes. 
 
-```{r mapa-rango1km,  fig.asp=0.8, fig.cap="Espacio verdes y rango de 1 km desde centriodes de SU"}
+
+
+```{r mapa-rango1km,  fig.asp=0.6, fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
 ggplot()+
   geom_polygon(data = s_1000_df, 
-               aes(x=long,y=lat,group=group),
-               fill = "salmon",
-               alpha = 0.2)+
+               aes(x=long,y=lat,group=group,fill = "radio búsqueda"),
+               alpha = 0.1)+
   geom_path(data = su.f,aes(x=long,y=lat,group=group),
             color="grey40",
             size=0.4)+
   geom_polygon(data = ep.cali.f ,
-               aes(x=long,y=lat,group=group),
-               fill="royalblue",
-               alpha=0.5)+
+               aes(x=long,y=lat,group=group,fill="EV"),
+               alpha=0.7)+
+  scale_fill_manual(name =" ",values = c("forestgreen","salmon"))+
   coord_equal()+
-  theme_void()
+  theme_void()+
+  theme(plot.caption=element_text(size=7, hjust = 1))+
+  labs(caption = "Fuente:IDESC, POT 2014\nElaboración: propia")
 ```
 
 ### Cálculo de métricas de sobre la población
 
 #### Características de la población
 
-La tabla \@ref(tab:vars-poblacion) resumen las variables consideradas inicialmente en este trabajo, sin embargo, algunas de ellas no contienen suficiente variabilidad o el número de individuos es muy bajo en comparación con el total de la población. En la tabla \@ref(tab:totales-poblacion) se observa el bajo número de personas que pertenecen al pueblo Rom (gitanos), Palenqueros de San Basilio (departamento de Bolívar) y de Raizales del Archipiélago de San Andrés, Providencia y Santa Catalina (SAI), por lo que son descartados del análisis al igual que la población indígena.
+La tabla \@ref(tab:vars-poblacion) muestra los valores de la variable de etnicidad. Al hacer los conteos por pertencia a un grupo etnico para toda la ciudad (ver tabla \@ref(tab:totales-poblacion)), se observa el bajo número de personas que pertenecen al pueblo Rom (gitanos), Palenqueros de San Basilio (departamento de Bolívar) y de Raizales del Archipiélago de San Andrés, Providencia y Santa Catalina (SAI) y a la población indígena, por lo que son descartados del análisis.
 
 ```{r totales-poblacion}
 nombre_fila<-c("Población Total","Población afrodescendiente, negros o mulatos","Población indígena","Población Rom","Población Palenqueros","Población raizales de SAI")
 tot_pob<-totales.cali[11:16] %>% as_vector(.,"numeric")
 tabla.tmp<-data.frame(nombre_fila,unname(tot_pob))
-knitr::kable(tabla.tmp, col.names = c("Tipo","Cantidad") ,caption = "Totales de población en la ciudad de Cali")
+knitr::kable(tabla.tmp, col.names = c("Tipo","Cantidad") ,caption = "Totales de población por grupo étnico en la ciudad de Cali")
 
 ```
 
-Las variables del censo de población seleccionadas para el análisis se muestran en la figura \@ref(fig:mapas-poblacion-deciles)
+Las variables del CP2005 seleccionadas para el análisis se muestran en la figura \@ref(fig:mapas-poblacion-deciles).
 
-```{r mapas-poblacion-deciles, fig.asp=1.2,fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
+```{r mapas-poblacion-deciles, fig.asp=1,fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion %in% metricas.poblacion[c(2,3,4,7)]) %>%
@@ -241,16 +248,17 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~metricas.poblacion, nrow = 2)+
-  tema_lgnd_abajo()
+  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1),                                            strip.text = element_text(size = 8))+
+  labs(caption = "Fuente:CP2005\nElaboración: propia")
 ```
 
 
 
-Además de las variables seleccionadas podemos calcular indicadores como la densidad de población: dado que los árboles compiten por el espacio con los seres humanos es de esperarse que a mayor cantidad de personas haya menos lugar para los árboles. Podemos de nuevo calcular indicadores porcentuales respecto de la población total de cada unidad geográfica para facilitar la comparaciones y acentuar las diferencias entre los diferente sectores (figura \@ref(fig:mapas-poblacion-mod-deciles)).
+Además de las variables seleccionadas se calculó la densidad de población dado que los árboles compiten por el espacio con los seres humanos y es de esperar que a mayor cantidad de personas haya menos lugar para los árboles. Se calcularon indicadores porcentuales respecto de la población total de cada unidad geográfica para facilitar la comparaciones y acentuar las diferencias entre los SU (figura \@ref(fig:mapas-poblacion-mod-deciles)).
 
 
 
-```{r mapas-poblacion-mod-deciles, fig.asp=1.2,fig.cap="Mapas de las variables de población seleccionadas como porcentajes (en deciles)"}
+```{r mapas-poblacion-mod-deciles, fig.asp=1,fig.cap="Mapas de las variables de población seleccionadas como porcentajes (en deciles)"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.mod.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion.mod %in% metricas.poblacion.mod[c(1,2,3,5,6)]) %>%
@@ -266,40 +274,47 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~metricas.poblacion.mod, nrow = 2)+
-  tema_lgnd_abajo()
+  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1),                                            strip.text = element_text(size = 8))+
+  labs(caption = "Fuente:CP2005\nElaboración: propia")
+
 ```
 
 
 
 #### Características de las viviendas
 
-Además de las rasgos étnicos, condiciones de estudio y limitaciones de la población el censo de 2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de unidades especiales de alojamiento L.E.A dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a en EV, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o L.E.A.
+Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o LEA. El uso de LEA tiene una distribución concentrada en pocos SU, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano \@ref(fig:mapas-usopredios-cont).
 
-A continuación presentamos el resumen, los mapas por sector urbano (figuras \@ref(fig:mapas-usopredios-cont).
+```{r mapas-usopredios-cont, fig.asp=0.67,fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
 
-```{r mapas-usopredios-cont, fig.asp=0.8,fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
-
-pl_poblacion<-plots_map_su_df(analisis.cali.df,metricas.predios[c(13:15)])
-grid.arrange(grobs =pl_poblacion, nrow =1)
+pl_poblacion<-plots_map_su_df(analisis.cali.df,
+                              metricas.predios[c(13:15)],
+                              strip.text = element_text(size = 8))
+grid.arrange(grobs =pl_poblacion, nrow =1,
+             bottom = textGrob( label = "Fuente:CP2005\nElaboración: propia", 
+                                hjust = 1, x = 0.9,
+                                gp=gpar(fontsize=7))  
+             )
 
 ```
 
 
-El uso de L.E.A tiene una distribución concentrada en uno pocos SU, por lo que podemos descartarla para los análisis de regresión. Existe también cierta complementariedad entre el uso de vivienda y los usos económicos de los predios, porque seguramente, si existe una correlación entre estas variables y la cobertura de copa o el acceso a espacios verdes una de las dos puede bastar para incluir esta dimensión en los modelos de regresión.
+
 
 ### Criterios y selección de sectores censales
 
-Antes de iniciar un análisis de regresión establecemos los criterios para inclusión o no de ciertos datos dentro del conjunto de valores para la regresión y cálculo de la correlación. Estos criterios se listan a continuación:
+Se establecieron criterios para la **exclusión** de datos para el análisis de regresión que evitan incluir SUs atípicos con valores:
  
 - sectores sin personas
 - sectores sin viviendas
-- sectores área de espacio público mayor que el 60 % del área del sector
-- sectores área de calle mayor que el 80 % del área del sector
+- sectores con área de espacio público mayor que el 80 % del área del sector
+- sectores con área de calle mayor que el 80 % del área del sector
 - sectores área privada mayor que el 90 % del área del sector
+- sectores con una porción mayor al 60% por fuera del perímetro urbano
 
-Además de estos criterios se excluyeron los sectores donde está la Laguna el Pondaje, que cubre una porción muy importante del sector que no se ve reflejado en las otras métricas, los sectores con una porción mayor al 60% por fuera del perímetro urbano o sin urbanización visible en las imágenes satelitales. Así los sectores excluidos del análisis se muestran en los mapas \@ref(fig:mapa-excluidos). 
+Los sectores excluidos del análisis se muestran en los figura \@ref(fig:mapa-excluidos). 
 
-```{r mapa-excluidos, fig.cap="Mapa de los sectores excluidos"}
+```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=0.6}
 ggplot()+
    geom_polygon(data = su.f,
                 aes(x = long ,y = lat, group = group),
@@ -309,29 +324,30 @@ ggplot()+
                 alpha = 0.5)+
    coord_equal()+
    scale_fill_manual(name ="SU",values = "blue")+
-   theme_void()
+   theme_void()+
+  theme(plot.caption=element_text(size=7, hjust = 1))+
+  labs(caption = "Fuente:IDESC\nElaboración: propia")
+  
 ```
 
-### Selección de variables dependientes y regresiones lineales 
+### Selección de variables dependientes para las regresiones lineales 
 
-Las variables a incluir en los modelos lineales deben cumplir una serie de condiciones para ser elegidas como candidatas:
+Las variables incluidas en los modelos lineales deben cumplir una serie de condiciones deseables para ser elegidas como candidatas:
 
-- *Mostrar una correlación fuerte* (típicamente mayor a 0.6 se considera una asociación fuerte).
-- *Las variables independientes o predictoras no deben estar fuertemente correlacionadas entre ellas*.
-- *Las observaciones deben ser independientes*. En nuestro caso significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pondrá a prueba con los test estadísticos y los graficos de diagnostico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.
-- *Las variables dependientes e independientes deben tener una distribución normal*. Esta condición no suele ser estricta, pues lo importante es que al calcular los coeficientes de la regresión obtengamos una distribución normal de los residuos (sin ningún patrón, ruido). De no ser así, es posible que las variables no sean independientes o que exista información significativa en los residuos, por ejemplo, porque existe autocorrelación espacial en la variable dependiente y entonces la regresión lineal no obtiene resultados confiables para los coeficientes.
+- Mostrar una correlación fuerte (típicamente mayor a 0.6 se considera una asociación fuerte)
+- Las variables independientes o predictoras **no** deben estar fuertemente correlacionadas entre ellas.
+- Las observaciones deben ser **independientes**^[Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores]
 
-La modelación inicia con el análisis con las variables sobre la población, que son las de mayor interés en un estudio dado su enfoque en la  justicia ambiental, para luego incorporar las variables de los dominios relacionados con el uso de los predios, los tipos de viviendas y la existencia de espacios verdes como parques, bulevares, escenarios deportivos o plazas, alojan una cantidad considerable de los individuos arbóreos de la ciudad.
 
-Para garantizar que las variables no están correlacionadas entre sí, usaremos los coeficientes de correlación de Pearson, usado para detectar relaciones lineales, usualmente en variables con distribución normal, y el coeficiente de Spearman para detectar relaciones en variables con otras distribuciones o que exhiben relaciones no lineales. Para tener una idea más amplia sobre esa relación que expresan los coeficiente de correlación se incluyen gráficas de dispersión entre las variables independientes, y entre dependientes.
+Para garantizar que las variables no están correlacionadas entre sí, se usaron los coeficientes de correlación de Pearson, usado para detectar relaciones lineales y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.
 
-Para seleccionar las variables que mejor predicen la cobertura de copa aplicamos un procedimiento análogo al realizado con las variables dependientes entre sí. Con base en los coeficientes de correlación de Pearson y Spearman entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, seleccionamos las variables a usar en el modelo lineal.
+Para seleccionar las variables que mejor predicen la variable dependiente se tuvo en cuenta las restricciones de colinealidad entre las variables dependientes.
 
-Antes ajustar los modelos suele ser común en los modelos de regresión ajustar la distribución de las variables dependientes (y a veces las independientes) por motivos teóricos usando transformaciones logarítmicas o de raíz cuadra para eliminar no linealidades entre las variables dependientes y las independientes, y reducir posibles fenómenos de heterocedasticidad debido a estas no-linealidades. 
+Para los modelos de regresión se usaron transformaciones logarítmicas o de raíz cuadra para eliminar no linealidades entre las variables dependientes y las independientes, y reducir posibles fenómenos de heterocedasticidad debido a estas no-linealidades. 
 
-Dividir o multiplicar por alguna constante no tiene ningún efecto en la calidad de las estimaciones , pero sí sobre los coeficientes de la regresión. Esto suele ser sensible a la hora de interpretar los cambios marginales de cada una de las variables independientes y su efecto sobre la variable dependiente. Sin embargo, lo que interesa para este estudio no es la interpretación de esos cambio sino la importancia relativa de cada variable y comparar los cambios de los coeficientes de regresión para el ajuste de cada modelo y/o las mejoras que pueda operar un modelos autorregresivo en caso de encontrase autocorrelación en los residuos de la regresión lineal. Por esta razón, normalizar los valores puede ser una ventaja pues mantiene los coeficiente mejor acotados. La normalización se aplica posterior a las transformaciones propuestas y se realiza dividiendo por el máximo valor de los datos de cada variable para mantener valores en el intervalo [0,1], dado que los valores son todos iguales o mayores que 0.
+Dividir o multiplicar por alguna constante no tiene ningún efecto en la calidad de las estimaciones , pero sí sobre los coeficientes de la regresión. Esto suele ser sensible a la hora de interpretar los cambios marginales de cada una de las variables independientes y su efecto sobre la variable dependiente. Sin embargo, lo que interesa para este estudio no es la interpretación de esos cambio sino la importancia relativa de cada variable y comparar los cambios de los coeficientes de regresión para el ajuste de cada modelo y/o las mejoras que pueda operar un modelos autorregresivo en caso de encontrase autocorrelación en los residuos de la regresión lineal. Por esta razón, normalizar los valores puede ser una ventaja pues mantiene los coeficiente mejor acotados. La normalización se aplicó posterior a las transformaciones propuestas y se realizó dividiendo por el máximo valor de los datos de cada variable para mantener valores en el intervalo [0,1], dado que los valores son todos iguales o mayores que 0.
 
-Al aplicar test para verificar que las condiciones de un buen ajuste (no hay sesgos en el estimador o una mala especificación del modelo) de un modelo lineal se cumplen:
+Los test aplicados para verificar las condiciones de un buen ajuste (no hay sesgos en el estimador o una mala especificación del modelo) de un modelo lineal son:
 
 - La media de los residuos es 0 o muy cercana.
 - La distribución de los residuos es normal.
@@ -341,36 +357,27 @@ Para verificar la normalidad de los residuos se hace uso del test de Shapiro–W
 
 ### Análisis geoestadísticos { #geostat }
 
-Para los análisis geoestadísticos introducimos los modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelo si existe algún tipo de autocorrelación espacial en los residuos. Existe una variedad de estos modelos que capturan diferentes tipos de efectos: modelo autoregresivo SAR que capturan efectos de la variable dependiente, ecuación \@ref(eq:sar) , sobre las variables las independientes ( spatial lag o retardo espacial en $X$ SLX, ecuación \@ref(eq:slx), en el error (modelo espacial del error SEM, ecuación \@ref(eq:sem) o usando una combinación del modelo de error y autoregresivo (modelo espacial de Durbin SD,ecuación \@ref(eq:sd). Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influencia a priori en el modelo. Para observar el efecto que tiene esta matriz sobre los resultados del modelo usaremos 2 matrices distintas, y veremos su impacto en la estimación.
+Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influencia a priori en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.
 
-Para los análisis espaciales usaremos la librería `spdep` [@R-spdep]
+Para los análisis espaciales se usó la librería `spdep` [@R-spdep]
 
 #### Matrices de vecindad
 
-La matriz $W$ representa la topología de vecindad entre los sectores censales. Existen la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de los sectores censales, con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W$ defina para vecinos que comparten un lado del polígono (vecindad *rook*) para todos los sectores de la ciudad de Cali.
+La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W_q$ defina para vecinos que comparten un lado del polígono (vecindad *queen*) para todos los sectores de la ciudad de Cali.
 
-```{r w-su-todos, fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
+```{r w-su-todos, fig.asp =0.7,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
 nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
 par(mai=c(0,0,0,0))
 plot(su, border="grey80")
 plot(nb.su, coordinates(su), col='grey50', pch=19, cex=0.1,add=TRUE)
 ```
 
-Sin embargo, la regresiones se realizan sobre un subconjunto de los datos, y por tanto la estructura de esta matriz debe tener esto en cuenta, o mejor, no tener en cuenta la influencia de estos sectores excluidos. Se calculó cada par de matrices de vecindad propuestas con base en el subconjunto de datos usados en los espacios verdes y para sectores del analsis del arbolado urbanos. Así la matriz de vecindad para los SU usados para la estimación de los coeficientes de las regresiones lineales se ve en la figura \@ref(fig:w-su-reg).
-
-```{r w-su-reg, fig.cap="Grafo de vecindad entre los SU seleccionados para el análisis del AU"}
-
-par(mai=c(0,0,0,0))
-plot(su, border="grey80")
-plot(W_cont, coordinates(su.arboles), col='orchid1',pch=19, cex=0.1, add=TRUE)
-```
-
-La matriz $W_d$ impone un estructura de interacciones que puede relacionar sectores en una zona que no necesariamente comparten ningún lado o esquina pero que están cercanos, mientras que $W_q$ se restringe a condiciones de vecindad sólo entre sectores contiguos. En esa medida puede existir juego para dar interpretación teórica al fenómeno de derrame o influencia que ejercen sobre el ajuste de los modelos. Un ejemplo puede ser que la dependencia espacial de las cobertura de árboles que expresa $W_d$ es una característica en una zona no limitada por las divisiones del territorio con base en los desarrollos urbanísticos (barrios) sino que se ajustan más a fenómenos de dispersión continuos con base en el alcance escogido. Así, la $W_q$ puede interpretarse como una forma de dar relevancia a la continuidad entre barrios y su importancia como unidad de desarrollo urbano en las variaciones de la variable a predecir. 
+Las regresiones se realizan sobre un subconjunto de los SUs, y por tanto la estructura de esta matriz tuvo esto en cuenta.
 
 
 #### Autocorrelación espacial
 
-Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión usaramos el índice de Moran I. El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Si encontramos una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura en el modelo podremos obtener una estimación más eficiente de los coeficientes, y en consecuencia un mejor entendimiento de la relación entre esas variables. Hay que recordar que en este ejercicio no estamos queriendo entender una población por una muestra, estamos calculando estos coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación. La confianza en esa estimación depende de que los residuos obtenidos sean tenga un valor medio de 0, y que no puedan distinguirse del ruido. La ecuación \@ref(eq:moranI) define matemáticamente el índice:
+Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión se usó el índice de Moran I (ecuación \@ref(eq:moranI)). El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Cuando se encuentra una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura de vecindad al modelo es posible obtener una estimación más eficiente de los coeficientes, y en consecuencia una estimación más confiable de los coeficientes. En este estudio no se hace inferencia de una población por una muestra, se calcularon coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación.
 
 
 \begin{equation}
@@ -380,21 +387,10 @@ Para indagar sobre la información o patrones espaciales de los residuos de los 
 
 donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta.
 
-El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (spatial lag: es como dijimos previamente el valor medio de los valores vecinos) de la variable en cuestión en el eje $y$ y la variable en el $x$. El valor **$p$** del test estadístico nos dice qué tan seguros estamos que esa pendiente no es plana, por lo que se espera que sean menores que el valor límite de significancia $\alpha = 0.05$  
+El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (*spatial lag*: es el valor medio de los valores vecinos) de la variable en cuestión en el eje $y$ y la variable en el $x$. El valor **$p$** del test estadístico expresa el grado de certeza de que esa pendiente no es plana, si el valor límite de significancia  es menor que$\alpha = 0.05$  
 
-> El hecho de que de la Morán I es una suma de productos cruzados individuales es explotado por los "indicadores locales de asociación espacial" (LISA) para evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística para cada I. [@wikilisa]
+#### Indicadores Locales de Asociación Espacial (LISA)
 
+Dado que Morán I es una suma de productos cruzados individuales es explotado para formular los indicadores locales de asociación espacial -LISA. Estos permiten evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística de este indicador [@anselin1995local].
 
-Estos mapas acompaña el resultado numérico y el gráfico de Moran representan el valor z-normalizado del LISA, el valor $p$ y el mapa de clusters. En este último mapa las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (*high-high*). El área azul es *low-low* los grupos presentan valores bajos al igual que sus vecinos. Mientras que las regiones azul pálido son *low-high* y las áreas rosadas son *high-low* muestran correlación negativa, es decir valores muy diferentes a los de sus vecinos. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.
-
-#### Ajuste de modelos espaciales
-
-Mejorar la especificación de los modelos lineales incluyendo términos de retardo espacial en la variable dependiente (SAR \@ref(eq:sar)) se hace para obtener una adecuada estimación de los coeficientes de las otras covariables en el modelo. Si optamos por un modelo de error espacial  (SEM \@ref(eq:sem)) implica que no es necesario plantear efectos distintivos de la variable dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas. El modelo SAR, en cambio, incorpora la influencia de variables independientes no medidas, pero también estipula un efecto adicional de valores de atributos vecinos, es decir, la variable dependiente rezagada. 
-Si incluimos el retardo sólo de las variables independientes (SLX \@ref(eq:slx)) esperamos que los cambios en las dimensiones expresadas con las predictores produce un efecto de derrame o influencia en los sectores vecinos. 
-
-¿Qué significa decir que la cantidad de cobertura de copa está relacionada con la de los sectores vecinos?¿Son los procesos de reproducción del arbolado urbano un fenómeno independiente de las intervenciones de sus habitantes y de los urbanizadores?¿Los habitantes que ven árboles en las cuadras o barrios aledaños deciden sembrar árboles en su vecindario?¿Existen similitudes en las condiciones estructurales de los barrios en ciertas zonas de la ciudad que prefieren las personas con mejores condiciones sociales( tener estudios superiores p.e)?¿Qué tipo de pérdidas en la cobertura de copa están motivadas por la densificación de un sector? ¿Cómo afectan los cambios en los tipos de oferta habitacional en un sector la cobertura de copa de los sectores vecinos? (las viviendas tipo cuarto suelen ofrecerse en pensiones y ser más económicas que las casas o apartamentos).
-
-La pregunta a hacerse es cómo saber cuál de los diferentes modelos espaciales es el que mejor representa el fenómeno que estamos modelando y si los datos respaldan nuestras convicciones teóricas. Si el modelo de retraso espacial que especifique es realmente el correcto, entonces ninguna dependencia espacial debe permanecer en los residuos, y podremos elaborar sobre el tipo de procesos que pueden verse representados.
-
-
-Una alternativa metodológica es probar los 4 tipos de modelos con la matriz $W$ que resultó capturar mejor la asociación espacial en los datos y comparar sus resultados.
+Estos mapas en conjunto con el resultado numérico de los LISA z-normalizado y el $p$-valor permiten identificar agrupaciones espaciales. Las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (*high-high*). El área azul (*low-low*) son los grupos que presentan valores bajos al igual que sus vecinos. Mientras que las regiones azul pálido son *low-high* y las áreas rosadas son *high-low* muestran correlación negativa, es decir valores muy diferentes a los de sus vecinos. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.

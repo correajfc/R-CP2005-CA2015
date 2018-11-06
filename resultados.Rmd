@@ -2,9 +2,10 @@
 
 ## Modelando la cobertura de copa
 
-### Correlaciones y gráficos de dispersión bivariados 
+### Variables dependientes
 
-En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población en las unidades originales de los datos (número de personas); la matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre tener ningún estudio y tener alguna limitación física (0.88);  pertenecer a una comunidad afrodescendiente y carecer de estudios (0.92) o ser afrodescendiente y tener alguna limitación (0.88). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punta del vista del modelo sólo podrán ser representadas por una de las variables, la que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
+
+En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población en las unidades originales de los datos (número de personas); la matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre tener ningún estudio y tener alguna limitación física ($\simeq 0.88$);  pertenecer a una comunidad afrodescendiente y carecer de estudios ($\simeq0.92$) o ser afrodescendiente y tener alguna limitación ($\simeq0.88$). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punto de vista del modelo sólo podrán ser representadas por una de las variables, la que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
 
 
 
@@ -89,7 +90,7 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles, 
 
 ### Modelos de regresión lineal 
 
-Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso de el área de copa y la variable sin transformar en el caso de la cobertura de copa. A continuación se presentan los resultados de los modelos de regresión
+Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso del área de copa y la variable sin transformar en el caso de la cobertura de copa. A continuación se presentan los resultados de los modelos de regresión
 
 La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para la cobertura de copa.
 
@@ -111,9 +112,10 @@ sm
 ```
 
 ```{r coef-lm-copa}
-
-t1<-summary(lm.mod.area_copa)$coefficients
-knitr::kable(t1, digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE)
+nombres_coef <- summary(lm.mod.area_copa)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(lm.mod.area_copa)$coefficients %>% as_data_frame()
+t1 %>% select(-3) %>% bind_cols(terminos = nombres_coef,.) %>% 
+knitr::kable( digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","Pr(>|t|)"))
 
 ```
 

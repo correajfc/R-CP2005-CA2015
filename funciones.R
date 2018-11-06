@@ -185,7 +185,7 @@ pintar_mapa_su_lm<-function(data,lm, ...){
   
 }
 
-plots_map_su_df<-function(df,col_names){ 
+plots_map_su_df<-function(df,col_names,...){ 
   
   l_col_names<-as.list(col_names)
   su_df<-su.f %>% dplyr::select(-area_su)  %>%
@@ -209,7 +209,7 @@ plots_map_su_df<-function(df,col_names){
         )
       )+
       theme_void()+
-      tema_lgnd_abajo()})
+      tema_lgnd_abajo(...)})
   
 }
 
