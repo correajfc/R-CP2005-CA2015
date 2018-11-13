@@ -4,8 +4,7 @@
 
 ### Variables dependientes
 
-
-En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población en las unidades originales de los datos (número de personas); la matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre tener ningún estudio y tener alguna limitación física ($\simeq 0.88$);  pertenecer a una comunidad afrodescendiente y carecer de estudios ($\simeq0.92$) o ser afrodescendiente y tener alguna limitación ($\simeq0.88$). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punto de vista del modelo sólo podrán ser representadas por una de las variables, la que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
+El proceso de selección de las variables a incluir en los modelos inicia con la inspección visual de las distribuciones bivariadas de las candidatas a predictores. Se busca identificar las variables correlacianadas entre sí para evitar incluir información redundante en los modelos. En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población (número de personas en un SU con una condición específica). La matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre población con ningún estudio y tener alguna limitación física ($\simeq 0.88$);  pertenecer a una comunidad afrodescendiente y carecer de estudios ($\simeq0.92$) o ser afrodescendiente y tener alguna limitación ($\simeq0.88$). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punto de vista del modelo sólo podrán ser representadas por la variable que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
 
 
 
@@ -15,11 +14,12 @@ ggpairs(
   diag = list(continuous = GGally:: wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
   upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
   title = "Comparación por pares entre predictores de población"
-)+ theme_grey(base_size = 8)
+)+ theme_grey(base_size = 8)+
+  theme(strip.text = element_text(size = 7))
 
 ```
 
-Cuando realizamos la misma comparación entre las variables porcentuales (más la densidad poblacional) se observan patrones similares(ver figura \@ref(fig:bivar-poblacion-mod)): existe una alta correlación negativa entre el porcentaje de población afro de un sector y la tenencia de estudios superiores (-0.71), una fuerte asociación positiva entre el porcentaje de personas afro de un sector y el porcentaje de personas que carecen de estudios (0.68). También hay una fuerte relación inversa entre el porcentaje de personas de un sector sin estudios y el porcentaje de ellos que tiene estudios superiores (-0.8). Estas variables evitaremos usarlas como predictores en una misma formulación para no sesgar la estimación con problemas de colinealidad. Existe también una asociación, no tan fuerte pero importante, entre la densidad de población y sectores con mayor porcentaje de personas afro (0.47) y una asociación negativa entre la densidad de población y el porcentaje de personas con estudios superiores (-0.51). Estos resultados hablan de una concentración de condiciones desfavorables para la población, posiblemente acompañado de una segregación racial alta.
+Las mismas variables expresadas como porcentaje de la población de un SU muestran patrones similares (ver figura \@ref(fig:bivar-poblacion-mod)): existe una alta correlación negativa entre el porcentaje de población afro de un sector y la tenencia de estudios superiores ($\simeq-0.71$), una fuerte asociación positiva entre el porcentaje de personas afro de un sector y el porcentaje de personas que carecen de estudios ($\simeq 0.68$). También hay una fuerte relación inversa entre el porcentaje de personas de un sector sin estudios y el porcentaje de ellos que tiene estudios superiores ($\simeq-0.8$). Estos resultados refuerzan la concentración de condiciones desfavorables para la población explicadas por la condición racial.
 
 ```{r bivar-poblacion-mod, fig.asp=1, fig.cap="Comparación por pares entre predictores de población porcentuales"}
 ggpairs(
@@ -27,11 +27,12 @@ ggpairs(
   diag = list(continuous = wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
   upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
   title = "Comparación por pares entre predictores de población porcentuales y la densidad de población"
-)+ theme_grey(base_size = 8)
+)+ theme_grey(base_size = 8)+
+  theme(strip.text = element_text(size = 6))
 
 ```
 
-Ya que hemos explorado visualmente la dispersión entre los datos crudos, podemos usar una forma resumida, como los gráficos de azulejos o de matriz para consultar la intensidad de estas relaciones (figura \@ref(fig:tile-poblacion-pearson) sintetiza las relaciones lineales entre las variables dependientes, mientras que la figura \@ref(fig:tile-poblacion-pearson) lo hace para las no lineales) 
+Los gráficos de azulejos son una forma resumida para consultar la intensidad de estas relaciones (figura \@ref(fig:tile-poblacion-pearson)) lineales entre las variables dependientes usando el coeficiente de correlación de Pearson, y las no lineales mediante el coeficiente de Spearman (figura \@ref(fig:tile-poblacion-spearman)).
 
 ```{r tile-poblacion-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de población"} 
 pintar_corrmatrix(regresion.arboles,indep.poblacion)+
@@ -45,54 +46,41 @@ pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
 
 ```
 
-Para seleccionar las variables que mejor predicen la cobertura de copa aplicamos un procedimiento análogo al realizado con las variables dependientes entre sí. Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, seleccionamos las variables a usar en el modelo lineal. 
+Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, se seleccionaron las soguientes variables para los modelos lineales:
 
-Así pues, para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") ` `` y para la cobertura de copa en área pública (`cobertura_copa.ap`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ") ` `` 
+- Para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") ` ``. 
 
-```{r tile-copa-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
+- Para la cobertura de copa (`cobertura_copa.ap`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ") ` `` 
+
+
+```{r tile-copa-poblacion-pearson, fig.asp=0.6,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles)+
   labs(title="Pearson entre cobertura de copa \ny variables de población")
 
 ```
 
-```{r tile-copa-poblacion-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre cobertura de copa\n y variables de población"}
+```{r tile-copa-poblacion-spearman, fig.asp=0.6,fig.cap="Coeficiente Spearman entre cobertura de copa\n y variables de población"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, method_cor = "spearman")+
   labs(title="Spearman entre cobertura de copa \ny variables de población")
 ```
 
 
-Para la selección de variables sobre uso de los predios, los tipos de vivienda,  áreas de espacio público y manzanas agregadas por sector urbano aplicamos el mismo proceso realizado para la selección de las variables de población usando como criterio la inclusión de variables con coeficientes de correlación que muestran una asociación fuerte con las variables de cobertura y área de copa. 
+Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio públicose aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
 
-Las figuras \@ref(fig:tile-prediosev-pearson) y \@ref(fig:tile-prediosev-spearman) se ven los coeficientes de Pearson y Spearman, respectivamente, entre las variables sobre el uso los predios, tipo de viviendas y área (y porcentaje) de espacios verdes en cada sector urbano. Como se observa, existe una fuerte (perfecta) asociación negativa entre el porcentaje de casas y apartamentos, lo que obliga a solo escoger una de las dos en caso de haber una fuerte relación entre alguna de ellas con las variables de cobertura de copa. También hay una fuerte asociación positiva entre el área de espacios verdes y el porcentaje de área de espacio verdes en un sector urbano. Como mencionamos antes solo incluiremos una de las dos en caso de que ambas resulten fuertemente asociadas con las variables dependientes.  
-
-```{r tile-prediosev-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
-pintar_corrmatrix(regresion.arboles,indep.predios)+
-  labs(title="Pearson entre características \nde predios y EV")
-```
-
-```{r tile-prediosev-spearman, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
-pintar_corrmatrix(regresion.arboles,indep.predios, method_cor = "spearman")+
-  labs(title="Spearman entre entre características \nde predios y EV")
-```
-
-Las figuras \@ref(fig:tile-copa-prediosev-pearson) y \@ref(fig:tile-copa-prediosev-spearman) muestran la correlación entre las potenciales nuevas variables a incluir en el modelo y las variables dependientes de cobertura y área de copa. Para el área de copa se seleccionan el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
-
-```{r tile-copa-prediosev-pearson, fig.asp=0.65, fig.cap= "Coeficiente Pearson entre coberturas de copa\n y variables de predios y EV"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles)+
-  labs(title="Coeficiente Pearson entre cobertura de copa \ny uso de los predios")
-```
-
-
-```{r tile-copa-prediosev-spearman, fig.asp=0.65,fig.cap="Coeficiente Pearson entre coberturas de copa\n y variables de predios y EV"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles, method_cor = "spearman")+
-  labs(title="Coeficiente Spearman entre  cobertura de copa \ny uso de los predios")
-```
 
 ### Modelos de regresión lineal 
 
-Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso del área de copa y la variable sin transformar en el caso de la cobertura de copa. A continuación se presentan los resultados de los modelos de regresión
+Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso del área de copa y la variable sin transformar en el caso de la cobertura de copa. A continuación se presentan los resultados de los modelos de regresión propuestos.
 
-La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para la cobertura de copa.
+La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para el área de copa, la tabla \@ref(tab:coef-lm-cobertura) resume los coeficientes de la regresión para la cobertura de copa, y la tabla \@ref(tab:ajuste-lmcopa-pob-predios) resume las métricas de ajuste de ambos modelos.
+
+Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-mod-best-lm-copa) y \@ref(fig:diagn-mod-best-lm-copaap)). 
+
+El ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). Las varibles significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick()`. Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()`
+
+
+Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
+
 
 
 ```{r code-lm-areacopa, eval=TRUE, echo=FALSE, results='hide'}
@@ -114,12 +102,12 @@ sm
 ```{r coef-lm-copa}
 nombres_coef <- summary(lm.mod.area_copa)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.mod.area_copa)$coefficients %>% as_data_frame()
-t1 %>% select(-3) %>% bind_cols(terminos = nombres_coef,.) %>% 
-knitr::kable( digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","Pr(>|t|)"))
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+knitr::kable( digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
-La tabla \@ref(tab:coef-lm-cobertura) resume los coeficientes de la regresión para la cobertura de copa.
+
 
 
 ```{r code-lm-cobertura, eval=TRUE, echo=FALSE, results= "hide"}
@@ -142,13 +130,14 @@ sm
 
 ```{r coef-lm-cobertura}
 
-t1<-summary(lm.mod.cobertura.ap)$coefficients
-knitr::kable(t1, digits=5, caption = "Coeficientes OLS de cobertura de copa - (CC)" , booktabs = TRUE)
+nombres_coef <- summary(lm.mod.cobertura.ap)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(lm.mod.cobertura.ap)$coefficients %>% as_data_frame()
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+knitr::kable( digits=5, caption = "Coeficientes OLS de cobertura de copa - (CC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
 
-La tabla \@ref(tab:ajuste-lmcopa-pob-predios) resume las métricas de ajuste de ambos modelos
 
 
 ```{r ajuste-lmcopa-pob-predios}
@@ -161,12 +150,11 @@ kable(tabla,caption = "Resumen métricas de ajuste OLS para el área de copa (AC
 
 ```
 
-Ignoraremos las variables no significativas de los modelos lineales, para los siguientes pasos de la metodología.
-
-Existe no normalidad en los residuos y posibles no linealidades, como se observa en las gráficas diagnósticas de la regresión \@ref(fig:diagn-mod-best-lm-copa).
 
 
-```{r diagn-mod-best-lm-copa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de área de copa con los nuevos términos"}
+
+
+```{r diagn-mod-best-lm-copa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de área de copa"}
 
 graf<-autoplot(lm.best.area_copa, which = 1:4)
 title1=grid::textGrob(format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
@@ -183,20 +171,9 @@ grid.arrange( grobs =graf@plots, top=title1)
 ```
 
 
-Finalmente se presentan los mapas de las variables dependientes de los 2 modelos seleccionados, comparándolas con el modelo ajustado y los residuos del ajuste, con el fin de observar donde se localizan los errores en la predicción. La figura \@ref(fig:mapas-lm-copa) corresponde al ajuste del área de copa y la figura \@ref(fig:mapas-lm-copaap) al porcentaje de la cobertura de copa.
-
-```{r mapas-lm-copa, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajustado por el modelo y residuos del OLS para log.area copa normalizada"}
-pintar_mapa_su_lm2(regresion.arboles,lm.best.area_copa,nrow =1)
-```
-
-```{r mapas-lm-copaap, fig.asp= 0.7,fig.cap="Variable dependiente, valor ajsutado por el modelo y residuos del OLS para cobertura copa.ap normalizada"}
-pintar_mapa_su_lm2(regresion.arboles,lm.best.cobertura.ap,nrow =1)
-```
-
-
 ### Modelado espacial AU
 
-Las matrices de vecindad construidas para el análisis espacial son la *queen* $W_q$, que considera vecino a todos los sectores que comparten un lado o una esquina con un sector censal; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km ($W_d$). El valor de un kilómetro es arbitrario, aunque razonable en la escala humana. Los grafos que representan las 2 matrices $W$ se muestran en la figura \@ref(fig:ws-su-reg). 
+Las matrices de vecindad construidas para el análisis espacial son la *queen* $W_q$, que considera vecino a todos los sectores que comparten un lado o una esquina con un SU; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km ($W_d$). El valor de un kilómetro es arbitrario, aunque razonable en la escala humana. Los grafos que representan las 2 matrices $W$ se muestran en la figura \@ref(fig:ws-su-reg). 
 
 ```{r ws-su-reg, fig.asp=1.5 ,out.width='48%' ,fig.cap="Matrices de vecindad del análisis espacial",fig.align="center",fig.show="hold"}
 plot(W_queen,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray", main="Queen")
@@ -205,21 +182,30 @@ plot(W_dist1000.inv,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray", 
 title(main = "Distancia inversa a 1 Km")
 ```
 
-Examinemos primero la autocorrelación de las variables dependientes.
 
 ####  Autocorrelación variables dependientes
+
+Se analizó primero la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y que puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios. La matriz $W_q$ captura mejor la autocorrelación global del área de copa. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)). En este mapa de LISA se observan que los sectores en rojo (H-H) y azul (L-L) identifican los lugares con autocorrelación positiva, formando grupos. No se presentan valores negativos de autocorrelación.
+
+Para la variable dependiente porcentaje de cobertura de copa los resultados del análisis de autocorrelación se presentan a continuación.
+
+Ambos diseños de matriz revelan presencia clara de autocorrelación espacial, pero la matrix $W_d$ la captura ligeramente mejor con un valor positivo y significativa, produciendo *clusters* de sectores urbanos más con más sectores urbanos. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copaap-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)) . No se presentan valores negativos de autocorrelación. 
 
 
 ```{r moran-copa-wq}
 mt<-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_queen)
-names(mt$p.value)<-"p-value"
+names(mt$p.value)<-"p-valor"
+names(mt$estimate) <- c("Estadístico Moran I","Expectativa","Varianza")
+names(mt$statistic) <- "Desviación estándar de Moran I"
 knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Área de copa $W_q$" , booktabs = TRUE)
 
 ```
 
 ```{r moran-copa-wd}
 mt<-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
-names(mt$p.value)<-"p-value"
+names(mt$p.value)<-"p-valor"
+names(mt$estimate) <- c("Estadístico Moran I","Expectativa","Varianza")
+names(mt$statistic) <- "Desviación estándar de Moran I"
 knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Área de copa $W_d$" , booktabs = TRUE)
 
 ```
@@ -247,14 +233,14 @@ moran.plot(lm.mod.area_copa$model$log.area_copa.mxn,
 
 
 
-La matriz $W_q$ captura mucho mejor de forma global la autocorrelación del área de copa. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copa-wd)) . 
+
 
 ```{r mapas-lisa-copa-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `log.area copa`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_queen, wname = "W_q",nrow =1)
 
 ```
-En los estos mapas de LISA de ambas matrices se observan que los sectores en rojo (H-H) y azul (L-L) identifican los lugares con autocorrelación positiva, formando grupos. No se presentan valores negativos de autocorrelación.   
+   
 
 ```{r mapas-lisa-copa-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ de `log.area copa`"}
 
@@ -264,7 +250,7 @@ pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_dist1000.inv, wname 
 
 
 
-Para la variable dependiente porcentaje de cobertura de copa los resultados del análisis de autocorrelación se presentan a continuación.
+
 
 
 ```{r moran-copaap-wq}
@@ -303,7 +289,7 @@ moran.plot(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn,
 ```
 
 
-Ambos diseños de matriz revelan presencia clara de autocorrelación espacial, pero la matrix $W_d$ la captura ligeramente mejor con un valor positivo y significativa, produciendo *clusters* de sectores urbanos más con más sectores urbanos. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copaap-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)) . No se presentan valores negativos de autocorrelación. 
+
 
 ```{r mapas-lisa-copaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `cobertura copa.ap`"}
 
@@ -318,14 +304,16 @@ pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wn
 ```
 
 
+
+
 #### Autocorrelación residuos de los OLS
 
-El siguiente código calcula los índices de autocorrelación de los residuos del mejor modelo lineal de área de copa  (`` `r str_c("sqrt.copa_area.mxn",str_c(names(lm.mod.area_copa$model)[-1],collapse =" + "), sep= " ~ ") ` ``) para ambas matrices $W$ y construye los gráficos de Moran y mapas LISA \@ref(fig:moranplot-rescopa-w) para $W_q$ y para $W_d$. 
+El siguiente código calcula los índices de autocorrelación de los residuos del mejor modelo lineal de área de copa  (`` `r str_c("log.copa_area.mxn",str_c(names(lm.best.area_copa$model)[-1],collapse =" + "), sep= " ~ ") ` ``) para ambas matrices $W$ y construye los gráficos de Moran y mapas LISA \@ref(fig:moranplot-rescopa-w) para $W_q$ y para $W_d$. 
 
 
 
 ```{r moran-rescopa-wq}
-mt<-lm.morantest(lm.mod.area_copa, 
+mt<-lm.morantest(lm.best.area_copa, 
              W_queen, alternative="two.sided",
              zero.policy = T)
 knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS área de copa $W_q$" , booktabs = TRUE)
@@ -333,7 +321,7 @@ knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, 
 ```
 
 ```{r moran-rescopa-wd}
-mt<-lm.morantest(lm.mod.area_copa, 
+mt<-lm.morantest(lm.best.area_copa, 
              W_dist1000.inv, 
              alternative="two.sided",zero.policy = T)
 names(mt$p.value)<-"p-value"
@@ -344,7 +332,7 @@ knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, 
 
 ```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ ",fig.show="hold",out.width='49%'}
 
-moran.plot(lm.mod.area_copa$residuals, 
+moran.plot(lm.best.area_copa$residuals, 
              listw=W_queen, 
              
              pch=16, col="grey50",
@@ -352,7 +340,7 @@ moran.plot(lm.mod.area_copa$residuals,
              labels=as.character(regresion.arboles$SETU_CCDGO),
              xlab="residuos", 
              ylab="residuos (Spatial Lag)", main="Gráfico de Moran Wq")
-moran.plot(lm.mod.area_copa$residuals, 
+moran.plot(lm.best.area_copa$residuals, 
              listw=W_dist1000.inv, 
              zero.policy = TRUE,
              pch=16, col="grey50",

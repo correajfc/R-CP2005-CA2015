@@ -1,0 +1,1 @@
+http://ws-idesc.cali.gov.co:8081/geoserver/pot_2014/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=pot_2014:bcs_hid_rios&maxFeatures=50&outputFormat=SHAPE-ZIP

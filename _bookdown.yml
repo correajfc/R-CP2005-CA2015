@@ -17,6 +17,7 @@ rmd_files:
   "resultados.Rmd",
   "discusion.Rmd",
   "conclusiones.Rmd",
+  "apendices.Rmd",
   "referencias.Rmd"]
   latex: ["index.Rmd", 
   "intro.Rmd",

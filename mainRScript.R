@@ -30,6 +30,8 @@ library(grid)
 library(ggfortify)
 library(olsrr)
 library(kableExtra)
+library(lmtest)
+library(glue)
 
 #  correr los script en el orden correcto para realizar todos los calculos 
 

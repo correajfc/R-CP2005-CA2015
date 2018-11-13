@@ -387,7 +387,7 @@ Para indagar sobre la información o patrones espaciales de los residuos de los 
 
 donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta.
 
-El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (*spatial lag*: es el valor medio de los valores vecinos) de la variable en cuestión en el eje $y$ y la variable en el $x$. El valor **$p$** del test estadístico expresa el grado de certeza de que esa pendiente no es plana, si el valor límite de significancia  es menor que$\alpha = 0.05$  
+El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (*spatial lag*: es el valor medio de los valores vecinos) de la variable en cuestión en el eje $y$ y la variable en el $x$. El valor **$p$** del test estadístico expresa el grado de certeza de que esa pendiente no es plana, si el valor límite de significancia es menor que $\alpha = 0.05$  
 
 #### Indicadores Locales de Asociación Espacial (LISA)
 
