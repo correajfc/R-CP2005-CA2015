@@ -44,9 +44,9 @@ AU_analsis %>%
   guides(colour = guide_legend(override.aes = list(alpha=1)))+
   tema_lgnd_up()
 
-ggsave("./images/facet-emplazamiento-color-vegetacion.png",
-       scale = 1, width = 8, height = 11,
-       dpi = 300)
+# ggsave("./images/facet-emplazamiento-color-vegetacion.png",
+#        scale = 1, width = 8, height = 11,
+#        dpi = 300)
 
 #carateristicas por tipo de vegetacion
 AU_analsis %>% 
@@ -56,9 +56,9 @@ AU_analsis %>%
   theme_bw()+
   facet_wrap( ~ vegetacion, nrow = 2 )
 
-ggsave("./images/facet-vegetacion.png",
-       scale = 1, width = 8, height = 8,
-       dpi = 300)
+# ggsave("./images/facet-vegetacion.png",
+#        scale = 1, width = 8, height = 8,
+#        dpi = 300)
 
 # grafica de arboles con el diametro a escala en QGIS
 
@@ -71,9 +71,9 @@ ggplot( aes(x=emplazamiento,y=diametro_copa))+
   coord_flip()+
   tema_lgnd_up()
 
-ggsave("./images/diametro-emplazamiento.png",
-       scale = 1, width = 11, height = 8,
-       dpi = 300)
+# ggsave("./images/diametro-emplazamiento.png",
+#        scale = 1, width = 11, height = 8,
+#        dpi = 300)
 
 
 #varibilidad del diametro de copa por emplazamiento
@@ -85,10 +85,10 @@ AU_analsis %>%
   coord_flip()+
   tema_lgnd_up()
 
-ggsave("./images/altura-emplazamiento.png",
-       scale = 1, width = 11, height = 8,
-       dpi = 300)
-
+# ggsave("./images/altura-emplazamiento.png",
+#        scale = 1, width = 11, height = 8,
+#        dpi = 300)
+# 
 # crear mapas base para la graficacion
 
 base_plot.manzanas<- ggplot()+
@@ -105,9 +105,9 @@ base_plot.manzanas + geom_point(data = AU_analsis,
   theme_void()+
   facet_wrap(~emplazamiento , ncol = 5 ,labeller = label_wrap_gen())
 
-  ggsave("./images/mapa-arboles-facet-emplazamiento.png",
-       scale = 1, width = 11, height = 8,
-       dpi = 300)
+  # ggsave("./images/mapa-arboles-facet-emplazamiento.png",
+  #      scale = 1, width = 11, height = 8,
+  #      dpi = 300)
 
 # suma de cobertura por hex
 p.hex.copa  <-base_plot.manzanas+ stat_summary_hex(data = AU_analsis,
@@ -448,24 +448,24 @@ ggpairs(
 )
 
 
-
+# 
 ggduo(analisis.cali.df,
-      columnsX =metricas.estruct[c(8,9,10,11)], 
-      columnsY =metricas.estruct[ c(4,5,6,7,12)],
+      columnsX =metricas.estruct[c(8)],
+      columnsY =metricas.estruct[ c(4,5,6)],
       types = list(continuous = wrap(lm_with_cor))
       )
-
-ggduo(analisis.cali.df,
-      columnsX =metricas.estruct[c(8,9,10,11)], 
-      columnsY =metricas.estruct[c(1,2,3)],
-      types = list(continuous = wrap(lm_with_cor))
-)
+# 
+# ggduo(analisis.cali.df,
+#       columnsX =metricas.estruct[c(8,9,10,11)], 
+#       columnsY =metricas.estruct[c(1,2,3)],
+#       types = list(continuous = wrap(lm_with_cor))
+# )
 
 # relacion entre varibles a predicir y metricas de estructura
 dep.arboles<-metricas.ca[c(1,5,6)]
 ggduo(analisis.cali.df,
       columnsY =dep.arboles, 
-      columnsX =metricas.estruct[c(1,2,3)],
+      columnsX =metricas.estruct[c(1,2,3,4,5)],
       types = list(continuous = wrap(lm_with_cor))
 )
 
@@ -802,18 +802,14 @@ grid.arrange(grobs =pl_poblacion, nrow =2)
 
 # histogramas datos poblacion  
 analisis.cali.df %>% select(one_of(metricas.poblacion)) %>%
-  gather( key = metricas.poblacion,
-          value = valores,
+  gather( key = "metricas.poblacion",
+          value = "valores",
           edad_promedio:ninguno_de_los_anteriores) %>%
   ggplot()+
   geom_histogram(aes(x = valores),bins = 30, 
                  color = "white", fill="magenta")+
   facet_wrap(~metricas.poblacion, scales = "free", ncol = 3)
 
-ggplot(analisis.cali.df)+
-  geom_histogram(aes(x = ia.areas.dist),bins = 30, 
-                 color = "white", fill="magenta")+
-  facet_wrap(~metricas.poblacion, scales = "free", ncol = 3)
 
 
 # datos porcentuales relativos al sector urbano

@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2018-11-12">
+<meta name="date" content="2018-11-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -127,7 +127,10 @@
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
-<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="appendix"><span><b>Anexos</b></span><ul>
+<li class="chapter" data-level="A.1" data-path="metodologia.html"><a href="#informacion-de-sesiion-de-r"><i class="fa fa-check"></i><b>A.1</b> Informacion de sesiion de R</a></li>
+<li class="chapter" data-level="A.2" data-path="conclusiones.html"><a href="conclusiones.html#otros-graficos"><i class="fa fa-check"></i><b>A.2</b> Otros gráficos</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -334,7 +337,7 @@ Figura 3.4: Diagrama de flujo de la metodología
 </div>
 <div id="procesamiento-de-datos" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Procesamiento de datos</h3>
-<p>El procesamiento de los datos se realizó principalmente en <span class="citation">R Core Team (<a href="#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="#ref-R-rgeos">2017</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="#ref-R-sp">2018</a>)</span>.</p>
+<p>El procesamiento de los datos se realizó principalmente en <span class="citation">R Core Team (<a href="#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="#ref-R-rgeos">2018</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="#ref-R-sp">2018</a>)</span>.</p>
 <p>El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico.</p>
 <p>El código y los datos están disponibles en <a href="https://github.com/correajfc/R-CP2005-CA2015">este repositorio de GitHub https://github.com/correajfc/R-CP2005-CA2015</a>.</p>
 </div>
@@ -611,7 +614,7 @@ Figura 3.11: Grafo de vecindad entre todos los SU de la ciudad de Cali
 <p>Bivand, Roger, Keitt, Tim, y Rowlingson, Barry. (2017). <em>rgdal: Bindings for the ’Geospatial’ Data Abstraction Library</em>. Recuperado de: <a href="https://CRAN.R-project.org/package=rgdal" class="uri">https://CRAN.R-project.org/package=rgdal</a></p>
 </div>
 <div id="ref-R-rgeos">
-<p>Bivand, Roger, y Rundel, Colin. (2017). <em>rgeos: Interface to Geometry Engine - Open Source (’GEOS’)</em>. Recuperado de: <a href="https://CRAN.R-project.org/package=rgeos" class="uri">https://CRAN.R-project.org/package=rgeos</a></p>
+<p>Bivand, Roger, y Rundel, Colin. (2018). <em>rgeos: Interface to Geometry Engine - Open Source (’GEOS’)</em>. Recuperado de: <a href="https://CRAN.R-project.org/package=rgeos" class="uri">https://CRAN.R-project.org/package=rgeos</a></p>
 </div>
 <div id="ref-R-sp">
 <p>Pebesma, Edzer, y Bivand, Roger. (2018). <em>sp: Classes and Methods for Spatial Data</em>. Recuperado de: <a href="https://CRAN.R-project.org/package=sp" class="uri">https://CRAN.R-project.org/package=sp</a></p>

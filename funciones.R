@@ -63,9 +63,11 @@ lowerFn <- function(data, mapping, method = "lm", ...) {
 
 # grafica de dispercion con label de correlacion dentror de la grafica
 lm_with_cor <- function(data, mapping, ... ,method_cor = "pearson", method_smooth="lm") {
-  x <- eval(mapping$x, data)
-  y <- eval(mapping$y, data)
-  cor <- cor(x, y, method = method_cor, use = "pairwise.complete.obs")
+  
+  x <- GGally::eval_data_col(data, mapping$x)
+  y <- GGally::eval_data_col(data, mapping$y)
+  
+  correlation <- cor(x, y, method = method_cor, use = "pairwise.complete.obs")
   
   
   p <- ggplot(data = data, mapping = mapping) +
@@ -75,7 +77,7 @@ lm_with_cor <- function(data, mapping, ... ,method_cor = "pearson", method_smoot
       data = data.frame(
         x = min(x, na.rm = TRUE),
         y = max(y, na.rm = TRUE),
-        lab = round(cor, digits = 2)
+        lab = round(correlation, digits = 2)
       ),
       mapping = ggplot2::aes(x = x, y = y, label = lab),
       hjust = 0, vjust = 1,

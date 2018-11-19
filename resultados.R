@@ -97,7 +97,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(f,data = lm.mod.area_copa$model))
+best_models<-ols_step_best_subset(lm(f,data = lm.mod.area_copa$model))
 best_models
 plot(best_models)
 
@@ -119,7 +119,17 @@ mean(sm$residuals^2)
 #test de ajuste
 mean(lm.mod.cobertura.ap$residuals) # media de los residuos cercana a 0 (si)
 # Homocedasticidad de los residuos o varianza igual
-autoplot(lm.mod.cobertura.ap, which = 1:4)
+d_plot <- autoplot(lm.mod.cobertura.ap, which = 1:4)
+# nuevos textos
+yLabs <- c("Residuos","Residuos estandarizados",TeX("$\\sqrt{|Residuos estandarizados|}$"),"Distancia de Cook") 
+xLabs <- c("Valores ajustados", "Cuantiles teóricos", "Valores ajustados", "Índice de la observación")
+titulos <- c("Residuos vs Valores Ajustados","Gráfico Q-Q","Gráfico Escala-Locacion","Distancia de Cook")
+# modifcar grafico indivudualmente
+for (i in 1:4)
+  d_plot[i] <- d_plot[i] + xlab(xLabs[i]) + ylab(yLabs[i])+ggtitle(titulos[i])
+
+# desplegar grafico
+print(d_plot) 
 #ggnostic(lm.best.area_copa)
 # aun un amuento de la varianza. hagamos un test para verificar este aumento
 lmtest::bptest(lm.mod.cobertura.ap) # la varianza de los residuos no es constante 
@@ -139,7 +149,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(f, data = lm.mod.cobertura.ap$model))
+best_models<-ols_step_best_subset(lm(f, data = lm.mod.cobertura.ap$model))
 best_models
 plot(best_models)
 

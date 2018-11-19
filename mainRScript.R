@@ -32,8 +32,12 @@ library(olsrr)
 library(kableExtra)
 library(lmtest)
 library(glue)
+library(visdat)
+library(latex2exp)
 
 #  correr los script en el orden correcto para realizar todos los calculos 
+# Start the clock!
+ptm <- proc.time()
 
 source("funciones.R")
 source("geodata.R")
@@ -46,4 +50,6 @@ source("resultados.R")
 source("analisis_geoestadistico.R")
 source("analisis_estadistico_EV.R")
 source("analisis_geoestadistico_EV.R")
-#save.image(file = "bck1.RData")
+# Stop the clock
+proc.time() - ptm
+save.image(file = "bck_201811.RData")
