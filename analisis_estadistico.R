@@ -486,7 +486,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 # combinaciones de las varibles del modelo
-best_models<-ols_best_subset(lm.area_copa.sel)
+best_models<-ols_step_best_subset(lm.area_copa.sel)
 best_models
 plot(best_models)
 
@@ -526,7 +526,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   coord_equal()+
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
-best_models<-ols_best_subset(lm(formula = formula(lm.mn.area_copa.sel),data=lm.mn.area_copa.sel$model))
+best_models<-ols_step_best_subset(lm(formula = formula(lm.mn.area_copa.sel),data=lm.mn.area_copa.sel$model))
 best_models
 plot(best_models)
 
@@ -573,7 +573,7 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 # combinaciones de las varibles del modelo
 
-best_models<-ols_best_subset(lm(formula = formula(lm.mxn.log.area_copa.sel),data=lm.mxn.log.area_copa.sel$model))
+best_models<-ols_step_best_subset(lm(formula = formula(lm.mxn.log.area_copa.sel),data=lm.mxn.log.area_copa.sel$model))
 best_models
 plot(best_models)
 
@@ -612,7 +612,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 # combinaciones de las varibles del modelo
 
-best_models<-ols_best_subset(lm(formula = formula(lm.mxn.sqrt.area_copa.sel),
+best_models<-ols_step_best_subset(lm(formula = formula(lm.mxn.sqrt.area_copa.sel),
                                 data=lm.mxn.sqrt.area_copa.sel$model))
 best_models
 plot(best_models)
@@ -653,7 +653,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 # combinaciones de las varibles del modelo
 
-best_models<-ols_best_subset(lm(formula = formula(lm.mxn.cobertura_copa.ap),
+best_models<-ols_step_best_subset(lm(formula = formula(lm.mxn.cobertura_copa.ap),
                                 data=lm.mxn.cobertura_copa.ap$model))
 best_models
 plot(best_models)
@@ -694,7 +694,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 # combinaciones de las varibles del modelo
 
-best_models<-ols_best_subset(lm(formula = formula(lm.mxn.sqrt.cobertura_copa.ap),
+best_models<-ols_step_best_subset(lm(formula = formula(lm.mxn.sqrt.cobertura_copa.ap),
                                 data=lm.mxn.sqrt.cobertura_copa.ap$model))
 best_models
 plot(best_models)
@@ -885,7 +885,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(log.area_copa.mxn~superior_postgrado.mxn+
+best_models<-ols_step_best_subset(lm(log.area_copa.mxn~superior_postgrado.mxn+
                                   densidad_poblacion.mxn+
                                   cuarto.porcentaje.mxn+
                                   area_ep.mxn,
@@ -936,7 +936,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
+best_models<-ols_step_best_subset(lm(cobertura_copa.ap.mxn~superior_postgrado.porcentaje.mxn+
                                   apartamento.porcentaje.mxn+
                                   cuarto.porcentaje.mxn+
                                   area_ep.porcentaje.mxn,

@@ -1024,8 +1024,8 @@ base_plot.manzanas2 +
 
 
 # crar paleta de 10 elementos
-palFantasticFox <- colorRampPalette(wes_palette("FantasticFox"))
-palDarjeeling <- colorRampPalette(wes_palette("Darjeeling"))
+palFantasticFox <- colorRampPalette(wes_palette("FantasticFox1"))
+palDarjeeling <- colorRampPalette(wes_palette("Darjeeling1"))
 palgen <- colorRampPalette(wes_palettes$Moonrise1)
 #ep.cali$categoria %>% unique -> nombreCat
 palKata<-c("green3",
@@ -1046,7 +1046,9 @@ base_plot.manzanas2 +
                alpha=1)+
   
   theme_void()+
-  scale_fill_manual(values = palKata[c(9,8,7,6,1,5,4,10,2,3)])
+  scale_fill_manual(values = palKata[c(9,8,7,6,1,5,4,10,2,3)])+
+  ggsn::north(ep.cali.f,location = "topleft")+
+  ggsn::scalebar(ep.cali.f,dist = 1,st.size = 4,height = 0.3)
 
 # mapa de radios de 1km al desde los centriodes
 # espacios publicos (verdes)
@@ -1059,7 +1061,8 @@ ggplot()+
             color="grey40",
             size=0.4)+
   coord_equal()+
-  theme_void()
+  theme_void()+
+  ggsn::scalebar(ep.cali.f,dist = 2,st.size = 4,height = 0.02)
 
 
 ggplot()+

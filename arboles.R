@@ -9,7 +9,10 @@
 
 # cargar datos Censo Arboreo 2015 ----
 CAutf8 <- read_delim("./CA2015/CAutf8.csv",
-";", escape_double = FALSE, trim_ws = TRUE)
+";", 
+escape_double = FALSE, 
+trim_ws = TRUE,
+col_types = )
 
 
 # indagar las categorias ----

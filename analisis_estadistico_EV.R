@@ -438,7 +438,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(area_ep.porcentaje.mxn~cuarto.porcentaje.mxn+
+best_models<-ols_step_best_subset(lm(area_ep.porcentaje.mxn~cuarto.porcentaje.mxn+
                                   unidad_economica.porcentaje.mxn+
                                   area_media_manzana.mxn+
                                   densidad_poblacion.mxn+
@@ -526,7 +526,7 @@ su.f %>% dplyr::select(-area_su)  %>%
   theme_void()+
   scale_fill_brewer(palette = "RdBu", drop = FALSE)
 
-best_models<-ols_best_subset(lm(ia.areas.dist.mxn~cuarto.porcentaje.mxn+
+best_models<-ols_step_best_subset(lm(ia.areas.dist.mxn~cuarto.porcentaje.mxn+
                                   unidad_economica.porcentaje.mxn+
                                   area_media_manzana.mxn+
                                   densidad_poblacion.mxn+

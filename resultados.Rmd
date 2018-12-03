@@ -46,7 +46,7 @@ pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
 
 ```
 
-Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, se seleccionaron las soguientes variables para los modelos lineales:
+Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, se seleccionaron las siguientes variables para los modelos lineales:
 
 - Para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") ` ``. 
 
@@ -65,7 +65,7 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles
 ```
 
 
-Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio públicose aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
+Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio público se aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
 
 
 ### Modelos de regresión lineal 
@@ -78,7 +78,7 @@ Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en
 
 Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE) y un *adjR-square* del 60%, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick()`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
 
-Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()`. Este único indicador porcentual, que hace un descripción local y comparable entre los SU, explica el 46% refuerza la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
+Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()`. Este único indicador porcentual, que hace una descripción local y comparable entre los SU, explica el 46% de la variabilidad de los datos, reforzando la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
 
 Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
 

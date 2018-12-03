@@ -34,20 +34,29 @@ plot(W_queen.ev,coords=coordinates(su.EV),pch=19, cex=0.1, col="gray")
 # dev.off()
 
 
+
+
 #otras matrices de pesos W ---- 
 coords<-coordinates(su.EV)
-# centroides.su.arboles<-gCentroid(su.arboles, byid = T)
-# W_dist_mat<-gDistance(centroides.su.arboles, byid=T)
-# W_dist.inv_mat<-1000/W_dist_mat # para mantener los numeros no tan cercanos a 0
-# diag(W_dist.inv_mat) <- 0
+W_dist1000.ev<-dnearneigh(coords,0,1001,longlat = FALSE)
+#coords<-gCentroid(su.EV, byid = T)
+#W_dist1000.ev<-gDistance(coords, byid=T)
+#W_dist1000.ev[W_dist1000.ev > 1000] <- 0 
+# W_dist1000.inv_mat.ev<-1000/W_dist1000.ev # para mantener los numeros no tan cercanos a 0
+# diag(W_dist1000.inv_mat.ev) <- 0
 
+W_dist1000_mat.ev<-nb2mat(W_dist1000.ev, style="W", zero.policy=T)
+W_dist1000.inv_mat.ev <- W_dist1000_mat.ev
+for(i in 1:(dim(W_dist1000_mat.ev))[1]) {W_dist1000.inv_mat.ev[i,i] = 0} # renders exactly zero all diagonal elements
+W_dist1000.inv_mat.ev[W_dist1000.inv_mat.ev > 1000] <- 0                   # all distances > 1000 miles are set to zero
+W_dist1000.inv_mat.ev <- ifelse(W_dist1000.inv_mat.ev!=0, 1/W_dist1000.inv_mat.ev, W_dist1000.inv_mat.ev)    # inverting distances
+W_dist1000.inv.ev <- mat2listw(W_dist1000.inv_mat.ev, style="W")    # create a (normalized) listw object
+#mydmi <- listw2mat(mydm.lw)              # change back to 'classic' matrix, if desired
 
 # matriz distancias inversas en el rango de 1000 metros desde el centriode 
-W_dist1000.ev<-dnearneigh(coords,0,1001,longlat = FALSE)
-W_dist1000_mat.ev<-nb2mat(W_dist1000.ev, style="W", zero.policy=T)
-W_dist1000.inv_mat.ev<-1000/W_dist1000_mat.ev
-W_dist1000.inv_mat.ev[!is.finite(W_dist1000.inv_mat.ev)]<- 0
-W_dist1000.inv.ev<-mat2listw(W_dist1000.inv_mat.ev,style = "W")
+#W_dist1000.ev<-dnearneigh(coords,0,1001,longlat = FALSE)
+# W_dist1000_mat.ev<-nb2mat(W_dist1000.ev, style="W",zero.policy = T)
+# W_dist1000.inv_mat.ev<-1000/W_dist1000_mat.ev
 # lnb.su<-poly2nb(su.arboles, queen = T)
 par(mai=c(0,0,0,0))
 plot(su, border="grey80")
@@ -73,22 +82,45 @@ plot(W_dist1000.inv.ev, coordinates(su.EV), col='orchid1',pch=19, cex=0.1, add=T
              listw=W_dist1000.inv.ev, 
              pch=16, col="black",
              cex=.5, quiet=F, 
-             labels=as.character(analisis.cali.df$SETU_CCDGO),
+             labels=as.character(regresion.EV$SETU_CCDGO),
              xlab="residuos", 
              ylab="residuos (Spatial Lag)", main="Gráfico de Moran")  
   
   moran.test(regresion.EV$area_ep.porcentaje, listw=W_dist1000.inv.ev,zero.policy = TRUE)
   moran.test(regresion.EV$ia.areas.dist, listw=W_dist1000.inv.ev,zero.policy = TRUE)
-  # moran.test(lm.ia.areas.dist.sel$residuals,listw=W_dist1000.inv.ev,zero.policy = TRUE)
-  # moran.test(lm.area_ep.ptje.sel$residuals,listw=W_dist1000.inv.ev,zero.policy = TRUE)
+  moran.test(lm.ia.areas.dist.sel$residuals,listw=W_dist1000.inv.ev,zero.policy = TRUE)
+  moran.test(lm.area_ep.ptje.sel$residuals,listw=W_dist1000.inv.ev,zero.policy = TRUE)
   # 
   
+  par(mar=rep(5,4))
+  moran.plot(lm.ia.areas.dist.sel$residuals, 
+             listw=W_dist1000.inv.ev, 
+             pch=16, col="black",
+             cex=.5, quiet=F, 
+             labels=as.character(regresion.EV$SETU_CCDGO),
+             xlab="residuos", 
+             ylab="residuos (Spatial Lag)", main="Gráfico de Moran")  
+  
+  moran.plot(lm.ia.areas.dist.sel$residuals, 
+             listw=W_queen.ev, 
+             pch=16, col="black",
+             cex=.5, quiet=F, 
+             labels=as.character(regresion.EV$SETU_CCDGO),
+             xlab="residuos", 
+             ylab="residuos (Spatial Lag)", main="Gráfico de Moran") 
+  
+ 
   pintar_mapa_su_LISA_lmres(regresion.EV,lm.area_ep.ptje.sel,W_queen.ev,  wname = "Wq",nrow =1)
   pintar_mapa_su_LISA_lmres(regresion.EV,lm.area_ep.ptje.sel,W_dist1000.inv.ev, wname = "Wd",nrow =1)
   
+  pintar_mapa_su_LISA_lmres(regresion.EV,lm.ia.areas.dist.sel,W_queen.ev,  wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_lmres(regresion.EV,lm.ia.areas.dist.sel,W_dist1000.inv.ev, wname = "Wd",nrow =1)
+  
+  
   pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
   pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nrow =1)
-  #pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_dist1000.inv.ev, wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_dist1000.inv.ev, wname = "Wq",nrow =1)
+  pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_dist1000.inv.ev, wname = "Wq",nrow =1)
   
   pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wq",nrow =1)
   pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
@@ -111,7 +143,7 @@ plot(W_dist1000.inv.ev, coordinates(su.EV), col='orchid1',pch=19, cex=0.1, add=T
   lm_data<-augment(lm.area_ep.ptje.sel)
   lm_data$SETU_CCDGO<-regresion.EV$SETU_CCDGO
   
-  pl_lm.ac<-plots_map_su_df(lm_data,c("area_ep.porcentaje.mxn",str_c(independientes.EV[c(1,2,6)],".mxn"),".fitted"))
+  pl_lm.ac<-plots_map_su_df(lm_data,c("area_ep.porcentaje.mxn",str_c(independientes.EV[c(1,2)],".mxn"),".fitted"))
   grid.arrange(grobs =pl_lm.ac, nrow =1)
   
 
@@ -135,7 +167,7 @@ sar.areas.dist<-lagsarlm(formula = as.formula(lm.ia.areas.dist.sel),
          data = lm.ia.areas.dist.sel$model,
          listw = W_queen.ev, zero.policy = T,tol.solve=1.0e-30)
 sar.sm<-summary(sar.areas.dist,Nagelkerke=T)
-moran.test(sar.areas.dist$residuals,W_queen,zero.policy = T)
+moran.test(sar.areas.dist$residuals,W_queen.ev,zero.policy = T)
 bptest.sarlm(sar.areas.dist)
 
 sar.areas_ep<-lagsarlm(formula = as.formula(lm.area_ep.ptje.sel),
@@ -209,10 +241,10 @@ hist(sd.areas_ep$residuals)
 
 #reducimos el modelo
 
-
-diagPltsSlX<-diagPlot(slx.areas_ep)
-diagPlts[1:3]
-grid.arrange(grobs=diagPlts, ncol =2)
+# 
+# diagPltsSlX<-diagPlot(slx.areas_ep)
+# diagPlts[1:3]
+# grid.arrange(grobs=diagPlts, ncol =2)
 
 diagPltsSAR<-diagPlotlaglm(sar.mod.sqrt.area_copa.wq)
 diagPltsSEM<-diagPlotlaglm(sem.mod.sqrt.area_copa.wq)

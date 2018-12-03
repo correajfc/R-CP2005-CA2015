@@ -177,9 +177,9 @@ hist(sd.mod.sqrt.area_copa.wq$residuals)
 #nos quedamos con wd
 
 
-diagPltsSlX<-diagPlot(slx.mod.sqrt.area_copa.wq)
-diagPlts[1:3]
-grid.arrange(grobs=diagPlts, ncol =2)
+# diagPltsSlX<-diagPlot(slx.mod.sqrt.area_copa.wq)
+# diagPlts[1:3]
+# grid.arrange(grobs=diagPlts, ncol =2)
 
 diagPltsSAR<-diagPlotlaglm(sar.mod.sqrt.area_copa.wq)
 diagPltsSEM<-diagPlotlaglm(sem.mod.sqrt.area_copa.wq)
