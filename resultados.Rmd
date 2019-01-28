@@ -68,7 +68,7 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles
 Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio público se aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
 
 
-### Modelos de regresión lineal 
+### Modelos de regresión lineal AU
 
 Antes de evaluar los modelos se aplicaron varias transformaciones en busca de normalizar las distribuciones de las variables dependientes. Las que mejor resultado arrojaron en la formulación de los modelos fueron la transformación logarítmica para el caso del área de copa y la variable sin transformar en el caso de la cobertura de copa.
 
@@ -76,9 +76,9 @@ La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para e
 
 Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-mod-best-lm-copa) y \@ref(fig:diagn-mod-best-lm-copaap)). 
 
-Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE) y un *adjR-square* del 60%, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick()`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
+Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). En el caso de la área de copa se obtiene un *adjR-square* de `r summary(lm.mod.area_copa) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent()`, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick()`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
 
-Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()`. Este único indicador porcentual, que hace una descripción local y comparable entre los SU, explica el 46% de la variabilidad de los datos, reforzando la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
+Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()`. Este único indicador porcentual, que hace una descripción local y comparable entre los SU, explica el `r summary(lm.mod.cobertura.ap) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent()` de la variabilidad de los datos, reforzando la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
 
 Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
 
@@ -93,7 +93,7 @@ regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
 f <- paste(str_c(dependiente,".mxn"),
            "~", paste(str_c(independientes,".mxn"), 
                       collapse=" + "))
-lm.mod.area_copa<-lm(f, 
+lm.area_copa<-lm(f, 
                      data = regresion.arboles.mn)
 sm<-summary(lm.mod.area_copa)
 sm
@@ -101,8 +101,8 @@ sm
 ```
 
 ```{r coef-lm-copa}
-nombres_coef <- summary(lm.mod.area_copa)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
-t1<-summary(lm.mod.area_copa)$coefficients %>% as_data_frame()
+nombres_coef <- summary(lm.area_copa)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(lm.area_copa)$coefficients %>% as_data_frame()
 t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
 knitr::kable( digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
@@ -142,7 +142,7 @@ knitr::kable( digits=5, caption = "Coeficientes OLS de cobertura de copa - (CC)"
 
 
 ```{r ajuste-lmcopa-pob-predios}
-tabla<-fitstats_lm_df(lm.mod.area_copa) %>% 
+tabla<-fitstats_lm_df(lm.area_copa) %>% 
   rename(`Log(AC)`=fitstats) %>%
    left_join(fitstats_lm_df(lm.mod.cobertura.ap),by= "medidasfit") %>%
   rename( `%CC`=fitstats)
@@ -157,7 +157,7 @@ kable(tabla,caption = "Resumen métricas de ajuste OLS para el área de copa (AC
 
 ```{r diagn-mod-best-lm-copa, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de área de copa"}
 
-graf<-autoplot(lm.best.area_copa, which = 1:4)
+graf<-autoplot(lm.area_copa, which = 1:4)
 # nuevos textos
 yLabs <- c("Residuos","Residuos estandarizados",TeX("$\\sqrt{|Residuos estandarizados|}$"),"Distancia de Cook") 
 xLabs <- c("Valores ajustados", "Cuantiles teóricos", "Valores ajustados", "Índice de la observación")
@@ -167,7 +167,7 @@ for (i in 1:4)
   graf[i] <- graf[i] + xlab(xLabs[i]) + ylab(yLabs[i])+ggtitle(titulos[i])+theme_minimal(base_size = 9)
 
 # desplegar grafico
-title1=grid::textGrob(format(as.formula(lm.best.area_copa)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
+title1=grid::textGrob(format(as.formula(lm.area_copa)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
 grid.arrange( grobs =graf@plots, top=title1)
 
 ```
@@ -204,50 +204,66 @@ title(main = "Distancia inversa a 1 Km")
 
 ####  Autocorrelación variables dependientes
 
-Se analizó primero la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y que puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios. La matriz $W_q$ captura mejor la autocorrelación global del área de copa. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)). En este mapa de LISA se observan que los sectores en rojo (H-H) y azul (L-L) identifican los lugares con autocorrelación positiva, formando grupos. No se presentan valores negativos de autocorrelación.
+Se analizó la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y que puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas \@ref(tab:moran-copa-w) y \@ref(tab:moran-copaap-w)). 
 
-Para la variable dependiente porcentaje de cobertura de copa los resultados del análisis de autocorrelación se presentan a continuación.
+Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matrix $W_q$ captura mejor la autocorrelación del área de copa. En el caso de la cobertura de copa la matriz $W_d$ presenta un valor ligeramente mayor de autocorrelación. 
 
-Ambos diseños de matriz revelan presencia clara de autocorrelación espacial, pero la matrix $W_d$ la captura ligeramente mejor con un valor positivo y significativa, produciendo *clusters* de sectores urbanos más con más sectores urbanos. Los mapas LISA muestran los focos de esta autocorrelación usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copaap-wq)) y para $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)) . No se presentan valores negativos de autocorrelación. 
+Los mapas LISA muestran los grupos de sectores que configuran la autocorrelación del área de copa usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)) y los grupos de la variable cobertura de copa usando la matriz $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)). 
 
+Los grupos que se forman muestran patrones distintos para las dos indicadores seleccionados para caraterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa nos muestra las diferencias desde una perspetiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de area disponible en toda la ciudad. El indicadore de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU. 
 
-```{r moran-copa-wq}
-mt<-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_queen)
-names(mt$p.value)<-"p-valor"
-names(mt$estimate) <- c("Estadístico Moran I","Expectativa","Varianza")
-names(mt$statistic) <- "Desviación estándar de Moran I"
-mt2<-moran.test(lm.mod.area_copa$model$log.area_copa.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
-names(mt2$p.value)<-"p-valor"
-names(mt2$estimate) <- c("Estadístico Moran I","Expectativa","Varianza")
-names(mt2$statistic) <- "Desviación estándar de Moran I"
-data_frame(metrica =c(mt$estimate,mt$statistic,mt$p.value))
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Área de copa para $W_q$ y $W_d$" , booktabs = TRUE)
-
-```
+Las diferencias entre los grupos obtenidos para una misma variable dependendiente con ambos diseños de matriz $W$ son , por que puede concluirse que aunque la carateristica de vecidad entre los sectores revela eficazmente grupos y detecta la autorcorrelación en las variables de estudio, no existen diferencias notables entre los dos tipos de estructura propuestas.
 
 
-```{r moranplot-copa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$",fig.show="hold",out.width='49%'}
+```{r moran-copa-w}
+mt<-moran.test(lm.best.area_copa$model$log.area_copa.mxn, listw=W_queen) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+nom_estimado_moran <- c("Estadístico Moran I","Expectativa","Varianza",
+                        "Desviación estándar de Moran I","p-valor")
 
-moran.plot(lm.mod.area_copa$model$log.area_copa.mxn, 
-             listw=W_queen, 
-             
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="log.area_copa", 
-             ylab="log.area_copa (Spatial Lag)", main="Gráfico de Moran Wq") 
-moran.plot(lm.mod.area_copa$model$log.area_copa.mxn, 
-             listw=W_dist1000.inv, 
-             zero.policy = TRUE,
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="log.area_copa", 
-             ylab="log.area_copa (Spatial Lag)", main="Gráfico de Moran Wd") 
+mt2<-moran.test(lm.best.area_copa$model$log.area_copa.mxn, listw=W_dist1000.inv, zero.policy = TRUE) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+
+data_frame(metrica =nom_estimado_moran, 
+           log_area =mt,
+           cobertura =mt2) %>% 
+knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+             digits=5,
+             caption = "Test de Moran - Área de copa para $W_q$ y $W_d$" , booktabs = TRUE)
 
 ```
 
 
+
+```{r moran-copaap-w}
+mt<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_queen) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+nom_estimado_moran <- c("Estadístico Moran I","Expectativa","Varianza",
+                        "Desviación estándar de Moran I","p-valor")
+
+mt2<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_dist1000.inv, zero.policy = TRUE) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+
+data_frame(metrica =nom_estimado_moran, 
+           log_area =mt,
+           cobertura =mt2) %>% 
+knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+             digits=5,
+             caption = "Test de Moran - Porcentaje de cobertura de copa para $W_q$ y $W_d$" , booktabs = TRUE)
+
+```
 
 
 
@@ -257,186 +273,86 @@ pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_queen, wname = "W_q"
 
 ```
 
+```{r mapas-lisa-copa-wd,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_d$ de `log.area copa`"}
 
-
-
-
-
-```{r moran-copaap-wq}
-mt<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_queen)
-names(mt$p.value)<-"p-value"
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Cobertura de área de copa $W_q$" , booktabs = TRUE)
+pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_dist1000.inv, wname = "W_d",nrow =1)
 
 ```
-
-```{r moran-copaap-wd}
-mt<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_dist1000.inv, zero.policy = TRUE)
-names(mt$p.value)<-"p-value"
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Cobertura de área de copa $W_d$" , booktabs = TRUE)
-
-```
-
-```{r moranplot-copaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentajes cobertura de copa usando $W_{q}$",fig.show="hold",out.width='49%'}
-
-moran.plot(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, 
-             listw=W_queen, 
-             
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="cobertura_copa.ap", 
-             ylab="cobertura_copa.ap (Spatial Lag)", main="Gráfico de Moran Wq") 
-moran.plot(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, 
-             listw=W_dist1000.inv, 
-             zero.policy = TRUE,
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="cobertura_copa.ap", 
-             ylab="cobertura_copa.ap (Spatial Lag)", main="Gráfico de Moran Wd") 
-
-```
-
-
-
 
 ```{r mapas-lisa-copaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `cobertura copa.ap`"}
 
-pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_queen, wname = "W_q",nrow =1)
+pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_queen, wname = "W_d",nrow =1)
 
 ```
 
-```{r mapas-lisa-copaap-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ de `cobertura copa.ap`"}
+```{r mapas-lisa-copaap-wd,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_d$ de `cobertura copa.ap`"}
 
-pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wname = "W_d", nrow =1)
+pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wname = "W_d",nrow =1)
 
 ```
-
-
 
 
 #### Autocorrelación residuos de los OLS
 
-El siguiente código calcula los índices de autocorrelación de los residuos del mejor modelo lineal de área de copa  (`` `r str_c("log.copa_area.mxn",str_c(names(lm.best.area_copa$model)[-1],collapse =" + "), sep= " ~ ") ` ``) para ambas matrices $W$ y construye los gráficos de Moran y mapas LISA \@ref(fig:moranplot-rescopa-w) para $W_q$ y para $W_d$. 
-
-
-
-```{r moran-rescopa-wq}
-mt<-lm.morantest(lm.best.area_copa, 
-             W_queen, alternative="two.sided",
-             zero.policy = T)
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS área de copa $W_q$" , booktabs = TRUE)
-
-```
-
-```{r moran-rescopa-wd}
-mt<-lm.morantest(lm.best.area_copa, 
-             W_dist1000.inv, 
-             alternative="two.sided",zero.policy = T)
-names(mt$p.value)<-"p-value"
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS área de copa $W_d$" , booktabs = TRUE)
-
-```
-
-
-```{r moranplot-rescopa-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para del área de cobertura de copa usando $W_{q}$ y $W_{d}$ ",fig.show="hold",out.width='49%'}
-
-moran.plot(lm.best.area_copa$residuals, 
-             listw=W_queen, 
-             
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="residuos", 
-             ylab="residuos (Spatial Lag)", main="Gráfico de Moran Wq")
-moran.plot(lm.best.area_copa$residuals, 
-             listw=W_dist1000.inv, 
-             zero.policy = TRUE,
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="residuos", 
-             ylab="residuos (Spatial Lag)", main="Gráfico de Moran Wd") 
-
-
-```
-
 Para ambos casos el valor de Moran Global es mayor que 0 y significativo, aunque no es muy alto, si existe una tendencia en los datos y ambas matrices capturan el efecto. $W_d$ lo hace mejor en los residuos, mientras $W_q$ lo hace mejor con la variable dependiente. En las figuras \@ref(fig:mapas-lisa-rescopa-wq) y \@ref(fig:mapas-lisa-rescopa-wd) observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que podría deberse a que las variables independientes presentan un patrón espacial similar, y que por consiguiente, al introducir estos retardos al modelo van a ayudar a absorber esa diferencias para mejorar la estimación. 
-
-```{r mapas-lisa-rescopa-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de los residuos del modelo lineal para del área de copa"}
-
-pintar_mapa_su_LISA_lmres(regresion.arboles,lm.best.area_copa,W_queen,  wname = "Wq",nrow =1)
-  
-```
-
-```{r mapas-lisa-rescopa-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ dede los residuos del modelo lineal para del área de copa"}
-
-pintar_mapa_su_LISA_lmres(regresion.arboles,lm.best.area_copa,W_dist1000.inv, wname = "Wd",nrow =1)
-
-```
 
 
 El mismo análisis se aplica al modelo de porcentaje de cobertura de copa (`` `r str_c("cobertura_copa.ap.mxn",str_c(names(lm.best.cobertura.ap$model)[-1],collapse =" + "), sep= " ~ ") ` ``). 
 
 
-```{r moran-rescopaap-wq}
-mt<-lm.morantest(lm.best.cobertura.ap, 
-             W_queen, alternative="two.sided",
-             zero.policy = T)
-names(mt$p.value)<-"p-value"
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS cobertura de área de copa $W_q$" , booktabs = TRUE)
 
-```
+```{r moran-rescopa-w}
+mt<-moran.test(lm.best.area_copa$residuals, listw=W_queen) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+nom_estimado_moran <- c("Estadístico Moran I","Expectativa","Varianza",
+                        "Desviación estándar de Moran I","p-valor")
 
-```{r moran-rescopaap-wd}
-mt<-lm.morantest(lm.best.cobertura.ap, 
-             W_dist1000.inv, 
-             alternative="two.sided",
-             zero.policy = T)
-names(mt$p.value)<-"p-value"
-knitr::kable(c(mt$estimate,mt$statistic,mt$p.value), col.names = " ", digits=5, caption = "Test de Moran - Residuos OLS cobertura de área de copa $W_d$" , booktabs = TRUE)
+mt2<-moran.test(lm.best.area_copa$residuals, listw=W_dist1000.inv, zero.policy = TRUE) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
 
-```
-
-```{r moranplot-rescopaap-w, fig.cap="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de cobertura de copa usando $W_{q}$ y $W_{d}$",fig.show="hold",out.width='49%'}
-
-moran.plot(lm.best.cobertura.ap$residuals, 
-             listw=W_queen, 
-             
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="residuos", 
-             ylab="residuos (Spatial Lag)", main="Gráfico de Moran Wq")
-moran.plot(lm.best.cobertura.ap$residuals, 
-             listw=W_dist1000.inv, 
-             zero.policy = TRUE,
-             pch=16, col="grey50",
-             cex=.5, quiet=T, 
-             labels=as.character(regresion.arboles$SETU_CCDGO),
-             xlab="residuos", 
-             ylab="residuos (Spatial Lag)", main="Gráfico de Moran Wd") 
-
-
-```
-
-Para ambas matrices el valor de Moran Global es mayor que 0 y significativo, casi el doble más alto que para el modelo de área de copa; el indicador porcentual de cobertura y el residuo del modelo para ajustarlo muestra el mismo comprtamiento en la sensibilidad de las matrices: el efecto es más fuerte con $W_d$ para la variable dependiente y levemente mayor con $W_q$ en los residuos. En las figuras \@ref(fig:mapas-lisa-rescopaap-wq) y \@ref(fig:mapas-lisa-rescopaap-wd) una vez más observamos que los grupos de sectores son más pequeños que los de las variables dependientes, lo que, como dijimos, se debe a que las variables independientes presentan un patrón espacial similar, y se espera que al introducir estos efectos espaciales al modelo mejora la confiabilidad de la estimación. 
-
-```{r mapas-lisa-rescopaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de los residuos del modelo lineal para el porcentaje de cobertura copa"}
-
-pintar_mapa_su_LISA_lmres(regresion.arboles,lm.best.cobertura.ap,W_queen,  wname = "Wq",nrow =1)
-  
-```
-
-```{r mapas-lisa-rescopaap-wd,fig.asp=0.618,fig.cap="Mapas LISA para la matriz $W_d$ dede los residuos del modelo lineal para del área de copa"}
-
-pintar_mapa_su_LISA_lmres(regresion.arboles,lm.best.cobertura.ap,W_dist1000.inv, wname = "Wd",nrow =1)
+data_frame(metrica =nom_estimado_moran, 
+           log_area =mt,
+           cobertura =mt2) %>% 
+knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+             digits=5,
+             caption = "Test de Moran - Residuos de OLS Área de copa para $W_q$ y $W_d$" , booktabs = TRUE)
 
 ```
 
 
-Los resultados nos invitan a proceder a realizar un ajuste en ambos modelos introduciendo algún tipo de estructura espacial. Posiblemente la matriz $W_q$ sea la candidata para el área de copa si se piensa en un modelo autorregresivo, pues parece capturar mejor en los test de autocorrelación global la existencia de grupos formados por fenómenos de dispersión o derrame en la distribución de la copa. En el caso de usar modelos de error espacial SEM posiblemente la candidata sea $W_d$ por capturar mejor la autocorrelación en los residuos. 
 
+```{r moran-rescopaap-w}
+mt<-moran.test(lm.best.cobertura.ap$residuals, listw=W_queen) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+nom_estimado_moran <- c("Estadístico Moran I","Expectativa","Varianza",
+                        "Desviación estándar de Moran I","p-valor")
+
+mt2<-moran.test(lm.best.cobertura.ap$residuals, listw=W_dist1000.inv, zero.policy = TRUE) %>% 
+  tidy() %>% 
+  select(1:5) %>% 
+  slice(1) %>% 
+  unlist(use.names = F)
+
+data_frame(metrica =nom_estimado_moran, 
+           log_area =mt,
+           cobertura =mt2) %>% 
+knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+             digits=5,
+             caption = "Test de Moran - Residuos de OLS Porcentaje de cobertura de copa para $W_q$ y $W_d$" , booktabs = TRUE)
+
+```
+
+
+Para ambas matrices el valor de Moran Global es mayor que 0 y significativo, casi el doble más alto que para el modelo de área de copa; el indicador porcentual de cobertura y el residuo del modelo para ajustarlo muestra el mismo comprtamiento en la sensibilidad de las matrices: el efecto es más fuerte con $W_d$ para la variable dependiente y levemente mayor con $W_q$ en los residuos. 
 
 
 #### Modelo espacial área de copa 
@@ -448,8 +364,8 @@ Para simplificar el análisis usaremos $W_q$ ya que las diferencias no son tan g
 ```{r code-laglm-copa-wq, echo=FALSE, results="hide"}
 #SAR
 
-sar.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
-         data = lm.mod.area_copa$model,
+sar.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.best.area_copa),
+         data = lm.best.area_copa$model,
          listw = W_queen, 
          zero.policy = T,
          tol.solve=1.0e-30)
@@ -458,16 +374,16 @@ sar.sm<-summary(sar.mod.log.area_copa.wq,
 sar.sm
 
 # SEM
-sem.mod.log.area_copa.wq<-errorsarlm(formula = as.formula(lm.mod.area_copa),
-                                      data = lm.mod.area_copa$model,
+sem.mod.log.area_copa.wq<-errorsarlm(formula = as.formula(lm.best.area_copa),
+                                      data = lm.best.area_copa$model,
                                       listw = W_queen, 
                                      zero.policy = T,tol.solve=1.0e-30)
 sem.sm<-summary(sem.mod.log.area_copa.wq,Nagelkerke=T)
 sem.sm
 #SD 
 
-sd.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.mod.area_copa),
-         data = lm.mod.area_copa$model,
+sd.mod.log.area_copa.wq<-lagsarlm(formula = as.formula(lm.best.area_copa),
+         data = lm.best.area_copa$model,
          listw = W_queen, 
          zero.policy = T,
          tol.solve=1.0e-30,
@@ -477,8 +393,8 @@ sd.sm<-summary(sd.mod.log.area_copa.wq,
 sd.sm
 
 #SLX
-slx.mod.log.area_copa.wq<-lmSLX(formula = as.formula(lm.mod.area_copa),
-                           data = lm.mod.area_copa$model,
+slx.mod.log.area_copa.wq<-lmSLX(formula = as.formula(lm.best.area_copa),
+                           data = lm.best.area_copa$model,
                            listw = W_queen, 
                            zero.policy = T)
 
@@ -540,7 +456,7 @@ knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX de área de cop
 
 ```{r tabla-comp-modelos-copa }
 
-tabla<-fitstats_laglm_df(lm.mod.area_copa,W_queen) %>% 
+tabla<-fitstats_laglm_df(lm.best.area_copa,W_queen) %>% 
   rename(`OLS`=fitstats) %>%
    left_join(fitstats_laglm_df(slx.mod.log.area_copa.wq,W_queen),by= "medidasfit") %>%
   rename(`SLX`=fitstats) %>%
@@ -603,7 +519,7 @@ diagPltsSAR<-diagPlotlaglm(sar.mod.log.area_copa.wq)
 diagPltsSEM<-diagPlotlaglm(sem.mod.log.area_copa.wq)
 diagPltsSD<-diagPlotlaglm(sd.mod.log.area_copa.wq)
 diagPltsSLX<-diagPlotlaglm(slx.mod.log.area_copa.wq)
-diagPltsOLS<-diagPlotlaglm(lm.mod.area_copa)
+diagPltsOLS<-diagPlotlaglm(lm.best.area_copa)
 
 #diagPlotsAll<-arrangeGrob(grobs = c(diagPltsOLS,diagPltsSLX,diagPltsSD,diagPltsSEM,diagPltsSAR),ncol = 3, nrow = 5)
 grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),

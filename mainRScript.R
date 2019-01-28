@@ -53,3 +53,7 @@ source("analisis_geoestadistico_EV.R")
 # Stop the clock
 proc.time() - ptm
 save.image(file = "bck_201811.RData")
+
+load("bck_201811.RData")
+
+
