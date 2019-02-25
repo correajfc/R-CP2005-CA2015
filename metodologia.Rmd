@@ -122,7 +122,7 @@ El diagrama de la figura \@ref(fig:flujograma) sintetiza el análisis propuesto,
 1. Seleccionar los SU a incluir con base la coincidencia con las capas de AU y EV.
 1. Construir y evaluar los modelos de regresión lineal.
 1. Contruir matrices de vencidad $W$ para incluir restricciones espaciales al modelo.
-1. Pruebar correlación espacial de Moran’I usando al menos dos diseños de matriz W. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SLX para comparar su desempeño. 
+1. Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresieon lineal con dos diseños de matriz $W$. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño. 
 1. Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R^2^ y el criterio de Akaike.
 1. Graficar mapas de LISA para caraterizar los patrones de agrupación de las varobles del los modelos mejor ajustados.
 

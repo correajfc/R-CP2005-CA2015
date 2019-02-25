@@ -229,3 +229,110 @@ su.f %>% dplyr::select(-area_su)  %>%
 #   facet_wrap(~emplazamiento , ncol = 4 ,labeller = label_wrap_gen())
 # 
 # ```
+
+
+
+
+
+# coeficientes modelos espaciales  AU  ----------------------------------------
+
+
+
+```{r coef-sar-copa}
+sm<-summary(sar.mod.log.area_copa.wq)
+t1<-summary(sar.mod.log.area_copa.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sar-copa}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sem-copa}
+sm<-summary(sem.mod.log.area_copa.wq)
+t1<-summary(sem.mod.log.area_copa.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sem-copa}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sd-copa}
+sm<-summary(sd.mod.log.area_copa.wq)
+t1<-summary(sd.mod.log.area_copa.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sd-copa}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa', booktabs = TRUE)
+```
+
+```{r coef-slx-copa}
+sm<-summary(slx.mod.log.area_copa.wq)
+t1<-summary(slx.mod.log.area_copa.wq)$coefficients
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX de área de copa', booktabs = TRUE)
+```
+
+
+
+```{r coef-sar-copaap}
+sm<-summary(sar.cobertura.ap.wq)
+t1<-summary(sar.cobertura.ap.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sar-copaap}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sem-copaap}
+sm<-summary(sem.cobertura.ap.wq)
+t1<-summary(sem.cobertura.ap.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sem-copaap}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r coef-sd-copaap}
+sm<-summary(sd.cobertura.ap.wq)
+t1<-summary(sd.cobertura.ap.wq)$Coef
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r cauto-sd-copaap}
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de porcentaje de área de copa', booktabs = TRUE)
+```
+
+```{r coef-slx-copaap}
+sm<-summary(slx.cobertura.ap.wq)
+t1<-summary(slx.cobertura.ap.wq)$coefficients
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SLX de porcentaje de área de copa', booktabs = TRUE)
+```
+
