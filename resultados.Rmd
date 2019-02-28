@@ -498,46 +498,8 @@ knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos d
 
 
 
-```{r moranplot-resmodel-all-wq, fig.cap="Gráfico de Moran para los residuos de los mejores modelos espaciales de área de copa$", fig.show="hold", out.width="49%"}
-moran.plot(lm.best.area_copa$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran OLS Wq")
-moran.plot(lm.best.area_copa$residuals, 
-           listw=W_dist1000.inv, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran OLS Wd")
 
-moran.plot(sem.mod.log.area_copa.wd$residuals, 
-           listw=W_dist1000.inv, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos", 
-           ylab="residuos (retardo espacial)", main="Gráfico de Moran SEM Wd") 
-
-
-moran.plot(sd.mod.log.area_copa.wq$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos", 
-           ylab="residuos (retardo espacial)", main="Gráfico de Moran SD Wq") 
-```
-
-
-```{r diag-model-espaciales, fig.asp=1.4, fig.cap="Diagnóstico comparativo entre modelos modelos espaciales de área de copa"}
+```{r diag-model-espaciales, fig.asp=1, fig.cap="Diagnóstico comparativo entre modelos modelos espaciales de área de copa"}
 
 diagPltsSEM<-diagPlotlaglm(sem.mod.log.area_copa.wd)
 diagPltsSD<-diagPlotlaglm(sd.mod.log.area_copa.wq)
@@ -548,16 +510,41 @@ diagPltsOLS<-diagPlotlaglm(lm.best.area_copa)
 grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               # arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
               # arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
-              arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM"),
-              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
+              arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM Wd"),
+              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD Wq"),nrow =3)
 ```
 
 
+```{r coef-sem-copa-wd}
+t1<-summary(sem.mod.log.area_copa.wd)$Coef
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa $W_d$', booktabs = TRUE)
+```
+
+```{r cauto-sem-copa}
+sm<-summary(sem.mod.log.area_copa.wd)
+r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa $W_d$', booktabs = TRUE)
+```
+
+
+```{r coef-sd-copa-wq}
+t1<-summary(sd.mod.log.area_copa.wq)$Coef
+knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa $W_q$', booktabs = TRUE)
+```
+
+```{r cauto-sd-copa-wq}
+sm<-summary(sd.mod.log.area_copa.wq)
+r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+r1<-unname(r1)
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+          r1)
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa $W_q$', booktabs = TRUE)
+```
+
 #### Modelo espacial porcentaje de cobertura de área de copa 
-
-El mismo ejercicio se aplica al porcentaje de cobertura de copa.
-
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación $\rho$ es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de   $`r AIC(lm.best.cobertura.ap)`$ a $`r AIC(sar.cobertura.ap.wq)`$). Consistentemente la variable de **estudios superiores** en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura \@ref(fig:moranplot-resmodel-all-copaap-wq)) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa. 
 
 
 ```{r code-laglm-copaap-wq, echo=FALSE, results= "hide"}
@@ -644,6 +631,12 @@ sd.sm
 
 ```
 
+
+El mismo ejercicio se aplica al porcentaje de cobertura de copa.
+
+Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación $\rho$ es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de   $`r AIC(lm.best.cobertura.ap)`$ a $`r AIC(sar.cobertura.ap.wq)`$). Consistentemente la variable de **estudios superiores** en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura \@ref(fig:moranplot-resmodel-all-copaap-wq)) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa. 
+
+
 ```{r tabla-comp-modelos-copaap-Wq  }
 
 tabla<-fitstats_laglm_df(lm.best.cobertura.ap,W_queen) %>% 
@@ -681,50 +674,8 @@ knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos d
 
 
 
-```{r moranplot-resmodel-all-copaap-wq, fig.cap="Gráfico de Moran para los residuos de los mejores modelos espaciales del porcentaje de área de copa", fig.show="hold", out.width="49%"}
 
-
-moran.plot(lm.best.cobertura.ap$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sd", 
-           ylab="residuos sd (Spatial Lag)", main="Gráfico de Moran OLS Wq") 
-
-moran.plot(lm.best.cobertura.ap$residuals, 
-           listw=W_dist1000.inv, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sd", 
-           ylab="residuos sd (Spatial Lag)", main="Gráfico de Moran OLS Wd") 
-
-
-moran.plot(sar.cobertura.ap.wq$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sd", 
-           ylab="residuos sd (Spatial Lag)", main="Gráfico de Moran SAR Wq") 
-
-
-moran.plot(sd.cobertura.ap.wd$residuals, 
-           listw=W_dist1000.inv, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sd", 
-           ylab="residuos sd (Spatial Lag)", main="Gráfico de Moran SD Wd") 
-```
-
-
-```{r diag-model-espaciales-copaap, fig.asp=1.4, fig.cap="Diagnóstico comparativo entre modelos de porcentaje de copa"}
+```{r diag-model-espaciales-copaap, fig.asp=1, fig.cap="Diagnóstico comparativo entre modelos de porcentaje de copa"}
 diagPltsSAR.wq<-diagPlotlaglm(sar.cobertura.ap.wq)
 diagPltsSD.wd<-diagPlotlaglm(sd.cobertura.ap.wd)
 diagPltsOLS<-diagPlotlaglm(lm.best.cobertura.ap)
@@ -734,7 +685,7 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               # arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
               # arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
               arrangeGrob(grobs = diagPltsSAR.wq, ncol = 3,left = "SAR Wq"),
-              arrangeGrob(grobs = diagPltsSD.wd,ncol = 3, left = "SD Wd"),nrow =5)
+              arrangeGrob(grobs = diagPltsSD.wd,ncol = 3, left = "SD Wd"),nrow =3)
 ```
 
 ```{r cauto-sar-copaap-wq}

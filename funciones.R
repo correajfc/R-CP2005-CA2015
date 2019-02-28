@@ -697,18 +697,18 @@ myaugment<-function(laglm){
 }
 
 
-diagPlotlaglm<-function(laglm){
+diagPlotlaglm<-function(laglm,theme.base_size = 8){
   require(ggplot2)
   model<-myaugment(laglm)
   p1<-ggplot(model, aes(.fitted, .resid))+geom_point(alpha=0.6)
   p1<-p1+stat_smooth(method="lm")+geom_hline(yintercept=0, col="red", linetype="dashed")
   p1<-p1+xlab("Valores ajustados")+ylab("Residuos")
-  p1<-p1+ggtitle("Residuos vs Valores ajustados")+theme_bw()
+  p1<-p1+ggtitle("Residuos vs Valores ajustados")+theme_bw(base_size =theme.base_size )
   
   p2<-  ggplot(model)+stat_qq(aes(sample=.resid))
   # geom_abline(intercept = 0, slope = 1, alpha = 0.5) 
   p2<-p2+xlab("Cuantiles teóricos")+ylab("Residuos")
-  p2<-p2+ggtitle("Normal Q-Q")+theme_bw()
+  p2<-p2+ggtitle("Normal Q-Q")+theme_bw(base_size =theme.base_size)
   
   p3<-ggplot(model)+geom_histogram(aes(.resid,y=..density..), color ="white")+
     stat_function(fun=dnorm,
@@ -718,7 +718,7 @@ diagPlotlaglm<-function(laglm){
     
  # p3<-p3+geom_density(aes(.resid))
   p3<-p3+ggtitle("Histograma residuos")+
-    xlab("Residuos")+ylab("Densidad")+theme_bw()
+    xlab("Residuos")+ylab("Densidad")+theme_bw(base_size =theme.base_size)
   
   return(list(p1, p2, p3))
 }
