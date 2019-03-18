@@ -705,7 +705,7 @@ diagPlotlaglm<-function(laglm,theme.base_size = 8){
   p1<-p1+xlab("Valores ajustados")+ylab("Residuos")
   p1<-p1+ggtitle("Residuos vs Valores ajustados")+theme_bw(base_size =theme.base_size )
   
-  p2<-  ggplot(model)+stat_qq(aes(sample=.resid))
+  p2<-  ggplot(model,aes(sample=.resid))+stat_qq()+stat_qq_line(color = "red")
   # geom_abline(intercept = 0, slope = 1, alpha = 0.5) 
   p2<-p2+xlab("Cuantiles teóricos")+ylab("Residuos")
   p2<-p2+ggtitle("Normal Q-Q")+theme_bw(base_size =theme.base_size)
@@ -759,14 +759,14 @@ fitstats<-c(gmt$estimate[1],gmt$p.value,
        akaike,
        lglk)
 }
-names(fitstats)<-c("Globla Moran'I",
-                               "GMI p-value",
+names(fitstats)<-c("Global Moran'I",
+                               "GMI p-valor",
                                "Shapiro-Wilk",
-                               "SW p-value",
+                               "SW p-valor",
                                "Breusch-Pagan",
-                               "BP p-value",
+                               "BP p-valor",
                                "Media Residuos",
-                               "MSE",
+                               "MSE (Error cuadratico medio)",
                                "adj-Rsquare",
                                "Nagelkerke pseudo-R-squared",
                                "AIC",

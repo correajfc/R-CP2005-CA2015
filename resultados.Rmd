@@ -210,11 +210,11 @@ Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. L
 
 Los mapas LISA muestran los grupos de sectores que configuran la autocorrelación del área de copa usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)) y los grupos de la variable cobertura de copa usando la matriz $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)). 
 
-Los grupos que se forman muestran patrones distintos para las dos indicadores seleccionados para caraterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa nos muestra las diferencias desde una perspetiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de area disponible en toda la ciudad. El indicadore de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU. 
+Los grupos que se forman muestran patrones distintos en los dos indicadores seleccionados para caraterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa nos muestra las diferencias desde una perspetiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de area disponible en toda la ciudad. El indicador de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU. 
 
 Es clara la similitud entre los grupos obtenidos para una misma variable dependendiente con ambos diseños de matriz $W$ (figura \@ref(fig:mapas-lisa-copa-wq) y figura \@ref(fig:mapas-lisa-copa-wd) para el área de copa y \@ref(fig:mapas-lisa-copaap-wq) y \@ref(fig:mapas-lisa-copaap-wd) para la cobertura de copa), posiblemente porque no existen diferencias notables entre los dos tipos de estructura de vecindad propuestas (figura \@ref(fig:ws-su-reg)). 
 
-Lo relevante en ambos diseños y los resultados de los análisis es que la vencidad de los SU exponen un grado de autocorrelación espacial y por lo tanto los grupos de alta y baja prestación en los servicios ecosistémicos del AU configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechanzado la hipotesis nula de distribucion espacial aleatoria o uniforme.
+Lo relevante en ambos diseños en los resultados de los análisis es que la vencidad de los SU exponen un grado de autocorrelación espacial y por lo tanto los grupos de alta y baja prestación en los servicios ecosistémicos del AU configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechanzado la hipotesis nula de distribucion espacial aleatoria o uniforme.
 
 
 ```{r moran-copa-w}
@@ -298,12 +298,9 @@ pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wn
 
 Para evaluar la utlidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la deteción de autocorrelación espacial.  
 
-Ambos diseños de matriz $W$ presentan un valor de Moran Global mayor que 0 y significativo. $W_d$ lo hace mejor en los residuos, mientras $W_q$ lo hace mejor con la variable dependiente .  
+La tabla \@ref(tab:moran-rescopa-w) muestra ambos diseños de matriz $W$ presentan un valor de Moran Global mayor que 0 y significativo para los residuos del OLS de área de copa, al igual que para los residuos del OLS del porcentaje de cobertura (ver \@ref(tab:moran-rescopaap-w)).  
 
-
-al introducir estos retardos al modelo van a ayudar a absorber esa diferencias para mejorar la estimación. 
-
-Para ambas matrices el valor de Moran Global es mayor que 0 y significativo, casi el doble más alto que para el modelo de área de copa; el indicador porcentual de cobertura y el residuo del modelo para ajustarlo muestra el mismo comprtamiento en la sensibilidad de las matrices: el efecto es más fuerte con $W_d$ para la variable dependiente y levemente mayor con $W_q$ en los residuos. 
+En ambos modelos el resultado de autocorrelación espacial suguiere que al introducir retardos espaciales y la estrucutura de vecidad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.
 
 
 
@@ -361,11 +358,15 @@ knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
 
 #### Modelo espacial área de copa 
 
-A continuación se presentan los resultados del modelado de los 3 tipos de modelos que usan las matrices $W_d$ y $W_q$ geoestadísticos para el área de copa. Las tablas \@ref() y \@ref() resumen las métricas de ajuste de los modelos de área de copa con ambas matrices. 
+Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copa-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copa-wq)) para el área de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Es importante anotar que la heterocedasticidad reportada en la tabla \@ref(tab:ajuste-lmcopa-pob-predios) del modelo OLS desaparece al descartar la variables independientes con $p$-valores no significativos, por lo que no se le puede adjudicar al uso de los terminos espaciales. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos, aunque en las gráficas diagnósticas se aprecia una semblanza aceptable (ver figura \@ref(fig:diag-model-espaciales)) con problemas en valores extremos.   
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SD o mixto(variables con retardo y autocorrelación) con el mejor AIC. 
+Al comparar los resultados usando el desempeño en AIC, el mejor fue el SEM con la matriz $W_d$, seguido del SD con $W_q$, con leves diferencias entre las métricas. En cuanto a $\lambda$ (tabla \@ref(tab:cauto-sem-copa)) y $\rho$ (tabla \@ref(tab:cauto-sd-copa-wq)) , los términos autorregresivos, son significativos para SEM $W_d$ y para SD con $W_q$ repectivamente. 
 
-El modelo SD ha logrado eliminar la autocorrelación espacial global en los residuos, al igual que SAR y SEM (ver figura \@ref(fig:moranplot-resmodel-all-wq)). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El $\rho$ y $\lambda$ de las estimaciones con términos de autorregresivos es significativo, lo que implica que la inclusión de los retardos funciona correctamente, aunque solo en los coeficientes de la variable retardada `cuarto.porcentaje` es significativo, aunque esta no tiene un coeficiente significativo como variable sin retardo, sugiriendo que interesa su efecto sobre el área de copa en los sectores vecinos a los focos de mayor concentración de viviendas tipo cuarto, pero no es importante en el resto de sectores. Como era de esperarse el porcentaje de área de espacios verdes es significativo en las variables sin retardo, pero no genera ningún efecto de derrame en la cobertura de copa de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos. 
+El resultado del modelo SEM confirma la significancia de las variables de cantidad personas con estudios superiores y porcentaje de espacio verde con coeficientes de valores positivos, en ese orden de importancia. La densidad de población y la presencia de viviendas tipo cuarto, con coeficientes negativos, son factores que disminuyen la disponibilidad de área de copa en un SU (ver tabla \@ref(tab:coef-sem-copa-wd)). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones. 
+
+En el campo de la interpretación, el SEM incorpora el componente espacial como información no modelada por los predictores, y el SD como una influencia los retardos espaciales de las variables independientes. Cuando se acoje la perspectica de los retardos (modelo SD), solo se considera significativo el retardo de la variable de porcentaje de viviendas tipo cuarto, y descarta la variable no retardada. Es decir que la prevalencia de este tipo de viviendas en un sector urbano disminuye la disponibilidad de copa en sectores vecinos. Es intersante que las diferencias entre las matrices privilegien la escogencia de un modelo u otro, lo que alerta sobre la importancia de los supuesto en la escogencia de su estructura. 
+
+
 
 
 
@@ -458,7 +459,7 @@ sd.sm
 
 
 
-```{r tabla-comp-modelos-copa }
+```{r tabla-comp-modelos-copa-wq }
 
 tabla<-fitstats_laglm_df(lm.best.area_copa,W_queen) %>% 
   rename(`OLS`=fitstats) %>%
@@ -632,12 +633,16 @@ sd.sm
 ```
 
 
-El mismo ejercicio se aplica al porcentaje de cobertura de copa.
+Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copaap-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copaap-wq)) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con $W_d$. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura \@ref(fig:diag-model-espaciales-copaap)).   
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación $\rho$ es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de   $`r AIC(lm.best.cobertura.ap)`$ a $`r AIC(sar.cobertura.ap.wq)`$). Consistentemente la variable de **estudios superiores** en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura \@ref(fig:moranplot-resmodel-all-copaap-wq)) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa. 
+Al comparar los resultados usando el desempeño en AIC, el mejor fue el SD con la matriz $W_d$.  $\rho$, el término autorregresivo, es de un valor alto y muy significativo para el modelo SD con $W_d$. 
+
+El resultado del modelo SD confirma la significancia de la única variable independiente: porcentaje de personas con estudios superiores, con coeficiente positivo, identificándolo como un factores relacionado con el aumento la proporción de área de copa en un SU (ver tabla \@ref(tab:coef-sem-copa-wd)). Existen una reducción del valor del coeficiente con relación al modelo OLS.
+
+La variable de **estudios superiores** en la población refleja el patrón de agrupamiento espacial de la cobertura de copa pero es poco significativa como variable retardada, cuestión que pone dudas sobre si el SD proponga una interpretación acertada o diferente de un modelo autoregresivo puro (SAR).
 
 
-```{r tabla-comp-modelos-copaap-Wq  }
+```{r tabla-comp-modelos-copaap-wq  }
 
 tabla<-fitstats_laglm_df(lm.best.cobertura.ap,W_queen) %>% 
   rename(`OLS`=fitstats) %>%
@@ -675,8 +680,8 @@ knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos d
 
 
 
-```{r diag-model-espaciales-copaap, fig.asp=1, fig.cap="Diagnóstico comparativo entre modelos de porcentaje de copa"}
-diagPltsSAR.wq<-diagPlotlaglm(sar.cobertura.ap.wq)
+```{r diag-model-espaciales-copaap, fig.asp=0.67, fig.cap="Diagnóstico comparativo entre modelos de porcentaje de copa"}
+# diagPltsSAR.wq<-diagPlotlaglm(sar.cobertura.ap.wq)
 diagPltsSD.wd<-diagPlotlaglm(sd.cobertura.ap.wd)
 diagPltsOLS<-diagPlotlaglm(lm.best.cobertura.ap)
 
@@ -684,25 +689,10 @@ diagPltsOLS<-diagPlotlaglm(lm.best.cobertura.ap)
 grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               # arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
               # arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
-              arrangeGrob(grobs = diagPltsSAR.wq, ncol = 3,left = "SAR Wq"),
-              arrangeGrob(grobs = diagPltsSD.wd,ncol = 3, left = "SD Wd"),nrow =3)
+              # arrangeGrob(grobs = diagPltsSAR.wq, ncol = 3,left = "SAR Wq"),
+              arrangeGrob(grobs = diagPltsSD.wd,ncol = 3, left = "SD Wd"),nrow =2)
 ```
 
-```{r cauto-sar-copaap-wq}
-sm<-summary(sar.cobertura.ap.wq)
-r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
-r1<-unname(r1)
-t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
-          r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa', booktabs = TRUE)
-```
-
-
-```{r coef-sar-copaap-wq}
-sm<-summary(sar.cobertura.ap.wq)
-t1<-summary(sar.cobertura.ap.wq)$Coef
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SAR de porcentaje de área de copa $W_q$', booktabs = TRUE)
-```
 
 ```{r cauto-sd-copaap-wd}
 sm<-summary(sd.cobertura.ap.wd)
@@ -710,7 +700,7 @@ r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\rho$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de porcentaje de área de copa', booktabs = TRUE)
+knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD $W_d$ de porcentaje de área de copa ', booktabs = TRUE)
 ```
 
 ```{r coef-sd-copaap}
@@ -720,27 +710,9 @@ knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de
 ```
 
 
-## Acceso a espacios verdes
 
-```{r mapa-dependienteEV-all, fig.asp= 0.7,fig.cap="Metricas de acceso a espacio verdes"}
-su.f %>% dplyr::select(-area_su)  %>%
-  left_join(dep.EV.ntl.long,by = c("id"="SETU_CCDGO")) %>%
-  filter(dep.EV %in% dependientes.EV) %>%
-  ggplot()+
-  geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
-  geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
-  coord_equal()+
-  scale_fill_viridis( name = "deciles",
-                      direction = 1, 
-                      discrete = T, 
-                      na.value = "grey50",
-                      guide = guide_legend(direction = "horizontal",
-                                           label.position = "bottom",
-                                           title.position = 'top',
-                                           nrow = 1))+
-  facet_wrap(~dep.EV, nrow = 1)+
-  tema_lgnd_abajo()
-```
+
+## Acceso a espacios verdes
 
 En el caso de los EV contamos con una gran variedad de medidas sobre el acceso en relación con la distancia, el área disponible y diferentes formulaciones para aproximarse al concepto de acceso a un servicio ambiental (Figura \@ref(fig:mapa-dependienteEV-all)). Para acotar el alcance de este trabajo, nos concentramos en dos métricas: el porcentaje de área de espacio verde de un sector censal (`area_ep.porcentaje`), para aproximarse desde la idea de los beneficios principalmente a nivel local, y la razón área disponible distancia (`ia.areas.dist`), que tiende a formar agrupaciones de SU al rededor de las sectore donde se ubican espacios verdes, ya sea por número o por tamaño, que contemplan el fenómeno del acceso o beneficio como un proceso acotado por la distancia escogida de 1 kilómetro como radio de búsqueda; considerándola una distancia caminable para viajar en una ciudad como Cali. (Figura \@ref(fig:mapa-dependienteEV-sel))
 

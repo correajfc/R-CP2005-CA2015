@@ -37,22 +37,22 @@ library(latex2exp)
 
 #  correr los script en el orden correcto para realizar todos los calculos 
 # Start the clock!
-ptm <- proc.time()
-
-source("funciones.R")
-source("geodata.R")
-source("arboles.R")
-source("censopoblacion.R")
-source("consolidarDatos.R")
-source("analisis_exploratorio.R")
-source("analisis_estadistico.R")
-source("resultados.R")
-source("analisis_geoestadistico.R")
-source("analisis_estadistico_EV.R")
-source("analisis_geoestadistico_EV.R")
-# Stop the clock
-proc.time() - ptm
-save.image(file = "bck_201811.RData")
+# ptm <- proc.time()
+# 
+# source("funciones.R")
+# source("geodata.R")
+# source("arboles.R")
+# source("censopoblacion.R")
+# source("consolidarDatos.R")
+# source("analisis_exploratorio.R")
+# source("analisis_estadistico.R")
+# source("resultados.R")
+# source("analisis_geoestadistico.R")
+# source("analisis_estadistico_EV.R")
+# source("analisis_geoestadistico_EV.R")
+# # Stop the clock
+# proc.time() - ptm
+# save.image(file = "bck_201811.RData")
 
 load("bck_201811.RData")
 

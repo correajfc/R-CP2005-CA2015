@@ -1,5 +1,6 @@
 
 bookdown::render_book('index.Rmd', 'bookdown::gitbook')
+beepr::beep(8)
 #bookdown::preview_chapter("procesa_analisis.Rmd",'bookdown::gitbook')
 
 

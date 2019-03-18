@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-02-27">
+<meta name="date" content="2019-03-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -123,7 +123,7 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discusion.html"><a href="discusion.html"><i class="fa fa-check"></i><b>5</b> Discusión</a><ul>
-<li class="chapter" data-level="5.1" data-path="discusion.html"><a href="discusion.html#sobre-la-cobertura-de-copa"><i class="fa fa-check"></i><b>5.1</b> Sobre la cobertura de copa</a></li>
+<li class="chapter" data-level="5.1" data-path="discusion.html"><a href="discusion.html#sobre-el-arbolado-urbano"><i class="fa fa-check"></i><b>5.1</b> Sobre el arbolado urbano</a></li>
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
@@ -667,9 +667,9 @@ Figura 4.9: Matrices de vecindad del análisis espacial
 <p>Se analizó la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y que puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas <a href="results.html#tab:moran-copa-w">4.4</a> y <a href="results.html#tab:moran-copaap-w">4.5</a>).</p>
 <p>Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matrix <span class="math inline">\(W_q\)</span> captura mejor la autocorrelación del área de copa. En el caso de la cobertura de copa la matriz <span class="math inline">\(W_d\)</span> presenta un valor ligeramente mayor de autocorrelación.</p>
 <p>Los mapas LISA muestran los grupos de sectores que configuran la autocorrelación del área de copa usando la matriz para <span class="math inline">\(W_q\)</span> (figura <a href="results.html#fig:mapas-lisa-copa-wq">4.10</a>) y los grupos de la variable cobertura de copa usando la matriz <span class="math inline">\(W_d\)</span> (figura <a href="results.html#fig:mapas-lisa-copaap-wd">4.13</a>).</p>
-<p>Los grupos que se forman muestran patrones distintos para las dos indicadores seleccionados para caraterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa nos muestra las diferencias desde una perspetiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de area disponible en toda la ciudad. El indicadore de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU.</p>
+<p>Los grupos que se forman muestran patrones distintos en los dos indicadores seleccionados para caraterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa nos muestra las diferencias desde una perspetiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de area disponible en toda la ciudad. El indicador de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU.</p>
 <p>Es clara la similitud entre los grupos obtenidos para una misma variable dependendiente con ambos diseños de matriz <span class="math inline">\(W\)</span> (figura <a href="results.html#fig:mapas-lisa-copa-wq">4.10</a> y figura <a href="results.html#fig:mapas-lisa-copa-wd">4.11</a> para el área de copa y <a href="results.html#fig:mapas-lisa-copaap-wq">4.12</a> y <a href="results.html#fig:mapas-lisa-copaap-wd">4.13</a> para la cobertura de copa), posiblemente porque no existen diferencias notables entre los dos tipos de estructura de vecindad propuestas (figura <a href="results.html#fig:ws-su-reg">4.9</a>).</p>
-<p>Lo relevante en ambos diseños y los resultados de los análisis es que la vencidad de los SU exponen un grado de autocorrelación espacial y por lo tanto los grupos de alta y baja prestación en los servicios ecosistémicos del AU configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechanzado la hipotesis nula de distribucion espacial aleatoria o uniforme.</p>
+<p>Lo relevante en ambos diseños en los resultados de los análisis es que la vencidad de los SU exponen un grado de autocorrelación espacial y por lo tanto los grupos de alta y baja prestación en los servicios ecosistémicos del AU configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechanzado la hipotesis nula de distribucion espacial aleatoria o uniforme.</p>
 <table>
 <caption>
 <span id="tab:moran-copa-w">Tabla 4.4: </span>Test de Moran - Área de copa para <span class="math inline">\(W_q\)</span> y <span class="math inline">\(W_d\)</span>
@@ -846,9 +846,8 @@ Figura 4.13: Mapas LISA para la matriz <span class="math inline">\(W_d\)</span> 
 <div id="autocorrelacion-residuos-de-los-ols" class="section level4">
 <h4><span class="header-section-number">4.1.3.2</span> Autocorrelación residuos de los OLS</h4>
 <p>Para evaluar la utlidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la deteción de autocorrelación espacial.</p>
-<p>Ambos diseños de matriz <span class="math inline">\(W\)</span> presentan un valor de Moran Global mayor que 0 y significativo. <span class="math inline">\(W_d\)</span> lo hace mejor en los residuos, mientras <span class="math inline">\(W_q\)</span> lo hace mejor con la variable dependiente .</p>
-<p>al introducir estos retardos al modelo van a ayudar a absorber esa diferencias para mejorar la estimación.</p>
-<p>Para ambas matrices el valor de Moran Global es mayor que 0 y significativo, casi el doble más alto que para el modelo de área de copa; el indicador porcentual de cobertura y el residuo del modelo para ajustarlo muestra el mismo comprtamiento en la sensibilidad de las matrices: el efecto es más fuerte con <span class="math inline">\(W_d\)</span> para la variable dependiente y levemente mayor con <span class="math inline">\(W_q\)</span> en los residuos.</p>
+<p>La tabla <a href="results.html#tab:moran-rescopa-w">4.6</a> muestra ambos diseños de matriz <span class="math inline">\(W\)</span> presentan un valor de Moran Global mayor que 0 y significativo para los residuos del OLS de área de copa, al igual que para los residuos del OLS del porcentaje de cobertura (ver <a href="results.html#tab:moran-rescopaap-w">4.7</a>).</p>
+<p>En ambos modelos el resultado de autocorrelación espacial suguiere que al introducir retardos espaciales y la estrucutura de vecidad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.</p>
 <table>
 <caption>
 <span id="tab:moran-rescopa-w">Tabla 4.6: </span>Test de Moran - Residuos de OLS Área de copa para <span class="math inline">\(W_q\)</span> y <span class="math inline">\(W_d\)</span>
@@ -1000,12 +999,13 @@ p-valor
 </div>
 <div id="modelo-espacial-area-de-copa" class="section level4">
 <h4><span class="header-section-number">4.1.3.3</span> Modelo espacial área de copa</h4>
-<p>A continuación se presentan los resultados del modelado de los 3 tipos de modelos que usan las matrices <span class="math inline">\(W_d\)</span> y <span class="math inline">\(W_q\)</span> geoestadísticos para el área de copa. Las tablas @ref() y @ref() resumen las métricas de ajuste de los modelos de área de copa con ambas matrices.</p>
-<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SD o mixto(variables con retardo y autocorrelación) con el mejor AIC.</p>
-<p>El modelo SD ha logrado eliminar la autocorrelación espacial global en los residuos, al igual que SAR y SEM (ver figura <a href="#fig:moranplot-resmodel-all-wq"><strong>??</strong></a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\rho\)</span> y <span class="math inline">\(\lambda\)</span> de las estimaciones con términos de autorregresivos es significativo, lo que implica que la inclusión de los retardos funciona correctamente, aunque solo en los coeficientes de la variable retardada <code>cuarto.porcentaje</code> es significativo, aunque esta no tiene un coeficiente significativo como variable sin retardo, sugiriendo que interesa su efecto sobre el área de copa en los sectores vecinos a los focos de mayor concentración de viviendas tipo cuarto, pero no es importante en el resto de sectores. Como era de esperarse el porcentaje de área de espacios verdes es significativo en las variables sin retardo, pero no genera ningún efecto de derrame en la cobertura de copa de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
+<p>Las métricas de ajuste de los modelos con las matrices de vecindad <span class="math inline">\(W_d\)</span> (ver tabla <a href="results.html#tab:tabla-comp-modelos-copa-wd">4.9</a>) y <span class="math inline">\(W_q\)</span> (tabla <a href="results.html#tab:tabla-comp-modelos-copa-wq">4.8</a>) para el área de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Es importante anotar que la heterocedasticidad reportada en la tabla <a href="results.html#tab:ajuste-lmcopa-pob-predios">4.3</a> del modelo OLS desaparece al descartar la variables independientes con <span class="math inline">\(p\)</span>-valores no significativos, por lo que no se le puede adjudicar al uso de los terminos espaciales. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos, aunque en las gráficas diagnósticas se aprecia una semblanza aceptable (ver figura <a href="results.html#fig:diag-model-espaciales">4.14</a>) con problemas en valores extremos.</p>
+<p>Al comparar los resultados usando el desempeño en AIC, el mejor fue el SEM con la matriz <span class="math inline">\(W_d\)</span>, seguido del SD con <span class="math inline">\(W_q\)</span>, con leves diferencias entre las métricas. En cuanto a <span class="math inline">\(\lambda\)</span> (tabla <a href="results.html#tab:cauto-sem-copa">4.11</a>) y <span class="math inline">\(\rho\)</span> (tabla <a href="results.html#tab:cauto-sd-copa-wq">4.13</a>) , los términos autorregresivos, son significativos para SEM <span class="math inline">\(W_d\)</span> y para SD con <span class="math inline">\(W_q\)</span> repectivamente.</p>
+<p>El resultado del modelo SEM confirma la significancia de las variables de cantidad personas con estudios superiores y porcentaje de espacio verde con coeficientes de valores positivos, en ese orden de importancia. La densidad de población y la presencia de viviendas tipo cuarto, con coeficientes negativos, son factores que disminuyen la disponibilidad de área de copa en un SU (ver tabla <a href="results.html#tab:coef-sem-copa-wd">4.10</a>). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones.</p>
+<p>En el campo de la interpretación, el SEM incorpora el componente espacial como información no modelada por los predictores, y el SD como una influencia los retardos espaciales de las variables independientes. Cuando se acoje la perspectica de los retardos (modelo SD), solo se considera significativo el retardo de la variable de porcentaje de viviendas tipo cuarto, y descarta la variable no retardada. Es decir que la prevalencia de este tipo de viviendas en un sector urbano disminuye la disponibilidad de copa en sectores vecinos. Es intersante que las diferencias entre las matrices privilegien la escogencia de un modelo u otro, lo que alerta sobre la importancia de los supuesto en la escogencia de su estructura.</p>
 <table>
 <caption>
-<span id="tab:tabla-comp-modelos-copa">Tabla 4.8: </span>Metricas de ajuste para los modelos de área de copa <span class="math inline">\(W_q\)</span>
+<span id="tab:tabla-comp-modelos-copa-wq">Tabla 4.8: </span>Metricas de ajuste para los modelos de área de copa <span class="math inline">\(W_q\)</span>
 </caption>
 <thead>
 <tr>
@@ -1818,11 +1818,13 @@ p-value
 </div>
 <div id="modelo-espacial-porcentaje-de-cobertura-de-area-de-copa" class="section level4">
 <h4><span class="header-section-number">4.1.3.4</span> Modelo espacial porcentaje de cobertura de área de copa</h4>
-<p>El mismo ejercicio se aplica al porcentaje de cobertura de copa.</p>
-<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SAR con el mejor rendimiento en el ajuste del modelo. El coeficiente de correlación <span class="math inline">\(\rho\)</span> es alto y muy significativo, lo que nos dice que es una mejora la inclusión de las características espaciales en los datos, y se reflejados en el índice de Akaike que tiene una mejora visible (de <span class="math inline">\(-535.6643429\)</span> a <span class="math inline">\(-562.2432322\)</span>). Consistentemente la variable de <strong>estudios superiores</strong> en la población refleja el patrón de agrupamiento de la cobertura de copa teniendo la mayor importancia para la estimación; pero es poco significativa como variable retardada, y es por esto que los modelos de error espacial SEM y el mixto (SD) no son mejores que el autorregresivo. Todos los modelos espaciales logran reducir la autocorrelación en los residuos (ver figura <a href="#fig:moranplot-resmodel-all-copaap-wq"><strong>??</strong></a>) lo que hace más confiables los coeficientes estimados, pero en el modelo SAR se mantiene una importancia en el efecto de la densidad de población como determinante para la reducción de la cobertura de copa.</p>
+<p>Las métricas de ajuste de los modelos con las matrices de vecindad <span class="math inline">\(W_d\)</span> (ver tabla <a href="results.html#tab:tabla-comp-modelos-copaap-wd">4.15</a>) y <span class="math inline">\(W_q\)</span> (tabla <a href="results.html#tab:tabla-comp-modelos-copaap-wq">4.14</a>) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con <span class="math inline">\(W_d\)</span>. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura <a href="results.html#fig:diag-model-espaciales-copaap">4.15</a>).</p>
+<p>Al comparar los resultados usando el desempeño en AIC, el mejor fue el SD con la matriz <span class="math inline">\(W_d\)</span>. <span class="math inline">\(\rho\)</span>, el término autorregresivo, es de un valor alto y muy significativo para el modelo SD con <span class="math inline">\(W_d\)</span>.</p>
+<p>El resultado del modelo SD confirma la significancia de la única variable independiente: porcentaje de personas con estudios superiores, con coeficiente positivo, identificándolo como un factores relacionado con el aumento la proporción de área de copa en un SU (ver tabla <a href="results.html#tab:coef-sem-copa-wd">4.10</a>). Existen una reducción del valor del coeficiente con relación al modelo OLS.</p>
+<p>La variable de <strong>estudios superiores</strong> en la población refleja el patrón de agrupamiento espacial de la cobertura de copa pero es poco significativa como variable retardada, cuestión que pone dudas sobre si el SD proponga una interpretación acertada o diferente de un modelo autoregresivo puro (SAR).</p>
 <table>
 <caption>
-<span id="tab:tabla-comp-modelos-copaap-Wq">Tabla 4.14: </span>Metricas de ajuste para los modelos de porcentaje de área de copa <span class="math inline">\(W_q\)</span>
+<span id="tab:tabla-comp-modelos-copaap-wq">Tabla 4.14: </span>Metricas de ajuste para los modelos de porcentaje de área de copa <span class="math inline">\(W_q\)</span>
 </caption>
 <thead>
 <tr>
@@ -2288,95 +2290,7 @@ Figura 4.15: Diagnóstico comparativo entre modelos de porcentaje de copa
 </div>
 <table>
 <caption>
-<span id="tab:cauto-sar-copaap-wq">Tabla 4.16: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de copa
-</caption>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\rho\)</span>
-</td>
-<td style="text-align:left;">
-Likelihood ratio
-</td>
-<td style="text-align:left;">
-p-value
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-0.375
-</td>
-<td style="text-align:left;">
-28.579
-</td>
-<td style="text-align:left;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption>
-<span id="tab:coef-sar-copaap-wq">Tabla 4.17: </span>Coeficientes del modelo SAR de porcentaje de área de copa <span class="math inline">\(W_q\)</span>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Estimate
-</th>
-<th style="text-align:right;">
-Std. Error
-</th>
-<th style="text-align:right;">
-z value
-</th>
-<th style="text-align:right;">
-Pr(&gt;|z|)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:right;">
-0.030
-</td>
-<td style="text-align:right;">
-0.011
-</td>
-<td style="text-align:right;">
-2.822
-</td>
-<td style="text-align:right;">
-0.005
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-superior_postgrado.porcentaje.mxn
-</td>
-<td style="text-align:right;">
-0.246
-</td>
-<td style="text-align:right;">
-0.027
-</td>
-<td style="text-align:right;">
-9.023
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption>
-<span id="tab:cauto-sd-copaap-wd">Tabla 4.18: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de copa
+<span id="tab:cauto-sd-copaap-wd">Tabla 4.16: </span>Coeficiente de autocorrelación modelo SD <span class="math inline">\(W_d\)</span> de porcentaje de área de copa
 </caption>
 <tbody>
 <tr>
@@ -2405,7 +2319,7 @@ p-valor
 </table>
 <table>
 <caption>
-<span id="tab:coef-sd-copaap">Tabla 4.19: </span>Coeficientes del modelo SD de porcentaje de área de copa <span class="math inline">\(W_d\)</span>
+<span id="tab:coef-sd-copaap">Tabla 4.17: </span>Coeficientes del modelo SD de porcentaje de área de copa <span class="math inline">\(W_d\)</span>
 </caption>
 <thead>
 <tr>
@@ -2484,58 +2398,52 @@ lag.superior_postgrado.porcentaje.mxn
 </div>
 <div id="acceso-a-espacios-verdes-1" class="section level2">
 <h2><span class="header-section-number">4.2</span> Acceso a espacios verdes</h2>
-<div class="figure"><span id="fig:mapa-dependienteEV-all"></span>
-<img src="tesis-unigis_files/figure-html/mapa-dependienteEV-all-1.png" alt="Metricas de acceso a espacio verdes" width="100%" />
-<p class="caption">
-Figura 4.16: Metricas de acceso a espacio verdes
-</p>
-</div>
-<p>En el caso de los EV contamos con una gran variedad de medidas sobre el acceso en relación con la distancia, el área disponible y diferentes formulaciones para aproximarse al concepto de acceso a un servicio ambiental (Figura <a href="results.html#fig:mapa-dependienteEV-all">4.16</a>). Para acotar el alcance de este trabajo, nos concentramos en dos métricas: el porcentaje de área de espacio verde de un sector censal (<code>area_ep.porcentaje</code>), para aproximarse desde la idea de los beneficios principalmente a nivel local, y la razón área disponible distancia (<code>ia.areas.dist</code>), que tiende a formar agrupaciones de SU al rededor de las sectore donde se ubican espacios verdes, ya sea por número o por tamaño, que contemplan el fenómeno del acceso o beneficio como un proceso acotado por la distancia escogida de 1 kilómetro como radio de búsqueda; considerándola una distancia caminable para viajar en una ciudad como Cali. (Figura <a href="results.html#fig:mapa-dependienteEV-sel">4.17</a>)</p>
+<p>En el caso de los EV contamos con una gran variedad de medidas sobre el acceso en relación con la distancia, el área disponible y diferentes formulaciones para aproximarse al concepto de acceso a un servicio ambiental (Figura <a href="#fig:mapa-dependienteEV-all"><strong>??</strong></a>). Para acotar el alcance de este trabajo, nos concentramos en dos métricas: el porcentaje de área de espacio verde de un sector censal (<code>area_ep.porcentaje</code>), para aproximarse desde la idea de los beneficios principalmente a nivel local, y la razón área disponible distancia (<code>ia.areas.dist</code>), que tiende a formar agrupaciones de SU al rededor de las sectore donde se ubican espacios verdes, ya sea por número o por tamaño, que contemplan el fenómeno del acceso o beneficio como un proceso acotado por la distancia escogida de 1 kilómetro como radio de búsqueda; considerándola una distancia caminable para viajar en una ciudad como Cali. (Figura <a href="results.html#fig:mapa-dependienteEV-sel">4.16</a>)</p>
 <div class="figure"><span id="fig:mapa-dependienteEV-sel"></span>
 <img src="tesis-unigis_files/figure-html/mapa-dependienteEV-sel-1.png" alt="Metricas de acceso a espacio verdes seleccionadas" width="100%" />
 <p class="caption">
-Figura 4.17: Metricas de acceso a espacio verdes seleccionadas
+Figura 4.16: Metricas de acceso a espacio verdes seleccionadas
 </p>
 </div>
 <div id="correlaciones-y-distribuciones-bivariadas" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Correlaciones y distribuciones bivariadas</h3>
-<p>Las variables de población y su correlación con los indicadores de acceso seleccionados nos sirven para seleccionar una vez más las variables independientes para usar en los modelos de regresión lineal. Las figuras <a href="results.html#fig:tile-ev-poblacion-pearson">4.18</a> y <a href="results.html#fig:tile-ev-poblacion-spearman">4.19</a> resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente. Como se observa, esta relación es muy débil, y en todos las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado muy bajo para incluir alguna de estas variables para que tenga éxito una aproximación lineal o no lineal al predecir o ajustar valores. Sin embargo, y como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, seleccionaremos las variables con mayor correlación: <code>densidad_poblacion</code>,<code>con_alguna_limitacion.porcentaje</code> mejor relacionadas con el índice de acceso <code>ia.areas.dist</code> y <code>ningun_estudio.porcentaje</code> para <code>area_ep.porcentaje</code>.</p>
+<p>Las variables de población y su correlación con los indicadores de acceso seleccionados nos sirven para seleccionar una vez más las variables independientes para usar en los modelos de regresión lineal. Las figuras <a href="results.html#fig:tile-ev-poblacion-pearson">4.17</a> y <a href="results.html#fig:tile-ev-poblacion-spearman">4.18</a> resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente. Como se observa, esta relación es muy débil, y en todos las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado muy bajo para incluir alguna de estas variables para que tenga éxito una aproximación lineal o no lineal al predecir o ajustar valores. Sin embargo, y como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, seleccionaremos las variables con mayor correlación: <code>densidad_poblacion</code>,<code>con_alguna_limitacion.porcentaje</code> mejor relacionadas con el índice de acceso <code>ia.areas.dist</code> y <code>ningun_estudio.porcentaje</code> para <code>area_ep.porcentaje</code>.</p>
 <div class="figure"><span id="fig:tile-ev-poblacion-pearson"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-poblacion-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables de población" width="100%" />
 <p class="caption">
-Figura 4.18: Coeficiente Pearson entre acceso a EV y variables de población
+Figura 4.17: Coeficiente Pearson entre acceso a EV y variables de población
 </p>
 </div>
 <div class="figure"><span id="fig:tile-ev-poblacion-spearman"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-poblacion-spearman-1.png" alt="Coeficiente Spearman entre acceso a EV y variables de población" width="100%" />
 <p class="caption">
-Figura 4.19: Coeficiente Spearman entre acceso a EV y variables de población
+Figura 4.18: Coeficiente Spearman entre acceso a EV y variables de población
 </p>
 </div>
-<p>Resulta interesante ver, al igual que en el modelado de la cobertura de copa, si otras variables no poblacionales explican los resultados de los índices de acceso seleccionados. El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación se muestran en las figuras <a href="results.html#fig:tile-ev-uso-pearson">4.20</a> y <a href="results.html#fig:tile-ev-uso-spearman">4.21</a>. De nuevo las correlaciones son bajas, aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: <code>unidad_economica.porcentaje</code> y el <code>cuarto.porcentaje</code>.</p>
+<p>Resulta interesante ver, al igual que en el modelado de la cobertura de copa, si otras variables no poblacionales explican los resultados de los índices de acceso seleccionados. El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación se muestran en las figuras <a href="results.html#fig:tile-ev-uso-pearson">4.19</a> y <a href="results.html#fig:tile-ev-uso-spearman">4.20</a>. De nuevo las correlaciones son bajas, aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: <code>unidad_economica.porcentaje</code> y el <code>cuarto.porcentaje</code>.</p>
 <div class="figure"><span id="fig:tile-ev-uso-pearson"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-uso-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables de uso de los predios" width="100%" />
 <p class="caption">
-Figura 4.20: Coeficiente Pearson entre acceso a EV y variables de uso de los predios
+Figura 4.19: Coeficiente Pearson entre acceso a EV y variables de uso de los predios
 </p>
 </div>
 <div class="figure"><span id="fig:tile-ev-uso-spearman"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-uso-spearman-1.png" alt="Coeficiente Spearman entre acceso a EV y variables de uso de los predios" width="100%" />
 <p class="caption">
-Figura 4.21: Coeficiente Spearman entre acceso a EV y variables de uso de los predios
+Figura 4.20: Coeficiente Spearman entre acceso a EV y variables de uso de los predios
 </p>
 </div>
-<p>El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura <a href="results.html#fig:tile-ev-fisica-pearson">4.22</a> y <a href="results.html#fig:tile-ev-fisica-spearman">4.23</a> muestran que el área media de las manzanas (<code>area_media_manzana</code>) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables exploradas hasta el momento. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que no haremos uso de ellas en la modelación.</p>
+<p>El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura <a href="results.html#fig:tile-ev-fisica-pearson">4.21</a> y <a href="results.html#fig:tile-ev-fisica-spearman">4.22</a> muestran que el área media de las manzanas (<code>area_media_manzana</code>) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables exploradas hasta el momento. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que no haremos uso de ellas en la modelación.</p>
 <div class="figure"><span id="fig:tile-ev-fisica-pearson"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-fisica-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU" width="100%" />
 <p class="caption">
-Figura 4.22: Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU
+Figura 4.21: Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU
 </p>
 </div>
 <div class="figure"><span id="fig:tile-ev-fisica-spearman"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-fisica-spearman-1.png" alt="Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU" width="100%" />
 <p class="caption">
-Figura 4.23: Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU
+Figura 4.22: Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU
 </p>
 </div>
 </div>
@@ -2545,7 +2453,7 @@ Figura 4.23: Coeficiente Spearman entre acceso a EV y variables sobre aspectos f
 <p>Para el índice de acceso de porcentaje de área de espacios verdes en un sector urbano el modelo obtiene los coeficientes de la tabla</p>
 <table>
 <caption>
-<span id="tab:coef-lm-ptjeAEV">Tabla 4.20: </span>Coeficientes OLS de porcentaje de área de espacios verdes
+<span id="tab:coef-lm-ptjeAEV">Tabla 4.18: </span>Coeficientes OLS de porcentaje de área de espacios verdes
 </caption>
 <thead>
 <tr>
@@ -2687,24 +2595,24 @@ ningun_estudio.porcentaje.mxn
 </tr>
 </tbody>
 </table>
-<p>La tabla <a href="results.html#tab:coef-lm-ptjeAEV">4.20</a> muestran que las variables <code>cuarto.porcentaje</code> <code>area_media_manzana</code> son significativas.</p>
-<p>Los gráficos <a href="results.html#fig:diagn-lm-areaep-sel">4.24</a> muestran los resultados del ajuste en relación con los residuos y <a href="results.html#fig:mapas-lm-areaep">4.25</a> espacialmente.</p>
+<p>La tabla <a href="results.html#tab:coef-lm-ptjeAEV">4.18</a> muestran que las variables <code>cuarto.porcentaje</code> <code>area_media_manzana</code> son significativas.</p>
+<p>Los gráficos <a href="results.html#fig:diagn-lm-areaep-sel">4.23</a> muestran los resultados del ajuste en relación con los residuos y <a href="results.html#fig:mapas-lm-areaep">4.24</a> espacialmente.</p>
 <div class="figure"><span id="fig:diagn-lm-areaep-sel"></span>
 <img src="tesis-unigis_files/figure-html/diagn-lm-areaep-sel-1.png" alt="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de area de espacio verde" width="100%" />
 <p class="caption">
-Figura 4.24: Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de area de espacio verde
+Figura 4.23: Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de area de espacio verde
 </p>
 </div>
 <div class="figure"><span id="fig:mapas-lm-areaep"></span>
 <img src="tesis-unigis_files/figure-html/mapas-lm-areaep-1.png" alt="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `area ep.porcentaje` normalizada" width="100%" />
 <p class="caption">
-Figura 4.25: Variable dependiente, valor ajustado por el modelo y residuos del OLS para <code>area ep.porcentaje</code> normalizada
+Figura 4.24: Variable dependiente, valor ajustado por el modelo y residuos del OLS para <code>area ep.porcentaje</code> normalizada
 </p>
 </div>
-<p>Para el indice de acceso <code>ia.areas.dist</code> el modelo con todos lo terminos es el se resume en la tabla <a href="results.html#tab:coef-lm-areadist">4.21</a></p>
+<p>Para el indice de acceso <code>ia.areas.dist</code> el modelo con todos lo terminos es el se resume en la tabla <a href="results.html#tab:coef-lm-areadist">4.19</a></p>
 <table>
 <caption>
-<span id="tab:coef-lm-areadist">Tabla 4.21: </span>Coeficientes OLS de porcentaje de indice de acceso areas-distancia
+<span id="tab:coef-lm-areadist">Tabla 4.19: </span>Coeficientes OLS de porcentaje de indice de acceso areas-distancia
 </caption>
 <thead>
 <tr>
@@ -2846,23 +2754,23 @@ ningun_estudio.porcentaje.mxn
 </tr>
 </tbody>
 </table>
-<p>Solo la densidad de población no es significativa. Consideraremos el modelo sin simplificar para los ajustes geoestadístico. Los gráficos <a href="results.html#fig:diagn-lm-areadist-sel">4.26</a> muestran los resultados del ajuste del modelo con todas las variables en relación con los residuos y <a href="results.html#fig:mapas-lm-areasdist">4.27</a> espacialmente.</p>
+<p>Solo la densidad de población no es significativa. Consideraremos el modelo sin simplificar para los ajustes geoestadístico. Los gráficos <a href="results.html#fig:diagn-lm-areadist-sel">4.25</a> muestran los resultados del ajuste del modelo con todas las variables en relación con los residuos y <a href="results.html#fig:mapas-lm-areasdist">4.26</a> espacialmente.</p>
 <div class="figure"><span id="fig:diagn-lm-areadist-sel"></span>
 <img src="tesis-unigis_files/figure-html/diagn-lm-areadist-sel-1.png" alt="Gráficas diagnósticas para el análisis de regresión lineal de 'ia.areas.dist'" width="100%" />
 <p class="caption">
-Figura 4.26: Gráficas diagnósticas para el análisis de regresión lineal de ‘ia.areas.dist’
+Figura 4.25: Gráficas diagnósticas para el análisis de regresión lineal de ‘ia.areas.dist’
 </p>
 </div>
 <div class="figure"><span id="fig:mapas-lm-areasdist"></span>
 <img src="tesis-unigis_files/figure-html/mapas-lm-areasdist-1.png" alt="Variable dependiente, valor ajustado por el modelo y residuos del OLS para `ia.areas.dist` normalizada" width="100%" />
 <p class="caption">
-Figura 4.27: Variable dependiente, valor ajustado por el modelo y residuos del OLS para <code>ia.areas.dist</code> normalizada
+Figura 4.26: Variable dependiente, valor ajustado por el modelo y residuos del OLS para <code>ia.areas.dist</code> normalizada
 </p>
 </div>
-<p>La tabla <a href="results.html#tab:ajuste-lmEV-pob-predios">4.22</a> resume las métricas de ajuste de ambos modelos de acceso a EV.</p>
+<p>La tabla <a href="results.html#tab:ajuste-lmEV-pob-predios">4.20</a> resume las métricas de ajuste de ambos modelos de acceso a EV.</p>
 <table>
 <caption>
-<span id="tab:ajuste-lmEV-pob-predios">Tabla 4.22: </span>Resumen métricas de ajuste OLS Indice contenedor y de acceso área-distancia
+<span id="tab:ajuste-lmEV-pob-predios">Tabla 4.20: </span>Resumen métricas de ajuste OLS Indice contenedor y de acceso área-distancia
 </caption>
 <thead>
 <tr>
@@ -2985,11 +2893,11 @@ Log likelihood
 <p>El proceso de ajuste de los modelos geoestadísticos para el análisis de espacios verdes hace uso de los mismos elementos metodológicos usados para la cobertura de copa. Se construyen dos matrices de velocidad usando un kernel de vecindad Queen <span class="math inline">\(W_q\)</span> y otro con base en un radio de búsqueda de 1 kilómetro <span class="math inline">\(W_d\)</span>. El primer paso es evaluar cuál de las matrices captura mejor la autocorrelación de los residuos de los modelos lineales y de las variables dependientes. Seguidamente se compara los diferentes modelos espaciales para seleccionar el de mejor ajuste y finalmente se evalúa la significancia de las variables y el valor de los coeficientes de la regresión y la mejora en el ajuste con relación a los modelos lineales.</p>
 <div id="matrices-de-vecindad-1" class="section level4">
 <h4><span class="header-section-number">4.2.3.1</span> Matrices de vecindad</h4>
-<p>Las dos matrices de vecindad construidas con los SU seleccionados para el análisis de regresión lineal. Las dos matrices resultantes se muestran en la figura <a href="results.html#fig:ws-su-reg-ev">4.28</a></p>
+<p>Las dos matrices de vecindad construidas con los SU seleccionados para el análisis de regresión lineal. Las dos matrices resultantes se muestran en la figura <a href="results.html#fig:ws-su-reg-ev">4.27</a></p>
 <div class="figure" style="text-align: center"><span id="fig:ws-su-reg-ev"></span>
 <img src="tesis-unigis_files/figure-html/ws-su-reg-ev-1.png" alt="Matrices de vecindad del análisis espacial de espacios verdes" width="48%" /><img src="tesis-unigis_files/figure-html/ws-su-reg-ev-2.png" alt="Matrices de vecindad del análisis espacial de espacios verdes" width="48%" />
 <p class="caption">
-Figura 4.28: Matrices de vecindad del análisis espacial de espacios verdes
+Figura 4.27: Matrices de vecindad del análisis espacial de espacios verdes
 </p>
 </div>
 </div>
@@ -2997,10 +2905,10 @@ Figura 4.28: Matrices de vecindad del análisis espacial de espacios verdes
 <h4><span class="header-section-number">4.2.3.2</span> Autocorrelación espacial</h4>
 <div id="variables-dependientes-1" class="section level5">
 <h5><span class="header-section-number">4.2.3.2.1</span> Variables dependientes</h5>
-<p>Comparemos el efecto de cada una de las matrices sobre el indicador <code>area_ep.porcentaje</code> (Tabla <a href="results.html#tab:moran-areaep-wq">4.23</a> y <a href="results.html#tab:moran-areaep-wd">4.24</a>)</p>
+<p>Comparemos el efecto de cada una de las matrices sobre el indicador <code>area_ep.porcentaje</code> (Tabla <a href="results.html#tab:moran-areaep-wq">4.21</a> y <a href="results.html#tab:moran-areaep-wd">4.22</a>)</p>
 <table>
 <caption>
-<span id="tab:moran-areaep-wq">Tabla 4.23: </span>Test de Moran - Porcentaje de área de EV <span class="math inline">\(W_q\)</span>
+<span id="tab:moran-areaep-wq">Tabla 4.21: </span>Test de Moran - Porcentaje de área de EV <span class="math inline">\(W_q\)</span>
 </caption>
 <thead>
 <tr>
@@ -3055,7 +2963,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:moran-areaep-wd">Tabla 4.24: </span>Test de Moran - Porcentaje de área de EV <span class="math inline">\(W_d\)</span>
+<span id="tab:moran-areaep-wd">Tabla 4.22: </span>Test de Moran - Porcentaje de área de EV <span class="math inline">\(W_d\)</span>
 </caption>
 <thead>
 <tr>
@@ -3110,7 +3018,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:moran-areadist-wd">Tabla 4.25: </span>Test de Moran - Relación áreas distancias <span class="math inline">\(W_d\)</span>
+<span id="tab:moran-areadist-wd">Tabla 4.23: </span>Test de Moran - Relación áreas distancias <span class="math inline">\(W_d\)</span>
 </caption>
 <thead>
 <tr>
@@ -3165,7 +3073,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:moran-areadist-wq">Tabla 4.26: </span>Test de Moran - Relación áreas distancias <span class="math inline">\(W_q\)</span>
+<span id="tab:moran-areadist-wq">Tabla 4.24: </span>Test de Moran - Relación áreas distancias <span class="math inline">\(W_q\)</span>
 </caption>
 <thead>
 <tr>
@@ -3219,20 +3127,20 @@ p-value
 </tbody>
 </table>
 <p>La matriz <span class="math inline">\(W_q\)</span> captura con mayor fuerza la autocorrelación espacial de <code>area_ep.porcentaje</code>. Al repetir el test para <code>ai.areas.dist</code> una vez más <span class="math inline">\(W_q\)</span> captura con mayor intensidad la autocorrelación espacial del indicador, que es mucho mayor que en <code>area_ep.porcentaje</code>, posiblemente por representar una característica local del acceso. Hay que anotar aquí que el cálculo del índice <code>ia.areas.dist</code> en su construcción usa una distancia de radio de búsqueda de 1 kilómetro; en su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o clusters alrededor de ciertos sectores urbanos. Resulta pues interesante no sea <span class="math inline">\(W_d\)</span> la que capture mejor el agrupamiento.</p>
-<p>Para indagar sobre los patrones espaciales de los dos indicadores usando <span class="math inline">\(W_q\)</span> se muestran los mapas de LISA en la figura <a href="results.html#fig:mapas-lisa-ev-wq">4.29</a>. Se aprecia que se forman cluster alrededor de tres zonas en el caso del porcentaje de área de espacio verde y dos para el indicador de la relación areas-distancia, coincidentes con el anterior. Ahí se encuentran equipamentos de ciudad como un cementerio de gran tamaño, las universidades, zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje.</p>
+<p>Para indagar sobre los patrones espaciales de los dos indicadores usando <span class="math inline">\(W_q\)</span> se muestran los mapas de LISA en la figura <a href="results.html#fig:mapas-lisa-ev-wq">4.28</a>. Se aprecia que se forman cluster alrededor de tres zonas en el caso del porcentaje de área de espacio verde y dos para el indicador de la relación areas-distancia, coincidentes con el anterior. Ahí se encuentran equipamentos de ciudad como un cementerio de gran tamaño, las universidades, zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje.</p>
 <div class="figure"><span id="fig:mapas-lisa-ev-wq"></span>
 <img src="tesis-unigis_files/figure-html/mapas-lisa-ev-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de ambos indicadores de acceso a EV" width="100%" /><img src="tesis-unigis_files/figure-html/mapas-lisa-ev-wq-2.png" alt="Mapas LISA para la matriz $W_q$ de ambos indicadores de acceso a EV" width="100%" />
 <p class="caption">
-Figura 4.29: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de ambos indicadores de acceso a EV
+Figura 4.28: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de ambos indicadores de acceso a EV
 </p>
 </div>
 </div>
 <div id="residuos-de-los-ols" class="section level5">
 <h5><span class="header-section-number">4.2.3.2.2</span> Residuos de los OLS</h5>
-<p>Examinemos ahora los residuos de cada modelo lineal seleccionado. Aplicamos el test de Moran primero al modelo de <code>area_ep.porcentaje</code> con ambas matrices de vecindad. La figura <a href="results.html#fig:moranplot-resareaep-w">4.30</a> muestra el mismo resultado gráficamente.</p>
+<p>Examinemos ahora los residuos de cada modelo lineal seleccionado. Aplicamos el test de Moran primero al modelo de <code>area_ep.porcentaje</code> con ambas matrices de vecindad. La figura <a href="results.html#fig:moranplot-resareaep-w">4.29</a> muestra el mismo resultado gráficamente.</p>
 <table>
 <caption>
-<span id="tab:moran-resareaep-wq">Tabla 4.27: </span>Test de Moran - Residuos OLS porcentaje de área de EV <span class="math inline">\(W_q\)</span>
+<span id="tab:moran-resareaep-wq">Tabla 4.25: </span>Test de Moran - Residuos OLS porcentaje de área de EV <span class="math inline">\(W_q\)</span>
 </caption>
 <thead>
 <tr>
@@ -3287,7 +3195,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:moran-resareaep-wd">Tabla 4.28: </span>Test de Moran - Residuos OLS porcentaje de área de EV <span class="math inline">\(W_D\)</span>
+<span id="tab:moran-resareaep-wd">Tabla 4.26: </span>Test de Moran - Residuos OLS porcentaje de área de EV <span class="math inline">\(W_D\)</span>
 </caption>
 <thead>
 <tr>
@@ -3343,13 +3251,13 @@ p-value
 <div class="figure"><span id="fig:moranplot-resareaep-w"></span>
 <img src="tesis-unigis_files/figure-html/moranplot-resareaep-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resareaep-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde" width="49%" />
 <p class="caption">
-Figura 4.30: Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde
+Figura 4.29: Gráfico de Moran para los residuos del modelo lineal para el porcentaje de área de espacio verde
 </p>
 </div>
 <p>Al igual que con la variable dependiente, <span class="math inline">\(W_q\)</span> captura con mayor intensidad autocorrelación en los residuos. Los resultados de aplicar el test a <code>ia.areas.dist</code> confirman que la matriz de vecindad que usaremos para el ajuste es <span class="math inline">\(W_q\)</span>.</p>
 <table>
 <caption>
-<span id="tab:moran-resareadist-wq">Tabla 4.29: </span>Test de Moran - Residuos OLS relación áreas distancias <span class="math inline">\(W_q\)</span>
+<span id="tab:moran-resareadist-wq">Tabla 4.27: </span>Test de Moran - Residuos OLS relación áreas distancias <span class="math inline">\(W_q\)</span>
 </caption>
 <thead>
 <tr>
@@ -3404,7 +3312,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:moran-resareadist-wd">Tabla 4.30: </span>Test de Moran - Residuos OLS relación áreas distancias <span class="math inline">\(W_d\)</span>
+<span id="tab:moran-resareadist-wd">Tabla 4.28: </span>Test de Moran - Residuos OLS relación áreas distancias <span class="math inline">\(W_d\)</span>
 </caption>
 <thead>
 <tr>
@@ -3460,14 +3368,14 @@ p-value
 <div class="figure"><span id="fig:moranplot-resareasdist-w"></span>
 <img src="tesis-unigis_files/figure-html/moranplot-resareasdist-w-1.png" alt="Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resareasdist-w-2.png" alt="Gráfico de Moran para los residuos del modelo lineal para el indicador `ia.areas.dist`" width="49%" />
 <p class="caption">
-Figura 4.31: Gráfico de Moran para los residuos del modelo lineal para el indicador <code>ia.areas.dist</code>
+Figura 4.30: Gráfico de Moran para los residuos del modelo lineal para el indicador <code>ia.areas.dist</code>
 </p>
 </div>
 <p>Los mapas de LISA para los residuos de ambos modelos con la matriz <span class="math inline">\(W_q\)</span> se muestran a continuación.</p>
 <div class="figure"><span id="fig:mapas-lisa-resev-wq"></span>
 <img src="tesis-unigis_files/figure-html/mapas-lisa-resev-wq-1.png" alt="Mapas LISA para la matriz $W_q$ de los residuos de los modelos lineales para los indicadores de acceso a EV" width="100%" /><img src="tesis-unigis_files/figure-html/mapas-lisa-resev-wq-2.png" alt="Mapas LISA para la matriz $W_q$ de los residuos de los modelos lineales para los indicadores de acceso a EV" width="100%" />
 <p class="caption">
-Figura 4.32: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de los residuos de los modelos lineales para los indicadores de acceso a EV
+Figura 4.31: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> de los residuos de los modelos lineales para los indicadores de acceso a EV
 </p>
 </div>
 </div>
@@ -3479,7 +3387,7 @@ Figura 4.32: Mapas LISA para la matriz <span class="math inline">\(W_q\)</span> 
 <h5><span class="header-section-number">4.2.3.3.1</span> Porcentaje de espacio verde</h5>
 <table>
 <caption>
-<span id="tab:coef-sar-areaep">Tabla 4.31: </span>Coeficientes del modelo SAR de porcentaje de área de EV
+<span id="tab:coef-sar-areaep">Tabla 4.29: </span>Coeficientes del modelo SAR de porcentaje de área de EV
 </caption>
 <thead>
 <tr>
@@ -3555,7 +3463,7 @@ area_media_manzana.mxn
 </table>
 <table>
 <caption>
-<span id="tab:cauto-sar-areaep">Tabla 4.32: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de EV
+<span id="tab:cauto-sar-areaep">Tabla 4.30: </span>Coeficiente de autocorrelación modelo SAR de porcentaje de área de EV
 </caption>
 <tbody>
 <tr>
@@ -3584,7 +3492,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:coef-sem-areaep">Tabla 4.33: </span>Coeficientes del modelo SEM de porcentaje de área de EV
+<span id="tab:coef-sem-areaep">Tabla 4.31: </span>Coeficientes del modelo SEM de porcentaje de área de EV
 </caption>
 <thead>
 <tr>
@@ -3660,7 +3568,7 @@ area_media_manzana.mxn
 </table>
 <table>
 <caption>
-<span id="tab:cauto-sem-areaep">Tabla 4.34: </span>Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV
+<span id="tab:cauto-sem-areaep">Tabla 4.32: </span>Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV
 </caption>
 <tbody>
 <tr>
@@ -3689,7 +3597,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:coef-sd-areaep">Tabla 4.35: </span>Coeficientes del modelo SD de porcentaje de área de EV
+<span id="tab:coef-sd-areaep">Tabla 4.33: </span>Coeficientes del modelo SD de porcentaje de área de EV
 </caption>
 <thead>
 <tr>
@@ -3799,7 +3707,7 @@ lag.area_media_manzana.mxn
 </table>
 <table>
 <caption>
-<span id="tab:cauto-sd-areaep">Tabla 4.36: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de EV
+<span id="tab:cauto-sd-areaep">Tabla 4.34: </span>Coeficiente de autocorrelación modelo SD de porcentaje de área de EV
 </caption>
 <tbody>
 <tr>
@@ -3828,7 +3736,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:coef-slx-areaep">Tabla 4.37: </span>Coeficientes del modelo SLX de porcentaje de área de EV
+<span id="tab:coef-slx-areaep">Tabla 4.35: </span>Coeficientes del modelo SLX de porcentaje de área de EV
 </caption>
 <thead>
 <tr>
@@ -3938,7 +3846,7 @@ xlag.area_media_manzana.mxn
 </table>
 <table>
 <caption>
-<span id="tab:tabla-comp-modelos-areaep">Tabla 4.38: </span>Metricas de ajuste para los modelos de porcentaje de área de EV
+<span id="tab:tabla-comp-modelos-areaep">Tabla 4.36: </span>Metricas de ajuste para los modelos de porcentaje de área de EV
 </caption>
 <thead>
 <tr>
@@ -4205,17 +4113,17 @@ Log likelihood
 </tr>
 </tbody>
 </table>
-<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SEM con el mejor AIC. El modelo SEM logra eliminar la autocorrelación espacial global en los residuos, al igual que SD (ver figura <a href="results.html#fig:moranplot-resmodel-areaep-all-wq">4.33</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\lambda\)</span> de las estimaciones con términos autorregresivos es significativo, esto sugiere que no es necesario plantear efectos distintivos de la variables dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas, pero no genera ningún efecto de derrame en el acceso a espacios verdes de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
+<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SEM con el mejor AIC. El modelo SEM logra eliminar la autocorrelación espacial global en los residuos, al igual que SD (ver figura <a href="results.html#fig:moranplot-resmodel-areaep-all-wq">4.32</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\lambda\)</span> de las estimaciones con términos autorregresivos es significativo, esto sugiere que no es necesario plantear efectos distintivos de la variables dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas, pero no genera ningún efecto de derrame en el acceso a espacios verdes de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
 <div class="figure"><span id="fig:moranplot-resmodel-areaep-all-wq"></span>
 <img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-1.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-2.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-3.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areaep-all-wq-4.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV $W_{q}$" width="49%" />
 <p class="caption">
-Figura 4.33: Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV <span class="math inline">\(W_{q}\)</span>
+Figura 4.32: Gráfico de Moran para los residuos de los modelos espaciales de porcentaje de área de EV <span class="math inline">\(W_{q}\)</span>
 </p>
 </div>
 <div class="figure"><span id="fig:diag-model-areaep-espaciales"></span>
 <img src="tesis-unigis_files/figure-html/diag-model-areaep-espaciales-1.png" alt="Diagnóstico comparativo entre modelos" width="100%" />
 <p class="caption">
-Figura 4.34: Diagnóstico comparativo entre modelos
+Figura 4.33: Diagnóstico comparativo entre modelos
 </p>
 </div>
 </div>
@@ -4223,7 +4131,7 @@ Figura 4.34: Diagnóstico comparativo entre modelos
 <h5><span class="header-section-number">4.2.3.3.2</span> Índice de acceso área-distancia</h5>
 <table>
 <caption>
-<span id="tab:coef-sar-areasdist">Tabla 4.39: </span>Coeficientes del modelo SAR índice de relación área distancia de EV
+<span id="tab:coef-sar-areasdist">Tabla 4.37: </span>Coeficientes del modelo SAR índice de relación área distancia de EV
 </caption>
 <thead>
 <tr>
@@ -4367,7 +4275,7 @@ ningun_estudio.porcentaje.mxn
 </table>
 <table>
 <caption>
-<span id="tab:cauto-sar-areasdist">Tabla 4.40: </span>Coeficiente de autocorrelación modelo SAR índice de relación área distancia de EV
+<span id="tab:cauto-sar-areasdist">Tabla 4.38: </span>Coeficiente de autocorrelación modelo SAR índice de relación área distancia de EV
 </caption>
 <tbody>
 <tr>
@@ -4396,7 +4304,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:coef-sem-areasdist">Tabla 4.41: </span>Coeficientes del modelo SEM índice de relación área distancia de EV
+<span id="tab:coef-sem-areasdist">Tabla 4.39: </span>Coeficientes del modelo SEM índice de relación área distancia de EV
 </caption>
 <thead>
 <tr>
@@ -4540,7 +4448,7 @@ ningun_estudio.porcentaje.mxn
 </table>
 <table>
 <caption>
-<span id="tab:cauto-sem-areasdist">Tabla 4.42: </span>Coeficiente de autocorrelación modelo SEM índice de relación área distancia de EV
+<span id="tab:cauto-sem-areasdist">Tabla 4.40: </span>Coeficiente de autocorrelación modelo SEM índice de relación área distancia de EV
 </caption>
 <tbody>
 <tr>
@@ -4569,7 +4477,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:coef-sd-areasdist">Tabla 4.43: </span>Coeficientes del modelo SD índice de relación área distancia de EV
+<span id="tab:coef-sd-areasdist">Tabla 4.41: </span>Coeficientes del modelo SD índice de relación área distancia de EV
 </caption>
 <thead>
 <tr>
@@ -4815,7 +4723,7 @@ lag.ningun_estudio.porcentaje.mxn
 </table>
 <table>
 <caption>
-<span id="tab:cauto-sd-areasdist">Tabla 4.44: </span>Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV
+<span id="tab:cauto-sd-areasdist">Tabla 4.42: </span>Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV
 </caption>
 <tbody>
 <tr>
@@ -4844,7 +4752,7 @@ p-value
 </table>
 <table>
 <caption>
-<span id="tab:coef-slx-areasdist">Tabla 4.45: </span>Coeficientes del modelo SLX índice de relación área distancia de EV
+<span id="tab:coef-slx-areasdist">Tabla 4.43: </span>Coeficientes del modelo SLX índice de relación área distancia de EV
 </caption>
 <thead>
 <tr>
@@ -5090,7 +4998,7 @@ xlag.ningun_estudio.porcentaje.mxn
 </table>
 <table>
 <caption>
-<span id="tab:tabla-comp-modelos-areasdist">Tabla 4.46: </span>Metricas de ajuste para los modelos de áreas-distancia de EV
+<span id="tab:tabla-comp-modelos-areasdist">Tabla 4.44: </span>Metricas de ajuste para los modelos de áreas-distancia de EV
 </caption>
 <thead>
 <tr>
@@ -5357,17 +5265,17 @@ Log likelihood
 </tr>
 </tbody>
 </table>
-<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SD con el mejor AIC. El modelo SD logra eliminar la autocorrelación espacial global en los residuos al exhibir un valor de significancia mucho mayor que 0.05, al igual que SEM y SAR (ver figura <a href="results.html#fig:moranplot-resmodel-areasdist-all-wq">4.35</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\rho\)</span> de las estimaciones con términos autorregresivos es significativo, esto sugiere que una parte de los efectos de derrame de las variables significativas (<code>lag.area_media_manzana</code>, <code>unidad_economica.porcentaje</code>) en el acceso a espacios verdes de los sectores vecinos explica bien los grupos que se forman. Es posible que estar cerca de un sector con manzanas grandes y que tal vez sus parque pueden ser más grandes explica la influencia positiva en el acceso p.e. de tener equipamientos de ciudad grandes en algún sector aledaño. En el modelo SD una parte de la mejora en el ajuste puede puede provenir de dimensiones no modeladas. Los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
+<p>Al comparar los resultados de las métricas de ajuste se identifica al modelo SD con el mejor AIC. El modelo SD logra eliminar la autocorrelación espacial global en los residuos al exhibir un valor de significancia mucho mayor que 0.05, al igual que SEM y SAR (ver figura <a href="results.html#fig:moranplot-resmodel-areasdist-all-wq">4.34</a>). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El <span class="math inline">\(\rho\)</span> de las estimaciones con términos autorregresivos es significativo, esto sugiere que una parte de los efectos de derrame de las variables significativas (<code>lag.area_media_manzana</code>, <code>unidad_economica.porcentaje</code>) en el acceso a espacios verdes de los sectores vecinos explica bien los grupos que se forman. Es posible que estar cerca de un sector con manzanas grandes y que tal vez sus parque pueden ser más grandes explica la influencia positiva en el acceso p.e. de tener equipamientos de ciudad grandes en algún sector aledaño. En el modelo SD una parte de la mejora en el ajuste puede puede provenir de dimensiones no modeladas. Los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos.</p>
 <div class="figure"><span id="fig:moranplot-resmodel-areasdist-all-wq"></span>
 <img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-1.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-2.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-3.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" /><img src="tesis-unigis_files/figure-html/moranplot-resmodel-areasdist-all-wq-4.png" alt="Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia $W_{q}$" width="49%" />
 <p class="caption">
-Figura 4.35: Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia <span class="math inline">\(W_{q}\)</span>
+Figura 4.34: Gráfico de Moran para los residuos de los modelos espaciales de acceso área-distancia <span class="math inline">\(W_{q}\)</span>
 </p>
 </div>
 <div class="figure"><span id="fig:diag-model-areasdist-espaciales"></span>
 <img src="tesis-unigis_files/figure-html/diag-model-areasdist-espaciales-1.png" alt="Diagnóstico comparativo entre modelos" width="100%" />
 <p class="caption">
-Figura 4.36: Diagnóstico comparativo entre modelos
+Figura 4.35: Diagnóstico comparativo entre modelos
 </p>
 </div>
 
