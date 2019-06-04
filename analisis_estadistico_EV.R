@@ -197,7 +197,7 @@ regresion.EV %>% select(one_of(dependientes.EV.sel)) %>%
           value = valores,
           1:length(dependientes.EV.sel)) %>%
   ggplot()+
-  geom_histogram(aes(x = valores),bins = 30, 
+  geom_histogram(aes(x = valores/max(valores) ),bins = 100, 
                  color = "white", fill="springgreen4")+
   facet_wrap(~dependientes.EV.sel, scales = "free", ncol = 1)
 #sqrt(valores)
@@ -413,7 +413,7 @@ mean(sm$residuals^2)
 #test de ajuste
 mean(lm.area_ep.ptje$residuals) # media de los residuos cercana a 0 (si)
 # Homocedasticidad de los residuos o varianza igual
-autoplot(lm.area_ep.ptje, which = 1:4)
+# autoplot(lm.area_ep.ptje, which = 1:4)
 #ggnostic(lm.best.area_copa)
 # aun un amuento de la varianza. hagamos un test para verificar este aumento
 lmtest::bptest(lm.area_ep.ptje) # la varianza de los residuos no es constante 
@@ -465,7 +465,7 @@ mean(sm$residuals^2)
 #test de ajuste
 mean(lm.area_ep.ptje.sel$residuals) # media de los residuos cercana a 0 (si)
 # Homocedasticidad de los residuos o varianza igual
-autoplot(lm.area_ep.ptje.sel, which = 1:4)
+# autoplot(lm.area_ep.ptje.sel, which = 1:4)
 #ggnostic(lm.best.area_copa)
 # aun un amuento de la varianza. hagamos un test para verificar este aumento
 lmtest::bptest(lm.area_ep.ptje.sel) # la varianza de los residuos no es constante 
@@ -500,7 +500,7 @@ mean(sm$residuals^2)
 #test de ajuste
 mean(lm.ia.areas.dist$residuals) # media de los residuos cercana a 0 (si)
 # Homocedasticidad de los residuos o varianza igual
-autoplot(lm.ia.areas.dist, which = 1:4)
+# autoplot(lm.ia.areas.dist, which = 1:4)
 #ggnostic(lm.best.area_copa)
 # aun un amuento de la varianza. hagamos un test para verificar este aumento
 lmtest::bptest(lm.ia.areas.dist) # la varianza de los residuos no es constante 
@@ -555,7 +555,7 @@ mean(sm$residuals^2)
 #test de ajuste
 mean(lm.ia.areas.dist.sel$residuals) # media de los residuos cercana a 0 (si)
 # Homocedasticidad de los residuos o varianza igual
-autoplot(lm.ia.areas.dist.sel, which = 1:4)
+# autoplot(lm.ia.areas.dist.sel, which = 1:4)
 #ggnostic(lm.best.area_copa)
 # aun un amuento de la varianza. hagamos un test para verificar este aumento
 lmtest::bptest(lm.ia.areas.dist.sel) # la varianza de los residuos no es constante 

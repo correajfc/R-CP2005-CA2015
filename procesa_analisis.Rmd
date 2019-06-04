@@ -387,7 +387,7 @@ ia.ev$ia.A.D<-ia.A.D
 smry.area<-summary(ep.cali$area_ep)
 ia.ev$ia.r300.Amedia<- 300/smry.area[4]*ia.ev$ia.A.D
 ia.ev$ia.r300.Amediana<- 300/smry.area[3]*ia.ev$ia.A.D
-ia.ev$ia.areas.dist<-ia.areas.1000/ia.1000
+ia.ev$ia.areas.dist<-ia.areas.1000/ia.1000# escaldo 01
 
 
 ```

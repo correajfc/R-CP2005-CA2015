@@ -288,8 +288,8 @@ Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la 
 ```{r mapas-usopredios-cont, fig.asp=0.67,fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
 
 pl_poblacion<-plots_map_su_df(analisis.cali.df,
-                              metricas.predios[c(13:15)],
-                              strip.text = element_text(size = 8))
+                              metricas.predios[c(11,13:14)],
+                              strip.text = element_text(size = 6))
 grid.arrange(grobs =pl_poblacion, nrow =1,
              bottom = textGrob( label = "Fuente:CP2005\nElaboración: propia", 
                                 hjust = 1, x = 0.9,

@@ -139,15 +139,15 @@ plot(W_dist1000.inv.ev, coordinates(su.EV), col='orchid1',pch=19, cex=0.1, add=T
   pintar_mapa_su_LISA_var(regresion.EV,"densidad_poblacion",W_dist1000.inv.ev, wname = "Wd",nrow =1)
   pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_dist1000.inv.ev, wname = "Wd",nrow =1)
   
-  diagPlts<-diagPlot(lm.area_ep.ptje.sel)
-  grid.arrange(grobs=diagPlts, ncol =2)
+  # diagPlts<-diagPlot(lm.area_ep.ptje.sel)
+  # grid.arrange(grobs=diagPlts, ncol =2)
   
   lm_data<-augment(lm.area_ep.ptje.sel)
   lm_data$SETU_CCDGO<-regresion.EV$SETU_CCDGO
   
-  pl_lm.ac<-plots_map_su_df(lm_data,c("area_ep.porcentaje.mxn",str_c(independientes.EV[c(1,2)],".mxn"),".fitted"))
-  grid.arrange(grobs =pl_lm.ac, nrow =1)
-  
+  # pl_lm.ac<-plots_map_su_df(lm_data,c("area_ep.porcentaje.mxn",str_c(independientes.EV[c(1,2)],".mxn"),".fitted"))
+  # grid.arrange(grobs =pl_lm.ac, nrow =1)
+  # 
 
 # test de auto correlacion espacial en los residuos del modelo OLS
 moran.lm<-lm.morantest(lm.area_ep.ptje.sel, W_queen.ev, alternative="two.sided",zero.policy = T)

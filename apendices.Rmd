@@ -1,12 +1,17 @@
 # (APPENDIX) Anexos {-} 
 
-## Informacion de sesiion de R
+## Informacion de sesión de R
 
 
-kjjhhhllklk
+```{r session-info}
+
+sessionInfo()
+
+```
 
 
-##  Otros gráficos
+
+## Otros gráficos
 
 ```{r tile-prediosev-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
 pintar_corrmatrix(regresion.arboles,indep.predios)+
