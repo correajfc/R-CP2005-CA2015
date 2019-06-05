@@ -1023,7 +1023,7 @@ Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. L
 Los mapas LISA para ambos indicadores de acceso a EV usando la matriz $W_q$ muestran los grupos de sectores autocorrelacionados (figura \@ref(fig:mapas-lisa-areaep-wq) y \@ref(fig:mapas-lisa-areadist-wq)). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad.
 Se aprecia que se forman cluster alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamentos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje. 
 
-Es relevante en los resultados de los análisis que los grupos de alta prestación en los servicios ecosistémicos del EV configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechanzado la hipotesis nula de distribucion espacial aleatoria o uniforme.
+Es relevante en los resultados de los análisis que los grupos de alta prestación en los servicios ecosistémicos de los EV configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios. Puede pensarse que la mayor parte de la ciudad exhibe una distribución uniforme, sin embargo, como se muestra en los histogramas de distribución de los valores de ambos indicadores (ver figuras \@ref(fig:hist-areaep) y \@ref(fig:hist-areasdist)), la tendencia es a una baja disponibilidad y acceso a los EV. Puede entonces rechanzarse la hipótesis nula de distribucion espacial aleatoria o uniforme. 
 
 
 
@@ -1105,7 +1105,7 @@ pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nr
 
 Para evaluar la utlidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la deteción de autocorrelación espacial.  
 
-La tabla \@ref(tab:moran-rescopa-w) muestra ambos diseños de matriz $W$ presentan un valor de Moran Global mayor que 0 y significativo para los residuos del OLS de área de copa, al igual que para los residuos del OLS del porcentaje de cobertura (ver \@ref(tab:moran-rescopaap-w)).  
+La tabla \@ref(tab:moran-resareaep-w) muestra ambos diseños de matriz $W$ presentan un valor de Moran Global mayor que 0 y significativo para los residuos del OLS del porcentaje de área de EV, al igual que para los residuos del OLS del indicador áreas-distancia (ver \@ref(tab:moran-resareadist-w)).  
 
 En ambos modelos el resultado de autocorrelación espacial suguiere que al introducir retardos espaciales y la estrucutura de vecidad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.
 
@@ -1166,7 +1166,15 @@ knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
 
 #### Modelo espacial porcentaje de espacio verde 
 
-Probamos los 4 tipos de modelos con la matriz $W_q$ que resultó capturar mejor la asociación espacial en los datos y comparamos sus resultados.
+Dado que la matriz $W_q$ capturó mejor la asociación espacial en los datos para ambos indicadores de acceso a EV, se realizó el ajuste de los modelos espaciales solo con ese diseño.
+
+Las métricas de ajuste de los modelos de porcentaje de área de EV (ver tabla \@ref(tab:tabla-comp-modelos-areaep)) muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad ni la homocedasticidad en los residuos.   
+
+
+Al comparar los resultados de usando el desempeño en AIC se identificó al modelo SEM con el mejor ajuste. El modelo SEM logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\lambda$ del término autorregresivos es alto y significativo (tabla \@ref(tab:cauto-sem-areaep)), lo que sugiere que no es necesario plantear efectos de la variables dependientes rezagadas, y que es posible que ese efecto sea por otras variables no tenidas en cuenta. Esta lectura del SEM es interesante y consistente con el significado local del indicador porcentaje de área de EV. 
+
+
+El resultado del modelo SEM confirma la significancia y efecto positvo para el acceso EV del área de promedio de la manzana en un SU. La presencia de viviendas tipo cuarto, con coeficiente negativos, es un factor que coincide con la disminución de área de EV disponible (ver tabla \@ref(tab:coef-sem-areaep)). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones. 
 
 
 
@@ -1257,28 +1265,21 @@ knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación mod
 
 
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SEM con el mejor AIC. El modelo SEM  logra eliminar la autocorrelación espacial global en los residuos, al igual que SD  (ver figura \@ref(fig:moranplot-resmodel-areaep-all-wq)). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El  $\lambda$ de las estimaciones con términos autorregresivos es significativo, esto sugiere que no es necesario plantear efectos distintivos de la variables dependiente rezagada, y que es posible que ese efecto sea por otras variables no tenidas en cuenta: el agrupamiento espacial observado en la variable dependiente se explica simplemente por el patrón geográfico de variables independientes medidas y no medidas, pero no genera ningún efecto de derrame en el acceso a espacios verdes de los sectores vecinos. A pesar de que los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos. 
-
-
-
-```{r diag-model-areaep-espaciales, fig.asp=1.4, fig.cap="Diagnóstico comparativo entre modelos"}
-diagPltsSAR<-diagPlotlaglm(sar.areas_ep)
-diagPltsSEM<-diagPlotlaglm(sem.areas_ep)
-diagPltsSD<-diagPlotlaglm(sd.areas_ep)
-diagPltsSLX<-diagPlotlaglm(slx.areas_ep)
-diagPltsOLS<-diagPlotlaglm(lm.area_ep.ptje.sel)
-
-#diagPlotsAll<-arrangeGrob(grobs = c(diagPltsOLS,diagPltsSLX,diagPltsSD,diagPltsSEM,diagPltsSAR),ncol = 3, nrow = 5)
-grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
-              arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
-              arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
-              arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM"),
-              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
-```
-
-
 
 #### Modelo espacial del índice de acceso área-distancia 
+
+
+
+Las métricas de ajuste de los modelos de indicador área-distancia (ver tabla \@ref(tab:tabla-comp-modelos-areasdist)) muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Todos los modelos mejoran las métricas de error respecto del OLS, en particular el *Nagelkerke*, equivalente al *adj-Rsquare*, que mide el nivel explicativo del modelo en la variabilidad de los datos, subiendo de $\simeq 0.17$ a $\simeq 0.74$. 
+
+
+Al comparar los resultados usando el desempeño en AIC se identificó al modelo SD con el mejor ajuste. El modelo SD logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\rho$ del término autorregresivos es muy alto y significativo (tabla \@ref(tab:cauto-sd-areasdist)), lo que sugiere que los efectos de las variables dependientes rezagadas so significativos. Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones ( y se corrobora con las gráficas diagnósticas de la figura \@ref(fig:diag-model-areasdist-espaciales)). 
+
+
+El resultado del modelo SD confirmó la significancia y efecto positvo pero bajo en el acceso a EV contar con unidades económicas dentro del SU. Es significativo y fuerte en el acceso a EV estar al rededor de SUs con manzanas de área promedio grande. Por otro lado se desestima que exista una relación con la variable  porcentaje personas con alguna limitación (ver tabla \@ref(tab:coef-sem-areasdist)). La escogencia del modelo SD se ajusta consistentemente con el propósito del indicador áreas-distancia de medir el acceso en un SU más allá de su límite geográfico.
+
+
+
 
 ```{r code-laglm-areasdist-wq, echo=FALSE, results="hide"}
 #SAR
@@ -1355,24 +1356,18 @@ knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación mod
 
 
 
-Al comparar los resultados de las métricas de ajuste se identifica al modelo SD con el mejor AIC. El modelo SD  logra eliminar la autocorrelación espacial global en los residuos al exhibir un valor de significancia mucho mayor que 0.05, al igual que SEM y SAR (ver figura \@ref(fig:moranplot-resmodel-areasdist-all-wq)). Aunque persiste la no normalidad de los residuos y la heterocedasticidad como los muestran los test y las gráficas diagnósticas, el error cometido disminuye y los coeficientes pueden considerarse más confiables. El $\rho$ de las estimaciones con términos autorregresivos es significativo, esto sugiere que una parte de los efectos de derrame de las variables significativas (`lag.area_media_manzana`, `unidad_economica.porcentaje`) en el acceso a espacios verdes de los sectores vecinos explica bien los grupos que se forman. Es posible que estar cerca de un sector con manzanas grandes y que tal vez sus parque pueden ser más grandes explica la influencia positiva en el acceso p.e. de tener equipamientos de ciudad grandes en algún sector aledaño. En el modelo SD una parte de la mejora en el ajuste puede puede provenir de dimensiones no modeladas. Los test de normalidad y heterocedasticidad no son exitosos, las gráficas diagnósticas muestran que los problemas se presentan en los valores extremos. 
 
-
-
-
-```{r diag-model-areasdist-espaciales, fig.asp=1.4, fig.cap="Diagnóstico comparativo entre modelos"}
+```{r diag-model-areasdist-espaciales, fig.asp=0.6, fig.cap="Diagnóstico comparativo entre modelos"}
 diagPltsSAR<-diagPlotlaglm(sar.areas.dist)
-diagPltsSEM<-diagPlotlaglm(sem.areas.dist)
-diagPltsSD<-diagPlotlaglm(sd.areas.dist)
-diagPltsSLX<-diagPlotlaglm(slx.areas.dist)
+# diagPltsSEM<-diagPlotlaglm(sem.areas.dist)
+# diagPltsSD<-diagPlotlaglm(sd.areas.dist)
+# diagPltsSLX<-diagPlotlaglm(slx.areas.dist)
 diagPltsOLS<-diagPlotlaglm(lm.ia.areas.dist.sel)
 
 #diagPlotsAll<-arrangeGrob(grobs = c(diagPltsOLS,diagPltsSLX,diagPltsSD,diagPltsSEM,diagPltsSAR),ncol = 3, nrow = 5)
 grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
-              arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
-              arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
-              arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM"),
-              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
+              # arrangeGrob(grobs = diagPltsSEM, ncol = 3,left ="SEM"),
+              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =2)
 ```
 
 

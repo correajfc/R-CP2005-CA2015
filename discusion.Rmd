@@ -64,42 +64,23 @@ Este tipo de desigualdades son una responsabilidad de los urbanizadores y de los
 
 ## Sobre los espacios verdes
 
-¿Es el acceso a servicios del AU y EV una característica local de los sectores geográficos o se extienden esos beneficios a agrupaciones de sectores urbanos vecinos? 
-
-¿Es igual tener acceso a un parque pequeño que a uno grande?
-
-¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?
 
 Análogamente a la cobertura arbórea, las métricas de acceso son aspectos complementarios sobre el mismo fenómeno de acceso aún beneficio; una representa un beneficio local, para el que vive en ese sector (`area_ep.porcentaje`) y la otra  (`ia.areas.dist`) que involucra un grupos de sectores beneficiarios del equipamento de los sectores aledaños cuantificanado la relación de costo de traslado por beneficio en área. 
 
 El modelo de mejor rendimiento en la estimación medido usando el AIC fue el SEM para `area_ep.porcentaje` y SD para `ia.areas.dist`. 
-Los coeficientes de los dos modelos ajustados se detallan en la tablas \@ref(tab:coef-sem-areaep) y \@ref(tab:cauto-sem-areaep) para el modelo SEM y  \@ref(tab:coef-sd-aerasdist) y \@ref(tab:cauto-sd-aerasdist) para el modelo SD.
+
+¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?
 
 
-
-En el SEM todos los coeficientes son significativos y el valor de área media de manzana es la variable más influyente. El coeficiente de autocorrelación en el error es muy significativo, lo que sugiere que si existe información de patrones espaciales en el error por en variables no modeladas. La importancia que tiene en el modelo el área media de manzana puede interpretarse como una característica estructural de barrio o sector que por tener manzanas más grandes las zonas destinadas para parque o espacio verde son en consecuencia más grandes y el beneficio mayor o/y que algunas manzanas que albergan equipamientos de ciudad, zonas verdes como riberas de ríos o lagunas determinan el alto valor del indicador al ser el promedio sensible a valores extremos. Lo cierto es que desde este punto de vista local no existe evidencia sobre una relación concluyente con ninguna variable poblacional, por lo que no puede decirse que se vulnere a ciertas comunidades o grupos diferenciados, al menos en lo que respecta a las variables que proveen los sistemas de consulta del censo del 2005. Sin embargo puede afirmarse que la distribución de los EV es desigual pues más de `r ((regresion.EV %>% select(area_ep.porcentaje) %>% filter(area_ep.porcentaje<0.05) %>% nrow())/nrow(regresion.EV) )%>% scales::percent()` de 329 sectores en la ciudad tiene menos del 5% de espacio verde de área respecto del area total del sector (figura \@ref(fig:hist-areasdist)). 
-
-
-El indicador de acceso area-distancia fue mejor ajustado por el modelo SD, que tuvo como coeficientes significativos a `unidad_economica.porcentaje` con un valor bajo pero positivo al igual que `con_alguna_limitacion.porcentaje` que tuvo un valor bajo pero negativo y significativo. La zona que muestra el mapa de LISA el porcentaje de unidades económicas en el sector (figura \@ref(fig:lisa-areaep-ue-cal)) coinciden de nuevo con equipamientos de ciudad como el Boulevar del Río mientras que las concentraciones de personas con limitación altas coinciden con poco espacio verde como bien indica el signo del coeficiente. La variable de área media de manzana retardada `lag.area_media_manzana` es significativa y es la que tiene el valor más alto entre los coeficientes, confirmando el efecto de derrame de los grandes espacio verdes que son parte del equipamiento de ciudad y que producen beneficios en un radio más amplio que el área de sector donde di el disfrute exige que la gente se desplace, justo como lo propone el indicador de acceso. El coeficiente de autocorrelación espacial $\\rho$. es muy alto y significativo, lo que indica que la introducción de autocorrelación espacial en la variable dependiente mejora el ajuste pues es evidente la existencia de grupos de sectores con valores similares. 
-
-A pesar de que se mantienen problemas como no normalidades en los errores, el ajuste de la variable dependiente presenta mejoras en las métricas de error y hace más confiables la estimación de los coeficientes. En cuanto al acceso a espacio verdes que involucran desplazamientos o una cobertura a grupos de sectores urbanos no puede decirse de forma irrefutable que está estrechamente relacionado con desventajas en la población como el estatus o la etnicidad, pero si marca que hay patrones espaciales en la población de limitaciones físicas o de salud que coinciden con niveles pobres de acceso.
-
-La estrategia de construir equipamientos con espacios verdes para mejorar el acceso puede verse optimizada de este tipo de análisis, pues resalta las zonas donde el impacto de estas obras puede llegar a más personas si se ubican correctamente. Marca también la responsabilidad de los urbanizadores y las autoridades para generar proyectos de renovación urbana que integren y den relevancia al acceso a EV de manera razonada. Estos resultados apuntan  a tener en cuenta aspectos de la planeación urbana al nivel del tamaño de las manzanas y la existencia de andenes que permitan alojar parques de mayor tamaño y espacio para que se desarrolle el potencial recreativo de esos espacios, así como las especies arbóreas.
+En el SEM todos los coeficientes son significativos y el valor de área media de manzana es la variable más influyente. El coeficiente de autocorrelación en el error es muy significativo, lo que sugiere que si existe información de patrones espaciales en el error por en variables no modeladas. La importancia que tiene en el modelo el área media de manzana puede interpretarse como una característica estructural de barrio o sector que por tener manzanas más grandes las zonas destinadas para parque o espacio verde son en consecuencia más grandes y el beneficio mayor o/y que algunas manzanas que albergan equipamientos de ciudad, zonas verdes como riberas de ríos o lagunas determinan el alto valor del indicador al ser el promedio sensible a valores extremos. Lo cierto es que desde este punto de vista local no existe evidencia sobre una relación concluyente con ninguna variable poblacional, por lo que no puede decirse que se vulnere a ciertas comunidades o grupos diferenciados, al menos en lo que respecta a las variables que proveen los sistemas de consulta del censo del 2005. Sin embargo puede afirmarse que la distribución de los EV es desigual pues más de `r ((regresion.EV %>% select(area_ep.porcentaje) %>% filter(area_ep.porcentaje<0.05) %>% nrow())/nrow(regresion.EV) )%>% scales::percent()` de 329 sectores en la ciudad tiene menos del 5% de espacio verde de área respecto del area total del sector (figura \@ref(fig:hist-areasdist)).  Esta cifra contrasta con el estándar mínimo generalmente aceptado para el espacio público en áreas urbanas (definido por aquellos que alcanzan una densidad mínima de 150 habitantes por hectárea) es del 15% para espacios verdes [@70Areaof6].
 
 
+El indicador de acceso area-distancia fue mejor ajustado por el modelo SD, que tuvo como coeficientes significativos a `unidad_economica.porcentaje` con un valor bajo pero positivo. Estas zonas coinciden con equipamientos de ciudad como el Boulevar del Río. La variable de área media de manzana retardada `lag.area_media_manzana` es significativa y es la que tiene el valor más alto entre los coeficientes, confirmando el efecto de derrame de los grandes espacio verdes que son parte del equipamiento de ciudad y que producen beneficios en un radio más amplio que el área de sector urbano que los contiene, en concordancia con el indicador de acceso propuesto.  
+
+No existe evidencia sobre inequidades en el acceso a EV relacionadas con desventajas en la población como el estatus o la etnicidad o de salud que coinciden con niveles bajos de acceso.
+
+La estrategia y lugares para construir equipamientos con espacios verdes puede verse beneficiada con este tipo de análisis e indicadores, pues resalta las zonas donde el impacto de estas obras puede llegar a más personas si se ubican correctamente. Marca también la responsabilidad de los urbanizadores y las autoridades para generar proyectos de renovación urbana que integren y den relevancia al acceso a EV de manera razonada. Estos resultados apuntan  a tener en cuenta aspectos de la planeación urbana al nivel del tamaño de las manzanas que permitan alojar parques de mayor tamaño para que se desarrolle el potencial recreativo de esos espacios, así como las especies arbóreas.
 
 
-```{r lisa-areaep-amm, fig.cap="Mapas LISA - Porcentaje de espacios verdes y área media de manzana", fig.show="hold"}
-pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
-pintar_mapa_su_LISA_var(regresion.EV,"area_media_manzana",W_queen.ev, wname = "Wq",nrow =1)
-
-```
-
-```{r lisa-areaep-ue-cal, fig.cap="Mapas LISA - Porcentaje de unidades economicas y personas con alguna limitación ", fig.show="hold"}
-  pintar_mapa_su_LISA_var(regresion.EV,"unidad_economica.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
-pintar_mapa_su_LISA_var(regresion.EV,"con_alguna_limitacion.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
-
-
-```
 
 
