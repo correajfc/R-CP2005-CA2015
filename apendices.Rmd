@@ -9,27 +9,3 @@ sessionInfo()
 
 ```
 
-
-
-## Otros gráficos
-
-```{r tile-prediosev-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
-pintar_corrmatrix(regresion.arboles,indep.predios)+
-  labs(title="Pearson entre características \nde predios y EV")
-```
-
-```{r tile-prediosev-spearman, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de uso de los predios\n y espacios verdes en los sectores urbanos"}
-pintar_corrmatrix(regresion.arboles,indep.predios, method_cor = "spearman")+
-  labs(title="Spearman entre entre características \nde predios y EV")
-```
-
-```{r tile-copa-prediosev-pearson, fig.asp=0.65, fig.cap= "Coeficiente Pearson entre coberturas de copa\n y variables de predios y EV"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles)+
-  labs(title="Coeficiente Pearson entre cobertura de copa \ny uso de los predios")
-```
-
-
-```{r tile-copa-prediosev-spearman, fig.asp=0.65,fig.cap="Coeficiente Pearson entre coberturas de copa\n y variables de predios y EV"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.predios, y=dependientes.arboles, method_cor = "spearman")+
-  labs(title="Coeficiente Spearman entre  cobertura de copa \ny uso de los predios")
-```
