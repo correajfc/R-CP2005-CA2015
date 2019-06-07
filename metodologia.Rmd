@@ -226,7 +226,8 @@ La tabla \@ref(tab:vars-poblacion) muestra los valores de la variable de etnicid
 nombre_fila<-c("Población Total","Población afrodescendiente, negros o mulatos","Población indígena","Población Rom","Población Palenqueros","Población raizales de SAI")
 tot_pob<-totales.cali[11:16] %>% as_vector(.,"numeric")
 tabla.tmp<-data.frame(nombre_fila,unname(tot_pob))
-knitr::kable(tabla.tmp, col.names = c("Tipo","Cantidad") ,caption = "Totales de población por grupo étnico en la ciudad de Cali")
+knitr::kable(format = formato_render,      
+             booktab = T,tabla.tmp, col.names = c("Tipo","Cantidad") ,caption = "Totales de población por grupo étnico en la ciudad de Cali")
 
 ```
 

@@ -19,7 +19,7 @@ rmd_files:
   "conclusiones.Rmd",
   "apendices.Rmd",
   "referencias.Rmd"]
-  latex: ["index.Rmd", 
+  latex: ["tesis_pdf.Rmd", 
   "intro.Rmd",
   "revision_literatura.Rmd",
   "metodologia.Rmd",

@@ -103,8 +103,12 @@ sm
 ```{r coef-lm-copa}
 nombres_coef <- summary(lm.area_copa)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.area_copa)$coefficients %>% as_data_frame()
-t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
-knitr::kable( digits=3, caption = "Coeficientes OLS de área de copa - Log(AC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+t1 %>% 
+  bind_cols(terminos = nombres_coef,.) %>% 
+knitr::kable(format = formato_render,  
+             booktabs = T, 
+             digits=3, 
+             caption = "Coeficientes OLS de área de copa - Log(AC)" ,  col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
@@ -134,7 +138,12 @@ sm
 nombres_coef <- summary(lm.mod.cobertura.ap)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.mod.cobertura.ap)$coefficients %>% as_data_frame()
 t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
-knitr::kable( digits=5, caption = "Coeficientes OLS de cobertura de copa - (CC)" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+kableExtra::kable(format = formato_render,  
+                  # booktab = TRUE,
+                  digits=5, 
+                  caption = "Coeficientes OLS de cobertura de copa - (CC)" , 
+                  booktabs = TRUE, 
+col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
@@ -146,7 +155,7 @@ tabla<-fitstats_lm_df(lm.area_copa) %>%
   rename(`Log(AC)`=fitstats) %>%
    left_join(fitstats_lm_df(lm.mod.cobertura.ap),by= "medidasfit") %>%
   rename( `%CC`=fitstats)
-kable(tabla,caption = "Resumen métricas de ajuste OLS para el área de copa (AC) y cobertura de copa (CC) ", digits = 5)
+kable(format = formato_render,  booktabs = T,tabla,caption = "Resumen métricas de ajuste OLS para el área de copa (AC) y cobertura de copa (CC) ", digits = 5)
 
 
 ```
@@ -237,9 +246,9 @@ mt2<-moran.test(lm.best.area_copa$model$log.area_copa.mxn, listw=W_dist1000.inv,
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Área de copa para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Área de copa para $W_q$ y $W_d$" )
 
 ```
 
@@ -263,9 +272,9 @@ mt2<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_dist10
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Porcentaje de cobertura de copa para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Porcentaje de cobertura de copa para $W_q$ y $W_d$" )
 
 ```
 
@@ -324,9 +333,9 @@ mt2<-moran.test(lm.best.area_copa$residuals, listw=W_dist1000.inv, zero.policy =
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Residuos de OLS Área de copa para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Residuos de OLS Área de copa para $W_q$ y $W_d$" , )
 
 ```
 
@@ -350,9 +359,9 @@ mt2<-moran.test(lm.best.cobertura.ap$residuals, listw=W_dist1000.inv, zero.polic
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Residuos de OLS Porcentaje de cobertura de copa para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Residuos de OLS Porcentaje de cobertura de copa para $W_q$ y $W_d$" )
 
 ```
 
@@ -474,7 +483,7 @@ tabla<-fitstats_laglm_df(lm.best.area_copa,W_queen) %>%
    left_join(fitstats_laglm_df(sd.mod.log.area_copa.wq,W_queen),by= "medidasfit") %>%
   rename(`SD`=fitstats)
 
-knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos de área de copa $W_q$")
+knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption = "Metricas de ajuste para los modelos de área de copa $W_q$")
 
 
 ```
@@ -494,7 +503,7 @@ tabla<-fitstats_laglm_df(lm.best.area_copa,W_dist1000.inv) %>%
    left_join(fitstats_laglm_df(sd.mod.log.area_copa.wd,W_dist1000.inv),by= "medidasfit") %>%
   rename(`SD`=fitstats)
 
-knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos de área de copa con $W_d$")
+knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption = "Metricas de ajuste para los modelos de área de copa con $W_d$")
 
 
 ```
@@ -520,7 +529,7 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
 
 ```{r coef-sem-copa-wd}
 t1<-summary(sem.mod.log.area_copa.wd)$Coef
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa $W_d$', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa $W_d$')
 ```
 
 ```{r cauto-sem-copa}
@@ -529,13 +538,13 @@ r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
           r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa $W_d$', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa $W_d$')
 ```
 
 
 ```{r coef-sd-copa-wq}
 t1<-summary(sd.mod.log.area_copa.wq)$Coef
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa $W_q$', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa $W_q$')
 ```
 
 ```{r cauto-sd-copa-wq}
@@ -544,7 +553,7 @@ r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
           r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa $W_q$', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa $W_q$')
 ```
 
 #### Modelo espacial porcentaje de cobertura de área de copa 
@@ -656,7 +665,7 @@ tabla<-fitstats_laglm_df(lm.best.cobertura.ap,W_queen) %>%
   rename(`SEM`=fitstats) %>%
    left_join(fitstats_laglm_df(sd.cobertura.ap.wq,W_queen),by= "medidasfit") %>%
   rename(`SD`=fitstats)
-knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos de porcentaje de área de copa $W_q$")
+knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption = "Metricas de ajuste para los modelos de porcentaje de área de copa $W_q$")
 
 
 ```
@@ -673,7 +682,7 @@ tabla<-fitstats_laglm_df(lm.best.cobertura.ap,W_dist1000.inv) %>%
   rename(`SEM`=fitstats) %>%
    left_join(fitstats_laglm_df(sd.cobertura.ap.wd,W_dist1000.inv),by= "medidasfit") %>%
   rename(`SD`=fitstats)
-knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos de porcentaje de área de copa $W_d$")
+knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption = "Metricas de ajuste para los modelos de porcentaje de área de copa $W_d$")
 
 
 ```
@@ -702,13 +711,13 @@ r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\rho$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD $W_d$ de porcentaje de área de copa ', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD $W_d$ de porcentaje de área de copa ')
 ```
 
 ```{r coef-sd-copaap}
 sm<-summary(sd.cobertura.ap.wd)
 t1<-summary(sd.cobertura.ap.wd)$Coef
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de copa $W_d$', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de copa $W_d$')
 ```
 
 
@@ -882,13 +891,13 @@ summary(lm.area_ep.ptje.sel)
 ```{r coef-lm-ptjeAEV}
 
 # t1<-summary(lm.area_ep.ptje)$coefficients
-# knitr::kable(t1, digits=5, caption = "Coeficientes OLS de porcentaje de área de espacios verdes " , booktabs = TRUE)
+# knitr::kable(format = formato_render,  booktabs = T,t1, digits=5, caption = "Coeficientes OLS de porcentaje de área de espacios verdes " )
 
 
 nombres_coef <- summary(lm.area_ep.ptje)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.area_ep.ptje)$coefficients %>% as_data_frame()
 t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
-knitr::kable( digits=5, caption = "Coeficientes OLS de Porcentaje de EV" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+knitr::kable(format = formato_render,  booktabs = T, digits=5, caption = "Coeficientes OLS de Porcentaje de EV" ,  col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
@@ -937,12 +946,12 @@ summary(lm.ia.areas.dist.sel)
 ```{r coef-lm-areadist}
 
 # t1<-summary(lm.ia.areas.dist)$coefficients
-# knitr::kable(t1, digits=5, caption = "Coeficientes OLS de porcentaje de indice de acceso areas-distancia " , booktabs = TRUE)
+# knitr::kable(format = formato_render,  booktabs = T,t1, digits=5, caption = "Coeficientes OLS de porcentaje de indice de acceso areas-distancia " )
 
 nombres_coef <- summary(lm.ia.areas.dist)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.ia.areas.dist)$coefficients %>% as_data_frame()
 t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
-knitr::kable( digits=5, caption = "Coeficientes OLS de áreas-distancia" , booktabs = TRUE, col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+knitr::kable(format = formato_render,  booktabs = T, digits=5, caption = "Coeficientes OLS de áreas-distancia" ,  col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
@@ -951,8 +960,8 @@ knitr::kable( digits=5, caption = "Coeficientes OLS de áreas-distancia" , bookt
 tabla<-fitstats_lm_df(lm.area_ep.ptje.sel) %>% 
   rename(`%EV`=fitstats) %>%
    left_join(fitstats_lm_df(lm.ia.areas.dist.sel),by= "medidasfit") %>%
-  rename( `Area-Distancia`=fitstats)
-kable(tabla,caption = "Resumen métricas de ajuste OLS Indice contenedor (%EV) y de acceso área-distancia ", digits = 5)
+  rename( `Area-Distancia`=fitstats)  
+kable(x = tabla, format = formato_render,  booktabs = T,caption = "Resumen métricas de ajuste OLS Indice contenedor (%EV) y de acceso área-distancia ", digits = 5)
 
 
 ```
@@ -1048,9 +1057,9 @@ mt2<-moran.test(regresion.EV$area_ep.porcentaje, listw=W_dist1000.inv.ev, zero.p
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Porcenatje de EV para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Porcenatje de EV para $W_q$ y $W_d$" )
 
 ```
 
@@ -1074,15 +1083,18 @@ mt2<-moran.test(regresion.EV$ia.areas.dist, listw=W_dist1000.inv.ev, zero.policy
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_{q}$","$W_{d}$"),
              digits=5,
-             caption = "Test de Moran - Razón área distancia para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Razón área distancia para $W_{q}$ y $W_{d}$" )
 
 ```
 
+khskdjfhhlanclhn
+kancflcfael
 
+<!-- $W_q$ de `area_ep.porcentaje -->
 
-```{r mapas-lisa-areaep-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `area_ep.porcentaje`"}
+```{r mapas-lisa-areaep-wq, fig.asp=0.618, fig.cap="Mapas LISA para la matriz  " }
 
 pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 
@@ -1129,9 +1141,9 @@ mt2<-moran.test(lm.area_ep.ptje.sel$residuals, listw=W_dist1000.inv.ev, zero.pol
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Residuos de OLS Porcentaje EV $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Residuos de OLS Porcentaje EV $W_q$ y $W_d$" )
 
 ```
 
@@ -1155,9 +1167,9 @@ mt2<-moran.test(lm.ia.areas.dist.sel$residuals, listw=W_dist1000.inv.ev, zero.po
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
-             caption = "Test de Moran - Residuos de OLS relación áreas distancias para $W_q$ y $W_d$" , booktabs = TRUE)
+             caption = "Test de Moran - Residuos de OLS relación áreas distancias para $W_q$ y $W_d$" )
 
 ```
 
@@ -1236,7 +1248,7 @@ tabla<-fitstats_laglm_df(lm.area_ep.ptje.sel,W_queen.ev) %>%
    left_join(fitstats_laglm_df(sd.areas_ep,W_queen.ev),by= "medidasfit") %>%
   rename(`SD`=fitstats)
 
-knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos de porcentaje de área de EV con $W_q$")
+knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption = "Metricas de ajuste para los modelos de porcentaje de área de EV con $W_q$")
 
 
 ```
@@ -1250,7 +1262,7 @@ r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
           r1)
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de EV', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de EV')
 ```
 
 
@@ -1260,7 +1272,7 @@ r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
           r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV')
 ```
 
 
@@ -1330,7 +1342,7 @@ tabla<-fitstats_laglm_df(lm.ia.areas.dist.sel,W_queen.ev) %>%
    left_join(fitstats_laglm_df(sd.areas.dist,W_queen.ev),by= "medidasfit") %>%
   rename(`SD`=fitstats)
 
-knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos de áreas-distancia de EV")
+knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption = "Metricas de ajuste para los modelos de áreas-distancia de EV")
 
 
 ```
@@ -1340,7 +1352,7 @@ knitr::kable(tabla, digits = 5, caption = "Metricas de ajuste para los modelos d
 ```{r coef-sd-areasdist}
 sm<-summary(sd.areas.dist)
 t1<-summary(sd.areas.dist)$Coef
-knitr::kable(t1, digits=3,caption = 'Coeficientes del modelo SD índice de relación área distancia de EV', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD índice de relación área distancia de EV')
 ```
 
 
@@ -1350,7 +1362,7 @@ r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
           r1)
-knitr::kable(unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV', booktabs = TRUE)
+knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV')
 ```
 
 

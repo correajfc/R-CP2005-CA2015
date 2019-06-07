@@ -36,9 +36,12 @@ knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FAL
 A Elizabeth, Augusto, Ana María y Catalina. Este trabajo fue posible gracias a su ayuda y cariño. 
 
 
-# Abreviaciones {-}
+# Glosario {-}
 
 ```{r abrev}
+
+ formato_render = "html"
+
 data_frame(
   Term = c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
            "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
@@ -46,7 +49,10 @@ data_frame(
            "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","lugares Especiales de Alojamiento","*Local indicators of spatial association*"),
   Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA")) %>%
   arrange(Abbreviation) %>% # i.e. alphabetical order by Term
-  kable(booktab = T, col.names = c("Término","Abreviación"))
+  kable(format = formato_render,
+     booktabs = T, 
+    col.names = c("Término","Abreviación")) %>% 
+   kable_styling(latex_options = "striped")
 
 ```
 

@@ -1,13 +1,15 @@
 # Scrip principal para la la ejecución de los .R
 
 #librerias
-
+#libs <- c("ggmap", "rgdal", "rgeos", "maptools", "dplyr", "tidyr", "tmap") 
 library(rgdal)
 library(rgeos)
 library(raster)
 library(sp)
 library(spdep)
 library(car)
+library(ggmap)
+library(maptools)
 
 library(tidyverse)
 library(magrittr)
