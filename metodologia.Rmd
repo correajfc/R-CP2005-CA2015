@@ -54,7 +54,7 @@ En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realizaci�
 Table: (#tab:vars-AU) Variables para caracterizar el AU
 
 | variable | {valores}[unidades]     |
-|----------------------:|-------------------------------:|
+|----------------------|-------------------------------|
 |id_arbol|número entero único|
 |diametro copa|[m^2^]|
 |altura arbol|[m]|
@@ -84,7 +84,7 @@ El otro componente de los datos es la cartografía censal del DANE [@geoportal_D
 Table: (#tab:vars-poblacion) Variables sobre la población 
 
 | variable |  {valores}[unidades]    |
-|----------:|--------------------------------:|
+|--------------|--------------------------------|
 |Pertenencia Étnica|[personas]{indígenas, ROM, gitanos, raizales del Archipiélago de San Andrés, Providencia y Santa Catalina, palenqueros de San Basilio, afrocolombianos}
 |Con alguna limitación|[personas]{sí,no}
 |Con estudios superior o postgrado|[personas] |
@@ -97,9 +97,9 @@ knitr::include_graphics("images/sectoresurbanos_perimetro_idesc.png")
 Table: (#tab:vars-vivienda) Variables sobre la las viviendas 
 
 | variable | {valores}[unidades]    |
-|-----:|---------------------------:|
-|tipo vivienda|[viviendas] {Casa,Casa indígena,Apartamento,Tipo cuarto,Otro tipo de vivienda}|
-|uso vivienda|[predio]{Uso Vivienda.Uso Unidad Económica,Uso LEA}|
+|-----------------|---------------------------|
+|tipo vivienda| {Casa,Casa indígena,Apartamento,Tipo cuarto,Otro tipo de vivienda}[viviendas] |
+|uso vivienda|{Uso Vivienda.Uso Unidad Económica,Uso LEA}[predios]|
 |cantidad predios|[predios]|
 |cantidad viviendas|[viviendas]|
 
@@ -139,7 +139,7 @@ El procesamiento de los datos se realizó principalmente en @R-base. Se usó [QG
 
 El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico. 
 
-El código y los datos están disponibles en [este repositorio de GitHub https://github.com/correajfc/R-CP2005-CA2015](https://github.com/correajfc/R-CP2005-CA2015).
+El código y los datos están disponibles en el [repositorio de GitHub](https://github.com/correajfc/R-CP2005-CA2015) en https://github.com/correajfc/R-CP2005-CA2015. 
 
 ### Cálculo de métricas de acceso a servicios ambientales
 
@@ -225,7 +225,8 @@ La tabla \@ref(tab:vars-poblacion) muestra los valores de la variable de etnicid
 ```{r totales-poblacion}
 nombre_fila<-c("Población Total","Población afrodescendiente, negros o mulatos","Población indígena","Población Rom","Población Palenqueros","Población raizales de SAI")
 tot_pob<-totales.cali[11:16] %>% as_vector(.,"numeric")
-tabla.tmp<-data.frame(nombre_fila,unname(tot_pob))
+tabla.tmp<-data.frame(nombre_fila,unname(tot_pob)) %>% 
+  mutate_if(.predicate =  is.numeric,.funs =  scales::comma)
 knitr::kable(format = formato_render,      
              booktab = T,tabla.tmp, col.names = c("Tipo","Cantidad") ,caption = "Totales de población por grupo étnico en la ciudad de Cali")
 

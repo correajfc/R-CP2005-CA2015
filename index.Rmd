@@ -24,8 +24,9 @@ description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)
 
 ```{r setup-chunks, echo=FALSE}
 
-knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 150, dev = 'png')
+knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 5, warning = FALSE, message = FALSE, dpi = 150, dev = 'png')
 
+formato_render <- "html"
 
 ```
 
@@ -33,28 +34,23 @@ knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FAL
 
 # Agradecimientos {-}
 
-A Elizabeth, Augusto, Ana María y Catalina. Este trabajo fue posible gracias a su ayuda y cariño. 
+
+A Elizabeth, por inculcarme la pasión por el conocimiento y por las letras. 
+Augusto, por enseñarme la disciplina y valor del trabajo. Ana María, por su solidaridad incondicional con mis proyectos. A Catalina, por su amor, su compañía y paciencia con mi trabajo. 
+
+A Raul Sedano, Jeisson Ipia, Juan Felipe González y Anton Eitzinger por su valiosos comentarios y realimentación a este trabajo.
+
+A la gente del Internet, que generosamente comparte su conocimiento convirtiéndola en un espacio de aprendizaje y repositorio de saberes.
 
 
-# Glosario {-}
-
-```{r abrev}
-
- formato_render = "html"
-
-data_frame(
-  Term = c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
-           "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
-           "Retardo Espacial en X o *Spatial Lag*","Modelo Espacial del Error o *Spatial Error Model*",
-           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","lugares Especiales de Alojamiento","*Local indicators of spatial association*"),
-  Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA")) %>%
-  arrange(Abbreviation) %>% # i.e. alphabetical order by Term
-  kable(format = formato_render,
-     booktabs = T, 
-    col.names = c("Término","Abreviación")) %>% 
-   kable_styling(latex_options = "striped")
-
+```{r child = 'abstract.Rmd'}
 ```
+
+
+
+```{r child = 'glosario.Rmd'}
+```
+
 
 
 

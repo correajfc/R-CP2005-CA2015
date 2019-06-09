@@ -48,9 +48,9 @@ pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
 
 Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, se seleccionaron las siguientes variables para los modelos lineales:
 
-- Para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") ` ``. 
+- Para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") %>% str_replace_all("[\\._]"," ")` ``. 
 
-- Para la cobertura de copa (`cobertura_copa.ap`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ") ` `` 
+- Para la cobertura de copa (`cobertura_copa.ap`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ")%>% str_replace_all("[\\._]"," ") ` `` 
 
 
 ```{r tile-copa-poblacion-pearson, fig.asp=0.6,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
@@ -65,7 +65,7 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles
 ```
 
 
-Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio público se aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area_ep`) y el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento.porcentaje`, `cuarto.porcentaje` y `area_ep.porcentaje`.
+Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio público se aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area ep`) y el porcentaje de viviendas tipo cuarto (`cuarto porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento porcentaje`, `cuarto porcentaje` y `area ep porcentaje`.
 
 
 ### Modelos de regresión lineal AU
@@ -76,9 +76,9 @@ La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para e
 
 Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-mod-best-lm-copa) y \@ref(fig:diagn-mod-best-lm-copaap)). 
 
-Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). En el caso de la área de copa se obtiene un *adjR-square* de `r summary(lm.mod.area_copa) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent()`, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick()`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
+Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). En el caso de la área de copa se obtiene un *adjR-square* de `r summary(lm.mod.area_copa) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent() %>% str_c(collapse = ", ")%>% str_replace_all("[\\._]"," ")`, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick() %>% str_c(collapse = ", ")%>% str_replace_all("[\\._]"," ")`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
 
-Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()`. Este único indicador porcentual, que hace una descripción local y comparable entre los SU, explica el `r summary(lm.mod.cobertura.ap) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent()` de la variabilidad de los datos, reforzando la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
+Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()%>% str_replace_all("[\\._]"," ")`. Este único indicador porcentual, que hace una descripción local y comparable entre los SU, explica el `r summary(lm.mod.cobertura.ap) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent()` de la variabilidad de los datos, reforzando la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
 
 Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
 
@@ -99,6 +99,8 @@ sm<-summary(lm.mod.area_copa)
 sm
 
 ```
+
+
 
 ```{r coef-lm-copa}
 nombres_coef <- summary(lm.area_copa)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
@@ -133,6 +135,8 @@ sm
 
 ```
 
+
+
 ```{r coef-lm-cobertura}
 
 nombres_coef <- summary(lm.mod.cobertura.ap)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
@@ -146,6 +150,7 @@ kableExtra::kable(format = formato_render,
 col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
+
 
 
 
@@ -247,7 +252,7 @@ data_frame(metrica =nom_estimado_moran,
            log_area =mt,
            cobertura =mt2) %>% 
 knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
-             digits=5,
+             digits=5,escape = F,
              caption = "Test de Moran - Área de copa para $W_q$ y $W_d$" )
 
 ```
@@ -273,7 +278,7 @@ data_frame(metrica =nom_estimado_moran,
            log_area =mt,
            cobertura =mt2) %>% 
 knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
-             digits=5,
+             digits=5, escape = F,
              caption = "Test de Moran - Porcentaje de cobertura de copa para $W_q$ y $W_d$" )
 
 ```
@@ -334,8 +339,8 @@ data_frame(metrica =nom_estimado_moran,
            log_area =mt,
            cobertura =mt2) %>% 
 knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
-             digits=5,
-             caption = "Test de Moran - Residuos de OLS Área de copa para $W_q$ y $W_d$" , )
+             digits=5, escape = F,
+             caption = "Test de Moran - Residuos de OLS Área de copa para $W_q$ y $W_d$" )
 
 ```
 
@@ -360,7 +365,7 @@ data_frame(metrica =nom_estimado_moran,
            log_area =mt,
            cobertura =mt2) %>% 
 knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
-             digits=5,
+             digits=5, escape = F,
              caption = "Test de Moran - Residuos de OLS Porcentaje de cobertura de copa para $W_q$ y $W_d$" )
 
 ```
@@ -528,32 +533,57 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
 
 
 ```{r coef-sem-copa-wd}
-t1<-summary(sem.mod.log.area_copa.wd)$Coef
-knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa $W_d$')
+
+# t1<-summary(sem.mod.log.area_copa.wd)$Coef
+# knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SEM de área de copa $W_d$')
+
+
+nombres_coef <- summary(sem.mod.log.area_copa.wd)$Coef %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(sem.mod.log.area_copa.wd)$Coef %>% as_data_frame()
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+kableExtra::kable(format = formato_render,  
+                  # booktab = TRUE,
+                  digits=3, 
+                  caption = "Coeficientes del modelo SEM de área de copa $W_d$" , 
+                  booktabs = TRUE, 
+col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 ```
 
 ```{r cauto-sem-copa}
 sm<-summary(sem.mod.log.area_copa.wd)
 r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
-t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa $W_d$')
+knitr::kable(format = formato_render,  booktabs = T,
+             escape = F,
+             unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa $W_d$')
 ```
 
 
 ```{r coef-sd-copa-wq}
-t1<-summary(sd.mod.log.area_copa.wq)$Coef
-knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa $W_q$')
+# t1<-summary(sd.mod.log.area_copa.wq)$Coef
+# knitr::kable(format = formato_render, escape = F,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD de área de copa $W_q$')
+
+nombres_coef <- summary(sd.mod.log.area_copa.wq)$Coef %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(sd.mod.log.area_copa.wq)$Coef %>% as_data_frame()
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+kableExtra::kable(format = formato_render,  
+                  # booktab = TRUE,
+                  digits=3, 
+                  caption = "Coeficientes del modelo SD de área de copa $W_q$" , 
+                  booktabs = TRUE, 
+col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+
 ```
 
 ```{r cauto-sd-copa-wq}
 sm<-summary(sd.mod.log.area_copa.wq)
 r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
-t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa $W_q$')
+knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa $W_q$')
 ```
 
 #### Modelo espacial porcentaje de cobertura de área de copa 
@@ -711,13 +741,27 @@ r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
 t2<-rbind(c("$\\rho$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD $W_d$ de porcentaje de área de copa ')
+knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD $W_d$ de porcentaje de área de copa ')
 ```
 
+
+
 ```{r coef-sd-copaap}
-sm<-summary(sd.cobertura.ap.wd)
-t1<-summary(sd.cobertura.ap.wd)$Coef
-knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de copa $W_d$')
+# sm<-summary(sd.cobertura.ap.wd)
+# t1<-summary(sd.cobertura.ap.wd)$Coef
+# knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD de porcentaje de área de copa $W_d$')
+
+nombres_coef <- summary(sd.cobertura.ap.wd)$Coef %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(sd.cobertura.ap.wd)$Coef %>% as_data_frame()
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+kableExtra::kable(format = formato_render,  
+                  # booktab = TRUE,
+                  digits=3, 
+                  caption = "Coeficientes del modelo SD de porcentaje de área de copa $W_d$" , 
+                  booktabs = TRUE, 
+col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+
+
 ```
 
 
@@ -725,7 +769,7 @@ knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coef
 
 ## Acceso a espacios verdes
 
-En el caso de los EV la literatura ofrece variedad de medidas sobre acceso en relación con la distancia o con el área disponible. Se eligieron dos métricas: el porcentaje de área de espacio verde de un sector censal (`area_ep.porcentaje`), para cuantificar beneficios a nivel local; y la razón área disponible entre distancia (`ia.areas.dist`) (ecuación \@ref(eq:areas-dists)) que expresa el acceso más allá de los límites del SU. El valor es cercano a cero cuando el área disponible es cercana a cero o cuando la distancia es mucho mayor que el área media de espacio verde en el radio de búsqueda, limitado a 1000 $m$, un orden de mangitud menor que el área media de EV (`r regresion.EV$area_ep %>% mean() %>% scales::comma(accuracy = 0.1)` $m^2$ ). La distancia promedio del centroide de un SU al conjunto de EV es `r ia.1000.n %>% mean(na.rm = T) %>%  round(digits = 3) %>% scales::comma(accuracy = 0.1)` $m$ . Como se observa en la figura \@ref(fig:mapa-dependienteEV-sel), esta medición parece un versión interpolada del indicador local de acceso `area_ep.porcentaje`, y hace evidentes un patrón espacial de grupos con mejor acceso a EV, no uniforme ni aleatoreo. 
+En el caso de los EV la literatura ofrece variedad de medidas sobre acceso en relación con la distancia o con el área disponible. Se eligieron dos métricas: el porcentaje de área de espacio verde de un sector censal (`area ep porcentaje`), para cuantificar beneficios a nivel local; y la razón área disponible entre distancia (`ia.areas.dist`) (ecuación \@ref(eq:areas-dists)) que expresa el acceso más allá de los límites del SU. El valor es cercano a cero cuando el área disponible es cercana a cero o cuando la distancia es mucho mayor que el área media de espacio verde en el radio de búsqueda, limitado a 1000 $m$, un orden de mangitud menor que el área media de EV (`r regresion.EV$area_ep %>% mean() %>% scales::comma(accuracy = 0.1)` $m^2$ ). La distancia promedio del centroide de un SU al conjunto de EV es `r ia.1000.n %>% mean(na.rm = T) %>%  round(digits = 3) %>% scales::comma(accuracy = 0.1)` $m$ . Como se observa en la figura \@ref(fig:mapa-dependienteEV-sel), esta medición parece un versión interpolada del indicador local de acceso `area ep porcentaje`, y hace evidentes un patrón espacial de grupos con mejor acceso a EV, no uniforme ni aleatoreo. 
 
 Al examinar la distribución de los valores de estos indicadores (figuras \@ref(fig:hist-areaep) y \@ref(fig:hist-areasdist)) se observa que en ambos indicadores existe asimetría positiva, lo que muestra una concentración de valores por debajo del promedio del indicador y un conjunto reducido de SU muy por encima.  
 
@@ -788,7 +832,7 @@ ggplot(regresion.EV)+
 
 ### Correlaciones y distribuciones bivariadas
 
-Las figuras \@ref(fig:tile-ev-poblacion-pearson) y \@ref(fig:tile-ev-poblacion-spearman) resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente de las variables poblacionales y los indicadores de acceso. Esta relación es muy débil, y en todas las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado bajo para seleccionar una variable como candidata a predictor de una regresión lineal. Sin embargo, como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, se incluyeron las de mejor correlación: `densidad_poblacion`,`con_alguna_limitacion.porcentaje`  para el índice de acceso `ia.areas.dist` y `ningun_estudio.porcentaje` para `area_ep.porcentaje`.
+Las figuras \@ref(fig:tile-ev-poblacion-pearson) y \@ref(fig:tile-ev-poblacion-spearman) resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente de las variables poblacionales y los indicadores de acceso. Esta relación es muy débil, y en todas las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado bajo para seleccionar una variable como candidata a predictor de una regresión lineal. Sin embargo, como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, se incluyeron las de mejor correlación: `densidad poblacion`,`con alguna limitacion porcentaje`  para el índice de acceso `ia.areas.dist` y `ningun estudio porcentaje` para `area ep porcentaje`.
 
 ```{r tile-ev-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de población"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel)+
@@ -802,7 +846,7 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel, meth
   labs(title="Spearman entre acceso a EV \ny variables de población")
 ```
 
-El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación con las varibles dependientes se muestran en las figuras \@ref(fig:tile-ev-uso-pearson) y \@ref(fig:tile-ev-uso-spearman). De nuevo las correlaciones son bajas, y aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: `unidad_economica.porcentaje` y el `cuarto.porcentaje`. 
+El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación con las varibles dependientes se muestran en las figuras \@ref(fig:tile-ev-uso-pearson) y \@ref(fig:tile-ev-uso-spearman). De nuevo las correlaciones son bajas, y aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: `unidad economica porcentaje` y el `cuarto porcentaje`. 
 
 ```{r tile-ev-uso-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de uso de los predios"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel)+
@@ -817,7 +861,7 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel, method
 
 ```
 
-El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura \@ref(fig:tile-ev-fisica-pearson) y \@ref(fig:tile-ev-fisica-spearman) muestran que el área media de las manzanas (`area_media_manzana`) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.
+El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura \@ref(fig:tile-ev-fisica-pearson) y \@ref(fig:tile-ev-fisica-spearman) muestran que el área media de las manzanas (`area media manzana`) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.
 
 ```{r tile-ev-fisica-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel)+
@@ -835,29 +879,34 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel, method
 
 En resumen, las variables independientes escogidas para los modelos lineales son:
 
-- Para el `area_ep.porcentaje` los predictores seleccionados son `r str_c(c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)%>% backtick(), collapse = ", ")  ` . 
+- Para el `area ep porcentaje` los predictores seleccionados son `r str_c(c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)%>% backtick(), collapse = ", ") %>% str_replace_all("[\\._]"," ")  ` . 
 
-- Para `ia.areas.dist`  los predictores seleccionados son `r str_c(c(indep.poblacion.ia.areas.dist.sel,indep.predios_estruct.areas.dist.sel) %>% backtick(), collapse = ", ") `  
+- Para `ia.areas.dist`  los predictores seleccionados son `r str_c(c(indep.poblacion.ia.areas.dist.sel,indep.predios_estruct.areas.dist.sel) %>% backtick(), collapse = ", ") %>% str_replace_all("[\\._]"," ") `  
 
 
 ### Modelos de regresión lineal EV
 
 
-La tabla \@ref(tab:coef-lm-ptjeAEV) muestra los coeficientes de la regresión para el porcentaje de EV; la tabla \@ref(tab:coef-lm-areadist) muestra los coeficientes de la regresión para índice áreas-distancia, y la tabla \@ref(tab:ajuste-lmEV-pob-predios) resume las métricas de ajuste de ambos modelos.
+La tabla \@ref(tab:coef-lm-ptjeAEV) muestra los coeficientes de la regresión para el porcentaje de EV; la tabla \@ref(tab:coef-lm-areadist) muestra los coeficientes de la regresión para índice áreas-distancia, y la tabla \@ref(tab:ajuste-lmev-pob-predios) resume las métricas de ajuste de ambos modelos.
 
 Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-lm-areaptj-sel) y \@ref(fig:diagn-lm-areadist-sel)). El nivel explicativo de la variabilidad de los datos de ambos modelos es bajo. Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). 
 
 
-Las variables significativas para el `area_ep.porcentaje` son `r c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)[c(2,3)] %>% backtick()`. Estos resultados muestran que no existe evidencia significativa de que el acceso a EV en un SU esté relacionado con variables etnicas, de discapacidad o de acceso a la educación. Sin embargo es muy importante la relación positiva con aspectos estructurales representados por el área media de las manzanas (`area_media_manzana`) y una relación negativa con el porcentaje de viviendas tipo cuarto (`cuarto.porcentaje`), estas últimas concentradas en la zona centro y de ladera del área urbana de Santiago de Cali (ver figura \@ref(fig:mapas-usopredios-cont)).
+Las variables significativas para el `area ep porcentaje` son `r c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)[c(2,3)] %>% backtick() %>% str_c(collapse = ", ") %>% str_replace_all("[\\._]"," ")`. Estos resultados muestran que no existe evidencia significativa de que el acceso a EV en un SU esté relacionado con variables etnicas, de discapacidad o de acceso a la educación. Sin embargo es muy importante la relación positiva con aspectos estructurales representados por el área media de las manzanas (`area media manzana`) y una relación negativa con el porcentaje de viviendas tipo cuarto (`cuarto porcentaje`), estas últimas concentradas en la zona centro y de ladera del área urbana de Santiago de Cali (ver figura \@ref(fig:mapas-usopredios-cont)).
 
-Para la relación de área distancia se confirma la significancia de `r indep.predios_estruct.areas.dist.sel[2] %>% backtick()` y, en ausencia de la variable `cuarto.porcentaje`, se incorpora `unidad_economica.porcentaje` que exhibe un patrón espacial similar. A diferencia del índice local de acceso, en `ia.areas.dist` se evidenció una relación negativa con el porcentaje de personas con alguna limitación (`con_alguna_limitacion.porcentaje`).  
+Para la relación de área distancia se confirma la significancia de `r indep.predios_estruct.areas.dist.sel[2] %>% backtick() %>% str_c(collapse = ", ") %>% str_replace_all("[\\._]"," ") ` y, en ausencia de la variable `cuarto porcentaje`, se incorpora `unidad economica porcentaje` que exhibe un patrón espacial similar. A diferencia del índice local de acceso, en `ia.areas.dist` se evidenció una relación negativa con el porcentaje de personas con alguna limitación (`con alguna limitacion porcentaje`).
 
 
 Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
 
 
 
-```{r code-lm-area_ep,echo=FALSE,eval=TRUE,results= "hide"}
+
+
+
+
+
+```{r code-lm-area_ep,echo=FALSE,eval=TRUE,results= 'hide'}
 
 dependiente <- "area_ep.porcentaje"
 independientes  <- c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)
@@ -870,7 +919,12 @@ summary(lm.area_ep.ptje)
 
 ```
 
-```{r code-lm-area_ep-sel,echo=FALSE,eval=TRUE, results="hide"}
+
+
+
+
+
+```{r code-lm-area_ep-sel,echo=FALSE,eval=TRUE, results='hide'}
 
 dependiente <- "area_ep.porcentaje"
 independientes  <- independientes.EV
@@ -888,16 +942,23 @@ summary(lm.area_ep.ptje.sel)
 
 ```
 
+
+
+
+
+
+
 ```{r coef-lm-ptjeAEV}
 
-# t1<-summary(lm.area_ep.ptje)$coefficients
-# knitr::kable(format = formato_render,  booktabs = T,t1, digits=5, caption = "Coeficientes OLS de porcentaje de área de espacios verdes " )
 
 
 nombres_coef <- summary(lm.area_ep.ptje)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.area_ep.ptje)$coefficients %>% as_data_frame()
 t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
 knitr::kable(format = formato_render,  booktabs = T, digits=5, caption = "Coeficientes OLS de Porcentaje de EV" ,  col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+
+
+
 
 ```
 
@@ -924,6 +985,11 @@ summary(lm.ia.areas.dist)
 
 ```
 
+
+
+
+
+
 ```{r code-lm-areadist-sel,echo=FALSE,eval=TRUE,results="hide"}
 #Ajuste modelo simplificado
 dependiente <- "ia.areas.dist"
@@ -943,28 +1009,52 @@ summary(lm.ia.areas.dist.sel)
 
 ```
 
+
+
+
+
+
+
+
 ```{r coef-lm-areadist}
 
-# t1<-summary(lm.ia.areas.dist)$coefficients
-# knitr::kable(format = formato_render,  booktabs = T,t1, digits=5, caption = "Coeficientes OLS de porcentaje de indice de acceso areas-distancia " )
 
 nombres_coef <- summary(lm.ia.areas.dist)$coefficients %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
 t1<-summary(lm.ia.areas.dist)$coefficients %>% as_data_frame()
 t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
-knitr::kable(format = formato_render,  booktabs = T, digits=5, caption = "Coeficientes OLS de áreas-distancia" ,  col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+kable(format = formato_render,  
+             booktabs = T, digits=5,
+             caption = "Coeficientes OLS de áreas-distancia", 
+             col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)")
+             )
+
+
+
 
 ```
 
 
-```{r ajuste-lmEV-pob-predios}
-tabla<-fitstats_lm_df(lm.area_ep.ptje.sel) %>% 
-  rename(`%EV`=fitstats) %>%
+
+
+
+
+
+```{r ajuste-lmev-pob-predios }
+
+
+fitstats_lm_df(lm.area_ep.ptje.sel) %>% 
+  rename(EV=fitstats) %>%
    left_join(fitstats_lm_df(lm.ia.areas.dist.sel),by= "medidasfit") %>%
-  rename( `Area-Distancia`=fitstats)  
-kable(x = tabla, format = formato_render,  booktabs = T,caption = "Resumen métricas de ajuste OLS Indice contenedor (%EV) y de acceso área-distancia ", digits = 5)
-
+  rename( `Area-Distancia`=fitstats) %>%  
+kable( format = formato_render,  booktabs = TRUE,
+      caption = "Resumen métricas de ajuste OLS Indice contenedor (EV) y de acceso área-distancia ", digits = 5)
 
 ```
+
+
+
+
+
 
 
 ```{r diagn-lm-areaptj-sel, fig.cap="Gráficas diagnósticas para OLS del Porcentaje de EV "}
@@ -989,7 +1079,11 @@ grid.arrange( grobs =graf@plots, top=title1)
 
 
 
-```{r diagn-lm-areadist-sel, fig.cap="Gráficas diagnósticas para OLS de índice área-distancia "}
+
+
+
+
+```{r diagn-lm-areadist-sel, fig.cap="Gráficas diagnósticas para OLS de índice área-distancia"}
 
 # graf<-autoplot(lm.ia.areas.dist.sel, which = 1:4)
 # title1=grid::textGrob(format(as.formula(lm.ia.areas.dist.sel)) %>% str_c(collapse = "\n"), gp=gpar(fontface="bold",fontsize=8))
@@ -1018,6 +1112,8 @@ grid.arrange( grobs =graf@plots, top=title1)
 
 
 
+
+
 ### Modelado espacial de espacios verdes
 
 El proceso de ajuste de los modelos geoestadísticos para el análisis de espacios verdes hace uso de los mismos elementos metodológicos usados para la cobertura de copa. Se usaron las dos matrices de velocidad usando un kernel de vecindad Queen $W_q$ y otro con base en un radio de búsqueda de 1 kilómetro $W_d$ usadas en el análisis del AU (ver figura \@ref(fig:ws-su-reg)).
@@ -1027,7 +1123,7 @@ El proceso de ajuste de los modelos geoestadísticos para el análisis de espaci
 
 Se analizó la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas \@ref(tab:moran-areaep-w) y \@ref(tab:moran-areadist-w)). 
 
-Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matrix $W_q$ captura mejor la autocorrelación de ambos indicadores. El indicador `ai.areas.dist` exhibe un valor de autocorrelación mucho más alto que `area_ep.porcentaje`. El cálculo del índice `ia.areas.dist` en su construcción usa una distancia de radio de búsqueda de 1 kilómetro; en su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o clusters alrededor de ciertos sectores urbanos. Resulta pues interesante no sea $W_d$ la que capture mejor el agrupamiento.
+Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matrix $W_q$ captura mejor la autocorrelación de ambos indicadores. El indicador `ai.areas.dist` exhibe un valor de autocorrelación mucho más alto que `area ep porcentaje`. El cálculo del índice `ia.areas.dist` en su construcción usa una distancia de radio de búsqueda de 1 kilómetro; en su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o clusters alrededor de ciertos sectores urbanos. Resulta pues interesante no sea $W_d$ la que capture mejor el agrupamiento.
 
 Los mapas LISA para ambos indicadores de acceso a EV usando la matriz $W_q$ muestran los grupos de sectores autocorrelacionados (figura \@ref(fig:mapas-lisa-areaep-wq) y \@ref(fig:mapas-lisa-areadist-wq)). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad.
 Se aprecia que se forman cluster alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamentos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje. 
@@ -1057,7 +1153,8 @@ mt2<-moran.test(regresion.EV$area_ep.porcentaje, listw=W_dist1000.inv.ev, zero.p
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render,escape = F,
+             booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
              caption = "Test de Moran - Porcenatje de EV para $W_q$ y $W_d$" )
 
@@ -1083,7 +1180,8 @@ mt2<-moran.test(regresion.EV$ia.areas.dist, listw=W_dist1000.inv.ev, zero.policy
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_{q}$","$W_{d}$"),
+knitr::kable(format = formato_render, escape = F,
+             booktabs = T,col.names = c(" ","$W_{q}$","$W_{d}$"),
              digits=5,
              caption = "Test de Moran - Razón área distancia para $W_{q}$ y $W_{d}$" )
 
@@ -1141,7 +1239,8 @@ mt2<-moran.test(lm.area_ep.ptje.sel$residuals, listw=W_dist1000.inv.ev, zero.pol
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render, escape = F,
+             booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
              caption = "Test de Moran - Residuos de OLS Porcentaje EV $W_q$ y $W_d$" )
 
@@ -1167,7 +1266,8 @@ mt2<-moran.test(lm.ia.areas.dist.sel$residuals, listw=W_dist1000.inv.ev, zero.po
 data_frame(metrica =nom_estimado_moran, 
            log_area =mt,
            cobertura =mt2) %>% 
-knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
+knitr::kable(format = formato_render, escape = F,
+             booktabs = T,col.names = c(" ","$W_q$","$W_d$"),
              digits=5,
              caption = "Test de Moran - Residuos de OLS relación áreas distancias para $W_q$ y $W_d$" )
 
@@ -1256,13 +1356,26 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 ```{r coef-sem-areaep}
-sm<-summary(sem.areas_ep)
-t1<-summary(sem.areas_ep)$Coef
-r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
-r1<-unname(r1)
-t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
-          r1)
-knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de EV')
+# sm<-summary(sem.areas_ep)
+# t1<-summary(sem.areas_ep)$Coef %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+# # r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
+# # r1<-unname(r1)
+# # t2<-rbind(c("$\\lambda$","Likelihood ratio","p-valor"),
+# t1 %>% bind_cols(terminos = t1,.) %>%           
+# knitr::kable(format = formato_render, escape = F, booktabs = T, digits=3,caption = 'Coeficientes del modelo SEM de porcentaje de área de EV', col.names = c("Término","Estimado","Error std.", "t-valor","Pr(>|t|)"))
+
+
+nombres_coef <- summary(sem.areas_ep)$Coef %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(sem.areas_ep)$Coef %>% as_data_frame()
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+kableExtra::kable(format = formato_render,  
+                  # booktab = TRUE,
+                  digits=3, 
+                  caption = 'Coeficientes del modelo SEM de porcentaje de área de EV' , 
+                  booktabs = TRUE, 
+col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+
+
 ```
 
 
@@ -1270,9 +1383,9 @@ knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coef
 sm<-summary(sem.areas_ep)
 r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
-t2<-rbind(c("$\\lambda$","Likelihood ratio","p-value"),
+t2<-rbind(c("$\\lambda$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV')
+knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de porcentaje de área de EV')
 ```
 
 
@@ -1288,7 +1401,7 @@ Las métricas de ajuste de los modelos de indicador área-distancia (ver tabla \
 Al comparar los resultados usando el desempeño en AIC se identificó al modelo SD con el mejor ajuste. El modelo SD logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\rho$ del término autorregresivos es muy alto y significativo (tabla \@ref(tab:cauto-sd-areasdist)), lo que sugiere que los efectos de las variables dependientes rezagadas so significativos. Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones ( y se corrobora con las gráficas diagnósticas de la figura \@ref(fig:diag-model-areasdist-espaciales)). 
 
 
-El resultado del modelo SD confirmó la significancia y efecto positvo pero bajo en el acceso a EV contar con unidades económicas dentro del SU. Es significativo y fuerte en el acceso a EV estar al rededor de SUs con manzanas de área promedio grande. Por otro lado se desestima que exista una relación con la variable  porcentaje personas con alguna limitación (ver tabla \@ref(tab:coef-sem-areasdist)). La escogencia del modelo SD se ajusta consistentemente con el propósito del indicador áreas-distancia de medir el acceso en un SU más allá de su límite geográfico.
+El resultado del modelo SD confirmó la significancia y efecto positvo pero bajo en el acceso a EV contar con unidades económicas dentro del SU. Es significativo y fuerte en el acceso a EV estar al rededor de SUs con manzanas de área promedio grande. Por otro lado se desestima que exista una relación con la variable  porcentaje personas con alguna limitación (ver tabla \@ref(tab:coef-sd-areasdist)). La escogencia del modelo SD se ajusta consistentemente con el propósito del indicador áreas-distancia de medir el acceso en un SU más allá de su límite geográfico.
 
 
 
@@ -1350,9 +1463,21 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 ```{r coef-sd-areasdist}
-sm<-summary(sd.areas.dist)
-t1<-summary(sd.areas.dist)$Coef
-knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coeficientes del modelo SD índice de relación área distancia de EV')
+
+
+nombres_coef <- summary(sd.areas.dist)$Coef %>% row.names() %>% str_remove_all(".mxn") %>% str_replace_all("[\\._]"," ") %>% str_replace("\\(Intercept\\)","Intercepto")
+t1<-summary(sd.areas.dist)$Coef %>% as_data_frame()
+t1 %>% bind_cols(terminos = nombres_coef,.) %>% 
+kableExtra::kable(format = formato_render,  
+                  # booktab = TRUE,
+                  digits=3, 
+                  caption =  'Coeficientes del modelo SD índice de relación área distancia de EV' , 
+                  booktabs = TRUE, 
+col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
+
+
+
+
 ```
 
 
@@ -1360,9 +1485,9 @@ knitr::kable(format = formato_render,  booktabs = T,t1, digits=3,caption = 'Coef
 sm<-summary(sd.areas.dist)
 r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
 r1<-unname(r1)
-t2<-rbind(c("$\\rho$","Likelihood ratio","p-value"),
+t2<-rbind(c("$\\rho$","Likelihood ratio","p-valor"),
           r1)
-knitr::kable(format = formato_render,  booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV')
+knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD índice de relación área distancia de EV')
 ```
 
 

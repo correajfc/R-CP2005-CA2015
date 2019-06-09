@@ -3,18 +3,32 @@
 # Glosario {-}
 
 ```{r abrev}
-formato_render = "latex"
-# formato_render = "html"
 
-data_frame(
-  Term = c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
+ # formato_render <-  "html"
+# formato_render <-  "latex"
+
+term_latex <- c("Arbolado Urbano","Espacio Verde","Sector Urbano", "\\textit{Ordinary Least-Square}",
+           "\\textit{Maximum Likelihood}","Modelo Autoregresivo o \\textit{Spatial Autocorrelation}",
+           "Retardo Espacial en X o \\textit{Spatial Lag}","Modelo Espacial del Error o \\textit{Spatial Error Model}",
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","\\textit{Web Feature Service}","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","\\textit{Local indicators of spatial association}")
+
+term_html <- c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
            "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
            "Retardo Espacial en X o *Spatial Lag*","Modelo Espacial del Error o *Spatial Error Model*",
-           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","lugares Especiales de Alojamiento","*Local indicators of spatial association*"),
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","*Local indicators of spatial association*")
+
+
+if(formato_render == "latex"){
+  term_glosario <- term_latex}else{
+  term_glosario <-term_html}
+
+tibble(
+  Term = term_glosario,
   Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA")) %>%
   arrange(Abbreviation) %>% # i.e. alphabetical order by Term
-  knitr::kable(format = formato_render,
+  kable(format = formato_render,
      booktabs = T, 
+     escape = F,
     col.names = c("Término","Abreviación")) %>% 
    kable_styling(latex_options = "striped")
 

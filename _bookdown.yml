@@ -10,7 +10,6 @@ language:
     chapter_name: "Capítulo "
 rmd_files: 
   html: ["index.Rmd", 
-  "abstract.Rmd", 
   "intro.Rmd",
   "revision_literatura.Rmd",
   "metodologia.Rmd",
@@ -26,5 +25,6 @@ rmd_files:
   "resultados.Rmd",
   "discusion.Rmd",
   "conclusiones.Rmd",
+  "apendices.Rmd",
   "referencias.Rmd"]
 delete_merged_file: TRUE

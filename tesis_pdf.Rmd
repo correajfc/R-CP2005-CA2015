@@ -1,0 +1,76 @@
+--- 
+title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia"
+subtitle: "Juan Fernando Correa Caicedo"
+author: 
+- "Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)"
+- "Universidad de Salzburgo"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+classoption: openany
+fontsize: 12pt
+linestretch: 1.5
+lof: false
+lot: false
+papersize: a4
+geometry: "left=3cm, right=2.5cm, top=3cm, bottom=2.5cm"
+bibliography: [tesisbck.bib, packages.bib]
+link-citations: yes
+github-repo: correajfc/unigis-tesis
+description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)"
+---
+
+```{r setup-chunks, echo=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 5, warning = FALSE, message = FALSE, dpi = 600, dev = 'png', out.width='90%')
+
+formato_render <-  "latex"
+
+```
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+\pagenumbering{gobble}
+\newpage
+
+```{r child = 'compromiso.Rmd'}
+```
+
+```{r child = 'agradecimiento.Rmd'}
+```
+
+\setstretch{1.0}
+
+```{r child = 'abstract.Rmd'}
+```
+
+
+\setstretch{1.5}
+
+
+<!-- % Trigger ToC creation in LaTeX -->
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+
+\pagenumbering{arabic}
+
+
+```{r child = 'glosario.Rmd'}
+```
+
+
+\listoffigures
+
+\listoftables
+
+
+
+
