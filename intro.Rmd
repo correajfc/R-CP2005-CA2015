@@ -16,7 +16,7 @@ el ingreso, acceso al trabajo, la etnicidad o el género, con miras a reducir la
 desigualdades entre los ciudadanos en el acceso y disfrute de los servicios 
 ambientales. La definición y valoración de estos beneficios hace uso de medidas 
 como la abundancia, la cobertura de las copas de los árboles, índices de 
-vegetación,  diferentes distancias a las zonas verdes dentro de un marco 
+vegetación o distancia a las zonas verdes, dentro de un marco 
 alineado con conceptos como la justicia ambiental, equidad y la sostenibilidad. 
 Estos indicadores son calculados con datos de censos de población, encuesta de 
 calidad de vida, censos arbóreos, imágenes satelitales, cartografías y bases de 
@@ -104,7 +104,7 @@ de análisis sobre su relación con las condiciones de vida de la población. La
 estudio contribuye a la identificación de relaciones de inequidad en la distribución de los beneficios que provee el arbolado urbano a través del análisis espacial de la cobertura arbórea, el acceso a zonas verdes y la 
 distribución de las variables sociales y económicas de la población. El estudio promete ser un punto de partida para la identificación de zonas de intervención del arbolado con el fin de cerrar brechas relacionadas con el desarrollo sostenible y la justicia ambiental.
 
-Contar con los datos del censo arbóreo de Santiago de Cali permite hacer análisis de estos beneficios ambientales para la población usando datos con alta resolución espacial y construir estadísticas a escalas apropiadas para la intervención y aprovechamiento de los recursos naturales de la ciudad explotando el potencial que ofrece la información censal y los conjuntos de datos espaciales de los que dispone la administración municipal [@schwarz_trees_2015]. Los resultados de esta investigación buscan aportar al debate académico y enriquecer el proceso de la toma de decisiones y la planificación de la ciudad, sentando bases técnicas y resultados concretos que el desarrollo de políticas, proyectos e instrumentos que potencien al árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad de vida de los caleños.
+Contar con los datos del censo arbóreo de Santiago de Cali permite hacer análisis de estos beneficios ambientales para la población usando datos con alta resolución espacial y construir estadísticas a escalas apropiadas para la intervención y aprovechamiento de los recursos naturales de la ciudad, explotando el potencial que ofrece la información censal y los conjuntos de datos espaciales de los que dispone la administración municipal [@schwarz_trees_2015]. Los resultados de esta investigación buscan aportar al debate académico y enriquecer el proceso de la toma de decisiones y la planificación de la ciudad, sentando bases técnicas y resultados concretos paral desarrollo de políticas, proyectos e instrumentos que potencien al árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad de vida de los caleños.
 
 ## Alcance
 

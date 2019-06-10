@@ -3,6 +3,20 @@
 \usepackage{longtable}
 \usepackage[table]{xcolor}
 \usepackage{amsthm}
+\usepackage{setspace}
+\usepackage[nottoc]{tocbibind}
 \usepackage[spanish]{babel}
 \pagestyle{plain}
 \raggedbottom
+\usepackage{pdfpages}
+
+
+\addto\captionsspanish{%
+  \def\bibname{Referencias}%
+  \def\tablename{Tabla}%
+  \renewcommand{\listtablename}%
+    {Índice de tablas}%
+}
+
+
+

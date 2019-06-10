@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-06-03">
+<meta name="date" content="2019-06-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 
-<link rel="next" href="abreviaciones.html">
+<link rel="next" href="resumen.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,6 +48,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 
@@ -68,9 +69,9 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="abreviaciones.html"><a href="abreviaciones.html"><i class="fa fa-check"></i>Abreviaciones</a></li>
 <li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
@@ -104,7 +105,7 @@
 <li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
-<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas sobre la población</a></li>
 <li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
 <li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
 <li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
@@ -127,10 +128,8 @@
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
-<li class="appendix"><span><b>Anexos</b></span><ul>
-<li class="chapter" data-level="A.1" data-path="index.html"><a href="#informacion-de-sesion-de-r"><i class="fa fa-check"></i><b>A.1</b> Informacion de sesión de R</a></li>
-<li class="chapter" data-level="A.2" data-path="conclusiones.html"><a href="conclusiones.html#otros-graficos"><i class="fa fa-check"></i><b>A.2</b> Otros gráficos</a></li>
-</ul></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="informacion-de-sesion-de-r.html"><a href="informacion-de-sesion-de-r.html"><i class="fa fa-check"></i><b>A</b> Informacion de sesión de R</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -157,11 +156,13 @@
 <h3 class="subtitle"><em>Juan Fernando Correa Caicedo</em></h3>
 <h4 class="author"><em>Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)</em></h4>
 <h4 class="author"><em>Universidad de Salzburgo</em></h4>
-<h4 class="date"><em>2019-06-03</em></h4>
+<h4 class="date"><em>2019-06-09</em></h4>
 </div>
 <div id="agradecimientos" class="section level1 unnumbered">
 <h1>Agradecimientos</h1>
-<p>A Elizabeth, Augusto, Ana María y Catalina. Este trabajo fue posible gracias a su ayuda y cariño.</p>
+<p>A Elizabeth, por inculcarme la pasión por el conocimiento y las letras. Augusto, por enseñarme la disciplina y valor del trabajo. Ana María, por su solidaridad incondicional con mis proyectos. A Catalina, por su amor, su compañía y paciencia con mi trabajo.</p>
+<p>A Raul Sedano, Jeisson Ipia, Juan Felipe González y Anton Eitzinger por su valiosos comentarios y realimentación a este trabajo.</p>
+<p>A la gente del Internet, que generosamente comparte su conocimiento convirtiéndolo en un espacio de aprendizaje y repositorio de saberes.</p>
 </div>
             </section>
 
@@ -169,7 +170,7 @@
         </div>
       </div>
 
-<a href="abreviaciones.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="resumen.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -26,14 +26,14 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-06-03">
+<meta name="date" content="2019-06-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="abstract.html">
+<link rel="prev" href="glosario.html">
 <link rel="next" href="revlit.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -48,6 +48,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 
@@ -68,9 +69,9 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="abreviaciones.html"><a href="abreviaciones.html"><i class="fa fa-check"></i>Abreviaciones</a></li>
 <li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
@@ -104,7 +105,7 @@
 <li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
-<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas sobre la población</a></li>
 <li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
 <li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
 <li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
@@ -127,10 +128,8 @@
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
-<li class="appendix"><span><b>Anexos</b></span><ul>
-<li class="chapter" data-level="A.1" data-path="intro.html"><a href="#informacion-de-sesion-de-r"><i class="fa fa-check"></i><b>A.1</b> Informacion de sesión de R</a></li>
-<li class="chapter" data-level="A.2" data-path="conclusiones.html"><a href="conclusiones.html#otros-graficos"><i class="fa fa-check"></i><b>A.2</b> Otros gráficos</a></li>
-</ul></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="informacion-de-sesion-de-r.html"><a href="informacion-de-sesion-de-r.html"><i class="fa fa-check"></i><b>A</b> Informacion de sesión de R</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -159,7 +158,7 @@
 <p>Los árboles son pieza clave de los ecosistemas donde la vida humana ha prosperado. Son hogar y fuente de alimento de muchas especies <span class="citation">(Osorio y Molina, <a href="#ref-osorio_vuelo_2009">2009</a>)</span>; forman espacios con condiciones climáticas y funcionales que complejizan el paisaje y las posibles relaciones entre los animales <span class="citation">(Chapman y Onderdonk, <a href="#ref-chapman_forests_1998">1998</a>)</span>. Se puede ubicar en la década de los 70 el inicio de un pensamiento ambiental que empieza a ser relevante en el discurso económico mundial<span class="citation">(Leff, <a href="#ref-leff_pensamiento_2012">2012</a>)</span> y que se consolida con la publicación del Informe Brundtland en 1987. Sin embargo, las preocupaciones sobre la sostenibilidad y conservación de los ecosistemas que sustentan la vida en el planeta son relativamente nuevas en la economía mundial, si se compara con la simbiosis entre árboles y humanos que dan origen a la agricultura y los convierten en un elemento simbólico de gran riqueza en el universo religioso y cultural de la humanidad <span class="citation">(León Calle, <a href="#ref-leon_calle_arboles_2011">2011</a>)</span>.</p>
 <p>El hombre ha materializado espacios urbanos con dimensiones que retan la imaginación y llevan al límite los sistemas de infraestructura, abastecimiento y gobernabilidad. En la empresa de consolidar antroposferas, las ciudades que construimos han desplazados muchos de los ecosistemas naturales de los territorios que fueron la razón de escoger justamente esos sitios para el asentamiento, trasladándolos más allá de los límites de la ciudad, atenuando su presencia/visibilidad en el mundo de los ciudadanos. Son reemplazados por vías, zonas verdes, áreas industriales, comerciales y residenciales<span class="citation">(Azócar et al., <a href="#ref-azocar_urbanization_2007">2007</a>)</span>.</p>
 <p>Las preocupaciones sobre el crecimiento de la población mundial, su concentración en centros urbanos y las transformaciones que trae consigo el proceso de cambio climático, nos obligan a pensar en cómo maximizar los beneficios que nos brindan las zonas verdes y el bosque urbano como estrategia para mitigar los efectos negativos de estos procesos <span class="citation">(Laredo y Mirtha, <a href="#ref-laredo_gestion_2011">2011</a>; Nesbitt y Meitner, <a href="#ref-nesbitt_exploring_2016">2016</a>)</span>. A este escenario se suma trabajos como <span class="citation">D. J. Nowak y Greenfield (<a href="#ref-nowak_tree_2012">2012</a>)</span> que revelan patrones de decaimiento estadísticamente significativos del arbolado urbano en 17 de 20 ciudades norteamericanas o <span class="citation">Restrepo et al. (<a href="#ref-restrepo_incidence_2015">2015</a>)</span> que reporta la reducción de las condiciones de vitalidad del arbolado del Valle de Aburra en Colombia derivado de la interacción de causas naturales y antrópicas, las cuales afectan directa o indirectamente la fisiología y salud de los árboles en los espacios urbanos. <span class="citation">D. J. Nowak y Greenfield (<a href="#ref-nowak_tree_2012">2012</a>)</span> se pregunta si los administradores locales conocen los cambios que presenta las coberturas arbóreas, puesto que esta es una representación simple pero confiable (y ampliamente aceptada) para tasar la extensión de los beneficios derivados de los bosque urbanos, dado que los servicio que proveen los árboles están relacionados con la salud y el funcionamiento de sus hojas.</p>
-<p>En las agendas municipales, a nivel mundial, ha crecido la importancia de las relaciones y patrones de distribución de los beneficios de áreas verdes en comparación con la distribución espacial de variables sociales y económicas como el ingreso, acceso al trabajo, la etnicidad o el género, con miras a reducir las desigualdades entre los ciudadanos en el acceso y disfrute de los servicios ambientales. La definición y valoración de estos beneficios hace uso de medidas como la abundancia, la cobertura de las copas de los árboles, índices de vegetación, diferentes distancias a las zonas verdes dentro de un marco alineado con conceptos como la justicia ambiental, equidad y la sostenibilidad. Estos indicadores son calculados con datos de censos de población, encuesta de calidad de vida, censos arbóreos, imágenes satelitales, cartografías y bases de datos de entidades oficiales y académicas. Los servicios ambientales tienen cargas y costos de mantenimiento para la administración y gestión de los recursos y servicios ambientales, lo que exige que se identifique las zonas, condiciones de los recursos y de la población para la ejecución de acciones eficaces y eficientes por parte de los gobiernos y autoridades ambientales.</p>
+<p>En las agendas municipales, a nivel mundial, ha crecido la importancia de las relaciones y patrones de distribución de los beneficios de áreas verdes en comparación con la distribución espacial de variables sociales y económicas como el ingreso, acceso al trabajo, la etnicidad o el género, con miras a reducir las desigualdades entre los ciudadanos en el acceso y disfrute de los servicios ambientales. La definición y valoración de estos beneficios hace uso de medidas como la abundancia, la cobertura de las copas de los árboles, índices de vegetación o distancia a las zonas verdes, dentro de un marco alineado con conceptos como la justicia ambiental, equidad y la sostenibilidad. Estos indicadores son calculados con datos de censos de población, encuesta de calidad de vida, censos arbóreos, imágenes satelitales, cartografías y bases de datos de entidades oficiales y académicas. Los servicios ambientales tienen cargas y costos de mantenimiento para la administración y gestión de los recursos y servicios ambientales, lo que exige que se identifique las zonas, condiciones de los recursos y de la población para la ejecución de acciones eficaces y eficientes por parte de los gobiernos y autoridades ambientales.</p>
 <p>La distribución espacial equitativa de los beneficios que proveen el arbolado urbano y las zonas verdes de espacio público, que constituyen un bien común, financiado y de responsabilidad de las administraciones municipales<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, es un componente cuantificable por medio métodos estadístico y técnicas de análisis espacial con miras a construir evidencia sobre el disfrute y acceso a los beneficios ambientales en espacios urbanos y su relación con las condiciones de vida de la población que habita ese territorio.</p>
 </div>
 <div id="objetivos" class="section level2">
@@ -229,7 +228,7 @@
 <div id="justificacion" class="section level2">
 <h2><span class="header-section-number">1.5</span> Justificación</h2>
 <p>La inclusión de los componentes ambientales en el ámbito de la planificación urbana en los planes de ordenamiento territorial que exige la legislación colombiana <span class="citation">(Ley 388, <a href="#ref-ley388col">1997</a>)</span> necesita de la creación de medidas y la elaboración de análisis sobre su relación con las condiciones de vida de la población. Las herramientas para establecer políticas públicas y el seguimiento a las acciones realizadas por las administraciones municipales deben estar asociadas a características medibles y objetivas para su implementación. Se espera que los objetivos y proyectos estén sustentados en estudios científicos que identifiquen brechas y oportunidades para la intervención y mejoramiento de los servicios ambientales de los cuales es responsable el gobierno local. En esta medida este estudio contribuye a la identificación de relaciones de inequidad en la distribución de los beneficios que provee el arbolado urbano a través del análisis espacial de la cobertura arbórea, el acceso a zonas verdes y la distribución de las variables sociales y económicas de la población. El estudio promete ser un punto de partida para la identificación de zonas de intervención del arbolado con el fin de cerrar brechas relacionadas con el desarrollo sostenible y la justicia ambiental.</p>
-<p>Contar con los datos del censo arbóreo de Santiago de Cali permite hacer análisis de estos beneficios ambientales para la población usando datos con alta resolución espacial y construir estadísticas a escalas apropiadas para la intervención y aprovechamiento de los recursos naturales de la ciudad explotando el potencial que ofrece la información censal y los conjuntos de datos espaciales de los que dispone la administración municipal <span class="citation">(Schwarz et al., <a href="#ref-schwarz_trees_2015">2015</a>)</span>. Los resultados de esta investigación buscan aportar al debate académico y enriquecer el proceso de la toma de decisiones y la planificación de la ciudad, sentando bases técnicas y resultados concretos que el desarrollo de políticas, proyectos e instrumentos que potencien al árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad de vida de los caleños.</p>
+<p>Contar con los datos del censo arbóreo de Santiago de Cali permite hacer análisis de estos beneficios ambientales para la población usando datos con alta resolución espacial y construir estadísticas a escalas apropiadas para la intervención y aprovechamiento de los recursos naturales de la ciudad, explotando el potencial que ofrece la información censal y los conjuntos de datos espaciales de los que dispone la administración municipal <span class="citation">(Schwarz et al., <a href="#ref-schwarz_trees_2015">2015</a>)</span>. Los resultados de esta investigación buscan aportar al debate académico y enriquecer el proceso de la toma de decisiones y la planificación de la ciudad, sentando bases técnicas y resultados concretos paral desarrollo de políticas, proyectos e instrumentos que potencien al árbol y el acceso a espacio verdes como estrategia para la mejora de la calidad de vida de los caleños.</p>
 </div>
 <div id="alcance" class="section level2">
 <h2><span class="header-section-number">1.6</span> Alcance</h2>
@@ -238,7 +237,7 @@
 
 </div>
 </div>
-<h3>Referencias</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-osorio_vuelo_2009">
 <p>Osorio, Jacqueline, y Molina, Luis. (2009). A vuelo de pájaro Las ciudades como refugio para las aves. <em>Revista nodo</em>, <em>4</em>(7). Recuperado de: <a href="http://csifesvr.uan.edu.co/index.php/nodo/article/view/123" class="uri">http://csifesvr.uan.edu.co/index.php/nodo/article/view/123</a></p>
@@ -289,7 +288,7 @@
           </div>
         </div>
       </div>
-<a href="abstract.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glosario.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="revlit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

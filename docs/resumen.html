@@ -26,14 +26,14 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-06-03">
+<meta name="date" content="2019-06-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="abreviaciones.html">
+<link rel="prev" href="index.html">
 <link rel="next" href="abstract.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -48,6 +48,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 
@@ -68,9 +69,9 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="abreviaciones.html"><a href="abreviaciones.html"><i class="fa fa-check"></i>Abreviaciones</a></li>
 <li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
@@ -104,7 +105,7 @@
 <li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
-<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas sobre la población</a></li>
 <li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
 <li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
 <li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
@@ -127,10 +128,8 @@
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
-<li class="appendix"><span><b>Anexos</b></span><ul>
-<li class="chapter" data-level="A.1" data-path="abstract.html"><a href="#informacion-de-sesion-de-r"><i class="fa fa-check"></i><b>A.1</b> Informacion de sesión de R</a></li>
-<li class="chapter" data-level="A.2" data-path="conclusiones.html"><a href="conclusiones.html#otros-graficos"><i class="fa fa-check"></i><b>A.2</b> Otros gráficos</a></li>
-</ul></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="informacion-de-sesion-de-r.html"><a href="informacion-de-sesion-de-r.html"><i class="fa fa-check"></i><b>A</b> Informacion de sesión de R</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -154,16 +153,17 @@
             <section class="normal" id="section-">
 <div id="resumen" class="section level1 unnumbered">
 <h1>Resúmen</h1>
+
 <p>Esta investigación hace uso del censo arbóreo urbano realizado en Santiago de Cali (Colombia) entre el año 2014 y 2015, de los datos del censo de población de 2005 y los datos de la estructura ecológica del municipio del 2014. El propósito es identificar si existen patrones espaciales estadísticamente significativos que den evidencia de sesgos de los indicadores de acceso a servicios ambientales del arbolado urbano (AU) y espacios verdes (EV) con indicadores socioeconómicos, con el fin de identificar espacialmente inequidades en el acceso a este tipos de servicios ecosistémicos.</p>
-<p>Para lograrlo se hace uso de modelos de regresión espacial que capturar fenómenos de agrupamiento y dispersión en los patrones espaciales a través la inclusión de términos de autocorrelación espacial en la regresión lineal. Los modelos espaciales de regresión se prueban con dos tipos de matrices para observar el efecto de la topología de interacción entre las variables y los resultados del ajuste. Se hace uso de gráficos estadísticos, mapas de temáticos y de LISA para la identificación de zonas con concentración en el acceso.</p>
-<p>Los resultados muestran que existen inequidades explicadas por variables de estatus como el acceso a educación superior, que están además negativamente correlacionadas con el porcentaje de afrocolombianos en un sector censal urbano (SU). En relación al acceso a espacios verdes, no existe evidencia fuerte de que las variable de etnicidad o estatus sean buenos predictores del acceso. Sin embargo, sí se encontró una alta concentración del área del EV disponible en muy pocos sectores de la ciudad.</p>
+<p>Para lograrlo se hace uso de modelos de regresión espacial que capturan fenómenos de agrupamiento y dispersión en los patrones espaciales, a través la inclusión de términos de autocorrelación espacial en la regresión lineal. Los modelos espaciales de regresión se prueban con dos tipos de matrices para observar el efecto de la topología de interacción entre las variables y los resultados del ajuste. Se hace uso de gráficos estadísticos, mapas temáticos y de LISA para la identificación de zonas con concentración en el acceso.</p>
+<p>Los resultados muestran que existen inequidades explicadas por variables de estatus como el acceso a educación superior, que están además negativamente correlacionadas con el porcentaje de afrocolombianos en un sector censal urbano (SU). En relación al acceso a espacios verdes, no existe evidencia fuerte de que las variable de etnicidad, salud o estatus sean buenos predictores del acceso. Sin embargo, sí se encontró una alta concentración del área del EV disponible en muy pocos sectores de la ciudad.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="abreviaciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="abstract.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -194,7 +194,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/abstract.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
 "text": "Edit"
 },
 "download": ["tesis-unigis.pdf", "tesis-unigis.epub"],

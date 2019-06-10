@@ -8,7 +8,7 @@
 
 ## Área de estudio
 
-```{r mapa-area,fig.cap="Área de estudio. Perímetro de Santiango de Cali", fig.height=7,out.width="90%"}
+```{r mapa-area,fig.cap="Área de estudio. Perímetro de Santiango de Cali", fig.height=6, out.width="90%"}
 
 OSMap+
   geom_path(data=prmtr_urbn_idesc.wgs.df,  
@@ -30,7 +30,7 @@ El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano
 
 Santiago  de Cali presenta dos  zonas topográficas:  el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El área urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.
 
-El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1.500 mm y la temperatura promedio anual es de 24 °C aproximadamente [@ciat_plan_2015]. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes. 
+El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1,500 mm y la temperatura promedio anual es de 24 °C aproximadamente [@ciat_plan_2015]. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes. 
 
 
 ## Datos
@@ -39,7 +39,7 @@ Se hizo uso de datos del Censo Arbóreo de 2015(CA2015) [@ca2015cali], el Censo 
 
 ### Datos de registros oficiales del municipio
 
-La cartografía disponible en la IDESC [@geoportal_idesc], incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema [@igagMC2005]. Además está la base de datos geográfica del POT [@pot2014cali]. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía WFS. En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
+La cartografía disponible en la IDESC [@geoportal_idesc], incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema MAGNA-SIRGAS-CALI [@igagMC2005]. Además está la base de datos geográfica del POT [@pot2014cali]. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía WFS. En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
 
 ```{r capas-idesc, out.width='100%',echo=FALSE, fig.cap="Capas usadas para el procesamiento de los espacios verdes y las características de las manzanas"}
 knitr::include_graphics("QGIS/mapas/capas_analisis.png")
@@ -49,7 +49,7 @@ knitr::include_graphics("QGIS/mapas/capas_analisis.png")
 
 ### El censo arbóreo 
 
-En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realización del censo arbóreo (CA2015) que dejó como resultado una base de datos de `r total_arboles_censo %>% scales::comma()` individuos censados [@ca2015cali]. Los datos dan cuenta de la identificación de especies, georeferenciación de los individuos, sus características dasométricas, de emplazamiento y estado fitosanitario. Las variables usadas en este estudio se resumen en la tabla \@ref(tab:vars-AU).
+En el año 2015 la ciudad de Santiago de Cali concretó la realización del censo arbóreo (CA2015) que dejó como resultado una base de datos de `r total_arboles_censo %>% scales::comma()` individuos censados [@ca2015cali]. Los datos dan cuenta de la identificación de especies, georeferenciación de los individuos, sus características dasométricas, de emplazamiento y estado fitosanitario. Las variables contenidas en ese estudio se resumen en la tabla \@ref(tab:vars-AU).
 
 Table: (#tab:vars-AU) Variables para caracterizar el AU
 
@@ -69,9 +69,9 @@ Table: (#tab:vars-AU) Variables para caracterizar el AU
 
 Existe una diferencia de 10 años entre censo de población de 2005 y el censo arbóreo de la ciudad de Cali. Aunque esto pueda parecer una situación que reduce la legitimidad de los resultados que se hallen en este estudio, autores como @boone2010landscape y @schwarz_trees_2015 reconocen que los paisajes que vemos hoy son legados de patrones de consumo pasados, y que en el caso de la vegetación urbana tratamos con organismos de larga vida que pueden tardar mucho tiempo en establecerse y crecer. En contraste, la estructura social de las ciudades puede cambiar más rápidamente. 
 
-Atendiendo a estos argumentos se excluyó del la base de datos del CA2015 árboles jóvenes del inventario, que no estaban ahí en 2005. Aunque toda la vegetación aporta beneficios ambientales a los habitantes, en este estudio se descartó la vegetación arbustiva y los árboles, palmas y bambú de menos de 1.9 m de altura para circunscribirse a los individuos más desarrollados. 
+Atendiendo a estos argumentos se excluyó de la base de datos del CA2015 árboles jóvenes del inventario, que no estaban ahí en 2005. Aunque toda la vegetación aporta beneficios ambientales a los habitantes, en este estudio se descartó la vegetación arbustiva y los árboles, palmas y bambú de menos de 1.9 m de altura para circunscribirse a los individuos más desarrollados. 
 
-Una vez aplicado este filtro contamos con `r nrow(AU_analsis) %>% scales::comma()` individuos.
+Una vez aplicado este filtro se cuenta con `r nrow(AU_analsis) %>% scales::comma()` individuos.
 
 
 ### El censo de población
@@ -122,7 +122,7 @@ El diagrama de la figura \@ref(fig:flujograma) sintetiza el análisis propuesto,
 1. Seleccionar los SU a incluir con base la coincidencia con las capas de AU y EV.
 1. Construir y evaluar los modelos de regresión lineal.
 1. Contruir matrices de vencidad $W$ para incluir restricciones espaciales al modelo.
-1. Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresieon lineal con dos diseños de matriz $W$. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño. 
+1. Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresión lineal con dos diseños de matriz $W$. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño. 
 1. Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R^2^ y el criterio de Akaike.
 1. Graficar mapas de LISA para caraterizar los patrones de agrupación de las varobles del los modelos mejor ajustados.
 
@@ -149,7 +149,7 @@ Entre los distintos indicadores desarrollados para capturar la extensión y dist
 
 En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
 
-```{r mapa-copa-dep, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa"}
+```{r mapa-copa-dep,fig.asp=0.7, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(dep.arboles.ntl.long,by = c("id"="SETU_CCDGO")) %>%
   filter(dep.arboles %in% dependientes.arboles) %>%
@@ -198,7 +198,7 @@ donde $R_b$ es el radio de búsqueda,  $s_j$ es el área de cada espacio verde $
 
 
 
-```{r mapa-rango1km,  fig.asp=0.6, fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
+```{r mapa-rango1km,  fig.asp=0.8, fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
 ggplot()+
   geom_polygon(data = s_1000_df, 
                aes(x=long,y=lat,group=group,fill = "radio búsqueda"),
@@ -212,11 +212,14 @@ ggplot()+
   scale_fill_manual(name =" ",values = c("forestgreen","salmon"))+
   coord_equal()+
   theme_void()+
-  theme(plot.caption=element_text(size=7, hjust = 1))+
+  theme(plot.caption=element_text(size=6, hjust = 1), 
+        legend.key.size = unit(3,units = "mm"),
+        legend.text = element_text(size = 7),
+        legend.title = element_text(size = 6))+
   labs(caption = "Fuente:IDESC, POT 2014\nElaboración: propia")
 ```
 
-### Cálculo de métricas de sobre la población
+### Cálculo de métricas sobre la población
 
 #### Características de la población
 
@@ -234,7 +237,7 @@ knitr::kable(format = formato_render,
 
 Las variables del CP2005 seleccionadas para el análisis se muestran en la figura \@ref(fig:mapas-poblacion-deciles).
 
-```{r mapas-poblacion-deciles, fig.asp=1,fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
+```{r mapas-poblacion-deciles, fig.asp=1.5,fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion %in% metricas.poblacion[c(2,3,4,7)]) %>%
@@ -250,7 +253,10 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~metricas.poblacion, nrow = 2)+
-  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1),                                            strip.text = element_text(size = 8))+
+  tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                            
+                  strip.text = element_text(size = 6),legend.key.size = unit(3,units = "mm"),
+        legend.title = element_text(size = 6)
+        )+
   labs(caption = "Fuente:CP2005\nElaboración: propia")
 ```
 
@@ -260,7 +266,7 @@ Además de las variables seleccionadas se calculó la densidad de población dad
 
 
 
-```{r mapas-poblacion-mod-deciles, fig.asp=1,fig.cap="Mapas de las variables de población seleccionadas como porcentajes (en deciles)"}
+```{r mapas-poblacion-mod-deciles, fig.asp=1.2,fig.cap="Mapas de las variables de población seleccionadas como porcentajes (en deciles)"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.mod.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion.mod %in% metricas.poblacion.mod[c(1,2,3,5,6)]) %>%
@@ -276,7 +282,10 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~metricas.poblacion.mod, nrow = 2)+
-  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1),                                            strip.text = element_text(size = 8))+
+  tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                            
+                  strip.text = element_text(size = 6),legend.key.size = unit(3,units = "mm"),
+        legend.title = element_text(size = 6)
+        )+
   labs(caption = "Fuente:CP2005\nElaboración: propia")
 
 ```
@@ -291,7 +300,7 @@ Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la 
 
 pl_poblacion<-plots_map_su_df(analisis.cali.df,
                               metricas.predios[c(11,13:14)],
-                              strip.text = element_text(size = 6))
+                              strip.text = element_text(size = 4))
 grid.arrange(grobs =pl_poblacion, nrow =1,
              bottom = textGrob( label = "Fuente:CP2005\nElaboración: propia", 
                                 hjust = 1, x = 0.9,
@@ -305,7 +314,7 @@ grid.arrange(grobs =pl_poblacion, nrow =1,
 
 ### Criterios y selección de sectores censales
 
-Se establecieron criterios para la **exclusión** de datos para el análisis de regresión que evitan incluir SUs atípicos con valores:
+Se establecieron criterios para la **exclusión** de datos para el análisis de regresión que evitan incluir SUs atípicos:
  
 - sectores sin personas
 - sectores sin viviendas
@@ -316,7 +325,7 @@ Se establecieron criterios para la **exclusión** de datos para el análisis de 
 
 Los sectores excluidos del análisis se muestran en los figura \@ref(fig:mapa-excluidos). 
 
-```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=0.6}
+```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=0.8}
 ggplot()+
    geom_polygon(data = su.f,
                 aes(x = long ,y = lat, group = group),
@@ -327,7 +336,10 @@ ggplot()+
    coord_equal()+
    scale_fill_manual(name ="SU",values = "blue")+
    theme_void()+
-  theme(plot.caption=element_text(size=7, hjust = 1))+
+  theme(plot.caption=element_text(size=6, hjust = 1), 
+        legend.key.size = unit(3,units = "mm"),
+        legend.text = element_text(size = 5),
+        legend.title = element_text(size = 6))+
   labs(caption = "Fuente:IDESC\nElaboración: propia")
   
 ```
@@ -338,7 +350,7 @@ Las variables incluidas en los modelos lineales deben cumplir una serie de condi
 
 - Mostrar una correlación fuerte (típicamente mayor a 0.6 se considera una asociación fuerte)
 - Las variables independientes o predictoras **no** deben estar fuertemente correlacionadas entre ellas.
-- Las observaciones deben ser **independientes**^[Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores]
+- Las observaciones deben ser **independientes**^[Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.]
 
 
 Para garantizar que las variables no están correlacionadas entre sí, se usaron los coeficientes de correlación de Pearson, usado para detectar relaciones lineales y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.
@@ -359,19 +371,21 @@ Para verificar la normalidad de los residuos se hace uso del test de Shapiro–W
 
 ### Análisis geoestadísticos { #geostat }
 
-Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influencia a priori en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.
+Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influencia *a priori* en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.
 
 Para los análisis espaciales se usó la librería `spdep` [@R-spdep]
 
 #### Matrices de vecindad
 
-La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W_q$ defina para vecinos que comparten un lado del polígono (vecindad *queen*) para todos los sectores de la ciudad de Cali.
+La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W_q$ defina para vecinos que comparten un lado del polígono (vecindad *queen*) para todos los sectores de la ciudad de Cali.
 
-```{r w-su-todos, fig.asp =0.7,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
+```{r w-su-todos, fig.asp =0.8,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
 nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
 par(mai=c(0,0,0,0))
 plot(su, border="grey80")
 plot(nb.su, coordinates(su), col='grey50', pch=19, cex=0.1,add=TRUE)
+
+
 ```
 
 Las regresiones se realizan sobre un subconjunto de los SUs, y por tanto la estructura de esta matriz tuvo esto en cuenta.
@@ -379,7 +393,7 @@ Las regresiones se realizan sobre un subconjunto de los SUs, y por tanto la estr
 
 #### Autocorrelación espacial
 
-Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión se usó el índice de Moran I (ecuación \@ref(eq:moranI)). El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Cuando se encuentra una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura de vecindad al modelo es posible obtener una estimación más eficiente de los coeficientes, y en consecuencia una estimación más confiable de los coeficientes. En este estudio no se hace inferencia de una población por una muestra, se calcularon coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación.
+Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión se usó el índice de Moran'I (ecuación \@ref(eq:moranI)). El índice de Moran'I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Cuando se encuentra una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura de vecindad al modelo es posible obtener una estimación más eficiente de los coeficientes, y en consecuencia una estimación más confiable de los coeficientes. En este estudio no se hace inferencia de una población por una muestra, se calcularon coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación.
 
 
 \begin{equation}
@@ -387,12 +401,10 @@ Para indagar sobre la información o patrones espaciales de los residuos de los 
 (\#eq:moranI)
 \end{equation}
 
-donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta.
-
-El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (*spatial lag*: es el valor medio de los valores vecinos) de la variable en cuestión en el eje $y$ y la variable en el $x$. El valor **$p$** del test estadístico expresa el grado de certeza de que esa pendiente no es plana, si el valor límite de significancia es menor que $\alpha = 0.05$  
+donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta. El valor **$p$** del test expresa el grado de certeza sobre el valor del estadístico, si el valor límite de significancia es menor que $\alpha = 0.05$  
 
 #### Indicadores Locales de Asociación Espacial (LISA)
 
-Dado que Morán I es una suma de productos cruzados individuales es explotado para formular los indicadores locales de asociación espacial -LISA. Estos permiten evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística de este indicador [@anselin1995local].
+Dado que Morán'I es una suma de productos cruzados individuales es explotado para formular los indicadores locales de asociación espacial (LISA). Estos permiten evaluar la agrupación de las unidades individuales mediante el cálculo de la Moran local para cada unidad espacial y la evaluación de la significación estadística de este indicador [@anselin1995local].
 
 Estos mapas en conjunto con el resultado numérico de los LISA z-normalizado y el $p$-valor permiten identificar agrupaciones espaciales. Las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (*high-high*). El área azul (*low-low*) son los grupos que presentan valores bajos al igual que sus vecinos. Mientras que las regiones azul pálido son *low-high* y las áreas rosadas son *high-low* muestran correlación negativa, es decir valores muy diferentes a los de sus vecinos. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.

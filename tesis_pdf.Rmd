@@ -1,12 +1,8 @@
 --- 
-title: "Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia"
-subtitle: "Juan Fernando Correa Caicedo"
-author: 
-- "Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)"
-- "Universidad de Salzburgo"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: bookdown::gitbook
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
 documentclass: book
 classoption: openany
 fontsize: 12pt
@@ -23,7 +19,7 @@ description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)
 
 ```{r setup-chunks, echo=FALSE}
 
-knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 5, warning = FALSE, message = FALSE, dpi = 600, dev = 'png', out.width='90%')
+knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 600, dev = 'pdf',fig.align = 'center')
 
 formato_render <-  "latex"
 
@@ -36,11 +32,17 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
+
+
 \pagenumbering{gobble}
-\newpage
+\includepdf[pages=1]{./incluir/Portada_oficial_Salzburg_2019.pdf}
+<!-- \maketitle -->
+
+
 
 ```{r child = 'compromiso.Rmd'}
 ```
+
 
 ```{r child = 'agradecimiento.Rmd'}
 ```

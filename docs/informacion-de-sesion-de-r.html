@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</title>
+  <meta name="description" content="Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  <meta name="github-repo" content="correajfc/unigis-tesis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia" />
+  
+  <meta name="twitter:description" content="Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)" />
+  
+
+<meta name="author" content="Presentado para obtar al título de Maestría en SIG (M.Sc. UNIGIS)">
+<meta name="author" content="Universidad de Salzburgo">
+
+
+<meta name="date" content="2019-06-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="conclusiones.html">
+<link rel="next" href="referencias.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Trabajo de Grado UNIGIS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
+<li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#objetivo-general"><i class="fa fa-check"></i><b>1.2.1</b> Objetivo general</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#objetivos-especificos"><i class="fa fa-check"></i><b>1.2.2</b> Objetivos específicos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#preguntas-de-investigacion"><i class="fa fa-check"></i><b>1.3</b> Preguntas de investigación</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#hipotesis"><i class="fa fa-check"></i><b>1.4</b> Hipótesis</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#beneficios-del-arbolado-urbano"><i class="fa fa-check"></i><b>1.4.1</b> Beneficios del arbolado urbano</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#acceso-a-espacios-verdes"><i class="fa fa-check"></i><b>1.4.2</b> Acceso a espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#justificacion"><i class="fa fa-check"></i><b>1.5</b> Justificación</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#alcance"><i class="fa fa-check"></i><b>1.6</b> Alcance</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="revlit.html"><a href="revlit.html"><i class="fa fa-check"></i><b>2</b> Revisión de la literatura</a><ul>
+<li class="chapter" data-level="2.1" data-path="revlit.html"><a href="revlit.html#servicios-ecosistemicos-y-su-valoracion"><i class="fa fa-check"></i><b>2.1</b> Servicios ecosistémicos y su valoración</a></li>
+<li class="chapter" data-level="2.2" data-path="revlit.html"><a href="revlit.html#la-perspectiva-de-la-justicia-ambiental"><i class="fa fa-check"></i><b>2.2</b> La perspectiva de la justicia ambiental</a></li>
+<li class="chapter" data-level="2.3" data-path="revlit.html"><a href="revlit.html#modelamiento-y-analisis-espacial-de-variables-ambientales-y-sociales"><i class="fa fa-check"></i><b>2.3</b> Modelamiento y análisis espacial de variables ambientales y sociales</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="revlit.html"><a href="revlit.html#enfoque-estadistico"><i class="fa fa-check"></i><b>2.3.1</b> Enfoque estadístico</a></li>
+<li class="chapter" data-level="2.3.2" data-path="revlit.html"><a href="revlit.html#enfoque-geoestadistico"><i class="fa fa-check"></i><b>2.3.2</b> Enfoque geoestadístico</a></li>
+<li class="chapter" data-level="2.3.3" data-path="revlit.html"><a href="revlit.html#otras-tecnicas"><i class="fa fa-check"></i><b>2.3.3</b> Otras técnicas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="meto.html"><a href="meto.html"><i class="fa fa-check"></i><b>3</b> Metodología</a><ul>
+<li class="chapter" data-level="3.1" data-path="meto.html"><a href="meto.html#area-de-estudio"><i class="fa fa-check"></i><b>3.1</b> Área de estudio</a></li>
+<li class="chapter" data-level="3.2" data-path="meto.html"><a href="meto.html#datos"><i class="fa fa-check"></i><b>3.2</b> Datos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="meto.html"><a href="meto.html#datos-de-registros-oficiales-del-municipio"><i class="fa fa-check"></i><b>3.2.1</b> Datos de registros oficiales del municipio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="meto.html"><a href="meto.html#el-censo-arboreo"><i class="fa fa-check"></i><b>3.2.2</b> El censo arbóreo</a></li>
+<li class="chapter" data-level="3.2.3" data-path="meto.html"><a href="meto.html#el-censo-de-poblacion"><i class="fa fa-check"></i><b>3.2.3</b> El censo de población</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas sobre la población</a></li>
+<li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
+<li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
+<li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Resultados</a><ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#modelando-la-cobertura-de-copa"><i class="fa fa-check"></i><b>4.1</b> Modelando la cobertura de copa</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#variables-dependientes"><i class="fa fa-check"></i><b>4.1.1</b> Variables dependientes</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#modelos-de-regresion-lineal-au"><i class="fa fa-check"></i><b>4.1.2</b> Modelos de regresión lineal AU</a></li>
+<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#modelado-espacial-au"><i class="fa fa-check"></i><b>4.1.3</b> Modelado espacial AU</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#acceso-a-espacios-verdes-1"><i class="fa fa-check"></i><b>4.2</b> Acceso a espacios verdes</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#correlaciones-y-distribuciones-bivariadas"><i class="fa fa-check"></i><b>4.2.1</b> Correlaciones y distribuciones bivariadas</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results.html"><a href="results.html#modelos-de-regresion-lineal-ev"><i class="fa fa-check"></i><b>4.2.2</b> Modelos de regresión lineal EV</a></li>
+<li class="chapter" data-level="4.2.3" data-path="results.html"><a href="results.html#modelado-espacial-de-espacios-verdes"><i class="fa fa-check"></i><b>4.2.3</b> Modelado espacial de espacios verdes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="discusion.html"><a href="discusion.html"><i class="fa fa-check"></i><b>5</b> Discusión</a><ul>
+<li class="chapter" data-level="5.1" data-path="discusion.html"><a href="discusion.html#sobre-el-arbolado-urbano"><i class="fa fa-check"></i><b>5.1</b> Sobre el arbolado urbano</a></li>
+<li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="informacion-de-sesion-de-r.html"><a href="informacion-de-sesion-de-r.html"><i class="fa fa-check"></i><b>A</b> Informacion de sesión de R</a></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inequidades socioeconómicas en relación a los espacios verdes y cobertura de copa: un enfoque espacial aplicado a la ciudad de Cali, Colombia</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="informacion-de-sesion-de-r" class="section level1">
+<h1><span class="header-section-number">A</span> Informacion de sesión de R</h1>
+<pre><code>## R version 3.3.3 (2017-03-06)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: OS X Yosemite 10.10.5
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] grid      stats     graphics  grDevices utils     datasets  methods  
+## [8] base     
+## 
+## other attached packages:
+##  [1] bindrcpp_0.2.2     latex2exp_0.4.0    visdat_0.5.1      
+##  [4] glue_1.3.0         lmtest_0.9-35      zoo_1.8-4         
+##  [7] kableExtra_0.9.0   olsrr_0.5.2        ggfortify_0.4.5   
+## [10] ggrepel_0.8.0      GGally_1.4.0       bookdown_0.7      
+## [13] knitr_1.22         wesanderson_0.3.6  gridExtra_2.3     
+## [16] RColorBrewer_1.1-2 viridis_0.5.1      viridisLite_0.3.0 
+## [19] broom_0.5.0        reshape2_1.4.3     magrittr_1.5      
+## [22] forcats_0.3.0      stringr_1.3.1      dplyr_0.7.8       
+## [25] purrr_0.2.4        readr_1.2.1        tidyr_0.8.2       
+## [28] tibble_1.4.2       tidyverse_1.2.1    maptools_0.9-4    
+## [31] ggmap_3.0.0        ggplot2_3.1.0      car_3.0-2         
+## [34] carData_3.0-2      spdep_0.7-4        spData_0.2.9.4    
+## [37] Matrix_1.2-8       raster_2.8-4       rgeos_0.4-2       
+## [40] rgdal_1.2-16       sp_1.3-1          
+## 
+## loaded via a namespace (and not attached):
+##  [1] colorspace_1.3-2    rjson_0.2.15        deldir_0.1-14      
+##  [4] class_7.3-14        rio_0.5.10          rprojroot_1.3-2    
+##  [7] rstudioapi_0.8      ggsn_0.4.0          audio_0.1-5        
+## [10] gh_1.0.1            prodlim_2018.04.18  lubridate_1.7.1    
+## [13] xml2_1.2.0          codetools_0.2-15    splines_3.3.3      
+## [16] jsonlite_1.5        rJava_0.9-10        png_0.1-7          
+## [19] shiny_1.2.0         httr_1.3.1          backports_1.1.2    
+## [22] assertthat_0.2.0    lazyeval_0.2.1      cli_1.0.1          
+## [25] beepr_1.3           later_0.7.5         prettyunits_1.0.2  
+## [28] htmltools_0.3.6     tools_3.3.3         coda_0.19-2        
+## [31] gtable_0.2.0        gmodels_2.18.1      tinytex_0.9        
+## [34] Rcpp_1.0.0          cellranger_1.1.0    gdata_2.18.0       
+## [37] nlme_3.1-131        timeDate_3043.102   xfun_0.6           
+## [40] gower_0.1.2         openxlsx_4.1.0      rvest_0.3.2        
+## [43] mime_0.6            gtools_3.8.1        goftest_1.1-1      
+## [46] LearnBayes_2.15.1   MASS_7.3-45         scales_1.0.0       
+## [49] ipred_0.9-8         promises_1.0.1      hms_0.4.2          
+## [52] expm_0.999-2        yaml_2.2.0          curl_3.2           
+## [55] rpart_4.1-10        reshape_0.8.8       stringi_1.2.4      
+## [58] highr_0.7           OpenStreetMap_0.3.3 nortest_1.0-4      
+## [61] checkmate_1.8.5     boot_1.3-18         zip_1.0.0          
+## [64] lava_1.6.4          RgoogleMaps_1.4.3   rlang_0.3.0.1      
+## [67] pkgconfig_2.0.2     bitops_1.0-6        evaluate_0.12      
+## [70] lattice_0.20-34     bindr_0.1.1         labeling_0.3       
+## [73] recipes_0.1.4       tidyselect_0.2.5    plyr_1.8.4         
+## [76] R6_2.3.0            generics_0.0.1      pillar_1.3.0       
+## [79] haven_2.0.0         foreign_0.8-67      withr_2.1.2        
+## [82] nnet_7.3-12         survival_2.40-1     abind_1.4-5        
+## [85] modelr_0.1.2        crayon_1.3.4        rmarkdown_1.10     
+## [88] progress_1.2.0      jpeg_0.1-8          readxl_1.1.0       
+## [91] data.table_1.11.8   digest_0.6.18       xtable_1.8-3       
+## [94] httpuv_1.4.5        munsell_0.5.0</code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conclusiones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/apendices.Rmd",
+"text": "Edit"
+},
+"download": ["tesis-unigis.pdf", "tesis-unigis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

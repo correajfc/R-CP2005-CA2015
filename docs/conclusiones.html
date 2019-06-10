@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-06-03">
+<meta name="date" content="2019-06-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="discusion.html">
-<link rel="next" href="referencias.html">
+<link rel="next" href="informacion-de-sesion-de-r.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,6 +48,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 
@@ -68,9 +69,9 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="abreviaciones.html"><a href="abreviaciones.html"><i class="fa fa-check"></i>Abreviaciones</a></li>
 <li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
@@ -104,7 +105,7 @@
 <li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
-<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas sobre la población</a></li>
 <li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
 <li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
 <li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
@@ -127,10 +128,8 @@
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
-<li class="appendix"><span><b>Anexos</b></span><ul>
-<li class="chapter" data-level="A.1" data-path="conclusiones.html"><a href="#informacion-de-sesion-de-r"><i class="fa fa-check"></i><b>A.1</b> Informacion de sesión de R</a></li>
-<li class="chapter" data-level="A.2" data-path="conclusiones.html"><a href="conclusiones.html#otros-graficos"><i class="fa fa-check"></i><b>A.2</b> Otros gráficos</a></li>
-</ul></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="informacion-de-sesion-de-r.html"><a href="informacion-de-sesion-de-r.html"><i class="fa fa-check"></i><b>A</b> Informacion de sesión de R</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -154,116 +153,24 @@
             <section class="normal" id="section-">
 <div id="conclusiones" class="section level1">
 <h1><span class="header-section-number">Capítulo 6</span> Conclusiones</h1>
-<p>En relación a lo temático este trabajo demuestra que en lo que respecta al acceso de beneficios del arbolado urbano en Santiago de Cali existe una fuerte relación de la variable de estatus social representada por el acceso a estudios superiores, que explica en gran medidad la variabilidad en los datos y los patrones espaciales de la cobertura de copa. Los modelos de regresión espacial confirman que los beneficios ambientales son mejores en sectores con población mejor educada, posiblemente una razón para preferir o habitar espacios con buena arborización o tal vez con condiciones suficientes de espacio y zonas blandas para arborizar el barrio y propiciar el desarrollo del potencial de los individuos arbóreos. En cualquier caso, esto muestra que los clusters de sectores urbanos con mayor arborización excluyen al grueso de la población afro y con bajos niveles de estudios, como prueban las altas correlaciones negativas entre los valores de estos grupos de población y la cobertura de copa. El mapa de los beneficios ambientales se suma pues a una serie de inequidades encontradas en la literatura que aborda problemas relacionados con la segregación racial y la baja empleabilidad de poblaciones afrocolombianas en la ciudad de Cali. Los casos de análisis espacial en relación al acceso de servicios ambientales fueron descritos ampliamente en la literatura y nos muestran una preocupación creciente sobre la integración y restauración de ecosistemas urbanos, una sofisticacion metodológica y fundamentación teórica que fueron claves para aplicar exitosamente el análisis al contexto de Cali. Además coinciden en señalar problemas de segregación e inequidades ambientales en el continente americano.</p>
-<p>En cuanto a los espacios verdes el ejercicio no es mucho más alentador. Este trabajo mostró cómo existe una importante cantidad de sectores urbanos con menos del 5% del área del sector de espacio verde: una alta concentración del área disponible se encuentra unos pocos sectores, que sirven para suplir las carencias de espacio verde en sus vecinos. Aunque el coeficiente de la dimensión poblacional representada por porcentaje de personas con alguna limitación física o mental, es bajo, coincide espacialmente con las zonas de bajo acceso a estos espacios. Sin embargo en la medición del acceso como un beneficio local las variables poblacionales no pasaron los criterios de selección para ser candidatas en el modelo de regresión. El área media de manzana de un sector fue muy representativa y significativa de la variabilidad de los datos, y señala indirectamente la responsabilidad de las autoridades y los urbanizadores que deben garantizar la provisión de los equipamientos de ciudad, los tamaños mínimos y deseados, y en general velar por el desarrollo la estructura ecológica del municipio y del casco urbano.</p>
-<p>Analizar varios indicadores con variaciones en el cálculo y en las variables incorporadas en su definición permite construir una visión más compleja y detallada del acceso. Este trabajo se limitó a analizar 2 indicadores por beneficio ambiental, explorando las diferencia entre indicadores porcentuales que representan las diferencias entre medir el beneficio en el área total de un sector o sólo sobre su espacio público, para establecer una matiz entre lo que compete a las autoridades y el alcance de un beneficio que se irradia más allá de las fronteras de las calles y los límite administrativos. También explora dos experiencias distintas del acceso a espacio verdes, la local, al interior de un sector urbano y otra en la escala de las agrupaciones de sectores. Resultado de esta se puede pensar explorar complejizar estos indicadores para incorporar aspectos de la calidad de los espacio o incluir dimensiones poblacionales como la densidad o normalizarlos con respecto del número de habitantes.</p>
-<p>Más interesante puede ser contar con dos conjuntos de datos separados en el tiempo tanto de las variables poblacionales y del arbolado urbano, para indagar sobre cómo la matriz de vecindad puede capturar las variaciones de la estructura de las características poblacionales de los individuos humanos y arbóreos; o analizar el impacto de la inclusión de nuevos espacio verdes a la topología de beneficios y estimar cambios en la estructura de grupos de sectores urbanos con acumulacion de desvenajas, por ejemplo.</p>
-<p>Esto me lleva al último punto de las conclusiones y el primer momento dentro del proceso de esta investigación: la disponibilidad de los datos. Sin la existencias de los servicios de información geográfica de la Alcaldía de Cali ni la disposición de la cartografía del censo y los datos agregados a nivel de sector urbano del DANE, o la existencia de un censo arbóreo es imposible progresar en el entendimiento de nuestro desarrollo como ciudad, región o nación. Sin embargo, aún son escasas las variables del censo de población que están disponibles a este nivel, no existe un repositorio público de los datos del censo arbóreo, ni de las acciones de mantenimiento y estado del arbolado urbano a pesar de que no existe ningún impedimento técnico ni legal para que pueda estarlo. Los resultados dependen pues no solo de la disponibilidad sino de la calidad y nivel de actualización de los datos, que pueden y deben mejorar en los servicios de información que presta el el municipio.</p>
+<p>En relación a lo temático este trabajo demuestra que en lo que respecta al acceso de beneficios del arbolado urbano en Santiago de Cali existe una fuerte relación de la variable de estatus social representada por el acceso a estudios superiores, que explica en gran medidad la variabilidad en los datos y los patrones espaciales de la cobertura de copa. Los modelos de regresión espacial confirman que los beneficios ambientales son mejores en sectores con población mejor educada, posiblemente una razón para preferir o habitar espacios con buena arborización o tal vez con condiciones suficientes de espacio y zonas blandas para arborizar el barrio y propiciar el desarrollo del potencial de los individuos arbóreos. En cualquier caso, esto muestra que los clusters de sectores urbanos con mayor arborización excluyen al grueso de la población afro y con bajos niveles de estudios, como prueban las altas correlaciones negativas entre los valores de estos grupos de población y la cobertura de copa. El mapa de los beneficios ambientales se suma pues a una serie de inequidades encontradas en la literatura que aborda problemas relacionados con la segregación racial y la baja empleabilidad de poblaciones afrocolombianas en la ciudad de Cali.</p>
+<p>Los casos de análisis espacial en relación al acceso de servicios ambientales fueron descritos ampliamente en la literatura y nos muestran una preocupación creciente sobre la integración y restauración de ecosistemas urbanos, una sofisticacion metodológica y fundamentación teórica que fueron claves para aplicar exitosamente el análisis al contexto de Cali. Además coinciden en señalar problemas de segregación e inequidades ambientales en el continente americano.</p>
+<p>En cuanto a los espacios verdes, este trabajo mostró que existe una importante cantidad de sectores urbanos con menos del 5% del área del sector de espacio verde: una alta concentración del área disponible se encuentra unos pocos sectores, que sirven para suplir las carencias de espacio verde en sus vecinos. Sobre el acceso a EV como un beneficio local, no se encontró evidencia de que las variables poblacionales se relacionaran con el acceso. El área media de manzana de un sector es el más importante predictor del acceso, y señala indirectamente la responsabilidad de las autoridades y los urbanizadores en garantizar la provisión de equipamientos de ciudad, garantizar el tamaño mínimo de los EV, y en general velar por el desarrollo de la estructura ecológica en el casco urbano del municipio.</p>
+<p>Analizar varios indicadores conjuntamente permite construir una visión más compleja y detallada del acceso. Este trabajo se limitó a analizar 2 indicadores por beneficio ambiental, y exploró dos experiencias distintas del acceso a espacio verdes, la local, al interior de un sector urbano, y otra más allá de los límites geograficos de los sectores urbanos. Como trabajo futuro se puede ampliar y complejizar en los indicadores para incorporar aspectos de la calidad de los espacio o incluir relaciones con el número de habitantes beneficiados con los espacios verdes.</p>
+<p>Más interesante puede ser contar con dos conjuntos de datos separados en el tiempo, que incluyan las variables poblacionales y sobre arbolado urbano, para indagar sobre cómo la matriz de vecindad puede capturar las variaciones entre la estructura poblacional y los servicios ambientales disponibles; o analizar el impacto de la inclusión de nuevos espacios verdes a la topología de beneficios y estimar cambios en la estructura de grupos de sectores urbanos con acumulacion de desvenajas, por ejemplo.</p>
+<p>Para finalizar, es de resaltar que sin la existencias de los servicios de información geográfica de la Alcaldía de Cali o la disponibilidad de la cartografía del censo y los datos agregados a nivel de sector urbano del DANE, o la existencia de un censo arbóreo es imposible progresar en el entendimiento de nuestro desarrollo como ciudad, región o nación. Sin embargo, aún son escasas las variables del censo de población que están disponibles a este nivel, no se cuenta con acceso a datos estructurados sobre las acciones de mantenimiento sobre el arbolado urbano o sobre el estado de los parques de la ciudad. Los resultados dependen pues, no solo de la disponibilidad sino de la calidad y nivel de actualización de los datos, que pueden y deben mejorar en los servicios de información que presta el municipio.</p>
 
 </div>
 
 
 
-<h2><span class="header-section-number">A.1</span> Informacion de sesión de R</h2>
-<pre><code>## R version 3.3.3 (2017-03-06)
-## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## Running under: OS X Yosemite 10.10.5
-## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-## 
-## attached base packages:
-## [1] grid      stats     graphics  grDevices utils     datasets  methods  
-## [8] base     
-## 
-## other attached packages:
-##  [1] bindrcpp_0.2.2     latex2exp_0.4.0    visdat_0.5.1      
-##  [4] glue_1.3.0         lmtest_0.9-35      zoo_1.8-4         
-##  [7] kableExtra_0.9.0   olsrr_0.5.2        ggfortify_0.4.5   
-## [10] ggrepel_0.8.0      GGally_1.4.0       bookdown_0.7      
-## [13] knitr_1.22         wesanderson_0.3.6  gridExtra_2.3     
-## [16] RColorBrewer_1.1-2 viridis_0.5.1      viridisLite_0.3.0 
-## [19] broom_0.5.0        reshape2_1.4.3     magrittr_1.5      
-## [22] forcats_0.3.0      stringr_1.3.1      dplyr_0.7.8       
-## [25] purrr_0.2.4        readr_1.2.1        tidyr_0.8.2       
-## [28] tibble_1.4.2       ggplot2_3.1.0      tidyverse_1.2.1   
-## [31] car_3.0-2          carData_3.0-2      spdep_0.7-4       
-## [34] spData_0.2.9.4     Matrix_1.2-8       raster_2.8-4      
-## [37] rgeos_0.4-2        rgdal_1.2-16       sp_1.3-1          
-## 
-## loaded via a namespace (and not attached):
-##  [1] colorspace_1.3-2    deldir_0.1-14       class_7.3-14       
-##  [4] rio_0.5.10          rprojroot_1.3-2     rstudioapi_0.8     
-##  [7] ggsn_0.4.0          audio_0.1-5         gh_1.0.1           
-## [10] prodlim_2018.04.18  lubridate_1.7.1     xml2_1.2.0         
-## [13] codetools_0.2-15    splines_3.3.3       jsonlite_1.5       
-## [16] rJava_0.9-10        png_0.1-7           shiny_1.2.0        
-## [19] httr_1.3.1          backports_1.1.2     assertthat_0.2.0   
-## [22] lazyeval_0.2.1      cli_1.0.1           beepr_1.3          
-## [25] later_0.7.5         prettyunits_1.0.2   htmltools_0.3.6    
-## [28] tools_3.3.3         coda_0.19-2         gtable_0.2.0       
-## [31] gmodels_2.18.1      tinytex_0.9         Rcpp_1.0.0         
-## [34] cellranger_1.1.0    gdata_2.18.0        nlme_3.1-131       
-## [37] timeDate_3043.102   xfun_0.6            gower_0.1.2        
-## [40] openxlsx_4.1.0      rvest_0.3.2         mime_0.6           
-## [43] gtools_3.8.1        goftest_1.1-1       LearnBayes_2.15.1  
-## [46] MASS_7.3-45         scales_1.0.0        ipred_0.9-8        
-## [49] promises_1.0.1      hms_0.4.2           expm_0.999-2       
-## [52] yaml_2.2.0          curl_3.2            rpart_4.1-10       
-## [55] reshape_0.8.8       stringi_1.2.4       highr_0.7          
-## [58] maptools_0.9-4      OpenStreetMap_0.3.3 nortest_1.0-4      
-## [61] checkmate_1.8.5     boot_1.3-18         zip_1.0.0          
-## [64] lava_1.6.4          rlang_0.3.0.1       pkgconfig_2.0.2    
-## [67] evaluate_0.12       lattice_0.20-34     bindr_0.1.1        
-## [70] labeling_0.3        recipes_0.1.4       tidyselect_0.2.5   
-## [73] plyr_1.8.4          R6_2.3.0            generics_0.0.1     
-## [76] pillar_1.3.0        haven_2.0.0         foreign_0.8-67     
-## [79] withr_2.1.2         survival_2.40-1     abind_1.4-5        
-## [82] nnet_7.3-12         modelr_0.1.2        crayon_1.3.4       
-## [85] rmarkdown_1.10      progress_1.2.0      readxl_1.1.0       
-## [88] data.table_1.11.8   digest_0.6.18       xtable_1.8-3       
-## [91] httpuv_1.4.5        munsell_0.5.0</code></pre>
-</div>
-<div id="otros-graficos" class="section level2">
-<h2><span class="header-section-number">A.2</span> Otros gráficos</h2>
-<div class="figure"><span id="fig:tile-prediosev-pearson"></span>
-<img src="tesis-unigis_files/figure-html/tile-prediosev-pearson-1.png" alt="Coeficiente Pearson entre variables de uso de los predios
- y espacios verdes en los sectores urbanos" width="100%" />
-<p class="caption">
-Figura 6.1: Coeficiente Pearson entre variables de uso de los predios y espacios verdes en los sectores urbanos
-</p>
-</div>
-<div class="figure"><span id="fig:tile-prediosev-spearman"></span>
-<img src="tesis-unigis_files/figure-html/tile-prediosev-spearman-1.png" alt="Coeficiente Pearson entre variables de uso de los predios
- y espacios verdes en los sectores urbanos" width="100%" />
-<p class="caption">
-Figura 6.2: Coeficiente Pearson entre variables de uso de los predios y espacios verdes en los sectores urbanos
-</p>
-</div>
-<div class="figure"><span id="fig:tile-copa-prediosev-pearson"></span>
-<img src="tesis-unigis_files/figure-html/tile-copa-prediosev-pearson-1.png" alt="Coeficiente Pearson entre coberturas de copa
- y variables de predios y EV" width="100%" />
-<p class="caption">
-Figura 6.3: Coeficiente Pearson entre coberturas de copa y variables de predios y EV
-</p>
-</div>
-<div class="figure"><span id="fig:tile-copa-prediosev-spearman"></span>
-<img src="tesis-unigis_files/figure-html/tile-copa-prediosev-spearman-1.png" alt="Coeficiente Pearson entre coberturas de copa
- y variables de predios y EV" width="100%" />
-<p class="caption">
-Figura 6.4: Coeficiente Pearson entre coberturas de copa y variables de predios y EV
-</p>
-</div>
-
-</div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="discusion.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="informacion-de-sesion-de-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

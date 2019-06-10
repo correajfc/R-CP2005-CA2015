@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-06-03">
+<meta name="date" content="2019-06-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,6 +48,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 
@@ -68,9 +69,9 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="abreviaciones.html"><a href="abreviaciones.html"><i class="fa fa-check"></i>Abreviaciones</a></li>
 <li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resúmen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#antecedentes"><i class="fa fa-check"></i><b>1.1</b> Antecedentes</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a><ul>
@@ -104,7 +105,7 @@
 <li class="chapter" data-level="3.3" data-path="meto.html"><a href="meto.html#metodos-y-tecnicas"><i class="fa fa-check"></i><b>3.3</b> Métodos y técnicas</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="meto.html"><a href="meto.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>3.3.1</b> Procesamiento de datos</a></li>
 <li class="chapter" data-level="3.3.2" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-acceso-a-servicios-ambientales"><i class="fa fa-check"></i><b>3.3.2</b> Cálculo de métricas de acceso a servicios ambientales</a></li>
-<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-de-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas de sobre la población</a></li>
+<li class="chapter" data-level="3.3.3" data-path="meto.html"><a href="meto.html#calculo-de-metricas-sobre-la-poblacion"><i class="fa fa-check"></i><b>3.3.3</b> Cálculo de métricas sobre la población</a></li>
 <li class="chapter" data-level="3.3.4" data-path="meto.html"><a href="meto.html#criterios-y-seleccion-de-sectores-censales"><i class="fa fa-check"></i><b>3.3.4</b> Criterios y selección de sectores censales</a></li>
 <li class="chapter" data-level="3.3.5" data-path="meto.html"><a href="meto.html#seleccion-de-variables-dependientes-para-las-regresiones-lineales"><i class="fa fa-check"></i><b>3.3.5</b> Selección de variables dependientes para las regresiones lineales</a></li>
 <li class="chapter" data-level="3.3.6" data-path="meto.html"><a href="meto.html#geostat"><i class="fa fa-check"></i><b>3.3.6</b> Análisis geoestadísticos</a></li>
@@ -127,10 +128,8 @@
 <li class="chapter" data-level="5.2" data-path="discusion.html"><a href="discusion.html#sobre-los-espacios-verdes"><i class="fa fa-check"></i><b>5.2</b> Sobre los espacios verdes</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>6</b> Conclusiones</a></li>
-<li class="appendix"><span><b>Anexos</b></span><ul>
-<li class="chapter" data-level="A.1" data-path="metodologia.html"><a href="#informacion-de-sesion-de-r"><i class="fa fa-check"></i><b>A.1</b> Informacion de sesión de R</a></li>
-<li class="chapter" data-level="A.2" data-path="conclusiones.html"><a href="conclusiones.html#otros-graficos"><i class="fa fa-check"></i><b>A.2</b> Otros gráficos</a></li>
-</ul></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="informacion-de-sesion-de-r.html"><a href="informacion-de-sesion-de-r.html"><i class="fa fa-check"></i><b>A</b> Informacion de sesión de R</a></li>
 <li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -164,14 +163,14 @@ Figura 3.1: Área de estudio. Perímetro de Santiango de Cali
 </div>
 <p>El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano, latitud 3.4372200°, longitud -76.5225000° en grados decimales del sistema de coordenadas WGS84 (ver figura <a href="meto.html#fig:mapa-area">3.1</a>). Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2,420,114 habitantes según Cali en Cifras 2015 <span class="citation">(G. Escobar, <a href="#ref-escobar2015cali">2015</a>)</span> . El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %). La división administrativa de la zona urbana son comunas y las comunas se componen de barrios.</p>
 <p>Santiago de Cali presenta dos zonas topográficas: el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El área urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.</p>
-<p>El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1.500 mm y la temperatura promedio anual es de 24 °C aproximadamente <span class="citation">(CIAT, <a href="#ref-ciat_plan_2015">2015</a>)</span>. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes.</p>
+<p>El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1,500 mm y la temperatura promedio anual es de 24 °C aproximadamente <span class="citation">(CIAT, <a href="#ref-ciat_plan_2015">2015</a>)</span>. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes.</p>
 </div>
 <div id="datos" class="section level2">
 <h2><span class="header-section-number">3.2</span> Datos</h2>
 <p>Se hizo uso de datos del Censo Arbóreo de 2015(CA2015) <span class="citation">(Alcaldía de Cali, <a href="#ref-ca2015cali">2015</a>)</span>, el Censo de Población de 2005 (CP2005) <span class="citation">(DANE, <a href="#ref-censo_sistema_dane">2005</a>, <a href="#ref-geoportal_DANE">2017</a>)</span> y aspectos estructurales del espacio público y privado de las unidades espaciales de análisis tomados de la Infraestructura de Datos Espaciales de Santiago de Cali (IDESC) <span class="citation">(Alcaldía de Cali, <a href="#ref-geoportal_idesc">2009</a>)</span> y las bases de datos del Plan de Ordenamiento Territorial (POT) del 2014 <span class="citation">(Alcaldía de Cali, <a href="#ref-pot2014cali">2014</a>)</span>.</p>
 <div id="datos-de-registros-oficiales-del-municipio" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Datos de registros oficiales del municipio</h3>
-<p>La cartografía disponible en la IDESC <span class="citation">(Alcaldía de Cali, <a href="#ref-geoportal_idesc">2009</a>)</span>, incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema <span class="citation">(IGAG, <a href="#ref-igagMC2005">2005</a>)</span>. Además está la base de datos geográfica del POT <span class="citation">(Alcaldía de Cali, <a href="#ref-pot2014cali">2014</a>)</span>. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía WFS. En la figura <a href="meto.html#fig:capas-idesc">3.2</a> se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.</p>
+<p>La cartografía disponible en la IDESC <span class="citation">(Alcaldía de Cali, <a href="#ref-geoportal_idesc">2009</a>)</span>, incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema MAGNA-SIRGAS-CALI <span class="citation">(IGAG, <a href="#ref-igagMC2005">2005</a>)</span>. Además está la base de datos geográfica del POT <span class="citation">(Alcaldía de Cali, <a href="#ref-pot2014cali">2014</a>)</span>. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía WFS. En la figura <a href="meto.html#fig:capas-idesc">3.2</a> se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.</p>
 <div class="figure"><span id="fig:capas-idesc"></span>
 <img src="QGIS/mapas/capas_analisis.png" alt="Capas usadas para el procesamiento de los espacios verdes y las características de las manzanas" width="100%" />
 <p class="caption">
@@ -181,94 +180,94 @@ Figura 3.2: Capas usadas para el procesamiento de los espacios verdes y las cara
 </div>
 <div id="el-censo-arboreo" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> El censo arbóreo</h3>
-<p>En el año 2015 la ciudad de Santiago de Cali (Colombia) concretó la realización del censo arbóreo (CA2015) que dejó como resultado una base de datos de 296,467 individuos censados <span class="citation">(Alcaldía de Cali, <a href="#ref-ca2015cali">2015</a>)</span>. Los datos dan cuenta de la identificación de especies, georeferenciación de los individuos, sus características dasométricas, de emplazamiento y estado fitosanitario. Las variables usadas en este estudio se resumen en la tabla <a href="meto.html#tab:vars-AU">3.1</a>.</p>
-<table style="width:79%;">
+<p>En el año 2015 la ciudad de Santiago de Cali concretó la realización del censo arbóreo (CA2015) que dejó como resultado una base de datos de 296,467 individuos censados <span class="citation">(Alcaldía de Cali, <a href="#ref-ca2015cali">2015</a>)</span>. Los datos dan cuenta de la identificación de especies, georeferenciación de los individuos, sus características dasométricas, de emplazamiento y estado fitosanitario. Las variables contenidas en ese estudio se resumen en la tabla <a href="meto.html#tab:vars-AU">3.1</a>.</p>
+<table style="width:76%;">
 <caption><span id="tab:vars-AU">Tabla 3.1: </span> Variables para caracterizar el AU</caption>
 <colgroup>
-<col width="33%" />
-<col width="45%" />
+<col width="31%" />
+<col width="44%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="right">variable</th>
-<th align="right">{valores}[unidades]</th>
+<th>variable</th>
+<th>{valores}[unidades]</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">id_arbol</td>
-<td align="right">número entero único</td>
+<td>id_arbol</td>
+<td>número entero único</td>
 </tr>
 <tr class="even">
-<td align="right">diametro copa</td>
-<td align="right">[m<sup>2</sup>]</td>
+<td>diametro copa</td>
+<td>[m<sup>2</sup>]</td>
 </tr>
 <tr class="odd">
-<td align="right">altura arbol</td>
-<td align="right">[m]</td>
+<td>altura arbol</td>
+<td>[m]</td>
 </tr>
 <tr class="even">
-<td align="right">vitalidad</td>
-<td align="right">{Regular, Sano, Seco, Muerto}</td>
+<td>vitalidad</td>
+<td>{Regular, Sano, Seco, Muerto}</td>
 </tr>
 <tr class="odd">
-<td align="right">edad</td>
-<td align="right">{Juvenil, Maduro, Longevo}</td>
+<td>edad</td>
+<td>{Juvenil, Maduro, Longevo}</td>
 </tr>
 <tr class="even">
-<td align="right">emplazamiento</td>
-<td align="right">{Anden, Bahias de estacionamiento, Bulevares, Corredor Ferreo, Escenario deportivo y/o Cultural, Glorieta, Parque Urbano, Paseos, Plaza, Plazoleta, Ronda de rios, Rondas de canales, Separador Vial}</td>
+<td>emplazamiento</td>
+<td>{Anden, Bahias de estacionamiento, Bulevares, Corredor Ferreo, Escenario deportivo y/o Cultural, Glorieta, Parque Urbano, Paseos, Plaza, Plazoleta, Ronda de rios, Rondas de canales, Separador Vial}</td>
 </tr>
 <tr class="odd">
-<td align="right">vegetación</td>
-<td align="right">{Arbol, Arbusto, Bambu, Muerto, Palma, Planta arbustiva, Seco}</td>
+<td>vegetación</td>
+<td>{Arbol, Arbusto, Bambu, Muerto, Palma, Planta arbustiva, Seco}</td>
 </tr>
 <tr class="even">
-<td align="right">Este</td>
-<td align="right">[m] MAGNA - SIRGAS-CALI</td>
+<td>Este</td>
+<td>[m] MAGNA - SIRGAS-CALI</td>
 </tr>
 <tr class="odd">
-<td align="right">Norte</td>
-<td align="right">[m] MAGNA - SIRGAS-CALI</td>
+<td>Norte</td>
+<td>[m] MAGNA - SIRGAS-CALI</td>
 </tr>
 </tbody>
 </table>
 <p>Existe una diferencia de 10 años entre censo de población de 2005 y el censo arbóreo de la ciudad de Cali. Aunque esto pueda parecer una situación que reduce la legitimidad de los resultados que se hallen en este estudio, autores como <span class="citation">C. G. Boone, Cadenasso, Grove, Schwarz, y Buckley (<a href="#ref-boone2010landscape">2010</a>)</span> y <span class="citation">Schwarz et al. (<a href="#ref-schwarz_trees_2015">2015</a>)</span> reconocen que los paisajes que vemos hoy son legados de patrones de consumo pasados, y que en el caso de la vegetación urbana tratamos con organismos de larga vida que pueden tardar mucho tiempo en establecerse y crecer. En contraste, la estructura social de las ciudades puede cambiar más rápidamente.</p>
-<p>Atendiendo a estos argumentos se excluyó del la base de datos del CA2015 árboles jóvenes del inventario, que no estaban ahí en 2005. Aunque toda la vegetación aporta beneficios ambientales a los habitantes, en este estudio se descartó la vegetación arbustiva y los árboles, palmas y bambú de menos de 1.9 m de altura para circunscribirse a los individuos más desarrollados.</p>
-<p>Una vez aplicado este filtro contamos con 203,112 individuos.</p>
+<p>Atendiendo a estos argumentos se excluyó de la base de datos del CA2015 árboles jóvenes del inventario, que no estaban ahí en 2005. Aunque toda la vegetación aporta beneficios ambientales a los habitantes, en este estudio se descartó la vegetación arbustiva y los árboles, palmas y bambú de menos de 1.9 m de altura para circunscribirse a los individuos más desarrollados.</p>
+<p>Una vez aplicado este filtro se cuenta con 203,112 individuos.</p>
 </div>
 <div id="el-censo-de-poblacion" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> El censo de población</h3>
 <p>Los datos del CP2005 están disponibles en las unidades censales (sector, sección, manzana) a través del sistema de un consulta web <span class="citation">(DANE, <a href="#ref-censo_sistema_dane">2005</a>)</span>. Estos datos sirven para caracterizar la población con base en indicadores sobre rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas <a href="meto.html#tab:vars-poblacion">3.2</a> y <a href="meto.html#tab:vars-vivienda">3.3</a>.</p>
 <p>El otro componente de los datos es la cartografía censal del DANE <span class="citation">(DANE, <a href="#ref-geoportal_DANE">2017</a>)</span> disponible para las diferentes unidades espaciales de agregación en el sistema de coordenadas WGS84. Para el análisis se tiene en cuenta todos las unidades censales que se interceptan con el perímetro urbano disponible en la IDESC, pues el censo arbóreo se limitó a este perímetro.(ver figura <a href="meto.html#fig:su-periurbano">3.3</a>)</p>
-<table style="width:64%;">
+<table style="width:67%;">
 <caption><span id="tab:vars-poblacion">Tabla 3.2: </span> Variables sobre la población</caption>
 <colgroup>
-<col width="16%" />
-<col width="47%" />
+<col width="20%" />
+<col width="45%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="right">variable</th>
-<th align="right">{valores}[unidades]</th>
+<th>variable</th>
+<th>{valores}[unidades]</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Pertenencia Étnica</td>
-<td align="right">[personas]{indígenas, ROM, gitanos, raizales del Archipiélago de San Andrés, Providencia y Santa Catalina, palenqueros de San Basilio, afrocolombianos}</td>
+<td>Pertenencia Étnica</td>
+<td>[personas]{indígenas, ROM, gitanos, raizales del Archipiélago de San Andrés, Providencia y Santa Catalina, palenqueros de San Basilio, afrocolombianos}</td>
 </tr>
 <tr class="even">
-<td align="right">Con alguna limitación</td>
-<td align="right">[personas]{sí,no}</td>
+<td>Con alguna limitación</td>
+<td>[personas]{sí,no}</td>
 </tr>
 <tr class="odd">
-<td align="right">Con estudios superior o postgrado</td>
-<td align="right">[personas]</td>
+<td>Con estudios superior o postgrado</td>
+<td>[personas]</td>
 </tr>
 <tr class="even">
-<td align="right">Ningún estudio</td>
-<td align="right">[personas]</td>
+<td>Ningún estudio</td>
+<td>[personas]</td>
 </tr>
 </tbody>
 </table>
@@ -278,34 +277,34 @@ Figura 3.2: Capas usadas para el procesamiento de los espacios verdes y las cara
 Figura 3.3: Sectores urbanos y périmetro urbano de Santiago de Cali
 </p>
 </div>
-<table style="width:50%;">
+<table style="width:64%;">
 <caption><span id="tab:vars-vivienda">Tabla 3.3: </span> Variables sobre la las viviendas</caption>
 <colgroup>
-<col width="9%" />
-<col width="40%" />
+<col width="25%" />
+<col width="38%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="right">variable</th>
-<th align="right">{valores}[unidades]</th>
+<th>variable</th>
+<th>{valores}[unidades]</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">tipo vivienda</td>
-<td align="right">[viviendas] {Casa,Casa indígena,Apartamento,Tipo cuarto,Otro tipo de vivienda}</td>
+<td>tipo vivienda</td>
+<td>{Casa,Casa indígena,Apartamento,Tipo cuarto,Otro tipo de vivienda}[viviendas]</td>
 </tr>
 <tr class="even">
-<td align="right">uso vivienda</td>
-<td align="right">[predio]{Uso Vivienda.Uso Unidad Económica,Uso LEA}</td>
+<td>uso vivienda</td>
+<td>{Uso Vivienda.Uso Unidad Económica,Uso LEA}[predios]</td>
 </tr>
 <tr class="odd">
-<td align="right">cantidad predios</td>
-<td align="right">[predios]</td>
+<td>cantidad predios</td>
+<td>[predios]</td>
 </tr>
 <tr class="even">
-<td align="right">cantidad viviendas</td>
-<td align="right">[viviendas]</td>
+<td>cantidad viviendas</td>
+<td>[viviendas]</td>
 </tr>
 </tbody>
 </table>
@@ -325,7 +324,7 @@ Figura 3.3: Sectores urbanos y périmetro urbano de Santiago de Cali
 <li>Seleccionar los SU a incluir con base la coincidencia con las capas de AU y EV.</li>
 <li>Construir y evaluar los modelos de regresión lineal.</li>
 <li>Contruir matrices de vencidad <span class="math inline">\(W\)</span> para incluir restricciones espaciales al modelo.</li>
-<li>Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresieon lineal con dos diseños de matriz <span class="math inline">\(W\)</span>. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño.</li>
+<li>Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresión lineal con dos diseños de matriz <span class="math inline">\(W\)</span>. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño.</li>
 <li>Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R<sup>2</sup> y el criterio de Akaike.</li>
 <li>Graficar mapas de LISA para caraterizar los patrones de agrupación de las varobles del los modelos mejor ajustados.</li>
 </ol>
@@ -339,7 +338,7 @@ Figura 3.4: Diagrama de flujo de la metodología
 <h3><span class="header-section-number">3.3.1</span> Procesamiento de datos</h3>
 <p>El procesamiento de los datos se realizó principalmente en <span class="citation">R Core Team (<a href="#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="#ref-R-rgeos">2018</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="#ref-R-sp">2018</a>)</span>.</p>
 <p>El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico.</p>
-<p>El código y los datos están disponibles en <a href="https://github.com/correajfc/R-CP2005-CA2015">este repositorio de GitHub https://github.com/correajfc/R-CP2005-CA2015</a>.</p>
+<p>El código y los datos están disponibles en el <a href="https://github.com/correajfc/R-CP2005-CA2015">repositorio de GitHub</a> en <a href="https://github.com/correajfc/R-CP2005-CA2015" class="uri">https://github.com/correajfc/R-CP2005-CA2015</a>.</p>
 </div>
 <div id="calculo-de-metricas-de-acceso-a-servicios-ambientales" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Cálculo de métricas de acceso a servicios ambientales</h3>
@@ -379,8 +378,8 @@ Figura 3.6: Espacios verdes y radio de búsqueda de 1 km desde los centriodes de
 </div>
 </div>
 </div>
-<div id="calculo-de-metricas-de-sobre-la-poblacion" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Cálculo de métricas de sobre la población</h3>
+<div id="calculo-de-metricas-sobre-la-poblacion" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Cálculo de métricas sobre la población</h3>
 <div id="caracteristicas-de-la-poblacion" class="section level4">
 <h4><span class="header-section-number">3.3.3.1</span> Características de la población</h4>
 <p>La tabla <a href="meto.html#tab:vars-poblacion">3.2</a> muestra los valores de la variable de etnicidad. Al hacer los conteos por pertencia a un grupo etnico para toda la ciudad (ver tabla <a href="meto.html#tab:totales-poblacion">3.4</a>), se observa el bajo número de personas que pertenecen al pueblo Rom (gitanos), Palenqueros de San Basilio (departamento de Bolívar) y de Raizales del Archipiélago de San Andrés, Providencia y Santa Catalina (SAI) y a la población indígena, por lo que son descartados del análisis.</p>
@@ -393,7 +392,7 @@ Figura 3.6: Espacios verdes y radio de búsqueda de 1 km desde los centriodes de
 <th style="text-align:left;">
 Tipo
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Cantidad
 </th>
 </tr>
@@ -403,31 +402,31 @@ Cantidad
 <td style="text-align:left;">
 Población Total
 </td>
-<td style="text-align:right;">
-2027024
+<td style="text-align:left;">
+2,027,024
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 Población afrodescendiente, negros o mulatos
 </td>
-<td style="text-align:right;">
-530990
+<td style="text-align:left;">
+530,990
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 Población indígena
 </td>
-<td style="text-align:right;">
-9195
+<td style="text-align:left;">
+9,195
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 Población Rom
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 690
 </td>
 </tr>
@@ -435,7 +434,7 @@ Población Rom
 <td style="text-align:left;">
 Población Palenqueros
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
 </tr>
@@ -443,7 +442,7 @@ Población Palenqueros
 <td style="text-align:left;">
 Población raizales de SAI
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 851
 </td>
 </tr>
@@ -477,7 +476,7 @@ Figura 3.9: Mapas de las variables sobre el tipo de uso de los predios como porc
 </div>
 <div id="criterios-y-seleccion-de-sectores-censales" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Criterios y selección de sectores censales</h3>
-<p>Se establecieron criterios para la <strong>exclusión</strong> de datos para el análisis de regresión que evitan incluir SUs atípicos con valores:</p>
+<p>Se establecieron criterios para la <strong>exclusión</strong> de datos para el análisis de regresión que evitan incluir SUs atípicos:</p>
 <ul>
 <li>sectores sin personas</li>
 <li>sectores sin viviendas</li>
@@ -516,11 +515,11 @@ Figura 3.10: Sectores excluidos
 </div>
 <div id="geostat" class="section level3">
 <h3><span class="header-section-number">3.3.6</span> Análisis geoestadísticos</h3>
-<p>Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de <span class="math inline">\(W_{n \times n}\)</span>, donde <span class="math inline">\(n\)</span> es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz <span class="math inline">\(W\)</span> es una estructura que restringe la influencia a priori en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.</p>
+<p>Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de <span class="math inline">\(W_{n \times n}\)</span>, donde <span class="math inline">\(n\)</span> es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz <span class="math inline">\(W\)</span> es una estructura que restringe la influencia <em>a priori</em> en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.</p>
 <p>Para los análisis espaciales se usó la librería <code>spdep</code> <span class="citation">(Bivand, <a href="#ref-R-spdep">2017</a>)</span></p>
 <div id="matrices-de-vecindad" class="section level4">
 <h4><span class="header-section-number">3.3.6.1</span> Matrices de vecindad</h4>
-<p>La matriz <span class="math inline">\(W\)</span> representa la topología de vecindad entre las unidades geográficas. Existen la literatura diferentes tipos de vecindad: <em>rook</em>, <em>bishop</em> y <em>queen</em> son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas (<span class="math inline">\(W_d\)</span>), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura <a href="meto.html#fig:w-su-todos">3.11</a> se muestra la matriz <span class="math inline">\(W_q\)</span> defina para vecinos que comparten un lado del polígono (vecindad <em>queen</em>) para todos los sectores de la ciudad de Cali.</p>
+<p>La matriz <span class="math inline">\(W\)</span> representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: <em>rook</em>, <em>bishop</em> y <em>queen</em> son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas (<span class="math inline">\(W_d\)</span>), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura <a href="meto.html#fig:w-su-todos">3.11</a> se muestra la matriz <span class="math inline">\(W_q\)</span> defina para vecinos que comparten un lado del polígono (vecindad <em>queen</em>) para todos los sectores de la ciudad de Cali.</p>
 <div class="figure"><span id="fig:w-su-todos"></span>
 <img src="tesis-unigis_files/figure-html/w-su-todos-1.png" alt="Grafo de vecindad entre todos los SU de la ciudad de Cali" width="100%" />
 <p class="caption">
@@ -531,24 +530,23 @@ Figura 3.11: Grafo de vecindad entre todos los SU de la ciudad de Cali
 </div>
 <div id="autocorrelacion-espacial" class="section level4">
 <h4><span class="header-section-number">3.3.6.2</span> Autocorrelación espacial</h4>
-<p>Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión se usó el índice de Moran I (ecuación <a href="meto.html#eq:moranI">(3.3)</a>). El índice de Moran I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Cuando se encuentra una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura de vecindad al modelo es posible obtener una estimación más eficiente de los coeficientes, y en consecuencia una estimación más confiable de los coeficientes. En este estudio no se hace inferencia de una población por una muestra, se calcularon coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación.</p>
+<p>Para indagar sobre la información o patrones espaciales de los residuos de los modelos de regresión se usó el índice de Moran’I (ecuación <a href="meto.html#eq:moranI">(3.3)</a>). El índice de Moran’I es el coeficiente de correlación para la relación entre una variable y sus valores circundantes. Cuando se encuentra una correlación espacial significativa en los residuos, esto sugiere que agregando esa estructura de vecindad al modelo es posible obtener una estimación más eficiente de los coeficientes, y en consecuencia una estimación más confiable de los coeficientes. En este estudio no se hace inferencia de una población por una muestra, se calcularon coeficientes sobre el total de la población, y por tanto los coeficientes pueden interpretarse como la fuerza de esa relación.</p>
 <span class="math display" id="eq:moranI">\[\begin{equation}
  I=\frac {N}{\sum _{i}\sum _{j}w_{ij}} \frac {\sum _{i}\sum _{j}w_{ij}(X_{i}-{\bar {X}})(X_{j}-{\bar {X}})}{\sum _{i}(X_{i}- \bar{X})^{2}}
 \tag{3.3}
 \end{equation}\]</span>
-<p>donde <span class="math inline">\(N\)</span> es el número de unidades espaciales indexados por <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>; <span class="math inline">\(X\)</span> es la variable de interés; <span class="math inline">\(\bar {X}\)</span> es la media de <span class="math inline">\(X\)</span>; y <span class="math inline">\(w_{ij}\)</span> es un elemento de una matriz de pesos espaciales <span class="math inline">\(W\)</span>. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta.</p>
-<p>El gráfico de Moran es una forma de observar el valor de la pendiente (el índice de autocorrelación) graficando los valores retardados (<em>spatial lag</em>: es el valor medio de los valores vecinos) de la variable en cuestión en el eje <span class="math inline">\(y\)</span> y la variable en el <span class="math inline">\(x\)</span>. El valor <strong><span class="math inline">\(p\)</span></strong> del test estadístico expresa el grado de certeza de que esa pendiente no es plana, si el valor límite de significancia es menor que <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p>donde <span class="math inline">\(N\)</span> es el número de unidades espaciales indexados por <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>; <span class="math inline">\(X\)</span> es la variable de interés; <span class="math inline">\(\bar {X}\)</span> es la media de <span class="math inline">\(X\)</span>; y <span class="math inline">\(w_{ij}\)</span> es un elemento de una matriz de pesos espaciales <span class="math inline">\(W\)</span>. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta. El valor <strong><span class="math inline">\(p\)</span></strong> del test expresa el grado de certeza sobre el valor del estadístico, si el valor límite de significancia es menor que <span class="math inline">\(\alpha = 0.05\)</span></p>
 </div>
 <div id="indicadores-locales-de-asociacion-espacial-lisa" class="section level4">
 <h4><span class="header-section-number">3.3.6.3</span> Indicadores Locales de Asociación Espacial (LISA)</h4>
-<p>Dado que Morán I es una suma de productos cruzados individuales es explotado para formular los indicadores locales de asociación espacial -LISA. Estos permiten evaluar la agrupación de las unidades individuales mediante el cálculo de la I de Moran local para cada unidad espacial y la evaluación de la significación estadística de este indicador <span class="citation">(Anselin, <a href="#ref-anselin1995local">1995</a>)</span>.</p>
+<p>Dado que Morán’I es una suma de productos cruzados individuales es explotado para formular los indicadores locales de asociación espacial (LISA). Estos permiten evaluar la agrupación de las unidades individuales mediante el cálculo de la Moran local para cada unidad espacial y la evaluación de la significación estadística de este indicador <span class="citation">(Anselin, <a href="#ref-anselin1995local">1995</a>)</span>.</p>
 <p>Estos mapas en conjunto con el resultado numérico de los LISA z-normalizado y el <span class="math inline">\(p\)</span>-valor permiten identificar agrupaciones espaciales. Las regiones resaltadas en rojo tienen valores altos de la variable y tienen vecinos con valores altos también (<em>high-high</em>). El área azul (<em>low-low</em>) son los grupos que presentan valores bajos al igual que sus vecinos. Mientras que las regiones azul pálido son <em>low-high</em> y las áreas rosadas son <em>high-low</em> muestran correlación negativa, es decir valores muy diferentes a los de sus vecinos. Las regiones fuertemente coloreadas son aquellas que contribuyen significativamente a un resultado positivo de autocorrelación espacial global, mientras que los colores más claros contribuyen significativamente a un resultado de autocorrelación negativo.</p>
 
 </div>
 </div>
 </div>
 </div>
-<h3>Referencias</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-escobar2015cali">
 <p>Escobar, Guido. (2015). Cali en Cifras 2015. <em>Alcaldía de Santiago de Cali, Departamento Administrativo de Planeación</em>, <em>26</em>.</p>
@@ -645,7 +643,7 @@ Figura 3.11: Grafo de vecindad entre todos los SU de la ciudad de Cali
 <hr />
 <ol start="4">
 <li id="fn4"><p>Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente<a href="meto.html#fnref4">↩</a></p></li>
-<li id="fn5"><p>Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores<a href="meto.html#fnref5">↩</a></p></li>
+<li id="fn5"><p>Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.<a href="meto.html#fnref5">↩</a></p></li>
 </ol>
 </div>
             </section>

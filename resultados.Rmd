@@ -4,7 +4,7 @@
 
 ### Variables dependientes
 
-El proceso de selección de las variables a incluir en los modelos inicia con la inspección visual de las distribuciones bivariadas de las candidatas a predictores. Se busca identificar las variables correlacianadas entre sí para evitar incluir información redundante en los modelos. En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población (número de personas en un SU con una condición específica). La matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histogram de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre población con ningún estudio y tener alguna limitación física ($\simeq 0.88$);  pertenecer a una comunidad afrodescendiente y carecer de estudios ($\simeq0.92$) o ser afrodescendiente y tener alguna limitación ($\simeq0.88$). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punto de vista del modelo sólo podrán ser representadas por la variable que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
+El proceso de selección de las variables a incluir en los modelos inicia con la inspección visual de las distribuciones bivariadas de las candidatas a predictores. Se busca identificar las variables correlacionadas entre sí para evitar incluir información redundante en los modelos. En la figura \@ref(fig:bivar-poblacion-abs) se explora las relaciones entre las variables de población (número de personas en un SU con una condición específica). La matriz triangular superior muestra los coeficientes de correlación de Pearson, la diagonal contiene el histograma de frecuencias de la variable y la matriz triangular inferior muestra un gráfico de dispersión y la línea de tendencia usando un modelo lineal entre cada par de variables. Es notoria la alta correlación entre población con ningún estudio y tener alguna limitación física ($\simeq 0.88$);  pertenecer a una comunidad afrodescendiente y carecer de estudios ($\simeq0.92$) o ser afrodescendiente y tener alguna limitación ($\simeq0.88$). Esto representa una suma de condiciones desfavorables relacionadas entre sí, que desde el punto de vista del modelo sólo podrán ser representadas por la variable que mejor se relacione con la cobertura de copa y evitar así colinealidad entre los predictores.
 
 
 
@@ -26,11 +26,12 @@ ggpairs(
   regresion.arboles[,indep.poblacion.percent], lower = list(continuous = wrap_fn_with_params(lowerFn, method = "lm")),
   diag = list(continuous = wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
   upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
-  title = "Comparación por pares entre predictores de población porcentuales y la densidad de población"
+  title = "Comparación por pares entre predictores de población porcentuales y \nla densidad de población"
 )+ theme_grey(base_size = 8)+
   theme(strip.text = element_text(size = 6))
 
 ```
+
 
 Los gráficos de azulejos son una forma resumida para consultar la intensidad de estas relaciones (figura \@ref(fig:tile-poblacion-pearson)) lineales entre las variables dependientes usando el coeficiente de correlación de Pearson, y las no lineales mediante el coeficiente de Spearman (figura \@ref(fig:tile-poblacion-spearman)).
 
@@ -40,17 +41,21 @@ pintar_corrmatrix(regresion.arboles,indep.poblacion)+
 
 ```
 
+
+
 ```{r tile-poblacion-spearman, fig.asp=1,fig.cap="Coeficiente Spearman entre varibles de población"}
 pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
   labs(title="Coeficiente Spearman \nentre variables de población")
 
 ```
 
+
+
 Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-copa-poblacion-pearson)) y Spearman (figura \@ref(fig:tile-copa-poblacion-spearman)) entre las variables dependientes e independientes, y teniendo en cuenta las restricciones de colinealidad entre las variables dependientes, se seleccionaron las siguientes variables para los modelos lineales:
 
-- Para el área de copa (`area_copa`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.sel, collapse = ", ") %>% str_replace_all("[\\._]"," ")` ``. 
+- Para el área de copa (`area_copa`) los predictores seleccionados son `` `r str_c(indep.poblacion.copa.sel, collapse = ", ") %>% str_replace_all("[\\._]"," ")` ``. 
 
-- Para la cobertura de copa (`cobertura_copa.ap`) los predictores seleccionados son`` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ")%>% str_replace_all("[\\._]"," ") ` `` 
+- Para la cobertura de copa (`cobertura_copa.ap`) los predictores seleccionados son `` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ")%>% str_replace_all("[\\._]"," ") ` `` 
 
 
 ```{r tile-copa-poblacion-pearson, fig.asp=0.6,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
@@ -65,7 +70,7 @@ pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles
 ```
 
 
-Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio público se aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area ep`) y el porcentaje de viviendas tipo cuarto (`cuarto porcentaje`). Para el modelo de porcentaje de cobertura de se seleccionan `apartamento porcentaje`, `cuarto porcentaje` y `area ep porcentaje`.
+Para la selección de variables sobre uso de los predios, los tipos de vivienda y área de espacio público se aplicó el mismo proceso. Para el área de copa se seleccionaron el área de espacios verdes (`area ep`) y el porcentaje de viviendas tipo cuarto (`cuarto porcentaje`). Para el modelo de porcentaje de cobertura se seleccionaron `apartamento porcentaje`, `cuarto porcentaje` y `area ep porcentaje`.
 
 
 ### Modelos de regresión lineal AU
@@ -76,11 +81,11 @@ La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para e
 
 Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-mod-best-lm-copa) y \@ref(fig:diagn-mod-best-lm-copaap)). 
 
-Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). En el caso de la área de copa se obtiene un *adjR-square* de `r summary(lm.mod.area_copa) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent() %>% str_c(collapse = ", ")%>% str_replace_all("[\\._]"," ")`, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick() %>% str_c(collapse = ", ")%>% str_replace_all("[\\._]"," ")`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
+Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). En el caso del área de copa se obtiene un *adjR-square* de `r summary(lm.mod.area_copa) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent() %>% str_c(collapse = ", ")`, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick() %>% str_c(collapse = ", ")%>% str_replace_all("[\\._]"," ")`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
 
 Para la cobertura de copa la única variable significativa es `r indep.poblacion.copa.ap.sel[1] %>% backtick()%>% str_replace_all("[\\._]"," ")`. Este único indicador porcentual, que hace una descripción local y comparable entre los SU, explica el `r summary(lm.mod.cobertura.ap) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent()` de la variabilidad de los datos, reforzando la importancia del indicador de acceso a educación superior como predictor del acceso a servicios ambientales del AU.
 
-Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
+Para la siguientes fases se ignoraron las variables no significativas de los modelos lineales. 
 
 
 
@@ -187,6 +192,8 @@ grid.arrange( grobs =graf@plots, top=title1)
 ```
 
 
+
+
 ```{r diagn-mod-best-lm-copaap, fig.cap="Gráficas diagnósticas para el análisis de regresión lineal de porcentaje de cobertura de copa"}
 
 graf<-autoplot(lm.mod.cobertura.ap, which = 1:4)
@@ -208,6 +215,7 @@ grid.arrange( grobs =graf@plots, top=title1)
 
 Las matrices de vecindad construidas para el análisis espacial son la *queen* $W_q$, que considera vecino a todos los sectores que comparten un lado o una esquina con un SU; y una matriz de distancia inversas entre los centroides de los SU, restringiendo la vecindad a aquellos centroides que están a menos de 1 km ($W_d$). El valor de un kilómetro es arbitrario, aunque razonable en la escala humana. Los grafos que representan las 2 matrices $W$ se muestran en la figura \@ref(fig:ws-su-reg). 
 
+
 ```{r ws-su-reg, fig.asp=1.5 ,out.width='48%' ,fig.cap="Matrices de vecindad del análisis espacial",fig.align="center",fig.show="hold"}
 plot(W_queen,coords=coordinates(su.arboles),pch=19, cex=0.1, col="gray", main="Queen")
 title(main = "Queen")
@@ -218,17 +226,17 @@ title(main = "Distancia inversa a 1 Km")
 
 ####  Autocorrelación variables dependientes
 
-Se analizó la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y que puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas \@ref(tab:moran-copa-w) y \@ref(tab:moran-copaap-w)). 
+Se analizó la autocorrelación de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran'I para ambas variables dependientes muestran que existen patrones de agrupamiento y que puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas \@ref(tab:moran-copa-w) y \@ref(tab:moran-copaap-w)). 
 
-Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matrix $W_q$ captura mejor la autocorrelación del área de copa. En el caso de la cobertura de copa la matriz $W_d$ presenta un valor ligeramente mayor de autocorrelación. 
+Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matriz $W_q$ captura mejor la autocorrelación del área de copa. En el caso de la cobertura de copa la matriz $W_d$ presenta un valor ligeramente mayor de autocorrelación. 
 
 Los mapas LISA muestran los grupos de sectores que configuran la autocorrelación del área de copa usando la matriz para $W_q$ (figura \@ref(fig:mapas-lisa-copa-wq)) y los grupos de la variable cobertura de copa usando la matriz $W_d$ (figura \@ref(fig:mapas-lisa-copaap-wd)). 
 
-Los grupos que se forman muestran patrones distintos en los dos indicadores seleccionados para caraterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa muestra las diferencias desde una perspetiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de area disponible en toda la ciudad. El indicador de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU. 
+Los grupos que se forman muestran patrones distintos en los dos indicadores seleccionados para caracterizar los beneficios del arbolado urbano. Sin embargo, existen SU comunes en los grupos conformados pero con diferencias en la extensión de los conglomerados identificados. Esto se debe a que cada uno de los indicadores expresa un concepto distinto del disfrute de ese beneficio: el área de copa muestra las diferencias desde una perspectiva global, es decir, con base en el valor absoluto de área de copa de un SU en relación al total de área disponible en toda la ciudad. El indicador de cobertura de copa expresa el beneficio de forma relativa entre los SU al dividir el área de copa disponible en un SU entre el área pública de ese SU. 
 
-Es clara la similitud entre los grupos obtenidos para una misma variable dependendiente con ambos diseños de matriz $W$ (figura \@ref(fig:mapas-lisa-copa-wq) y figura \@ref(fig:mapas-lisa-copa-wd) para el área de copa y \@ref(fig:mapas-lisa-copaap-wq) y \@ref(fig:mapas-lisa-copaap-wd) para la cobertura de copa), posiblemente porque no existen diferencias notables entre los dos tipos de estructura de vecindad propuestas (figura \@ref(fig:ws-su-reg)). 
+Es clara la similitud entre los grupos obtenidos para una misma variable dependiente con ambos diseños de matriz $W$ (figura \@ref(fig:mapas-lisa-copa-wq) y figura \@ref(fig:mapas-lisa-copa-wd) para el área de copa y \@ref(fig:mapas-lisa-copaap-wq) y \@ref(fig:mapas-lisa-copaap-wd) para la cobertura de copa), posiblemente porque no existen diferencias notables entre los dos tipos de estructura de vecindad propuestas (figura \@ref(fig:ws-su-reg)). 
 
-Lo relevante en los resultados de los análisis con ambos diseños de matriz es que la vecindad de los SU exhibe un grado de autocorrelación espacial y por lo tanto los grupos de alta y baja prestación en los servicios ecosistémicos del AU configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechanzado la hipotesis nula de distribucion espacial aleatoria o uniforme.
+Lo relevante en los resultados de los análisis con ambos diseños de matriz es que la vecindad de los SU exhibe un grado de autocorrelación espacial y por lo tanto los grupos de alta y baja prestación en los servicios ecosistémicos del AU configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios, rechazando la hipótesis nula de distribución espacial aleatoria o uniforme.
 
 
 
@@ -259,6 +267,8 @@ knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$
 
 
 
+
+
 ```{r moran-copaap-w}
 mt<-moran.test(lm.best.cobertura.ap$model$cobertura_copa.ap.mxn, listw=W_queen) %>% 
   tidy() %>% 
@@ -285,11 +295,14 @@ knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$
 
 
 
+
 ```{r mapas-lisa-copa-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `log.area copa`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_queen, wname = "Wq",nrow =1)
 
 ```
+
+
 
 ```{r mapas-lisa-copa-wd,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_d$ de `log.area copa`"}
 
@@ -297,11 +310,15 @@ pintar_mapa_su_LISA_var(regresion.arboles,"log.area_copa",W_dist1000.inv, wname 
 
 ```
 
+
+
 ```{r mapas-lisa-copaap-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `cobertura copa.ap`"}
 
 pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_queen, wname = "Wq",nrow =1)
 
 ```
+
+
 
 ```{r mapas-lisa-copaap-wd,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_d$ de `cobertura copa.ap`"}
 
@@ -310,13 +327,14 @@ pintar_mapa_su_LISA_var(regresion.arboles,"cobertura_copa.ap",W_dist1000.inv, wn
 ```
 
 
+
 #### Autocorrelación residuos de los OLS
 
-Para evaluar la utlidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la deteción de autocorrelación espacial.  
+Para evaluar la utilidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la detección de autocorrelación espacial.  
 
 La tabla \@ref(tab:moran-rescopa-w) muestra ambos diseños de matriz $W$ presentan un valor de Moran Global mayor que 0 y significativo para los residuos del OLS de área de copa, al igual que para los residuos del OLS del porcentaje de cobertura (ver \@ref(tab:moran-rescopaap-w)).  
 
-En ambos modelos el resultado de autocorrelación espacial suguiere que al introducir retardos espaciales y la estrucutura de vecidad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.
+En ambos modelos el resultado de autocorrelación espacial sugiere que al introducir retardos espaciales y la estructura de vecindad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.
 
 
 
@@ -374,11 +392,11 @@ knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$
 
 #### Modelo espacial área de copa 
 
-Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copa-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copa-wq)) para el área de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Es importante anotar que la heterocedasticidad reportada en la tabla \@ref(tab:ajuste-lmcopa-pob-predios) del modelo OLS desaparece al descartar la variables independientes con $p$-valores no significativos, por lo que no se le puede adjudicar al uso de los terminos espaciales. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos, aunque en las gráficas diagnósticas se aprecia una semblanza aceptable (ver figura \@ref(fig:diag-model-espaciales)) con problemas en valores extremos.   
+Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copa-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copa-wq)) para el área de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Es importante anotar que la heterocedasticidad reportada en la tabla \@ref(tab:ajuste-lmcopa-pob-predios) del modelo OLS desaparece al descartar la variables independientes con $p$-valores no significativos, por lo que no se le puede adjudicar al uso de los términos espaciales. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos, aunque en las gráficas diagnósticas se aprecia una semblanza aceptable (ver figura \@ref(fig:diag-model-espaciales)) con problemas en valores extremos.   
 
-Al comparar los resultados usando el desempeño en AIC, el mejor fue el SEM con la matriz $W_d$, seguido del SD con $W_q$, con leves diferencias entre las métricas. En cuanto a $\lambda$ (tabla \@ref(tab:cauto-sem-copa)) y $\rho$ (tabla \@ref(tab:cauto-sd-copa-wq)) , los términos autorregresivos, son significativos para SEM $W_d$ y para SD con $W_q$ repectivamente. 
+Al comparar los resultados usando el desempeño en AIC, el mejor fue el SEM con la matriz $W_d$, seguido del SD con $W_q$, con leves diferencias entre las métricas. En cuanto a $\lambda$ (tabla \@ref(tab:cauto-sem-copa)) y $\rho$ (tabla \@ref(tab:cauto-sd-copa-wq)) , los términos autorregresivos, son significativos para SEM $W_d$ y para SD con $W_q$ respectivamente. 
 
-El resultado del modelo SEM confirma la significancia de las variables de cantidad personas con estudios superiores y porcentaje de espacio verde con coeficientes de valores positivos, en ese orden de importancia. La densidad de población y la presencia de viviendas tipo cuarto, con coeficientes negativos, son factores que disminuyen la disponibilidad de área de copa en un SU (ver tabla \@ref(tab:coef-sem-copa-wd)). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones. 
+El resultado del modelo SEM confirma la significancia de las variables de cantidad de personas con estudios superiores y porcentaje de espacio verde, con coeficientes de valores positivos, en ese orden de importancia. La densidad de población y la presencia de viviendas tipo cuarto, con coeficientes negativos, son factores que disminuyen la disponibilidad de área de copa en un SU (ver tabla \@ref(tab:coef-sem-copa-wd)). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones. 
 
  
 
@@ -430,6 +448,8 @@ sd.sm
 ```
 
 
+
+
 ```{r code-laglm-copa-wd, echo=FALSE, results="hide"}
 #SAR
 
@@ -475,6 +495,8 @@ sd.sm
 
 
 
+
+
 ```{r tabla-comp-modelos-copa-wq }
 
 tabla<-fitstats_laglm_df(lm.best.area_copa,W_queen) %>% 
@@ -492,6 +514,8 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 ```
+
+
 
 
 
@@ -516,7 +540,8 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 
-```{r diag-model-espaciales, fig.asp=1, fig.cap="Diagnóstico comparativo entre modelos modelos espaciales de área de copa"}
+
+```{r diag-model-espaciales, fig.asp=1, fig.cap="Diagnóstico comparativo entre modelos espaciales de área de copa"}
 
 diagPltsSEM<-diagPlotlaglm(sem.mod.log.area_copa.wd)
 diagPltsSD<-diagPlotlaglm(sd.mod.log.area_copa.wq)
@@ -530,6 +555,8 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM Wd"),
               arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD Wq"),nrow =3)
 ```
+
+
 
 
 ```{r coef-sem-copa-wd}
@@ -549,6 +576,8 @@ kableExtra::kable(format = formato_render,
 col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 ```
 
+
+
 ```{r cauto-sem-copa}
 sm<-summary(sem.mod.log.area_copa.wd)
 r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
@@ -559,6 +588,8 @@ knitr::kable(format = formato_render,  booktabs = T,
              escape = F,
              unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SEM de área de copa $W_d$')
 ```
+
+
 
 
 ```{r coef-sd-copa-wq}
@@ -577,6 +608,8 @@ col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ```
 
+
+
 ```{r cauto-sd-copa-wq}
 sm<-summary(sd.mod.log.area_copa.wq)
 r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
@@ -585,6 +618,8 @@ t2<-rbind(c("$\\rho$","Likelihood ratio","p-valor"),
           r1)
 knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digits=3,caption = 'Coeficiente de autocorrelación modelo SD de área de copa $W_q$')
 ```
+
+
 
 #### Modelo espacial porcentaje de cobertura de área de copa 
 
@@ -631,6 +666,9 @@ AIC(slx.cobertura.ap.wq)
 
 ```
 
+
+
+
 ```{r code-laglm-copaap-wd, echo=FALSE, results= "hide"}
 #SAR
 
@@ -674,13 +712,14 @@ sd.sm
 ```
 
 
+
 Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copaap-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copaap-wq)) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con $W_d$. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura \@ref(fig:diag-model-espaciales-copaap)).   
 
 Al comparar los resultados usando el desempeño en AIC, el mejor fue el SD con la matriz $W_d$.  $\rho$, el término autorregresivo, es de un valor alto y muy significativo para el modelo SD con $W_d$ (tabla \@ref(tab:cauto-sd-copaap-wd)). 
 
 El resultado del modelo SD confirma la significancia de la única variable independiente: porcentaje de personas con estudios superiores, con coeficiente positivo, identificándolo como un factores relacionado con alta proporción de área de copa en un SU (ver tabla \@ref(tab:coef-sd-copaap)). Existen una reducción del valor del coeficiente con relación al modelo OLS.
 
-La variable de **estudios superiores** en la población refleja el patrón de agrupamiento espacial de la cobertura de copa pero es poco significativa como variable retardada, cuestión que pone dudas sobre si el SD proponga una interpretación acertada o diferente de un modelo autoregresivo puro (SAR).
+La variable de **estudios superiores** en la población refleja el patrón de agrupamiento espacial de la cobertura de copa pero es poco significativa como variable retardada, cuestión que pone dudas sobre si el SD proponga una interpretación acertada o diferente de un modelo autorregresivo puro (SAR).
 
 
 ```{r tabla-comp-modelos-copaap-wq  }
@@ -699,6 +738,9 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 ```
+
+
+
 
 ```{r tabla-comp-modelos-copaap-wd  }
 
@@ -735,6 +777,9 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
 ```
 
 
+
+
+
 ```{r cauto-sd-copaap-wd}
 sm<-summary(sd.cobertura.ap.wd)
 r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
@@ -769,7 +814,7 @@ col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 
 ## Acceso a espacios verdes
 
-En el caso de los EV la literatura ofrece variedad de medidas sobre acceso en relación con la distancia o con el área disponible. Se eligieron dos métricas: el porcentaje de área de espacio verde de un sector censal (`area ep porcentaje`), para cuantificar beneficios a nivel local; y la razón área disponible entre distancia (`ia.areas.dist`) (ecuación \@ref(eq:areas-dists)) que expresa el acceso más allá de los límites del SU. El valor es cercano a cero cuando el área disponible es cercana a cero o cuando la distancia es mucho mayor que el área media de espacio verde en el radio de búsqueda, limitado a 1000 $m$, un orden de mangitud menor que el área media de EV (`r regresion.EV$area_ep %>% mean() %>% scales::comma(accuracy = 0.1)` $m^2$ ). La distancia promedio del centroide de un SU al conjunto de EV es `r ia.1000.n %>% mean(na.rm = T) %>%  round(digits = 3) %>% scales::comma(accuracy = 0.1)` $m$ . Como se observa en la figura \@ref(fig:mapa-dependienteEV-sel), esta medición parece un versión interpolada del indicador local de acceso `area ep porcentaje`, y hace evidentes un patrón espacial de grupos con mejor acceso a EV, no uniforme ni aleatoreo. 
+En el caso de los EV la literatura ofrece variedad de medidas sobre acceso en relación con la distancia o con el área disponible. Se eligieron dos métricas: el porcentaje de área de espacio verde de un sector censal (`area ep porcentaje`), para cuantificar beneficios a nivel local; y la razón área disponible entre distancia (`ia.areas.dist`) (ecuación \@ref(eq:areas-dists)) que expresa el acceso más allá de los límites del SU. El valor es cercano a cero cuando el área disponible es cercana a cero o cuando la distancia es mucho mayor que el área media de espacio verde en el radio de búsqueda, limitado a 1000 $m$, un orden de magnitud menor que el área media de EV (`r regresion.EV$area_ep %>% mean() %>% scales::comma(accuracy = 0.1)` $m^2$). La distancia promedio del centroide de un SU al conjunto de EV es `r ia.1000.n %>% mean(na.rm = T) %>%  round(digits = 3) %>% scales::comma(accuracy = 0.1)` $m$. Como se observa en la figura \@ref(fig:mapa-dependienteEV-sel), esta medición parece un versión interpolada del indicador local de acceso `area ep porcentaje`, y hace evidentes un patrón espacial de grupos con mejor acceso a EV, no uniforme ni aleatorio. 
 
 Al examinar la distribución de los valores de estos indicadores (figuras \@ref(fig:hist-areaep) y \@ref(fig:hist-areasdist)) se observa que en ambos indicadores existe asimetría positiva, lo que muestra una concentración de valores por debajo del promedio del indicador y un conjunto reducido de SU muy por encima.  
 
@@ -796,6 +841,7 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 
 
+
 ```{r hist-areaep, fig.cap="Distribucion del indicador de acceso local a EV ", fig.show="hold",fig.asp=0.5}
 ggplot(regresion.EV)+
   geom_histogram(aes(x = area_ep.porcentaje),bins = 100, 
@@ -808,6 +854,7 @@ ggplot(regresion.EV)+
        y="Cantidad SU")
 
 ```
+
 
 
 
@@ -832,7 +879,9 @@ ggplot(regresion.EV)+
 
 ### Correlaciones y distribuciones bivariadas
 
-Las figuras \@ref(fig:tile-ev-poblacion-pearson) y \@ref(fig:tile-ev-poblacion-spearman) resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente de las variables poblacionales y los indicadores de acceso. Esta relación es muy débil, y en todas las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado bajo para seleccionar una variable como candidata a predictor de una regresión lineal. Sin embargo, como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, se incluyeron las de mejor correlación: `densidad poblacion`,`con alguna limitacion porcentaje`  para el índice de acceso `ia.areas.dist` y `ningun estudio porcentaje` para `area ep porcentaje`.
+Las figuras \@ref(fig:tile-ev-poblacion-pearson) y \@ref(fig:tile-ev-poblacion-spearman) resumen los resultados del cálculo de los coeficientes de Pearson y Spearman respectivamente de las variables poblacionales y los indicadores de acceso. Esta relación es muy débil, y en todas las variables (y para ambos coeficientes de correlación) es inferior a 0.3, un valor considerado bajo para seleccionar una variable como candidata a predictor de una regresión lineal. Sin embargo, como parte del proceso para indagar sobre el efecto en la estimación de parámetros de los modelos geoestadísticos, se incluyeron las de mejor correlación: `densidad poblacion`, `con alguna limitacion porcentaje`  para el índice de acceso `ia.areas.dist` y `ningun estudio porcentaje` para `area ep porcentaje`.
+
+
 
 ```{r tile-ev-poblacion-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de población"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel)+
@@ -841,12 +890,19 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel)+
 ```
 
 
+
+
 ```{r tile-ev-poblacion-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables de población"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.poblacion, y=dependientes.EV.sel, method_cor = "spearman")+
   labs(title="Spearman entre acceso a EV \ny variables de población")
 ```
 
-El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación con las varibles dependientes se muestran en las figuras \@ref(fig:tile-ev-uso-pearson) y \@ref(fig:tile-ev-uso-spearman). De nuevo las correlaciones son bajas, y aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: `unidad economica porcentaje` y el `cuarto porcentaje`. 
+
+
+El conjunto de variables sobre el uso de los predios y sus coeficientes de correlación con las variables dependientes se muestran en las figuras \@ref(fig:tile-ev-uso-pearson) y \@ref(fig:tile-ev-uso-spearman). De nuevo las correlaciones son bajas, y aparentemente poco explicativas de los índices de acceso. Las variables de uso de los predios que mejor se relacionan con los índices son: `unidad economica porcentaje` y el `cuarto porcentaje`. 
+
+
+
 
 ```{r tile-ev-uso-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables de uso de los predios"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel)+
@@ -855,11 +911,15 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel)+
 ```
 
 
+
+
 ```{r tile-ev-uso-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables de uso de los predios"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.predios, y=dependientes.EV.sel, method_cor = "spearman")+
   labs(title="Coeficiente Spearman entre dependiente EV e \nindependientes uso de predios")
 
 ```
+
+
 
 El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura \@ref(fig:tile-ev-fisica-pearson) y \@ref(fig:tile-ev-fisica-spearman) muestran que el área media de las manzanas (`area media manzana`) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.
 
@@ -870,11 +930,15 @@ pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel)+
 ```
 
 
+
+
 ```{r tile-ev-fisica-spearman, fig.asp=0.65,fig.cap="Coeficiente Spearman entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU"}
 pintar_corrmatrix_XY(regresion.EV,x=indep.estruct, y=dependientes.EV.sel, method_cor = "spearman")+
   labs(title="Coeficiente Spearman entre dependientes EV e \nindependientes físicas de predios y SU")
 
 ```
+
+
 
 
 En resumen, las variables independientes escogidas para los modelos lineales son:
@@ -889,15 +953,16 @@ En resumen, las variables independientes escogidas para los modelos lineales son
 
 La tabla \@ref(tab:coef-lm-ptjeAEV) muestra los coeficientes de la regresión para el porcentaje de EV; la tabla \@ref(tab:coef-lm-areadist) muestra los coeficientes de la regresión para índice áreas-distancia, y la tabla \@ref(tab:ajuste-lmev-pob-predios) resume las métricas de ajuste de ambos modelos.
 
-Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-lm-areaptj-sel) y \@ref(fig:diagn-lm-areadist-sel)). El nivel explicativo de la variabilidad de los datos de ambos modelos es bajo. Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). 
+Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos (ver gráficos \@ref(fig:diagn-lm-areaptj-sel) y \@ref(fig:diagn-lm-areadist-sel)). El nivel explicativo de la variabilidad de los datos de ambos modelos es bajo. Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). 
 
 
-Las variables significativas para el `area ep porcentaje` son `r c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)[c(2,3)] %>% backtick() %>% str_c(collapse = ", ") %>% str_replace_all("[\\._]"," ")`. Estos resultados muestran que no existe evidencia significativa de que el acceso a EV en un SU esté relacionado con variables etnicas, de discapacidad o de acceso a la educación. Sin embargo es muy importante la relación positiva con aspectos estructurales representados por el área media de las manzanas (`area media manzana`) y una relación negativa con el porcentaje de viviendas tipo cuarto (`cuarto porcentaje`), estas últimas concentradas en la zona centro y de ladera del área urbana de Santiago de Cali (ver figura \@ref(fig:mapas-usopredios-cont)).
+Las variables significativas para el `area ep porcentaje` son `r c(indep.poblacion.area_ep.porcentaje.sel, indep.predios_estruct.area_ep.ptje.sel)[c(2,3)] %>% backtick() %>% str_c(collapse = ", ") %>% str_replace_all("[\\._]"," ")`. Estos resultados muestran que no existe evidencia significativa de que el acceso a EV en un SU esté relacionado con variables étnicas, de discapacidad o de acceso a la educación. Sin embargo es muy importante la relación positiva con aspectos estructurales representados por el área media de las manzanas (`area media manzana`) y una relación negativa con el porcentaje de viviendas tipo cuarto (`cuarto porcentaje`), estas últimas concentradas en la zona centro y de ladera del área urbana de Santiago de Cali (ver figura \@ref(fig:mapas-usopredios-cont)).
+
 
 Para la relación de área distancia se confirma la significancia de `r indep.predios_estruct.areas.dist.sel[2] %>% backtick() %>% str_c(collapse = ", ") %>% str_replace_all("[\\._]"," ") ` y, en ausencia de la variable `cuarto porcentaje`, se incorpora `unidad economica porcentaje` que exhibe un patrón espacial similar. A diferencia del índice local de acceso, en `ia.areas.dist` se evidenció una relación negativa con el porcentaje de personas con alguna limitación (`con alguna limitacion porcentaje`).
 
 
-Para la siguientes fases se ingnoraron las variables no significativas de los modelos lineales. 
+Para la siguientes fases se ignoraron las variables no significativas de los modelos lineales. 
 
 
 
@@ -1116,19 +1181,19 @@ grid.arrange( grobs =graf@plots, top=title1)
 
 ### Modelado espacial de espacios verdes
 
-El proceso de ajuste de los modelos geoestadísticos para el análisis de espacios verdes hace uso de los mismos elementos metodológicos usados para la cobertura de copa. Se usaron las dos matrices de velocidad usando un kernel de vecindad Queen $W_q$ y otro con base en un radio de búsqueda de 1 kilómetro $W_d$ usadas en el análisis del AU (ver figura \@ref(fig:ws-su-reg)).
+El proceso de ajuste de los modelos geoestadísticos para el análisis de espacios verdes hace uso de los mismos elementos metodológicos usados para la cobertura de copa. Se usaron las dos matrices de velocidad usando un kernel de vecindad *Queen* $W_q$ y otro con base en un radio de búsqueda de 1 kilómetro $W_d$ usadas en el análisis del AU (ver figura \@ref(fig:ws-su-reg)).
 
 
 #### Autocorrelación variables dependientes
 
-Se analizó la autocorrelacieon de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran I para ambas variables dependientes muestran que existen patrones de agrupamiento y puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas \@ref(tab:moran-areaep-w) y \@ref(tab:moran-areadist-w)). 
+Se analizó la autocorrelación de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran'I para ambas variables dependientes muestran que existen patrones de agrupamiento y puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas \@ref(tab:moran-areaep-w) y \@ref(tab:moran-areadist-w)). 
 
-Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matrix $W_q$ captura mejor la autocorrelación de ambos indicadores. El indicador `ai.areas.dist` exhibe un valor de autocorrelación mucho más alto que `area ep porcentaje`. El cálculo del índice `ia.areas.dist` en su construcción usa una distancia de radio de búsqueda de 1 kilómetro; en su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o clusters alrededor de ciertos sectores urbanos. Resulta pues interesante no sea $W_d$ la que capture mejor el agrupamiento.
+Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matriz $W_q$ captura mejor la autocorrelación de ambos indicadores. El indicador `ai.areas.dist` exhibe un valor de autocorrelación mucho más alto que `area ep porcentaje`. El cálculo del índice `ia.areas.dist` en su construcción usa una distancia de radio de búsqueda de 1 kilómetro; en su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o *clusters* alrededor de ciertos sectores urbanos. Resulta pues interesante no sea $W_d$ la que capture mejor el agrupamiento.
 
 Los mapas LISA para ambos indicadores de acceso a EV usando la matriz $W_q$ muestran los grupos de sectores autocorrelacionados (figura \@ref(fig:mapas-lisa-areaep-wq) y \@ref(fig:mapas-lisa-areadist-wq)). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad.
-Se aprecia que se forman cluster alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamentos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje. 
+Se aprecia que se forman *clusters* alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamientos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje. 
 
-Es relevante en los resultados de los análisis que los grupos de alta prestación en los servicios ecosistémicos de los EV configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios. Puede pensarse que la mayor parte de la ciudad exhibe una distribución uniforme, sin embargo, como se muestra en los histogramas de distribución de los valores de ambos indicadores (ver figuras \@ref(fig:hist-areaep) y \@ref(fig:hist-areasdist)), la tendencia es a una baja disponibilidad y acceso a los EV. Puede entonces rechanzarse la hipótesis nula de distribucion espacial aleatoria o uniforme. 
+Es relevante en los resultados de los análisis que los grupos de alta prestación en los servicios ecosistémicos de los EV configuran evidencia de los sesgos espaciales en la distribución de dichos beneficios. Puede pensarse que la mayor parte de la ciudad exhibe una distribución uniforme, sin embargo, como se muestra en los histogramas de distribución de los valores de ambos indicadores (ver figuras \@ref(fig:hist-areaep) y \@ref(fig:hist-areasdist)), la tendencia es a una baja disponibilidad y acceso a los EV. Puede entonces rechazarse la hipótesis nula de distribución espacial aleatoria o uniforme. 
 
 
 
@@ -1162,6 +1227,8 @@ knitr::kable(format = formato_render,escape = F,
 
 
 
+
+
 ```{r moran-areadist-w}
 mt<-moran.test(regresion.EV$ia.areas.dist, listw=W_queen.ev) %>% 
   tidy() %>% 
@@ -1187,12 +1254,11 @@ knitr::kable(format = formato_render, escape = F,
 
 ```
 
-khskdjfhhlanclhn
-kancflcfael
 
-<!-- $W_q$ de `area_ep.porcentaje -->
 
-```{r mapas-lisa-areaep-wq, fig.asp=0.618, fig.cap="Mapas LISA para la matriz  " }
+
+
+```{r mapas-lisa-areaep-wq, fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de area ep porcentaje " }
 
 pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "Wq",nrow =1)
 
@@ -1200,7 +1266,7 @@ pintar_mapa_su_LISA_var(regresion.EV,"area_ep.porcentaje",W_queen.ev, wname = "W
 
 
 
-```{r mapas-lisa-areadist-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de `ia.areas.dist`"}
+```{r mapas-lisa-areadist-wq,fig.asp=0.618, fig.cap="Mapas LISA para la matriz $W_q$ de ia.areas.dist"}
 
 pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nrow =1)
 
@@ -1213,11 +1279,11 @@ pintar_mapa_su_LISA_var(regresion.EV,"ia.areas.dist",W_queen.ev, wname = "Wq",nr
 
 #### Autocorrelación residuos de los OLS
 
-Para evaluar la utlidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la deteción de autocorrelación espacial.  
+Para evaluar la utilidad de aplicar modelos espaciales de regresión se examinó la existencia de autocorrelación en los residuos de los modelos de regresión lineal. Se comparó si alguno de las estructuras de vecindad produce resultados significativamente mejores en la detección de autocorrelación espacial.  
 
 La tabla \@ref(tab:moran-resareaep-w) muestra ambos diseños de matriz $W$ presentan un valor de Moran Global mayor que 0 y significativo para los residuos del OLS del porcentaje de área de EV, al igual que para los residuos del OLS del indicador áreas-distancia (ver \@ref(tab:moran-resareadist-w)).  
 
-En ambos modelos el resultado de autocorrelación espacial suguiere que al introducir retardos espaciales y la estrucutura de vecidad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.
+En ambos modelos el resultado de autocorrelación espacial sugiere que al introducir retardos espaciales y la estructura de vecindad pueden mejorar la estimación de los coeficientes de la regresión y las métricas de desempeño del ajuste.
 
 
 
@@ -1245,6 +1311,7 @@ knitr::kable(format = formato_render, escape = F,
              caption = "Test de Moran - Residuos de OLS Porcentaje EV $W_q$ y $W_d$" )
 
 ```
+
 
 
 
@@ -1283,10 +1350,10 @@ Dado que la matriz $W_q$ capturó mejor la asociación espacial en los datos par
 Las métricas de ajuste de los modelos de porcentaje de área de EV (ver tabla \@ref(tab:tabla-comp-modelos-areaep)) muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad ni la homocedasticidad en los residuos.   
 
 
-Al comparar los resultados de usando el desempeño en AIC se identificó al modelo SEM con el mejor ajuste. El modelo SEM logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\lambda$ del término autorregresivos es alto y significativo (tabla \@ref(tab:cauto-sem-areaep)), lo que sugiere que no es necesario plantear efectos de la variables dependientes rezagadas, y que es posible que ese efecto sea por otras variables no tenidas en cuenta. Esta lectura del SEM es interesante y consistente con el significado local del indicador porcentaje de área de EV. 
+Al comparar los resultados usando el desempeño en AIC se identificó al modelo SEM con el mejor ajuste. El modelo SEM logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\lambda$ del término autorregresivos es alto y significativo (tabla \@ref(tab:cauto-sem-areaep)), lo que sugiere que no es necesario plantear efectos de la variables dependientes rezagadas, y que es posible que ese efecto sea por otras variables no tenidas en cuenta. Esta lectura del SEM es interesante y consistente con el significado local del indicador porcentaje de área de EV. 
 
 
-El resultado del modelo SEM confirma la significancia y efecto positvo para el acceso EV del área de promedio de la manzana en un SU. La presencia de viviendas tipo cuarto, con coeficiente negativos, es un factor que coincide con la disminución de área de EV disponible (ver tabla \@ref(tab:coef-sem-areaep)). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones. 
+El resultado del modelo SEM confirma la significancia y efecto positivo para el acceso EV del área de promedio de la manzana en un SU. La presencia de viviendas tipo cuarto, con coeficiente negativos, es un factor que coincide con la disminución de área de EV disponible (ver tabla \@ref(tab:coef-sem-areaep)). Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones. 
 
 
 
@@ -1335,6 +1402,8 @@ AIC(slx.areas_ep)
 ```
 
 
+
+
 ```{r tabla-comp-modelos-areaep }
 
 tabla<-fitstats_laglm_df(lm.area_ep.ptje.sel,W_queen.ev) %>% 
@@ -1352,6 +1421,8 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 ```
+
+
 
 
 
@@ -1379,6 +1450,7 @@ col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 ```
 
 
+
 ```{r cauto-sem-areaep}
 sm<-summary(sem.areas_ep)
 r1<-round(c(sm$lambda,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
@@ -1398,10 +1470,10 @@ knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digit
 Las métricas de ajuste de los modelos de indicador área-distancia (ver tabla \@ref(tab:tabla-comp-modelos-areasdist)) muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Todos los modelos mejoran las métricas de error respecto del OLS, en particular el *Nagelkerke*, equivalente al *adj-Rsquare*, que mide el nivel explicativo del modelo en la variabilidad de los datos, subiendo de $\simeq 0.17$ a $\simeq 0.74$. 
 
 
-Al comparar los resultados usando el desempeño en AIC se identificó al modelo SD con el mejor ajuste. El modelo SD logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\rho$ del término autorregresivos es muy alto y significativo (tabla \@ref(tab:cauto-sd-areasdist)), lo que sugiere que los efectos de las variables dependientes rezagadas so significativos. Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones ( y se corrobora con las gráficas diagnósticas de la figura \@ref(fig:diag-model-areasdist-espaciales)). 
+Al comparar los resultados usando el desempeño en AIC se identificó al modelo SD con el mejor ajuste. El modelo SD logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\rho$ del término autorregresivos es muy alto y significativo (tabla \@ref(tab:cauto-sd-areasdist)), lo que sugiere que los efectos de las variables dependientes rezagadas so significativos. Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones (y se corrobora con las gráficas diagnósticas de la figura \@ref(fig:diag-model-areasdist-espaciales)). 
 
 
-El resultado del modelo SD confirmó la significancia y efecto positvo pero bajo en el acceso a EV contar con unidades económicas dentro del SU. Es significativo y fuerte en el acceso a EV estar al rededor de SUs con manzanas de área promedio grande. Por otro lado se desestima que exista una relación con la variable  porcentaje personas con alguna limitación (ver tabla \@ref(tab:coef-sd-areasdist)). La escogencia del modelo SD se ajusta consistentemente con el propósito del indicador áreas-distancia de medir el acceso en un SU más allá de su límite geográfico.
+El resultado del modelo SD confirmó la significancia y efecto positivo pero bajo en el acceso a EV de contar con unidades económicas dentro del SU. Es significativo y fuerte en el acceso a EV estar al rededor de SUs con manzanas de área promedio grande. Por otro lado se desestima que exista una relación con la variable porcentaje personas con alguna limitación (ver tabla \@ref(tab:coef-sd-areasdist)). La escogencia del modelo SD se ajusta consistentemente con el propósito del indicador áreas-distancia de medir el acceso en un SU más allá de su límite geográfico.
 
 
 
@@ -1442,6 +1514,9 @@ AIC(slx.areas.dist)
 
 ```
 
+
+
+
 ```{r tabla-comp-modelos-areasdist }
 
 tabla<-fitstats_laglm_df(lm.ia.areas.dist.sel,W_queen.ev) %>% 
@@ -1459,6 +1534,7 @@ knitr::kable(format = formato_render,  booktabs = T,tabla, digits = 5, caption =
 
 
 ```
+
 
 
 
@@ -1481,6 +1557,8 @@ col.names = c("Término","Estimado","Error std.","t-valor","Pr(>|t|)"))
 ```
 
 
+
+
 ```{r cauto-sd-areasdist}
 sm<-summary(sd.areas.dist)
 r1<-round(c(sm$rho,sm$LR1$statistic,sm$LR1$p.value),digits = 3)
@@ -1494,7 +1572,8 @@ knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digit
 
 
 
-```{r diag-model-areasdist-espaciales, fig.asp=0.6, fig.cap="Diagnóstico comparativo entre modelos"}
+
+```{r diag-model-areasdist-espaciales, fig.asp=0.6, fig.cap="Diagnóstico comparativo entre modelos espaciales del indicador área-distancia"}
 diagPltsSAR<-diagPlotlaglm(sar.areas.dist)
 # diagPltsSEM<-diagPlotlaglm(sem.areas.dist)
 # diagPltsSD<-diagPlotlaglm(sd.areas.dist)
@@ -1506,6 +1585,7 @@ grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
               # arrangeGrob(grobs = diagPltsSEM, ncol = 3,left ="SEM"),
               arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =2)
 ```
+
 
 
 
