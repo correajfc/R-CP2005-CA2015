@@ -198,7 +198,7 @@ donde $R_b$ es el radio de búsqueda,  $s_j$ es el área de cada espacio verde $
 
 
 
-```{r mapa-rango1km,  fig.asp=0.8, fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
+```{r mapa-rango1km,  fig.asp=0.6, fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
 ggplot()+
   geom_polygon(data = s_1000_df, 
                aes(x=long,y=lat,group=group,fill = "radio búsqueda"),
@@ -237,7 +237,7 @@ knitr::kable(format = formato_render,
 
 Las variables del CP2005 seleccionadas para el análisis se muestran en la figura \@ref(fig:mapas-poblacion-deciles).
 
-```{r mapas-poblacion-deciles, fig.asp=1.5,fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
+```{r mapas-poblacion-deciles, fig.asp=1.2, fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion %in% metricas.poblacion[c(2,3,4,7)]) %>%
@@ -252,9 +252,10 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            label.position = "bottom",
                                            title.position = 'top',
                                            nrow = 1))+
-  facet_wrap(~metricas.poblacion, nrow = 2)+
-  tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                            
-                  strip.text = element_text(size = 6),legend.key.size = unit(3,units = "mm"),
+  facet_wrap(~metricas.poblacion, ncol = 3 )+
+  tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                         
+                  strip.text = element_text(size = 6),
+                  legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
         )+
   labs(caption = "Fuente:CP2005\nElaboración: propia")
@@ -282,8 +283,9 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~metricas.poblacion.mod, nrow = 2)+
-  tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                            
-                  strip.text = element_text(size = 6),legend.key.size = unit(3,units = "mm"),
+  tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                         
+                  strip.text = element_text(size = 6),
+                  legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
         )+
   labs(caption = "Fuente:CP2005\nElaboración: propia")
@@ -300,11 +302,12 @@ Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la 
 
 pl_poblacion<-plots_map_su_df(analisis.cali.df,
                               metricas.predios[c(11,13:14)],
-                              strip.text = element_text(size = 4))
+                              strip.text = element_text(size = 6),
+                              legend.title = element_text(size = 7))
 grid.arrange(grobs =pl_poblacion, nrow =1,
              bottom = textGrob( label = "Fuente:CP2005\nElaboración: propia", 
                                 hjust = 1, x = 0.9,
-                                gp=gpar(fontsize=7))  
+                                gp=gpar(fontsize=6))  
              )
 
 ```
@@ -325,7 +328,7 @@ Se establecieron criterios para la **exclusión** de datos para el análisis de 
 
 Los sectores excluidos del análisis se muestran en los figura \@ref(fig:mapa-excluidos). 
 
-```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=0.8}
+```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=0.6}
 ggplot()+
    geom_polygon(data = su.f,
                 aes(x = long ,y = lat, group = group),
@@ -379,7 +382,7 @@ Para los análisis espaciales se usó la librería `spdep` [@R-spdep]
 
 La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W_q$ defina para vecinos que comparten un lado del polígono (vecindad *queen*) para todos los sectores de la ciudad de Cali.
 
-```{r w-su-todos, fig.asp =0.8,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
+```{r w-su-todos, fig.asp =0.6,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
 nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
 par(mai=c(0,0,0,0))
 plot(su, border="grey80")
