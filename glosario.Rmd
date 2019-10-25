@@ -10,27 +10,41 @@
 term_latex <- c("Arbolado Urbano","Espacio Verde","Sector Urbano", "\\textit{Ordinary Least-Square}",
            "\\textit{Maximum Likelihood}","Modelo Autoregresivo o \\textit{Spatial Autocorrelation}",
            "Retardo Espacial en X o \\textit{Spatial Lag}","Modelo Espacial del Error o \\textit{Spatial Error Model}",
-           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","\\textit{Web Feature Service}","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","\\textit{Local indicators of spatial association}")
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","\\textit{Web Feature Service}","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","\\textit{Local indicators of spatial association}",
+           "Ozono","Dióxido de azufre","Dióxido de nitrógeno","Monóxido de carbono","Pequeñas partículas sólidas o líquidas dispersas en la atmósfera, y cuyo diámetro aerodinámico es menor que 10 $\\mu$m",
+           "\\textit{Urban Forest Effects Model}","\\textit{Cost-Benefit Analysis of Tree}")
 
 term_html <- c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
            "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
            "Retardo Espacial en X o *Spatial Lag*","Modelo Espacial del Error o *Spatial Error Model*",
-           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","*Local indicators of spatial association*")
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","*Local indicators of spatial association*",
+           "Ozono","Dióxido de azufre","Dióxido de nitrógeno","Monóxido de carbono","Pequeñas partículas sólidas o líquidas dispersas en la atmósfera\n con diámetro aerodinámico menor que 10 $\\mu$m",
+           "*Urban Forest Effects Model*","*Cost-Benefit Analysis of Tree*")
+
+
+abrv_html <- c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA","O~3~", "SO~2~", "NO~2~", "CO" , "PM~10~","UFORE","C-BAT")
+
+abrv_latex <- c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA","O$_3$", "SO$_2$", "NO$_2$", "CO" , "PM$_{10}$","UFORE","C-BAT")
 
 
 if(formato_render == "latex"){
-  term_glosario <- term_latex}else{
-  term_glosario <-term_html}
+  term_glosario <- term_latex
+  abrv <- abrv_latex
+  }else{
+  term_glosario <-term_html
+  abrv <- abrv_html}
 
 tibble(
   Term = term_glosario,
-  Abbreviation = c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA")) %>%
+  Abbreviation = abrv) %>%
   arrange(Abbreviation) %>% # i.e. alphabetical order by Term
   kable(format = formato_render,
-     booktabs = T, 
+     booktabs = T, longtable = TRUE,
      escape = F,
-    col.names = c("Término","Abreviación")) %>% 
-   kable_styling(latex_options = "striped")
+    col.names = c("Término","Abreviación") ) %>% 
+   kable_styling(latex_options = c("striped","repeat_header") ,
+                 repeat_header_text = "\\textit{(continúa)}")%>% 
+  kableExtra::column_spec(1,width = "10cm")
 
 ```
 

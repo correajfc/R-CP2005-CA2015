@@ -58,14 +58,14 @@ Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-c
 - Para la cobertura de copa (`cobertura_copa.ap`) los predictores seleccionados son `` `r str_c(indep.poblacion.copa.ap.sel, collapse = ", ")%>% str_replace_all("[\\._]"," ") ` `` 
 
 
-```{r tile-copa-poblacion-pearson, fig.asp=0.6,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
+```{r tile-copa-poblacion-pearson, fig.asp=0.67,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
 pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles)+
-  labs(title="Pearson entre cobertura de copa \ny variables de población")
+  labs(title="Pearson entre cobertura de copa \ny variables de población") 
 
 ```
 
-```{r tile-copa-poblacion-spearman, fig.asp=0.6,fig.cap="Coeficiente Spearman entre cobertura de copa\n y variables de población"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, method_cor = "spearman")+
+```{r tile-copa-poblacion-spearman, fig.asp=0.67,fig.cap="Coeficiente Spearman entre cobertura de copa\n y variables de población"}
+pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, method_cor = "spearman")+  
   labs(title="Spearman entre cobertura de copa \ny variables de población")
 ```
 

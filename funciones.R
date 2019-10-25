@@ -168,7 +168,7 @@ pintar_corrmatrix_XY<- function(data, x , y , ... ,method_cor = "pearson" ){
           legend.position = "bottom",
           legend.key.height = unit(2,"mm"),
           legend.direction = "horizontal",
-          plot.title = element_text(size=14))+
+          plot.title = element_text(size=12))+
    
     coord_fixed()
   p

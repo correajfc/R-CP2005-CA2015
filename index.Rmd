@@ -26,7 +26,7 @@ description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)
 
 knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 5, warning = FALSE, message = FALSE, dpi = 150, dev = 'png')
 
-formato_render <- "html"
+formato_render <- "html" 
 
 ```
 

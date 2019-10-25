@@ -12,7 +12,9 @@ lot: false
 papersize: a4
 geometry: "left=3cm, right=2.5cm, top=3cm, bottom=2.5cm"
 bibliography: [tesisbck.bib, packages.bib]
+# biblio-style: apa-spanish
 link-citations: yes
+csl: apa-spanish.csl
 github-repo: correajfc/unigis-tesis
 description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)"
 ---

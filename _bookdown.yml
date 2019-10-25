@@ -25,6 +25,6 @@ rmd_files:
   "resultados.Rmd",
   "discusion.Rmd",
   "conclusiones.Rmd",
-  "apendices.Rmd",
-  "referencias.Rmd"]
+  "referencias.Rmd",
+  "apendices.Rmd"]
 delete_merged_file: TRUE
