@@ -21,7 +21,7 @@ description: "Tésis para obtar al el título de Maestría en SIG (M.Sc. UNIGIS)
 
 ```{r setup-chunks, echo=FALSE}
 
-knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 600, dev = 'pdf',fig.align = 'center')
+knitr::opts_chunk$set(echo = FALSE,tidy = FALSE, out.width = '100%', cache = FALSE, fig.width = 6, warning = FALSE, message = FALSE, dpi = 600, dev = 'pdf', fig.align = 'center')
 
 formato_render <-  "latex"
 

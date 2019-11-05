@@ -1,9 +1,5 @@
 # Metodología {#meto}
 
-```{r load-all, echo=FALSE}
-#load("bck1.RData")
-```
-
 
 
 ## Área de estudio
@@ -18,7 +14,7 @@ OSMap+
   theme(legend.position = c(0.9, 0.25))+
   ggsn::north(prmtr_urbn_idesc.wgs.df, symbol = 5, scale = 0.15, location = "topleft") +
   ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
-  labs(title ="Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nFuentes: OSM e IDESC\nElaboración Propia")
+  labs(title ="Zona Urbana de Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nDatos: IDESC")
 
 
 
@@ -26,20 +22,20 @@ OSMap+
 ```
 
 
-El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano, latitud 3.4372200°, longitud  -76.5225000° en grados decimales del sistema de coordenadas WGS84 (ver figura \@ref(fig:mapa-area)). Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2,420,114 habitantes según Cali en Cifras 2015 [@escobar2015cali] . El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %). La división administrativa de la zona urbana son comunas y las comunas se componen de barrios. 
+El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano, latitud 3.4372200°, longitud  -76.5225000° en grados decimales del sistema de coordenadas WGS84 (ver figura \@ref(fig:mapa-area)). Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2,420,114 habitantes según la proyección de población para 2017 de Cali en Cifras 2015 [@escobar2015cali]. El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %). La división administrativa de la zona urbana son comunas y las comunas se componen de barrios. 
 
 Santiago  de Cali presenta dos  zonas topográficas:  el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El área urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.
 
-El clima del municipio varía en relación al rango altitudinal que abarca entre 916 y 1,438 msnm. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado. La precipitación anual promedio es de 1,500 mm y la temperatura promedio anual es de 24 °C aproximadamente [@ciat_plan_2015]. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes. 
+El clima del municipio varía en relación al rango altitudinal que abarca entre 916 msnm en la zona geográfica del río Cauca y hasta los 4,070 msnm en el Parque Nacional Natural Los Farallones [@ciat_plan_2015]. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado [@ciat_microzona_2015]. La precipitación anual promedio es de 1,500 mm y la temperatura promedio anual es de 24 °C aproximadamente [@ciat_plan_2015]. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes. 
 
 
 ## Datos
 
-Se hizo uso de datos del Censo Arbóreo de 2015(CA2015) [@ca2015cali], el Censo de Población de 2005 (CP2005) [@censo_sistema_dane; @geoportal_DANE] y aspectos estructurales del espacio público y privado de las unidades espaciales de análisis tomados de la Infraestructura de Datos Espaciales de Santiago de Cali (IDESC) [@geoportal_idesc] y las bases de datos del Plan de Ordenamiento Territorial (POT) del 2014 [@pot2014cali]. 
+Se hizo uso de datos del Censo Arbóreo de 2015 (CA2015) [@ca2015cali], el Censo de Población de 2005 (CP2005) [@censo_sistema_dane; @geoportal_DANE] y aspectos estructurales del espacio público y privado de las unidades espaciales de análisis tomados de la Infraestructura de Datos Espaciales de Santiago de Cali (IDESC) [@geoportal_idesc] y las bases de datos del Plan de Ordenamiento Territorial (POT) del 2014 [@pot2014cali]. 
 
 ### Datos de registros oficiales del municipio
 
-La cartografía disponible en la IDESC [@geoportal_idesc], incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema MAGNA-SIRGAS-CALI [@igagMC2005]. Además está la base de datos geográfica del POT [@pot2014cali]. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (ECC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía WFS. En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
+La cartografía disponible en la IDESC [@geoportal_idesc], incluye información sobre los objetos geográficos naturales, de infraestructura urbana, límites y divisiones político administrativas y la clasificación de predios en cuanto a espacio público disponibles en coordenadas planas del sistema MAGNA-SIRGAS-CALI [@igagMC2005]. Además está la base de datos geográfica del POT [@pot2014cali]. Se seleccionaron conjuntos de datos de equipamientos y espacio público contenido en la estructura ecológica complementaria (EEC) que incluye cementerios, universidades, EV de acceso no restringido aunque algunos sea predios privados contenidos en EEC. De la IDESC se seleccionaron las capas de manzanas, barrios, espacio público, humedales, ríos y corredores ambientales, todas disponibles vía *Web Feature Service* (WFS). En la figura \@ref(fig:capas-idesc) se muestra un mapa con las capas seleccionadas para el realizar el procesamiento y los análisis.
 
 ```{r capas-idesc, out.width='100%',echo=FALSE, fig.cap="Capas usadas para el procesamiento de los espacios verdes y las características de las manzanas"}
 knitr::include_graphics("QGIS/mapas/capas_analisis.png")
@@ -76,7 +72,7 @@ Una vez aplicado este filtro se cuenta con `r nrow(AU_analsis) %>% scales::comma
 
 ### El censo de población
 
-Los datos del CP2005 están disponibles en las unidades censales (sector, sección, manzana) a través del sistema de un consulta web [@censo_sistema_dane]. Estos datos sirven para caracterizar la población con base en indicadores sobre rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas \@ref(tab:vars-poblacion) y \@ref(tab:vars-vivienda). 
+Los datos del CP2005 están disponibles en las unidades censales (sector, sección, manzana) a través del sistema de consulta web [@censo_sistema_dane]. Estos datos sirven para caracterizar la población con base en indicadores sobre rasgos de las personas, aspectos sobre el uso del suelo y los tipos de vivienda. Las variables disponibles para el análisis están resumidas en las tablas \@ref(tab:vars-poblacion) y \@ref(tab:vars-vivienda). 
 
 El otro componente de los datos es la cartografía censal del DANE [@geoportal_DANE] disponible para las diferentes unidades espaciales de agregación en el sistema de coordenadas WGS84. Para el análisis se tiene en cuenta todos las unidades censales que se interceptan con el perímetro urbano disponible en la IDESC, pues el censo arbóreo se limitó a este perímetro.(ver figura \@ref(fig:su-periurbano))
 
@@ -134,7 +130,7 @@ knitr::include_graphics("images/flujograma.png")
 
 ### Procesamiento de datos 
 
-El procesamiento de los datos se realizó principalmente en @R-base. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. 
+El procesamiento de los datos se realizó principalmente en R [@R-base]. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. En el anexo \@ref(rinfo) se encuentra la información completa de la sesión de R. 
 
 
 El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico. 
@@ -183,7 +179,7 @@ A^{C_p}_i =1/a_i\sum_j{s_j} \;  \; \forall  j \in I
 donde $s_j$ es el área de cada espacio verde $j$ que pertenece al conjunto $I$ de EV dentro del sector $i$ y $a_i$ es el área del sector $i$.
 
 
-El segundo índice (ecuación \@ref(eq:areas-dists)) es una propuesta de este estudio basada en el trabajo de @nesbitt_exploring_2016 en el que se calcula la distancia euclide a los EV desde el centroide de la unidad de análisis, incorporando recomendaciones en @who2016urban sobre establacer la relación entre distancia y calidad del acceso usando el área del EV y los índice propuestos por  @zhou_social_2013 de un radio de búsqueda de EVs accesibles, sin importar si este está dentro de la unidad espacial a caraterizar.  
+El segundo índice (ecuación \@ref(eq:areas-dists)) es una propuesta de este estudio basada en el trabajo de @nesbitt_exploring_2016 en el que se calcula la distancia euclide a los EV desde el centroide de la unidad de análisis, incorporando recomendaciones de la Organización Mundial de la Salud sobre establacer la relación entre distancia y calidad del acceso usando el área del EV [@who2016urban] y los índice propuestos por  @zhou_social_2013 de un radio de búsqueda de EVs accesibles, sin importar si este está dentro de la unidad espacial a caraterizar.  
 
 Este índice define el acceso como una relación entre la distancia y la cantidad de espacio disponible en el radio de búsqueda definido desde el centroide del SU. La figura \@ref(fig:mapa-rango1km) muestra gráficamente como existen EVs que caen la intersección de los radios de búsqueda de multiples sectores urbanos, lo que implica que benefician a varios de ellos a la vez, y es por esa razón que el índice expresa una dimensión del acceso no confinada a la unidad espacial. 
 
@@ -237,7 +233,7 @@ knitr::kable(format = formato_render,
 
 Las variables del CP2005 seleccionadas para el análisis se muestran en la figura \@ref(fig:mapas-poblacion-deciles).
 
-```{r mapas-poblacion-deciles, fig.asp=1.2, fig.cap="Mapas de las variables de población seleccionadas (en deciles)"}
+```{r mapas-poblacion-deciles, fig.width=5,fig.height=8,fig.cap="Mapas de las variables de población seleccionadas (en deciles).", fig.pos = 'p', out.height="90%"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion %in% metricas.poblacion[c(2,3,4,7)]) %>%
@@ -252,13 +248,14 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            label.position = "bottom",
                                            title.position = 'top',
                                            nrow = 1))+
-  facet_wrap(~metricas.poblacion, ncol = 3 )+
+  facet_wrap(~metricas.poblacion, ncol = 2 )+
   tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                         
                   strip.text = element_text(size = 6),
                   legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
         )+
-  labs(caption = "Fuente:CP2005\nElaboración: propia")
+  labs(caption = , "Fuente:CP2005 [@ca2015cali]")
+
 ```
 
 
@@ -287,8 +284,7 @@ su.f %>% dplyr::select(-area_su)  %>%
                   strip.text = element_text(size = 6),
                   legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
-        )+
-  labs(caption = "Fuente:CP2005\nElaboración: propia")
+        )
 
 ```
 
@@ -296,15 +292,15 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 #### Características de las viviendas
 
-Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o LEA. El uso de LEA tiene una distribución concentrada en pocos SU, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano \@ref(fig:mapas-usopredios-cont).
+Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura \@ref(fig:mapas-usopredios-cont).
 
-```{r mapas-usopredios-cont, fig.asp=0.67,fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
+```{r mapas-usopredios-cont, fig.asp=1,fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
 
 pl_poblacion<-plots_map_su_df(analisis.cali.df,
-                              metricas.predios[c(11,13:14)],
+                              metricas.predios[c(11,13:15)],
                               strip.text = element_text(size = 6),
                               legend.title = element_text(size = 7))
-grid.arrange(grobs =pl_poblacion, nrow =1,
+grid.arrange(grobs =pl_poblacion, nrow =2,
              bottom = textGrob( label = "Fuente:CP2005\nElaboración: propia", 
                                 hjust = 1, x = 0.9,
                                 gp=gpar(fontsize=6))  
@@ -351,12 +347,12 @@ ggplot()+
 
 Las variables incluidas en los modelos lineales deben cumplir una serie de condiciones deseables para ser elegidas como candidatas:
 
-- Mostrar una correlación fuerte (típicamente mayor a 0.6 se considera una asociación fuerte)
+- Mostrar una correlación fuerte (mayor a 0.6 se considera una asociación fuerte)
 - Las variables independientes o predictoras **no** deben estar fuertemente correlacionadas entre ellas.
 - Las observaciones deben ser **independientes**^[Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.]
 
 
-Para garantizar que las variables no están correlacionadas entre sí, se usaron los coeficientes de correlación de Pearson, usado para detectar relaciones lineales y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.
+Para garantizar que las variables no están correlacionadas entre sí, se usaron el coeficiente de correlación de Pearson, usado para detectar relaciones lineales, y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.
 
 Para seleccionar las variables que mejor predicen la variable dependiente se tuvo en cuenta las restricciones de colinealidad entre las variables dependientes.
 
@@ -374,13 +370,13 @@ Para verificar la normalidad de los residuos se hace uso del test de Shapiro–W
 
 ### Análisis geoestadísticos { #geostat }
 
-Para los análisis geoestadísticos se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influencia *a priori* en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.
+Para los análisis geoestadísticos, se hizo uso de modelos autoregresivos para obtener mejoras en la estimación de los coeficientes y en el ajuste de los modelos lineales, cuando existío algún tipo de autocorrelación espacial en los residuos. Todas estas aproximaciones introducen una matriz de $W_{n \times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. Esta matriz $W$ es una estructura que restringe la influencia *a priori* en los modelos. Para observar el efecto que tiene esta matriz sobre los resultados del modelo se usaron 2 matrices distintas, y se escogió la que produjo el mejor ajuste.
 
 Para los análisis espaciales se usó la librería `spdep` [@R-spdep]
 
 #### Matrices de vecindad
 
-La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la matriz $W_q$ defina para vecinos que comparten un lado del polígono (vecindad *queen*) para todos los sectores de la ciudad de Cali.
+La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la representación de grafo de la matriz $W_q$ de SUs vecinos que comparten un lado del polígono (vecindad *queen*) en la ciudad de Cali.
 
 ```{r w-su-todos, fig.asp =0.6,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
 nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
@@ -404,7 +400,7 @@ Para indagar sobre la información o patrones espaciales de los residuos de los 
 (\#eq:moranI)
 \end{equation}
 
-donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos decimos que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta. El valor **$p$** del test expresa el grado de certeza sobre el valor del estadístico, si el valor límite de significancia es menor que $\alpha = 0.05$  
+donde $N$ es el número de unidades espaciales indexados por $i$ y  $j$; $X$ es la variable de interés; $\bar {X}$ es la media de $X$; y $w_{ij}$ es un elemento de una matriz de pesos espaciales $W$. Un valor de 0 de Moran’I indica un patrón espacial aleatorio. Si existe autocorrelación los valores son positivos y el máximo es 1. Si los valores son negativos se dice que existe dispersión, siendo -1 el mínimo valor posible representando la dispersión perfecta. El valor **$p$** del test expresa el grado de certeza sobre el valor del estadístico, si el valor límite de significancia es menor que $\alpha = 0.05$  
 
 #### Indicadores Locales de Asociación Espacial (LISA)
 

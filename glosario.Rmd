@@ -12,19 +12,25 @@ term_latex <- c("Arbolado Urbano","Espacio Verde","Sector Urbano", "\\textit{Ord
            "Retardo Espacial en X o \\textit{Spatial Lag}","Modelo Espacial del Error o \\textit{Spatial Error Model}",
            "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","\\textit{Web Feature Service}","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","\\textit{Local indicators of spatial association}",
            "Ozono","Dióxido de azufre","Dióxido de nitrógeno","Monóxido de carbono","Pequeñas partículas sólidas o líquidas dispersas en la atmósfera, y cuyo diámetro aerodinámico es menor que 10 $\\mu$m",
-           "\\textit{Urban Forest Effects Model}","\\textit{Cost-Benefit Analysis of Tree}")
+           "\\textit{Urban Forest Effects Model}","\\textit{Cost-Benefit Analysis of Tree}",
+           "\\textit{Normalized difference vegetation index}","\\textit{Geographically weighted regression}" ,
+           "Archipiélago de San Andrés, Providencia y Santa Catalina","Departamento Administrativo Nacional de Estadística","Corporación autónoma regional del Valle del Cauca","Departamento Administrativo de Gestión del Medio Ambiente","Error cuadrático medio del inglés \\textit{mean squared error}")
 
 term_html <- c("Arbolado Urbano","Espacio Verde","Sector Urbano", "*Ordinary Least-Square*",
            "*Maximum Likelihood*","Modelo Autoregresivo o *Spatial Autocorrelation*",
            "Retardo Espacial en X o *Spatial Lag*","Modelo Espacial del Error o *Spatial Error Model*",
-           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","*Local indicators of spatial association*",
+           "Modelo Espacial de Durbin","Infraestructura de Datos Espaciales de Santiago de Cali","Plan de Ordenamiento Territorial","Estructura Ecológica Complementaria","*Web Feature Service*","Censo Arbóreo de Cali 2015","Censo de Población 2005 de Colombia","Lugares Especiales de Alojamiento","*Local indicators of spatial association*" ,"Raizales del Archipiélago de San Andrés, Providencia y Santa Catalina (SAI)",
            "Ozono","Dióxido de azufre","Dióxido de nitrógeno","Monóxido de carbono","Pequeñas partículas sólidas o líquidas dispersas en la atmósfera\n con diámetro aerodinámico menor que 10 $\\mu$m",
-           "*Urban Forest Effects Model*","*Cost-Benefit Analysis of Tree*")
+           "*Urban Forest Effects Model*","*Cost-Benefit Analysis of Tree*",
+           "*Normalized difference vegetation index*","*Geographically weighted regression*",
+           "Archipiélago de San Andrés, Providencia y Santa Catalina (SAI)","Departamento Administrativo Nacional de Estadística","Corporación autónoma regional del Valle del Cauca","Departamento Administrativo de Gestión del Medio Ambiente","Error cuadrático medio del inglés *mean squared error*")
 
 
-abrv_html <- c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA","O~3~", "SO~2~", "NO~2~", "CO" , "PM~10~","UFORE","C-BAT")
+abrv_html <- c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA","O~3~", "SO~2~", "NO~2~", "CO" , "PM~10~","UFORE","C-BAT",
+               "NDVI","GWR","SAI","DANE","CVC","DAGMA","MSE")
 
-abrv_latex <- c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA","O$_3$", "SO$_2$", "NO$_2$", "CO" , "PM$_{10}$","UFORE","C-BAT")
+abrv_latex <- c("AU", "EV", "SU","OLS","ML","SAR","SLX","SEM","SD","IDESC","POT","EEC","WFS", "CA2015","CP2005","LEA","LISA","O$_3$", "SO$_2$", "NO$_2$", "CO" , "PM$_{10}$","UFORE","C-BAT",
+                "NDVI","GWR","SAI","DANE","CVC","DAGMA","MSE")
 
 
 if(formato_render == "latex"){

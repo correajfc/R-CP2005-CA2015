@@ -1,6 +1,6 @@
 # (APPENDIX) Anexos {-} 
 
-# Informacion de sesión de R
+# Informacion de sesión de R {#rinfo}
 
 
 ```{r session-info}

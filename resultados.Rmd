@@ -12,8 +12,8 @@ El proceso de selección de las variables a incluir en los modelos inicia con la
 ggpairs(
   regresion.arboles[,indep.poblacion.abs], lower = list(continuous = wrap_fn_with_params(lowerFn, method = "lm")),
   diag = list(continuous = GGally:: wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
-  upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
-  title = "Comparación por pares entre predictores de población"
+  upper = list(continuous = wrap_fn_with_params("cor", size = 4))#,
+  # title = "Comparación por pares entre predictores de población"
 )+ theme_grey(base_size = 8)+
   theme(strip.text = element_text(size = 7))
 
@@ -25,8 +25,8 @@ Las mismas variables expresadas como porcentaje de la población de un SU muestr
 ggpairs(
   regresion.arboles[,indep.poblacion.percent], lower = list(continuous = wrap_fn_with_params(lowerFn, method = "lm")),
   diag = list(continuous = wrap_fn_with_params("barDiag", colour = "white",fill ="steelblue")),
-  upper = list(continuous = wrap_fn_with_params("cor", size = 4)),
-  title = "Comparación por pares entre predictores de población porcentuales y \nla densidad de población"
+  upper = list(continuous = wrap_fn_with_params("cor", size = 4))#,
+  # title = "Comparación por pares entre predictores de población porcentuales y \nla densidad de población"
 )+ theme_grey(base_size = 8)+
   theme(strip.text = element_text(size = 6))
 
@@ -36,16 +36,17 @@ ggpairs(
 Los gráficos de azulejos son una forma resumida para consultar la intensidad de estas relaciones (figura \@ref(fig:tile-poblacion-pearson)) lineales entre las variables dependientes usando el coeficiente de correlación de Pearson, y las no lineales mediante el coeficiente de Spearman (figura \@ref(fig:tile-poblacion-spearman)).
 
 ```{r tile-poblacion-pearson, fig.asp=1,fig.cap="Coeficiente Pearson entre variables de población"} 
-pintar_corrmatrix(regresion.arboles,indep.poblacion)+
-  labs(title="Coeficiente Pearson \nentre variables de población")
+pintar_corrmatrix(regresion.arboles,indep.poblacion)
+# +
+#   labs(title="Coeficiente Pearson \nentre variables de población")
 
 ```
 
 
 
 ```{r tile-poblacion-spearman, fig.asp=1,fig.cap="Coeficiente Spearman entre varibles de población"}
-pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")+
-  labs(title="Coeficiente Spearman \nentre variables de población")
+pintar_corrmatrix(regresion.arboles,indep.poblacion, method_cor = "spearman")#+
+  # labs(title="Coeficiente Spearman \nentre variables de población")
 
 ```
 
@@ -59,14 +60,15 @@ Con base en los coeficientes de correlación de Pearson (figura \@ref(fig:tile-c
 
 
 ```{r tile-copa-poblacion-pearson, fig.asp=0.67,fig.cap="Coeficiente Pearson entre cobertura de copa\n y variables de población"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles)+
-  labs(title="Pearson entre cobertura de copa \ny variables de población") 
+pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles)#+
+  # labs(title="Pearson entre cobertura de copa \ny variables de población") 
 
 ```
 
 ```{r tile-copa-poblacion-spearman, fig.asp=0.67,fig.cap="Coeficiente Spearman entre cobertura de copa\n y variables de población"}
-pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, method_cor = "spearman")+  
-  labs(title="Spearman entre cobertura de copa \ny variables de población")
+pintar_corrmatrix_XY(regresion.arboles,x=indep.poblacion, y=dependientes.arboles, 
+                     method_cor = "spearman")#+  
+  # labs(title="Spearman entre cobertura de copa \ny variables de población")
 ```
 
 
@@ -79,7 +81,7 @@ Antes de evaluar los modelos se aplicaron varias transformaciones en busca de no
 
 La tabla \@ref(tab:coef-lm-copa) resume los coeficientes de la regresión para el área de copa, la tabla \@ref(tab:coef-lm-cobertura) resume los coeficientes de la regresión para la cobertura de copa, y la tabla \@ref(tab:ajuste-lmcopa-pob-predios) resume las métricas de ajuste de ambos modelos.
 
-Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver gráficos \@ref(fig:diagn-mod-best-lm-copa) y \@ref(fig:diagn-mod-best-lm-copaap)). 
+Los resultados de los test Shapiro-Wilk indican no normalidad en los residuos en ambos modelos, heterocedasticidad como muestra el test Breusch-Pagan y posibles no linealidades como se observa en las gráficas diagnósticas de la regresión de ambos modelos( ver figuras \@ref(fig:diagn-mod-best-lm-copa) y \@ref(fig:diagn-mod-best-lm-copaap)). 
 
 Sin embargo, el ajuste de ambos modelos tiene media de los residuos muy cercanas a 0, al igual que el error cuadrático medio (MSE). En el caso del área de copa se obtiene un *adjR-square* de `r summary(lm.mod.area_copa) %>% broom::glance() %>% .$adj.r.squared %>% scales::percent() %>% str_c(collapse = ", ")`, que es aceptable. Las variables significativas para el área de copa son  `r c(indep.poblacion.copa.sel,indep.predios.copa.sel)[c(1,2,5,6)] %>% backtick() %>% str_c(collapse = ", ")%>% str_replace_all("[\\._]"," ")`. Los resultados confirman que al nivel de toda el área de estudio, las condiciones de acceso a la educación de la población, la densidad de población, el tipo de vivienda y la disponibilidad de EV se correlaciona con el acceso a servicios ambientales del AU.
 
@@ -392,7 +394,7 @@ knitr::kable(format = formato_render,  booktabs = T,col.names = c(" ","$W_q$","$
 
 #### Modelo espacial área de copa 
 
-Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copa-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copa-wq)) para el área de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Es importante anotar que la heterocedasticidad reportada en la tabla \@ref(tab:ajuste-lmcopa-pob-predios) del modelo OLS desaparece al descartar la variables independientes con $p$-valores no significativos, por lo que no se le puede adjudicar al uso de los términos espaciales. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos, aunque en las gráficas diagnósticas se aprecia una semblanza aceptable (ver figura \@ref(fig:diag-model-espaciales)) con problemas en valores extremos.   
+Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copa-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copa-wq)) para el área de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Es importante anotar que la heterocedasticidad reportada en la tabla \@ref(tab:ajuste-lmcopa-pob-predios) del modelo OLS desaparece al descartar las variables independientes con $p$-valores no significativos, por lo que no se le puede adjudicar al uso de los términos espaciales. Todos los modelos mejoran las métricas de error respecto del OLS y ninguno logra la normalidad en los residuos, aunque en las gráficas diagnósticas se aprecia una semblanza aceptable (ver figura \@ref(fig:diag-model-espaciales)) con problemas en valores extremos.   
 
 Al comparar los resultados usando el desempeño en AIC, el mejor fue el SEM con la matriz $W_d$, seguido del SD con $W_q$, con leves diferencias entre las métricas. En cuanto a $\lambda$ (tabla \@ref(tab:cauto-sem-copa)) y $\rho$ (tabla \@ref(tab:cauto-sd-copa-wq)) , los términos autorregresivos, son significativos para SEM $W_d$ y para SD con $W_q$ respectivamente. 
 

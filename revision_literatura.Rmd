@@ -53,11 +53,11 @@ Los estudios que se han llevado a cabo sobre segregación espacial muestran que 
 
 ## Modelamiento y análisis espacial de variables ambientales y sociales
 
-Las fuentes de datos con información espacial usadas para capturar variables ambientales relacionadas con la vegetación provienen principalmente de imágenes satelitales [@landry_street_2009; @troy_predicting_2007; @vasquez_fuentes_vegetacion_2008; @nesbitt_exploring_2016], imágenes aéreas [@azocar_urbanization_2007; @heynen_political_2006; @tratalos_urban_2007], datos de Lidar [@shanahan_socio-economic_2014; @schwarz_trees_2015]  e inventarios producidos por muestras o censos arbóreos y de espacios verdes [@comber_using_2008; @killicoat_economic_2002; @nowak_urban_2000, @nowak_carbon_2002; @talen_assessing_1998]. Las imágenes satelitales son usadas en gran cantidad de los estudios dadas su creciente disponibilidad y la frecuencia de actualización —Landsat 8 revisita un mismo punto sobre la superficie de la tierra cada 16 días con un desfase de 8 días con respecto al satélite Landsat 7—, lo que permite hacer monitoreo y seguimiento a escalas entre los 15 m a 100 m por ancho de píxel. Los indicadores de cobertura calculados con base en datos de imágenes satelitales son estimados usando la escala de resolución de la imagen en combinación con el índice de Vegetación de Diferencia Normalizada (NDVI) que permite diferenciar entre densidad y tipo de vegetación leñosa o vegetación herbosa [@nesbitt_exploring_2016].
+Las fuentes de datos con información espacial usadas para capturar variables ambientales relacionadas con la vegetación provienen principalmente de imágenes satelitales [@landry_street_2009; @troy_predicting_2007; @vasquez_fuentes_vegetacion_2008; @nesbitt_exploring_2016], imágenes aéreas [@azocar_urbanization_2007; @heynen_political_2006; @tratalos_urban_2007], datos de Lidar [@shanahan_socio-economic_2014; @schwarz_trees_2015]  e inventarios producidos por muestras o censos arbóreos y de espacios verdes [@comber_using_2008; @killicoat_economic_2002; @nowak_urban_2000; @nowak_carbon_2002; @talen_assessing_1998]. Las imágenes satelitales son usadas en gran cantidad de los estudios dadas su creciente disponibilidad y la frecuencia de actualización —Landsat 8 revisita un mismo punto sobre la superficie de la tierra cada 16 días con un desfase de 8 días con respecto al satélite Landsat 7—, lo que permite hacer monitoreo y seguimiento a escalas entre los 15 m a 100 m por ancho de píxel. Los indicadores de cobertura calculados con base en datos de imágenes satelitales son estimados usando la escala de resolución de la imagen en combinación con el índice de Vegetación de Diferencia Normalizada (NDVI) que permite diferenciar entre densidad y tipo de vegetación leñosa o vegetación herbosa [@nesbitt_exploring_2016].
 
 El uso de inventarios arbóreos permite estudios más detallados sobre las características del arbolado y son usados para evaluar la salud y estructura de los individuos arbóreos y las capacidades específicas de las especies para proveer servicios ambientales [@killicoat_economic_2002; @nowak_carbon_2002; @cowett_methodology_2014]. 
 
-Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales la cobertura de copa ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010]. Se usan otros indicadores además de la cobertura en la literatura, y en muchas ocasiones se normalizan los valores de las variables ambientales por unidad de área, usando unidades geográficas definidas e introduciendo métricas sobre la densidad y cantidad de población beneficiada en el cálculo. De hecho @cowett_methodology_2014 propone que para analizar con precisión la distribución espacial de los árboles de las calles y los beneficios que proporcionan es importante migrar hacia métricas en las que las especies arbóreas y el tamaño del árbol sean un factor en el cálculo, pues la mayoría de los servicios de los ecosistemas arbóreos son proporcionales a la cantidad de área superficial de la hoja; en esta medida las especies de árboles de mayor estatura típicamente proporcionan muchos más beneficios que las especies de menor estatura. @alanis_estructura_2014 usaron indicadores ecológicos de las especies como abundancia, dominancia y frecuencia para construir índices de importancia para valorar las especies nativas y estructura de los bosques urbanos, cuya conservación también hace parte de las metas de manejo del AU [@nowak_sustaining_2010].
+Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales la cobertura de copa ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010]. Se usan otros indicadores además de la cobertura en la literatura, y en muchas ocasiones se normalizan los valores de las variables ambientales por unidad de área, usando unidades geográficas definidas e introduciendo métricas sobre la densidad y cantidad de población beneficiada en el cálculo. De hecho @cowett_methodology_2014 propone que, para analizar con precisión la distribución espacial de los árboles de las calles y los beneficios que proporcionan, es importante migrar hacia métricas en las que las especies arbóreas y el tamaño del árbol sean un factor en el cálculo, pues la mayoría de los servicios de los ecosistemas arbóreos son proporcionales a la cantidad de área superficial de la hoja; en esta medida las especies de árboles de mayor estatura típicamente proporcionan muchos más beneficios que las especies de menor estatura. @alanis_estructura_2014 usaron indicadores ecológicos de las especies como abundancia, dominancia y frecuencia para construir índices de importancia para valorar las especies nativas y estructura de los bosques urbanos, cuya conservación también hace parte de las metas de manejo del AU [@nowak_sustaining_2010].
 
 La tabla \@ref(tab:ind-AU) resume los indicadores para cuantificar servicios/beneficios y estado de los ecosistemas arbóreos usados en la literatura revisada.  
 
@@ -65,26 +65,26 @@ Table: (#tab:ind-AU) Métricas para caracterizar servicios del AU
 
 | Métrica | Referencia |
 |------------------------------------------:|----------------------:|
-|Producción de alimentos [toneladas/año]|[@gomez-baggethun_classifying_2013]|
-|Índice de área foliar|[@gomez-baggethun_classifying_2013]|
-|Disminución de la temperatura [°C] por cobertura arbórea[m^2^] en parcelas/sitios cubiertas de árboles|[@gomez-baggethun_classifying_2013]|
-|Superficie de la hoja [m^2^]|[@gomez-baggethun_classifying_2013]|
-|O3, SO2, NO2, CO y PM10 $\mu$m removido en [toneladas/año] multiplicado por la cobertura arbórea (m^2^)|[@gomez-baggethun_classifying_2013]|
-|Secuestro de CO2 por árbol (carbono multiplicado por 3.67 para convertir a CO2)|[@gomez-baggethun_classifying_2013]|
-|Abundancia (por especie) [individuos]|[@alanis_estructura_2014]|
-|Densidad [individuos/m^2^]|[@nowak_sustaining_2010]|
-|Cobertura de copa de árbol por persona[m^2^/persona]|[@nowak_sustaining_2010]|
+|Producción de alimentos [toneladas/año]|@gomez-baggethun_classifying_2013|
+|Índice de área foliar|@gomez-baggethun_classifying_2013|
+|Disminución de la temperatura [°C] por cobertura arbórea[m^2^] en parcelas/sitios cubiertas de árboles|@gomez-baggethun_classifying_2013|
+|Superficie de la hoja [m^2^]|@gomez-baggethun_classifying_2013|
+|O~3~, SO~2~, NO~2~, CO y PM~10~ $\mu$m removido en [toneladas/año] multiplicado por la cobertura arbórea (m^2^)|@gomez-baggethun_classifying_2013|
+|Secuestro de CO~2~ por árbol (carbono multiplicado por 3.67 para convertir a CO2)|@gomez-baggethun_classifying_2013|
+|Abundancia (por especie) [individuos]|@alanis_estructura_2014|
+|Densidad [individuos/m^2^]|@nowak_sustaining_2010|
+|Cobertura de copa de árbol por persona[m^2^/persona]|@nowak_sustaining_2010|
 |Cobertura de copa de árbol[m^2^]| |
-|porcentaje de cobertura de copa de árbol en un área|[@nowak_sustaining_2010]|
-|Dominancia de una especie en función a la cobertura de copa [m^2^/ha]|[@alanis_estructura_2014]|
-|Dominancia relativa de una especie respecto a la dominancia total|[@alanis_estructura_2014]|
-|Frecuencia absoluta de una especie (porcentaje de presencia en los sitios)|[@alanis_estructura_2014]|
-|Abundancia relativa de una especie respecto a la abundancia total en el área de estudio|[@alanis_estructura_2014]|
-|Árboles por habitante|[@pot2014cali]|
-|índice de cobertura de copa de árbol alrededor de un punto de muestreo|[@zhou_social_2013]|
-|Porcentaje de cobertura de copa de árbol en servidumbres y espacios públicos|[@landry_street_2009]|
+|porcentaje de cobertura de copa de árbol en un área|@nowak_sustaining_2010|
+|Dominancia de una especie en función a la cobertura de copa [m^2^/ha]|@alanis_estructura_2014|
+|Dominancia relativa de una especie respecto a la dominancia total|@alanis_estructura_2014|
+|Frecuencia absoluta de una especie (porcentaje de presencia en los sitios)|@alanis_estructura_2014|
+|Abundancia relativa de una especie respecto a la abundancia total en el área de estudio|@alanis_estructura_2014|
+|Árboles por habitante|@pot2014cali|
+|índice de cobertura de copa de árbol alrededor de un punto de muestreo|@zhou_social_2013|
+|Porcentaje de cobertura de copa de árbol en servidumbres y espacios públicos|@landry_street_2009|
 
-En cuanto a los espacios verdes se valoran típicamente los aspectos geométricos y el acceso. Los aspectos físicos se caracterizan con medidas de superficie de los espacios, el porcentaje de área o número de espacios respecto de las unidades espaciales del análisis. Este tipo de medidas son llamadas por @talen_assessing_1998 la aproximación contenedor (como el representado en la ecuación \@ref(eq:contenedor)), y aunque muy extendidas en la literatura para caracterizar acceso a los EV, asumen que los beneficios del espacio verde tiene un impacto local: “Sin embargo, si el investigador está seguro de que la esfera de influencia de un servicio dado se limita a un límite geográfico específico, puede seguir siendo apropiado el enfoque unidimensional tradicional de la accesibilidad por medio de conteos por unidad”. En esta misma línea, @kabisch_green_2014 aseguran que aunque el secuestro de carbono tiene beneficios a nivel de toda la ciudad, algunos procesos biofísicos que rigen los beneficios de los EV ocurren a nivel local. Aunque no es fácil definir la escala a la que operan los procesos biofísicos, los beneficiarios de los servicios ambientales son a menudo aquellos que viven cerca de los EV.
+En cuanto a los espacios verdes se valoran típicamente los aspectos geométricos y el acceso. Los aspectos físicos se caracterizan con medidas de superficie de los espacios, el porcentaje de área o número de espacios respecto de las unidades espaciales del análisis. Este tipo de medidas son llamadas por @talen_assessing_1998 la aproximación contenedor (como el representado en la ecuación \@ref(eq:contenedor)), y aunque muy extendidas en la literatura para caracterizar acceso a los EV, asumen que los beneficios del espacio verde tiene un impacto local: “Sin embargo, si el investigador está seguro de que la esfera de influencia de un servicio dado se limita a un límite geográfico específico, puede seguir siendo apropiado el enfoque unidimensional tradicional de la accesibilidad por medio de conteos por unidad”(p. 612). En esta misma línea, @kabisch_green_2014 aseguran que aunque el secuestro de carbono tiene beneficios a nivel de toda la ciudad, algunos procesos biofísicos que rigen los beneficios de los EV ocurren a nivel local. Aunque no es fácil definir la escala a la que operan los procesos biofísicos, los beneficiarios de los servicios ambientales son a menudo aquellos que viven cerca de los EV.
 
 En Cali, la comuna es la unidad espacial sobre la que se define la inversión, pero puede no representar muy bien la escala de los procesos que dominan las transformaciones en el AU y el acceso a EV. 
 
@@ -143,15 +143,15 @@ Table: (#tab:ind-EV) Métricas para caracterizar servicios del EV
 
 | Métrica | Referencia |
 |------------------------------------------:|----------------------:|
-|Superficie de los espacios públicos verdes [ha]| [@who2016urban]|
-|Número de instalaciones o servicios contenidos en una unidad dada (por ejemplo, distrito censal o división político-administrativa)|[@talen_assessing_1998]|
-|Potencial de la gravedad|[@talen_assessing_1998]|
-|Distancia al EV más cercano[m]|[@talen_assessing_1998]|
-|Coste medio de viaje EV más cercano|[@talen_assessing_1998]|
-|Superficie de los espacios públicos verdes por habitante (o cada 1000 habitantes)[ha/habatiantante]| [@pot2014cali]|
-|Cobertura de espacios verdes[%]|[@who2016urban]|
-|Distancias entre puntos o nodos en la red de movilidad urbana|[@comber_using_2008]|
-|Índice de accesibilidad caminando al parque dentro de un radio|[@zhou_social_2013]|
+|Superficie de los espacios públicos verdes [ha]| @who2016urban|
+|Número de instalaciones o servicios contenidos en una unidad dada (por ejemplo, distrito censal o división político-administrativa)|@talen_assessing_1998|
+|Potencial de la gravedad|@talen_assessing_1998|
+|Distancia al EV más cercano[m]|@talen_assessing_1998|
+|Coste medio de viaje EV más cercano|@talen_assessing_1998|
+|Superficie de los espacios públicos verdes por habitante (o cada 1000 habitantes)[ha/habatiantante]| @pot2014cali|
+|Cobertura de espacios verdes[%]|@who2016urban|
+|Distancias entre puntos o nodos en la red de movilidad urbana|@comber_using_2008|
+|Índice de accesibilidad caminando al parque dentro de un radio|@zhou_social_2013|
 
 
 
@@ -161,32 +161,32 @@ Table: (#tab:ind-SoEc) Métricas para caracterizar aspectos socioeconómicos de 
 
 | Métrica | Referencia |
 |------------------------------------------:|----------------------:|
-|Ingreso medio del hogar|[@semega2017income]|
-|Valor medio vivienda ocupada por el propietario|[@cowett_methodology_2014]|
-|Porcentaje de viviendas ocupadas|[@cowett_methodology_2014]|
-|Porcentaje de población blanca|[@cowett_methodology_2014]|
-|Porcentaje de personas con pregrado|[@cowett_methodology_2014]|
-|Porcentaje de población afro|[@cowett_methodology_2014]|
-|Porcentaje de viviendas arrendadas|[@heynen_political_2006]|
-|Densidad de población [residentes/ha]|[@troy_predicting_2007]|
-|Densidad de hogares[hogares/ha]|[@troy_predicting_2007]|
-|Valor medio vivienda ocupada|[@troy_predicting_2007]|
-|Porcentaje de viviendas desocupadas|[@troy_predicting_2007]|
-|Índice de delincuencia|[@troy_predicting_2007]|
-|Porcentaje de viviendas que son viviendas unifamiliares|[@troy_predicting_2007]|
-|Tamaño medio del hogar|[@landry_street_2009]|
-|Tamaño medio del lote de vivienda|[@shanahan_socio-economic_2014]|
-|Densidad de viviendas|[@semega2017income;@censo_sistema_dane]|
-|Grados escolares cursados[años]|[@censo_sistema_dane}|
-|Porcentaje de habitantes con grado profesional|[@nesbitt_exploring_2016]|
-|Porcentaje de habitantes con maestría|[@nesbitt_exploring_2016]|
-|Edad media de las construcciones|[@zhou_social_2013]|
+|Ingreso medio del hogar|@semega2017income|
+|Valor medio vivienda ocupada por el propietario|@cowett_methodology_2014|
+|Porcentaje de viviendas ocupadas|@cowett_methodology_2014|
+|Porcentaje de población blanca|@cowett_methodology_2014|
+|Porcentaje de personas con pregrado|@cowett_methodology_2014|
+|Porcentaje de población afro|@cowett_methodology_2014|
+|Porcentaje de viviendas arrendadas|@heynen_political_2006|
+|Densidad de población [residentes/ha]|@troy_predicting_2007|
+|Densidad de hogares[hogares/ha]|@troy_predicting_2007|
+|Valor medio vivienda ocupada|@troy_predicting_2007|
+|Porcentaje de viviendas desocupadas|@troy_predicting_2007|
+|Índice de delincuencia|@troy_predicting_2007|
+|Porcentaje de viviendas que son viviendas unifamiliares|@troy_predicting_2007|
+|Tamaño medio del hogar|@landry_street_2009|
+|Tamaño medio del lote de vivienda|@shanahan_socio-economic_2014|
+|Densidad de viviendas|@semega2017income;@censo_sistema_dane|
+|Grados escolares cursados[años]|@censo_sistema_dane|
+|Porcentaje de habitantes con grado profesional|@nesbitt_exploring_2016|
+|Porcentaje de habitantes con maestría|@nesbitt_exploring_2016|
+|Edad media de las construcciones|@zhou_social_2013|
 
 ### Enfoque estadístico
 
 El instrumento matemático más popular para establecer relaciones de dependencia y asociación entre dos variables aleatorias son los índices de correlación, sin que la relación cuantificada sea necesariamente de causalidad. La causalidad entre las variables suele ser una apuesta del investigador con base en su conocimiento o intuición sobre los procesos que dominan las características de las variables aleatorias [@gibbons_mostly_2012]. El coeficiente de correlación de Pearson es usado para caracterizar la fuerza de relaciones lineales, mientras que el coeficientes de correlación de Spearman es usado para caracterizar relaciones no lineales. Estos coeficientes son análisis eficaces para seleccionar variables candidatas a ser incluidas en modelos de regresión, tanto para seleccionar las variables que tienen relación fuerte con la variable a predecir, como la independencia lineal de las variables explicativas, condiciones necesarias para que los métodos de ajuste de parámetros de los modelos lineales [@gibbons_mostly_2012]. Los coeficientes de correlación, como estadística de resumen, no pueden reemplazar el examen visual de los datos y la construcción de relaciones que tengan un fundamento teórico. 
 
-Los modelos de regresión lineal son ampliamente usados en la econometría para construir modelos explicativos con términos que describen componentes teóricos de los procesos de estudio e inferir el comportamiento o tendencias en una población con base en una muestra. De esta forma se pretende cuantificar el cambio de la variable dependiente $Y$ ante aumentos o disminuciones del valor de una de las $p$ variables dependientes $x_j$ donde $j =1...p$. Cada una de las observaciones $i$ , $i=1...n$ del vector $X_p$ denominadas $x_{ij}$ forman un sistema de ecuaciones lineales donde el parámetro $\beta_j$ pesa el aporte explicativo de la variable correspondiente al estimarlo (ecuación \@ref(eq:lmodel) y \@ref(eq:lmodelM)). Así, los coeficientes estimados representan la importancia de una variable independiente en los cambios de la dependiente. Los métodos para resolver son estimadores  de mínimos cuadrados (OLS ordinary least-square) o de máxima verosimilitud (ML maximum likelihood).  Si los términos del error, también llamados residuos, tienen una distribución normal y una varianza constante (homocedasticidad), entonces el estimador es óptimo entre todos los estimadores no sesgados lineales y no lineales. Es importante indagar el cumplimiento de las condiciones de normalidad, en especial en los residuos [@gibbons_mostly_2012].  
+Los modelos de regresión lineal son ampliamente usados en la econometría para construir modelos explicativos con términos que describen componentes teóricos de los procesos de estudio e inferir el comportamiento o tendencias en una población con base en una muestra. De esta forma se pretende cuantificar el cambio de la variable dependiente $Y$ ante aumentos o disminuciones del valor de una de las $p$ variables dependientes $x_j$ donde $j =1...p$. Cada una de las observaciones $i$ , $i=1...n$ del vector $X_p$ denominadas $x_{ij}$ forman un sistema de ecuaciones lineales donde el parámetro $\beta_j$ pesa el aporte explicativo de la variable correspondiente al estimarlo (ecuación \@ref(eq:lmodel) y \@ref(eq:lmodelM)). Así, los coeficientes estimados representan la importancia de una variable independiente en los cambios de la dependiente. Los métodos para resolver son estimadores  de mínimos cuadrados (OLS *ordinary least-square*) o de máxima verosimilitud (ML *maximum likelihood*).  Si los términos del error, también llamados residuos, tienen una distribución normal y una varianza constante (homocedasticidad), entonces el estimador es óptimo entre todos los estimadores no sesgados lineales y no lineales. Es importante indagar el cumplimiento de las condiciones de normalidad, en especial en los residuos [@gibbons_mostly_2012].  
 
 **modelo lineal de la i-esima observación**
 \begin{equation}
@@ -202,11 +202,11 @@ Y_{n\times 1}=X_{n \times p }\mathbf{\beta}_{p\times 1}+e_{(n\times 1)}
 
 @heynen_political_2006 y @vasquez_fuentes_vegetacion_2008 usan coeficientes de correlación entre los pares de variables ambientales y socioeconómicas agregadas en unidades censales o administrativas para luego usar modelos de regresión lineal con el fin de estimar la importancia explicativa de las variables a través de la estimación de los coeficientes. 
 
-@tratalos_urban_2007 indaga sobre relaciones entre indicadores ambientales y el estatus social de los residentes en cinco ciudades del Reino Unido usando coeficientes de correlación de Spearman para seleccionar predictores para un modelo de regresión lineal. Los investigadores concluyen que los desarrollos urbanos de alta densidad generalmente se asociaban con un pobre desempeño ambiental, medido por el área del EV y los niveles de provisión de servicios ambientales. 
+@tratalos_urban_2007 indagan sobre relaciones entre indicadores ambientales y el estatus social de los residentes en cinco ciudades del Reino Unido usando coeficientes de correlación de Spearman para seleccionar predictores para un modelo de regresión lineal. Los investigadores concluyen que los desarrollos urbanos de alta densidad generalmente se asociaban con un pobre desempeño ambiental, medido por el área del EV y los niveles de provisión de servicios ambientales. 
 
 ### Enfoque geoestadístico
 
-Cuando se analiza los residuos $e_i$ en un regresión lineal se espera estos sean idealmente ruido. Sin embargo si se encuentra que existe algún tipo de relación de los residuos con la posición de las observaciones $i$ en plano geográfico, entonces se puede usar variaciones en el modelo lineal, que consiste en incluir un término lineal usando la variable dependiente (modelo autoregresivo SAR, ecuación \@ref(eq:sar)), las independientes (*spatial lag* o retardo espacial en $X$ SLX, ecuación \@ref(eq:slx)), en el error (modelo espacial del error SEM,ecuación \@ref(eq:sem)) o usando una combinación del modelo de error y autoregresivo (modelo espacial de Durbin SD,ecuación \@ref(eq:sd)). Todas estas aproximaciones introducen una matriz de $W_{n\times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. 
+Cuando se analiza los residuos $e_i$ en una regresión lineal se espera estos sean idealmente ruido. Sin embargo si se encuentra que existe algún tipo de relación de los residuos con la posición de las observaciones $i$ en plano geográfico, entonces se puede usar variaciones en el modelo lineal, que consiste en incluir un término lineal usando la variable dependiente (modelo autoregresivo SAR, ecuación \@ref(eq:sar)), las independientes (*spatial lag* o retardo espacial en $X$ SLX, ecuación \@ref(eq:slx)), en el error (modelo espacial del error SEM,ecuación \@ref(eq:sem)) o usando una combinación del modelo de error y autoregresivo (modelo espacial de Durbin SD,ecuación \@ref(eq:sd)). Todas estas aproximaciones introducen una matriz de $W_{n\times n}$, donde $n$ es el número de sitios, que captura la influencia de las variables en relación con su proximidad. 
 
 Esto significa que se propone *a priori* una relación espacial al dar estructura a $W$, por ejemplo usando solo valores de 1 (vecino) y 0 (no vecino) a las unidades espaciales contiguas o para expresar una relación global usando una métrica de distancia en los valores de la matriz $W$, por ejemplo $w_{ij}= 1/d_{ij}$  donde $d_{ij}$ es la distancia euclidiana entre los centroides de los sitios $i$ y $j$. La idea es que los vecinos más cercanos influencian los fenómenos en la unidad $i$, basados en la primera ley de la geografía o Ley de Tobler^["Todas las cosas están relacionadas entre sí, pero las cosas más próximas en el espacio tienen una relación mayor que las distantes."] [@tobler1970computer]. Este es un supuesto fuerte, y debe ser coherente con el fenómeno y los datos que lo representan. Con la matriz $W$ se calcula el coeficiente de Moran’I [@moran1950notes], que se usa para probar una asociación global entre una variable y su posición en el plano. Si los residuos  $e_i$ muestran una asociación fuerte con la estructura de $W$ en la prueba de Moran’I, se sugiere usar alguno de los modelos espaciales (SAR,SLX,SEM o SD), pues esto significa que no se puede confiar en los coeficientes estimados por la regresión lineal. Se aduce que $W$ puede ayudar a explicar el proceso que se está modelando. De lo contrario es mejor usar un modelo lineal u otra técnica.  @anselin_under_2002, @paez_spatial_2005 y @kissling_spatial_2008  hacen una revisión de los procesos espaciales, sus supuesto y los criterios de ajuste como errores cuadráticos y criterio de información de Akaike para la selección de un modelo y diseño bien formulado y ajustado.
 
@@ -244,7 +244,7 @@ Además del uso del análisis de autocorrelación espacial global, se puede expl
 
 ### Otras técnicas
 
-En @fotheringham_geographically_1998 se muestra que la regresión geográficamente ponderada (Geographically weighted regression GWR) produce resultados más informativos con respecto a la variación de parámetros en el espacio que la simple utilización de los agregados estadísticos. Estos métodos pueden ser utilizados para examinar visualmente la variabilidad espacial de los resultados de la regresión o de las variables del estudio a través de una región y así informar sobre la presencia de no-estacionariedad espacial. La GWR es usada con éxito en @comber_spatial_2011 para analizar los posibles factores que pueden ayudar a identificar y caracterizar las dimensiones a tener en cuenta para mejorar el acceso a la salud. 
+En @fotheringham_geographically_1998 se muestra que la regresión geográficamente ponderada (*Geographically weighted regression* GWR) produce resultados más informativos con respecto a la variación de parámetros en el espacio que la simple utilización de los agregados estadísticos. Estos métodos pueden ser utilizados para examinar visualmente la variabilidad espacial de los resultados de la regresión o de las variables del estudio a través de una región y así informar sobre la presencia de no-estacionariedad espacial. La GWR es usada con éxito en @comber_spatial_2011 para analizar los posibles factores que pueden ayudar a identificar y caracterizar las dimensiones a tener en cuenta para mejorar el acceso a la salud. 
 
 @kabisch_green_2014 usan el análisis cluster para identificar grupos de población con características socioeconómicas similares y similar acceso a espacios verdes, para luego analizar si existen diferencias entre la distribución de los espacios verdes usando el coeficiente de Gini en los  diferentes grupos de población definidos.	
 
