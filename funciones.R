@@ -36,11 +36,27 @@ tema_lgnd_derecha<-function (...){
       legend.text=element_text(size=6),
       legend.position = "right",
       legend.key.height = unit(2,"mm"),
+      
       legend.direction = "horizontal",
       ... 
     )
   
 }
+
+
+tema_lgnd_abajo_s<-function (...){
+  theme_void() +
+    theme(
+      legend.text=element_text(size=6),
+      legend.position = "bottom",
+      legend.key.height = unit(2,"mm"),
+      legend.key.width = unit(5,"mm"),
+      legend.direction = "horizontal",
+      ... 
+    )
+  
+}
+
 
 
 expandBbox<-function(bb,perc.x,perc.y){
@@ -131,7 +147,9 @@ pintar_corrmatrix<- function(data, variables, ... ,method_cor = "pearson" ){
                          name=method_cor) +
     theme_minimal()+ 
     theme(axis.text.x = element_text(angle = 90, vjust = 1, 
-                                     size = 8, hjust = 1),axis.title = element_blank(),
+                                     size = 6, hjust = 1),
+          axis.text.y = element_text(size = 6),
+          axis.title = element_blank(),
           plot.title = element_text(size=14))+
     coord_fixed()
   p
@@ -587,7 +605,7 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
                                            label.position = "bottom",
                                            title.position = 'top',
                                            nrow = 1))+
-    tema_lgnd_abajo()
+    tema_lgnd_abajo_s()
   
   # grafica discreta del p-value  
   signf_levels<-c(Inf,0.05,0.01,0.001,0.0001,0)
@@ -605,7 +623,7 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
                                            label.position = "bottom",
                                            title.position = 'top',
                                            nrow = 1))+
-    tema_lgnd_abajo()
+    tema_lgnd_abajo_s()
   
   #tdy<-tidy(lm)
   
@@ -617,7 +635,7 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
       guide = guide_colorbar(
         direction = "horizontal",
         barheight = unit(2, units = "mm"),
-        barwidth = unit(40, units = "mm"),
+        barwidth = unit(35, units = "mm"),
         draw.ulim = F,
         title.position = 'top',
         # some shifting around
@@ -629,8 +647,9 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
     tema_lgnd_abajo()
   
   
-  title1<-grid::textGrob(paste0("Mapas LISA - ",varname," - ",wname))
-  grid.arrange(mapa_ZI,mapa_p,mapa_cluster, top = title1, ... = ...)
+  # title1<-grid::textGrob(paste0("Mapas LISA - ",varname," - ",wname))
+  grid.arrange(mapa_ZI,mapa_p,mapa_cluster, #top = title1,
+               ... = ...)
   
   
 }
@@ -697,13 +716,15 @@ myaugment<-function(laglm){
 }
 
 
-diagPlotlaglm<-function(laglm,theme.base_size = 8){
+diagPlotlaglm<-function(laglm,theme.base_size = 8,size_alt = 6){
   require(ggplot2)
   model<-myaugment(laglm)
   p1<-ggplot(model, aes(.fitted, .resid))+geom_point(alpha=0.6)
   p1<-p1+stat_smooth(method="lm")+geom_hline(yintercept=0, col="red", linetype="dashed")
   p1<-p1+xlab("Valores ajustados")+ylab("Residuos")
-  p1<-p1+ggtitle("Residuos vs Valores ajustados")+theme_bw(base_size =theme.base_size )
+  p1<-p1+ggtitle("Residuos vs Valores ajustados")+
+    theme_bw(base_size =theme.base_size )+
+    theme(plot.title = element_text(size = size_alt))
   
   p2<-  ggplot(model,aes(sample=.resid))+stat_qq()+stat_qq_line(color = "red")
   # geom_abline(intercept = 0, slope = 1, alpha = 0.5) 
@@ -885,4 +906,42 @@ fitstats_lm_df<-function(model){
                      "Log likelihood")
   df<-data_frame(medidasfit,fitstats = as.numeric(fitstats))
   df
+}
+
+
+reemplzar_nombres_df <- function(df, df_nombres){
+  
+  nombres_var <- names(df)
+  df_nombres_f <- df_nombres %>% 
+    filter_at(1, all_vars(. %in% nombres_var))
+  
+  oldnames <- pull(df_nombres_f,1)
+  newnames <- pull(df_nombres_f,2)
+  
+  df %>% rename_at(vars(oldnames), ~ newnames)
+}
+
+
+reemplzar_nombres_vector <- function(vec, df_nombres){
+  
+  df_nombres_f <- df_nombres %>% 
+    filter_at(1, all_vars(. %in% vec))
+  
+  oldnames <- pull(df_nombres_f,1)
+  newnames <- pull(df_nombres_f,2)
+  
+  # for (i in 1:length(oldnames)) {
+  # 
+  #   vec <- str_replace(vec,pattern = fixed(oldnames[i]),replacement = newnames[i])
+  # 
+  # }
+  
+  for (i in 1:length(vec)) {
+    for (j in 1:length(oldnames)) {
+      if(vec[i]==oldnames[j])
+        vec[i] <- newnames[j]
+    }
+  }
+  
+  vec
 }

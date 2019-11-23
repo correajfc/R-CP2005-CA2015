@@ -28,7 +28,8 @@ equipamento_EEC<-readOGR(dsn = path.expand("./shapefiles"),
                          layer = "mc_equipamientos_colectivos_seleccionados_EEC")
 
 
-
+colombia_shp <- readOGR(dsn = path.expand("./shapefiles"),
+                        layer = "COLOMBIA")
 
 
 #verificar y corregir la consistencia geometrica de las capas ----
@@ -74,6 +75,7 @@ ggplot(su.f,aes(x=long,y=lat,group=group))+
 #+ggfittext::geom_fit_text(data = su.setu_ccdgo, aes(label=ids_su) )
 
 
+
 # inspeccion resumen ----
 manzanas
 summary(manzanas)
@@ -88,11 +90,12 @@ identicalCRS(su,prmtr_urbn_idesc)
 
 library(OpenStreetMap)
 prmtr_urbn_idesc.wgs <- spTransform(prmtr_urbn_idesc,CRS("+proj=longlat"))
-
+prmtr_urbn_idesc.df <- fortify(prmtr_urbn_idesc)
 prmtr_urbn_idesc.wgs.df <-  fortify(prmtr_urbn_idesc.wgs)
 bbcali <- bbox(prmtr_urbn_idesc.wgs)
 map <- openmap(c(3.505871+0.01,-76.59076-0.01),
-               c(3.331819-0.01,-76.46125+0.01), zoom = NULL,
+               c(3.331819-0.01,-76.46125+0.01), 
+               zoom = NULL,
                type = c("osm", "stamen-toner", "stamen-terrain","stamen-watercolor", "esri","esri-topo")[6],
                mergeTiles = TRUE)
 map.latlon <- openproj(map, projection = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
@@ -104,6 +107,53 @@ OSMap+
   ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
   labs(title ="Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nFuentes: OSM e IDESC\nElaboración Propia")
 
+
+
+g1 <- OSMap+
+  geom_path(data=prmtr_urbn_idesc.wgs.df,  
+            aes(long,lat,group=group), fill="none",color="red") +
+  coord_equal() +
+  ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
+  labs(title ="Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nFuentes: OSM e IDESC\nElaboración Propia")
+
+
+# mapa de colombia
+
+colombia_continental <- colombia_shp[!str_detect(colombia_shp$DPTO_CCDGO,"88"),]
+colombia_continental_s <- gSimplify(colombia_continental,0.01, topologyPreserve=TRUE)
+colombia_continental_f <- fortify(colombia_continental_s,region = "DPTO_CCDGO")
+
+
+ggplot(colombia_continental_f,aes(x=long,y=lat,group=group))+
+  geom_polygon(fill="lightgrey",color="white")+
+  geom_point( y=3.359889,x= -76.638565, color = "red",size = 4)+
+  coord_map()+
+  theme_void()
+
+
+
+g2 <-ggplot(colombia_continental_f,aes(x=long,y=lat,group=group))+
+    geom_polygon(fill="lightgrey",color="white",size = 0.2)+
+    geom_point( y=3.359889,x= -76.638565, color = "red",size = 2)+
+    coord_map()+
+    theme_void()+
+    theme(panel.background = element_rect(fill = "white"))
+
+
+# g3 <- g1 + annotation_custom(
+#   grob = ggplotGrob(g2),
+#   ymin = 3.32,
+#   ymax = 3.32 + (3.52 - 3.32)/4,
+#   xmin = -76.6,
+#   xmax = -76.6 + (-76.45 +76.6)/4
+# ) 
+
+
+grid.newpage()
+vp1 <- viewport(width = 1, height = 1, x = 0.5, y = 0.5)  # the larger map
+vp2 <- viewport(width = 0.15, height = 0.2, x = 0.37, y = 0.25)  # the inset in upper right
+print(g1, vp = vp1)
+print(g2, vp = vp2)
 
 
 espacio_publico_idesc

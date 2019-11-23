@@ -4,29 +4,46 @@
 
 ## Área de estudio
 
-```{r mapa-area,fig.cap="Área de estudio. Perímetro de Santiango de Cali", fig.height=6, out.width="90%"}
-
-OSMap+
-  geom_path(data=prmtr_urbn_idesc.wgs.df,  
-            aes(long,lat,group=group,color="Perímetro"), fill="none") +
-  coord_equal() +
-  scale_color_manual("Perimetro", values = "red")+
-  theme(legend.position = c(0.9, 0.25))+
-  ggsn::north(prmtr_urbn_idesc.wgs.df, symbol = 5, scale = 0.15, location = "topleft") +
-  ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
-  labs(title ="Zona Urbana de Santiago de Cali", x = "Long", y="Lat",caption="Datos en grados decimales, sistema de coordenas WGS83\nDatos: IDESC")
-
-
-
-
-```
-
-
 El municipio de Santiago de Cali se encuentra ubicado al suroccidente colombiano, latitud 3.4372200°, longitud  -76.5225000° en grados decimales del sistema de coordenadas WGS84 (ver figura \@ref(fig:mapa-area)). Es la capital del departamento del Valle del Cauca y es la tercera ciudad más poblada del país, después de Bogotá y Medellín, con 2,420,114 habitantes según la proyección de población para 2017 de Cali en Cifras 2015 [@escobar2015cali]. El municipio tiene un área 561.7 Km2, un área del perímetro urbano 120.4 Km2 (21.4 %). La división administrativa de la zona urbana son comunas y las comunas se componen de barrios. 
 
 Santiago  de Cali presenta dos  zonas topográficas:  el valle del río Cauca hacia el oriente, el terreno más plano donde se ubica el casco urbano, y la zona de piedemonte hacia el occidente sobre la margen derecha de la cordillera Occidental. El área urbana limita al oeste y sur con el área rural del municipio, al este con el río Cauca y los municipios de Palmira y Candelaria, y al norte con el municipio de Yumbo.
 
 El clima del municipio varía en relación al rango altitudinal que abarca entre 916 msnm en la zona geográfica del río Cauca y hasta los 4,070 msnm en el Parque Nacional Natural Los Farallones [@ciat_plan_2015]. En la zona plana, se presenta un clima cálido con características semihúmedas hacia el sur y semiáridas hacia el norte mientras el piedemonte presenta condiciones de clima templado [@ciat_microzona_2015]. La precipitación anual promedio es de 1,500 mm y la temperatura promedio anual es de 24 °C aproximadamente [@ciat_plan_2015]. La ciudad de Cali es de clima caliente, donde la sombra y la brisa son bien valoradas por sus habitantes. 
+
+
+```{r mapa-area,fig.cap="Área de estudio. Perímetro urbano de Santiango de Cali", fig.height=6, out.width="90%"}
+
+g1 <- OSMap+
+  geom_path(data=prmtr_urbn_idesc.wgs.df,  
+            aes(long,lat,group=group,color="Perímetro"), fill="none") +
+  coord_equal() +
+  scale_color_manual("Perimetro", values = "red")+
+  theme(legend.position = c(0.9, 0.25))+
+  ggsn::north(prmtr_urbn_idesc.wgs.df, symbol = 3, scale = 0.1, location = "topleft") +
+  ggsn::scalebar(prmtr_urbn_idesc.wgs.df, dist = 2, dd2km = TRUE, model = 'WGS84',st.size = 4)+
+  labs(
+    # title ="Zona Urbana de Santiago de Cali", 
+    x = "Long", y="Lat",
+    caption="Datos en grados decimales, sistema de coordenas WGS84\nDatos: IDESC"
+    )
+
+g2 <-ggplot(colombia_continental_f,aes(x=long,y=lat,group=group))+
+    geom_polygon(fill="lightgrey",color="white",size = 0.2)+
+    geom_point( y=3.359889,x= -76.638565, color = "red",size = 1)+
+    coord_map()+
+    theme_void()+
+    theme(panel.background = element_rect(fill = "white"))
+
+grid.newpage()
+vp1 <- viewport(width = 1, height = 1, x = 0.5, y = 0.5)  # the larger map
+vp2 <- viewport(width = 0.15, height = 0.2, x = 0.3, y = 0.24)  # the inset in upper right
+print(g1, vp = vp1)
+print(g2, vp = vp2)
+
+
+```
+
+
 
 
 ## Datos
@@ -86,9 +103,6 @@ Table: (#tab:vars-poblacion) Variables sobre la población
 |Con estudios superior o postgrado|[personas] |
 |Ningún estudio|[personas] |
 
-```{r su-periurbano, out.width='100%',echo=FALSE, fig.cap="Sectores urbanos y périmetro urbano de Santiago de Cali"}
-knitr::include_graphics("images/sectoresurbanos_perimetro_idesc.png")
-```
 
 Table: (#tab:vars-vivienda) Variables sobre la las viviendas 
 
@@ -100,6 +114,25 @@ Table: (#tab:vars-vivienda) Variables sobre la las viviendas
 |cantidad viviendas|[viviendas]|
 
 La unidad espacial de análisis sobre la cual se harán todas las agregaciones es el sector urbano (SU) de la cartografía censal 2005.
+
+
+```{r su-periurbano, out.width='90%',echo=FALSE, fig.cap="Sectores urbanos y périmetro urbano de Santiago de Cali"}
+
+ggplot()+
+  geom_path(data =su.f,
+            aes(x=long, y=lat, group = group,color = "Sectores Urbanos"))+
+  geom_path(data =prmtr_urbn_idesc.df,
+            aes(x=long, y=lat, group = group, color = "Perímetro Urbano"))+
+  coord_equal()+
+  ggsn::north(prmtr_urbn_idesc.df, symbol = 3, scale = 0.1, location = "topleft") +
+  ggsn::scalebar(prmtr_urbn_idesc.df, dist = 2, st.size = 3)+
+  scale_color_manual(name = NULL, values = c("red","lightblue"))+
+  theme_void()
+
+
+# knitr::include_graphics("images/sectoresurbanos_perimetro_idesc.png")
+```
+
 
 
 ## Métodos y técnicas
@@ -145,10 +178,11 @@ Entre los distintos indicadores desarrollados para capturar la extensión y dist
 
 En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
 
-```{r mapa-copa-dep,fig.asp=0.7, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa"}
+```{r mapa-copa-dep,fig.asp=0.62, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa", out.width="70%"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(dep.arboles.ntl.long,by = c("id"="SETU_CCDGO")) %>%
   filter(dep.arboles %in% dependientes.arboles) %>%
+  mutate(dep.arboles = reemplzar_nombres_vector(dep.arboles,df_nombres_variables)) %>% 
   ggplot()+
   geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
   geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
@@ -163,7 +197,7 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            nrow = 1))+
   facet_wrap(~dep.arboles, nrow = 1)+
   tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1))+
-  labs(caption = "Fuente:CA2015\nElaboración: propia")
+  labs(caption = "Datos:CA2015")
 
 ```
 
@@ -194,7 +228,7 @@ donde $R_b$ es el radio de búsqueda,  $s_j$ es el área de cada espacio verde $
 
 
 
-```{r mapa-rango1km,  fig.asp=0.6, fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
+```{r mapa-rango1km,  fig.asp=1, out.width="70%",fig.cap="Espacios verdes y radio de búsqueda de 1 km desde los centriodes del SU"}
 ggplot()+
   geom_polygon(data = s_1000_df, 
                aes(x=long,y=lat,group=group,fill = "radio búsqueda"),
@@ -210,9 +244,11 @@ ggplot()+
   theme_void()+
   theme(plot.caption=element_text(size=6, hjust = 1), 
         legend.key.size = unit(3,units = "mm"),
-        legend.text = element_text(size = 7),
+        legend.text = element_text(size = 6),
         legend.title = element_text(size = 6))+
-  labs(caption = "Fuente:IDESC, POT 2014\nElaboración: propia")
+  ggsn::north(su.f, symbol = 3, scale = 0.1, location = "topleft") +
+  ggsn::scalebar(su.f, dist = 2, st.size = 2.5)+
+  labs(caption = "Fuente:IDESC, POT2014")
 ```
 
 ### Cálculo de métricas sobre la población
@@ -233,10 +269,11 @@ knitr::kable(format = formato_render,
 
 Las variables del CP2005 seleccionadas para el análisis se muestran en la figura \@ref(fig:mapas-poblacion-deciles).
 
-```{r mapas-poblacion-deciles, fig.width=5,fig.height=8,fig.cap="Mapas de las variables de población seleccionadas (en deciles).", fig.pos = 'p', out.height="90%"}
+```{r mapas-poblacion-deciles, fig.width=5,fig.height=6,fig.cap="Mapas de las variables de población seleccionadas (en deciles).", fig.pos = 'p', out.width="70%"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion %in% metricas.poblacion[c(2,3,4,7)]) %>%
+  mutate(metricas.poblacion = reemplzar_nombres_vector(metricas.poblacion,df_nombres_variables)) %>% 
   ggplot()+
   geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
   coord_equal()+
@@ -254,7 +291,7 @@ su.f %>% dplyr::select(-area_su)  %>%
                   legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
         )+
-  labs(caption = , "Fuente:CP2005 [@ca2015cali]")
+  labs(caption = "Datos:CP2005")
 
 ```
 
@@ -264,10 +301,11 @@ Además de las variables seleccionadas se calculó la densidad de población dad
 
 
 
-```{r mapas-poblacion-mod-deciles, fig.asp=1.2,fig.cap="Mapas de las variables de población seleccionadas como porcentajes (en deciles)"}
+```{r mapas-poblacion-mod-deciles, fig.asp=1.2,fig.cap="Mapas de las variables de población seleccionadas como porcentajes (en deciles)",out.width="90%"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(metricas.poblacion.mod.ntl.long, by = c("id"="SETU_CCDGO")) %>%
   filter(metricas.poblacion.mod %in% metricas.poblacion.mod[c(1,2,3,5,6)]) %>%
+   mutate(metricas.poblacion.mod = reemplzar_nombres_vector(metricas.poblacion.mod,df_nombres_variables)) %>% 
   ggplot()+
   geom_polygon(aes(x= long, y = lat, group = group, fill = factor(valores)))+
   coord_equal()+
@@ -281,10 +319,12 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            nrow = 1))+
   facet_wrap(~metricas.poblacion.mod, nrow = 2)+
   tema_lgnd_abajo(plot.caption=element_text(size=6, hjust = 1),                                         
-                  strip.text = element_text(size = 6),
+                  strip.text = element_text(size = 7),
                   legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
-        )
+        )+
+  labs(caption = "Datos:CP2005")
+
 
 ```
 
@@ -292,16 +332,23 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 #### Características de las viviendas
 
-Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda en el caso de los tipos o como porcentaje de la cantidad de predios en el caso del uso como unidad de vivienda, económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura \@ref(fig:mapas-usopredios-cont).
+Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda según los tipos o como porcentaje de la cantidad de predios según su uso: vivienda, unidad económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura \@ref(fig:mapas-usopredios-cont).
 
-```{r mapas-usopredios-cont, fig.asp=1,fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
+```{r mapas-usopredios-cont, fig.asp=1.2,out.width="80%",fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
 
 pl_poblacion<-plots_map_su_df(analisis.cali.df,
                               metricas.predios[c(11,13:15)],
                               strip.text = element_text(size = 6),
                               legend.title = element_text(size = 7))
+
+pl_poblacion[[1]]$labels$fill <- reemplzar_nombres_vector(pl_poblacion[[1]]$labels$fill,df_nombres_variables)
+pl_poblacion[[2]]$labels$fill <- reemplzar_nombres_vector(pl_poblacion[[2]]$labels$fill,df_nombres_variables)
+pl_poblacion[[3]]$labels$fill <- reemplzar_nombres_vector(pl_poblacion[[3]]$labels$fill,df_nombres_variables)
+pl_poblacion[[4]]$labels$fill <- reemplzar_nombres_vector(pl_poblacion[[4]]$labels$fill,df_nombres_variables)
+
+
 grid.arrange(grobs =pl_poblacion, nrow =2,
-             bottom = textGrob( label = "Fuente:CP2005\nElaboración: propia", 
+             bottom = textGrob( label = "Fuente:CP2005", 
                                 hjust = 1, x = 0.9,
                                 gp=gpar(fontsize=6))  
              )
@@ -324,7 +371,7 @@ Se establecieron criterios para la **exclusión** de datos para el análisis de 
 
 Los sectores excluidos del análisis se muestran en los figura \@ref(fig:mapa-excluidos). 
 
-```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=0.6}
+```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=1, out.width="60%"}
 ggplot()+
    geom_polygon(data = su.f,
                 aes(x = long ,y = lat, group = group),
@@ -337,9 +384,11 @@ ggplot()+
    theme_void()+
   theme(plot.caption=element_text(size=6, hjust = 1), 
         legend.key.size = unit(3,units = "mm"),
-        legend.text = element_text(size = 5),
+        legend.text = element_text(size = 6),
         legend.title = element_text(size = 6))+
-  labs(caption = "Fuente:IDESC\nElaboración: propia")
+  ggsn::north(su.f, symbol = 3, scale = 0.1, location = "topleft") +
+  ggsn::scalebar(su.f, dist = 2, st.size = 2.5)+
+  labs(caption = "Datos:IDESC")
   
 ```
 
@@ -347,12 +396,12 @@ ggplot()+
 
 Las variables incluidas en los modelos lineales deben cumplir una serie de condiciones deseables para ser elegidas como candidatas:
 
-- Mostrar una correlación fuerte (mayor a 0.6 se considera una asociación fuerte)
+- Mostrar una correlación moderada o fuerte^[En este trabajo se considera moderado a valores superiores y al rededor de 0.6 en los coeficientes de correlación. Aunque definir cualitativamente rangos de un coeficiente de correlación es arbitrario, es posible definirlos y usarlos con criterio. Se puede estar acuerdo que correlaciones menores a 0.1 indica una relación insignificante y que mayores 0.9 una muy fuerte, los valores intermedios son discutibles.] 
 - Las variables independientes o predictoras **no** deben estar fuertemente correlacionadas entre ellas.
 - Las observaciones deben ser **independientes**^[Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.]
 
 
-Para garantizar que las variables no están correlacionadas entre sí, se usaron el coeficiente de correlación de Pearson, usado para detectar relaciones lineales, y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.
+Para garantizar que las variables no están correlacionadas entre sí, se usó el coeficiente de correlación de Pearson para detectar relaciones lineales, y el coeficiente de Spearman para detectar relaciones en que exhiben relaciones no lineales.
 
 Para seleccionar las variables que mejor predicen la variable dependiente se tuvo en cuenta las restricciones de colinealidad entre las variables dependientes.
 
@@ -376,9 +425,9 @@ Para los análisis espaciales se usó la librería `spdep` [@R-spdep]
 
 #### Matrices de vecindad
 
-La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la representación de grafo de la matriz $W_q$ de SUs vecinos que comparten un lado del polígono (vecindad *queen*) en la ciudad de Cali.
 
-```{r w-su-todos, fig.asp =0.6,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali"}
+
+```{r w-su-todos, fig.asp =1,fig.cap="Grafo de vecindad entre todos los SU de la ciudad de Cali", out.width="60%"}
 nb.su<-poly2nb(su, row.names = su$SETU_CCDGO)
 par(mai=c(0,0,0,0))
 plot(su, border="grey80")
@@ -386,6 +435,8 @@ plot(nb.su, coordinates(su), col='grey50', pch=19, cex=0.1,add=TRUE)
 
 
 ```
+
+La matriz $W$ representa la topología de vecindad entre las unidades geográficas. Existen en la literatura diferentes tipos de vecindad: *rook*, *bishop* y *queen* son las más referenciadas. Esta vecindad está representada en la matriz con 1 cuando existe vecindad y 0 cuando no. Otra forma de cuantificar la interacción de esa vecindad es usando una matriz de inversos de la distancia entre los centroides de las unidades geográficas ($W_d$), con el fin de atenuar la interacción entre sectores muy alejados y tener una variable continua que representa esa influencia. En la figura \@ref(fig:w-su-todos) se muestra la representación de grafo de la matriz $W_q$ de SUs vecinos que comparten un lado del polígono (vecindad *queen*) en la ciudad de Cali.
 
 Las regresiones se realizan sobre un subconjunto de los SUs, y por tanto la estructura de esta matriz tuvo esto en cuenta.
 

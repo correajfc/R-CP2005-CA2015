@@ -54,7 +54,7 @@ source("analisis_estadistico_EV.R", echo = T)
 source("analisis_geoestadistico_EV.R", echo = T)
 # Stop the clock
 proc.time() - ptm
-save.image(file = "bck_201904.RData")
+save.image(file = "bck_201911.RData")
 
 # load("bck_201904.RData")
 

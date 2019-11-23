@@ -54,7 +54,7 @@ Identificar y analizar espacialmente la existencia de inequidades en el acceso a
 
 ## Preguntas de investigación
 
-Las preguntas a las que se enfrenta esta investigación son: ¿Cuáles son las zonas que muestran mayores correlaciones negativas entre las variables sociales y la cobertura de copas o el acceso a zonas verdes? ¿Es igual tener acceso a un parque pequeño que a uno grande?¿Es el acceso a servicios del AU y EV una característica local de los sectores geográficos o se extienden esos beneficios a agrupaciones de sectores urbanos vecinos? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?
+Las preguntas a las que se enfrenta esta investigación son: ¿Cuáles son las zonas que muestran mayores correlaciones negativas entre las variables sociales y la cobertura de copa o el acceso a zonas verdes? ¿Es igual tener acceso a un parque pequeño que a uno grande?¿Es el acceso a servicios del AU y EV una característica local de los sectores geográficos o se extienden esos beneficios a agrupaciones de sectores urbanos vecinos? ¿Qué tipo de modelos son los más apropiados para capturar la dependencia espacial en los datos, si es que esta existe?
 
 ## Hipótesis
 

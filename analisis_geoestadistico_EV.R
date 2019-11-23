@@ -248,94 +248,94 @@ hist(sd.areas_ep$residuals)
 # diagPlts[1:3]
 # grid.arrange(grobs=diagPlts, ncol =2)
 
-diagPltsSAR<-diagPlotlaglm(sar.mod.sqrt.area_copa.wq)
-diagPltsSEM<-diagPlotlaglm(sem.mod.sqrt.area_copa.wq)
-diagPltsSD<-diagPlotlaglm(sd.mod.sqrt.area_copa.wq)
-diagPltsSLX<-diagPlotlaglm(slx.mod.sqrt.area_copa.wq)
-diagPltsOLS<-diagPlotlaglm(lm.mod.area_copa)
+# diagPltsSAR<-diagPlotlaglm(sar.mod.sqrt.area_copa.wq)
+# diagPltsSEM<-diagPlotlaglm(sem.mod.sqrt.area_copa.wq)
+# diagPltsSD<-diagPlotlaglm(sd.mod.sqrt.area_copa.wq)
+# diagPltsSLX<-diagPlotlaglm(slx.mod.sqrt.area_copa.wq)
+# diagPltsOLS<-diagPlotlaglm(lm.mod.area_copa)
 
 
-diagPlotsAll<-arrangeGrob(grobs = c(diagPltsOLS,diagPltsSLX,diagPltsSD,diagPltsSEM,diagPltsSAR),ncol = 3, nrow = 5)
-grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
-              arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
-              arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
-              arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM"),
-              arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
-
-
-
-
-moran.plot(sar.mod.sqrt.area_copa.wq$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
-
-moran.plot(sem.mod.sqrt.area_copa.wq$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
-
-moran.plot(slx.mod.sqrt.area_copa.wq$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
-moran.plot(sd.mod.sqrt.area_copa.wq$residuals, 
-           listw=W_queen, 
-           zero.policy = TRUE,
-           pch=16, col="black",
-           cex=.5, quiet=T, 
-           labels=as.character(regresion.arboles$SETU_CCDGO),
-           xlab="residuos sar", 
-           ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
-
-
-resmodelos<-regresion.arboles %>% select(SETU_CCDGO) %>% 
-  mutate(SETU_CCDGO = as.character(SETU_CCDGO))%>%
-  mutate(ols.resid=lm.mod.area_copa$residuals) %>%
-  mutate(slx.resid =slx.mod.sqrt.area_copa.wq$residuals)%>%
-  mutate(sar.resid =sar.mod.sqrt.area_copa.wq$residuals)%>%
-  mutate(sem.resid =sem.mod.sqrt.area_copa.wq$residuals)%>%
-  mutate(sd.resid =sd.mod.sqrt.area_copa.wq$residual )
+# diagPlotsAll<-arrangeGrob(grobs = c(diagPltsOLS,diagPltsSLX,diagPltsSD,diagPltsSEM,diagPltsSAR),ncol = 3, nrow = 5)
+# grid.arrange (arrangeGrob(grobs = diagPltsOLS, ncol = 3,left ="OLS"),
+#               arrangeGrob(grobs = diagPltsSLX, ncol = 3,left = "SLX"),
+#               arrangeGrob(grobs = diagPltsSAR, ncol = 3,left =  "SAR"),
+#               arrangeGrob(grobs = diagPltsSEM, ncol = 3,left = "SEM"),
+#               arrangeGrob(grobs = diagPltsSD,ncol = 3, left = "SD"),nrow =5)
 
 
 
 
-respls<-plots_map_gradient0_df(resmodelos,names(resmodelos)[-1])
-grid.arrange(grobs=respls[c(1,5)],top = "Mapa de residuos de los modelos", nrow =1)
+# moran.plot(sar.mod.sqrt.area_copa.wq$residuals, 
+#            listw=W_queen, 
+#            zero.policy = TRUE,
+#            pch=16, col="black",
+#            cex=.5, quiet=T, 
+#            labels=as.character(regresion.arboles$SETU_CCDGO),
+#            xlab="residuos sar", 
+#            ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+# 
+# moran.plot(sem.mod.sqrt.area_copa.wq$residuals, 
+#            listw=W_queen, 
+#            zero.policy = TRUE,
+#            pch=16, col="black",
+#            cex=.5, quiet=T, 
+#            labels=as.character(regresion.arboles$SETU_CCDGO),
+#            xlab="residuos sar", 
+#            ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+# 
+# moran.plot(slx.mod.sqrt.area_copa.wq$residuals, 
+#            listw=W_queen, 
+#            zero.policy = TRUE,
+#            pch=16, col="black",
+#            cex=.5, quiet=T, 
+#            labels=as.character(regresion.arboles$SETU_CCDGO),
+#            xlab="residuos sar", 
+#            ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+# moran.plot(sd.mod.sqrt.area_copa.wq$residuals, 
+#            listw=W_queen, 
+#            zero.policy = TRUE,
+#            pch=16, col="black",
+#            cex=.5, quiet=T, 
+#            labels=as.character(regresion.arboles$SETU_CCDGO),
+#            xlab="residuos sar", 
+#            ylab="residuos sar (Spatial Lag)", main="Gráfico de Moran") 
+# 
+
+# resmodelos<-regresion.arboles %>% select(SETU_CCDGO) %>% 
+#   mutate(SETU_CCDGO = as.character(SETU_CCDGO))%>%
+#   mutate(ols.resid=lm.mod.area_copa$residuals) %>%
+#   mutate(slx.resid =slx.mod.sqrt.area_copa.wq$residuals)%>%
+#   mutate(sar.resid =sar.mod.sqrt.area_copa.wq$residuals)%>%
+#   mutate(sem.resid =sem.mod.sqrt.area_copa.wq$residuals)%>%
+#   mutate(sd.resid =sd.mod.sqrt.area_copa.wq$residual )
 
 
-resmodelos.long<-resmodelos %>% 
-  gather(key = modelo, value = valores, -SETU_CCDGO) 
-cuantiles<-stats::quantile(resmodelos.long$valores,probs =seq(0,1,0.2)) %>% round(.,digits = 3)
-resmodelos.long %<>%
-  mutate(residuos.qn=cut(valores,breaks = cuantiles)) %>% na.omit()
 
 
-su.f %>% dplyr::select(-area_su)  %>%
-  left_join(resmodelos.long,by = c("id"="SETU_CCDGO")) %>%
- filter(!is.na(modelo)) %>%
-  ggplot()+
- geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
-  geom_polygon(aes(x= long, y = lat, group = group, fill = residuos.qn))+
-  coord_equal()+
-  scale_fill_brewer(palette = "RdBu",
-                    guide = guide_legend(direction = "horizontal",
-                                         label.position = "bottom",
-                                         title.position = 'top',
-                                         nrow = 1))+
-  theme_void()+
-  facet_wrap(~modelo, nrow = 1)+
-  tema_lgnd_abajo()
-
+# respls<-plots_map_gradient0_df(resmodelos,names(resmodelos)[-1])
+# grid.arrange(grobs=respls[c(1,5)],top = "Mapa de residuos de los modelos", nrow =1)
+# 
+# 
+# resmodelos.long<-resmodelos %>% 
+#   gather(key = modelo, value = valores, -SETU_CCDGO) 
+# cuantiles<-stats::quantile(resmodelos.long$valores,probs =seq(0,1,0.2)) %>% round(.,digits = 3)
+# resmodelos.long %<>%
+#   mutate(residuos.qn=cut(valores,breaks = cuantiles)) %>% na.omit()
+# 
+# 
+# su.f %>% dplyr::select(-area_su)  %>%
+#   left_join(resmodelos.long,by = c("id"="SETU_CCDGO")) %>%
+#  filter(!is.na(modelo)) %>%
+#   ggplot()+
+#  geom_polygon(data = su.f, aes(x= long, y = lat, group = group), fill = "grey60")+
+#   geom_polygon(aes(x= long, y = lat, group = group, fill = residuos.qn))+
+#   coord_equal()+
+#   scale_fill_brewer(palette = "RdBu",
+#                     guide = guide_legend(direction = "horizontal",
+#                                          label.position = "bottom",
+#                                          title.position = 'top',
+#                                          nrow = 1))+
+#   theme_void()+
+#   facet_wrap(~modelo, nrow = 1)+
+#   tema_lgnd_abajo()
+# 
