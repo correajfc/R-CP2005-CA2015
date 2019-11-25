@@ -24,7 +24,7 @@ g1 <- OSMap+
   labs(
     # title ="Zona Urbana de Santiago de Cali", 
     x = "Long", y="Lat",
-    caption="Datos en grados decimales, sistema de coordenas WGS84\nDatos: IDESC"
+    caption="Datos en grados decimales, sistema de coordenas WGS84"
     )
 
 g2 <-ggplot(colombia_continental_f,aes(x=long,y=lat,group=group))+
@@ -174,11 +174,9 @@ El código y los datos están disponibles en el [repositorio de GitHub](https://
 
 #### Indicadores de beneficios del arbolado urbano
 
-Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales, la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010].
 
-En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
 
-```{r mapa-copa-dep,fig.asp=0.62, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa", out.width="70%"}
+```{r mapa-copa-dep,fig.asp=0.62, fig.cap="Sectores urbanos de las variables dependientes sobre cobertura de copa", out.width="80%"}
 su.f %>% dplyr::select(-area_su)  %>%
   left_join(dep.arboles.ntl.long,by = c("id"="SETU_CCDGO")) %>%
   filter(dep.arboles %in% dependientes.arboles) %>%
@@ -196,10 +194,13 @@ su.f %>% dplyr::select(-area_su)  %>%
                                            title.position = 'top',
                                            nrow = 1))+
   facet_wrap(~dep.arboles, nrow = 1)+
-  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1))+
-  labs(caption = "Datos:CA2015")
+  tema_lgnd_abajo(plot.caption=element_text(size=7, hjust = 1))
 
 ```
+
+Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales, la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010].
+
+En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
 
 #### Índices de acceso a espacios verdes
 
@@ -247,8 +248,8 @@ ggplot()+
         legend.text = element_text(size = 6),
         legend.title = element_text(size = 6))+
   ggsn::north(su.f, symbol = 3, scale = 0.1, location = "topleft") +
-  ggsn::scalebar(su.f, dist = 2, st.size = 2.5)+
-  labs(caption = "Fuente:IDESC, POT2014")
+  ggsn::scalebar(su.f, dist = 2, st.size = 2.5)
+
 ```
 
 ### Cálculo de métricas sobre la población
@@ -290,8 +291,7 @@ su.f %>% dplyr::select(-area_su)  %>%
                   strip.text = element_text(size = 6),
                   legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
-        )+
-  labs(caption = "Datos:CP2005")
+        )
 
 ```
 
@@ -322,8 +322,7 @@ su.f %>% dplyr::select(-area_su)  %>%
                   strip.text = element_text(size = 7),
                   legend.key.size = unit(3,units = "mm"),
         legend.title = element_text(size = 6)
-        )+
-  labs(caption = "Datos:CP2005")
+        )
 
 
 ```
@@ -348,7 +347,7 @@ pl_poblacion[[4]]$labels$fill <- reemplzar_nombres_vector(pl_poblacion[[4]]$labe
 
 
 grid.arrange(grobs =pl_poblacion, nrow =2,
-             bottom = textGrob( label = "Fuente:CP2005", 
+             bottom = textGrob( label = " ", 
                                 hjust = 1, x = 0.9,
                                 gp=gpar(fontsize=6))  
              )
@@ -387,8 +386,7 @@ ggplot()+
         legend.text = element_text(size = 6),
         legend.title = element_text(size = 6))+
   ggsn::north(su.f, symbol = 3, scale = 0.1, location = "topleft") +
-  ggsn::scalebar(su.f, dist = 2, st.size = 2.5)+
-  labs(caption = "Datos:IDESC")
+  ggsn::scalebar(su.f, dist = 2, st.size = 2.5)
   
 ```
 
@@ -396,7 +394,7 @@ ggplot()+
 
 Las variables incluidas en los modelos lineales deben cumplir una serie de condiciones deseables para ser elegidas como candidatas:
 
-- Mostrar una correlación moderada o fuerte^[En este trabajo se considera moderado a valores superiores y al rededor de 0.6 en los coeficientes de correlación. Aunque definir cualitativamente rangos de un coeficiente de correlación es arbitrario, es posible definirlos y usarlos con criterio. Se puede estar acuerdo que correlaciones menores a 0.1 indica una relación insignificante y que mayores 0.9 una muy fuerte, los valores intermedios son discutibles.] 
+- Mostrar una correlación moderada o fuerte^[En este trabajo se considera moderado a valores superiores y al rededor de 0.6 en los coeficientes de correlación. Aunque definir cualitativamente rangos de un coeficiente de correlación es arbitrario, es posible definirlos y usarlos con criterio. Se puede estar acuerdo que correlaciones menores a 0.1 indica una relación insignificante y que mayores 0.9 una muy fuerte, pero los valores intermedios son discutibles.] 
 - Las variables independientes o predictoras **no** deben estar fuertemente correlacionadas entre ellas.
 - Las observaciones deben ser **independientes**^[Significa que no debe existir relación espacial o temporal entre los diferentes sectores. Justamente esto se pone a prueba con los test estadísticos y los gráficos de diagnóstico sobre la distribución de los residuos de la regresión: se espera que dicha dependencia esté motivada por la vecindad de los sectores.]
 

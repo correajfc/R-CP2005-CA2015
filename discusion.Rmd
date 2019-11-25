@@ -42,7 +42,7 @@ Este tipo de desigualdades son una responsabilidad de los urbanizadores y de los
 
 
 
-```{r lisa-afro, fig.cap="Mapas LISA - Porcentaje población Afro"}
+```{r lisa-afro, fig.cap="Mapas LISA - Porcentaje población afrocolombiana"}
 # pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.area_copa",W_queen, wname = "Wq",nrow =1)
 #   pintar_mapa_su_LISA_var(regresion.arboles,"sqrt.cobertura_copa.ap",W_queen, wname = "Wd",nrow =1)
   pintar_mapa_su_LISA_var(regresion.arboles,"afro.porcentaje",W_queen, wname = "Wd",nrow =1)
