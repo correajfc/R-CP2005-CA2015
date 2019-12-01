@@ -16,7 +16,7 @@ bookdown::pdf_book:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: none
-  pandoc_args: [ "--csl", "unigis-apa-62.csl" ]
+  pandoc_args: [ "--csl", "unigis-apa-63.csl" ]
   keep_tex: yes
 bookdown::word_document2: default
 bookdown::epub_book: default
