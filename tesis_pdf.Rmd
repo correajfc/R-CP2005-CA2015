@@ -4,7 +4,7 @@ output:
     fig_caption: yes
     number_sections: yes
 documentclass: book
-classoption: openany
+classoption: oneside, openany
 fontsize: 12pt
 linestretch: 1.5
 lof: false

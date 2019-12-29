@@ -56,6 +56,6 @@ source("analisis_geoestadistico_EV.R", echo = T)
 proc.time() - ptm
 save.image(file = "bck_201911.RData")
 
-# load("bck_201904.RData")
+# load("bck_201911.RData")
 
 

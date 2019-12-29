@@ -21,7 +21,7 @@ tema_lgnd_up<-function (...){
 tema_lgnd_abajo<-function (...){
   theme_void() +
     theme(
-      legend.text=element_text(size=6),
+      legend.text=element_text(size=5),
       legend.position = "bottom",
       legend.key.height = unit(2,"mm"),
       legend.direction = "horizontal",
@@ -47,7 +47,8 @@ tema_lgnd_derecha<-function (...){
 tema_lgnd_abajo_s<-function (...){
   theme_void() +
     theme(
-      legend.text=element_text(size=6),
+      legend.title = element_text(size=7),
+      legend.text=element_text(size=5),
       legend.position = "bottom",
       legend.key.height = unit(2,"mm"),
       legend.key.width = unit(5,"mm"),
@@ -585,7 +586,7 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
     mutate(quad_sig_05=localmoran_quad(s_var,lag_s_var, p , 0.05)) 
   coloresLisa<-brewer.pal(5, "RdBu")
   quad_moran = c("high-high","high-low" ,"not signif.", "low-high","low-low")
-  labels = c("h-h","h-l" ,"not signif.", "l-h","l-l")
+  labels = c("h-h","h-l" ,"no signif.", "l-h","l-l")
   
   # volverlas un factor ordenado para que coincida con los colores
   lmoran.df$quad_sig_05<-factor(lmoran.df$quad_sig_05, levels =quad_moran)
@@ -599,7 +600,7 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
     geom_polygon(color = "grey90", size = .05)  + 
     coord_equal() + 
     theme_void() + 
-    scale_fill_manual(values = coloresLisa, drop =FALSE,
+    scale_fill_manual(name = "Cuadrantes",values = coloresLisa, drop =FALSE,na.value = "grey",
                       labels = labels,
                       guide = guide_legend(direction = "horizontal",
                                            label.position = "bottom",
@@ -617,8 +618,9 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
                  color = "grey90", size = .05)  + 
     coord_equal() + 
     theme_void()+ 
-    scale_fill_brewer(name ="P-val",palette = "Greens", drop=FALSE, direction = -1,
+    scale_fill_brewer(name ="P-valor",palette = "Greens", drop=FALSE, direction = -1,
                       labels = signf_levels_label,
+                      na.value = "grey",
                       guide = guide_legend(direction = "horizontal",
                                            label.position = "bottom",
                                            title.position = 'top',
@@ -631,7 +633,8 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
     geom_polygon(aes_string(x= "long", y = "lat", group = "group", fill = "Z.Ii"),
                  color = "grey90", size = .05)+
     coord_equal()+
-    scale_fill_gradient2(low = "firebrick1",mid ="white" ,high = "royalblue",
+    scale_fill_gradient2(name = "Moran Local Normalizado",na.value = "grey",
+                         low = "firebrick1",mid ="white" ,high = "royalblue",
       guide = guide_colorbar(
         direction = "horizontal",
         barheight = unit(2, units = "mm"),
@@ -644,7 +647,7 @@ pintar_mapa_su_LISA_var<-function(data,varname,W, wname= "W", ...){
       )
     )+
     theme_void()+
-    tema_lgnd_abajo()
+    tema_lgnd_abajo(legend.title = element_text(size=7))
   
   
   # title1<-grid::textGrob(paste0("Mapas LISA - ",varname," - ",wname))

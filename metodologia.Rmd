@@ -153,7 +153,7 @@ El diagrama de la figura \@ref(fig:flujograma) sintetiza el análisis propuesto,
 1. Contruir matrices de vencidad $W$ para incluir restricciones espaciales al modelo.
 1. Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresión lineal con dos diseños de matriz $W$. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño. 
 1. Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R^2^ y el criterio de Akaike.
-1. Graficar mapas de LISA para caraterizar los patrones de agrupación de las varobles del los modelos mejor ajustados.
+1. Graficar mapas de LISA para caraterizar los patrones de agrupación de las variables del los modelos mejor ajustados.
 
 
 
@@ -163,7 +163,7 @@ knitr::include_graphics("images/flujograma.png")
 
 ### Procesamiento de datos 
 
-El procesamiento de los datos se realizó principalmente en R [@R-base]. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. En el anexo \@ref(rinfo) se encuentra la información completa de la sesión de R. 
+El procesamiento de los datos se realizó principalmente en R [@R-base]. Se usó [QGIS](http://www.qgis.org/es/site/) para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías `rgdal` [@R-rgdal], `rgeos` [@R-rgeos] y `sp` [@R-sp]. En el apéndice \@ref(rinfo) se encuentra la información completa de la sesión de R. 
 
 
 El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico. 
@@ -331,7 +331,7 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 #### Características de las viviendas
 
-Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda según los tipos o como porcentaje de la cantidad de predios según su uso: vivienda, unidad económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura \@ref(fig:mapas-usopredios-cont).
+Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento^[Corresponden a las diferentes unidades que desempeña una función de interés público, que puede ser benéfico o docente] (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda según los tipos o como porcentaje de la cantidad de predios según su uso: vivienda, unidad económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura \@ref(fig:mapas-usopredios-cont)).
 
 ```{r mapas-usopredios-cont, fig.asp=1.2,out.width="80%",fig.cap="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)"}
 
@@ -368,7 +368,7 @@ Se establecieron criterios para la **exclusión** de datos para el análisis de 
 - sectores área privada mayor que el 90 % del área del sector
 - sectores con una porción mayor al 60% por fuera del perímetro urbano
 
-Los sectores excluidos del análisis se muestran en los figura \@ref(fig:mapa-excluidos). 
+Los sectores excluidos del análisis se muestran en la figura \@ref(fig:mapa-excluidos). 
 
 ```{r mapa-excluidos, fig.cap="Sectores excluidos", fig.asp=1, out.width="60%"}
 ggplot()+

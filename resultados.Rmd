@@ -764,7 +764,7 @@ sd.sm
 
 
 
-Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copaap-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copaap-wq)) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con $W_d$. Todos los modelos mejoran las métricas de error con respecto del OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura \@ref(fig:diag-model-espaciales-copaap)).   
+Las métricas de ajuste de los modelos con las matrices de vecindad $W_d$ (ver tabla \@ref(tab:tabla-comp-modelos-copaap-wd)) y $W_q$ (tabla \@ref(tab:tabla-comp-modelos-copaap-wq)) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con $W_d$. Todos los modelos mejoran las métricas de error con respecto al OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura \@ref(fig:diag-model-espaciales-copaap)).   
 
 Al comparar los resultados usando el desempeño en AIC, el mejor fue el SD con la matriz $W_d$.  $\rho$, el término autorregresivo, es de un valor alto y muy significativo para el modelo SD con $W_d$ (tabla \@ref(tab:cauto-sd-copaap-wd)). 
 
@@ -995,7 +995,7 @@ pintar_corrmatrix_XY(reemplzar_nombres_df(regresion.EV,df_nombres_variables),
 
 
 
-El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura \@ref(fig:tile-ev-fisica-pearson) y \@ref(fig:tile-ev-fisica-spearman) muestran que el área media de las manzanas (`área media de manzana`) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.
+El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. Las figuras \@ref(fig:tile-ev-fisica-pearson) y \@ref(fig:tile-ev-fisica-spearman) muestran que el área media de las manzanas (`área media de manzana`) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.
 
 ```{r tile-ev-fisica-pearson, fig.asp=0.65,fig.cap="Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU"}
 pintar_corrmatrix_XY(reemplzar_nombres_df(regresion.EV,df_nombres_variables),
@@ -1275,7 +1275,7 @@ Se analizó la autocorrelación de las variables dependientes para encontrar agr
 
 Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matriz $W_q$ captura mejor la autocorrelación de ambos indicadores. El indicador `razón área-distancia` exhibe un valor de autocorrelación mucho más alto que `área de EV [%]`. El cálculo del índice `razón área-distancia` en su construcción usa una distancia de radio de búsqueda de 1 kilómetro. En su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o *clusters* alrededor de ciertos sectores urbanos. Resulta pues interesante no sea $W_d$ la que capture mejor el agrupamiento.
 
-Los mapas LISA para ambos indicadores de acceso a EV usando la matriz $W_q$ muestran los grupos de sectores autocorrelacionados (figura \@ref(fig:mapas-lisa-areaep-wq) y \@ref(fig:mapas-lisa-areadist-wq)). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad.
+Los mapas LISA para ambos indicadores de acceso a EV usando la matriz $W_q$ muestran los grupos de sectores autocorrelacionados (figuras \@ref(fig:mapas-lisa-areaep-wq) y \@ref(fig:mapas-lisa-areadist-wq)). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad.
 Se aprecia que se forman *clusters* alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamientos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje. 
 
  
