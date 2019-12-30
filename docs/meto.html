@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-12-01">
+<meta name="date" content="2019-12-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -69,7 +69,7 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="resúmen.html"><a href="resúmen.html"><i class="fa fa-check"></i>Resúmen</a></li>
+<li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resumen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
@@ -326,7 +326,7 @@ Figura 3.3: Sectores urbanos y périmetro urbano de Santiago de Cali
 <li>Contruir matrices de vencidad <span class="math inline">\(W\)</span> para incluir restricciones espaciales al modelo.</li>
 <li>Probar autocorrelación espacial usando Moran’I en los residuos de los modelos de regresión lineal con dos diseños de matriz <span class="math inline">\(W\)</span>. Si la prueba muestra una correlación y un valor de significancia alta, se prueban modelos tipo SAR, SEM o SD para comparar su desempeño.</li>
 <li>Selección del modelo que mejor se ajusta usando métricas de error y de ajuste como R<sup>2</sup> y el criterio de Akaike.</li>
-<li>Graficar mapas de LISA para caraterizar los patrones de agrupación de las varobles del los modelos mejor ajustados.</li>
+<li>Graficar mapas de LISA para caraterizar los patrones de agrupación de las variables del los modelos mejor ajustados.</li>
 </ol>
 <div class="figure"><span id="fig:flujograma"></span>
 <img src="images/flujograma.png" alt="Diagrama de flujo de la metodología" width="100%" />
@@ -336,7 +336,7 @@ Figura 3.4: Diagrama de flujo de la metodología
 </div>
 <div id="procesamiento-de-datos" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Procesamiento de datos</h3>
-<p>El procesamiento de los datos se realizó principalmente en R <span class="citation">(R Core Team, <a href="referencias.html#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="referencias.html#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="referencias.html#ref-R-rgeos">2018</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="referencias.html#ref-R-sp">2018</a>)</span>. En el anexo <a href="rinfo.html#rinfo">A</a> se encuentra la información completa de la sesión de R.</p>
+<p>El procesamiento de los datos se realizó principalmente en R <span class="citation">(R Core Team, <a href="referencias.html#ref-R-base">2017</a>)</span>. Se usó <a href="http://www.qgis.org/es/site/">QGIS</a> para conectarse a los servicios WFS del IDESC y previsualizar las capas de información geográfica recolectada y la realización de algunos de los mapas detallados. Para cargar y manipular los datos espaciales se hizo uso de las librerías <code>rgdal</code> <span class="citation">(Bivand, Keitt, y Rowlingson, <a href="referencias.html#ref-R-rgdal">2017</a>)</span>, <code>rgeos</code> <span class="citation">(Bivand y Rundel, <a href="referencias.html#ref-R-rgeos">2018</a>)</span> y <code>sp</code> <span class="citation">(Pebesma y Bivand, <a href="referencias.html#ref-R-sp">2018</a>)</span>. En el apéndice <a href="rinfo.html#rinfo">A</a> se encuentra la información completa de la sesión de R.</p>
 <p>El código que implementa los análisis está dividido en archivos para facilitar su lectura, cada uno de los cuales se encargan de transformar los datos de las fuentes y construir estructuras de datos necesarias para realizar las regresiones, las gráficas y los análisis de tipo estadístico y geoestadístico.</p>
 <p>El código y los datos están disponibles en el <a href="https://github.com/correajfc/R-CP2005-CA2015">repositorio de GitHub</a> en <a href="https://github.com/correajfc/R-CP2005-CA2015" class="uri">https://github.com/correajfc/R-CP2005-CA2015</a>.</p>
 </div>
@@ -465,7 +465,7 @@ Figura 3.8: Mapas de las variables de población seleccionadas como porcentajes 
 </div>
 <div id="características-de-las-viviendas" class="section level4">
 <h4><span class="header-section-number">3.3.3.2</span> Características de las viviendas</h4>
-<p>Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda según los tipos o como porcentaje de la cantidad de predios según su uso: vivienda, unidad económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura <a href="meto.html#fig:mapas-usopredios-cont">3.9</a>.</p>
+<p>Además de las rasgos étnicos, condiciones de escolaridad y limitaciones de la población, el CP2005 tiene disponibles datos sobre el tipo de viviendas (casa, apartamento, tipo cuarto, casa indígena, otros), y el uso habitacional, comercial y la cantidad de lugares especiales de alojamiento<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> (LEA) dado a los predios. La vocación comercial o residencial de un barrio puede ser un factor en el desarrollo del arbolado urbano o de las disposiciones urbanísticas de la ciudad en relación a EVs, ya sea por las condiciones físicas como por la intervención de sus habitantes. Estas variables pueden también expresarse como porcentaje de la cantidad de predios de vivienda según los tipos o como porcentaje de la cantidad de predios según su uso: vivienda, unidad económica o LEA. La variable LEA presenta una distribución uniforme, por lo que se descarta para los análisis de regresión (ver los gráficos por sector urbano en la figura <a href="meto.html#fig:mapas-usopredios-cont">3.9</a>).</p>
 <div class="figure"><span id="fig:mapas-usopredios-cont"></span>
 <img src="tesis-unigis_files/figure-html/mapas-usopredios-cont-1.png" alt="Mapas de las variables sobre el tipo de uso de los predios como porcentaje de la cantidad de predios (escala contínua)" width="80%" />
 <p class="caption">
@@ -485,7 +485,7 @@ Figura 3.9: Mapas de las variables sobre el tipo de uso de los predios como porc
 <li>sectores área privada mayor que el 90 % del área del sector</li>
 <li>sectores con una porción mayor al 60% por fuera del perímetro urbano</li>
 </ul>
-<p>Los sectores excluidos del análisis se muestran en los figura <a href="meto.html#fig:mapa-excluidos">3.10</a>.</p>
+<p>Los sectores excluidos del análisis se muestran en la figura <a href="meto.html#fig:mapa-excluidos">3.10</a>.</p>
 <div class="figure"><span id="fig:mapa-excluidos"></span>
 <img src="tesis-unigis_files/figure-html/mapa-excluidos-1.png" alt="Sectores excluidos" width="60%" />
 <p class="caption">

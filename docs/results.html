@@ -26,7 +26,7 @@
 <meta name="author" content="Universidad de Salzburgo">
 
 
-<meta name="date" content="2019-12-01">
+<meta name="date" content="2019-12-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -69,7 +69,7 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agradecimientos</a></li>
-<li class="chapter" data-level="" data-path="resúmen.html"><a href="resúmen.html"><i class="fa fa-check"></i>Resúmen</a></li>
+<li class="chapter" data-level="" data-path="resumen.html"><a href="resumen.html"><i class="fa fa-check"></i>Resumen</a></li>
 <li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="" data-path="glosario.html"><a href="glosario.html"><i class="fa fa-check"></i>Glosario</a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introducción</a><ul>
@@ -1815,7 +1815,7 @@ p-valor
 </div>
 <div id="modelo-espacial-porcentaje-de-cobertura-de-área-de-copa" class="section level4">
 <h4><span class="header-section-number">4.1.3.4</span> Modelo espacial porcentaje de cobertura de área de copa</h4>
-<p>Las métricas de ajuste de los modelos con las matrices de vecindad <span class="math inline">\(W_d\)</span> (ver tabla <a href="results.html#tab:tabla-comp-modelos-copaap-wd">4.15</a>) y <span class="math inline">\(W_q\)</span> (tabla <a href="results.html#tab:tabla-comp-modelos-copaap-wq">4.14</a>) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con <span class="math inline">\(W_d\)</span>. Todos los modelos mejoran las métricas de error con respecto del OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura <a href="results.html#fig:diag-model-espaciales-copaap">4.15</a>).</p>
+<p>Las métricas de ajuste de los modelos con las matrices de vecindad <span class="math inline">\(W_d\)</span> (ver tabla <a href="results.html#tab:tabla-comp-modelos-copaap-wd">4.15</a>) y <span class="math inline">\(W_q\)</span> (tabla <a href="results.html#tab:tabla-comp-modelos-copaap-wq">4.14</a>) para el porcentaje de cobertura de copa muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos, excepto el SAR con <span class="math inline">\(W_d\)</span>. Todos los modelos mejoran las métricas de error con respecto al OLS y ninguno logra la normalidad en los residuos ni eliminar la heterocedasticidad como se aprecia en las gráficas diagnósticas (ver figura <a href="results.html#fig:diag-model-espaciales-copaap">4.15</a>).</p>
 <p>Al comparar los resultados usando el desempeño en AIC, el mejor fue el SD con la matriz <span class="math inline">\(W_d\)</span>. <span class="math inline">\(\rho\)</span>, el término autorregresivo, es de un valor alto y muy significativo para el modelo SD con <span class="math inline">\(W_d\)</span> (tabla <a href="results.html#tab:cauto-sd-copaap-wd">4.16</a>).</p>
 <p>El resultado del modelo SD confirma la significancia de la única variable independiente: porcentaje de personas con estudios superiores, con coeficiente positivo, identificándolo como un factores relacionado con alta proporción de área de copa en un SU (ver tabla <a href="results.html#tab:coef-sd-copaap">4.17</a>). Existen una reducción del valor del coeficiente con relación al modelo OLS.</p>
 <p>La variable de <strong>estudios superiores</strong> en la población refleja el patrón de agrupamiento espacial de la cobertura de copa pero es poco significativa como variable retardada, cuestión que pone dudas sobre si el SD proponga una interpretación acertada o diferente de un modelo autorregresivo puro (SAR).</p>
@@ -2374,7 +2374,7 @@ con estudios superiores [%]
 </tr>
 <tr>
 <td style="text-align:left;">
-lag.superior_postgrado.porcentaje
+estudios superiores [%] (retardada)
 </td>
 <td style="text-align:right;">
 -0.021
@@ -2444,7 +2444,7 @@ Figura 4.21: Coeficiente Pearson entre acceso a EV y variables de uso de los pre
 Figura 4.22: Coeficiente Spearman entre acceso a EV y variables de uso de los predios
 </p>
 </div>
-<p>El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. La figura <a href="results.html#fig:tile-ev-fisica-pearson">4.23</a> y <a href="results.html#fig:tile-ev-fisica-spearman">4.24</a> muestran que el área media de las manzanas (<code>área media de manzana</code>) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.</p>
+<p>El último bloque de variables indaga sobre las áreas y proporciones de las manzanas de cada sector censal y la vocación como pública o privada de los espacios dentro de un sector urbano. Las figuras <a href="results.html#fig:tile-ev-fisica-pearson">4.23</a> y <a href="results.html#fig:tile-ev-fisica-spearman">4.24</a> muestran que el área media de las manzanas (<code>área media de manzana</code>) de los sectores urbanos se relaciona de forma positiva con ambos índices de acceso, mucho más fuertemente que las variables poblacionales y de uso de predios. Aunque parece haber una fuerte correlación de los indicadores de acceso con las áreas privadas, públicas y del sector urbano, estas hacen parte de los cálculos que generan estos índices, produciendo en efecto ficticio en la correlación, razón por la que se incluyen en la modelación.</p>
 <div class="figure"><span id="fig:tile-ev-fisica-pearson"></span>
 <img src="tesis-unigis_files/figure-html/tile-ev-fisica-pearson-1.png" alt="Coeficiente Pearson entre acceso a EV y variables sobre aspectos físicos de las manzanas y SU" width="100%" />
 <p class="caption">
@@ -2814,7 +2814,7 @@ Figura 4.26: Gráficas diagnósticas para OLS de índice área-distancia
 <h4><span class="header-section-number">4.2.3.1</span> Autocorrelación variables dependientes</h4>
 <p>Se analizó la autocorrelación de las variables dependientes para encontrar agrupaciones existentes en los datos que pueden ser explicados por la estructura de vecindad. Los resultados de los test de Moran’I para ambas variables dependientes muestran que existen patrones de agrupamiento y puede rechazarse la hipótesis nula de que los procesos espaciales subyacentes son aleatorios (ver tablas <a href="results.html#tab:moran-areaep-w">4.21</a> y <a href="results.html#tab:moran-areadist-w">4.22</a>).</p>
 <p>Ambos diseños de matriz revelan presencia clara de autocorrelación espacial. La matriz <span class="math inline">\(W_q\)</span> captura mejor la autocorrelación de ambos indicadores. El indicador <code>razón área-distancia</code> exhibe un valor de autocorrelación mucho más alto que <code>área de EV [%]</code>. El cálculo del índice <code>razón área-distancia</code> en su construcción usa una distancia de radio de búsqueda de 1 kilómetro. En su definición el indicador está influenciado por sus vecinos por lo que se forman grupos o <em>clusters</em> alrededor de ciertos sectores urbanos. Resulta pues interesante no sea <span class="math inline">\(W_d\)</span> la que capture mejor el agrupamiento.</p>
-<p>Los mapas LISA para ambos indicadores de acceso a EV usando la matriz <span class="math inline">\(W_q\)</span> muestran los grupos de sectores autocorrelacionados (figura <a href="results.html#fig:mapas-lisa-areaep-wq">4.27</a> y <a href="results.html#fig:mapas-lisa-areadist-wq">4.28</a>). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad. Se aprecia que se forman <em>clusters</em> alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamientos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje.</p>
+<p>Los mapas LISA para ambos indicadores de acceso a EV usando la matriz <span class="math inline">\(W_q\)</span> muestran los grupos de sectores autocorrelacionados (figuras <a href="results.html#fig:mapas-lisa-areaep-wq">4.27</a> y <a href="results.html#fig:mapas-lisa-areadist-wq">4.28</a>). Los grupos formados muestran agrupaciones de alto acceso a EV en relación al resto de la ciudad. Se aprecia que se forman <em>clusters</em> alrededor de cuatro zonas en el caso del porcentaje de área de EV y dos para el indicador de relación áreas-distancia, coincidentes con el anterior. Esos sectores albergan equipamientos de ciudad como un cementerio de gran tamaño, las universidades y zonas conservadas de riberas de ríos. El grupo que se forma al oriente de la ciudad es donde se encuentra la laguna del Pondaje.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:moran-areaep-w">Tabla 4.21: </span>Test de Moran - Porcenatje de EV para <span class="math inline">\(W_q\)</span> y <span class="math inline">\(W_d\)</span>
@@ -3802,7 +3802,7 @@ con alguna limitación [%]
 </tr>
 <tr>
 <td style="text-align:left;">
-lag.unidad_economica.porcentaje
+uso de unidad económica [%] (retardada)
 </td>
 <td style="text-align:right;">
 -0.038
@@ -3819,7 +3819,7 @@ lag.unidad_economica.porcentaje
 </tr>
 <tr>
 <td style="text-align:left;">
-lag.area_media_manzana
+área media de manzana (retardada)
 </td>
 <td style="text-align:right;">
 0.694
@@ -3836,7 +3836,7 @@ lag.area_media_manzana
 </tr>
 <tr>
 <td style="text-align:left;">
-lag.con_alguna_limitacion.porcentaje
+con alguna limitación [%] (retardada)
 </td>
 <td style="text-align:right;">
 0.063
