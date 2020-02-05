@@ -8,6 +8,8 @@ Para lograrlo se hace uso de modelos de regresión espacial que capturan fenóme
 Los resultados muestran que existen inequidades explicadas por variables de estatus como el acceso a educación superior, que están además negativamente correlacionadas con el porcentaje de afrocolombianos en un sector censal urbano (SU). En relación al acceso a espacios verdes, no existe evidencia fuerte de que las variable de etnicidad, salud o estatus sean buenos predictores del acceso. Sin embargo, sí se encontró una alta concentración del área del EV disponible en muy pocos sectores de la ciudad. 
 
 
+**Palabras claves:** cobertura de copa, espacios verdes, justicia ambiental, regresión espacial, servicios ambientales, indicadores socioeconómicos.    
+
 
 # Abstract {-}
 
@@ -19,3 +21,6 @@ To achieve this, spatial regression models are used to capture grouping and disp
 
 
 The results show that there are inequities explained by status variables such as access to higher education, which are also negatively correlated with the percentage of Afro-Colombians in an urban census sector (SU). In relation to access to green spaces (EV), there is no strong evidence that the variables of ethnicity, health or status are good predictors of access. However, there was a high concentration of the EV area available in very few sectors of the city.
+
+
+**Keywords:** canopy cover, green spaces, environmental justice, spatial regression, environmental services, socioeconomic indicators.

@@ -37,7 +37,7 @@ knitr::write_bib(c(
 
 
 \pagenumbering{gobble}
-\includepdf[pages=1]{./incluir/Portada_oficial_Salzburg_2019.pdf}
+\includepdf[pages=1]{./incluir/Portada_oficial_Salzburg_2020.pdf}
 <!-- \maketitle -->
 
 

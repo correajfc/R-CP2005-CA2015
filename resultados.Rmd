@@ -104,6 +104,32 @@ Para la cobertura de copa la única variable significativa es `r indep.poblacion
 
 Para la siguientes fases se ignoraron las variables no significativas de los modelos lineales. 
 
+```{r best-model-au, eval=TRUE, echo=FALSE, results='hide'}
+
+#mejores modelos lineales 
+dependiente <- "log.area_copa"
+independientes  <- c("superior_postgrado",
+                     "densidad_poblacion",
+                     "cuarto.porcentaje",
+                     "area_ep")
+# max normalizado 
+var_names<-c(dependiente,names(regresion.arboles[,independientes]))
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+f <- paste(str_c(dependiente,".mxn"), "~", paste(str_c(independientes,".mxn"), collapse=" + "))
+lm.best.area_copa<-lm(f, data = regresion.arboles.mn)
+summary(lm.best.area_copa)
+
+dependiente <- "cobertura_copa.ap"
+independientes  <- c("superior_postgrado.porcentaje")
+# max normalizado 
+var_names<-c(dependiente,independientes)
+regresion.arboles.mn<-max_nomalization(regresion.arboles,var_names)
+f <- paste(str_c(dependiente,".mxn"), "~", paste(str_c(independientes,".mxn"), collapse=" + "))
+lm.best.cobertura.ap<-lm(f, data = regresion.arboles.mn)
+summary(lm.best.cobertura.ap)
+
+
+```
 
 
 ```{r code-lm-areacopa, eval=TRUE, echo=FALSE, results='hide'}
@@ -1571,7 +1597,7 @@ knitr::kable(format = formato_render, escape = F, booktabs = T,unname(t2), digit
 Las métricas de ajuste de los modelos de indicador área-distancia (ver tabla \@ref(tab:tabla-comp-modelos-areasdist)) muestran que los modelos espaciales logran eliminar la autocorrelación espacial global en los residuos. Todos los modelos mejoran las métricas de error respecto del OLS, en particular el *Nagelkerke*, equivalente al *adj-Rsquare*, que mide el nivel explicativo del modelo en la variabilidad de los datos, subiendo de $\simeq 0.17$ a $\simeq 0.74$. 
 
 
-Al comparar los resultados usando el desempeño en AIC se identificó al modelo SD con el mejor ajuste. El modelo SD logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\rho$ del término autorregresivos es muy alto y significativo (tabla \@ref(tab:cauto-sd-areasdist)), lo que sugiere que los efectos de las variables dependientes rezagadas so significativos. Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones (y se corrobora con las gráficas diagnósticas de la figura \@ref(fig:diag-model-areasdist-espaciales)). 
+Al comparar los resultados usando el desempeño en AIC se identificó al modelo SD con el mejor ajuste. El modelo SD logra eliminar la autocorrelación espacial global en los residuos. El coeficiente  $\rho$ del término autorregresivos es muy alto y significativo (tabla \@ref(tab:cauto-sd-areasdist)), lo que sugiere que los efectos de las variables dependientes rezagadas son significativos. Existen cambios y ajustes en los valores de los coeficientes con relación al modelo OLS, que dadas las mejoras en las métricas de ajuste hacen más confiables las estimaciones (y se corrobora con las gráficas diagnósticas de la figura \@ref(fig:diag-model-areasdist-espaciales)). 
 
 
 El resultado del modelo SD confirmó la significancia y efecto positivo pero bajo en el acceso a EV de contar con unidades económicas dentro del SU. Es significativo y fuerte en el acceso a EV estar al rededor de SUs con manzanas de área promedio grande. Por otro lado se desestima que exista una relación con la variable porcentaje personas con alguna limitación (ver tabla \@ref(tab:coef-sd-areasdist)). La escogencia del modelo SD se ajusta consistentemente con el propósito del indicador áreas-distancia de medir el acceso en un SU más allá de su límite geográfico.

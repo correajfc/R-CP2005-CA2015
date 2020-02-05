@@ -200,7 +200,7 @@ su.f %>% dplyr::select(-area_su)  %>%
 
 Entre los distintos indicadores desarrollados para capturar la extensión y distribución de los servicios ambientales, la cobertura de copas ha probado ser sensible y eficaz para cuantificar hasta qué punto los árboles y bosques están proporcionando servicios críticos a los residentes [@nowak_sustaining_2010].
 
-En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos) (ver figura \@ref(fig:mapa-copa-dep)).
+En este trabajo se usaron dos variantes de la cobertura de copa, una de orden global y otra local respectivamente:  el área de copa en metros^2^ (`area_copa`) y la cobertura de copa como porcentaje del área pública total (`cobertura_copa.ap`), conformada por la vías y calles más el área de espacio públicos (ver figura \@ref(fig:mapa-copa-dep)).
 
 #### Índices de acceso a espacios verdes
 

@@ -20,7 +20,7 @@ rmd_files:
   "referencias.Rmd"]
   latex: ["tesis_pdf.Rmd", 
   "intro.Rmd",
-  "revision_literatura.Rmd",
+  "revision_literatura_latex.Rmd",
   "metodologia.Rmd",
   "resultados.Rmd",
   "discusion.Rmd",
