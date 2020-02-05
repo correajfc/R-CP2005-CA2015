@@ -59,10 +59,11 @@
     \author{}
     \date{}
   
-\usepackage{float}
+
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage[table]{xcolor}
+\usepackage{array}
 \usepackage{amsthm}
 \usepackage{setspace}
 \usepackage[nottoc]{tocbibind}
@@ -71,6 +72,8 @@
 \raggedbottom
 \usepackage{pdfpages}
 \usepackage{float}
+\usepackage{pdflscape}
+
 
 
 \addto\captionsspanish{%
@@ -97,7 +100,7 @@
 \begin{document}
 % 
 \pagenumbering{gobble}
-\includepdf[pages=1]{./incluir/Portada_oficial_Salzburg_2019.pdf}
+\includepdf[pages=1]{./incluir/Portada_oficial_Salzburg_2020.pdf}
 
 \textbf{Compromiso de Ciencia}
 
@@ -107,6 +110,9 @@ trabajo. He citado todas las fuentes que he usado en mi tesis y en todos
 los casos he indicado su origen.
 
 \bigskip
+
+Cali - Colombia, enero de 2020
+
 \hrulefill 
 
 Lugar, Fecha \hfill Firma
@@ -160,6 +166,10 @@ estatus sean buenos predictores del acceso. Sin embargo, sí se encontró
 una alta concentración del área del EV disponible en muy pocos sectores
 de la ciudad.
 
+\textbf{Palabras claves:} cobertura de copa, espacios verdes, justicia
+ambiental, regresión espacial, servicios ambientales, indicadores
+socioeconómicos.
+
 \chapter*{Abstract}\label{abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
@@ -190,6 +200,9 @@ In relation to access to green spaces (EV), there is no strong evidence
 that the variables of ethnicity, health or status are good predictors of
 access. However, there was a high concentration of the EV area available
 in very few sectors of the city.
+
+\textbf{Keywords:} canopy cover, green spaces, environmental justice,
+spatial regression, environmental services, socioeconomic indicators.
 
 \setstretch{1.5}
 
@@ -588,169 +601,6 @@ usadas las resume Gómez-Baggethun y Barton
 (\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013}) en una
 tabla que se reproduce a continuación (ver tabla \ref{tab:clasf-SerAm}).
 
-\begin{longtable}[]{@{}llll@{}}
-\caption{\label{tab:clasf-SerAm} Clasificación de servicios ecosistémicos
-importantes en zonas urbanas y funciones y componentes subyacentes del
-ecosistema.}\tabularnewline
-\toprule
-\begin{minipage}[b]{0.26\columnwidth}\raggedright\strut
-Funciones y componentes\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
-Servicio Ecosistémico\strut
-\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
-Ejemplo\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
-Ejemplo de indicadores/proxies\strut
-\end{minipage}\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-\begin{minipage}[b]{0.26\columnwidth}\raggedright\strut
-Funciones y componentes\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
-Servicio Ecosistémico\strut
-\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright\strut
-Ejemplo\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
-Ejemplo de indicadores/proxies\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Conversión de energía en plantas comestibles a través de la
-fotosíntesis\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Suministro de alimentos\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Hortalizas producidas por lotes urbanos y áreas periurbanas\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Producción de alimentos {[}toneladas/año{]}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Percolación y regulación de la escorrentía y la descarga del río\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Regulación del caudal de agua y mitigación de escorrentía\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-El suelo y la vegetación percolan el agua durante eventos de
-precipitación intensa y/o prolongada\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Capacidad de infiltración del suelo; {[}\%{]} Sellado con respecto a la
-superficie permeable {[}ha{]}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Fotosíntesis, sombreado y evapotranspiración\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Regulación urbana de la temperatura\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Los árboles y otra vegetación urbana proporcionan sombra, crean humedad
-y bloquean el viento\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Índice de área foliar; Disminución de la temperatura {[}°C{]} por
-cobertura arbórea{[}m\textsuperscript{2}{]} en parcelas cubierta de
-árboles\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Absorción de ondas sonoras por la vegetación y el agua\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Reducción de ruido\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Absorción de ondas sonoras por barreras vegetales, especialmente
-vegetación espesa\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Superficie de la hoja {[}m\textsuperscript{2}{]} y distancia a las
-carreteras {[}m{]}; Reducción de ruido por unidad de vegetación
-{[}dBA/m{]}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Filtración y fijación de gases y partículas\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Purificación de aire\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Eliminación y fijación de contaminantes por la vegetación urbana en
-hojas, tallos y raíces\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-O\textsubscript{3}, SO\textsubscript{2}, NO\textsubscript{2}, CO y
-PM\textsubscript{10} {[}\(\mu\)m{]} removido en {[}toneladas/año{]}
-multiplicado por la cobertura arbórea (m\textsuperscript{2})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Barrera física y absorción en energía cinética\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Moderación de los extremos ambientales\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Tormentas, inundaciones y amortiguación de olas por barreras vegetales;
-Absorción de calor durante olas de calor severas\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Cubrir la densidad de las barreras de vegetación que separan las áreas
-construidas del mar\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Eliminación o descomposición de nutrientes xénicos\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Tratamiento de desechos\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Filtración de efluentes y fijación de nutrientes por humedales
-urbanos\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-P, K, Mg y Ca en mg\(\cdot\)kg\textsuperscript{-1} en comparación con
-las normas de calidad del suelo y del agua\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Secuestro y fijación de carbono en la fotosíntesis\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Regulación climática\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Secuestro y almacenamiento de carbono por la biomasa de arbustos y
-árboles urbanos\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Secuestro de CO\textsubscript{2} por árboles (carbono multiplicado por
-3.67 para convertir a CO\textsubscript{2})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Movimiento de los gametos florales por la biota\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Polinización y dispersión de semillas\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-El ecosistema urbano provee hábitat para aves, insectos y
-polinizadores\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Diversidad de especies y abundancia de aves y abejorros\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Ecosistemas con valores recreativos y educativos\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Recreación y desarrollo cognitivo\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-Los parques urbanos ofrecen múltiples oportunidades para la recreación,
-la meditación y la pedagogía\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Superficie de los espacios públicos verdes {[}ha/habitante (o cada 1000
-habitantes){]}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-Disposición del hábitat para las especies animales\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Avistamiento de animales\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-El espacio verde urbano proporciona un hábitat para las aves y otros
-animales a los que les gusta ver\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Abundancia de aves, mariposas y otros animales valorados por sus
-atributos estéticos\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-Fuente: (Gómez-Baggethun y Barton,
-\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
 Existen diferentes perspectivas para la evaluación de los servicios
 ecosistémicos. En razón de ellos se crean diferentes indicadores,
 métodos estadísticos y metodologías para capturar de forma directa o
@@ -790,6 +640,39 @@ habitantes p.e el modelo UFORE (Nowak y Crane,
 \protect\hyperlink{ref-mcpherson1992accounting}{1992}), y que permiten
 tomar acciones específicas sobre el tipo de vegetación y su
 distribución.
+
+
+
+
+\begin{landscape}\begin{table}[t]
+
+\caption{\label{tab:clasf-SerAm}Clasificación de servicios ecosistémicos importantes en zonas urbanas y funciones y componentes subyacentes del ecosistema}
+\centering
+\fontsize{10}{12}\selectfont
+\begin{tabular}{>{\raggedright\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{4.5cm}>{\raggedright\arraybackslash}p{6cm}>{\raggedright\arraybackslash}p{7cm}}
+\toprule
+Funciones y componentes & Servicio Ecosistémico & Ejemplo & Ejemplo de indicadores/proxies\\
+\midrule
+Conversión de energía en plantas comestibles a través de la fotosíntesis & Suministro de alimentos & Hortalizas producidas por lotes urbanos y áreas periurbanas & Producción de alimentos [toneladas/año]\\
+Percolación y regulación de la escorrentía y la descarga del río & Regulación del caudal de agua y mitigación de escorrentía & El suelo y la vegetación percolan el agua durante eventos de precipitación intensa y/o prolongada & Capacidad de infiltración del suelo; [\%] Sellado con respecto a la superficie permeable [ha]\\
+Fotosíntesis, sombreado y evapotranspiración & Regulación urbana de la temperatura & Los árboles y otra vegetación urbana proporcionan sombra, crean humedad y bloquean el viento & Índice de área foliar; Disminución de la temperatura [°C] por cobertura arbórea[m$^2$] en parcelas cubierta de árboles\\
+Absorción de ondas sonoras por la vegetación y el agua & Reducción de ruido & Absorción de ondas sonoras por barreras vegetales, especialmente vegetación espesa & Superficie de la hoja [m$^2$] y distancia a las carreteras [m]; Reducción de ruido por unidad de vegetación [dBA/m]\\
+Filtración y fijación de gases y partículas & Purificación de aire & Eliminación y fijación de contaminantes por la vegetación urbana en hojas, tallos y raíces & O$_3$, SO$_2$, NO$_2$, CO y PM$_{10}$ [$\mu$m] removido en [toneladas/año] multiplicado por la cobertura arbórea (m$^2$)\\
+\addlinespace
+Barrera física y absorción en energía cinética & Moderación de los extremos ambientales & Tormentas, inundaciones y amortiguación de olas por barreras vegetales; Absorción de calor durante olas de calor severas & Cubrir la densidad de las barreras de vegetación que separan las áreas construidas del mar\\
+Eliminación o descomposición de nutrientes xénicos & Tratamiento de desechos & Filtración de efluentes y fijación de nutrientes por humedales urbanos & P, K, Mg y Ca en mg$\cdot$kg$^{-1}$ en comparación con las normas de calidad del suelo y del agua\\
+Secuestro y fijación de carbono en la fotosíntesis & Regulación climática & Secuestro y almacenamiento de carbono por la biomasa de arbustos y árboles urbanos & Secuestro de CO$_2$ por árboles (carbono multiplicado por 3.67 para convertir a CO$_2$)\\
+Movimiento de los gametos florales por la biota & Polinización y dispersión de semillas & El ecosistema urbano provee hábitat para aves, insectos y polinizadores & Diversidad de especies y abundancia de aves y abejorros\\
+Ecosistemas con valores recreativos y educativos & Recreación y desarrollo cognitivo & Los parques urbanos ofrecen múltiples oportunidades para la recreación, la meditación y la pedagogía & Superficie de los espacios públicos verdes [ha/habitante (o cada 1000 habitantes)]\\
+\addlinespace
+Disposición del hábitat para las especies animales & Avistamiento de animales & El espacio verde urbano proporciona un hábitat para las aves y otros animales a los que les gusta ver & Abundancia de aves, mariposas y otros animales valorados por sus atributos estéticos\\
+\bottomrule
+\multicolumn{4}{l}{\textit{Fuente}}\\
+\multicolumn{4}{l}{Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})}\\
+\end{tabular}
+\end{table}
+\end{landscape}
 
 Sin embargo es importante tener en cuenta que este tipo de análisis
 pueden generar incentivos indeseables para la conversión de ecosistemas
@@ -1025,140 +908,71 @@ La tabla \ref{tab:ind-AU} resume los indicadores para cuantificar
 servicios/beneficios y estado de los ecosistemas arbóreos usados en la
 literatura revisada.
 
-\begin{longtable}[]{@{}rr@{}}
-\caption{\label{tab:ind-AU} Métricas para caracterizar servicios del
-AU}\tabularnewline
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{table}[t]
+
+\caption{\label{tab:ind-AU}Métricas para caracterizar servicios del AU}
+\centering
+\fontsize{11}{13}\selectfont
+\begin{tabular}{>{\raggedleft\arraybackslash}p{8cm}>{\raggedleft\arraybackslash}p{6cm}rr}
 \toprule
-\begin{minipage}[b]{0.57\columnwidth}\raggedleft\strut
-Métrica\strut
-\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedleft\strut
-Referencia\strut
-\end{minipage}\tabularnewline
+Métrica & Referencia\\
 \midrule
-\endfirsthead
-\toprule
-\begin{minipage}[b]{0.57\columnwidth}\raggedleft\strut
-Métrica\strut
-\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedleft\strut
-Referencia\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Producción de alimentos {[}toneladas/año{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Gómez-Baggethun y Barton
-(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Índice de área foliar\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Gómez-Baggethun y Barton
-(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Disminución de la temperatura {[}°C{]} por cobertura
-arbórea{[}m\textsuperscript{2}{]} en parcelas/sitios cubiertas de
-árboles\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Gómez-Baggethun y Barton
-(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Superficie de la hoja {[}m\textsuperscript{2}{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Gómez-Baggethun y Barton
-(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-O\textsubscript{3}, SO\textsubscript{2}, NO\textsubscript{2}, CO y
-PM\textsubscript{10} \(\mu\)m removido en {[}toneladas/año{]}
-multiplicado por la cobertura arbórea (m\textsuperscript{2})\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Gómez-Baggethun y Barton
-(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Secuestro de CO\textsubscript{2} por árbol (carbono multiplicado por
-3.67 para convertir a CO2)\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Gómez-Baggethun y Barton
-(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Abundancia (por especie) {[}individuos{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Alanís et~al.
-(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Densidad {[}individuos/m\textsuperscript{2}{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Nowak et~al. (\protect\hyperlink{ref-nowak_sustaining_2010}{2010})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Cobertura de copa de árbol por
-persona{[}m\textsuperscript{2}/persona{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Nowak et~al. (\protect\hyperlink{ref-nowak_sustaining_2010}{2010})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Cobertura de copa de árbol{[}m\textsuperscript{2}{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-porcentaje de cobertura de copa de árbol en un área\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Nowak et~al. (\protect\hyperlink{ref-nowak_sustaining_2010}{2010})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Dominancia de una especie en función a la cobertura de copa
-{[}m\textsuperscript{2}/ha{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Alanís et~al.
-(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Dominancia relativa de una especie respecto a la dominancia total\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Alanís et~al.
-(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Frecuencia absoluta de una especie (porcentaje de presencia en los
-sitios)\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Alanís et~al.
-(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Abundancia relativa de una especie respecto a la abundancia total en el
-área de estudio\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Alanís et~al.
-(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Árboles por habitante\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Alcaldía de Cali (\protect\hyperlink{ref-pot2014cali}{2014})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-índice de cobertura de copa de árbol alrededor de un punto de
-muestreo\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Zhou y Kim (\protect\hyperlink{ref-zhou_social_2013}{2013})\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.57\columnwidth}\raggedleft\strut
-Porcentaje de cobertura de copa de árbol en servidumbres y espacios
-públicos\strut
-\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedleft\strut
-Landry y Chakraborty
-(\protect\hyperlink{ref-landry_street_2009}{2009})\strut
-\end{minipage}\tabularnewline
+Producción de alimentos [toneladas/año] & Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\\
+Índice de área foliar & Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\\
+Disminución de la temperatura [°C] por cobertura arbórea[m$^2$] en parcelas/sitios cubiertas de árboles & Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\\
+Superficie de la hoja [m$^2$] & Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\\
+O$_3$, SO$_2$, NO$_2$, CO y PM$_{10}$ $\mu$m removido en [toneladas/año] multiplicado por la cobertura arbórea (m$^2$) & Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\\
+\addlinespace
+Secuestro de CO$_2$ por árbol (carbono multiplicado por 3.67 para convertir a CO$_2$) & Gómez-Baggethun y Barton
+(\protect\hyperlink{ref-gomez-baggethun_classifying_2013}{2013})\\
+Abundancia (por especie) [individuos] & Alanís et~al.
+(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\\
+Densidad [individuos/m$^2$] & Nowak et~al.
+(\protect\hyperlink{ref-nowak_sustaining_2010}{2010})\\
+Cobertura de copa de árbol por persona[m$^2$/persona] & Nowak et~al.
+(\protect\hyperlink{ref-nowak_sustaining_2010}{2010})\\
+Cobertura de copa de árbol[m$^2$] & \\
+\addlinespace
+Porcentaje de cobertura de copa de árbol en un área & Nowak et~al.
+(\protect\hyperlink{ref-nowak_sustaining_2010}{2010})\\
+Dominancia de una especie en función a la cobertura de copa [m$^2$/ha] & Alanís et~al.
+(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\\
+Dominancia relativa de una especie respecto a la dominancia total & Alanís et~al.
+(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\\
+Frecuencia absoluta de una especie (porcentaje de presencia en los sitios) & Alanís et~al.
+(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\\
+Abundancia relativa de una especie respecto a la abundancia total en el área de estudio & Alanís et~al.
+(\protect\hyperlink{ref-alanis_estructura_2014}{2014})\\
+\addlinespace
+Árboles por habitante & Alcaldía de Cali
+(\protect\hyperlink{ref-pot2014cali}{2014})\\
+índice de cobertura de copa de árbol alrededor de un punto de muestreo & Zhou y Kim
+(\protect\hyperlink{ref-zhou_social_2013}{2013})\\
+Porcentaje de cobertura de copa de árbol en servidumbres y espacios públicos & Landry y Chakraborty
+(\protect\hyperlink{ref-landry_street_2009}{2009})\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
 En cuanto a los espacios verdes se valoran típicamente los aspectos
 geométricos y el acceso. Los aspectos físicos se caracterizan con
@@ -1588,36 +1402,6 @@ SD,ecuación \eqref{eq:sd}). Todas estas aproximaciones introducen una
 matriz de \(W_{n\times n}\), donde \(n\) es el número de sitios, que
 captura la influencia de las variables en relación con su proximidad.
 
-Esto significa que se propone \emph{a priori} una relación espacial al
-dar estructura a \(W\), por ejemplo usando solo valores de 1 (vecino) y
-0 (no vecino) a las unidades espaciales contiguas o para expresar una
-relación global usando una métrica de distancia en los valores de la
-matriz \(W\), por ejemplo \(w_{ij}= 1/d_{ij}\) donde \(d_{ij}\) es la
-distancia euclidiana entre los centroides de los sitios \(i\) y \(j\).
-La idea es que los vecinos más cercanos influencian los fenómenos en la
-unidad \(i\), basados en la primera ley de la geografía o Ley de
-Tobler\footnote{``Todas las cosas están relacionadas entre sí, pero las
-  cosas más próximas en el espacio tienen una relación mayor que las
-  distantes.''} (Tobler,
-\protect\hyperlink{ref-tobler1970computer}{1970}). Este es un supuesto
-fuerte, y debe ser coherente con el fenómeno y los datos que lo
-representan. Con la matriz \(W\) se calcula el coeficiente de Moran'I
-(Moran, \protect\hyperlink{ref-moran1950notes}{1950}), que se usa para
-probar una asociación global entre una variable y su posición en el
-plano. Si los residuos \(e_i\) muestran una asociación fuerte con la
-estructura de \(W\) en la prueba de Moran'I, se sugiere usar alguno de
-los modelos espaciales (SAR,SLX,SEM o SD), pues esto significa que no se
-puede confiar en los coeficientes estimados por la regresión lineal. Se
-aduce que \(W\) puede ayudar a explicar el proceso que se está
-modelando. De lo contrario es mejor usar un modelo lineal u otra
-técnica. Anselin (\protect\hyperlink{ref-anselin_under_2002}{2002}),
-Páez y Scott (\protect\hyperlink{ref-paez_spatial_2005}{2005}) y
-Kissling y Carl (\protect\hyperlink{ref-kissling_spatial_2008}{2008})
-hacen una revisión de los procesos espaciales, sus supuesto y los
-criterios de ajuste como errores cuadráticos y criterio de información
-de Akaike para la selección de un modelo y diseño bien formulado y
-ajustado.
-
 \textbf{Modelo espacial autoregresivo (SAR)}
 
 \begin{equation}
@@ -1646,6 +1430,38 @@ Y=X\mathbf{\beta}+WX\mathbf{\lambda}+e
 Y=X\mathbf{\beta}+\mathbf{\rho}WY+WX\mathbf{\lambda}+e
 \label{eq:sd}
 \end{equation}
+
+Esto significa que se propone \emph{a priori} una relación espacial al
+dar estructura a \(W\), por ejemplo usando solo valores de 1 (vecino) y
+0 (no vecino) a las unidades espaciales contiguas o para expresar una
+relación global usando una métrica de distancia en los valores de la
+matriz \(W\), por ejemplo \(w_{ij}= 1/d_{ij}\) donde \(d_{ij}\) es la
+distancia euclidiana entre los centroides de los sitios \(i\) y \(j\).
+La idea es que los vecinos más cercanos influencian los fenómenos en la
+unidad \(i\), basados en la primera ley de la geografía o Ley de
+Tobler\footnote{``Todas las cosas están relacionadas entre sí, pero las
+  cosas más próximas en el espacio tienen una relación mayor que las
+  distantes.''} (Tobler,
+\protect\hyperlink{ref-tobler1970computer}{1970}). Este es un supuesto
+fuerte, y debe ser coherente con el fenómeno y los datos que lo
+representan.
+
+Con la matriz \(W\) se calcula el coeficiente de Moran'I (Moran,
+\protect\hyperlink{ref-moran1950notes}{1950}), que se usa para probar
+una asociación global entre una variable y su posición en el plano. Si
+los residuos \(e_i\) muestran una asociación fuerte con la estructura de
+\(W\) en la prueba de Moran'I, se sugiere usar alguno de los modelos
+espaciales (SAR,SLX,SEM o SD), pues esto significa que no se puede
+confiar en los coeficientes estimados por la regresión lineal. Se aduce
+que \(W\) puede ayudar a explicar el proceso que se está modelando. De
+lo contrario es mejor usar un modelo lineal u otra técnica.
+
+Anselin (\protect\hyperlink{ref-anselin_under_2002}{2002}), Páez y Scott
+(\protect\hyperlink{ref-paez_spatial_2005}{2005}) y Kissling y Carl
+(\protect\hyperlink{ref-kissling_spatial_2008}{2008}) hacen una revisión
+de los procesos espaciales, sus supuesto y los criterios de ajuste como
+errores cuadráticos y criterio de información de Akaike para la
+selección de un modelo y diseño bien formulado y ajustado.
 
 Estudios como el de Landry y Chakraborty
 (\protect\hyperlink{ref-landry_street_2009}{2009}), Zhou y Kim
@@ -2151,7 +1967,7 @@ En este trabajo se usaron dos variantes de la cobertura de copa, una de
 orden global y otra local respectivamente: el área de copa en
 metros\textsuperscript{2} (\texttt{area\_copa}) y la cobertura de copa
 como porcentaje del área pública total (\texttt{cobertura\_copa.ap}),
-conformada por la vías y calles más el área de espacio públicos) (ver
+conformada por la vías y calles más el área de espacio públicos (ver
 figura \ref{fig:mapa-copa-dep}).
 
 \subsubsection{Índices de acceso a espacios
@@ -4692,39 +4508,39 @@ remote sensing. \emph{Urban forestry \& urban greening}, \emph{12}(1),
 ## [40] rgdal_1.2-16       sp_1.3-1          
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] colorspace_1.3-2    rjson_0.2.15        deldir_0.1-14      
-##  [4] class_7.3-14        rio_0.5.10          rstudioapi_0.8     
-##  [7] ggsn_0.4.0          audio_0.1-5         gh_1.0.1           
-## [10] prodlim_2018.04.18  lubridate_1.7.1     xml2_1.2.0         
-## [13] codetools_0.2-15    splines_3.3.3       jsonlite_1.5       
-## [16] rJava_0.9-10        png_0.1-7           shiny_1.2.0        
-## [19] mapproj_1.2-5       httr_1.3.1          backports_1.1.2    
-## [22] assertthat_0.2.0    lazyeval_0.2.1      cli_1.0.1          
-## [25] beepr_1.3           later_0.7.5         prettyunits_1.0.2  
-## [28] htmltools_0.3.6     tools_3.3.3         coda_0.19-2        
-## [31] gtable_0.2.0        maps_3.2.0          gmodels_2.18.1     
-## [34] tinytex_0.16        Rcpp_1.0.0          cellranger_1.1.0   
-## [37] gdata_2.18.0        nlme_3.1-131        timeDate_3043.102  
-## [40] xfun_0.6            gower_0.1.2         openxlsx_4.1.0     
-## [43] rvest_0.3.2         mime_0.6            gtools_3.8.1       
-## [46] goftest_1.1-1       LearnBayes_2.15.1   MASS_7.3-45        
-## [49] scales_1.0.0        ipred_0.9-8         promises_1.0.1     
-## [52] hms_0.4.2           parallel_3.3.3      expm_0.999-2       
-## [55] yaml_2.2.0          curl_3.2            rpart_4.1-10       
-## [58] reshape_0.8.8       stringi_1.2.4       OpenStreetMap_0.3.3
-## [61] nortest_1.0-4       checkmate_1.8.5     boot_1.3-18        
-## [64] zip_1.0.0           lava_1.6.4          RgoogleMaps_1.4.3  
-## [67] rlang_0.3.0.1       pkgconfig_2.0.2     bitops_1.0-6       
-## [70] evaluate_0.14       lattice_0.20-34     bindr_0.1.1        
-## [73] labeling_0.3        recipes_0.1.4       tidyselect_0.2.5   
-## [76] plyr_1.8.4          R6_2.3.0            generics_0.0.1     
-## [79] pillar_1.3.0        haven_2.0.0         foreign_0.8-67     
-## [82] withr_2.1.2         survival_2.40-1     abind_1.4-5        
-## [85] nnet_7.3-12         modelr_0.1.2        crayon_1.3.4       
-## [88] rmarkdown_1.16      progress_1.2.0      jpeg_0.1-8         
-## [91] readxl_1.1.0        data.table_1.11.8   webshot_0.5.1      
-## [94] digest_0.6.18       xtable_1.8-3        httpuv_1.4.5       
-## [97] munsell_0.5.0
+##  [1] readxl_1.1.0        backports_1.1.2     plyr_1.8.4         
+##  [4] lazyeval_0.2.1      splines_3.3.3       digest_0.6.18      
+##  [7] htmltools_0.3.6     gdata_2.18.0        fansi_0.4.0        
+## [10] checkmate_1.8.5     openxlsx_4.1.0      recipes_0.1.4      
+## [13] modelr_0.1.2        gower_0.1.2         gmodels_2.18.1     
+## [16] beepr_1.3           prettyunits_1.0.2   jpeg_0.1-8         
+## [19] colorspace_1.3-2    rvest_0.3.2         haven_2.0.0        
+## [22] xfun_0.6            crayon_1.3.4        jsonlite_1.5       
+## [25] bindr_0.1.1         survival_2.40-1     gtable_0.2.0       
+## [28] ipred_0.9-8         webshot_0.5.1       maps_3.2.0         
+## [31] abind_1.4-5         scales_1.0.0        Rcpp_1.0.0         
+## [34] xtable_1.8-3        progress_1.2.0      foreign_0.8-67     
+## [37] mapproj_1.2-5       lava_1.6.4          prodlim_2018.04.18 
+## [40] httr_1.3.1          pkgconfig_2.0.2     reshape_0.8.8      
+## [43] rJava_0.9-10        nnet_7.3-12         deldir_0.1-14      
+## [46] utf8_1.1.3          tidyselect_0.2.5    labeling_0.3       
+## [49] rlang_0.3.0.1       later_0.7.5         munsell_0.5.0      
+## [52] cellranger_1.1.0    tools_3.3.3         cli_1.0.1          
+## [55] generics_0.0.1      audio_0.1-5         evaluate_0.14      
+## [58] yaml_2.2.0          goftest_1.1-1       zip_1.0.0          
+## [61] RgoogleMaps_1.4.3   gh_1.0.1            nlme_3.1-131       
+## [64] mime_0.6            xml2_1.2.0          rstudioapi_0.8     
+## [67] OpenStreetMap_0.3.3 curl_3.2            png_0.1-7          
+## [70] stringi_1.2.4       highr_0.7           lattice_0.20-34    
+## [73] pillar_1.3.0        LearnBayes_2.15.1   data.table_1.11.8  
+## [76] bitops_1.0-6        httpuv_1.4.5        R6_2.3.0           
+## [79] promises_1.0.1      rio_0.5.10          codetools_0.2-15   
+## [82] boot_1.3-18         MASS_7.3-45         gtools_3.8.1       
+## [85] assertthat_0.2.0    rjson_0.2.15        withr_2.1.2        
+## [88] nortest_1.0-4       ggsn_0.4.0          expm_0.999-2       
+## [91] hms_0.4.2           rpart_4.1-10        timeDate_3043.102  
+## [94] coda_0.19-2         class_7.3-14        rmarkdown_1.16     
+## [97] shiny_1.2.0         lubridate_1.7.1
 \end{verbatim}
 
 
